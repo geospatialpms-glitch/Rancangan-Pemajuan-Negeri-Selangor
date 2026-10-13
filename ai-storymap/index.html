@@ -121,12 +121,23 @@ button{cursor:pointer;font:inherit}
 
 <!-- Watermark SUO global: kekal ketika skrol dan tukar bab -->
 <style id="suo-global-hologram-style">
-body{overflow-x:hidden}
 body::before,body::after{content:none!important;display:none!important}
-.suo-global-hologram{position:fixed!important;inset:0;z-index:55!important;pointer-events:none!important;user-select:none;display:grid;place-items:center;isolation:isolate}
-.suo-global-hologram::before{content:"";display:block;width:min(48vw,510px);aspect-ratio:1;background:url("./SUO.jpeg") center/contain no-repeat;opacity:.065;filter:saturate(.75) blur(.7px);mix-blend-mode:multiply}
-.header{z-index:100!important}.selangor-ticker{z-index:90!important}.back-to-top{z-index:9999!important}
-@media(max-width:768px){.suo-global-hologram::before{width:min(72vw,340px);opacity:.052}}
+.suo-global-hologram{
+  position:fixed!important;inset:0!important;z-index:1000!important;
+  pointer-events:none!important;user-select:none!important;
+  display:flex!important;align-items:center;justify-content:center;
+  background:transparent!important;
+}
+.suo-global-hologram::before{
+  content:"";display:block;width:min(57vw,650px);height:min(57vw,650px);
+  background-image:url("./SUO.jpeg");background-position:center;
+  background-size:contain;background-repeat:no-repeat;
+  opacity:.19;filter:saturate(.7) contrast(1.04);
+  mix-blend-mode:multiply;
+}
+.header,.selangor-ticker{z-index:1100!important}
+.back-to-top{z-index:1200!important}
+@media(max-width:768px){.suo-global-hologram::before{width:min(80vw,390px);height:min(80vw,390px);opacity:.15}}
 </style>
 
 </head>
