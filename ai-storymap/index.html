@@ -119,8 +119,8 @@ button{cursor:pointer;font:inherit}
 </style>
 <style id="pbt-real-icons">.pbt-official-icon{background:#fff!important;color:#8b1b2f!important;border:1px solid #f1dcd8;border-radius:12px;overflow:hidden;padding:4px}.pbt-official-icon img{display:block;width:100%;height:100%;object-fit:contain}.pbt-logo-fallback{font-weight:900;font-size:11px;line-height:34px;text-align:center}.pbt-card:hover .pbt-official-icon{border-color:#eab945}</style>
 
-<!-- SUO Single Static Centered Watermark (Sentiasa Tampil di Seluruh Skrin) -->
-<style id="suo-single-static-watermark">
+<!-- SUO Single Static Centered Watermark (Sentiasa Kekal Tetap di Tengah Sepanjang Halaman) -->
+<style id="suo-fixed-centered-watermark">
 .suo-page-watermark{
   position: fixed;
   top: 50%;
@@ -132,7 +132,7 @@ button{cursor:pointer;font:inherit}
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
-  opacity: 0.055;
+  opacity: 0.06;
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -175,7 +175,7 @@ button{cursor:pointer;font:inherit}
 <div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
 </div></section>
 
-<!-- Satu logo SUO besar static di tengah skrin (Fixed sentiasa ada di latar belakang) -->
+<!-- Logo SUO tunggal besar fixed di tengah skrin, sentiasa nampak dari atas sampai bawah -->
 <div class="suo-page-watermark" aria-hidden="true"></div>
 
 <section class="development-overview" id="statistik-pembangunan" aria-label="Statistik perancangan Negeri Selangor"><div class="container"><div class="stat-intro"><span class="section-eyebrow">SELANGOR · PERANCANGAN FIZIKAL</span><h2>Statistik Pembangunan</h2><p>Ringkasan struktur perancangan dan skop penerokaan portal.</p></div><div class="stats-grid">
