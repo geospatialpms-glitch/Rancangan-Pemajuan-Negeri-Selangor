@@ -38,12 +38,12 @@ button{cursor:pointer;font:inherit}
 
 /* Interactive Tabs Section */
 .main-section{padding:50px 0;position:relative;z-index:1}
-.tabs-container{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;background:#fff;padding:15px;border-radius:16px;border:1px solid var(--border);box-shadow:0 8px 25px rgba(0,0,0,.03);position:relative;z-index:2}
-.tab-btn{flex:1;min-width:160px;padding:14px 18px;background:#fbf9f6 !important;border:1px solid var(--border);border-radius:12px;font-weight:700;color:var(--muted);text-align:center;transition:.25s;position:relative;z-index:2}
+.tabs-container{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);padding:15px;border-radius:16px;border:1px solid var(--border);box-shadow:0 8px 25px rgba(0,0,0,.03);position:relative;z-index:2}
+.tab-btn{flex:1;min-width:160px;padding:14px 18px;background:rgba(255,255,255,0.8) !important;border:1px solid var(--border);border-radius:12px;font-weight:700;color:var(--muted);text-align:center;transition:.25s;position:relative;z-index:2}
 .tab-btn.active{background:#8b1b2f !important;color:#fff !important;border-color:var(--primary);box-shadow:0 6px 20px rgba(139,27,47,.25)}
 
 /* Content Panel */
-.content-panel{background:#fff;border-radius:20px;border:1px solid var(--border);padding:45px;box-shadow:0 15px 40px rgba(0,0,0,.04);display:none;animation:fadeIn .4s ease;position:relative;z-index:2}
+.content-panel{background:rgba(255,255,255,0.93);backdrop-filter:blur(6px);border-radius:20px;border:1px solid var(--border);padding:45px;box-shadow:0 15px 40px rgba(0,0,0,.04);display:none;animation:fadeIn .4s ease;position:relative;z-index:2}
 .content-panel.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .panel-header{display:flex;align-items:center;gap:15px;margin-bottom:25px}
@@ -110,16 +110,42 @@ button{cursor:pointer;font:inherit}
 <style id="hero-cta-bottom-fix">.hero{position:relative}.hero .hero-layout{min-height:580px;position:relative}.hero .hero-copy{min-height:580px}.hero .hero-actions{position:absolute!important;bottom:125px!important;left:0!important;margin-top:0!important;z-index:10!important}@media(max-width:760px){.hero .hero-layout,.hero .hero-copy{min-height:490px}.hero .hero-actions{bottom:65px!important;gap:8px}.hero .hero-cta{padding:12px 14px}}</style>
 <style id="selangor-announcement-ticker">.selangor-ticker{height:40px;display:flex;align-items:stretch;background:linear-gradient(90deg,#81162a,#a9283b);color:#fff;overflow:hidden;border-bottom:2px solid #f2c64c;position:relative;z-index:90}.ticker-label{display:flex;align-items:center;gap:9px;flex-shrink:0;padding:0 18px;background:#f2c64c;color:#591628;font-size:11px;font-weight:900;letter-spacing:.06em;z-index:2}.ticker-window{flex:1;overflow:hidden;display:flex;align-items:center;mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}.ticker-track{width:max-content;display:flex;align-items:center;gap:70px;white-space:nowrap;animation:selangorTicker 22s linear infinite}.ticker-track span{font-size:12px;font-weight:800;letter-spacing:.09em;padding-left:35px}@keyframes selangorTicker{to{transform:translateX(-50%)}}.selangor-ticker:hover .ticker-track,.selangor-ticker:focus-within .ticker-track{animation-play-state:paused}@media(max-width:600px){.selangor-ticker{height:36px}.ticker-label{padding:0 11px;font-size:9px}.ticker-track span{font-size:10px}}@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}</style>
 <style id="suo-header-logo-style">.logo.suo-logo{width:59px;height:59px;min-width:59px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #eee5df;border-radius:10px;padding:3px;box-shadow:0 4px 15px #6513291b}.logo.suo-logo img{width:100%;height:100%;object-fit:contain;display:block;border-radius:5px}@media(max-width:600px){.logo.suo-logo{width:48px;height:48px;min-width:48px}}</style>
+
+<!-- Dibuat Telus Supaya Logo SUO di Belakang Kelihatan Sepanjang Skrol -->
 <style id="pbt-statistics-components">
-.development-overview,.pbt-section{background:#fffaf3;padding:55px 0;position:relative;z-index:1}.pbt-section{padding-top:28px;padding-bottom:50px;background:linear-gradient(180deg,#fffaf3,#fff)}
-.section-eyebrow{font-weight:900;font-size:11px;letter-spacing:1.6px;color:#b43646}.stat-intro h2,.pbt-heading h2{color:#7c1c2b;font-size:clamp(24px,3vw,32px);margin:10px 0 9px}.stat-intro p,.pbt-heading p{color:#74646b;font-size:13px;line-height:1.7;margin:0}
-.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px;position:relative;z-index:2}.stat-card{position:relative;overflow:hidden;min-height:198px;border-radius:19px;padding:25px 27px;background:#fff;border:1px solid #f0e1d9;box-shadow:0 12px 32px #5f1a2710;border-top:5px solid #c72f41;z-index:2}.stat-card:nth-child(2){border-top-color:#df9d33}.stat-card:nth-child(3){border-top-color:#a71f38}.stat-card strong{display:block;font-weight:900;font-size:clamp(35px,4vw,53px);letter-spacing:-2px;color:#921e32}.stat-card h3{font-size:15px;color:#4b2c33;margin:9px 0 5px}.stat-card p{font-size:12px;color:#8a7779;margin:0}.stat-symbol{position:absolute;right:22px;top:16px;font-size:32px;color:#e7b758}
-.pbt-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;position:relative;z-index:2}.pbt-chapter-btn{border:1px solid #9c293c;border-radius:11px;color:#871a2e;background:#fff;font-size:12px;font-weight:800;padding:13px 18px;white-space:nowrap;position:relative;z-index:2}.pbt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:23px;position:relative;z-index:2}.pbt-card{display:flex;align-items:center;gap:13px;min-height:98px;border-radius:16px;border:1px solid #eddeda;padding:18px 16px;background:white;box-shadow:0 8px 24px #5916280c;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;z-index:2}.pbt-card:hover,.pbt-card:focus-visible{transform:translateY(-4px);border-color:#cc8d4e;box-shadow:0 15px 32px #59162820}.pbt-icon{width:45px;height:45px;flex-shrink:0;display:grid;place-items:center;color:#f5c851;background:linear-gradient(135deg,#8b1b2f,#ae3846);border-radius:13px;font-size:24px}.pbt-label{flex:1;min-width:0}.pbt-label strong{display:block;font-size:18px;color:#7e1c2d}.pbt-label small{display:block;font-size:11px;line-height:1.6;color:#776d70;margin-top:3px}.pbt-arrow{color:#aa3144;font-weight:900;font-size:20px}.back-to-top{position:fixed;right:23px;bottom:23px;z-index:9999;border:1px solid #f6d17b;border-radius:15px;background:#8b1b2f;color:#fff;box-shadow:0 8px 30px #6413235c;display:flex;flex-direction:column;justify-content:center;align-items:center;width:51px;height:55px;font-size:24px;opacity:0;visibility:hidden;transform:translateY(13px);transition:opacity .2s,visibility .2s,transform .2s}.back-to-top span{font-size:8px;font-weight:900;letter-spacing:1px}.back-to-top.show{opacity:1;visibility:visible;transform:none}.back-to-top:hover{background:#a72f40}
-@media(max-width:1000px){.pbt-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:680px){.stats-grid,.pbt-grid{grid-template-columns:1fr}.pbt-heading{display:block}.pbt-chapter-btn{margin-top:18px}.development-overview{padding:35px 0}.pbt-section{padding-bottom:35px}.stat-card{min-height:165px}.back-to-top{right:13px;bottom:14px}}
+.development-overview,.pbt-section{background:transparent !important;padding:55px 0;position:relative;z-index:1}
+.pbt-section{padding-top:28px;padding-bottom:50px}
+.section-eyebrow{font-weight:900;font-size:11px;letter-spacing:1.6px;color:#b43646}
+.stat-intro h2,.pbt-heading h2{color:#7c1c2b;font-size:clamp(24px,3vw,32px);margin:10px 0 9px}
+.stat-intro p,.pbt-heading p{color:#74646b;font-size:13px;line-height:1.7;margin:0}
+.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px;position:relative;z-index:2}
+.stat-card{position:relative;overflow:hidden;min-height:198px;border-radius:19px;padding:25px 27px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border:1px solid #f0e1d9;box-shadow:0 12px 32px #5f1a2710;border-top:5px solid #c72f41;z-index:2}
+.stat-card:nth-child(2){border-top-color:#df9d33}
+.stat-card:nth-child(3){border-top-color:#a71f38}
+.stat-card strong{display:block;font-weight:900;font-size:clamp(35px,4vw,53px);letter-spacing:-2px;color:#921e32}
+.stat-card h3{font-size:15px;color:#4b2c33;margin:9px 0 5px}
+.stat-card p{font-size:12px;color:#8a7779;margin:0}
+.stat-symbol{position:absolute;right:22px;top:16px;font-size:32px;color:#e7b758}
+.pbt-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;position:relative;z-index:2}
+.pbt-chapter-btn{border:1px solid #9c293c;border-radius:11px;color:#871a2e;background:rgba(255,255,255,0.95);font-size:12px;font-weight:800;padding:13px 18px;white-space:nowrap;position:relative;z-index:2}
+.pbt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:23px;position:relative;z-index:2}
+.pbt-card{display:flex;align-items:center;gap:13px;min-height:98px;border-radius:16px;border:1px solid #eddeda;padding:18px 16px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);box-shadow:0 8px 24px #5916280c;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;z-index:2}
+.pbt-card:hover,.pbt-card:focus-visible{transform:translateY(-4px);border-color:#cc8d4e;box-shadow:0 15px 32px #59162820}
+.pbt-icon{width:45px;height:45px;flex-shrink:0;display:grid;place-items:center;color:#f5c851;background:linear-gradient(135deg,#8b1b2f,#ae3846);border-radius:13px;font-size:24px}
+.pbt-label{flex:1;min-width:0}
+.pbt-label strong{display:block;font-size:18px;color:#7e1c2d}
+.pbt-label small{display:block;font-size:11px;line-height:1.6;color:#776d70;margin-top:3px}
+.pbt-arrow{color:#aa3144;font-weight:900;font-size:20px}
+.back-to-top{position:fixed;right:23px;bottom:23px;z-index:9999;border:1px solid #f6d17b;border-radius:15px;background:#8b1b2f;color:#fff;box-shadow:0 8px 30px #6413235c;display:flex;flex-direction:column;justify-content:center;align-items:center;width:51px;height:55px;font-size:24px;opacity:0;visibility:hidden;transform:translateY(13px);transition:opacity .2s,visibility .2s,transform .2s}
+.back-to-top span{font-size:8px;font-weight:900;letter-spacing:1px}
+.back-to-top.show{opacity:1;visibility:visible;transform:none}
+.back-to-top:hover{background:#a72f40}
+@media(max-width:1000px){.pbt-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.stats-grid,.pbt-grid{grid-template-columns:1fr}.pbt-heading{display:block}.pbt-chapter-btn{margin-top:18px}.development-overview{padding:35px 0}.pbt-section{padding-bottom:35px}.stat-card{min-height:165px}.back-to-top{right:13px;bottom:14px}}
 </style>
 <style id="pbt-real-icons">.pbt-official-icon{background:#fff!important;color:#8b1b2f!important;border:1px solid #f1dcd8;border-radius:12px;overflow:hidden;padding:4px}.pbt-official-icon img{display:block;width:100%;height:100%;object-fit:contain}.pbt-logo-fallback{font-weight:900;font-size:11px;line-height:34px;text-align:center}.pbt-card:hover .pbt-official-icon{border-color:#eab945}</style>
 
-<!-- SUO Single Static Centered Watermark (Sentiasa Kekal Tetap di Tengah Sepanjang Halaman) -->
+<!-- SUO Single Static Watermark (Fixed di tengah merentas semua bahagian) -->
 <style id="suo-fixed-centered-watermark">
 .suo-page-watermark{
   position: fixed;
@@ -132,7 +158,7 @@ button{cursor:pointer;font:inherit}
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
-  opacity: 0.06;
+  opacity: 0.075;
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -175,7 +201,7 @@ button{cursor:pointer;font:inherit}
 <div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
 </div></section>
 
-<!-- Logo SUO tunggal besar fixed di tengah skrin, sentiasa nampak dari atas sampai bawah -->
+<!-- Logo SUO tunggal fixed di tengah skrin, sentiasa kelihatan dari atas sampai bawah -->
 <div class="suo-page-watermark" aria-hidden="true"></div>
 
 <section class="development-overview" id="statistik-pembangunan" aria-label="Statistik perancangan Negeri Selangor"><div class="container"><div class="stat-intro"><span class="section-eyebrow">SELANGOR · PERANCANGAN FIZIKAL</span><h2>Statistik Pembangunan</h2><p>Ringkasan struktur perancangan dan skop penerokaan portal.</p></div><div class="stats-grid">
