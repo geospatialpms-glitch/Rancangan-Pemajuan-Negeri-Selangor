@@ -111,21 +111,34 @@ button{cursor:pointer;font:inherit}
 <style id="selangor-announcement-ticker">.selangor-ticker{height:40px;display:flex;align-items:stretch;background:linear-gradient(90deg,#81162a,#a9283b);color:#fff;overflow:hidden;border-bottom:2px solid #f2c64c;position:relative;z-index:90}.ticker-label{display:flex;align-items:center;gap:9px;flex-shrink:0;padding:0 18px;background:#f2c64c;color:#591628;font-size:11px;font-weight:900;letter-spacing:.06em;z-index:2}.ticker-window{flex:1;overflow:hidden;display:flex;align-items:center;mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}.ticker-track{width:max-content;display:flex;align-items:center;gap:70px;white-space:nowrap;animation:selangorTicker 22s linear infinite}.ticker-track span{font-size:12px;font-weight:800;letter-spacing:.09em;padding-left:35px}@keyframes selangorTicker{to{transform:translateX(-50%)}}.selangor-ticker:hover .ticker-track,.selangor-ticker:focus-within .ticker-track{animation-play-state:paused}@media(max-width:600px){.selangor-ticker{height:36px}.ticker-label{padding:0 11px;font-size:9px}.ticker-track span{font-size:10px}}@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}</style>
 <style id="suo-header-logo-style">.logo.suo-logo{width:59px;height:59px;min-width:59px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #eee5df;border-radius:10px;padding:3px;box-shadow:0 4px 15px #6513291b}.logo.suo-logo img{width:100%;height:100%;object-fit:contain;display:block;border-radius:5px}@media(max-width:600px){.logo.suo-logo{width:48px;height:48px;min-width:48px}}</style>
 
-<!-- Dibuat Telus Supaya Logo SUO di Belakang Kelihatan Sepanjang Skrol -->
+<!-- Layout Baru: Kad Pertama Lebar (70% Peta & 30% Statistik Sampingan) -->
 <style id="pbt-statistics-components">
 .development-overview,.pbt-section{background:transparent !important;padding:55px 0;position:relative;z-index:1}
 .pbt-section{padding-top:28px;padding-bottom:50px}
 .section-eyebrow{font-weight:900;font-size:11px;letter-spacing:1.6px;color:#b43646}
 .stat-intro h2,.pbt-heading h2{color:#7c1c2b;font-size:clamp(24px,3vw,32px);margin:10px 0 9px}
 .stat-intro p,.pbt-heading p{color:#74646b;font-size:13px;line-height:1.7;margin:0}
-.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px;position:relative;z-index:2}
-.stat-card{position:relative;overflow:hidden;min-height:198px;border-radius:19px;padding:25px 27px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border:1px solid #f0e1d9;box-shadow:0 12px 32px #5f1a2710;border-top:5px solid #c72f41;z-index:2}
-.stat-card:nth-child(2){border-top-color:#df9d33}
+
+/* Grid Layout Statistik Diubah Menjadi 2 Kolom (Kad Peta Lebar 70% & Kad Lain 30%) */
+.stats-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:18px;margin-top:24px;position:relative;z-index:2}
+
+/* Kad Peta Lebar Khas (70% Ruang) */
+.stat-card-wide{position:relative;overflow:hidden;min-height:220px;border-radius:19px;padding:24px;background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);border:1px solid #f0e1d9;box-shadow:0 12px 32px #5f1a2710;border-top:5px solid #c72f41;z-index:2;display:flex;flex-direction:column;justify-content:space-between}
+.map-split-layout{display:grid;grid-template-columns:1.35fr 0.85fr;gap:20px;align-items:center;height:100%}
+.map-box-mini{position:relative;width:100%;height:140px;background:#fdfaf6;border:1px solid #f2e2dc;border-radius:12px;overflow:hidden;box-shadow:inset 0 2px 6px rgba(0,0,0,.03)}
+.map-box-mini iframe{width:100%;height:100%;border:0;display:block}
+.map-info-side{display:flex;flex-direction:column;justify-content:center}
+.map-info-side strong{display:block;font-weight:900;font-size:26px;letter-spacing:-1px;color:#921e32;line-height:1.1}
+.map-info-side h3{font-size:14px;color:#4b2c33;margin:6px 0 3px}
+.map-info-side p{font-size:11.5px;color:#8a7779;margin:0;line-height:1.4}
+
+.stat-card{position:relative;overflow:hidden;min-height:220px;border-radius:19px;padding:25px 27px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border:1px solid #f0e1d9;box-shadow:0 12px 32px #5f1a2710;border-top:5px solid #df9d33;z-index:2;display:flex;flex-direction:column;justify-content:center}
 .stat-card:nth-child(3){border-top-color:#a71f38}
 .stat-card strong{display:block;font-weight:900;font-size:clamp(35px,4vw,53px);letter-spacing:-2px;color:#921e32}
 .stat-card h3{font-size:15px;color:#4b2c33;margin:9px 0 5px}
 .stat-card p{font-size:12px;color:#8a7779;margin:0}
 .stat-symbol{position:absolute;right:22px;top:16px;font-size:32px;color:#e7b758}
+
 .pbt-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;position:relative;z-index:2}
 .pbt-chapter-btn{border:1px solid #9c293c;border-radius:11px;color:#871a2e;background:rgba(255,255,255,0.95);font-size:12px;font-weight:800;padding:13px 18px;white-space:nowrap;position:relative;z-index:2}
 .pbt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:23px;position:relative;z-index:2}
@@ -140,8 +153,10 @@ button{cursor:pointer;font:inherit}
 .back-to-top span{font-size:8px;font-weight:900;letter-spacing:1px}
 .back-to-top.show{opacity:1;visibility:visible;transform:none}
 .back-to-top:hover{background:#a72f40}
+
+@media(max-width:1100px){.stats-grid{grid-template-columns:1fr}}
 @media(max-width:1000px){.pbt-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:680px){.stats-grid,.pbt-grid{grid-template-columns:1fr}.pbt-heading{display:block}.pbt-chapter-btn{margin-top:18px}.development-overview{padding:35px 0}.pbt-section{padding-bottom:35px}.stat-card{min-height:165px}.back-to-top{right:13px;bottom:14px}}
+@media(max-width:680px){.stats-grid,.pbt-grid{grid-template-columns:1fr}.pbt-heading{display:block}.pbt-chapter-btn{margin-top:18px}.development-overview{padding:35px 0}.pbt-section{padding-bottom:35px}.map-split-layout{grid-template-columns:1fr;gap:12px}.map-box-mini{height:160px}.back-to-top{right:13px;bottom:14px}}
 </style>
 <style id="pbt-real-icons">.pbt-official-icon{background:#fff!important;color:#8b1b2f!important;border:1px solid #f1dcd8;border-radius:12px;overflow:hidden;padding:4px}.pbt-official-icon img{display:block;width:100%;height:100%;object-fit:contain}.pbt-logo-fallback{font-weight:900;font-size:11px;line-height:34px;text-align:center}.pbt-card:hover .pbt-official-icon{border-color:#eab945}</style>
 
@@ -172,7 +187,7 @@ button{cursor:pointer;font:inherit}
 }
 </style>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><style id="interactive-district-map-style">.stat-map-card{padding:16px 16px 12px;min-height:270px!important;background:#fff!important}.stat-map-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.stat-map-heading h3{margin:0;font-size:14px;color:#8b1b2f}.stat-map-heading span{font-size:9px;font-weight:900;letter-spacing:1px;color:#a97535}#selangor-district-map{height:198px;width:100%;border-radius:11px;overflow:hidden;background:#fff2e3;border:1px solid #f2e0d5;z-index:1}.stat-map-caption{margin:7px 0 0!important;font-size:10px!important;color:#755d60!important}.district-tooltip{background:#792039;color:white;border:0;border-radius:8px;font-size:12px;font-weight:800;padding:7px 10px;box-shadow:0 4px 12px #4a162644}.district-tooltip:before{border-top-color:#792039!important}.stat-map-card .leaflet-container{font-family:inherit}.stat-map-card .leaflet-control-attribution{font-size:8px!important;background:#ffffffd8!important}.stat-map-card .leaflet-interactive{cursor:crosshair}@media(max-width:680px){#selangor-district-map{height:240px}}</style></head>
+</head>
 <body>
 
 <div class="strip"></div>
@@ -205,7 +220,20 @@ button{cursor:pointer;font:inherit}
 <div class="suo-page-watermark" aria-hidden="true"></div>
 
 <section class="development-overview" id="statistik-pembangunan" aria-label="Statistik perancangan Negeri Selangor"><div class="container"><div class="stat-intro"><span class="section-eyebrow">SELANGOR · PERANCANGAN FIZIKAL</span><h2>Statistik Pembangunan</h2><p>Ringkasan struktur perancangan dan skop penerokaan portal.</p></div><div class="stats-grid">
-<article class="stat-card stat-map-card"><div class="stat-map-heading"><h3>Peta Interaktif Selangor</h3><span>9 DAERAH</span></div><div id="selangor-district-map" aria-label="Peta interaktif sempadan daerah Selangor" role="region"></div><p class="stat-map-caption" id="selangor-map-caption">Halakan tetikus pada kawasan untuk melihat nama daerah.</p></article>
+<!-- Kad Pertama: 70% Peta & 30% Statistik PBT/Daerah -->
+<article class="stat-card-wide">
+  <div class="map-split-layout">
+    <div class="map-box-mini">
+      <iframe src="about:blank" title="Peta Interaktif Selangor" onload="this.contentDocument.write('<!DOCTYPE html><html><head><style>body{margin:0;background:#fdf2ee;display:grid;place-items:center;font-family:sans-serif;font-size:11px;color:#921e32;}svg{width:100%;height:100%;max-height:130px}</style></head><body><svg viewBox=\'0 0 100 100\'><path d=\'M30,10 Q50,20 70,40 T60,80 T30,90 Z\' fill=\'#d9828d\' stroke=\'#8b1b2f\' stroke-width=\'2\'/></svg>Peta Interaktif Selangor</body></html>')"></iframe>
+    </div>
+    <div class="map-info-side">
+      <strong>12</strong>
+      <h3>Pihak Berkuasa Tempatan</h3>
+      <p>9 Daerah Pentadbiran Negeri Selangor</p>
+    </div>
+  </div>
+</article>
+
 <article class="stat-card"><span class="stat-symbol" aria-hidden="true">▤</span><strong>5</strong><h3>Bab Utama</h3><p>Rancangan Pemajuan Negeri Selangor</p></article>
 <article class="stat-card"><span class="stat-symbol" aria-hidden="true">◎</span><strong>2035</strong><h3>Horizon Perancangan</h3><p>RSN Selangor 2035 (Pengubahan)</p></article>
 </div></div></section>
@@ -333,34 +361,5 @@ const hdrVideo=document.querySelector('.hero-bg-video');hdrVideo.addEventListene
 </script>
 <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑<span>ATAS</span></button>
 <script>(function(){const b=document.getElementById('backToTop');const update=()=>b.classList.toggle('show',window.scrollY>380);window.addEventListener('scroll',update,{passive:true});update();})();</script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-(function(){
-  const target=document.getElementById('selangor-district-map');
-  const caption=document.getElementById('selangor-map-caption');
-  if(!target)return;
-  if(typeof L==='undefined'){caption.textContent='Perpustakaan peta tidak dapat dimuat. Sila muat semula halaman.';return;}
-  const map=L.map(target,{zoomControl:false,scrollWheelZoom:false,dragging:false,doubleClickZoom:false,touchZoom:false,boxZoom:false,keyboard:false,attributionControl:true});
-  const bounds=L.latLngBounds([2.52,100.7],[3.88,102.08]);map.fitBounds(bounds,{padding:[5,5]});
-  const gov='https://jpsselgis.selangor.gov.my/gis/rest/services/Hosted/Sempadan_Daerah/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson';
-  const fallback='https://raw.githubusercontent.com/atifmustaffa/malaysia-geojson/master/states/selangor.district.geojson';
-  function nameOf(p){return p.district||p.DISTRICT||p.Daerah||p.DAERAH||p.name||p.NAME_2||p.Name||p.NAMA_DAERAH||p.nama||'Daerah Selangor'}
-  function draw(geo,source){
-    const polygons=L.geoJSON(geo,{style:()=>({color:'#fff9e8',weight:1.4,fillColor:'#9f2d47',fillOpacity:.88}),onEachFeature:(feature,layer)=>{
-      const name=String(nameOf(feature.properties||{}));
-      layer.bindTooltip(name,{sticky:true,direction:'top',className:'district-tooltip',opacity:1});
-      layer.on('mouseover',()=>{layer.setStyle({fillColor:'#efbb47',fillOpacity:.95,color:'#762039',weight:2});layer.bringToFront();caption.textContent='Daerah: '+name;});
-      layer.on('mouseout',()=>{polygons.resetStyle(layer);caption.textContent='Halakan tetikus pada kawasan untuk melihat nama daerah.'});
-      layer.on('click',()=>caption.textContent='Daerah: '+name);
-    }}).addTo(map);
-    if(polygons.getLayers().length){map.fitBounds(polygons.getBounds(),{padding:[8,8],maxZoom:10});setTimeout(()=>map.invalidateSize(),200);caption.textContent='Halakan tetikus pada peta untuk melihat nama daerah.';return true}
-    return false;
-  }
-  async function load(url){const response=await fetch(url);if(!response.ok)throw new Error('HTTP '+response.status);const data=await response.json();if(data.error||!data.features?.length)throw Error('Tiada sempadan');return data}
-  load(gov).then(d=>{draw(d,'JPS Selangor')}).catch(async()=>{
-    try{const d=await load(fallback);draw(d,'GeoJSON terbuka');}
-    catch(err){caption.textContent='Sempadan daerah belum dapat dimuat. Semak sambungan internet atau sumber GIS.';}
-  });
-})();
-</script></body>
+</body>
 </html>
