@@ -119,37 +119,47 @@ button{cursor:pointer;font:inherit}
 </style>
 <style id="pbt-real-icons">.pbt-official-icon{background:#fff!important;color:#8b1b2f!important;border:1px solid #f1dcd8;border-radius:12px;overflow:hidden;padding:4px}.pbt-official-icon img{display:block;width:100%;height:100%;object-fit:contain}.pbt-logo-fallback{font-weight:900;font-size:11px;line-height:34px;text-align:center}.pbt-card:hover .pbt-official-icon{border-color:#eab945}</style>
 
-<!-- SUO Fixed Watermark Styles -->
-<style id="suo-fixed-watermark-style">
-.suo-fixed-watermark{
-  position:fixed;
-  top:50%;
-  right:3.5%;
-  transform:translateY(-50%);
-  width:min(36vw, 480px);
-  height:min(36vw, 480px);
-  background-image:url("./SUO.jpeg");
-  background-repeat:no-repeat;
-  background-position:center;
-  background-size:contain;
-  opacity:0;
-  pointer-events:none;
-  user-select:none;
-  z-index:0;
-  transition:opacity .3s ease;
-  filter:saturate(.72) contrast(1.02);
+<!-- SUO Background Watermark (Besar di tengah & ikut skrol mcm reference) -->
+<style id="suo-scrolling-background-style">
+.development-overview,
+.pbt-section,
+.main-section {
+  position: relative;
+  isolation: isolate;
+  background-color: #fffaf3;
 }
-body.show-suo-watermark .suo-fixed-watermark{
-  opacity:0.11;
+
+/* Kotak latar belakang logo SUO besar di tengah */
+.development-overview::before,
+.pbt-section::before,
+.main-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("./SUO.jpeg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: min(580px, 80vw) auto;
+  opacity: 0.055;
+  filter: blur(0.5px) saturate(0.85);
 }
-@media (max-width: 768px){
-  .suo-fixed-watermark{
-    width:min(62vw, 280px);
-    height:min(62vw, 280px);
-    right:2%;
-  }
-  body.show-suo-watermark .suo-fixed-watermark{
-    opacity:0.085;
+
+/* Pastikan kandungan di atas background watermark */
+.development-overview > .container,
+.pbt-section > .container,
+.main-section > .tabs-container,
+.main-section > .content-panel {
+  position: relative;
+  z-index: 2;
+}
+
+@media(max-width: 768px) {
+  .development-overview::before,
+  .pbt-section::before,
+  .main-section::before {
+    background-size: 320px auto;
   }
 }
 </style>
@@ -182,10 +192,6 @@ body.show-suo-watermark .suo-fixed-watermark{
 <section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./video%20header%20new.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
 <div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
 </div></section>
-
-<!-- Watermark SUO yang muncul selepas hero -->
-<div class="suo-fixed-watermark" aria-hidden="true"></div>
-
 <section class="development-overview" id="statistik-pembangunan" aria-label="Statistik perancangan Negeri Selangor"><div class="container"><div class="stat-intro"><span class="section-eyebrow">SELANGOR · PERANCANGAN FIZIKAL</span><h2>Statistik Pembangunan</h2><p>Ringkasan struktur perancangan dan skop penerokaan portal.</p></div><div class="stats-grid">
 <article class="stat-card"><span class="stat-symbol" aria-hidden="true">▦</span><strong>12</strong><h3>Pihak Berkuasa Tempatan</h3><p>PBT Negeri Selangor</p></article>
 <article class="stat-card"><span class="stat-symbol" aria-hidden="true">▤</span><strong>5</strong><h3>Bab Utama</h3><p>Rancangan Pemajuan Negeri Selangor</p></article>
@@ -313,32 +319,6 @@ const langStrings={ms:{cta1:'Terokai 5 Bab ↗',cta2:'Mulakan Bab 01 →',badge:
 function setLang(lang){document.documentElement.lang=lang==='en'?'en':'ms';document.getElementById('langBM').classList.toggle('chosen',lang==='ms');document.getElementById('langEN').classList.toggle('chosen',lang==='en');document.getElementById('langBM').setAttribute('aria-pressed',String(lang==='ms'));document.getElementById('langEN').setAttribute('aria-pressed',String(lang==='en'));const t=langStrings[lang];const btns=document.querySelectorAll('.hero-cta');btns[0].textContent=t.cta1;btns[1].textContent=t.cta2;}
 const hdrVideo=document.querySelector('.hero-bg-video');hdrVideo.addEventListener('error',()=>{console.warn('Hero background video could not be loaded')});hdrVideo.play().catch(()=>{});
 </script>
-
-<!-- Script untuk kawal watermark SUO muncul selepas skrol lepas hero -->
-<script>
-(function () {
-  const hero = document.querySelector('.hero');
-  const body = document.body;
-
-  function toggleSUOWatermark() {
-    if (!hero) return;
-    const heroBottom = hero.offsetTop + hero.offsetHeight;
-    const triggerPoint = window.scrollY + 80;
-
-    if (triggerPoint > heroBottom) {
-      body.classList.add('show-suo-watermark');
-    } else {
-      body.classList.remove('show-suo-watermark');
-    }
-  }
-
-  window.addEventListener('scroll', toggleSUOWatermark, { passive: true });
-  window.addEventListener('resize', toggleSUOWatermark);
-  window.addEventListener('load', toggleSUOWatermark);
-  toggleSUOWatermark();
-})();
-</script>
-
 <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑<span>ATAS</span></button>
 <script>(function(){const b=document.getElementById('backToTop');const update=()=>b.classList.toggle('show',window.scrollY>380);window.addEventListener('scroll',update,{passive:true});update();})();</script>
 </body>
