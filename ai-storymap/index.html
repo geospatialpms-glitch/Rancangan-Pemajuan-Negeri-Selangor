@@ -10,7 +10,7 @@
 :root{--primary:#8b1b2f;--primary-dark:#5d121f;--gold:#f2c64c;--gold-light:#fff4d4;--bg:#fbf9f6;--text:#2c2c2c;--muted:#666;--border:#e5dad0}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font:16px 'Plus Jakarta Sans',sans-serif}
+body{margin:0;background:var(--bg);color:var(--text);font:16px 'Plus Jakarta Sans',sans-serif;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font:inherit}
 
@@ -28,7 +28,7 @@ button{cursor:pointer;font:inherit}
 .top-nav button.active,.top-nav button:hover{background:var(--gold-light);color:var(--primary)}
 
 /* Hero Section dengan Video Latar Belakang */
-.hero{position:relative;min-height:560px;color:#fff;display:flex;align-items:center;overflow:hidden;border-bottom:6px solid var(--gold)}
+.hero{position:relative;min-height:560px;color:#fff;display:flex;align-items:center;overflow:hidden;border-bottom:6px solid var(--gold);z-index:2}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(120deg,rgba(75,11,27,0.82),rgba(137,28,49,0.68))}
 .hero .container{position:relative;z-index:3;padding:70px 0}
@@ -37,13 +37,13 @@ button{cursor:pointer;font:inherit}
 .hero p{font-size:17px;line-height:1.7;color:#ffeede;margin-bottom:30px;max-width:800px}
 
 /* Interactive Tabs Section */
-.main-section{padding:50px 0}
-.tabs-container{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;background:#fff;padding:15px;border-radius:16px;border:1px solid var(--border);box-shadow:0 8px 25px rgba(0,0,0,.03)}
-.tab-btn{flex:1;min-width:160px;padding:14px 18px;background:var(--bg);border:1px solid var(--border);border-radius:12px;font-weight:700;color:var(--muted);text-align:center;transition:.25s}
-.tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 6px 20px rgba(139,27,47,.25)}
+.main-section{padding:50px 0;position:relative;z-index:1}
+.tabs-container{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;background:#fff;padding:15px;border-radius:16px;border:1px solid var(--border);box-shadow:0 8px 25px rgba(0,0,0,.03);position:relative;z-index:2}
+.tab-btn{flex:1;min-width:160px;padding:14px 18px;background:#fbf9f6 !important;border:1px solid var(--border);border-radius:12px;font-weight:700;color:var(--muted);text-align:center;transition:.25s;position:relative;z-index:2}
+.tab-btn.active{background:#8b1b2f !important;color:#fff !important;border-color:var(--primary);box-shadow:0 6px 20px rgba(139,27,47,.25)}
 
 /* Content Panel */
-.content-panel{background:#fff;border-radius:20px;border:1px solid var(--border);padding:45px;box-shadow:0 15px 40px rgba(0,0,0,.04);display:none;animation:fadeIn .4s ease}
+.content-panel{background:#fff;border-radius:20px;border:1px solid var(--border);padding:45px;box-shadow:0 15px 40px rgba(0,0,0,.04);display:none;animation:fadeIn .4s ease;position:relative;z-index:2}
 .content-panel.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .panel-header{display:flex;align-items:center;gap:15px;margin-bottom:25px}
@@ -52,7 +52,7 @@ button{cursor:pointer;font:inherit}
 .panel-body p{font-size:16px;line-height:1.8;color:var(--muted);margin:0}
 
 /* Footer */
-.footer{background:var(--primary-dark);color:#ffd8af;padding:40px 0;text-align:center;font-size:13px;margin-top:60px}
+.footer{background:var(--primary-dark);color:#ffd8af;padding:40px 0;text-align:center;font-size:13px;margin-top:60px;position:relative;z-index:2}
 
 @media(max-width:768px){
   .tabs-container{flex-direction:column}
@@ -111,55 +111,51 @@ button{cursor:pointer;font:inherit}
 <style id="selangor-announcement-ticker">.selangor-ticker{height:40px;display:flex;align-items:stretch;background:linear-gradient(90deg,#81162a,#a9283b);color:#fff;overflow:hidden;border-bottom:2px solid #f2c64c;position:relative;z-index:90}.ticker-label{display:flex;align-items:center;gap:9px;flex-shrink:0;padding:0 18px;background:#f2c64c;color:#591628;font-size:11px;font-weight:900;letter-spacing:.06em;z-index:2}.ticker-window{flex:1;overflow:hidden;display:flex;align-items:center;mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}.ticker-track{width:max-content;display:flex;align-items:center;gap:70px;white-space:nowrap;animation:selangorTicker 22s linear infinite}.ticker-track span{font-size:12px;font-weight:800;letter-spacing:.09em;padding-left:35px}@keyframes selangorTicker{to{transform:translateX(-50%)}}.selangor-ticker:hover .ticker-track,.selangor-ticker:focus-within .ticker-track{animation-play-state:paused}@media(max-width:600px){.selangor-ticker{height:36px}.ticker-label{padding:0 11px;font-size:9px}.ticker-track span{font-size:10px}}@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}</style>
 <style id="suo-header-logo-style">.logo.suo-logo{width:59px;height:59px;min-width:59px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #eee5df;border-radius:10px;padding:3px;box-shadow:0 4px 15px #6513291b}.logo.suo-logo img{width:100%;height:100%;object-fit:contain;display:block;border-radius:5px}@media(max-width:600px){.logo.suo-logo{width:48px;height:48px;min-width:48px}}</style>
 <style id="pbt-statistics-components">
-.development-overview,.pbt-section{background:#fffaf3;padding:55px 0}.pbt-section{padding-top:28px;padding-bottom:50px;background:linear-gradient(180deg,#fffaf3,#fff)}
+.development-overview,.pbt-section{background:#fffaf3;padding:55px 0;position:relative;z-index:1}.pbt-section{padding-top:28px;padding-bottom:50px;background:linear-gradient(180deg,#fffaf3,#fff)}
 .section-eyebrow{font-weight:900;font-size:11px;letter-spacing:1.6px;color:#b43646}.stat-intro h2,.pbt-heading h2{color:#7c1c2b;font-size:clamp(24px,3vw,32px);margin:10px 0 9px}.stat-intro p,.pbt-heading p{color:#74646b;font-size:13px;line-height:1.7;margin:0}
-.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}.stat-card{position:relative;overflow:hidden;min-height:198px;border-radius:19px;padding:25px 27px;background:#fff;border:1px solid #f0e1d9;box-shadow:0 12px 32px #5f1a2710;border-top:5px solid #c72f41}.stat-card:nth-child(2){border-top-color:#df9d33}.stat-card:nth-child(3){border-top-color:#a71f38}.stat-card strong{display:block;font-weight:900;font-size:clamp(35px,4vw,53px);letter-spacing:-2px;color:#921e32}.stat-card h3{font-size:15px;color:#4b2c33;margin:9px 0 5px}.stat-card p{font-size:12px;color:#8a7779;margin:0}.stat-symbol{position:absolute;right:22px;top:16px;font-size:32px;color:#e7b758}
-.pbt-heading{display:flex;justify-content:space-between;align-items:end;gap:15px}.pbt-chapter-btn{border:1px solid #9c293c;border-radius:11px;color:#871a2e;background:#fff;font-size:12px;font-weight:800;padding:13px 18px;white-space:nowrap}.pbt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:23px}.pbt-card{display:flex;align-items:center;gap:13px;min-height:98px;border-radius:16px;border:1px solid #eddeda;padding:18px 16px;background:white;box-shadow:0 8px 24px #5916280c;transition:transform .2s,border-color .2s,box-shadow .2s}.pbt-card:hover,.pbt-card:focus-visible{transform:translateY(-4px);border-color:#cc8d4e;box-shadow:0 15px 32px #59162820}.pbt-icon{width:45px;height:45px;flex-shrink:0;display:grid;place-items:center;color:#f5c851;background:linear-gradient(135deg,#8b1b2f,#ae3846);border-radius:13px;font-size:24px}.pbt-label{flex:1;min-width:0}.pbt-label strong{display:block;font-size:18px;color:#7e1c2d}.pbt-label small{display:block;font-size:11px;line-height:1.6;color:#776d70;margin-top:3px}.pbt-arrow{color:#aa3144;font-weight:900;font-size:20px}.back-to-top{position:fixed;right:23px;bottom:23px;z-index:9999;border:1px solid #f6d17b;border-radius:15px;background:#8b1b2f;color:#fff;box-shadow:0 8px 30px #6413235c;display:flex;flex-direction:column;justify-content:center;align-items:center;width:51px;height:55px;font-size:24px;opacity:0;visibility:hidden;transform:translateY(13px);transition:opacity .2s,visibility .2s,transform .2s}.back-to-top span{font-size:8px;font-weight:900;letter-spacing:1px}.back-to-top.show{opacity:1;visibility:visible;transform:none}.back-to-top:hover{background:#a72f40}
+.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px;position:relative;z-index:2}.stat-card{position:relative;overflow:hidden;min-height:198px;border-radius:19px;padding:25px 27px;background:#fff;border:1px solid #f0e1d9;box-shadow:0 12px 32px #5f1a2710;border-top:5px solid #c72f41;z-index:2}.stat-card:nth-child(2){border-top-color:#df9d33}.stat-card:nth-child(3){border-top-color:#a71f38}.stat-card strong{display:block;font-weight:900;font-size:clamp(35px,4vw,53px);letter-spacing:-2px;color:#921e32}.stat-card h3{font-size:15px;color:#4b2c33;margin:9px 0 5px}.stat-card p{font-size:12px;color:#8a7779;margin:0}.stat-symbol{position:absolute;right:22px;top:16px;font-size:32px;color:#e7b758}
+.pbt-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;position:relative;z-index:2}.pbt-chapter-btn{border:1px solid #9c293c;border-radius:11px;color:#871a2e;background:#fff;font-size:12px;font-weight:800;padding:13px 18px;white-space:nowrap;position:relative;z-index:2}.pbt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:23px;position:relative;z-index:2}.pbt-card{display:flex;align-items:center;gap:13px;min-height:98px;border-radius:16px;border:1px solid #eddeda;padding:18px 16px;background:white;box-shadow:0 8px 24px #5916280c;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;z-index:2}.pbt-card:hover,.pbt-card:focus-visible{transform:translateY(-4px);border-color:#cc8d4e;box-shadow:0 15px 32px #59162820}.pbt-icon{width:45px;height:45px;flex-shrink:0;display:grid;place-items:center;color:#f5c851;background:linear-gradient(135deg,#8b1b2f,#ae3846);border-radius:13px;font-size:24px}.pbt-label{flex:1;min-width:0}.pbt-label strong{display:block;font-size:18px;color:#7e1c2d}.pbt-label small{display:block;font-size:11px;line-height:1.6;color:#776d70;margin-top:3px}.pbt-arrow{color:#aa3144;font-weight:900;font-size:20px}.back-to-top{position:fixed;right:23px;bottom:23px;z-index:9999;border:1px solid #f6d17b;border-radius:15px;background:#8b1b2f;color:#fff;box-shadow:0 8px 30px #6413235c;display:flex;flex-direction:column;justify-content:center;align-items:center;width:51px;height:55px;font-size:24px;opacity:0;visibility:hidden;transform:translateY(13px);transition:opacity .2s,visibility .2s,transform .2s}.back-to-top span{font-size:8px;font-weight:900;letter-spacing:1px}.back-to-top.show{opacity:1;visibility:visible;transform:none}.back-to-top:hover{background:#a72f40}
 @media(max-width:1000px){.pbt-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:680px){.stats-grid,.pbt-grid{grid-template-columns:1fr}.pbt-heading{display:block}.pbt-chapter-btn{margin-top:18px}.development-overview{padding:35px 0}.pbt-section{padding-bottom:35px}.stat-card{min-height:165px}.back-to-top{right:13px;bottom:14px}}
 </style>
 <style id="pbt-real-icons">.pbt-official-icon{background:#fff!important;color:#8b1b2f!important;border:1px solid #f1dcd8;border-radius:12px;overflow:hidden;padding:4px}.pbt-official-icon img{display:block;width:100%;height:100%;object-fit:contain}.pbt-logo-fallback{font-weight:900;font-size:11px;line-height:34px;text-align:center}.pbt-card:hover .pbt-official-icon{border-color:#eab945}</style>
 
-<!-- Watermark SUO global: kekal ketika skrol dan tukar bab -->
-<style id="suo-global-hologram-style">
-/* Kekalkan logo SUO sebagai hologram kecil, di LATAR kandungan sahaja. */
-body::before,body::after{content:none!important;display:none!important}
-.development-overview,.pbt-section,.main-section{
-  position:relative;
-  isolation:isolate;
-}
-.development-overview::before,.pbt-section::before,.main-section::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
+<!-- SUO Fixed Watermark Styles -->
+<style id="suo-fixed-watermark-style">
+.suo-fixed-watermark{
+  position:fixed;
+  top:50%;
+  right:3.5%;
+  transform:translateY(-50%);
+  width:min(36vw, 480px);
+  height:min(36vw, 480px);
   background-image:url("./SUO.jpeg");
   background-repeat:no-repeat;
-  background-position:92% center;
-  background-size:clamp(175px,23vw,310px) auto;
-  opacity:.105;
-  filter:saturate(.68);
+  background-position:center;
+  background-size:contain;
+  opacity:0;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+  transition:opacity .3s ease;
+  filter:saturate(.72) contrast(1.02);
 }
-.development-overview>.container,.pbt-section>.container,
-.main-section>.tabs-container,.main-section>.content-panel{position:relative;z-index:1}
-.stat-card,.pbt-card,.content-panel,.tabs-container,.pbt-chapter-btn{
-  background:#fff!important;
+body.show-suo-watermark .suo-fixed-watermark{
+  opacity:0.11;
 }
-.tab-btn{background:#fbf9f6!important}
-.tab-btn.active{background:#8b1b2f!important;color:#fff!important}
-.hero::before,.hero::after{background-image:none!important}
-@media(max-width:768px){
-  .development-overview::before,.pbt-section::before,.main-section::before{
-    background-size:190px auto;
-    background-position:95% center;
-    opacity:.075;
+@media (max-width: 768px){
+  .suo-fixed-watermark{
+    width:min(62vw, 280px);
+    height:min(62vw, 280px);
+    right:2%;
+  }
+  body.show-suo-watermark .suo-fixed-watermark{
+    opacity:0.085;
   }
 }
 </style>
 
 </head>
 <body>
-
 
 <div class="strip"></div>
 
@@ -186,6 +182,10 @@ body::before,body::after{content:none!important;display:none!important}
 <section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./video%20header%20new.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
 <div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
 </div></section>
+
+<!-- Watermark SUO yang muncul selepas hero -->
+<div class="suo-fixed-watermark" aria-hidden="true"></div>
+
 <section class="development-overview" id="statistik-pembangunan" aria-label="Statistik perancangan Negeri Selangor"><div class="container"><div class="stat-intro"><span class="section-eyebrow">SELANGOR · PERANCANGAN FIZIKAL</span><h2>Statistik Pembangunan</h2><p>Ringkasan struktur perancangan dan skop penerokaan portal.</p></div><div class="stats-grid">
 <article class="stat-card"><span class="stat-symbol" aria-hidden="true">▦</span><strong>12</strong><h3>Pihak Berkuasa Tempatan</h3><p>PBT Negeri Selangor</p></article>
 <article class="stat-card"><span class="stat-symbol" aria-hidden="true">▤</span><strong>5</strong><h3>Bab Utama</h3><p>Rancangan Pemajuan Negeri Selangor</p></article>
@@ -313,6 +313,32 @@ const langStrings={ms:{cta1:'Terokai 5 Bab ↗',cta2:'Mulakan Bab 01 →',badge:
 function setLang(lang){document.documentElement.lang=lang==='en'?'en':'ms';document.getElementById('langBM').classList.toggle('chosen',lang==='ms');document.getElementById('langEN').classList.toggle('chosen',lang==='en');document.getElementById('langBM').setAttribute('aria-pressed',String(lang==='ms'));document.getElementById('langEN').setAttribute('aria-pressed',String(lang==='en'));const t=langStrings[lang];const btns=document.querySelectorAll('.hero-cta');btns[0].textContent=t.cta1;btns[1].textContent=t.cta2;}
 const hdrVideo=document.querySelector('.hero-bg-video');hdrVideo.addEventListener('error',()=>{console.warn('Hero background video could not be loaded')});hdrVideo.play().catch(()=>{});
 </script>
+
+<!-- Script untuk kawal watermark SUO muncul selepas skrol lepas hero -->
+<script>
+(function () {
+  const hero = document.querySelector('.hero');
+  const body = document.body;
+
+  function toggleSUOWatermark() {
+    if (!hero) return;
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    const triggerPoint = window.scrollY + 80;
+
+    if (triggerPoint > heroBottom) {
+      body.classList.add('show-suo-watermark');
+    } else {
+      body.classList.remove('show-suo-watermark');
+    }
+  }
+
+  window.addEventListener('scroll', toggleSUOWatermark, { passive: true });
+  window.addEventListener('resize', toggleSUOWatermark);
+  window.addEventListener('load', toggleSUOWatermark);
+  toggleSUOWatermark();
+})();
+</script>
+
 <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑<span>ATAS</span></button>
 <script>(function(){const b=document.getElementById('backToTop');const update=()=>b.classList.toggle('show',window.scrollY>380);window.addEventListener('scroll',update,{passive:true});update();})();</script>
 </body>
