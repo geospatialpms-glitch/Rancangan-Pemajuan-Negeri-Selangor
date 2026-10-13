@@ -59,7 +59,16 @@ button{cursor:pointer;font:inherit}
   .content-panel{padding:25px}
 }
 </style>
-</head>
+<style>
+.hero{isolation:isolate;background:#55182c;overflow:hidden}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;display:block}
+.hero-video-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(50,8,23,.92) 0%,rgba(80,14,31,.80) 38%,rgba(66,13,27,.34) 100%)}
+.hero .container{position:relative;z-index:3}
+.hero-skyline{opacity:.12;z-index:2}
+.hero:before,.hero:after{z-index:2;pointer-events:none}
+@media(max-width:600px){.hero-video-overlay{background:linear-gradient(90deg,rgba(50,8,23,.9),rgba(65,15,30,.65))}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero{background:linear-gradient(110deg,#571528,#a52237)}}
+</style></head>
 <body>
 
 <div class="strip"></div>
