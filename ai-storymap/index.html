@@ -121,29 +121,38 @@ button{cursor:pointer;font:inherit}
 
 <!-- Watermark SUO global: kekal ketika skrol dan tukar bab -->
 <style id="suo-global-hologram-style">
-/* SUO hanya sebagai watermark LATAR KANDUNGAN; video hero kekal bersih. */
+/* Kekalkan logo SUO sebagai hologram kecil, di LATAR kandungan sahaja. */
 body::before,body::after{content:none!important;display:none!important}
-.development-overview,.pbt-section,.main-section{position:relative;isolation:isolate}
+.development-overview,.pbt-section,.main-section{
+  position:relative;
+  isolation:isolate;
+}
 .development-overview::before,.pbt-section::before,.main-section::before{
-  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
   background-image:url("./SUO.jpeg");
-  background-repeat:no-repeat;background-position:center;
-  background-size:min(48vw,520px) auto;
-  opacity:.105;filter:saturate(.72);
+  background-repeat:no-repeat;
+  background-position:92% center;
+  background-size:clamp(175px,23vw,310px) auto;
+  opacity:.105;
+  filter:saturate(.68);
 }
-.development-overview>.container,.pbt-section>.container,.main-section>.container{
-  position:relative;z-index:1
-}
+.development-overview>.container,.pbt-section>.container,
 .main-section>.tabs-container,.main-section>.content-panel{position:relative;z-index:1}
-.stat-card,.pbt-card,.content-panel,.tabs-container,.tab-btn,.pbt-chapter-btn{
-  background-color:#fff!important
+.stat-card,.pbt-card,.content-panel,.tabs-container,.pbt-chapter-btn{
+  background:#fff!important;
 }
-.tab-btn.active{background-color:#8b1b2f!important;color:#fff!important}
-.hero,.header,.selangor-ticker{isolation:isolate}
+.tab-btn{background:#fbf9f6!important}
+.tab-btn.active{background:#8b1b2f!important;color:#fff!important}
 .hero::before,.hero::after{background-image:none!important}
 @media(max-width:768px){
   .development-overview::before,.pbt-section::before,.main-section::before{
-    background-size:min(72vw,350px) auto;opacity:.085
+    background-size:190px auto;
+    background-position:95% center;
+    opacity:.075;
   }
 }
 </style>
