@@ -27,38 +27,29 @@ button{cursor:pointer;font:inherit}
 .top-nav button{background:none;border:0;padding:8px 14px;border-radius:20px;font-size:13px;font-weight:700;color:var(--text);transition:.2s}
 .top-nav button.active,.top-nav button:hover{background:var(--gold-light);color:var(--primary)}
 
-/* Hero Section ala Smart Desa */
-.hero{background:linear-gradient(120deg,rgba(75,11,27,.95),rgba(137,28,49,.9)),url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1600&q=80') center/cover;color:#fff;padding:70px 0 90px;position:relative;border-bottom:6px solid var(--gold)}
-.hero-content{max-width:800px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:20px;border:1px solid rgba(255,255,255,.2)}
+/* Hero Section dengan Video Latar Belakang */
+.hero{position:relative;min-height:560px;color:#fff;display:flex;align-items:center;overflow:hidden;border-bottom:6px solid var(--gold)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(120deg,rgba(75,11,27,0.88),rgba(137,28,49,0.78))}
+.hero .container{position:relative;z-index:3;padding:70px 0}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:20px;border:1px solid rgba(255,255,255,.3)}
 .hero h1{font-size:clamp(34px,4.5vw,52px);font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-1px}
-.hero p{font-size:17px;line-height:1.7;color:#ffeede;margin-bottom:30px}
+.hero p{font-size:17px;line-height:1.7;color:#ffeede;margin-bottom:30px;max-width:800px}
 
-/* Interactive Tabs Section ala Smart Desa */
+/* Interactive Tabs Section */
 .main-section{padding:50px 0}
 .tabs-container{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;background:#fff;padding:15px;border-radius:16px;border:1px solid var(--border);box-shadow:0 8px 25px rgba(0,0,0,.03)}
 .tab-btn{flex:1;min-width:160px;padding:14px 18px;background:var(--bg);border:1px solid var(--border);border-radius:12px;font-weight:700;color:var(--muted);text-align:center;transition:.25s}
 .tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 6px 20px rgba(139,27,47,.25)}
 
-/* Interactive Content Panel */
+/* Content Panel */
 .content-panel{background:#fff;border-radius:20px;border:1px solid var(--border);padding:45px;box-shadow:0 15px 40px rgba(0,0,0,.04);display:none;animation:fadeIn .4s ease}
 .content-panel.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .panel-header{display:flex;align-items:center;gap:15px;margin-bottom:25px}
 .panel-num{background:var(--gold-light);color:var(--primary);width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:18px}
 .panel-header h3{margin:0;font-size:24px;color:var(--primary-dark)}
-.panel-body p{font-size:16px;line-height:1.8;color:var(--muted);margin:0 0 30px}
-
-/* Interactive Before/After Visual Tool ala Smart Desa */
-.interactive-tool{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:25px;margin-top:20px}
-.tool-title{font-weight:800;color:var(--primary);font-size:15px;margin-bottom:15px;display:flex;align-items:center;gap:8px}
-.comparison-slider{position:relative;width:100%;height:320px;border-radius:12px;overflow:hidden;user-select:none}
-.comparison-slider img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
-.img-before{z-index:1}
-.img-after{z-index:2;width:50%;border-right:4px solid var(--gold);overflow:hidden}
-.img-after img{width:1000px;max-width:none} /* adjust to sync */
-.slider-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;background:var(--gold);color:var(--primary-dark);padding:8px 12px;border-radius:20px;font-weight:800;font-size:12px;box-shadow:0 4px 15px rgba(0,0,0,0.3);pointer-events:none}
-.range-input{position:absolute;inset:0;z-index:20;opacity:0;cursor:ew-resize}
+.panel-body p{font-size:16px;line-height:1.8;color:var(--muted);margin:0}
 
 /* Footer */
 .footer{background:var(--primary-dark);color:#ffd8af;padding:40px 0;text-align:center;font-size:13px;margin-top:60px}
@@ -93,18 +84,22 @@ button{cursor:pointer;font:inherit}
 </header>
 
 <section class="hero">
+  <!-- Video Bergerak di Muka Depan -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="video-header.mp4" type="video/mp4">
+    Pelayar anda tidak menyokong paparan video.
+  </video>
+  <div class="hero-overlay"></div>
+  
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">✦ PORTAL RASMI PERANCANGAN DIGITAL</div>
-      <h1>Rancangan Pemajuan<br>Negeri Selangor</h1>
-      <p>Terokai kelima-lima bab rasmi PLANMalaysia Selangor melalui portal penceritaan interaktif dinamik yang dilengkapi alat visual dan perbandingan moden.</p>
-    </div>
+    <div class="hero-badge">✦ PLANMALAYSIA SELANGOR · PERANCANGAN & PENDEKATAN KESEJAHTERAAN</div>
+    <h1>Rancangan Pemajuan<br>Negeri Selangor</h1>
+    <p>Perancangan Spatial ke Arah Pembangunan Mampan. Terokai kelima-lima bab rasmi koleksi digital melalui portal penceritaan interaktif dinamik ini.</p>
   </div>
 </section>
 
 <main class="container main-section">
   
-  <!-- Tab Menu Butang Interaktif -->
   <div class="tabs-container">
     <button class="tab-btn active" onclick="switchTab(0)">01. Masa Hadapan</button>
     <button class="tab-btn" onclick="switchTab(1)">02. Arah Tuju & Hierarki</button>
@@ -113,7 +108,6 @@ button{cursor:pointer;font:inherit}
     <button class="tab-btn" onclick="switchTab(4)">05. Sistem Laporan</button>
   </div>
 
-  <!-- PANEL 1 -->
   <div class="content-panel active" id="panel-0">
     <div class="panel-header">
       <div class="panel-num">01</div>
@@ -121,25 +115,9 @@ button{cursor:pointer;font:inherit}
     </div>
     <div class="panel-body">
       <p>Meneroka Perancangan, Pembangunan dan Hala Tuju Masa Hadapan Negeri Selangor. Perancangan bandar dan desa di Negeri Selangor dilaksanakan berpandukan Akta Perancangan Bandar dan Desa 1976 (Akta 172). Akta ini menyediakan kerangka perundingan yang sistematik bagi merancang, mengawal dan mengawal selia pemajuan serta penggunaan tanah dan bangunan demi kepentingan awam, kesejahteraan masyarakat dan kemampanan alam sekitar. Di bawah kerangka Akta 172, Rancangan Pemajuan ditakrifkan secara rasmi sebagai suatu dokumen perancangan spatial gunatanah yang memandu arah dan mengawal pembangunan fizikal sesuatu kawasan bagi sesuatu tempoh perancangan.</p>
-      
-      <!-- Alat Interaktif ala Smart Desa (Slider Sebelum / Selepas) -->
-      <div class="interactive-tool">
-        <div class="tool-title">⚡ Alat Interaktif: Perbandingan Transformasi Ruang Spatial</div>
-        <div class="comparison-slider" id="sliderBox">
-          <div class="img-after" id="imgAfter" style="width: 50%;">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Selepas Pembangunan">
-          </div>
-          <div style="position:absolute;inset:0;">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Sebelum Pembangunan" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-          <div class="slider-handle" id="sliderHandle" style="left: 50%;">Tarik Kiri/Kanan</div>
-          <input type="range" min="0" max="100" value="50" class="range-input" id="rangeInput" oninput="slideMove(this)">
-        </div>
-      </div>
     </div>
   </div>
 
-  <!-- PANEL 2 -->
   <div class="content-panel" id="panel-1">
     <div class="panel-header">
       <div class="panel-num">02</div>
@@ -150,7 +128,6 @@ button{cursor:pointer;font:inherit}
     </div>
   </div>
 
-  <!-- PANEL 3 -->
   <div class="content-panel" id="panel-2">
     <div class="panel-header">
       <div class="panel-num">03</div>
@@ -161,7 +138,6 @@ button{cursor:pointer;font:inherit}
     </div>
   </div>
 
-  <!-- PANEL 4 -->
   <div class="content-panel" id="panel-3">
     <div class="panel-header">
       <div class="panel-num">04</div>
@@ -172,7 +148,6 @@ button{cursor:pointer;font:inherit}
     </div>
   </div>
 
-  <!-- PANEL 5 -->
   <div class="content-panel" id="panel-4">
     <div class="panel-header">
       <div class="panel-num">05</div>
@@ -222,14 +197,6 @@ function switchTab(index) {
   });
 
   window.scrollTo({top: 250, behavior: 'smooth'});
-}
-
-function slideMove(slider) {
-  const val = slider.value;
-  const afterLayer = document.getElementById('imgAfter');
-  const handle = document.getElementById('sliderHandle');
-  afterLayer.style.width = val + '%';
-  handle.style.left = val + '%';
 }
 </script>
 
