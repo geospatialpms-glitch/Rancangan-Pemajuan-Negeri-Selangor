@@ -119,63 +119,19 @@ button{cursor:pointer;font:inherit}
 </style>
 <style id="pbt-real-icons">.pbt-official-icon{background:#fff!important;color:#8b1b2f!important;border:1px solid #f1dcd8;border-radius:12px;overflow:hidden;padding:4px}.pbt-official-icon img{display:block;width:100%;height:100%;object-fit:contain}.pbt-logo-fallback{font-weight:900;font-size:11px;line-height:34px;text-align:center}.pbt-card:hover .pbt-official-icon{border-color:#eab945}</style>
 
-<!-- === TAMBAHAN CSS HOLOGRAM LOGO SUO === -->
-<style>
-body{
-  position: relative;
-  overflow-x: hidden;
-  background-color: #fbf9f6;
-}
-
-header, main, section, footer, .selangor-ticker {
-  position: relative;
-  z-index: 2;
-}
-
-body::before{
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("./SUO.jpeg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 520px auto;
-  opacity: 0.055;
-  filter: blur(1.5px) saturate(0.9);
-  pointer-events: none;
-  z-index: 0;
-}
-
-body::after{
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("./SUO.jpeg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 520px auto;
-  opacity: 0.025;
-  filter: blur(10px) hue-rotate(10deg) saturate(1.2);
-  pointer-events: none;
-  z-index: 0;
-}
-
-main{
-  position: relative;
-  z-index: 2;
-}
-
-@media (max-width: 768px){
-  body::before,
-  body::after{
-    background-size: 300px auto;
-    background-position: center 45%;
-  }
-}
+<!-- Watermark SUO global: kekal ketika skrol dan tukar bab -->
+<style id="suo-global-hologram-style">
+body{overflow-x:hidden}
+body::before,body::after{content:none!important;display:none!important}
+.suo-global-hologram{position:fixed!important;inset:0;z-index:55!important;pointer-events:none!important;user-select:none;display:grid;place-items:center;isolation:isolate}
+.suo-global-hologram::before{content:"";display:block;width:min(48vw,510px);aspect-ratio:1;background:url("./SUO.jpeg") center/contain no-repeat;opacity:.065;filter:saturate(.75) blur(.7px);mix-blend-mode:multiply}
+.header{z-index:100!important}.selangor-ticker{z-index:90!important}.back-to-top{z-index:9999!important}
+@media(max-width:768px){.suo-global-hologram::before{width:min(72vw,340px);opacity:.052}}
 </style>
 
 </head>
 <body>
+<div class="suo-global-hologram" aria-hidden="true"></div>
 
 <div class="strip"></div>
 
