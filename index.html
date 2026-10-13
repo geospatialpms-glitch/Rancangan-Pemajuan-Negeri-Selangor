@@ -1,188 +1,204 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#08314a">
-  <title>Rancangan Tempatan Daerah Hulu Selangor 2035</title>
-  <meta name="description" content="StoryMap GitHub bagi Rancangan Tempatan Daerah Hulu Selangor 2035 (Penggantian).">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#8b1b2f">
+<title>Rancangan Pemajuan Negeri Selangor | Portal Interaktif</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#8b1b2f;--primary-dark:#5d121f;--gold:#f2c64c;--gold-light:#fff4d4;--bg:#fbf9f6;--text:#2c2c2c;--muted:#666;--border:#e5dad0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px 'Plus Jakarta Sans',sans-serif}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font:inherit}
+
+/* Header & Nav */
+.strip{height:6px;background:linear-gradient(90deg,#8b1b2f 0 50%,#f2c64c 50% 100%)}
+.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.container{width:min(1280px,calc(100% - 40px));margin:auto}
+.head{display:flex;align-items:center;justify-content:space-between;min-height:80px}
+.brand-group{display:flex;align-items:center;gap:15px}
+.logo{width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,#8b1b2f,#5d121f);color:#fff;display:grid;place-items:center;font-weight:800;font-size:22px;box-shadow:0 4px 12px rgba(139,27,47,.3)}
+.brand-text b{display:block;color:var(--primary);font-size:18px;font-weight:800;letter-spacing:-.5px}
+.brand-text small{display:block;color:#a37b3a;font-size:11px;font-weight:700;letter-spacing:1px;margin-top:2px}
+.top-nav{display:flex;gap:6px;overflow-x:auto}
+.top-nav button{background:none;border:0;padding:8px 14px;border-radius:20px;font-size:13px;font-weight:700;color:var(--text);transition:.2s}
+.top-nav button.active,.top-nav button:hover{background:var(--gold-light);color:var(--primary)}
+
+/* Hero Section dengan Video Latar Belakang */
+.hero{position:relative;min-height:560px;color:#fff;display:flex;align-items:center;overflow:hidden;border-bottom:6px solid var(--gold)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(120deg,rgba(75,11,27,0.88),rgba(137,28,49,0.78))}
+.hero .container{position:relative;z-index:3;padding:70px 0}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:20px;border:1px solid rgba(255,255,255,.3)}
+.hero h1{font-size:clamp(34px,4.5vw,52px);font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-1px}
+.hero p{font-size:17px;line-height:1.7;color:#ffeede;margin-bottom:30px;max-width:800px}
+
+/* Interactive Tabs Section */
+.main-section{padding:50px 0}
+.tabs-container{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;background:#fff;padding:15px;border-radius:16px;border:1px solid var(--border);box-shadow:0 8px 25px rgba(0,0,0,.03)}
+.tab-btn{flex:1;min-width:160px;padding:14px 18px;background:var(--bg);border:1px solid var(--border);border-radius:12px;font-weight:700;color:var(--muted);text-align:center;transition:.25s}
+.tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 6px 20px rgba(139,27,47,.25)}
+
+/* Content Panel */
+.content-panel{background:#fff;border-radius:20px;border:1px solid var(--border);padding:45px;box-shadow:0 15px 40px rgba(0,0,0,.04);display:none;animation:fadeIn .4s ease}
+.content-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.panel-header{display:flex;align-items:center;gap:15px;margin-bottom:25px}
+.panel-num{background:var(--gold-light);color:var(--primary);width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:18px}
+.panel-header h3{margin:0;font-size:24px;color:var(--primary-dark)}
+.panel-body p{font-size:16px;line-height:1.8;color:var(--muted);margin:0}
+
+/* Footer */
+.footer{background:var(--primary-dark);color:#ffd8af;padding:40px 0;text-align:center;font-size:13px;margin-top:60px}
+
+@media(max-width:768px){
+  .tabs-container{flex-direction:column}
+  .content-panel{padding:25px}
+}
+</style>
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="#utama"><span class="mark">RP</span><span><b>Rancangan Pemajuan</b><small>Negeri Selangor</small></span></a>
-  <button class="menu-btn" aria-label="Buka menu">☰</button>
-  <nav class="nav">
-    <a href="#pengenalan">Pengenalan</a>
-    <a href="#latar-belakang">Latar Belakang</a>
-    <a href="#pelan-rt">Pelan RT</a>
-    <a href="#matlamat">Matlamat</a>
-    <a href="#teras">Teras</a>
-    <a href="#konsep">Konsep</a>
-    <a href="#projek">Projek</a>
-    <a href="#guna-tanah">Guna Tanah</a>
-  </nav>
+
+<div class="strip"></div>
+
+<header class="header">
+  <div class="container head">
+    <div class="brand-group">
+      <div class="logo">S</div>
+      <div class="brand-text">
+        <b>Rancangan Pemajuan Selangor</b>
+        <small>PLANMALAYSIA SELANGOR · PORTAL INTERAKTIF</small>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <button onclick="switchTab(0)" class="tab-nav-btn active">Bab 01</button>
+      <button onclick="switchTab(1)" class="tab-nav-btn">Bab 02</button>
+      <button onclick="switchTab(2)" class="tab-nav-btn">Bab 03</button>
+      <button onclick="switchTab(3)" class="tab-nav-btn">Bab 04</button>
+      <button onclick="switchTab(4)" class="tab-nav-btn">Bab 05</button>
+    </nav>
+  </div>
 </header>
 
-<main>
-<section id="utama" class="hero">
-  <div class="hero-inner reveal">
-    <p class="eyebrow">RANCANGAN TEMPATAN</p>
-    <h1>Daerah Hulu Selangor <span>2035</span></h1>
-    <p class="lead">Penggantian · Jilid 1: Penyataan Bertulis dan Strategi Pembangunan</p>
-    <div class="actions">
-      <a class="btn primary" href="#pengenalan">Terokai StoryMap</a>
-      <a class="btn outline" href="https://arcg.is/0e5v4z" target="_blank" rel="noopener">ArcGIS Asal ↗</a>
-    </div>
-  </div>
-  <div class="scroll">Skrol untuk meneroka ↓</div>
-</section>
-
-<section id="pengenalan" class="section light">
-  <div class="container split">
-    <div class="num">01</div>
-    <div class="content reveal">
-      <p class="kicker">PENGENALAN</p>
-      <h2>Rancangan Tempatan Daerah Hulu Selangor 2035</h2>
-      <p>Rancangan Tempatan Daerah Hulu Selangor 2035 (Penggantian) ialah dokumen perancangan yang menyusun hala tuju pembangunan daerah sehingga tahun 2035. Ia merangkumi kerangka rancangan, kawasan rancangan tempatan, pembahagian blok perancangan, dasar pembangunan, strategi serta cadangan spatial.</p>
-      <div class="facts">
-        <article><b>2035</b><span>Horizon perancangan</span></article>
-        <article><b>5</b><span>Blok perancangan</span></article>
-        <article><b>4</b><span>Teras pembangunan</span></article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="latar-belakang" class="section dark">
-  <div class="container split">
-    <div class="num">02</div>
-    <div class="content reveal">
-      <p class="kicker">LATAR BELAKANG</p>
-      <h2>Asas penyediaan dan pewartaan</h2>
-      <p>RTDHS 2035 disediakan sebagai rancangan penggantian dan melalui proses kelulusan serta pewartaan negeri sebelum menjadi rujukan perancangan pembangunan Daerah Hulu Selangor.</p>
-      <div class="timeline">
-        <div><span>21 Dis 2020</span><p>Kelulusan Mesyuarat Jawatankuasa Perancang Negeri Selangor, JPNS Bil. 4/2020.</p></div>
-        <div><span>14 Apr 2021</span><p>Persetujuan Pihak Berkuasa Negeri Selangor.</p></div>
-        <div><span>21 Apr 2021</span><p>Persetujuan disahkan.</p></div>
-        <div><span>19 Ogos 2021</span><p>Diwartakan melalui Warta Kerajaan Negeri Selangor No. 1809.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="pelan-rt" class="section soft">
+<section class="hero">
+  <!-- Video Bergerak di Muka Depan -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="video-header.mp4" type="video/mp4">
+    Pelayar anda tidak menyokong paparan video.
+  </video>
+  <div class="hero-overlay"></div>
+  
   <div class="container">
-    <div class="heading reveal">
-      <div><p class="kicker">03 · PELAN RT</p><h2>Pelan Rancangan Tempatan</h2></div>
-      <p>Pelan RT merangkumi kawasan rancangan, pelan kunci serta pembahagian Daerah Hulu Selangor kepada lima blok perancangan.</p>
-    </div>
-    <div class="map-card reveal">
-      <div class="map-icon">⌖</div>
-      <h3>Peta Interaktif Rancangan Pemajuan</h3>
-      <p>Terokai peta dan kandungan geospatial melalui StoryMaps ArcGIS asal.</p>
-      <a class="btn primary" href="https://arcg.is/0e5v4z" target="_blank" rel="noopener">Buka Peta ArcGIS ↗</a>
-    </div>
-    <div class="chips reveal"><span>BP1</span><span>BP2</span><span>BP3</span><span>BP4</span><span>BP5</span></div>
+    <div class="hero-badge">✦ PLANMALAYSIA SELANGOR · PERANCANGAN & PENDEKATAN KESEJAHTERAAN</div>
+    <h1>Rancangan Pemajuan<br>Negeri Selangor</h1>
+    <p>Perancangan Spatial ke Arah Pembangunan Mampan. Terokai kelima-lima bab rasmi koleksi digital melalui portal penceritaan interaktif dinamik ini.</p>
   </div>
 </section>
 
-<section id="matlamat" class="section light">
-  <div class="container split">
-    <div class="num">04</div>
-    <div class="content reveal">
-      <p class="kicker">MATLAMAT PEMBANGUNAN</p>
-      <h2>Hala tuju pembangunan menuju 2035</h2>
-      <p>Bahagian visi, tema dan matlamat menjadi asas kepada strategi pembangunan RTDHS 2035. Hala tuju ini diterjemahkan melalui teras pembangunan, strategi, pelan tindakan dan konsep pembangunan spatial.</p>
+<main class="container main-section">
+  
+  <div class="tabs-container">
+    <button class="tab-btn active" onclick="switchTab(0)">01. Masa Hadapan</button>
+    <button class="tab-btn" onclick="switchTab(1)">02. Arah Tuju & Hierarki</button>
+    <button class="tab-btn" onclick="switchTab(2)">03. RSN Selangor 2035</button>
+    <button class="tab-btn" onclick="switchTab(3)">04. RT & RKK</button>
+    <button class="tab-btn" onclick="switchTab(4)">05. Sistem Laporan</button>
+  </div>
+
+  <div class="content-panel active" id="panel-0">
+    <div class="panel-header">
+      <div class="panel-num">01</div>
+      <h3>Rancangan Selangor, Masa Hadapan</h3>
+    </div>
+    <div class="panel-body">
+      <p>Meneroka Perancangan, Pembangunan dan Hala Tuju Masa Hadapan Negeri Selangor. Perancangan bandar dan desa di Negeri Selangor dilaksanakan berpandukan Akta Perancangan Bandar dan Desa 1976 (Akta 172). Akta ini menyediakan kerangka perundingan yang sistematik bagi merancang, mengawal dan mengawal selia pemajuan serta penggunaan tanah dan bangunan demi kepentingan awam, kesejahteraan masyarakat dan kemampanan alam sekitar. Di bawah kerangka Akta 172, Rancangan Pemajuan ditakrifkan secara rasmi sebagai suatu dokumen perancangan spatial gunatanah yang memandu arah dan mengawal pembangunan fizikal sesuatu kawasan bagi sesuatu tempoh perancangan.</p>
     </div>
   </div>
-</section>
 
-<section id="teras" class="section gradient">
-  <div class="container">
-    <div class="center reveal"><p class="kicker">05 · TERAS PEMBANGUNAN</p><h2>Empat teras utama</h2></div>
-    <div class="grid4">
-      <article class="card reveal"><span>TERAS 1</span><h3>Pembangunan dan Peluang Ekonomi yang Saksama</h3><p>Industri, pelancongan, perdagangan, pertanian, imej bandar, rangkaian hijau, pengangkutan dan pembangunan semula brownfield.</p></article>
-      <article class="card reveal"><span>TERAS 2</span><h3>Pengurusan Sumber Asli yang Mampan</h3><p>Pemeliharaan sumber jaya asli, pengurusan sumber air dan peningkatan kualiti persekitaran.</p></article>
-      <article class="card reveal"><span>TERAS 3</span><h3>Pembangunan Komuniti Sejahtera</h3><p>Perumahan, petempatan desa, kemudahan masyarakat, infrastruktur, utiliti dan ruang awam.</p></article>
-      <article class="card reveal"><span>TERAS 4</span><h3>Urus Tadbir Efektif dan Efisien</h3><p>Pengurusan kewangan, kerjasama strategik, kecekapan pengurusan serta pemerkasaan penyampaian perkhidmatan melalui ICT.</p></article>
+  <div class="content-panel" id="panel-1">
+    <div class="panel-header">
+      <div class="panel-num">02</div>
+      <h3>Arah Tuju & Hierarki Pemajuan</h3>
+    </div>
+    <div class="panel-body">
+      <p>Meneroka maklumat mengenai perundangan, hala tuju serta peringkat hierarki Rancangan Pemajuan Selangor. Pengenalan & Kerangka Perundangan negeri menetapkan hierarki perancangan fizikal negara dan negeri secara bersepadu. Rancangan Pemajuan di peringkat negeri merangkumi Rancangan Struktur Negeri (RSN), Rancangan Tempatan (RT), dan Rancangan Kawasan Khas (RKK) yang saling melengkapi bagi memastikan pembangunan sosioekonomi dan fizikal berjalan teratur, mampan serta berdaya huni.</p>
     </div>
   </div>
-</section>
 
-<section id="konsep" class="section dark">
-  <div class="container">
-    <div class="heading reveal">
-      <div><p class="kicker">06 · KONSEP PEMBANGUNAN</p><h2>Konsep pembangunan spatial</h2></div>
-      <p>Konsep pembangunan spatial menggabungkan zon tumpuan perbandaran, rangkaian ekologi, zon pengekalan dan pemeliharaan serta zon kawalan dan pemuliharaan pembangunan.</p>
+  <div class="content-panel" id="panel-2">
+    <div class="panel-header">
+      <div class="panel-num">03</div>
+      <h3>Rancangan Struktur Negeri (RSN) Selangor 2035 (Pengubahan)</h3>
     </div>
-    <div class="concept reveal">
-      <div><b>Zon Tumpuan Perbandaran</b><span>Memusatkan pertumbuhan dan fungsi bandar.</span></div>
-      <i>→</i>
-      <div><b>Rangkaian Ekologi</b><span>Menghubungkan aset semula jadi dan kawasan sensitif.</span></div>
-      <i>→</i>
-      <div><b>Kawalan & Pemeliharaan</b><span>Mengawal pembangunan di kawasan yang perlu dilindungi.</span></div>
-    </div>
-    <div id="pelan-konsep" class="sub reveal">
-      <p class="kicker">06.1 · PELAN KONSEP PEMBANGUNAN</p>
-      <h3>Pelan Induk Perancangan Strategi Pembangunan</h3>
-      <p>Dokumen RTDHS 2035 turut menyediakan Pelan Induk Perancangan Strategi Pembangunan serta Pelan Peta Cadangan Daerah Hulu Selangor 2035 sebagai rujukan spatial utama.</p>
-      <a class="btn outline" href="https://arcg.is/0e5v4z" target="_blank" rel="noopener">Teroka Pelan Interaktif ↗</a>
+    <div class="panel-body">
+      <p>Kerangka Dasar dan Cadangan Am Pemajuan Fizikal Negeri Selangor 2035 (Warta No. 1000). Dokumen ini menggariskan dasar utama pembangunan spatial negeri, penetapan koridor pertumbuhan ekonomi, strategi pemeliharaan alam sekitar, zon guna tanah strategik, serta hala tuju perbandaran mampan menjelang tahun 2035 bagi memastikan Selangor terus maju sebagai negeri perdagangan dan pusat pertumbuhan utama.</p>
     </div>
   </div>
-</section>
 
-<section id="projek" class="section light">
-  <div class="container">
-    <div class="heading reveal">
-      <div><p class="kicker">07 · PROJEK BERIMPAK TINGGI</p><h2>Cadangan projek strategik</h2></div>
-      <p>Bab keseluruhan projek pembangunan menyenaraikan projek pembangunan keseluruhan dan projek Quick Win. Antara cadangan strategik yang diketengahkan dalam teras-teras pembangunan ialah:</p>
+  <div class="content-panel" id="panel-3">
+    <div class="panel-header">
+      <div class="panel-num">04</div>
+      <h3>Rancangan Tempatan (RT) & Rancangan Kawasan Khas (RKK)</h3>
     </div>
-    <div class="grid4">
-      <article class="project reveal"><span>INDUSTRI</span><h3>Kluster Perindustrian</h3><p>Cadangan kluster industri dan Managed Industrial Park termasuk kawasan Bernam Jaya dan Serendah.</p></article>
-      <article class="project reveal"><span>PELANCONGAN</span><h3>Zon Pelancongan</h3><p>Pengukuhan produk pelancongan eko, sukan dan rekreasi, agro serta produk sokongan.</p></article>
-      <article class="project reveal"><span>MOBILITI</span><h3>Pengangkutan & TOD</h3><p>Pengukuhan jaringan pengangkutan, aksesibiliti dan cadangan pembangunan berkonsepkan Transit Oriented Development.</p></article>
-      <article class="project reveal"><span>BANDAR</span><h3>Pembangunan Semula Brownfield</h3><p>Penyelarasan, pengenalpastian zon dan penambahbaikan kawasan brownfield utama.</p></article>
+    <div class="panel-body">
+      <p>Pengurusan & Hierarki Perancangan Fizikal Pihak Berkuasa Tempatan (PBT) Negeri Selangor. Melibatkan perincian cadangan pemajuan di peringkat tempatan bagi setiap PBT di Selangor (seperti MBSA, MBPJ, MBSJ, MPKj, MBDK, MPKL dan lain-lain). Rancangan Tempatan menterjemahkan dasar RSN kepada zon guna tanah terperinci, manakala RKK memberi tumpuan kepada kawasan pembangunan intensif, pemulihan bandar, atau kawasan warisan pelancongan khas.</p>
     </div>
   </div>
-</section>
 
-<section id="guna-tanah" class="section soft">
-  <div class="container">
-    <div class="heading reveal">
-      <div><p class="kicker">08 · CADANGAN GUNA TANAH</p><h2>Cadangan spatial sehingga 2035</h2></div>
-      <p>Peta cadangan guna tanah RTDHS 2035 merangkumi kategori utama pembangunan dan sumber semula jadi bagi keseluruhan daerah serta setiap blok perancangan.</p>
+  <div class="content-panel" id="panel-4">
+    <div class="panel-header">
+      <div class="panel-num">05</div>
+      <h3>Sistem Pengurusan Laporan Perancangan Fizikal Negeri</h3>
     </div>
-    <div class="legend reveal">
-      <span>Perumahan</span><span>Komersial</span><span>Industri</span><span>Institusi & Kemudahan Masyarakat</span><span>Tanah Lapang & Rekreasi</span><span>Pembangunan Bercampur</span><span>Pengangkutan</span><span>Infrastruktur & Utiliti</span><span>Pertanian</span><span>Hutan</span><span>Badan Air</span>
-    </div>
-
-    <div id="peta-gtn" class="sub reveal">
-      <p class="kicker">08.1 · PETA KESELURUHAN GTN</p>
-      <h3>Peta Cadangan Daerah Hulu Selangor 2035</h3>
-      <p>Dokumen menyediakan peta keseluruhan cadangan daerah dan peta cadangan BP1 hingga BP5. Untuk paparan interaktif, gunakan pautan StoryMaps ArcGIS di bawah.</p>
-      <div class="map-card tall">
-        <div class="map-icon">▧</div>
-        <h3>Peta Keseluruhan Guna Tanah</h3>
-        <p>Paparan interaktif melalui sumber ArcGIS asal.</p>
-        <a class="btn primary" href="https://arcg.is/0e5v4z" target="_blank" rel="noopener">Buka Peta Keseluruhan ↗</a>
-      </div>
+    <div class="panel-body">
+      <p>Platform digital berpusat bagi menyelaraskan pengurusan laporan dan data perancangan fizikal Negeri Selangor. Sistem ini bertindak sebagai pusat sehenti bagi pemantauan pelaksanaan dasar perancangan, integrasi data geospatial PBT, pengurusan laporan fizikal, serta rujukan digital perancangan negeri yang telus, pantas dan berkesan.</p>
     </div>
   </div>
-</section>
 
-<section class="section dark">
-  <div class="container">
-    <div class="center reveal"><p class="kicker">SUMBER INTERAKTIF</p><h2>ArcGIS StoryMaps asal</h2></div>
-    <div class="embed reveal"><iframe title="ArcGIS StoryMaps Rancangan Pemajuan" src="https://storymaps.arcgis.com/collections/af0dcee739bc46cfbd88f9110ce7ed20" loading="lazy" allowfullscreen></iframe></div>
-  </div>
-</section>
 </main>
 
-<footer>
-  <div><b>Rancangan Pemajuan Negeri Selangor</b><small>StoryMap versi GitHub</small></div>
-  <a href="#utama">Kembali ke atas ↑</a>
+<footer class="footer">
+  <div class="container">
+    RANCANGAN PEMAJUAN NEGERI SELANGOR · Portal Interaktif Rasmi · PLANMalaysia Selangor
+  </div>
 </footer>
-<script src="app.js"></script>
+
+<script>
+function switchTab(index) {
+  const panels = document.querySelectorAll('.content-panel');
+  const buttons = document.querySelectorAll('.tab-btn');
+  const navButtons = document.querySelectorAll('.tab-nav-btn');
+
+  panels.forEach((p, i) => {
+    if(i === index) {
+      p.classList.add('active');
+    } else {
+      p.classList.remove('active');
+    }
+  });
+
+  buttons.forEach((b, i) => {
+    if(i === index) {
+      b.classList.add('active');
+    } else {
+      b.classList.remove('active');
+    }
+  });
+
+  navButtons.forEach((nb, i) => {
+    if(i === index) {
+      nb.classList.add('active');
+    } else {
+      nb.classList.remove('active');
+    }
+  });
+
+  window.scrollTo({top: 250, behavior: 'smooth'});
+}
+</script>
+
 </body>
 </html>
