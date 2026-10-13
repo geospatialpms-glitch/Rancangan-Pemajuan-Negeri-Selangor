@@ -172,7 +172,7 @@ button{cursor:pointer;font:inherit}
 }
 </style>
 
-</head>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><style id="interactive-district-map-style">.stat-map-card{padding:16px 16px 12px;min-height:270px!important;background:#fff!important}.stat-map-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.stat-map-heading h3{margin:0;font-size:14px;color:#8b1b2f}.stat-map-heading span{font-size:9px;font-weight:900;letter-spacing:1px;color:#a97535}#selangor-district-map{height:198px;width:100%;border-radius:11px;overflow:hidden;background:#fff2e3;border:1px solid #f2e0d5;z-index:1}.stat-map-caption{margin:7px 0 0!important;font-size:10px!important;color:#755d60!important}.district-tooltip{background:#792039;color:white;border:0;border-radius:8px;font-size:12px;font-weight:800;padding:7px 10px;box-shadow:0 4px 12px #4a162644}.district-tooltip:before{border-top-color:#792039!important}.stat-map-card .leaflet-container{font-family:inherit}.stat-map-card .leaflet-control-attribution{font-size:8px!important;background:#ffffffd8!important}.stat-map-card .leaflet-interactive{cursor:crosshair}@media(max-width:680px){#selangor-district-map{height:240px}}</style></head>
 <body>
 
 <div class="strip"></div>
@@ -205,7 +205,7 @@ button{cursor:pointer;font:inherit}
 <div class="suo-page-watermark" aria-hidden="true"></div>
 
 <section class="development-overview" id="statistik-pembangunan" aria-label="Statistik perancangan Negeri Selangor"><div class="container"><div class="stat-intro"><span class="section-eyebrow">SELANGOR · PERANCANGAN FIZIKAL</span><h2>Statistik Pembangunan</h2><p>Ringkasan struktur perancangan dan skop penerokaan portal.</p></div><div class="stats-grid">
-<article class="stat-card"><span class="stat-symbol" aria-hidden="true">▦</span><strong>12</strong><h3>Pihak Berkuasa Tempatan</h3><p>PBT Negeri Selangor</p></article>
+<article class="stat-card stat-map-card"><div class="stat-map-heading"><h3>Peta Interaktif Selangor</h3><span>9 DAERAH</span></div><div id="selangor-district-map" aria-label="Peta interaktif sempadan daerah Selangor" role="region"></div><p class="stat-map-caption" id="selangor-map-caption">Halakan tetikus pada kawasan untuk melihat nama daerah.</p></article>
 <article class="stat-card"><span class="stat-symbol" aria-hidden="true">▤</span><strong>5</strong><h3>Bab Utama</h3><p>Rancangan Pemajuan Negeri Selangor</p></article>
 <article class="stat-card"><span class="stat-symbol" aria-hidden="true">◎</span><strong>2035</strong><h3>Horizon Perancangan</h3><p>RSN Selangor 2035 (Pengubahan)</p></article>
 </div></div></section>
@@ -333,5 +333,34 @@ const hdrVideo=document.querySelector('.hero-bg-video');hdrVideo.addEventListene
 </script>
 <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑<span>ATAS</span></button>
 <script>(function(){const b=document.getElementById('backToTop');const update=()=>b.classList.toggle('show',window.scrollY>380);window.addEventListener('scroll',update,{passive:true});update();})();</script>
-</body>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  const target=document.getElementById('selangor-district-map');
+  const caption=document.getElementById('selangor-map-caption');
+  if(!target)return;
+  if(typeof L==='undefined'){caption.textContent='Perpustakaan peta tidak dapat dimuat. Sila muat semula halaman.';return;}
+  const map=L.map(target,{zoomControl:false,scrollWheelZoom:false,dragging:false,doubleClickZoom:false,touchZoom:false,boxZoom:false,keyboard:false,attributionControl:true});
+  const bounds=L.latLngBounds([2.52,100.7],[3.88,102.08]);map.fitBounds(bounds,{padding:[5,5]});
+  const gov='https://jpsselgis.selangor.gov.my/gis/rest/services/Hosted/Sempadan_Daerah/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson';
+  const fallback='https://raw.githubusercontent.com/atifmustaffa/malaysia-geojson/master/states/selangor.district.geojson';
+  function nameOf(p){return p.district||p.DISTRICT||p.Daerah||p.DAERAH||p.name||p.NAME_2||p.Name||p.NAMA_DAERAH||p.nama||'Daerah Selangor'}
+  function draw(geo,source){
+    const polygons=L.geoJSON(geo,{style:()=>({color:'#fff9e8',weight:1.4,fillColor:'#9f2d47',fillOpacity:.88}),onEachFeature:(feature,layer)=>{
+      const name=String(nameOf(feature.properties||{}));
+      layer.bindTooltip(name,{sticky:true,direction:'top',className:'district-tooltip',opacity:1});
+      layer.on('mouseover',()=>{layer.setStyle({fillColor:'#efbb47',fillOpacity:.95,color:'#762039',weight:2});layer.bringToFront();caption.textContent='Daerah: '+name;});
+      layer.on('mouseout',()=>{polygons.resetStyle(layer);caption.textContent='Halakan tetikus pada kawasan untuk melihat nama daerah.'});
+      layer.on('click',()=>caption.textContent='Daerah: '+name);
+    }}).addTo(map);
+    if(polygons.getLayers().length){map.fitBounds(polygons.getBounds(),{padding:[8,8],maxZoom:10});setTimeout(()=>map.invalidateSize(),200);caption.textContent='Halakan tetikus pada peta untuk melihat nama daerah.';return true}
+    return false;
+  }
+  async function load(url){const response=await fetch(url);if(!response.ok)throw new Error('HTTP '+response.status);const data=await response.json();if(data.error||!data.features?.length)throw Error('Tiada sempadan');return data}
+  load(gov).then(d=>{draw(d,'JPS Selangor')}).catch(async()=>{
+    try{const d=await load(fallback);draw(d,'GeoJSON terbuka');}
+    catch(err){caption.textContent='Sempadan daerah belum dapat dimuat. Semak sambungan internet atau sumber GIS.';}
+  });
+})();
+</script></body>
 </html>
