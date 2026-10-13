@@ -95,6 +95,14 @@ button{cursor:pointer;font:inherit}
 .hero-media,.hero-media-grid,.visual-globe,.floating-chip,.media-bottom,.hero-skyline{display:none!important}
 .hero .container{position:relative;z-index:3}
 @media(max-width:760px){.hero{min-height:570px;padding:70px 0}.hero-layout{width:calc(100% - 30px)}.hero h1{font-size:clamp(35px,8vw,52px)}.hero p{font-size:15px}.hero-tint{background:linear-gradient(90deg,rgba(50,8,22,.70),rgba(80,19,39,.25))!important}}
+</style><style id="hero-clean-final">
+/* Clear, bright full-bleed video with ONE unobstructed headline */
+.hero{min-height:660px;background:#6d5851!important;padding:96px 0!important;isolation:isolate}
+.hero-bg-video{display:block!important;opacity:1!important;filter:brightness(1.18) saturate(1.1)!important;object-fit:cover!important;width:100%;height:100%;position:absolute;inset:0;z-index:0}
+.hero-tint{background:linear-gradient(90deg,rgba(39,20,24,.41) 0%,rgba(44,23,26,.19) 45%,rgba(49,29,25,.03) 100%)!important;z-index:1;inset:0}
+.hero-layout{display:block!important;position:relative;z-index:3}.hero-copy{max-width:850px!important;filter:none;text-shadow:0 3px 18px #24151caa}.hero h1{font-size:clamp(43px,5.6vw,78px);line-height:1.13;margin:0 0 24px;max-width:850px}.hero h1 span{color:#ffe39a}.hero p{font-size:17px;max-width:630px;color:white;line-height:1.8;margin:0 0 28px}
+.hero-badge,.hero-mini,.hero-media,.hero-skyline,.visual-globe,.floating-chip,.hero::before,.hero::after{display:none!important}.hero-actions{margin-top:24px}.hero-cta{backdrop-filter:blur(3px)}
+@media(max-width:760px){.hero{min-height:580px;padding:75px 0!important}.hero-tint{background:linear-gradient(90deg,rgba(39,20,24,.52),rgba(44,23,26,.13))!important}.hero h1{font-size:clamp(35px,8.6vw,53px)}.hero p{font-size:15px}}
 </style></head>
 <body>
 
@@ -120,7 +128,7 @@ button{cursor:pointer;font:inherit}
 </header>
 
 <section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./video%20header.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
-<div class="container hero-layout"><div class="hero-copy"><div class="hero-badge">✦ PLANMALAYSIA SELANGOR · PORTAL PENEROKAAN DIGITAL</div><h1>Rancangan Pemajuan<br><span>Negeri Selangor</span></h1><p>Perancangan Spatial ke Arah Pembangunan Mampan. Terokai kelima-lima bab rasmi koleksi digital melalui portal penceritaan interaktif dinamik ini.</p><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div><div class="hero-mini"><span><b>05</b> Bab perancangan</span><span><b>01</b> Portal bersepadu</span><span><b>Selangor</b> Perancangan negeri</span></div></div>
+<div class="container hero-layout"><div class="hero-copy"><h1>Rancangan Pemajuan<br><span>Negeri Selangor</span></h1><p>Perancangan Spatial ke Arah Pembangunan Mampan. Terokai kelima-lima bab rasmi koleksi digital melalui portal penceritaan interaktif dinamik ini.</p><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
 </div></section>
 
 <main class="container main-section">
@@ -227,7 +235,7 @@ function switchTab(index) {
 
 <script>
 const langStrings={ms:{cta1:'Terokai 5 Bab ↗',cta2:'Mulakan Bab 01 →',badge:'✦ PLANMALAYSIA SELANGOR · PORTAL PENEROKAAN DIGITAL',intro:'Perancangan Spatial ke Arah Pembangunan Mampan. Terokai kelima-lima bab rasmi koleksi digital melalui portal penceritaan interaktif dinamik ini.'},en:{cta1:'Explore 5 Chapters ↗',cta2:'Start Chapter 01 →',badge:'✦ PLANMALAYSIA SELANGOR · DIGITAL EXPLORATION PORTAL',intro:'Spatial Planning Towards Sustainable Development. Explore the five planning chapters through this interactive digital portal.'}};
-function setLang(lang){document.documentElement.lang=lang==='en'?'en':'ms';document.getElementById('langBM').classList.toggle('chosen',lang==='ms');document.getElementById('langEN').classList.toggle('chosen',lang==='en');document.getElementById('langBM').setAttribute('aria-pressed',String(lang==='ms'));document.getElementById('langEN').setAttribute('aria-pressed',String(lang==='en'));const t=langStrings[lang];document.querySelector('.hero-badge').textContent=t.badge;document.querySelector('.hero-copy p').textContent=t.intro;const btns=document.querySelectorAll('.hero-cta');btns[0].textContent=t.cta1;btns[1].textContent=t.cta2;document.querySelector('.hero-mini span:first-child').innerHTML='<b>05</b> '+(lang==='en'?'Planning chapters':'Bab perancangan');}
+function setLang(lang){document.documentElement.lang=lang==='en'?'en':'ms';document.getElementById('langBM').classList.toggle('chosen',lang==='ms');document.getElementById('langEN').classList.toggle('chosen',lang==='en');document.getElementById('langBM').setAttribute('aria-pressed',String(lang==='ms'));document.getElementById('langEN').setAttribute('aria-pressed',String(lang==='en'));const t=langStrings[lang];document.querySelector('.hero-copy p').textContent=t.intro;const btns=document.querySelectorAll('.hero-cta');btns[0].textContent=t.cta1;btns[1].textContent=t.cta2;document.querySelector('.hero-mini span:first-child').innerHTML='<b>05</b> '+(lang==='en'?'Planning chapters':'Bab perancangan');}
 const hdrVideo=document.querySelector('.hero-bg-video');hdrVideo.addEventListener('error',()=>{console.warn('Hero background video could not be loaded')});hdrVideo.play().catch(()=>{});
 </script></body>
 </html>
