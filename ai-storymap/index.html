@@ -128,7 +128,7 @@ button{cursor:pointer;font:inherit}
 </header>
 
 <section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./video%20header.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
-<div class="container hero-layout"><div class="hero-copy"><h1>Rancangan Pemajuan<br><span>Negeri Selangor</span></h1><p>Perancangan Spatial ke Arah Pembangunan Mampan. Terokai kelima-lima bab rasmi koleksi digital melalui portal penceritaan interaktif dinamik ini.</p><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
+<div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
 </div></section>
 
 <main class="container main-section">
@@ -235,7 +235,7 @@ function switchTab(index) {
 
 <script>
 const langStrings={ms:{cta1:'Terokai 5 Bab ↗',cta2:'Mulakan Bab 01 →',badge:'✦ PLANMALAYSIA SELANGOR · PORTAL PENEROKAAN DIGITAL',intro:'Perancangan Spatial ke Arah Pembangunan Mampan. Terokai kelima-lima bab rasmi koleksi digital melalui portal penceritaan interaktif dinamik ini.'},en:{cta1:'Explore 5 Chapters ↗',cta2:'Start Chapter 01 →',badge:'✦ PLANMALAYSIA SELANGOR · DIGITAL EXPLORATION PORTAL',intro:'Spatial Planning Towards Sustainable Development. Explore the five planning chapters through this interactive digital portal.'}};
-function setLang(lang){document.documentElement.lang=lang==='en'?'en':'ms';document.getElementById('langBM').classList.toggle('chosen',lang==='ms');document.getElementById('langEN').classList.toggle('chosen',lang==='en');document.getElementById('langBM').setAttribute('aria-pressed',String(lang==='ms'));document.getElementById('langEN').setAttribute('aria-pressed',String(lang==='en'));const t=langStrings[lang];document.querySelector('.hero-copy p').textContent=t.intro;const btns=document.querySelectorAll('.hero-cta');btns[0].textContent=t.cta1;btns[1].textContent=t.cta2;document.querySelector('.hero-mini span:first-child').innerHTML='<b>05</b> '+(lang==='en'?'Planning chapters':'Bab perancangan');}
+function setLang(lang){document.documentElement.lang=lang==='en'?'en':'ms';document.getElementById('langBM').classList.toggle('chosen',lang==='ms');document.getElementById('langEN').classList.toggle('chosen',lang==='en');document.getElementById('langBM').setAttribute('aria-pressed',String(lang==='ms'));document.getElementById('langEN').setAttribute('aria-pressed',String(lang==='en'));const t=langStrings[lang];const btns=document.querySelectorAll('.hero-cta');btns[0].textContent=t.cta1;btns[1].textContent=t.cta2;}
 const hdrVideo=document.querySelector('.hero-bg-video');hdrVideo.addEventListener('error',()=>{console.warn('Hero background video could not be loaded')});hdrVideo.play().catch(()=>{});
 </script></body>
 </html>
