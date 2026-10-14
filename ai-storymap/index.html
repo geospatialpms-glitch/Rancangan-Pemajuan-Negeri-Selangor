@@ -217,6 +217,19 @@ button{cursor:pointer;font:inherit}
 .hero-media{height:clamp(360px,33vw,470px);position:relative;background:linear-gradient(140deg,rgba(255,251,244,.96),rgba(255,242,218,.92));border-radius:26px;border:1px solid #fff6d6;overflow:hidden;box-shadow:0 30px 65px #3a101e77,0 0 0 7px #ffffff2d}.hero-media-grid{position:absolute;inset:0;background-image:linear-gradient(#ae394d10 1px,transparent 1px),linear-gradient(90deg,#ae394d10 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(90deg,#000,transparent)}.hero-media:before{content:"";position:absolute;width:390px;height:390px;border-radius:50%;right:-100px;top:-100px;background:radial-gradient(circle,#edca6d83,transparent 68%)}.visual-globe{position:absolute;inset:15% 13%;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 32% 30%,#e8bf73,#b54149 42%,#761a32 72%);box-shadow:inset 0 0 40px #62152b77,0 22px 45px #842b4060;animation:globeFloat 8s ease-in-out infinite}.visual-globe:before{content:"";position:absolute;inset:10%;border:1px dashed #ffe5ad80;border-radius:50%;transform:rotate(-20deg)}.ring{position:absolute;border:2px solid #f6d28db8;width:120%;height:43%;border-radius:50%;transform:rotate(-26deg)}.ring-b{transform:rotate(58deg);width:112%;height:42%;border-color:#fff5d48c}.globe-center{font-size:clamp(22px,2.6vw,36px);letter-spacing:3px;font-weight:900;color:#fff7dd;text-align:center;text-shadow:0 5px 14px #641128}.globe-center span{display:block;font-size:10px;letter-spacing:2px;margin-top:9px}.floating-chip{position:absolute;z-index:4;padding:13px 15px;background:#fffdf9;color:#7f2639;border-radius:14px;font-size:11px;font-weight:800;box-shadow:0 15px 30px #641d2c44;animation:chipFloat 6s ease-in-out infinite}.floating-chip span{font-size:19px;color:#ae273f;margin-right:7px}.chip-a{top:11%;left:5%}.chip-b{right:4%;top:52%;animation-delay:-2s}.chip-c{bottom:13%;left:7%;animation-delay:-3s}.media-bottom{position:absolute;bottom:13px;right:15px;left:15px;font-size:9px;text-align:center;color:#9c4550;letter-spacing:1px;text-shadow:none}
 @keyframes globeFloat{50%{transform:translateY(-10px) rotate(3deg)}}@keyframes chipFloat{50%{transform:translateY(-8px)}}@media(max-width:1080px){.header .head{flex-wrap:wrap;padding:10px 0}.top-nav{order:3;width:100%;justify-content:center}.lang-switch{margin-left:auto}.hero-layout{gap:22px}}@media(max-width:760px){.hero{padding:38px 0}.hero-layout{grid-template-columns:1fr}.hero-media{height:350px}.hero-bg-video{object-position:center}.hero-tint{background:linear-gradient(180deg,#641626a6,#902f375b)}.hero h1{font-size:clamp(34px,8vw,49px)}}@media(prefers-reduced-motion:reduce){.visual-globe,.floating-chip{animation:none}}
 </style>
+<style id="suo-hero-ui-fixes">
+/* Clearer video: remove the strong red tint without changing footage */
+.hero .hero-tint{background:linear-gradient(90deg,rgba(25,17,27,.12),rgba(25,17,27,.015) 60%,transparent)!important}
+.hero .hero-bg-video{filter:brightness(1.07) saturate(1.04)}
+/* Bottom aligned CTA row to avoid text baked into the background video */
+.hero .hero-layout{display:flex!important;align-items:flex-end!important;justify-content:flex-end!important;min-height:524px!important;width:100%}
+.hero .hero-copy{margin-left:auto!important;max-width:100%!important}
+.hero .hero-actions{display:flex!important;align-items:center!important;justify-content:flex-end!important;flex-wrap:wrap!important;gap:12px!important;margin:0!important;padding:12px!important;border-radius:15px;background:rgba(42,18,29,.40);backdrop-filter:blur(5px);text-shadow:none}
+.hero .hero-cta{white-space:normal;text-align:center;line-height:1.3;position:relative;z-index:3}
+.hero .secondary-cta{background:#fff9ec!important;color:#742035!important;border:1px solid #f2c64c!important}
+#statistik-pembangunan{scroll-margin-top:110px}
+@media(max-width:760px){.hero .hero-layout{min-height:500px!important;justify-content:center!important}.hero .hero-actions{justify-content:center!important}.hero .hero-copy{margin:0 auto!important}.hero .hero-cta{font-size:12px;padding:12px 14px}}
+</style>
 </head>
 <body>
 
@@ -243,7 +256,7 @@ button{cursor:pointer;font:inherit}
 <div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
 
 <section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./video%20header%20new.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
-<div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
+<div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="document.getElementById('selangorLeafletMap').closest('.development-overview').scrollIntoView({behavior:'smooth',block:'start'})">TEROKAI PETA INTERAKTIF SELANGOR ↗</button></div></div>
 </div></section>
 
 <!-- Logo SUO tunggal fixed di tengah skrin -->
@@ -418,5 +431,48 @@ function switchTab(index) {
 
 <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑<span>ATAS</span></button>
 <script>(function(){const b=document.getElementById('backToTop');const update=()=>b.classList.toggle('show',window.scrollY>380);window.addEventListener('scroll',update,{passive:true});update();})();</script>
+<script id="suo-language-switch-active">
+(function(){
+ const translations=[
+ ['.brand-text b','Rancangan Pemajuan Selangor','Selangor Development Plans'],
+ ['.brand-text small','PLANMALAYSIA SELANGOR · PORTAL INTERAKTIF','PLANMALAYSIA SELANGOR · INTERACTIVE PORTAL'],
+ ['.home-nav-btn','Utama','Home'],
+ ['.ticker-label','PENGUMUMAN ✦','ANNOUNCEMENT ✦'],
+ ['.primary-cta','Terokai 5 Bab ↗','Explore 5 Chapters ↗'],
+ ['.secondary-cta','TEROKAI PETA INTERAKTIF SELANGOR ↗','EXPLORE THE SELANGOR INTERACTIVE MAP ↗'],
+ ['.stat-intro .section-eyebrow','SELANGOR · PERANCANGAN FIZIKAL','SELANGOR · PHYSICAL PLANNING'],
+ ['.stat-intro h2','Statistik Pembangunan','Development Statistics'],
+ ['.stat-intro p','Ringkasan struktur perancangan dan skop penerokaan portal.','Overview of the planning structure and portal coverage.'],
+ ['.map-banner-info .badge-tag','KANVAS SPATIAL SELANGOR','SELANGOR SPATIAL CANVAS'],
+ ['.map-banner-info h3','Peta Interaktif Pentadbiran Negeri Selangor','Selangor Administrative Interactive Map'],
+ ['.map-banner-info p','Terokai taburan daerah pentadbiran dan PBT di Negeri Selangor menggunakan sistem pemetaan web GIS standard.','Explore administrative districts and local authorities across Selangor through an interactive GIS web map.'],
+ ['.map-stat-item:nth-child(1) span','Pihak Berkuasa Tempatan','Local Authorities'],
+ ['.map-stat-item:nth-child(2) span','Daerah Pentadbiran','Administrative Districts'],
+ ['.pbt-heading .section-eyebrow','RANCANGAN TEMPATAN · PIHAK BERKUASA TEMPATAN','LOCAL PLANS · LOCAL AUTHORITIES'],
+ ['.pbt-heading h2','Pautan Pantas PBT Selangor','Quick Links to Selangor Local Authorities'],
+ ['.pbt-heading p','Terokai portal rasmi PBT bagi mendapatkan maklumat perancangan tempatan dan perkhidmatan berkaitan.','Visit official local authority portals for local planning information and related services.'],
+ ['.pbt-chapter-btn','Lihat Bab RT & RKK →','View Local & Special Area Plans →']
+ ];
+ const tickerBM='✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦';
+ const tickerEN='✦ SELANGOR DEVELOPMENT PLANS · PLANMALAYSIA SELANGOR · SUSTAINABLE SPATIAL DEVELOPMENT ✦';
+ window.setLang=function(lang){
+  const english=lang==='en';document.documentElement.lang=english?'en':'ms';
+  translations.forEach(function(item){
+   const el=document.querySelector(item[0]);if(!el)return;
+   if(item[0]==='.ticker-label'){el.innerHTML=english?'ANNOUNCEMENT <span>✦</span>':'PENGUMUMAN <span>✦</span>';}
+   else el.textContent=english?item[2]:item[1];
+  });
+  document.querySelectorAll('.ticker-track span').forEach(function(el){el.textContent=english?tickerEN:tickerBM;});
+  document.querySelectorAll('.tab-nav-btn').forEach(function(el,i){el.textContent=(english?'Chapter ':'Bab ')+String(i+1).padStart(2,'0');});
+  document.querySelectorAll('.tab-btn').forEach(function(el,i){
+   if(!el.dataset.originalBm)el.dataset.originalBm=el.textContent;
+   if(english){el.textContent=el.dataset.originalBm.replace(/^Bab\s+/i,'Chapter ').replace(/^Rancangan /,'Plan ');}
+   else el.textContent=el.dataset.originalBm;
+  });
+  ['langBM','langEN'].forEach(function(id){const el=document.getElementById(id);if(!el)return;const active=(id==='langEN')===english;el.classList.toggle('chosen',active);el.setAttribute('aria-pressed',String(active));});
+ };
+ window.setLang('ms');
+})();
+</script>
 </body>
 </html>
