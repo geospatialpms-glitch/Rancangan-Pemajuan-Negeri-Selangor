@@ -111,7 +111,7 @@ button{cursor:pointer;font:inherit}
 <style id="selangor-announcement-ticker">.selangor-ticker{height:40px;display:flex;align-items:stretch;background:linear-gradient(90deg,#81162a,#a9283b);color:#fff;overflow:hidden;border-bottom:2px solid #f2c64c;position:relative;z-index:90}.ticker-label{display:flex;align-items:center;gap:9px;flex-shrink:0;padding:0 18px;background:#f2c64c;color:#591628;font-size:11px;font-weight:900;letter-spacing:.06em;z-index:2}.ticker-window{flex:1;overflow:hidden;display:flex;align-items:center;mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}.ticker-track{width:max-content;display:flex;align-items:center;gap:70px;white-space:nowrap;animation:selangorTicker 22s linear infinite}.ticker-track span{font-size:12px;font-weight:800;letter-spacing:.09em;padding-left:35px}@keyframes selangorTicker{to{transform:translateX(-50%)}}.selangor-ticker:hover .ticker-track,.selangor-ticker:focus-within .ticker-track{animation-play-state:paused}@media(max-width:600px){.selangor-ticker{height:36px}.ticker-label{padding:0 11px;font-size:9px}.ticker-track span{font-size:10px}}@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}</style>
 <style id="suo-header-logo-style">.logo.suo-logo{width:59px;height:59px;min-width:59px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #eee5df;border-radius:10px;padding:3px;box-shadow:0 4px 15px #6513291b}.logo.suo-logo img{width:100%;height:100%;object-fit:contain;display:block;border-radius:5px}@media(max-width:600px){.logo.suo-logo{width:48px;height:48px;min-width:48px}}</style>
 
-<!-- Reka Bentuk Banner Melintang (Peta Besar Kiri, Statistik PBT & Daerah Kanan) -->
+<!-- Reka Bentuk Banner Peta Besar Penuh Melintang (Full-Width Interactive Map) -->
 <style id="pbt-statistics-components">
 .development-overview,.pbt-section{background:transparent !important;padding:55px 0;position:relative;z-index:1}
 .pbt-section{padding-top:28px;padding-bottom:50px}
@@ -119,43 +119,68 @@ button{cursor:pointer;font:inherit}
 .stat-intro h2,.pbt-heading h2{color:#7c1c2b;font-size:clamp(24px,3vw,32px);margin:10px 0 9px}
 .stat-intro p,.pbt-heading p{color:#74646b;font-size:13px;line-height:1.7;margin:0}
 
-/* Kontena Banner Melintang Utama */
+/* Kontena Peta Melintang Penuh (70% Peta & 30% Info) */
 .selangor-map-banner{
   position:relative;
   overflow:hidden;
   border-radius:24px;
-  background:rgba(255,255,255,0.95);
+  background:rgba(255,255,255,0.96);
   backdrop-filter:blur(8px);
   border:1px solid #f0e1d9;
   box-shadow:0 15px 40px #5f1a2714;
   margin-top:24px;
   z-index:2;
-  padding:35px clamp(20px,4vw,50px);
+  padding:40px clamp(25px,4vw,55px);
 }
 .map-banner-grid{
   display:grid;
-  grid-template-columns:1.2fr 0.8fr;
+  grid-template-columns:1.35fr 0.85fr;
   gap:clamp(30px,4vw,60px);
   align-items:center;
 }
 .map-banner-visual{
   position:relative;
   width:100%;
-  height:310px;
+  height:400px;
   background:linear-gradient(135deg,#fdf6f0,#f7e6e0);
   border:1px solid #ebd2cb;
-  border-radius:18px;
+  border-radius:20px;
   overflow:hidden;
   box-shadow:inset 0 4px 15px rgba(0,0,0,.04);
   display:flex;
   align-items:center;
   justify-content:center;
 }
-.map-banner-visual svg{
+.interactive-selangor-map{
   width:100%;
   height:100%;
-  max-height:280px;
-  filter:drop-shadow(0 8px 16px rgba(139,27,47,.2));
+  max-height:380px;
+  cursor:pointer;
+}
+.interactive-selangor-map path{
+  transition:fill .25s ease, filter .25s ease;
+  outline:none;
+}
+.interactive-selangor-map path:hover{
+  fill:#f2c64c !important;
+  filter:brightness(1.1);
+}
+
+/* Tooltip Interaktif Peta */
+.map-tooltip{
+  position:absolute;
+  background:#5d121f;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:700;
+  pointer-events:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  opacity:0;
+  transition:opacity .15s ease;
+  z-index:10;
+  white-space:nowrap;
 }
 .map-banner-info{
   display:flex;
@@ -175,27 +200,27 @@ button{cursor:pointer;font:inherit}
   margin-bottom:12px;
 }
 .map-banner-info h3{
-  font-size:clamp(22px,2.5vw,30px);
+  font-size:clamp(24px,2.8vw,34px);
   color:#7c1c2b;
-  margin:0 0 10px;
+  margin:0 0 12px;
   font-weight:800;
   letter-spacing:-.5px;
 }
 .map-banner-info p{
-  font-size:14px;
+  font-size:14.5px;
   color:#66555b;
-  line-height:1.7;
-  margin:0 0 20px;
+  line-height:1.75;
+  margin:0 0 25px;
 }
 .map-stats-row{
   display:flex;
-  gap:25px;
+  gap:30px;
   border-top:1px solid #f0e1d9;
-  padding-top:18px;
+  padding-top:20px;
 }
 .map-stat-item strong{
   display:block;
-  font-size:28px;
+  font-size:32px;
   font-weight:900;
   color:#8b1b2f;
   letter-spacing:-1px;
@@ -208,23 +233,7 @@ button{cursor:pointer;font:inherit}
   letter-spacing:.5px;
 }
 
-/* Dua Kad Sampingan Di Bawah Banner */
-.stats-grid-side{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
-  margin-top:18px;
-  position:relative;
-  z-index:2;
-}
-.stat-card{position:relative;overflow:hidden;min-height:180px;border-radius:19px;padding:25px 27px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border:1px solid #f0e1d9;box-shadow:0 12px 32px #5f1a2710;border-top:5px solid #df9d33;z-index:2;display:flex;flex-direction:column;justify-content:center}
-.stat-card:nth-child(2){border-top-color:#a71f38}
-.stat-card strong{display:block;font-weight:900;font-size:clamp(32px,3.5vw,46px);letter-spacing:-2px;color:#921e32}
-.stat-card h3{font-size:15px;color:#4b2c33;margin:9px 0 5px}
-.stat-card p{font-size:12px;color:#8a7779;margin:0}
-.stat-symbol{position:absolute;right:22px;top:16px;font-size:32px;color:#e7b758}
-
-.pbt-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;position:relative;z-index:2}
+.pbt-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;position:relative;z-index:2;margin-top:20px}
 .pbt-chapter-btn{border:1px solid #9c293c;border-radius:11px;color:#871a2e;background:rgba(255,255,255,0.95);font-size:12px;font-weight:800;padding:13px 18px;white-space:nowrap;position:relative;z-index:2}
 .pbt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:23px;position:relative;z-index:2}
 .pbt-card{display:flex;align-items:center;gap:13px;min-height:98px;border-radius:16px;border:1px solid #eddeda;padding:18px 16px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);box-shadow:0 8px 24px #5916280c;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;z-index:2}
@@ -240,7 +249,7 @@ button{cursor:pointer;font:inherit}
 .back-to-top:hover{background:#a72f40}
 
 @media(max-width:1000px){.map-banner-grid{grid-template-columns:1fr}.pbt-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:680px){.stats-grid-side{grid-template-columns:1fr}.pbt-grid{grid-template-columns:1fr}.pbt-heading{display:block}.pbt-chapter-btn{margin-top:18px}.development-overview{padding:35px 0}.pbt-section{padding-bottom:35px}.map-banner-visual{height:220px}.back-to-top{right:13px;bottom:14px}}
+@media(max-width:680px){.pbt-grid{grid-template-columns:1fr}.pbt-heading{display:block}.pbt-chapter-btn{margin-top:18px}.development-overview{padding:35px 0}.pbt-section{padding-bottom:35px}.map-banner-visual{height:280px}.back-to-top{right:13px;bottom:14px}}
 </style>
 <style id="pbt-real-icons">.pbt-official-icon{background:#fff!important;color:#8b1b2f!important;border:1px solid #f1dcd8;border-radius:12px;overflow:hidden;padding:4px}.pbt-official-icon img{display:block;width:100%;height:100%;object-fit:contain}.pbt-logo-fallback{font-weight:900;font-size:11px;line-height:34px;text-align:center}.pbt-card:hover .pbt-official-icon{border-color:#eab945}</style>
 
@@ -296,7 +305,7 @@ button{cursor:pointer;font:inherit}
 </header>
 <div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
 
-<section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./VIDEO%20MAIN%20PAGE%203.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
+<section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./video%20header%20new.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
 <div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
 </div></section>
 
@@ -311,21 +320,25 @@ button{cursor:pointer;font:inherit}
       <p>Ringkasan struktur perancangan dan skop penerokaan portal.</p>
     </div>
 
-    <!-- Banner Peta Besar Melintang -->
+    <!-- Banner Peta Besar Penuh Melintang (Interaktif Hover PBT & Daerah) -->
     <div class="selangor-map-banner">
+      <div id="mapTooltip" class="map-tooltip"></div>
       <div class="map-banner-grid">
         <div class="map-banner-visual">
-          <svg viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg">
-            <path d="M45,40 Q90,30 140,55 T210,100 T180,180 T110,250 T70,300 T55,270 Z" fill="#f2c64c" stroke="#8b1b2f" stroke-width="2.5" opacity="0.85"/>
-            <path d="M140,55 Q210,80 230,140 T190,220 T110,250 T210,100 Z" fill="#d9828d" stroke="#8b1b2f" stroke-width="2.5"/>
-            <path d="M230,140 Q310,160 320,240 T240,310 T190,220 Z" fill="#b54149" stroke="#8b1b2f" stroke-width="2.5" opacity="0.9"/>
-            <circle cx="170" cy="150" r="8" fill="#fff" stroke="#8b1b2f" stroke-width="3"/>
+          <svg class="interactive-selangor-map" viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
+            <!-- Zon PBT / Daerah Selangor dengan Atribut Hover -->
+            <path d="M50,60 Q100,50 160,80 T240,140 T200,220 T130,310 T80,360 T60,320 Z" fill="#e8bc73" stroke="#8b1b2f" stroke-width="2" data-name="Majlis Daerah Sabak Bernam (Daerah Sabak Bernam)" onmousemove="showMapTooltip(evt, this)" onmouseout="hideMapTooltip()"/>
+            <path d="M160,80 Q250,110 280,180 T220,290 T130,310 T240,140 Z" fill="#d9828d" stroke="#8b1b2f" stroke-width="2" data-name="Majlis Perbandaran Hulu Selangor (Daerah Hulu Selangor)" onmousemove="showMapTooltip(evt, this)" onmouseout="hideMapTooltip()"/>
+            <path d="M280,180 Q370,200 380,290 T290,380 T220,290 Z" fill="#b54149" stroke="#8b1b2f" stroke-width="2" data-name="Majlis Perbandaran Selayang & MBSA (Daerah Gombak / Petaling)" onmousemove="showMapTooltip(evt, this)" onmouseout="hideMapTooltip()"/>
+            <path d="M220,290 Q290,320 310,410 T200,420 T130,310 Z" fill="#df9d33" stroke="#8b1b2f" stroke-width="2" data-name="Majlis Bandaraya Diraja Klang & MBPJ (Daerah Klang / Petaling)" onmousemove="showMapTooltip(evt, this)" onmouseout="hideMapTooltip()"/>
+            <path d="M310,410 Q390,380 430,300 T380,290 T310,410 Z" fill="#a71f38" stroke="#8b1b2f" stroke-width="2" data-name="Majlis Perbandaran Kajang & MPAJ (Daerah Hulu Langat)" onmousemove="showMapTooltip(evt, this)" onmouseout="hideMapTooltip()"/>
+            <path d="M200,420 Q280,440 330,390 T310,410 Z" fill="#f2c64c" stroke="#8b1b2f" stroke-width="2" data-name="Majlis Perbandaran Sepang & MBSJ (Daerah Sepang)" onmousemove="showMapTooltip(evt, this)" onmouseout="hideMapTooltip()"/>
           </svg>
         </div>
         <div class="map-banner-info">
           <span class="badge-tag">KANVAS SPATIAL SELANGOR</span>
           <h3>Peta Interaktif Pentadbiran Negeri Selangor</h3>
-          <p>Menghubungkan pelbagai sistem perbandaran merentas daerah dan PBT untuk perancangan spatial yang lebih terangkum dan responsif.</p>
+          <p>Terokai taburan daerah pentadbiran dan PBT di Negeri Selangor. Halakan tetikus pada zon peta di sebelah untuk melihat maklumat terperinci setiap PBT dan daerah.</p>
           <div class="map-stats-row">
             <div class="map-stat-item">
               <strong>12</strong>
@@ -338,22 +351,6 @@ button{cursor:pointer;font:inherit}
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Dua Kad Sampingan Di Bawahnya -->
-    <div class="stats-grid-side">
-      <article class="stat-card">
-        <span class="stat-symbol" aria-hidden="true">▤</span>
-        <strong>5</strong>
-        <h3>Bab Utama</h3>
-        <p>Rancangan Pemajuan Negeri Selangor</p>
-      </article>
-      <article class="stat-card">
-        <span class="stat-symbol" aria-hidden="true">◎</span>
-        <strong>2035</strong>
-        <h3>Horizon Perancangan</h3>
-        <p>RSN Selangor 2035 (Pengubahan)</p>
-      </article>
     </div>
 
   </div>
@@ -443,6 +440,19 @@ button{cursor:pointer;font:inherit}
 </footer>
 
 <script>
+function showMapTooltip(evt, pathElem) {
+  const tooltip = document.getElementById('mapTooltip');
+  const name = pathElem.getAttribute('data-name');
+  tooltip.textContent = name;
+  tooltip.style.opacity = '1';
+  tooltip.style.left = (evt.offsetX + 15) + 'px';
+  tooltip.style.top = (evt.offsetY + 15) + 'px';
+}
+function hideMapTooltip() {
+  const tooltip = document.getElementById('mapTooltip');
+  tooltip.style.opacity = '0';
+}
+
 function switchTab(index) {
   const panels = document.querySelectorAll('.content-panel');
   const buttons = document.querySelectorAll('.tab-btn');
