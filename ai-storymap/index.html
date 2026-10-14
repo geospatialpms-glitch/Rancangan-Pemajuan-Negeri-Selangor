@@ -34,8 +34,6 @@ button{cursor:pointer;font:inherit}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(120deg,rgba(75,11,27,0.82),rgba(137,28,49,0.68))}
 .hero .container{position:relative;z-index:3;padding:70px 0}
-.hero h1{font-size:clamp(34px,4.5vw,52px);font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-1px}
-.hero p{font-size:17px;line-height:1.7;color:#ffeede;margin-bottom:30px;max-width:800px}
 
 /* Interactive Tabs Section */
 .main-section{padding:50px 0;position:relative;z-index:1}
@@ -74,8 +72,8 @@ button{cursor:pointer;font:inherit}
 .development-overview,.pbt-section{background:transparent !important;padding:55px 0;position:relative;z-index:1}
 .pbt-section{padding-top:28px;padding-bottom:50px}
 .section-eyebrow{font-weight:900;font-size:11px;letter-spacing:1.6px;color:#b43646}
-.stat-intro h2,.pbt-heading h2{color:#7c1c2b;font-size:clamp(24px,3vw,32px);margin:10px 0 9px}
-.stat-intro p,.pbt-heading p{color:#74646b;font-size:13px;line-height:1.7;margin:0}
+.stat-intro h2{color:#7c1c2b;font-size:clamp(24px,3vw,32px);margin:10px 0 9px}
+.stat-intro p{color:#554c50;font-size:14.5px;line-height:1.7;margin:0}
 
 /* Kontena Banner Peta Melintang Penuh GIS */
 .selangor-map-banner{
@@ -129,15 +127,15 @@ button{cursor:pointer;font:inherit}
   margin-bottom:12px;
 }
 .map-banner-info h3{
-  font-size:clamp(24px,2.8vw,34px);
+  font-size:clamp(22px,2.5vw,30px);
   color:#7c1c2b;
   margin:0 0 12px;
   font-weight:800;
   letter-spacing:-.5px;
 }
 .map-banner-info p{
-  font-size:14.5px;
-  color:#66555b;
+  font-size:14px;
+  color:#554c50;
   line-height:1.75;
   margin:0 0 25px;
 }
@@ -157,7 +155,7 @@ button{cursor:pointer;font:inherit}
 .map-stat-item span{
   font-size:11px;
   font-weight:700;
-  color:#8a7779;
+  color:#776d70;
   text-transform:uppercase;
   letter-spacing:.5px;
 }
@@ -170,7 +168,7 @@ button{cursor:pointer;font:inherit}
 .pbt-icon{width:45px;height:45px;flex-shrink:0;display:grid;place-items:center;color:#f5c851;background:linear-gradient(135deg,#8b1b2f,#ae3846);border-radius:13px;font-size:24px}
 .pbt-label{flex:1;min-width:0}
 .pbt-label strong{display:block;font-size:18px;color:#7e1c2d}
-.pbt-label small{display:block;font-size:11px;line-height:1.6;color:#776d70;margin-top:3px}
+.pbt-label small{display:block;font-size:11px;line-height:1.6;color:#554c50;margin-top:3px}
 .pbt-arrow{color:#aa3144;font-weight:900;font-size:20px}
 .back-to-top{position:fixed;right:23px;bottom:23px;z-index:9999;border:1px solid #f6d17b;border-radius:15px;background:#8b1b2f;color:#fff;box-shadow:0 8px 30px #6413235c;display:flex;flex-direction:column;justify-content:center;align-items:center;width:51px;height:55px;font-size:24px;opacity:0;visibility:hidden;transform:translateY(13px);transition:opacity .2s,visibility .2s,transform .2s}
 .back-to-top span{font-size:8px;font-weight:900;letter-spacing:1px}
@@ -244,9 +242,9 @@ button{cursor:pointer;font:inherit}
 <section class="development-overview" id="statistik-pembangunan" aria-label="Statistik perancangan Negeri Selangor">
   <div class="container">
     <div class="stat-intro">
-      <span class="section-eyebrow">SELANGOR · PERANCANGAN FIZIKAL</span>
-      <h2>Statistik Pembangunan</h2>
-      <p>Ringkasan struktur perancangan dan skop penerokaan portal.</p>
+      <span class="section-eyebrow">PETA INTERAKTIF SELANGOR</span>
+      <h2>12 PBT & 9 Daerah Pentadbiran</h2>
+      <p>Klik pada pin lokasi di peta untuk meneroka taburan rasmi Pihak Berkuasa Tempatan dan daerah di seluruh Negeri Selangor.</p>
     </div>
 
     <!-- Banner Peta GIS Sebenar (Leaflet Web Map - 12 PBT & 9 Daerah) -->
@@ -362,35 +360,51 @@ button{cursor:pointer;font:inherit}
 <!-- Pustaka Leaflet JS untuk inisialisasi peta GIS 12 PBT & 9 Daerah -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
+let map;
+let markers = {};
+
 document.addEventListener("DOMContentLoaded", function() {
-  const map = L.map('selangorLeafletMap', {zoomControl: true}).setView([3.35, 101.5], 9);
+  map = L.map('selangorLeafletMap', {zoomControl: true}).setView([3.35, 101.5], 9);
   
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
-  // Senarai lengkap 12 PBT & 9 Daerah Pentadbiran Selangor
   const selangorRegions = [
-    {name: "MBSA - Majlis Bandaraya Shah Alam", district: "Daerah Petaling", coords: [3.0738, 101.5183]},
-    {name: "MBPJ - Majlis Bandaraya Petaling Jaya", district: "Daerah Petaling", coords: [3.1073, 101.6067]},
-    {name: "MBSJ - Majlis Bandaraya Subang Jaya", district: "Daerah Petaling", coords: [3.0542, 101.5880]},
-    {name: "MBDK - Majlis Bandaraya Diraja Klang", district: "Daerah Klang", coords: [3.0430, 101.4450]},
-    {name: "MPAJ - Majlis Perbandaran Ampang Jaya", district: "Daerah Hulu Langat / Gombak", coords: [3.1500, 101.7600]},
-    {name: "MPS - Majlis Perbandaran Selayang", district: "Daerah Gombak", coords: [3.2430, 101.6450]},
-    {name: "MPKj - Majlis Perbandaran Kajang", district: "Daerah Hulu Langat", coords: [2.9935, 101.7874]},
-    {name: "MPSp - Majlis Perbandaran Sepang", district: "Daerah Sepang", coords: [2.6917, 101.7450]},
-    {name: "MPKL - Majlis Perbandaran Kuala Langat", district: "Daerah Kuala Langat", coords: [2.8500, 101.4900]},
-    {name: "MPKS - Majlis Perbandaran Kuala Selangor", district: "Daerah Kuala Selangor", coords: [3.3500, 101.2500]},
-    {name: "MPHS - Majlis Perbandaran Hulu Selangor", district: "Daerah Hulu Selangor", coords: [3.5600, 101.6500]},
-    {name: "MDSB - Majlis Daerah Sabak Bernam", district: "Daerah Sabak Bernam", coords: [3.7700, 101.1200]}
+    {id: "mbsa", name: "MBSA - Majlis Bandaraya Shah Alam", district: "Daerah Petaling", coords: [3.0738, 101.5183]},
+    {id: "mbpj", name: "MBPJ - Majlis Bandaraya Petaling Jaya", district: "Daerah Petaling", coords: [3.1073, 101.6067]},
+    {id: "mbsj", name: "MBSJ - Majlis Bandaraya Subang Jaya", district: "Daerah Petaling", coords: [3.0542, 101.5880]},
+    {id: "mbdk", name: "MBDK - Majlis Bandaraya Diraja Klang", district: "Daerah Klang", coords: [3.0430, 101.4450]},
+    {id: "mpaj", name: "MPAJ - Majlis Perbandaran Ampang Jaya", district: "Daerah Hulu Langat / Gombak", coords: [3.1500, 101.7600]},
+    {id: "mps", name: "MPS - Majlis Perbandaran Selayang", district: "Daerah Gombak", coords: [3.2430, 101.6450]},
+    {id: "mpkj", name: "MPKj - Majlis Perbandaran Kajang", district: "Daerah Hulu Langat", coords: [2.9935, 101.7874]},
+    {id: "mpspg", name: "MPSp - Majlis Perbandaran Sepang", district: "Daerah Sepang", coords: [2.6917, 101.7450]},
+    {id: "mpkl", name: "MPKL - Majlis Perbandaran Kuala Langat", district: "Daerah Kuala Langat", coords: [2.8500, 101.4900]},
+    {id: "mpks", name: "MPKS - Majlis Perbandaran Kuala Selangor", district: "Daerah Kuala Selangor", coords: [3.3500, 101.2500]},
+    {id: "mphs", name: "MPHS - Majlis Perbandaran Hulu Selangor", district: "Daerah Hulu Selangor", coords: [3.5600, 101.6500]},
+    {id: "mdsb", name: "MDSB - Majlis Daerah Sabak Bernam", district: "Daerah Sabak Bernam", coords: [3.7700, 101.1200]}
   ];
 
   selangorRegions.forEach(reg => {
-    L.marker(reg.coords).addTo(map)
+    const marker = L.marker(reg.coords).addTo(map)
       .bindPopup("<b>" + reg.name + "</b><br><span style='color:#8b1b2f;font-weight:700;font-size:11px'>" + reg.district + "</span>");
+    
+    markers[reg.id] = marker;
   });
 });
+
+function flyToLocation(lat, lng, markerId) {
+  if (map) {
+    map.flyTo([lat, lng], 13, {
+      animate: true,
+      duration: 1.2
+    });
+    if (markers[markerId]) {
+      markers[markerId].openPopup();
+    }
+  }
+}
 
 function switchTab(index) {
   const panels = document.querySelectorAll('.content-panel');
