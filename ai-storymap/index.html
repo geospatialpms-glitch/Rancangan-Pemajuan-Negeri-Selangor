@@ -328,6 +328,26 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 .pbt-official-icon .pbt-logo-fallback{display:none!important;visibility:hidden!important;background:transparent!important}
 .pbt-heading .section-eyebrow,.spatial-heading .section-eyebrow{text-transform:uppercase}
 </style>
+<style id="selangor-chapter-carousel-style">
+.chapter-section-heading{text-align:center;margin:0 auto 28px;max-width:800px}
+.chapter-section-heading .section-eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:900}
+.chapter-section-heading h2{font-size:clamp(28px,3vw,42px);line-height:1.2;letter-spacing:-.035em;color:#7c1c2b;margin:13px 0}
+.chapter-section-heading p{font-size:14px;color:#796972;line-height:1.7;margin:0 auto}
+.chapter-carousel-shell{display:flex;align-items:center;gap:12px;margin-bottom:27px;min-width:0}
+.chapter-carousel-track.tabs-container{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:stretch;gap:13px;flex:1;min-width:0;margin:0;padding:12px;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;scroll-padding-inline:12px;overscroll-behavior-x:contain;scrollbar-width:none;touch-action:pan-x pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.chapter-carousel-track.tabs-container::-webkit-scrollbar{display:none}
+.chapter-carousel-track.tabs-container.chapter-dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.chapter-carousel-track .tab-btn{flex:0 0 clamp(210px,24vw,270px)!important;min-width:0;min-height:108px!important;padding:20px 19px!important;display:flex;justify-content:flex-start;align-items:center;text-align:left;white-space:normal;font-size:14px;line-height:1.45;border:1px solid #eeddd9;background:#fff!important;color:#722538;border-radius:17px;scroll-snap-align:start;box-shadow:0 5px 15px #671b3010;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s}
+.chapter-carousel-track .tab-btn:hover{border-color:#d7ac65;transform:translateY(-2px)}
+.chapter-carousel-track .tab-btn.active,.chapter-carousel-track .tab-btn[aria-selected="true"]{background:linear-gradient(135deg,#8b1b2f,#651729)!important;color:#fff!important;border-color:#b78a45;box-shadow:0 11px 24px #6d182b30}
+.chapter-carousel-arrow{flex:0 0 42px;width:42px;height:48px;display:grid;place-items:center;border-radius:13px;background:#fff6e4;border:1px solid #dba951;color:#8b1b2f;font-size:24px;font-weight:800;cursor:pointer;transition:transform .22s,background .22s}
+.chapter-carousel-arrow:hover:not(:disabled){transform:translateY(-2px);background:#f2c64c}
+.chapter-carousel-arrow:disabled{opacity:.35;cursor:default}
+.chapter-carousel-track:focus-visible,.chapter-carousel-track .tab-btn:focus-visible,.chapter-carousel-arrow:focus-visible{outline:3px solid #d5a134;outline-offset:2px}
+.main-section .content-panel{scroll-margin-top:115px}
+@media(max-width:760px){.chapter-carousel-shell{gap:6px}.chapter-carousel-arrow{flex-basis:33px;width:33px;height:43px;font-size:19px}.chapter-carousel-track.tabs-container{padding:8px;gap:9px}.chapter-carousel-track .tab-btn{flex-basis:min(73vw,245px)!important;min-height:95px!important;padding:14px!important;font-size:12px}.chapter-section-heading{margin-bottom:20px}}
+@media(prefers-reduced-motion:reduce){.chapter-carousel-track.tabs-container{scroll-behavior:auto}.chapter-carousel-track .tab-btn,.chapter-carousel-arrow{transition:none!important}}
+</style>
 </head>
 <body>
 
@@ -404,13 +424,21 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 <a class="pbt-card" href="https://www.mdsb.gov.my/index.php/ms/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Daerah Sabak Bernam"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mdsb.png" data-favicon="https://www.google.com/s2/favicons?domain=mdsb.gov.my&sz=128" alt="Logo MDSB" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MDSB</span></span><span class="pbt-label"><strong>MDSB</strong><small>Majlis Daerah Sabak Bernam</small></span><span class="pbt-arrow">↗</span></a>
 </div></div></section>
 <main class="container main-section">
-  
-  <div class="tabs-container">
-    <button class="tab-btn active" onclick="switchTab(0)">01. Masa Hadapan</button>
-    <button class="tab-btn" onclick="switchTab(1)">02. Arah Tuju & Hierarki</button>
-    <button class="tab-btn" onclick="switchTab(2)">03. RSN Selangor 2035</button>
-    <button class="tab-btn" onclick="switchTab(3)">04. RT & RKK</button>
-    <button class="tab-btn" onclick="switchTab(4)">05. Sistem Laporan</button>
+  <div class="chapter-section-heading">
+    <span class="section-eyebrow">Rancangan Pemajuan Selangor</span>
+    <h2>Dokumentasi &amp; Bab Perancangan Negeri</h2>
+    <p>Pilih bab untuk meneroka dokumentasi, dasar dan maklumat perancangan Negeri Selangor.</p>
+  </div>
+  <div class="chapter-carousel-shell">
+    <button class="chapter-carousel-arrow chapter-prev" type="button" aria-label="Leret bab ke kiri" onclick="moveChapterCarousel(-1)">&#8592;</button>
+    <div class="tabs-container chapter-carousel-track" id="chapterCarousel" role="tablist" aria-label="Lima bab perancangan negeri" tabindex="0">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-0" id="chapter-tab-0" onclick="switchTab(0)">01. Masa Hadapan</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-1" id="chapter-tab-1" onclick="switchTab(1)">02. Arah Tuju &amp; Hierarki</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-2" id="chapter-tab-2" onclick="switchTab(2)">03. RSN Selangor 2035</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-3" id="chapter-tab-3" onclick="switchTab(3)">04. RT &amp; RKK</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-4" id="chapter-tab-4" onclick="switchTab(4)">05. Sistem Laporan</button>
+    </div>
+    <button class="chapter-carousel-arrow chapter-next" type="button" aria-label="Leret bab ke kanan" onclick="moveChapterCarousel(1)">&#8594;</button>
   </div>
 
   <div class="content-panel active" id="panel-0">
@@ -740,6 +768,68 @@ document.querySelectorAll('.pbt-official-icon img').forEach(function(img){
     img.addEventListener('load',clearLightBackdrop);
     if(img.complete)clearLightBackdrop();
   });
+})();
+</script>
+<script id="selangor-chapter-carousel-script">
+(function(){
+ const track=document.getElementById('chapterCarousel');
+ if(!track)return;
+ const cards=Array.from(track.querySelectorAll('.tab-btn'));
+ const prev=document.querySelector('.chapter-prev');
+ const next=document.querySelector('.chapter-next');
+ const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let dragged=false,down=false,startX=0,startLeft=0,dist=0;
+ function refresh(){
+  const max=Math.max(0,track.scrollWidth-track.clientWidth);
+  if(prev)prev.disabled=track.scrollLeft<=3;
+  if(next)next.disabled=track.scrollLeft>=max-3;
+ }
+ window.moveChapterCarousel=function(dir){
+  const card=cards[0];const width=card?card.getBoundingClientRect().width+13:240;
+  track.scrollBy({left:dir*width,behavior:prefersReducedMotion?'auto':'smooth'});
+ };
+ const prior=window.switchTab;
+ window.switchTab=function(index){
+  if(typeof prior==='function')prior(index);
+  cards.forEach(function(card,i){card.setAttribute('aria-selected',String(i===index));card.tabIndex=i===index?0:-1});
+  const card=cards[index];
+  if(card){
+   const left=card.offsetLeft-track.offsetLeft;
+   if(left<track.scrollLeft || left+card.offsetWidth>track.scrollLeft+track.clientWidth){
+    track.scrollTo({left:Math.max(0,left-12),behavior:prefersReducedMotion?'auto':'smooth'});
+   }
+  }
+  refresh();
+ };
+ track.addEventListener('keydown',function(ev){
+  if(ev.key!=='ArrowRight'&&ev.key!=='ArrowLeft')return;
+  ev.preventDefault();
+  const current=Math.max(0,cards.findIndex(x=>x.classList.contains('active')));
+  const index=Math.max(0,Math.min(cards.length-1,current+(ev.key==='ArrowRight'?1:-1)));
+  window.switchTab(index);cards[index].focus({preventScroll:true});
+ });
+ track.addEventListener('pointerdown',function(ev){
+  if(ev.pointerType==='touch'||ev.button!==0)return;
+  down=true;dragged=false;dist=0;startX=ev.clientX;startLeft=track.scrollLeft;
+ },{passive:true});
+ track.addEventListener('pointermove',function(ev){
+  if(!down)return;
+  dist=ev.clientX-startX;
+  if(Math.abs(dist)>7){
+   dragged=true;track.classList.add('chapter-dragging');
+   track.scrollLeft=startLeft-dist;
+  }
+ },{passive:true});
+ function stop(){down=false;track.classList.remove('chapter-dragging');refresh();}
+ track.addEventListener('pointerup',stop);
+ track.addEventListener('pointercancel',stop);
+ window.addEventListener('pointerup',stop);
+ track.addEventListener('click',function(ev){
+  if(dragged){ev.preventDefault();ev.stopPropagation();dragged=false}
+ },true);
+ track.addEventListener('scroll',refresh,{passive:true});
+ window.addEventListener('resize',refresh);
+ refresh();
 })();
 </script>
 </body>
