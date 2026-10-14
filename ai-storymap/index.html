@@ -305,7 +305,7 @@ button{cursor:pointer;font:inherit}
 </header>
 <div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
 
-<section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./video%20header%20new.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
+<section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./VIDEO%20MAIN%20PAGE%203%281%29.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
 <div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="switchTab(0)">Mulakan Bab 01 →</button></div></div>
 </div></section>
 
@@ -493,5 +493,18 @@ const hdrVideo=document.querySelector('.hero-bg-video');hdrVideo.addEventListene
 </script>
 <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑<span>ATAS</span></button>
 <script>(function(){const b=document.getElementById('backToTop');const update=()=>b.classList.toggle('show',window.scrollY>380);window.addEventListener('scroll',update,{passive:true});update();})();</script>
-</body>
+<script id="hero-video-file-fallback">
+(function(){
+  const v=document.querySelector('.hero-bg-video');
+  if(!v)return;
+  let fallbackUsed=false;
+  v.addEventListener('error',function(){
+    if(fallbackUsed)return;
+    fallbackUsed=true;
+    v.src='./VIDEO%20MAIN%20PAGE%203.mp4';
+    v.load();
+    v.play().catch(()=>{});
+  },true);
+})();
+</script></body>
 </html>
