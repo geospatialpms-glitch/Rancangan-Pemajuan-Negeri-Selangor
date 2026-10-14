@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#8b1b2f">
 <title>Rancangan Pemajuan Negeri Selangor | Portal Interaktif</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
 <!-- Pustaka Leaflet CSS untuk Peta Interaktif Sebenar -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <style>
@@ -557,6 +557,35 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
   #chapterCarousel .tab-btn{font-size:16px!important;padding:17px!important}
 }
 </style>
+<style id="chapter-merriweather-typography-2026">
+/* All five navigation titles use the requested serif font and centered heading. */
+#chapterCarousel .tab-btn{
+  font-family:'Merriweather',Georgia,serif!important;
+  font-weight:700!important;
+  font-size:16px!important;
+  line-height:1.48!important;
+  letter-spacing:-.02em!important;
+  text-align:center!important;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+  hyphens:none;
+  padding:18px 17px!important;
+  color:#fff8eb!important;
+  text-shadow:0 2px 7px rgba(15,4,11,.95),0 0 19px rgba(15,4,11,.7);
+}
+#chapterCarousel #chapter-tab-0{font-size:16.5px!important}
+#chapterCarousel #chapter-tab-1{font-size:16.5px!important}
+#chapterCarousel #chapter-tab-2{font-size:14.2px!important;line-height:1.43!important}
+#chapterCarousel #chapter-tab-3{font-size:13.7px!important;line-height:1.44!important;letter-spacing:-.025em!important}
+#chapterCarousel #chapter-tab-4{font-size:17px!important}
+@media(max-width:768px){
+  #chapterCarousel .tab-btn{font-size:14.8px!important;padding:15px 12px!important}
+  #chapterCarousel #chapter-tab-0,#chapterCarousel #chapter-tab-1{font-size:15px!important}
+  #chapterCarousel #chapter-tab-2{font-size:12.8px!important}
+  #chapterCarousel #chapter-tab-3{font-size:12.2px!important}
+  #chapterCarousel #chapter-tab-4{font-size:15px!important}
+}
+</style>
 </head>
 <body>
 
@@ -646,19 +675,19 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 
     <div class="tabs-container chapter-carousel-track" id="chapterCarousel" role="tablist" aria-label="Dokumentasi dan Bab Perancangan Negeri" tabindex="0">
       <button class="tab-btn active chapter-bg-01" id="chapter-tab-0" role="tab" aria-controls="panel-0" aria-selected="true" onclick="switchTab(0)">
-        01. Rancangan Selangor, Masa Hadapan
+        01 | Rancangan Selangor, Masa Hadapan
       </button>
 
       <button class="tab-btn chapter-bg-02" id="chapter-tab-1" role="tab" aria-controls="panel-1" aria-selected="false" onclick="switchTab(1)">
-        02. Arah Tuju &amp; Hierarki
+        02 | Arah Tuju &amp; Hierarki Pemajuan
       </button>
 
       <button class="tab-btn chapter-bg-03" id="chapter-tab-2" role="tab" aria-controls="panel-2" aria-selected="false" onclick="switchTab(2)">
-        03. RSN Selangor 2035
+        03 | Rancangan Struktur Negeri Selangor 2035 (Pengubahan)
       </button>
 
       <button class="tab-btn chapter-bg-04" id="chapter-tab-3" role="tab" aria-controls="panel-3" aria-selected="false" onclick="switchTab(3)">
-        04. RT &amp; RKK
+        04 | RANCANGAN TEMPATAN (RT) &amp; RANCANGAN KAWASAN KHAS (RKK)
       </button>
 
       <button class="tab-btn chapter-bg-05" id="chapter-tab-4" role="tab" aria-controls="panel-4" aria-selected="false" onclick="switchTab(4)">
