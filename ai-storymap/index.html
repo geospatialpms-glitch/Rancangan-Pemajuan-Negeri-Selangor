@@ -269,6 +269,55 @@ html{scroll-behavior:smooth}
 @media(max-width:1150px){.header .head{flex-wrap:wrap}.top-nav{order:3;width:100%;justify-content:center}.lang-switch{margin-left:auto}}
 @media(max-width:690px){.top-nav{justify-content:flex-start;gap:2px}.top-nav button,.top-nav .section-nav-btn{font-size:11px;padding:9px 8px!important}#pautan-pbt .pbt-heading h2{font-size:27px}}
 </style>
+<style id="suo-micro-interactions-style">
+/* Progressive enhancement: hidden only once observer is ready. */
+html.suo-motion-ready .suo-reveal:not(.suo-visible){
+  opacity:0;translate:0 25px;
+}
+.suo-reveal{
+  transition:opacity .72s cubic-bezier(.2,.7,.2,1),translate .72s cubic-bezier(.2,.7,.2,1);
+  transition-delay:var(--suo-delay,0ms);
+}
+html.suo-motion-ready .suo-reveal.suo-visible{opacity:1;translate:0 0}
+.pbt-card,.spatial-glass-panel,.map-stat-item{
+  --suo-x:50%;--suo-y:50%;
+  position:relative;
+  transition:transform .3s cubic-bezier(.2,.75,.25,1),box-shadow .3s ease,border-color .3s ease,opacity .72s ease,translate .72s ease;
+}
+.pbt-card{overflow:hidden;transform-origin:center}
+.pbt-card::after,.spatial-glass-panel::after{
+  content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;
+  background:radial-gradient(220px circle at var(--suo-x) var(--suo-y),rgba(242,198,76,.22),transparent 70%);
+  opacity:0;transition:opacity .28s ease;pointer-events:none;
+}
+.pbt-card>* , .spatial-glass-panel>*{position:relative;z-index:1}
+@media(hover:hover) and (pointer:fine){
+  .pbt-card:hover,.pbt-card:focus-visible{
+    transform:translateY(-5px) scale(1.01);
+    box-shadow:0 19px 36px rgba(91,23,46,.16);
+    border-color:rgba(192,132,60,.65);
+  }
+  .pbt-card:hover::after,.pbt-card:focus-visible::after,
+  .spatial-glass-panel:hover::after{opacity:1}
+  .spatial-glass-panel:hover{transform:translateY(-3px);box-shadow:0 19px 42px rgba(27,11,23,.27)}
+  .map-stat-item:hover strong{color:#ad3449}
+}
+.hero-cta,.section-nav-btn,.tab-nav-btn,.pbt-chapter-btn{
+  transition:transform .24s ease,box-shadow .24s ease,background-color .24s ease,color .24s ease;
+}
+@media(hover:hover) and (pointer:fine){
+  .hero-cta:hover,.pbt-chapter-btn:hover{transform:translateY(-3px)}
+  .section-nav-btn:hover,.tab-nav-btn:hover{transform:translateY(-2px)}
+}
+@media(prefers-reduced-motion:reduce){
+  html.suo-motion-ready .suo-reveal:not(.suo-visible){opacity:1;translate:none}
+  .suo-reveal,.pbt-card,.spatial-glass-panel,.map-stat-item,
+  .hero-cta,.section-nav-btn,.tab-nav-btn,.pbt-chapter-btn{
+    transition:none!important;animation:none!important;translate:none!important
+  }
+  .pbt-card:hover,.spatial-glass-panel:hover,.hero-cta:hover,.pbt-chapter-btn:hover{transform:none!important}
+}
+</style>
 </head>
 <body>
 
@@ -497,6 +546,70 @@ document.querySelectorAll('.tab-nav-btn').forEach(btn=>btn.addEventListener('cli
  document.querySelectorAll('.top-nav button').forEach(el=>el.classList.remove('section-active'));
  this.classList.add('section-active');
 }));
+</script>
+<script id="suo-micro-interactions-script">
+(function(){
+  'use strict';
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealSelectors=[
+    '.stat-intro','.spatial-stage','.spatial-glass-panel',
+    '.pbt-heading','.pbt-card','.tabs-container',
+    '.content-panel .panel-header','.content-panel .panel-body',
+    '.footer .container'
+  ];
+  const items=Array.from(document.querySelectorAll(revealSelectors.join(',')));
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    const observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('suo-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.08,rootMargin:'0px 0px -35px 0px'});
+    items.forEach(function(el){
+      el.classList.add('suo-reveal');
+      if(el.classList.contains('pbt-card')){
+        el.style.setProperty('--suo-delay',((Array.from(el.parentElement.children).indexOf(el)%3)*85)+'ms');
+      }
+      observer.observe(el);
+    });
+    document.documentElement.classList.add('suo-motion-ready');
+    // Reveal previously hidden content when a chapter tab becomes visible.
+    const panels=document.querySelectorAll('.content-panel');
+    if('MutationObserver' in window){
+      const tabObserver=new MutationObserver(function(){
+        panels.forEach(function(panel){
+          if(panel.classList.contains('active')){
+            panel.querySelectorAll('.suo-reveal:not(.suo-visible)').forEach(function(el){
+              observer.observe(el);
+            });
+          }
+        });
+      });
+      panels.forEach(function(panel){tabObserver.observe(panel,{attributes:true,attributeFilter:['class']})});
+    }
+  }
+  if(reduceMotion || !window.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  document.querySelectorAll('.pbt-card,.spatial-glass-panel').forEach(function(card){
+    let frame=0;
+    card.addEventListener('pointermove',function(ev){
+      if(frame)return;
+      const x=ev.clientX,y=ev.clientY;
+      frame=requestAnimationFrame(function(){
+        const rect=card.getBoundingClientRect();
+        card.style.setProperty('--suo-x',((x-rect.left)/rect.width*100).toFixed(1)+'%');
+        card.style.setProperty('--suo-y',((y-rect.top)/rect.height*100).toFixed(1)+'%');
+        frame=0;
+      });
+    },{passive:true});
+    card.addEventListener('pointerleave',function(){
+      if(frame){cancelAnimationFrame(frame);frame=0}
+      card.style.setProperty('--suo-x','50%');
+      card.style.setProperty('--suo-y','50%');
+    },{passive:true});
+  });
+})();
 </script>
 </body>
 </html>
