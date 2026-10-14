@@ -244,12 +244,12 @@ button{cursor:pointer;font:inherit}
 <section class="development-overview" id="statistik-pembangunan" aria-label="Statistik perancangan Negeri Selangor">
   <div class="container">
     <div class="stat-intro">
-      <span class="section-eyebrow">SELANGOR · PEMETAAN SPATIAL</span>
-      <h2>Terokai Wilayah Pentadbiran Selangor</h2>
-      <p>Klik pada pin interaktif di peta untuk merentasi jaringan perancangan fizikal merangkumi seluruh daerah dan pihak berkuasa tempatan.</p>
+      <span class="section-eyebrow">SELANGOR · PERANCANGAN FIZIKAL</span>
+      <h2>Statistik Pembangunan</h2>
+      <p>Ringkasan struktur perancangan dan skop penerokaan portal.</p>
     </div>
 
-    <!-- Banner Peta GIS Sebenar (Leaflet Web Map - 12 PBT & 9 Daerah) -->
+    <!-- Banner Peta GIS Sebenar (Leaflet Web Map) -->
     <div class="selangor-map-banner">
       <div class="map-banner-grid">
         <div class="map-banner-visual">
@@ -258,7 +258,7 @@ button{cursor:pointer;font:inherit}
         <div class="map-banner-info">
           <span class="badge-tag">KANVAS SPATIAL SELANGOR</span>
           <h3>Peta Interaktif Pentadbiran Negeri Selangor</h3>
-          <p>Memaparkan taburan lengkap 12 Pihak Berkuasa Tempatan (PBT) dan 9 Daerah Pentadbiran di Negeri Selangor.</p>
+          <p>Terokai taburan daerah pentadbiran dan PBT di Negeri Selangor menggunakan sistem pemetaan web GIS standard.</p>
           <div class="map-stats-row">
             <div class="map-stat-item">
               <strong>12</strong>
@@ -307,7 +307,7 @@ button{cursor:pointer;font:inherit}
       <h3>Rancangan Selangor, Masa Hadapan</h3>
     </div>
     <div class="panel-body">
-      <p>Meneroka Perancangan, Pembangunan dan Hala Tuju Masa Hadapan Negeri Selangor. Perancangan bandar dan desa di Negeri Selangor dilaksanakan berpandukan Akta Perancangan Bandar dan Desa 1976 (Akta 172).</p>
+      <p>Meneroka Perancangan, Pembangunan dan Hala Tuju Masa Hadapan Negeri Selangor. Perancangan bandar dan desa di Negeri Selangor dilaksanakan berpandukan Akta Perancangan Bandar dan Desa 1976 (Akta 172). Akta ini menyediakan kerangka perundingan yang sistematik bagi merancang, mengawal dan mengawal selia pemajuan serta penggunaan tanah dan bangunan demi kepentingan awam, kesejahteraan masyarakat dan kemampanan alam sekitar.</p>
     </div>
   </div>
 
@@ -317,7 +317,7 @@ button{cursor:pointer;font:inherit}
       <h3>Arah Tuju & Hierarki Pemajuan</h3>
     </div>
     <div class="panel-body">
-      <p>Meneroka maklumat mengenai perundangan, hala tuju serta peringkat hierarki Rancangan Pemajuan Selangor.</p>
+      <p>Meneroka maklumat mengenai perundangan, hala tuju serta peringkat hierarki Rancangan Pemajuan Selangor. Pengenalan & Kerangka Perundangan negeri menetapkan hierarki perancangan fizikal negara dan negeri secara bersepadu.</p>
     </div>
   </div>
 
@@ -327,7 +327,7 @@ button{cursor:pointer;font:inherit}
       <h3>Rancangan Struktur Negeri (RSN) Selangor 2035 (Pengubahan)</h3>
     </div>
     <div class="panel-body">
-      <p>Kerangka Dasar dan Cadangan Am Pemajuan Fizikal Negeri Selangor 2035 (Warta No. 1000).</p>
+      <p>Kerangka Dasar dan Cadangan Am Pemajuan Fizikal Negeri Selangor 2035 (Warta No. 1000). Dokumen ini menggariskan dasar utama pembangunan spatial negeri, penetapan koridor pertumbuhan ekonomi, dan strategi pemeliharaan alam sekitar.</p>
     </div>
   </div>
 
@@ -337,7 +337,7 @@ button{cursor:pointer;font:inherit}
       <h3>Rancangan Tempatan (RT) & Rancangan Kawasan Khas (RKK)</h3>
     </div>
     <div class="panel-body">
-      <p>Pengurusan & Hierarki Perancangan Fizikal Pihak Berkuasa Tempatan (PBT) Negeri Selangor.</p>
+      <p>Pengurusan & Hierarki Perancangan Fizikal Pihak Berkuasa Tempatan (PBT) Negeri Selangor. Melibatkan perincian cadangan pemajuan di peringkat tempatan bagi setiap PBT di Selangor.</p>
     </div>
   </div>
 
@@ -359,35 +359,33 @@ button{cursor:pointer;font:inherit}
   </div>
 </footer>
 
-<!-- Pustaka Leaflet JS untuk inisialisasi peta GIS 12 PBT & 9 Daerah -->
+<!-- Pustaka Leaflet JS untuk inisialisasi peta GIS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
+// Inisialisasi Peta Leaflet berpusat di Selangor
 document.addEventListener("DOMContentLoaded", function() {
   const map = L.map('selangorLeafletMap', {zoomControl: true}).setView([3.35, 101.5], 9);
   
+  // Gunakan basemap OpenStreetMap standard
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
-  const selangorRegions = [
-    {name: "MBSA - Majlis Bandaraya Shah Alam", district: "Daerah Petaling", coords: [3.0738, 101.5183]},
-    {name: "MBPJ - Majlis Bandaraya Petaling Jaya", district: "Daerah Petaling", coords: [3.1073, 101.6067]},
-    {name: "MBSJ - Majlis Bandaraya Subang Jaya", district: "Daerah Petaling", coords: [3.0542, 101.5880]},
-    {name: "MBDK - Majlis Bandaraya Diraja Klang", district: "Daerah Klang", coords: [3.0430, 101.4450]},
-    {name: "MPAJ - Majlis Perbandaran Ampang Jaya", district: "Daerah Hulu Langat / Gombak", coords: [3.1500, 101.7600]},
-    {name: "MPS - Majlis Perbandaran Selayang", district: "Daerah Gombak", coords: [3.2430, 101.6450]},
-    {name: "MPKj - Majlis Perbandaran Kajang", district: "Daerah Hulu Langat", coords: [2.9935, 101.7874]},
-    {name: "MPSp - Majlis Perbandaran Sepang", district: "Daerah Sepang", coords: [2.6917, 101.7450]},
-    {name: "MPKL - Majlis Perbandaran Kuala Langat", district: "Daerah Kuala Langat", coords: [2.8500, 101.4900]},
-    {name: "MPKS - Majlis Perbandaran Kuala Selangor", district: "Daerah Kuala Selangor", coords: [3.3500, 101.2500]},
-    {name: "MPHS - Majlis Perbandaran Hulu Selangor", district: "Daerah Hulu Selangor", coords: [3.5600, 101.6500]},
-    {name: "MDSB - Majlis Daerah Sabak Bernam", district: "Daerah Sabak Bernam", coords: [3.7700, 101.1200]}
+  // Contoh penanda lokasi PBT utama di Selangor
+  const pbtLocations = [
+    {name: "MBSA - Shah Alam", coords: [3.0738, 101.5183]},
+    {name: "MBPJ - Petaling Jaya", coords: [3.1073, 101.6067]},
+    {name: "MBSJ - Subang Jaya", coords: [3.0542, 101.5880]},
+    {name: "MBDK - Klang", coords: [3.0430, 101.4450]},
+    {name: "MPAJ - Ampang Jaya", coords: [3.1500, 101.7600]},
+    {name: "MPS - Selayang", coords: [3.2430, 101.6450]},
+    {name: "MPKj - Kajang", coords: [2.9935, 101.7874]}
   ];
 
-  selangorRegions.forEach(reg => {
-    L.marker(reg.coords).addTo(map)
-      .bindPopup("<b>" + reg.name + "</b><br><span style='color:#8b1b2f;font-weight:700;font-size:11px'>" + reg.district + "</span>");
+  pbtLocations.forEach(loc => {
+    L.marker(loc.coords).addTo(map)
+      .bindPopup("<b>" + loc.name + "</b><br>Zon Pentadbiran PBT Selangor");
   });
 });
 
