@@ -253,6 +253,22 @@ button{cursor:pointer;font:inherit}
 .spatial-stat-divider{height:42px;width:1px;background:#973e563b;flex:none}
 @media(max-width:700px){#statistik-pembangunan{padding:52px 0}#statistik-pembangunan>.container{width:calc(100% - 24px)}#statistik-pembangunan .spatial-stage{min-height:540px;border-radius:19px}#statistik-pembangunan .spatial-glass-panel{top:16px;left:16px;right:16px;max-width:none;min-width:0;padding:15px}#statistik-pembangunan .spatial-map-placeholder{padding-top:135px}.spatial-heading{margin-bottom:25px}.spatial-heading h2{font-size:29px}}
 </style>
+<style id="suo-navbar-pbt-directory-update">
+html{scroll-behavior:smooth}
+#utama,#statistik-pembangunan,#pautan-pbt,.main-section{scroll-margin-top:115px}
+.top-nav{display:flex;align-items:center;gap:clamp(2px,.45vw,9px);flex-wrap:wrap}
+.top-nav .section-nav-btn{border:0;background:transparent;cursor:pointer;border-radius:999px;padding:10px 11px;font-size:12px;font-weight:800;color:#47383e;white-space:nowrap}
+.top-nav .section-nav-btn:hover,.top-nav .section-nav-btn.section-active{background:#fff3d5;color:#981e38}
+.top-nav .home-nav-btn.section-active{background:#fff3d5;color:#981e38}
+#pautan-pbt .pbt-heading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center;margin:0 auto 25px}
+#pautan-pbt .pbt-heading>div{max-width:860px;margin:auto}
+#pautan-pbt .pbt-heading h2{font-size:clamp(27px,3vw,43px);line-height:1.2;letter-spacing:-.035em;color:#7c1c2b;margin:12px auto 14px}
+#pautan-pbt .pbt-heading p{font-size:clamp(14px,1.1vw,17px);line-height:1.72;max-width:750px;margin:0 auto;color:#73616a}
+#pautan-pbt .pbt-heading .section-eyebrow{letter-spacing:.15em}
+#pautan-pbt .pbt-heading .pbt-chapter-btn{margin:0 auto;white-space:normal}
+@media(max-width:1150px){.header .head{flex-wrap:wrap}.top-nav{order:3;width:100%;justify-content:center}.lang-switch{margin-left:auto}}
+@media(max-width:690px){.top-nav{justify-content:flex-start;gap:2px}.top-nav button,.top-nav .section-nav-btn{font-size:11px;padding:9px 8px!important}#pautan-pbt .pbt-heading h2{font-size:27px}}
+</style>
 </head>
 <body>
 
@@ -268,6 +284,8 @@ button{cursor:pointer;font:inherit}
       </div>
     </div>
     <nav class="top-nav" aria-label="Navigasi utama"><button class="home-nav-btn" onclick="document.getElementById('utama').scrollIntoView({behavior:'smooth'})">Utama</button>
+      <button class="section-nav-btn" data-section="statistik-pembangunan" onclick="navigateSection('statistik-pembangunan',this)">Peta Interaktif</button>
+      <button class="section-nav-btn" data-section="pautan-pbt" onclick="navigateSection('pautan-pbt',this)">Direktori PBT</button>
       <button onclick="switchTab(0)" class="tab-nav-btn active">Bab 01</button>
       <button onclick="switchTab(1)" class="tab-nav-btn">Bab 02</button>
       <button onclick="switchTab(2)" class="tab-nav-btn">Bab 03</button>
@@ -311,7 +329,7 @@ button{cursor:pointer;font:inherit}
   </div>
 </section>
 
-<section class="pbt-section" id="pautan-pbt"><div class="container"><div class="pbt-heading"><div><span class="section-eyebrow">RANCANGAN TEMPATAN · PIHAK BERKUASA TEMPATAN</span><h2>Pautan Pantas PBT Selangor</h2><p>Terokai portal rasmi PBT bagi mendapatkan maklumat perancangan tempatan dan perkhidmatan berkaitan.</p></div><button class="pbt-chapter-btn" onclick="switchTab(3)">Lihat Bab RT & RKK →</button></div>
+<section class="pbt-section" id="pautan-pbt"><div class="container"><div class="pbt-heading"><div><span class="section-eyebrow">DIREKTORI · PIHAK BERKUASA TEMPATAN</span><h2>Direktori Pihak Berkuasa Tempatan (PBT) Selangor</h2><p>Kenali 12 Pihak Berkuasa Tempatan di Negeri Selangor dan akses portal rasmi bagi mendapatkan maklumat perancangan, perkhidmatan serta urusan setempat.</p></div><button class="pbt-chapter-btn" onclick="switchTab(3)">Lihat Bab RT & RKK →</button></div>
 <div class="pbt-grid">
 <a class="pbt-card" href="https://www.mbsa.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Bandaraya Shah Alam"><span class="pbt-icon pbt-official-icon"><img src="https://www.google.com/s2/favicons?domain=mbsa.gov.my&sz=128" alt="Ikon laman MBSA" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="pbt-logo-fallback" style="display:none">MBSA</span></span><span class="pbt-label"><strong>MBSA</strong><small>Majlis Bandaraya Shah Alam</small></span><span class="pbt-arrow">↗</span></a>
 <a class="pbt-card" href="https://www.mbpj.gov.my/ms" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Bandaraya Petaling Jaya"><span class="pbt-icon pbt-official-icon"><img src="https://www.google.com/s2/favicons?domain=mbpj.gov.my&sz=128" alt="Ikon laman MBPJ" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="pbt-logo-fallback" style="display:none">MBPJ</span></span><span class="pbt-label"><strong>MBPJ</strong><small>Majlis Bandaraya Petaling Jaya</small></span><span class="pbt-arrow">↗</span></a>
@@ -412,7 +430,7 @@ button{cursor:pointer;font:inherit}
     nb.classList.toggle('active', i === index);
   });
 
-  window.scrollTo({top: 250, behavior: 'smooth'});
+  document.querySelector('.main-section')?.scrollIntoView({behavior:'smooth',block:'start'});
 }
 </script>
 
@@ -424,6 +442,8 @@ button{cursor:pointer;font:inherit}
  ['.brand-text b','Rancangan Pemajuan Selangor','Selangor Development Plans'],
  ['.brand-text small','PLANMALAYSIA SELANGOR · PORTAL INTERAKTIF','PLANMALAYSIA SELANGOR · INTERACTIVE PORTAL'],
  ['.home-nav-btn','Utama','Home'],
+ ['.section-nav-btn[data-section="statistik-pembangunan"]','Peta Interaktif','Interactive Map'],
+ ['.section-nav-btn[data-section="pautan-pbt"]','Direktori PBT','PBT Directory'],
  ['.ticker-label','PENGUMUMAN ✦','ANNOUNCEMENT ✦'],
  ['.primary-cta','Terokai 5 Bab ↗','Explore 5 Chapters ↗'],
  ['.secondary-cta','TEROKAI PETA INTERAKTIF SELANGOR ↗','EXPLORE THE SELANGOR INTERACTIVE MAP ↗'],
@@ -435,9 +455,9 @@ button{cursor:pointer;font:inherit}
  ['.spatial-map-placeholder span','Paparan peta digital akan ditempatkan di sini.','The digital interactive map will be added here.'],
  ['.map-stat-item:nth-child(1) span','Pihak Berkuasa Tempatan','Local Authorities'],
  ['.map-stat-item:nth-child(2) span','Daerah Pentadbiran','Administrative Districts'],
- ['.pbt-heading .section-eyebrow','RANCANGAN TEMPATAN · PIHAK BERKUASA TEMPATAN','LOCAL PLANS · LOCAL AUTHORITIES'],
- ['.pbt-heading h2','Pautan Pantas PBT Selangor','Quick Links to Selangor Local Authorities'],
- ['.pbt-heading p','Terokai portal rasmi PBT bagi mendapatkan maklumat perancangan tempatan dan perkhidmatan berkaitan.','Visit official local authority portals for local planning information and related services.'],
+ ['.pbt-heading .section-eyebrow','DIREKTORI · PIHAK BERKUASA TEMPATAN','DIRECTORY · LOCAL AUTHORITIES'],
+ ['.pbt-heading h2','Direktori Pihak Berkuasa Tempatan (PBT) Selangor','Selangor Local Authorities (PBT) Directory'],
+ ['.pbt-heading p','Kenali 12 Pihak Berkuasa Tempatan di Negeri Selangor dan akses portal rasmi bagi mendapatkan maklumat perancangan, perkhidmatan serta urusan setempat.','Discover Selangor’s 12 local authorities and visit their official websites for planning information, services and local enquiries.'],
  ['.pbt-chapter-btn','Lihat Bab RT & RKK →','View Local & Special Area Plans →']
  ];
  const tickerBM='✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦';
@@ -460,6 +480,23 @@ button{cursor:pointer;font:inherit}
  };
  window.setLang('ms');
 })();
+</script>
+<script id="suo-section-navigation">
+function navigateSection(id,button){
+ const target=document.getElementById(id);
+ if(!target)return;
+ target.scrollIntoView({behavior:'smooth',block:'start'});
+ document.querySelectorAll('.top-nav button').forEach(btn=>btn.classList.remove('section-active'));
+ if(button)button.classList.add('section-active');
+}
+document.querySelector('.home-nav-btn')?.addEventListener('click',function(){
+ document.querySelectorAll('.top-nav button').forEach(btn=>btn.classList.remove('section-active'));
+ this.classList.add('section-active');
+});
+document.querySelectorAll('.tab-nav-btn').forEach(btn=>btn.addEventListener('click',function(){
+ document.querySelectorAll('.top-nav button').forEach(el=>el.classList.remove('section-active'));
+ this.classList.add('section-active');
+}));
 </script>
 </body>
 </html>
