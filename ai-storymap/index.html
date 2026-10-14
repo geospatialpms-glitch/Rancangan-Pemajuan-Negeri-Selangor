@@ -506,6 +506,57 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 .chapter-panel-action:hover{background:#a92e43;transform:translateY(-3px);box-shadow:0 12px 24px #761e3450}
 @media(max-width:820px){.chapter-detail-grid{grid-template-columns:1fr}.chapter-concept-art{width:100%;max-width:620px}}
 </style>
+<style id="chapter-centered-heading-2026">
+/* Centered, readable premium headings on the five visual chapter cards. */
+#chapterCarousel .tab-btn{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  padding:22px 22px!important;
+  color:#fffaf0!important;
+  font-family:'Montserrat','Poppins','Segoe UI',sans-serif!important;
+  font-size:clamp(17px,1.5vw,20px)!important;
+  font-weight:800!important;
+  letter-spacing:.015em;
+  line-height:1.42!important;
+  text-shadow:0 2px 8px rgba(25,6,17,.97),0 0 18px rgba(18,5,14,.78);
+  background-position:center!important;
+}
+/* Darken the center enough for white type, without hiding the images. */
+#chapterCarousel .tab-btn::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(90deg,rgba(35,8,24,.21),rgba(28,9,22,.41) 50%,rgba(35,8,24,.21));
+  z-index:0;
+}
+#chapterCarousel .tab-btn{isolation:isolate}
+#chapterCarousel .tab-btn::after{z-index:-1}
+#chapterCarousel #chapter-tab-4::before{
+  content:"AKAN DATANG";
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:5px 12px;margin-bottom:14px;
+  background:rgba(80,18,36,.91);
+  border:1px solid #f0ca76;
+  border-radius:999px;
+  box-shadow:0 3px 15px rgba(24,6,16,.28);
+  color:#ffe5a1;font-size:10px;letter-spacing:.14em;
+  font-weight:900;line-height:1.3;
+  text-shadow:none;position:relative;inset:auto;opacity:1;
+  pointer-events:none;
+}
+.chapter-coming-soon-inline{
+  display:inline-flex;vertical-align:middle;align-items:center;
+  font-size:11px;font-weight:900;letter-spacing:.09em;
+  border:1px solid #d7a754;border-radius:999px;
+  padding:5px 11px;margin-left:8px;color:#8b1b2f;background:#fff3d5;
+  white-space:nowrap;
+}
+@media(max-width:768px){
+  #chapterCarousel .tab-btn{font-size:16px!important;padding:17px!important}
+}
+</style>
 </head>
 <body>
 
@@ -611,7 +662,7 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
       </button>
 
       <button class="tab-btn chapter-bg-05" id="chapter-tab-4" role="tab" aria-controls="panel-4" aria-selected="false" onclick="switchTab(4)">
-        05. Sistem Laporan
+        05. SISTEM LPFNS
       </button>
     </div>
 
@@ -654,7 +705,7 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
   <div class="content-panel" id="panel-4">
     <div class="panel-header">
       <div class="panel-num">05</div>
-      <h3>Sistem Pengurusan Laporan Perancangan Fizikal Negeri</h3>
+      <h3>SISTEM LPFNS <span class="chapter-coming-soon-inline">AKAN DATANG</span></h3>
     </div>
     <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Platform digital berpusat bagi menyelaraskan pengurusan laporan dan data perancangan fizikal Negeri Selangor.</p><button type="button" class="chapter-panel-action" onclick="switchTab(0)">Kembali ke Bab 01 <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Analitik spatial dan pemantauan data perancangan"><defs><linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid4" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg4)"/><rect width="620" height="390" rx="17" fill="url(#grid4)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><rect x="59" y="45" width="502" height="300" rx="20" fill="#351527" stroke="#ffe4a9" stroke-width="3"/><rect x="80" y="66" width="460" height="40" rx="7" fill="#9a3d53"/><g fill="#f7d48d"><circle cx="103" cy="86" r="7"/><circle cx="128" cy="86" r="7"/><circle cx="153" cy="86" r="7"/></g><rect x="83" y="121" width="207" height="204" rx="11" fill="#703049"/><path d="M107 274L151 220L177 241L218 160L269 198" fill="none" stroke="#f9d995" stroke-width="8" stroke-linecap="round"/><rect x="305" y="121" width="234" height="95" rx="10" fill="#703049"/><g fill="#f7d48d"><rect x="324" y="176" width="26" height="25"/><rect x="362" y="154" width="26" height="47"/><rect x="400" y="141" width="26" height="60"/><rect x="438" y="159" width="26" height="42"/><rect x="476" y="134" width="26" height="67"/></g><rect x="305" y="229" width="234" height="96" rx="10" fill="#703049"/><g fill="#ffe0a5"><rect x="324" y="246" width="165" height="9" rx="4"/><rect x="324" y="268" width="195" height="8" rx="4" opacity=".66"/><rect x="324" y="290" width="137" height="8" rx="4" opacity=".45"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>DASHBOARD DIGITAL</figcaption></figure></div></div>
   </div>
