@@ -780,6 +780,38 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 @media(max-width:700px){.chapter01-metrics,.chapter01-pbt-categories{grid-template-columns:1fr}.chapter01-tabs{width:100%}.chapter01-tabs .chapter-subnav-btn{flex:1 1 45%}}
 @media(prefers-reduced-motion:reduce){.chapter01-topic{animation:none}}
 </style>
+<style id="suo-chapter-bento-design-v2">
+/* A unified, restrained Selangor maroon and gold Bento layout for chapter content. */
+.suo-bento-body{min-height:310px}
+.suo-bento-topic[hidden]{display:none!important}
+.suo-bento-topic{animation:suoBentoIn .43s cubic-bezier(.18,.7,.2,1) both}
+.suo-bento-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-flow:row;gap:15px}
+.suo-bento-tile{grid-column:span 4;min-width:0;position:relative;overflow:hidden;isolation:isolate;border-radius:20px;padding:clamp(19px,2.2vw,29px);background:linear-gradient(140deg,#fffdfa,#fff5ee);border:1px solid #ead4c7;box-shadow:0 10px 23px rgba(91,25,46,.075);transition:transform .28s,box-shadow .28s,border-color .28s}
+.suo-bento-tile:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#90233c,#ce5b65,#e9be71)}
+.suo-bento-tile:hover{transform:translateY(-4px);border-color:#dda956;box-shadow:0 17px 34px rgba(91,25,46,.15)}
+.suo-bento-wide{grid-column:span 12;background:linear-gradient(118deg,#fff8f4,#fffdfb)}
+.suo-bento-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;color:#8b1b2f;font-size:25px;font-weight:900;background:#f9e9d9;border:1px solid #ebd2b8}
+.suo-bento-tile h4{margin:0 0 13px;color:#782039;font-family:'Merriweather',Georgia,serif;font-size:clamp(17px,1.5vw,23px);line-height:1.35}
+.suo-bento-tile p{margin:0;color:#675962;font-size:clamp(13px,1.05vw,15px);line-height:1.8}
+.suo-bento-tile.suo-bento-wide h4{font-size:clamp(22px,2.25vw,31px)}
+.suo-bento-stat{background:linear-gradient(145deg,#842039,#a64159);border-color:#b46a78;display:flex;flex-direction:column;justify-content:center}
+.suo-bento-stat:before{background:linear-gradient(90deg,#f4d182,#fff3c6)}
+.suo-bento-stat h4,.suo-bento-stat p{color:#fff6ed}
+.suo-bento-stat h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px}
+.suo-animated-stat{font-family:'Merriweather',Georgia,serif;font-size:clamp(33px,3vw,51px);color:#ffe2a0;line-height:1.1;letter-spacing:-.04em;margin-bottom:12px}
+.suo-bento-next{grid-column:1/-1;display:flex;justify-content:flex-end;padding-top:4px}
+.suo-bento-action{display:inline-flex;align-items:center;justify-content:center;gap:11px;border:0;border-radius:12px;padding:13px 19px;color:#fff;background:#8b1b2f;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 8px 19px rgba(139,27,47,.17);transition:background .25s,transform .25s}
+.suo-bento-action:hover{transform:translateY(-3px);background:#a52d48}
+.suo-bento-action:focus-visible{outline:3px solid #d7a24e;outline-offset:3px}
+.suo-bento-coming{background:linear-gradient(130deg,#681832,#9d3a55);border-color:#b67b78}
+.suo-bento-coming h4,.suo-bento-coming p{color:#fff5eb}
+.suo-bento-coming .suo-bento-icon{background:#ffdf9e;color:#79223b}
+.suo-bento-status{display:inline-block;float:right;color:#ffe1a2;background:#5d1a32;border:1px solid #e7bd76;padding:6px 12px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.11em}
+@keyframes suoBentoIn{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.suo-bento-tile{grid-column:span 6}.suo-bento-wide,.suo-bento-next{grid-column:1/-1}}
+@media(max-width:600px){.suo-bento-grid{grid-template-columns:1fr;gap:12px}.suo-bento-tile,.suo-bento-wide,.suo-bento-next{grid-column:1}.suo-bento-next{justify-content:stretch}.suo-bento-action{width:100%}}
+@media(prefers-reduced-motion:reduce){.suo-bento-topic{animation:none}.suo-bento-tile,.suo-bento-action{transition:none}.suo-bento-tile:hover,.suo-bento-action:hover{transform:none}}
+</style>
 </head>
 <body>
 
@@ -975,16 +1007,9 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
     </div>
     <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="chapter-content-card">
-      <nav class="chapter-content-tools" aria-label="Navigasi kandungan Bab 02">
-        <span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN</span>
-        <div class="chapter-content-buttons">
-          <button type="button" class="chapter-subnav-btn chapter-subnav-primary" onclick="this.closest('.chapter-content-card').querySelector('.chapter-detail-copy').scrollIntoView({behavior:'smooth',block:'center'})">Maklumat Bab</button>
-          <button type="button" class="chapter-subnav-btn" onclick="this.closest('.chapter-content-card').querySelector('.chapter-concept-art').scrollIntoView({behavior:'smooth',block:'center'})">Ilustrasi Konsep</button>
-          <button type="button" class="chapter-subnav-btn" onclick="switchTab(2)">Bab Seterusnya <span aria-hidden="true">→</span></button>
-        </div>
-      </nav>
+      <nav class="chapter-content-tools" aria-label="Subtopik Bab 02"><span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN BAB 02</span><div class="chapter-content-buttons suo-bento-tabbar" role="tablist" aria-label="Subtopik Bab 02"><button type="button" class="chapter-subnav-btn chapter-subnav-primary" id="bento-tab-1-0" role="tab" aria-selected="true" aria-controls="bento-1-0" onclick="showSuoBento(1,0)">Hierarki Perancangan</button><button type="button" class="chapter-subnav-btn" id="bento-tab-1-1" role="tab" aria-selected="false" aria-controls="bento-1-1" onclick="showSuoBento(1,1)">Kerangka Perundangan</button><button type="button" class="chapter-subnav-btn" id="bento-tab-1-2" role="tab" aria-selected="false" aria-controls="bento-1-2" onclick="showSuoBento(1,2)">Perkaitan Rancangan</button></div></nav>
       <div class="chapter-content-rule" aria-hidden="true"></div>
-      <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Meneroka maklumat mengenai perundangan, hala tuju serta peringkat hierarki Rancangan Pemajuan Selangor. Pengenalan &amp; Kerangka Perundangan negeri menetapkan hierarki perancangan fizikal negara dan negeri secara bersepadu.</p><button type="button" class="chapter-panel-action" onclick="switchTab(2)">Lihat Bab RSN 2035 <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Rangkaian dasar, institusi dan perancangan wilayah"><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid1" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg1)"/><rect width="620" height="390" rx="17" fill="url(#grid1)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><g stroke="#f8d78e" stroke-width="3" fill="none"><path d="M84 91L251 64L361 157L520 88M84 91L135 267L310 317L520 88M251 64L310 317L361 157L536 283L135 267"/></g><g fill="#883148" stroke="#ffe9b4" stroke-width="4"><circle cx="84" cy="91" r="23"/><circle cx="251" cy="64" r="25"/><circle cx="361" cy="157" r="35"/><circle cx="520" cy="88" r="21"/><circle cx="135" cy="267" r="27"/><circle cx="310" cy="317" r="29"/><circle cx="536" cy="283" r="22"/></g><g fill="#ffe7aa"><circle cx="84" cy="91" r="7"/><circle cx="251" cy="64" r="8"/><circle cx="361" cy="157" r="12"/><circle cx="520" cy="88" r="7"/><circle cx="135" cy="267" r="9"/><circle cx="310" cy="317" r="9"/><circle cx="536" cy="283" r="7"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>HIERARKI PERANCANGAN</figcaption></figure></div></div>
+      <div class="panel-body suo-bento-body"><section class="suo-bento-topic active" role="tabpanel" id="bento-1-0" aria-labelledby="bento-tab-1-0" ><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Arah Tuju &amp; Hierarki Pemajuan</h4><p>Perancangan fizikal Negeri Selangor diselaraskan melalui hierarki rancangan pemajuan dan kerangka perundangan yang bersepadu.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="03">03</strong><h4>Peringkat Rancangan</h4><p>RSN, Rancangan Tempatan dan Rancangan Kawasan Khas</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>RSN Selangor 2035</h4><p>Dasar strategik negeri yang menetapkan hala tuju pembangunan fizikal serta perancangan makro guna tanah.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▥</div><h4>Rancangan Tempatan (RT)</h4><p>Perincian cadangan perancangan dan pemajuan di peringkat tempatan serta kawasan PBT.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Rancangan Kawasan Khas (RKK)</h4><p>Panduan dan tindakan terperinci bagi kawasan khusus yang memerlukan pendekatan perancangan khas.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-1-1" aria-labelledby="bento-tab-1-1" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Asas Perancangan Fizikal</h4><p>Pengenalan dan kerangka perundangan negeri membentuk asas kawal selia serta penyelarasan pembangunan fizikal.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▦</div><h4>Akta Perancangan Bandar dan Desa 1976</h4><p>Akta 172 menyediakan asas perundangan perancangan bandar dan desa di Semenanjung Malaysia.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Penyelarasan Dasar</h4><p>Rancangan di peringkat negeri dan tempatan perlu saling melengkapi bagi membentuk keputusan pembangunan yang teratur.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-1-2" aria-labelledby="bento-tab-1-2" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Hubungan Antara Rancangan</h4><p>Rancangan pemajuan peringkat negeri, tempatan dan kawasan khas mempunyai fungsi saling berkaitan.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="01">01</strong><h4>Rancangan Struktur Negeri</h4><p>Hala tuju dasar dan strategi fizikal negeri</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="02">02</strong><h4>Rancangan Tempatan</h4><p>Cadangan perancangan dan pembangunan pada peringkat tempatan</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="03">03</strong><h4>Rancangan Kawasan Khas</h4><p>Tindakan terperinci bagi kawasan terpilih</p></article><div class="suo-bento-next"><button type="button" class="suo-bento-action" onclick="switchTab(2)">Terokai Bab 03 <span aria-hidden="true">↗</span></button></div></div></section></div>
     </div>
   </div>
 
@@ -997,16 +1022,9 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
     </div>
     <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="chapter-content-card">
-      <nav class="chapter-content-tools" aria-label="Navigasi kandungan Bab 03">
-        <span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN</span>
-        <div class="chapter-content-buttons">
-          <button type="button" class="chapter-subnav-btn chapter-subnav-primary" onclick="this.closest('.chapter-content-card').querySelector('.chapter-detail-copy').scrollIntoView({behavior:'smooth',block:'center'})">Maklumat Bab</button>
-          <button type="button" class="chapter-subnav-btn" onclick="this.closest('.chapter-content-card').querySelector('.chapter-concept-art').scrollIntoView({behavior:'smooth',block:'center'})">Ilustrasi Konsep</button>
-          <button type="button" class="chapter-subnav-btn" onclick="switchTab(3)">Bab Seterusnya <span aria-hidden="true">→</span></button>
-        </div>
-      </nav>
+      <nav class="chapter-content-tools" aria-label="Subtopik Bab 03"><span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN BAB 03</span><div class="chapter-content-buttons suo-bento-tabbar" role="tablist" aria-label="Subtopik Bab 03"><button type="button" class="chapter-subnav-btn chapter-subnav-primary" id="bento-tab-2-0" role="tab" aria-selected="true" aria-controls="bento-2-0" onclick="showSuoBento(2,0)">RSN Selangor 2035</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-1" role="tab" aria-selected="false" aria-controls="bento-2-1" onclick="showSuoBento(2,1)">Dasar & Strategi</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-2" role="tab" aria-selected="false" aria-controls="bento-2-2" onclick="showSuoBento(2,2)">Pembangunan Mampan</button></div></nav>
       <div class="chapter-content-rule" aria-hidden="true"></div>
-      <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Kerangka Dasar dan Cadangan Am Pemajuan Fizikal Negeri Selangor 2035 (Warta No. 1000). Dokumen ini menggariskan dasar utama pembangunan spatial negeri, penetapan koridor pertumbuhan ekonomi, dan strategi pemeliharaan alam sekitar.</p><button type="button" class="chapter-panel-action" onclick="document.getElementById('statistik-pembangunan').scrollIntoView({behavior:'smooth',block:'start'})">Terokai Peta Selangor <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Peta strategik wilayah dan koridor pertumbuhan"><defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid2" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg2)"/><rect width="620" height="390" rx="17" fill="url(#grid2)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><path d="M179 44L276 72L323 139L410 94L484 157L439 227L495 285L422 350L327 316L265 359L177 299L136 224L93 156Z" fill="#68203d" stroke="#fbe2a5" stroke-width="5"/><g fill="none" stroke="#efb66c" stroke-width="3"><path d="M179 44L323 139L439 227L422 350M93 156L136 224L265 359M276 72L410 94L495 285"/></g><path d="M137 227L239 177L318 229L424 179L476 269" fill="none" stroke="#ffe7a8" stroke-width="8" stroke-linecap="round"/><g fill="#b2d0a1" stroke="#fbe1ac" stroke-width="4"><circle cx="137" cy="227" r="12"/><circle cx="239" cy="177" r="12"/><circle cx="318" cy="229" r="12"/><circle cx="424" cy="179" r="12"/><circle cx="476" cy="269" r="12"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>RSN SELANGOR 2035</figcaption></figure></div></div>
+      <div class="panel-body suo-bento-body"><section class="suo-bento-topic active" role="tabpanel" id="bento-2-0" aria-labelledby="bento-tab-2-0" ><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</h4><p>Dokumen kerangka dasar dan cadangan am pemajuan fizikal Negeri Selangor 2035, yang dirujuk dalam portal sebagai Warta No. 1000.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="2035">2035</strong><h4>Horizon Perancangan</h4><p>Halatuju perancangan fizikal negeri</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Dasar Spatial Negeri</h4><p>Memadukan arah tuju guna tanah, perancangan bandar dan cadangan pembangunan fizikal.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Pembangunan Wilayah</h4><p>Mengenal pasti hubungan pembangunan serta koridor pertumbuhan ekonomi negeri.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-2-1" aria-labelledby="bento-tab-2-1" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">◎</div><h4>Keutamaan Strategi Fizikal</h4><p>Cadangan am pemajuan fizikal menekankan keseimbangan pertumbuhan ekonomi, kesejahteraan penduduk dan pengurusan alam sekitar.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Koridor Pertumbuhan</h4><p>Strategi pertumbuhan ekonomi dan penumpuan aktiviti pembangunan secara bersepadu.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>Guna Tanah</h4><p>Penyelarasan pembangunan serta keperluan pengurusan sumber tanah dan kawasan setempat.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">❖</div><h4>Alam Sekitar</h4><p>Pemeliharaan sumber dan pengurusan kawasan yang memerlukan kawalan pembangunan.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-2-2" aria-labelledby="bento-tab-2-2" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">❖</div><h4>Ke Arah Selangor Mampan</h4><p>Pelaksanaan RSN menyokong hala tuju pembangunan spatial yang lebih teratur, inklusif dan mampan.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Kawasan Sensitif Alam Sekitar</h4><p>Pertimbangan pemeliharaan dan perlindungan kawasan sensitif dalam proses perancangan.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▥</div><h4>Pelaksanaan Tempatan</h4><p>Dasar negeri menjadi rujukan perincian cadangan di peringkat rancangan tempatan.</p></article><div class="suo-bento-next"><button type="button" class="suo-bento-action" onclick="switchTab(3)">Terokai Bab 04 <span aria-hidden="true">↗</span></button></div></div></section></div>
     </div>
   </div>
 
@@ -1019,16 +1037,9 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
     </div>
     <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="chapter-content-card">
-      <nav class="chapter-content-tools" aria-label="Navigasi kandungan Bab 04">
-        <span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN</span>
-        <div class="chapter-content-buttons">
-          <button type="button" class="chapter-subnav-btn chapter-subnav-primary" onclick="this.closest('.chapter-content-card').querySelector('.chapter-detail-copy').scrollIntoView({behavior:'smooth',block:'center'})">Maklumat Bab</button>
-          <button type="button" class="chapter-subnav-btn" onclick="this.closest('.chapter-content-card').querySelector('.chapter-concept-art').scrollIntoView({behavior:'smooth',block:'center'})">Ilustrasi Konsep</button>
-          <button type="button" class="chapter-subnav-btn" onclick="switchTab(4)">Bab Seterusnya <span aria-hidden="true">→</span></button>
-        </div>
-      </nav>
+      <nav class="chapter-content-tools" aria-label="Subtopik Bab 04"><span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN BAB 04</span><div class="chapter-content-buttons suo-bento-tabbar" role="tablist" aria-label="Subtopik Bab 04"><button type="button" class="chapter-subnav-btn chapter-subnav-primary" id="bento-tab-3-0" role="tab" aria-selected="true" aria-controls="bento-3-0" onclick="showSuoBento(3,0)">RT & RKK</button><button type="button" class="chapter-subnav-btn" id="bento-tab-3-1" role="tab" aria-selected="false" aria-controls="bento-3-1" onclick="showSuoBento(3,1)">Pelaksanaan PBT</button><button type="button" class="chapter-subnav-btn" id="bento-tab-3-2" role="tab" aria-selected="false" aria-controls="bento-3-2" onclick="showSuoBento(3,2)">Akses Direktori</button></div></nav>
       <div class="chapter-content-rule" aria-hidden="true"></div>
-      <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Pengurusan &amp; Hierarki Perancangan Fizikal Pihak Berkuasa Tempatan (PBT) Negeri Selangor. Melibatkan perincian cadangan pemajuan di peringkat tempatan bagi setiap PBT di Selangor.</p><button type="button" class="chapter-panel-action" onclick="document.getElementById('pautan-pbt').scrollIntoView({behavior:'smooth',block:'start'})">Lihat Direktori PBT <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Zon perancangan tempatan dan rangkaian PBT"><defs><linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid3" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg3)"/><rect width="620" height="390" rx="17" fill="url(#grid3)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><g fill="#8b3044" stroke="#ffe2a5" stroke-width="3"><path d="M89 95L204 50L302 92L266 194L148 221Z"/><path d="M302 92L393 62L507 130L447 237L334 207L266 194Z"/><path d="M148 221L266 194L334 207L321 324L194 336L108 279Z"/><path d="M334 207L447 237L529 293L452 348L321 324Z"/></g><g fill="none" stroke="#ffd998" stroke-width="2.6"><path d="M192 124L380 134L422 283L231 267Z"/><path d="M192 124L231 267"/></g><g fill="#ffe7af"><circle cx="192" cy="124" r="10"/><circle cx="380" cy="134" r="10"/><circle cx="422" cy="283" r="10"/><circle cx="231" cy="267" r="10"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>RANCANGAN TEMPATAN</figcaption></figure></div></div>
+      <div class="panel-body suo-bento-body"><section class="suo-bento-topic active" role="tabpanel" id="bento-3-0" aria-labelledby="bento-tab-3-0" ><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>Rancangan Tempatan (RT) &amp; Rancangan Kawasan Khas (RKK)</h4><p>Dokumen perancangan di peringkat tempatan yang memperincikan hala tuju pembangunan, pengurusan guna tanah dan keperluan kawasan khusus.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="02">02</strong><h4>Jenis Rancangan</h4><p>Rancangan Tempatan dan Rancangan Kawasan Khas</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Rancangan Tempatan</h4><p>Memperincikan cadangan guna tanah, intensiti pembangunan dan penyediaan prasarana.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▥</div><h4>Rancangan Kawasan Khas</h4><p>Menentukan tindakan terperinci bagi kawasan tertentu seperti pemeliharaan warisan dan pembangunan semula.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-3-1" aria-labelledby="bento-tab-3-1" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">▥</div><h4>Pentadbiran Perancangan Tempatan</h4><p>Pihak Berkuasa Tempatan berperanan penting dalam pengurusan kawasan setempat dan penyelarasan pelaksanaan rancangan pemajuan.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="12">12</strong><h4>Pihak Berkuasa Tempatan</h4><p>Pentadbiran kawasan setempat di Selangor</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>Pengezonan Guna Tanah</h4><p>Panduan pemajuan yang menyelaraskan fungsi guna tanah dengan keperluan setempat.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Kemudahan &amp; Infrastruktur</h4><p>Perancangan prasarana serta kemudahan bagi menyokong pembangunan kawasan.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-3-2" aria-labelledby="bento-tab-3-2" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">◎</div><h4>Akses Maklumat PBT</h4><p>Terus ke Direktori Pihak Berkuasa Tempatan Selangor untuk mendapatkan portal rasmi dan maklumat setempat.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="12">12</strong><h4>Direktori PBT</h4><p>Pautan PBT sedia ada dalam portal</p></article><div class="suo-bento-next"><button type="button" class="suo-bento-action" onclick="document.getElementById('pautan-pbt').scrollIntoView({behavior:'smooth',block:'start'})">Lihat Direktori PBT <span aria-hidden="true">↗</span></button></div></div></section></div>
     </div>
   </div>
 
@@ -1050,7 +1061,12 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
         </div>
       </nav>
       <div class="chapter-content-rule" aria-hidden="true"></div>
-      <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Platform digital berpusat bagi menyelaraskan pengurusan laporan dan data perancangan fizikal Negeri Selangor.</p><button type="button" class="chapter-panel-action" onclick="switchTab(0)">Kembali ke Bab 01 <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Analitik spatial dan pemantauan data perancangan"><defs><linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid4" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg4)"/><rect width="620" height="390" rx="17" fill="url(#grid4)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><rect x="59" y="45" width="502" height="300" rx="20" fill="#351527" stroke="#ffe4a9" stroke-width="3"/><rect x="80" y="66" width="460" height="40" rx="7" fill="#9a3d53"/><g fill="#f7d48d"><circle cx="103" cy="86" r="7"/><circle cx="128" cy="86" r="7"/><circle cx="153" cy="86" r="7"/></g><rect x="83" y="121" width="207" height="204" rx="11" fill="#703049"/><path d="M107 274L151 220L177 241L218 160L269 198" fill="none" stroke="#f9d995" stroke-width="8" stroke-linecap="round"/><rect x="305" y="121" width="234" height="95" rx="10" fill="#703049"/><g fill="#f7d48d"><rect x="324" y="176" width="26" height="25"/><rect x="362" y="154" width="26" height="47"/><rect x="400" y="141" width="26" height="60"/><rect x="438" y="159" width="26" height="42"/><rect x="476" y="134" width="26" height="67"/></g><rect x="305" y="229" width="234" height="96" rx="10" fill="#703049"/><g fill="#ffe0a5"><rect x="324" y="246" width="165" height="9" rx="4"/><rect x="324" y="268" width="195" height="8" rx="4" opacity=".66"/><rect x="324" y="290" width="137" height="8" rx="4" opacity=".45"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>DASHBOARD DIGITAL</figcaption></figure></div></div>
+      <div class="panel-body suo-bento-body"><div class="suo-bento-grid">
+ <article class="suo-bento-tile suo-bento-wide suo-bento-coming"><span class="suo-bento-status">AKAN DATANG</span><div class="suo-bento-icon" aria-hidden="true">▦</div><h4>SISTEM LPFNS</h4><p>Platform digital berpusat bagi penyelarasan pengurusan laporan dan data perancangan fizikal Negeri Selangor. Fungsi sistem akan diperkenalkan apabila tersedia.</p></article>
+ <article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▦</div><h4>Pengurusan Laporan</h4><p>Komponen sistem dirancang bagi pengurusan laporan dan maklumat perancangan fizikal secara digital.</p></article>
+ <article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">◈</div><h4>Akses Maklumat</h4><p>Maklumat dan capaian sistem akan dikemaskinikan apabila pembangunan komponen berkaitan disiapkan.</p></article>
+ <div class="suo-bento-next"><button type="button" class="suo-bento-action" onclick="switchTab(0)">Kembali ke Bab 01 <span aria-hidden="true">↗</span></button></div>
+ </div></div>
     </div>
   </div>
 </main>
@@ -1464,6 +1480,60 @@ function switchTab(index){
   window.showChapter01(next);buttons[next].focus();
  });
  window.showChapter01(0);
+})();
+</script>
+<script id="suo-chapter-bento-script-v2">
+(function(){
+ 'use strict';
+ window.showSuoBento=function(chapter,index){
+  const panel=document.getElementById('panel-'+chapter);
+  if(!panel)return;
+  const tabs=Array.from(panel.querySelectorAll('.suo-bento-tabbar [role="tab"]'));
+  const topics=Array.from(panel.querySelectorAll('.suo-bento-topic'));
+  if(!Number.isInteger(index)||index<0||index>=topics.length)return;
+  tabs.forEach(function(tab,i){const active=i===index;tab.setAttribute('aria-selected',String(active));tab.classList.toggle('chapter-subnav-primary',active);tab.tabIndex=active?0:-1});
+  topics.forEach(function(el,i){el.hidden=i!==index;el.classList.toggle('active',i===index)});
+  updateVisibleNumbers(panel);
+ };
+ document.querySelectorAll('.suo-bento-tabbar').forEach(function(tabbar){
+  tabbar.addEventListener('keydown',function(e){
+   if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+   const tabs=Array.from(tabbar.querySelectorAll('[role="tab"]'));
+   const current=Math.max(0,tabs.findIndex(x=>x.getAttribute('aria-selected')==='true'));
+   const next=(current+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
+   const n=Number(tabbar.closest('.content-panel').id.split('-')[1]);
+   e.preventDefault();window.showSuoBento(n,next);tabs[next].focus();
+  });
+ });
+ const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+ const animated=new WeakSet();
+ function animateNumber(el){
+  if(animated.has(el))return;
+  const parent=el.closest('.suo-bento-topic');
+  if(parent&&(parent.hidden||!parent.closest('.content-panel.active')))return;
+  if(!parent&&!el.closest('.content-panel.active'))return;
+  animated.add(el);
+  const target=parseInt(el.dataset.value,10);
+  if(!Number.isFinite(target))return;
+  if(reduced){el.textContent=String(target);return}
+  const start=performance.now(),duration=950;
+  function tick(now){
+   const t=Math.min(1,(now-start)/duration);
+   el.textContent=String(Math.round(target*(1-Math.pow(1-t,3)))).padStart(target<10?2:1,'0');
+   if(t<1)requestAnimationFrame(tick);else el.textContent=String(target).padStart(target<10?2:1,'0');
+  }
+  requestAnimationFrame(tick);
+ }
+ function updateVisibleNumbers(root){root.querySelectorAll('.suo-animated-stat').forEach(function(el){const r=el.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)animateNumber(el)})}
+ if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting)animateNumber(entry.target)})},{threshold:.25});
+  document.querySelectorAll('.suo-animated-stat').forEach(function(el){observer.observe(el)});
+ }else document.querySelectorAll('.suo-animated-stat').forEach(animateNumber);
+ document.querySelectorAll('.content-panel').forEach(function(panel){
+  if('MutationObserver' in window){
+   new MutationObserver(function(){if(panel.classList.contains('active'))updateVisibleNumbers(panel)}).observe(panel,{attributes:true,attributeFilter:['class']});
+  }
+ });
 })();
 </script>
 </body>
