@@ -840,6 +840,67 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 @media(max-width:760px){#panel-0 .chapter01-topic.active{grid-template-columns:1fr}#panel-0 .chapter01-topic>p{padding:17px}#panel-0 .chapter01-topic>.chapter-panel-action{justify-self:stretch}}
 @media(prefers-reduced-motion:reduce){#panel-0 .chapter01-metrics>div,#panel-0 .chapter01-pbt-categories>div,#panel-0 .chapter01-planning-steps>div{transition:none}#panel-0 .chapter01-metrics>div:hover,#panel-0 .chapter01-pbt-categories>div:hover,#panel-0 .chapter01-planning-steps>div:hover{transform:none}}
 </style>
+<style id="selangor-digital-atlas-style-v1">
+/* Selangor corporate maroon/gold. Atlas sheets replace anonymous empty white boxes. */
+.main-section .chapter-content-card{
+ --atlas-maroon:#8b1b2f;--atlas-deep:#581a32;--atlas-gold:#d9ad59;
+ background:linear-gradient(150deg,#fffdf9 0%,#fffaf6 51%,#fffdfb 100%)!important;
+ border:1px solid #e5cdbb!important;border-radius:24px!important;
+ box-shadow:0 22px 48px rgba(85,23,47,.095)!important;
+ padding:clamp(18px,2.7vw,38px)!important;
+}
+.main-section .chapter-content-card:before{height:5px!important;background:linear-gradient(90deg,#76182f,#b23e54 47%,#dfb259 95%)!important}
+.atlas-sheet-top{position:relative;margin:2px 0 28px}
+.atlas-sheet-kicker{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ead8ca;padding:0 0 14px;color:#8b1b2f;font-size:10px;font-weight:900;letter-spacing:.16em}
+.atlas-sheet-point{width:25px;height:25px;display:grid;place-items:center;color:#fff8e6;background:#8b1b2f;border-radius:8px}
+.atlas-sheet-serial{margin-left:auto;color:#ab7c77;letter-spacing:.1em;white-space:nowrap}
+.atlas-sheet-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:21px 0}
+.atlas-sheet-type{font-family:'Merriweather',Georgia,serif;color:#691c36;font-size:clamp(18px,2.1vw,27px);font-weight:900;line-height:1.3}
+.atlas-sheet-heading p{font-size:13px;color:#806e73;line-height:1.6;margin:7px 0 0}
+.atlas-sheet-index{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:74px;color:#a32b49;font-family:'Merriweather',Georgia,serif;font-size:33px;font-weight:900;border-left:1px solid #ead8ca;padding-left:19px}
+.atlas-sheet-index small{font-size:9px;letter-spacing:.17em;font-family:'Plus Jakarta Sans',sans-serif;margin-top:5px;color:#977078;white-space:nowrap}
+.atlas-feature-map{position:relative;isolation:isolate;height:clamp(170px,17vw,218px);border-radius:17px;overflow:hidden;border:1px solid rgba(235,199,138,.65);background-color:#5a1a35;background-size:cover;background-position:center;box-shadow:0 13px 27px rgba(84,25,51,.15)}
+.atlas-feature-map:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(52,12,32,.88),rgba(98,24,51,.54) 52%,rgba(51,14,32,.59))}
+.atlas-feature-A{background-image:url('./bab01-ai.png')}
+.atlas-feature-B{background-image:url('./bab02-ai.png')}
+.atlas-feature-C{background-image:url('./bab03-ai.png')}
+.atlas-feature-D{background-image:url('./bab04-ai.png')}
+.atlas-feature-E{background-image:url('./bab05-ai.png')}
+.atlas-feature-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,225,170,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,225,170,.13) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(90deg,transparent,black 35%,black);pointer-events:none}
+.atlas-feature-lines{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.82}
+.atlas-feature-heading{position:absolute;z-index:2;left:clamp(16px,3vw,34px);bottom:clamp(21px,3vw,34px);right:130px;display:flex;flex-direction:column;gap:9px;max-width:580px}
+.atlas-feature-eyebrow{color:#f5cd7d;font-size:10px;font-weight:900;letter-spacing:.16em}
+.atlas-feature-heading strong{color:#fff7ee;font-size:clamp(17px,2.3vw,29px);line-height:1.26;font-family:'Merriweather',Georgia,serif;font-weight:900;text-shadow:0 3px 15px #3f1325}
+.atlas-feature-caption{color:#ffe3b6;font-size:10px;letter-spacing:.16em}
+.atlas-feature-metric{position:absolute;right:23px;bottom:28px;z-index:2;border-left:2px solid #f3c874;padding-left:16px;color:#fff5e9;text-align:left}
+.atlas-feature-metric span{display:block;font-size:clamp(24px,3vw,37px);font-weight:900;font-family:'Merriweather',Georgia,serif}
+.atlas-feature-metric small{color:#ffdfac;font-size:10px;font-weight:900;letter-spacing:.14em}
+.atlas-feature-north{position:absolute;right:22px;top:14px;color:#ffe6b6;font-size:10px;z-index:2;font-weight:900}
+.atlas-feature-north span{display:block;font-size:23px;line-height:1.1}
+.atlas-sheet-key{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:13px;color:#7f6570;font-size:11px;font-weight:700}
+.atlas-sheet-key span{display:inline-flex;align-items:center;gap:7px}
+.atlas-sheet-key i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.atlas-key-maroon{background:#8b1b2f}.atlas-key-gold{background:#d9ad59}
+.atlas-sheet-footnote{margin-left:auto;font-style:italic;color:#9a8587;font-weight:400}
+.main-section .chapter-content-tools{padding:22px 0 21px!important;border-top:1px solid #ebd9c9}
+.main-section .chapter-content-rule{margin-bottom:26px!important}
+.main-section .chapter-content-label{color:#942d49!important}
+.main-section .chapter-subnav-btn{border-radius:10px!important}
+.main-section .chapter-subnav-btn.chapter-subnav-primary{background:#8b1b2f!important;color:#fff!important}
+.main-section .suo-bento-grid{gap:14px}
+.main-section .suo-bento-tile{background:linear-gradient(135deg,#fffaf3,#fffdfb)!important;border-radius:15px!important;box-shadow:0 7px 21px rgba(110,27,50,.065)!important}
+.main-section .suo-bento-tile:hover{box-shadow:0 14px 31px rgba(110,27,50,.14)!important}
+.main-section .suo-bento-tile.suo-bento-stat{background:linear-gradient(145deg,#751930,#ac3a55)!important}
+.main-section .suo-bento-tile.suo-bento-stat h4,.main-section .suo-bento-tile.suo-bento-stat p{color:#fff9f3!important}
+.main-section .suo-bento-tile.suo-bento-coming{background:linear-gradient(130deg,#681832,#9d3a55)!important}
+.main-section .suo-bento-tile.suo-bento-coming h4,.main-section .suo-bento-tile.suo-bento-coming p{color:#fff5eb!important}
+.main-section .chapter01-topic>p{border-left:4px solid #ac3e58!important}
+.main-section .chapter01-metrics>div{background:linear-gradient(150deg,#fff9f0,#fffdfb)!important}
+.main-section .chapter01-metrics strong{color:#93233e!important}
+.main-section .chapter01-topic.active{align-items:start}
+@media(max-width:760px){.atlas-sheet-serial{font-size:9px}.atlas-feature-heading{right:80px}.atlas-feature-metric{right:10px;bottom:15px;padding-left:8px}.atlas-feature-heading strong{font-size:17px}.atlas-feature-metric span{font-size:21px}.atlas-sheet-key{gap:9px}.atlas-sheet-footnote{margin-left:0;width:100%}.atlas-sheet-heading{gap:8px}.atlas-sheet-index{min-width:55px;padding-left:10px;font-size:25px}}
+@media(prefers-reduced-motion:reduce){.atlas-feature-lines{animation:none!important}}
+</style>
 </head>
 <body>
 
@@ -968,6 +1029,23 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
     </div>
     <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="chapter-content-card">
+<div class="atlas-sheet-top" aria-label="Lembaran Atlas Digital Bab 01">
+ <div class="atlas-sheet-kicker"><span class="atlas-sheet-point" aria-hidden="true">✦</span><span>ATLAS DIGITAL PERANCANGAN SELANGOR</span><span class="atlas-sheet-serial">LEMBARAN 01 / 05</span></div>
+ <div class="atlas-sheet-heading"><div><span class="atlas-sheet-type">WILAYAH & PENTADBIRAN</span><p>Pengenalan geospatial Negeri Selangor</p></div><div class="atlas-sheet-index">01<small>SEL · GEO</small></div></div>
+ <div class="atlas-feature-map atlas-feature-A" role="img" aria-label="Ilustrasi konseptual atlas perancangan bagi Bab 01; bukan peta sempadan rasmi">
+  <div class="atlas-feature-grid" aria-hidden="true"></div>
+  <svg class="atlas-feature-lines" viewBox="0 0 900 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+   <path d="M-20 126 C95 75 172 167 276 95 S469 31 562 95 S742 147 924 34" fill="none" stroke="#f6d79b" stroke-width="2" stroke-opacity=".85"/>
+   <path d="M-20 147 C120 109 201 184 309 110 S498 49 615 121 S783 141 924 62" fill="none" stroke="#f6d79b" stroke-width="1" stroke-dasharray="5 10" stroke-opacity=".75"/>
+   <path d="M212 14 L305 76 L398 38 L522 106 L660 64 L755 126" fill="none" stroke="#ffe6b2" stroke-width="1.5" stroke-opacity=".62"/>
+   <g fill="#f7d591" stroke="#63162e" stroke-width="2"><circle cx="305" cy="76" r="5"/><circle cx="522" cy="106" r="6"/><circle cx="660" cy="64" r="5"/><circle cx="755" cy="126" r="5"/></g>
+  </svg>
+  <div class="atlas-feature-heading"><span class="atlas-feature-eyebrow">LAPISAN KONSEP · 9 DAERAH · 12 PBT</span><strong>WILAYAH & PENTADBIRAN</strong><span class="atlas-feature-caption">DATA • DASAR • RUANG</span></div>
+  <div class="atlas-feature-metric"><span>12</span><small>PBT</small></div>
+  <div class="atlas-feature-north" aria-hidden="true">N<span>↑</span></div>
+ </div>
+ <div class="atlas-sheet-key"><span><i class="atlas-key-maroon"></i>Fokus spatial</span><span><i class="atlas-key-gold"></i>Hierarki perancangan</span><span class="atlas-sheet-footnote">Visual konseptual · Bukan peta rasmi</span></div>
+ </div>
       <nav class="chapter-content-tools chapter01-navigation" aria-label="Subtopik Bab 01">
         <span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN BAB 01</span>
         <div class="chapter-content-buttons chapter01-tabs" role="tablist" aria-label="Kandungan perancangan Selangor">
@@ -1035,6 +1113,23 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
     </div>
     <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="chapter-content-card">
+<div class="atlas-sheet-top" aria-label="Lembaran Atlas Digital Bab 02">
+ <div class="atlas-sheet-kicker"><span class="atlas-sheet-point" aria-hidden="true">✦</span><span>ATLAS DIGITAL PERANCANGAN SELANGOR</span><span class="atlas-sheet-serial">LEMBARAN 02 / 05</span></div>
+ <div class="atlas-sheet-heading"><div><span class="atlas-sheet-type">HIERARKI SPATIAL</span><p>Hubungan dasar serta sistem rancangan pemajuan</p></div><div class="atlas-sheet-index">02<small>SEL · GEO</small></div></div>
+ <div class="atlas-feature-map atlas-feature-B" role="img" aria-label="Ilustrasi konseptual atlas perancangan bagi Bab 02; bukan peta sempadan rasmi">
+  <div class="atlas-feature-grid" aria-hidden="true"></div>
+  <svg class="atlas-feature-lines" viewBox="0 0 900 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+   <path d="M-20 126 C95 75 172 167 276 95 S469 31 562 95 S742 147 924 34" fill="none" stroke="#f6d79b" stroke-width="2" stroke-opacity=".85"/>
+   <path d="M-20 147 C120 109 201 184 309 110 S498 49 615 121 S783 141 924 62" fill="none" stroke="#f6d79b" stroke-width="1" stroke-dasharray="5 10" stroke-opacity=".75"/>
+   <path d="M212 14 L305 76 L398 38 L522 106 L660 64 L755 126" fill="none" stroke="#ffe6b2" stroke-width="1.5" stroke-opacity=".62"/>
+   <g fill="#f7d591" stroke="#63162e" stroke-width="2"><circle cx="305" cy="76" r="5"/><circle cx="522" cy="106" r="6"/><circle cx="660" cy="64" r="5"/><circle cx="755" cy="126" r="5"/></g>
+  </svg>
+  <div class="atlas-feature-heading"><span class="atlas-feature-eyebrow">LAPISAN KONSEP · RSN / RT / RKK</span><strong>HIERARKI SPATIAL</strong><span class="atlas-feature-caption">DATA • DASAR • RUANG</span></div>
+  <div class="atlas-feature-metric"><span>03</span><small>PERINGKAT</small></div>
+  <div class="atlas-feature-north" aria-hidden="true">N<span>↑</span></div>
+ </div>
+ <div class="atlas-sheet-key"><span><i class="atlas-key-maroon"></i>Fokus spatial</span><span><i class="atlas-key-gold"></i>Hierarki perancangan</span><span class="atlas-sheet-footnote">Visual konseptual · Bukan peta rasmi</span></div>
+ </div>
       <nav class="chapter-content-tools" aria-label="Subtopik Bab 02"><span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN BAB 02</span><div class="chapter-content-buttons suo-bento-tabbar" role="tablist" aria-label="Subtopik Bab 02"><button type="button" class="chapter-subnav-btn chapter-subnav-primary" id="bento-tab-1-0" role="tab" aria-selected="true" aria-controls="bento-1-0" onclick="showSuoBento(1,0)">Hierarki Perancangan</button><button type="button" class="chapter-subnav-btn" id="bento-tab-1-1" role="tab" aria-selected="false" aria-controls="bento-1-1" onclick="showSuoBento(1,1)">Kerangka Perundangan</button><button type="button" class="chapter-subnav-btn" id="bento-tab-1-2" role="tab" aria-selected="false" aria-controls="bento-1-2" onclick="showSuoBento(1,2)">Perkaitan Rancangan</button></div></nav>
       <div class="chapter-content-rule" aria-hidden="true"></div>
       <div class="panel-body suo-bento-body"><section class="suo-bento-topic active" role="tabpanel" id="bento-1-0" aria-labelledby="bento-tab-1-0" ><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Arah Tuju &amp; Hierarki Pemajuan</h4><p>Perancangan fizikal Negeri Selangor diselaraskan melalui hierarki rancangan pemajuan dan kerangka perundangan yang bersepadu.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="03">03</strong><h4>Peringkat Rancangan</h4><p>RSN, Rancangan Tempatan dan Rancangan Kawasan Khas</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>RSN Selangor 2035</h4><p>Dasar strategik negeri yang menetapkan hala tuju pembangunan fizikal serta perancangan makro guna tanah.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▥</div><h4>Rancangan Tempatan (RT)</h4><p>Perincian cadangan perancangan dan pemajuan di peringkat tempatan serta kawasan PBT.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Rancangan Kawasan Khas (RKK)</h4><p>Panduan dan tindakan terperinci bagi kawasan khusus yang memerlukan pendekatan perancangan khas.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-1-1" aria-labelledby="bento-tab-1-1" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Asas Perancangan Fizikal</h4><p>Pengenalan dan kerangka perundangan negeri membentuk asas kawal selia serta penyelarasan pembangunan fizikal.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▦</div><h4>Akta Perancangan Bandar dan Desa 1976</h4><p>Akta 172 menyediakan asas perundangan perancangan bandar dan desa di Semenanjung Malaysia.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Penyelarasan Dasar</h4><p>Rancangan di peringkat negeri dan tempatan perlu saling melengkapi bagi membentuk keputusan pembangunan yang teratur.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-1-2" aria-labelledby="bento-tab-1-2" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Hubungan Antara Rancangan</h4><p>Rancangan pemajuan peringkat negeri, tempatan dan kawasan khas mempunyai fungsi saling berkaitan.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="01">01</strong><h4>Rancangan Struktur Negeri</h4><p>Hala tuju dasar dan strategi fizikal negeri</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="02">02</strong><h4>Rancangan Tempatan</h4><p>Cadangan perancangan dan pembangunan pada peringkat tempatan</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="03">03</strong><h4>Rancangan Kawasan Khas</h4><p>Tindakan terperinci bagi kawasan terpilih</p></article><div class="suo-bento-next"><button type="button" class="suo-bento-action" onclick="switchTab(2)">Terokai Bab 03 <span aria-hidden="true">↗</span></button></div></div></section></div>
@@ -1050,6 +1145,23 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
     </div>
     <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="chapter-content-card">
+<div class="atlas-sheet-top" aria-label="Lembaran Atlas Digital Bab 03">
+ <div class="atlas-sheet-kicker"><span class="atlas-sheet-point" aria-hidden="true">✦</span><span>ATLAS DIGITAL PERANCANGAN SELANGOR</span><span class="atlas-sheet-serial">LEMBARAN 03 / 05</span></div>
+ <div class="atlas-sheet-heading"><div><span class="atlas-sheet-type">STRATEGI NEGERI 2035</span><p>Kerangka spatial pembangunan negeri</p></div><div class="atlas-sheet-index">03<small>SEL · GEO</small></div></div>
+ <div class="atlas-feature-map atlas-feature-C" role="img" aria-label="Ilustrasi konseptual atlas perancangan bagi Bab 03; bukan peta sempadan rasmi">
+  <div class="atlas-feature-grid" aria-hidden="true"></div>
+  <svg class="atlas-feature-lines" viewBox="0 0 900 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+   <path d="M-20 126 C95 75 172 167 276 95 S469 31 562 95 S742 147 924 34" fill="none" stroke="#f6d79b" stroke-width="2" stroke-opacity=".85"/>
+   <path d="M-20 147 C120 109 201 184 309 110 S498 49 615 121 S783 141 924 62" fill="none" stroke="#f6d79b" stroke-width="1" stroke-dasharray="5 10" stroke-opacity=".75"/>
+   <path d="M212 14 L305 76 L398 38 L522 106 L660 64 L755 126" fill="none" stroke="#ffe6b2" stroke-width="1.5" stroke-opacity=".62"/>
+   <g fill="#f7d591" stroke="#63162e" stroke-width="2"><circle cx="305" cy="76" r="5"/><circle cx="522" cy="106" r="6"/><circle cx="660" cy="64" r="5"/><circle cx="755" cy="126" r="5"/></g>
+  </svg>
+  <div class="atlas-feature-heading"><span class="atlas-feature-eyebrow">LAPISAN KONSEP · HORIZON 2035</span><strong>STRATEGI NEGERI 2035</strong><span class="atlas-feature-caption">DATA • DASAR • RUANG</span></div>
+  <div class="atlas-feature-metric"><span>2035</span><small>HORIZON</small></div>
+  <div class="atlas-feature-north" aria-hidden="true">N<span>↑</span></div>
+ </div>
+ <div class="atlas-sheet-key"><span><i class="atlas-key-maroon"></i>Fokus spatial</span><span><i class="atlas-key-gold"></i>Hierarki perancangan</span><span class="atlas-sheet-footnote">Visual konseptual · Bukan peta rasmi</span></div>
+ </div>
       <nav class="chapter-content-tools" aria-label="Subtopik Bab 03"><span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN BAB 03</span><div class="chapter-content-buttons suo-bento-tabbar" role="tablist" aria-label="Subtopik Bab 03"><button type="button" class="chapter-subnav-btn chapter-subnav-primary" id="bento-tab-2-0" role="tab" aria-selected="true" aria-controls="bento-2-0" onclick="showSuoBento(2,0)">RSN Selangor 2035</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-1" role="tab" aria-selected="false" aria-controls="bento-2-1" onclick="showSuoBento(2,1)">Dasar & Strategi</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-2" role="tab" aria-selected="false" aria-controls="bento-2-2" onclick="showSuoBento(2,2)">Pembangunan Mampan</button></div></nav>
       <div class="chapter-content-rule" aria-hidden="true"></div>
       <div class="panel-body suo-bento-body"><section class="suo-bento-topic active" role="tabpanel" id="bento-2-0" aria-labelledby="bento-tab-2-0" ><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</h4><p>Dokumen kerangka dasar dan cadangan am pemajuan fizikal Negeri Selangor 2035, yang dirujuk dalam portal sebagai Warta No. 1000.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="2035">2035</strong><h4>Horizon Perancangan</h4><p>Halatuju perancangan fizikal negeri</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Dasar Spatial Negeri</h4><p>Memadukan arah tuju guna tanah, perancangan bandar dan cadangan pembangunan fizikal.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Pembangunan Wilayah</h4><p>Mengenal pasti hubungan pembangunan serta koridor pertumbuhan ekonomi negeri.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-2-1" aria-labelledby="bento-tab-2-1" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">◎</div><h4>Keutamaan Strategi Fizikal</h4><p>Cadangan am pemajuan fizikal menekankan keseimbangan pertumbuhan ekonomi, kesejahteraan penduduk dan pengurusan alam sekitar.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Koridor Pertumbuhan</h4><p>Strategi pertumbuhan ekonomi dan penumpuan aktiviti pembangunan secara bersepadu.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>Guna Tanah</h4><p>Penyelarasan pembangunan serta keperluan pengurusan sumber tanah dan kawasan setempat.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">❖</div><h4>Alam Sekitar</h4><p>Pemeliharaan sumber dan pengurusan kawasan yang memerlukan kawalan pembangunan.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-2-2" aria-labelledby="bento-tab-2-2" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">❖</div><h4>Ke Arah Selangor Mampan</h4><p>Pelaksanaan RSN menyokong hala tuju pembangunan spatial yang lebih teratur, inklusif dan mampan.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Kawasan Sensitif Alam Sekitar</h4><p>Pertimbangan pemeliharaan dan perlindungan kawasan sensitif dalam proses perancangan.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▥</div><h4>Pelaksanaan Tempatan</h4><p>Dasar negeri menjadi rujukan perincian cadangan di peringkat rancangan tempatan.</p></article><div class="suo-bento-next"><button type="button" class="suo-bento-action" onclick="switchTab(3)">Terokai Bab 04 <span aria-hidden="true">↗</span></button></div></div></section></div>
@@ -1065,6 +1177,23 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
     </div>
     <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="chapter-content-card">
+<div class="atlas-sheet-top" aria-label="Lembaran Atlas Digital Bab 04">
+ <div class="atlas-sheet-kicker"><span class="atlas-sheet-point" aria-hidden="true">✦</span><span>ATLAS DIGITAL PERANCANGAN SELANGOR</span><span class="atlas-sheet-serial">LEMBARAN 04 / 05</span></div>
+ <div class="atlas-sheet-heading"><div><span class="atlas-sheet-type">PERANCANGAN TEMPATAN</span><p>RT dan RKK dalam pentadbiran setempat</p></div><div class="atlas-sheet-index">04<small>SEL · GEO</small></div></div>
+ <div class="atlas-feature-map atlas-feature-D" role="img" aria-label="Ilustrasi konseptual atlas perancangan bagi Bab 04; bukan peta sempadan rasmi">
+  <div class="atlas-feature-grid" aria-hidden="true"></div>
+  <svg class="atlas-feature-lines" viewBox="0 0 900 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+   <path d="M-20 126 C95 75 172 167 276 95 S469 31 562 95 S742 147 924 34" fill="none" stroke="#f6d79b" stroke-width="2" stroke-opacity=".85"/>
+   <path d="M-20 147 C120 109 201 184 309 110 S498 49 615 121 S783 141 924 62" fill="none" stroke="#f6d79b" stroke-width="1" stroke-dasharray="5 10" stroke-opacity=".75"/>
+   <path d="M212 14 L305 76 L398 38 L522 106 L660 64 L755 126" fill="none" stroke="#ffe6b2" stroke-width="1.5" stroke-opacity=".62"/>
+   <g fill="#f7d591" stroke="#63162e" stroke-width="2"><circle cx="305" cy="76" r="5"/><circle cx="522" cy="106" r="6"/><circle cx="660" cy="64" r="5"/><circle cx="755" cy="126" r="5"/></g>
+  </svg>
+  <div class="atlas-feature-heading"><span class="atlas-feature-eyebrow">LAPISAN KONSEP · 12 KAWASAN PBT</span><strong>PERANCANGAN TEMPATAN</strong><span class="atlas-feature-caption">DATA • DASAR • RUANG</span></div>
+  <div class="atlas-feature-metric"><span>12</span><small>PBT</small></div>
+  <div class="atlas-feature-north" aria-hidden="true">N<span>↑</span></div>
+ </div>
+ <div class="atlas-sheet-key"><span><i class="atlas-key-maroon"></i>Fokus spatial</span><span><i class="atlas-key-gold"></i>Hierarki perancangan</span><span class="atlas-sheet-footnote">Visual konseptual · Bukan peta rasmi</span></div>
+ </div>
       <nav class="chapter-content-tools" aria-label="Subtopik Bab 04"><span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN BAB 04</span><div class="chapter-content-buttons suo-bento-tabbar" role="tablist" aria-label="Subtopik Bab 04"><button type="button" class="chapter-subnav-btn chapter-subnav-primary" id="bento-tab-3-0" role="tab" aria-selected="true" aria-controls="bento-3-0" onclick="showSuoBento(3,0)">RT & RKK</button><button type="button" class="chapter-subnav-btn" id="bento-tab-3-1" role="tab" aria-selected="false" aria-controls="bento-3-1" onclick="showSuoBento(3,1)">Pelaksanaan PBT</button><button type="button" class="chapter-subnav-btn" id="bento-tab-3-2" role="tab" aria-selected="false" aria-controls="bento-3-2" onclick="showSuoBento(3,2)">Akses Direktori</button></div></nav>
       <div class="chapter-content-rule" aria-hidden="true"></div>
       <div class="panel-body suo-bento-body"><section class="suo-bento-topic active" role="tabpanel" id="bento-3-0" aria-labelledby="bento-tab-3-0" ><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>Rancangan Tempatan (RT) &amp; Rancangan Kawasan Khas (RKK)</h4><p>Dokumen perancangan di peringkat tempatan yang memperincikan hala tuju pembangunan, pengurusan guna tanah dan keperluan kawasan khusus.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="02">02</strong><h4>Jenis Rancangan</h4><p>Rancangan Tempatan dan Rancangan Kawasan Khas</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▤</div><h4>Rancangan Tempatan</h4><p>Memperincikan cadangan guna tanah, intensiti pembangunan dan penyediaan prasarana.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">▥</div><h4>Rancangan Kawasan Khas</h4><p>Menentukan tindakan terperinci bagi kawasan tertentu seperti pemeliharaan warisan dan pembangunan semula.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-3-1" aria-labelledby="bento-tab-3-1" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">▥</div><h4>Pentadbiran Perancangan Tempatan</h4><p>Pihak Berkuasa Tempatan berperanan penting dalam pengurusan kawasan setempat dan penyelarasan pelaksanaan rancangan pemajuan.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="12">12</strong><h4>Pihak Berkuasa Tempatan</h4><p>Pentadbiran kawasan setempat di Selangor</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌖</div><h4>Pengezonan Guna Tanah</h4><p>Panduan pemajuan yang menyelaraskan fungsi guna tanah dengan keperluan setempat.</p></article><article class="suo-bento-tile "><div class="suo-bento-icon" aria-hidden="true">⌘</div><h4>Kemudahan &amp; Infrastruktur</h4><p>Perancangan prasarana serta kemudahan bagi menyokong pembangunan kawasan.</p></article></div></section><section class="suo-bento-topic" role="tabpanel" id="bento-3-2" aria-labelledby="bento-tab-3-2" hidden><div class="suo-bento-grid"><article class="suo-bento-tile suo-bento-wide"><div class="suo-bento-icon" aria-hidden="true">◎</div><h4>Akses Maklumat PBT</h4><p>Terus ke Direktori Pihak Berkuasa Tempatan Selangor untuk mendapatkan portal rasmi dan maklumat setempat.</p></article><article class="suo-bento-tile suo-bento-stat"><strong class="suo-animated-stat" data-value="12">12</strong><h4>Direktori PBT</h4><p>Pautan PBT sedia ada dalam portal</p></article><div class="suo-bento-next"><button type="button" class="suo-bento-action" onclick="document.getElementById('pautan-pbt').scrollIntoView({behavior:'smooth',block:'start'})">Lihat Direktori PBT <span aria-hidden="true">↗</span></button></div></div></section></div>
@@ -1080,6 +1209,23 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
     </div>
     <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="chapter-content-card">
+<div class="atlas-sheet-top" aria-label="Lembaran Atlas Digital Bab 05">
+ <div class="atlas-sheet-kicker"><span class="atlas-sheet-point" aria-hidden="true">✦</span><span>ATLAS DIGITAL PERANCANGAN SELANGOR</span><span class="atlas-sheet-serial">LEMBARAN 05 / 05</span></div>
+ <div class="atlas-sheet-heading"><div><span class="atlas-sheet-type">ATLAS DIGITAL · PRATONTON</span><p>SISTEM LPFNS · Akan Datang</p></div><div class="atlas-sheet-index">05<small>SEL · GEO</small></div></div>
+ <div class="atlas-feature-map atlas-feature-E" role="img" aria-label="Ilustrasi konseptual atlas perancangan bagi Bab 05; bukan peta sempadan rasmi">
+  <div class="atlas-feature-grid" aria-hidden="true"></div>
+  <svg class="atlas-feature-lines" viewBox="0 0 900 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+   <path d="M-20 126 C95 75 172 167 276 95 S469 31 562 95 S742 147 924 34" fill="none" stroke="#f6d79b" stroke-width="2" stroke-opacity=".85"/>
+   <path d="M-20 147 C120 109 201 184 309 110 S498 49 615 121 S783 141 924 62" fill="none" stroke="#f6d79b" stroke-width="1" stroke-dasharray="5 10" stroke-opacity=".75"/>
+   <path d="M212 14 L305 76 L398 38 L522 106 L660 64 L755 126" fill="none" stroke="#ffe6b2" stroke-width="1.5" stroke-opacity=".62"/>
+   <g fill="#f7d591" stroke="#63162e" stroke-width="2"><circle cx="305" cy="76" r="5"/><circle cx="522" cy="106" r="6"/><circle cx="660" cy="64" r="5"/><circle cx="755" cy="126" r="5"/></g>
+  </svg>
+  <div class="atlas-feature-heading"><span class="atlas-feature-eyebrow">LAPISAN KONSEP · STATUS PEMBANGUNAN</span><strong>ATLAS DIGITAL · PRATONTON</strong><span class="atlas-feature-caption">DATA • DASAR • RUANG</span></div>
+  <div class="atlas-feature-metric"><span>05</span><small>BAB</small></div>
+  <div class="atlas-feature-north" aria-hidden="true">N<span>↑</span></div>
+ </div>
+ <div class="atlas-sheet-key"><span><i class="atlas-key-maroon"></i>Fokus spatial</span><span><i class="atlas-key-gold"></i>Hierarki perancangan</span><span class="atlas-sheet-footnote">Visual konseptual · Bukan peta rasmi</span></div>
+ </div>
       <nav class="chapter-content-tools" aria-label="Navigasi kandungan Bab 05">
         <span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN</span>
         <div class="chapter-content-buttons">
