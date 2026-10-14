@@ -763,6 +763,128 @@ document.querySelectorAll('.pbt-official-icon img').forEach(function(img){
 });
 </script>
 
+<!-- Pemulihan fungsi bab dan animasi masuk ketika skrol -->
+<script id="suo-restored-tab-core">
+function switchTab(index){
+  const panels=Array.from(document.querySelectorAll('.main-section .content-panel'));
+  const cards=Array.from(document.querySelectorAll('#chapterCarousel .tab-btn'));
+  const topButtons=Array.from(document.querySelectorAll('.tab-nav-btn'));
+  if(!Number.isInteger(index)||index<0||index>=panels.length)return;
+  panels.forEach(function(panel,i){
+    const selected=i===index;
+    panel.classList.toggle('active',selected);
+    panel.setAttribute('aria-hidden',String(!selected));
+  });
+  cards.forEach(function(card,i){
+    card.classList.toggle('active',i===index);
+    card.setAttribute('aria-selected',String(i===index));
+  });
+  topButtons.forEach(function(button,i){
+    button.classList.toggle('active',i===index);
+  });
+  const main=document.querySelector('.main-section');
+  if(main) main.scrollIntoView({
+    behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',
+    block:'start'
+  });
+}
+</script>
+<script id="suo-micro-interactions-script">
+(function(){
+  'use strict';
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion)return;
+  const selectors=[
+    '.stat-intro','.spatial-stage','.spatial-glass-panel',
+    '.pbt-heading','.pbt-card','.tabs-container','.chapter-section-heading',
+    '.content-panel .panel-header','.content-panel .panel-body',
+    '.chapter-concept-art','.footer .container'
+  ];
+  const items=Array.from(document.querySelectorAll(selectors.join(',')));
+  const visible=function(el){
+    const p=el.closest('.content-panel');
+    return !p||p.classList.contains('active');
+  };
+  function replay(el){
+    if(!visible(el))return;
+    el.classList.remove('suo-replaying');
+    void el.offsetWidth;
+    el.classList.add('suo-visible','suo-replaying');
+  }
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('suo-visible')});
+    return;
+  }
+  const observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      const el=entry.target;
+      if(!visible(el)){
+        el.classList.remove('suo-visible','suo-replaying');
+        return;
+      }
+      if(entry.isIntersecting)replay(el);
+      else el.classList.remove('suo-visible','suo-replaying');
+    });
+  },{threshold:0,rootMargin:'-10% 0px -10% 0px'});
+  items.forEach(function(el){
+    el.classList.add('suo-reveal');
+    if(el.classList.contains('pbt-card')){
+      el.style.setProperty('--suo-delay',((Array.prototype.indexOf.call(el.parentElement.children,el)%3)*85)+'ms');
+    }
+    observer.observe(el);
+  });
+  document.documentElement.classList.add('suo-motion-ready');
+
+  // Play an animation again when switching scroll direction in the viewport.
+  let lastY=window.scrollY,dir=0,frame=0;
+  window.addEventListener('scroll',function(){
+    if(frame)return;
+    frame=requestAnimationFrame(function(){
+      frame=0;
+      const y=window.scrollY,diff=y-lastY;
+      lastY=y;
+      if(Math.abs(diff)<4)return;
+      const newDir=diff>0?1:-1;
+      if(dir&&newDir!==dir){
+        items.forEach(function(el){
+          if(!visible(el)||!el.classList.contains('suo-visible'))return;
+          const r=el.getBoundingClientRect();
+          if(r.bottom>innerHeight*.15&&r.top<innerHeight*.85)replay(el);
+        });
+      }
+      dir=newDir;
+    });
+  },{passive:true});
+
+  // Re-trigger on an active chapter; don't hide content on inactive panels forever.
+  const chapterObserver=new MutationObserver(function(records){
+    records.forEach(function(record){
+      const panel=record.target;
+      panel.querySelectorAll('.suo-reveal').forEach(function(el){
+        if(panel.classList.contains('active')){
+          const r=el.getBoundingClientRect();
+          if(r.bottom>0&&r.top<innerHeight)replay(el);
+        }else{
+          el.classList.remove('suo-visible','suo-replaying');
+        }
+      });
+    });
+  });
+  document.querySelectorAll('.main-section .content-panel').forEach(function(panel){
+    chapterObserver.observe(panel,{attributes:true,attributeFilter:['class']});
+  });
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.pbt-card,.spatial-glass-panel').forEach(function(el){
+      el.addEventListener('pointermove',function(ev){
+        const r=el.getBoundingClientRect();
+        el.style.setProperty('--suo-x',((ev.clientX-r.left)/r.width*100).toFixed(1)+'%');
+        el.style.setProperty('--suo-y',((ev.clientY-r.top)/r.height*100).toFixed(1)+'%');
+      },{passive:true});
+    });
+  }
+})();
+</script>
+
 <!-- SCRIPT KARUSEL SINEMATIK -->
 <script id="selangor-chapter-carousel-script">
 (function(){
