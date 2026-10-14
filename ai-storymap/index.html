@@ -37,12 +37,6 @@ button{cursor:pointer;font:inherit}
 .hero h1{font-size:clamp(34px,4.5vw,52px);font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-1px}
 .hero p{font-size:17px;line-height:1.7;color:#ffeede;margin-bottom:30px;max-width:800px}
 
-/* Interactive Tabs Section */
-.main-section{padding:50px 0;position:relative;z-index:1}
-.tabs-container{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);padding:15px;border-radius:16px;border:1px solid var(--border);box-shadow:0 8px 25px rgba(0,0,0,.03);position:relative;z-index:2}
-.tab-btn{flex:1;min-width:160px;padding:14px 18px;background:rgba(255,255,255,0.8) !important;border:1px solid var(--border);border-radius:12px;font-weight:700;color:var(--muted);text-align:center;transition:.25s;position:relative;z-index:2}
-.tab-btn.active{background:#8b1b2f !important;color:#fff !important;border-color:var(--primary);box-shadow:0 6px 20px rgba(139,27,47,.25)}
-
 /* Content Panel */
 .content-panel{background:rgba(255,255,255,0.93);backdrop-filter:blur(6px);border-radius:20px;border:1px solid var(--border);padding:45px;box-shadow:0 15px 40px rgba(0,0,0,.04);display:none;animation:fadeIn .4s ease;position:relative;z-index:2}
 .content-panel.active{display:block}
@@ -56,7 +50,6 @@ button{cursor:pointer;font:inherit}
 .footer{background:var(--primary-dark);color:#ffd8af;padding:40px 0;text-align:center;font-size:13px;margin-top:60px;position:relative;z-index:2}
 
 @media(max-width:768px){
-  .tabs-container{flex-direction:column}
   .content-panel{padding:25px}
 }
 </style>
@@ -218,10 +211,8 @@ button{cursor:pointer;font:inherit}
 @keyframes globeFloat{50%{transform:translateY(-10px) rotate(3deg)}}@keyframes chipFloat{50%{transform:translateY(-8px)}}@media(max-width:1080px){.header .head{flex-wrap:wrap;padding:10px 0}.top-nav{order:3;width:100%;justify-content:center}.lang-switch{margin-left:auto}.hero-layout{gap:22px}}@media(max-width:760px){.hero{padding:38px 0}.hero-layout{grid-template-columns:1fr}.hero-media{height:350px}.hero-bg-video{object-position:center}.hero-tint{background:linear-gradient(180deg,#641626a6,#902f375b)}.hero h1{font-size:clamp(34px,8vw,49px)}}@media(prefers-reduced-motion:reduce){.visual-globe,.floating-chip{animation:none}}
 </style>
 <style id="suo-hero-ui-fixes">
-/* Clearer video: remove the strong red tint without changing footage */
 .hero .hero-tint{background:linear-gradient(90deg,rgba(25,17,27,.12),rgba(25,17,27,.015) 60%,transparent)!important}
 .hero .hero-bg-video{filter:brightness(1.07) saturate(1.04)}
-/* Bottom aligned CTA row to avoid text baked into the background video */
 .hero .hero-layout{display:flex!important;align-items:flex-end!important;justify-content:flex-start!important;min-height:524px!important;width:100%}
 .hero .hero-copy{margin-left:0!important;margin-right:auto!important;max-width:100%!important}
 .hero .hero-actions{display:flex!important;align-items:center!important;justify-content:flex-start!important;flex-wrap:wrap!important;gap:12px!important;margin:0!important;padding:12px!important;border-radius:15px;background:rgba(42,18,29,.40);backdrop-filter:blur(5px);text-shadow:none}
@@ -270,7 +261,6 @@ html{scroll-behavior:smooth}
 @media(max-width:690px){.top-nav{justify-content:flex-start;gap:2px}.top-nav button,.top-nav .section-nav-btn{font-size:11px;padding:9px 8px!important}#pautan-pbt .pbt-heading h2{font-size:27px}}
 </style>
 <style id="suo-micro-interactions-style">
-/* Progressive enhancement: hidden only once observer is ready. */
 html.suo-motion-ready .suo-reveal:not(.suo-visible){opacity:0;translate:0 25px}
 .suo-reveal{transition:none;will-change:auto}
 html.suo-motion-ready .suo-reveal.suo-visible{opacity:1;translate:0 0}
@@ -328,32 +318,184 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 .pbt-official-icon .pbt-logo-fallback{display:none!important;visibility:hidden!important;background:transparent!important}
 .pbt-heading .section-eyebrow,.spatial-heading .section-eyebrow{text-transform:uppercase}
 </style>
-<style id="selangor-chapter-carousel-style">
-.chapter-section-heading{text-align:center;margin:0 auto 28px;max-width:800px}
-.chapter-section-heading .section-eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:900}
-.chapter-section-heading h2{font-size:clamp(28px,3vw,42px);line-height:1.2;letter-spacing:-.035em;color:#7c1c2b;margin:13px 0}
-.chapter-section-heading p{font-size:14px;color:#796972;line-height:1.7;margin:0 auto}
-.chapter-carousel-shell{display:flex;align-items:center;gap:12px;margin-bottom:27px;min-width:0}
-.chapter-carousel-track.tabs-container{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:stretch;gap:13px;flex:1;min-width:0;margin:0;padding:12px;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;scroll-padding-inline:12px;overscroll-behavior-x:contain;scrollbar-width:none;touch-action:pan-x pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
-.chapter-carousel-track.tabs-container::-webkit-scrollbar{display:none}
-.chapter-carousel-track.tabs-container.chapter-dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
-.chapter-carousel-track .tab-btn{flex:0 0 clamp(210px,24vw,270px)!important;min-width:0;min-height:108px!important;padding:20px 19px!important;display:flex;justify-content:flex-start;align-items:center;text-align:left;white-space:normal;font-size:14px;line-height:1.45;border:1px solid #eeddd9;background:#fff!important;color:#722538;border-radius:17px;scroll-snap-align:start;box-shadow:0 5px 15px #671b3010;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s}
-.chapter-carousel-track .tab-btn:hover{border-color:#d7ac65;transform:translateY(-2px)}
-.chapter-carousel-track .tab-btn.active,.chapter-carousel-track .tab-btn[aria-selected="true"]{background:linear-gradient(135deg,#8b1b2f,#651729)!important;color:#fff!important;border-color:#b78a45;box-shadow:0 11px 24px #6d182b30}
-.chapter-carousel-arrow{flex:0 0 42px;width:42px;height:48px;display:grid;place-items:center;border-radius:13px;background:#fff6e4;border:1px solid #dba951;color:#8b1b2f;font-size:24px;font-weight:800;cursor:pointer;transition:transform .22s,background .22s}
-.chapter-carousel-arrow:hover:not(:disabled){transform:translateY(-2px);background:#f2c64c}
-.chapter-carousel-arrow:disabled{opacity:.35;cursor:default}
-.chapter-carousel-track:focus-visible,.chapter-carousel-track .tab-btn:focus-visible,.chapter-carousel-arrow:focus-visible{outline:3px solid #d5a134;outline-offset:2px}
-.main-section .content-panel{scroll-margin-top:115px}
-@media(max-width:760px){.chapter-carousel-shell{gap:6px}.chapter-carousel-arrow{flex-basis:33px;width:33px;height:43px;font-size:19px}.chapter-carousel-track.tabs-container{padding:8px;gap:9px}.chapter-carousel-track .tab-btn{flex-basis:min(73vw,245px)!important;min-height:95px!important;padding:14px!important;font-size:12px}.chapter-section-heading{margin-bottom:20px}}
-@media(prefers-reduced-motion:reduce){.chapter-carousel-track.tabs-container{scroll-behavior:auto}.chapter-carousel-track .tab-btn,.chapter-carousel-arrow{transition:none!important}}
+
+<!-- KAD KARUSEL SINEMATIK BERLATARBELAKANG IMEJ AI -->
+<style id="chapter-cinematic-final">
+.chapter-section-heading {
+  text-align: center;
+  max-width: 880px;
+  margin: 0 auto 34px;
+}
+.chapter-section-heading .section-eyebrow {
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #b43646;
+}
+.chapter-section-heading h2 {
+  color: #7c1c2b;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.2;
+  margin: 14px 0;
+  font-weight: 800;
+}
+.chapter-section-heading p {
+  color: #75636b;
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.chapter-carousel-shell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.chapter-carousel-track.tabs-container {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 15px;
+  padding: 12px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.chapter-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.chapter-carousel-track.chapter-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.chapter-carousel-track .tab-btn {
+  position: relative;
+  flex: 0 0 290px !important;
+  min-width: 290px !important;
+  height: 190px !important;
+  padding: 24px !important;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  text-align: left;
+
+  color: #fff !important;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.4;
+  text-shadow: 0 2px 12px rgba(0,0,0,.85);
+
+  border-radius: 19px;
+  border: 1px solid rgba(255,215,130,.55);
+
+  background-color: #591b31 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+
+  scroll-snap-align: start;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(62,17,33,.22);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  cursor: pointer;
+}
+
+.chapter-carousel-track .chapter-bg-01 {
+  background-image: linear-gradient(180deg, rgba(35,9,24,.15), rgba(38,10,26,.9)), url("./chapter-bg/bab01-ai.jpg") !important;
+}
+.chapter-carousel-track .chapter-bg-02 {
+  background-image: linear-gradient(180deg, rgba(35,9,24,.15), rgba(38,10,26,.9)), url("./chapter-bg/bab02-ai.jpg") !important;
+}
+.chapter-carousel-track .chapter-bg-03 {
+  background-image: linear-gradient(180deg, rgba(35,9,24,.15), rgba(38,10,26,.9)), url("./chapter-bg/bab03-ai.jpg") !important;
+}
+.chapter-carousel-track .chapter-bg-04 {
+  background-image: linear-gradient(180deg, rgba(35,9,24,.15), rgba(38,10,26,.9)), url("./chapter-bg/bab04-ai.jpg") !important;
+}
+.chapter-carousel-track .chapter-bg-05 {
+  background-image: linear-gradient(180deg, rgba(35,9,24,.15), rgba(38,10,26,.9)), url("./chapter-bg/bab05-ai.jpg") !important;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .chapter-carousel-track .tab-btn:hover {
+    transform: translateY(-7px) scale(1.025);
+    border-color: #ffd47e !important;
+    box-shadow: 0 22px 45px rgba(76,19,39,.36), 0 0 22px rgba(242,198,76,.25);
+  }
+}
+
+.chapter-carousel-track .tab-btn.active,
+.chapter-carousel-track .tab-btn[aria-selected="true"] {
+  color: #fff !important;
+  border: 2px solid #f2c64c !important;
+  box-shadow: 0 17px 38px rgba(87,20,43,.36), 0 0 0 2px rgba(242,198,76,.3), 0 0 25px rgba(242,198,76,.2);
+}
+
+.chapter-carousel-arrow {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 52px;
+  border-radius: 13px;
+  border: 1px solid #d9ac56;
+  color: #8b1b2f;
+  background: #fff4db;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform .22s, background .22s;
+}
+.chapter-carousel-arrow:hover:not(:disabled) {
+  background: #f2c64c;
+  transform: translateY(-2px);
+}
+.chapter-carousel-arrow:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.main-section .content-panel.active {
+  display: block;
+  animation: cinematicPanelReveal .55s ease both;
+}
+
+@keyframes cinematicPanelReveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width:768px) {
+  .chapter-carousel-track .tab-btn {
+    flex-basis: 250px !important;
+    min-width: 250px !important;
+    height: 175px !important;
+    font-size: 16px;
+  }
+  .chapter-carousel-arrow {
+    flex-basis: 35px;
+    width: 35px;
+  }
+}
 </style>
+
 <style id="chapter-ai-visual-styles">
-.chapter-carousel-track .tab-btn{--chapter-rx:0deg;--chapter-ry:0deg;--chapter-glow-x:50%;--chapter-glow-y:50%;position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .24s,box-shadow .3s,border-color .3s!important}
-.chapter-carousel-track .tab-btn::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(160px circle at var(--chapter-glow-x) var(--chapter-glow-y),rgba(255,215,122,.23),transparent 75%);opacity:0;transition:opacity .25s}
-@media(hover:hover) and (pointer:fine){.chapter-carousel-track .tab-btn:hover,.chapter-carousel-track .tab-btn:focus-visible{transform:perspective(730px) rotateX(var(--chapter-rx)) rotateY(var(--chapter-ry)) translateY(-5px)!important;border-color:#e9b85f!important;box-shadow:0 16px 32px #67243c36,0 0 0 2px #eec16b55,0 0 22px #eec16b35!important}.chapter-carousel-track .tab-btn:hover::before{opacity:1}.chapter-carousel-track.chapter-dragging .tab-btn{transform:none!important}}
-.main-section .content-panel.active{animation:chapter-panel-entrance .58s cubic-bezier(.2,.75,.2,1) both}
-@keyframes chapter-panel-entrance{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .chapter-detail-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.9fr);gap:clamp(20px,3vw,42px);align-items:center}
 .chapter-detail-copy{display:flex;flex-direction:column;align-items:flex-start;gap:23px;min-width:0}
 .chapter-detail-copy p{margin:0;line-height:1.85}
@@ -362,11 +504,7 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 .chapter-concept-art figcaption{font-size:10px;letter-spacing:.12em;font-weight:900;color:#8b1b2f;padding:12px 7px 5px}
 .chapter-panel-action{display:inline-flex;align-items:center;justify-content:center;gap:13px;padding:13px 18px;background:#8b1b2f;color:#fff;border:1px solid #8b1b2f;border-radius:11px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 8px 18px #761e3430;transition:background .24s,transform .24s,box-shadow .24s}
 .chapter-panel-action:hover{background:#a92e43;transform:translateY(-3px);box-shadow:0 12px 24px #761e3450}
-.chapter-panel-action:focus-visible{outline:3px solid #e7ba55;outline-offset:3px}
-.chapter-concept-art.chapter-art-enter{animation:chapter-art-reveal .7s cubic-bezier(.2,.7,.2,1) both}
-@keyframes chapter-art-reveal{from{opacity:0;transform:translateY(23px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:820px){.chapter-detail-grid{grid-template-columns:1fr}.chapter-concept-art{width:100%;max-width:620px}}
-@media(prefers-reduced-motion:reduce){.main-section .content-panel.active,.chapter-concept-art.chapter-art-enter{animation:none!important}.chapter-carousel-track .tab-btn,.chapter-panel-action{transition:none!important}.chapter-carousel-track .tab-btn:hover,.chapter-panel-action:hover{transform:none!important}}
 </style>
 </head>
 <body>
@@ -443,24 +581,44 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 <a class="pbt-card" href="https://www.mphs.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Hulu Selangor"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mphs.png" data-favicon="https://www.google.com/s2/favicons?domain=mphs.gov.my&sz=128" alt="Logo MPHS" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPHS</span></span><span class="pbt-label"><strong>MPHS</strong><small>Majlis Perbandaran Hulu Selangor</small></span><span class="pbt-arrow">↗</span></a>
 <a class="pbt-card" href="https://www.mdsb.gov.my/index.php/ms/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Daerah Sabak Bernam"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mdsb.png" data-favicon="https://www.google.com/s2/favicons?domain=mdsb.gov.my&sz=128" alt="Logo MDSB" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MDSB</span></span><span class="pbt-label"><strong>MDSB</strong><small>Majlis Daerah Sabak Bernam</small></span><span class="pbt-arrow">↗</span></a>
 </div></div></section>
+
+<!-- SEKSYEN UTAMA: KAD KARUSEL SINEMATIK & PANEL BAB -->
 <main class="container main-section">
   <div class="chapter-section-heading">
     <span class="section-eyebrow">Rancangan Pemajuan Selangor</span>
     <h2>Dokumentasi &amp; Bab Perancangan Negeri</h2>
-    <p>Pilih bab untuk meneroka dokumentasi, dasar dan maklumat perancangan Negeri Selangor.</p>
-  </div>
-  <div class="chapter-carousel-shell">
-    <button class="chapter-carousel-arrow chapter-prev" type="button" aria-label="Leret bab ke kiri" onclick="moveChapterCarousel(-1)">&#8592;</button>
-    <div class="tabs-container chapter-carousel-track" id="chapterCarousel" role="tablist" aria-label="Lima bab perancangan negeri" tabindex="0">
-      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-0" id="chapter-tab-0" onclick="switchTab(0)">01. Masa Hadapan</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-1" id="chapter-tab-1" onclick="switchTab(1)">02. Arah Tuju &amp; Hierarki</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-2" id="chapter-tab-2" onclick="switchTab(2)">03. RSN Selangor 2035</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-3" id="chapter-tab-3" onclick="switchTab(3)">04. RT &amp; RKK</button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-4" id="chapter-tab-4" onclick="switchTab(4)">05. Sistem Laporan</button>
-    </div>
-    <button class="chapter-carousel-arrow chapter-next" type="button" aria-label="Leret bab ke kanan" onclick="moveChapterCarousel(1)">&#8594;</button>
+    <p>Terokai lima bab utama perancangan Negeri Selangor melalui navigasi visual interaktif yang merangkumi dasar, hala tuju pembangunan dan dokumentasi spatial negeri.</p>
   </div>
 
+  <div class="chapter-carousel-shell">
+    <button class="chapter-carousel-arrow chapter-prev" type="button" aria-label="Leret ke kiri" onclick="moveChapterCarousel(-1)">&#10094;</button>
+
+    <div class="tabs-container chapter-carousel-track" id="chapterCarousel" role="tablist" aria-label="Dokumentasi dan Bab Perancangan Negeri" tabindex="0">
+      <button class="tab-btn active chapter-bg-01" id="chapter-tab-0" role="tab" aria-controls="panel-0" aria-selected="true" onclick="switchTab(0)">
+        01. Rancangan Selangor, Masa Hadapan
+      </button>
+
+      <button class="tab-btn chapter-bg-02" id="chapter-tab-1" role="tab" aria-controls="panel-1" aria-selected="false" onclick="switchTab(1)">
+        02. Arah Tuju &amp; Hierarki
+      </button>
+
+      <button class="tab-btn chapter-bg-03" id="chapter-tab-2" role="tab" aria-controls="panel-2" aria-selected="false" onclick="switchTab(2)">
+        03. RSN Selangor 2035
+      </button>
+
+      <button class="tab-btn chapter-bg-04" id="chapter-tab-3" role="tab" aria-controls="panel-3" aria-selected="false" onclick="switchTab(3)">
+        04. RT &amp; RKK
+      </button>
+
+      <button class="tab-btn chapter-bg-05" id="chapter-tab-4" role="tab" aria-controls="panel-4" aria-selected="false" onclick="switchTab(4)">
+        05. Sistem Laporan
+      </button>
+    </div>
+
+    <button class="chapter-carousel-arrow chapter-next" type="button" aria-label="Leret ke kanan" onclick="moveChapterCarousel(1)">&#10095;</button>
+  </div>
+
+  <!-- PANEL KANDUNGAN BAB 01 HINGGA 05 -->
   <div class="content-panel active" id="panel-0">
     <div class="panel-header">
       <div class="panel-num">01</div>
@@ -472,9 +630,9 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
   <div class="content-panel" id="panel-1">
     <div class="panel-header">
       <div class="panel-num">02</div>
-      <h3>Arah Tuju & Hierarki Pemajuan</h3>
+      <h3>Arah Tuju &amp; Hierarki Pemajuan</h3>
     </div>
-    <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Meneroka maklumat mengenai perundangan, hala tuju serta peringkat hierarki Rancangan Pemajuan Selangor. Pengenalan & Kerangka Perundangan negeri menetapkan hierarki perancangan fizikal negara dan negeri secara bersepadu.</p><button type="button" class="chapter-panel-action" onclick="switchTab(2)">Lihat Bab RSN 2035 <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Rangkaian dasar, institusi dan perancangan wilayah"><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid1" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg1)"/><rect width="620" height="390" rx="17" fill="url(#grid1)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><g stroke="#f8d78e" stroke-width="3" fill="none"><path d="M84 91L251 64L361 157L520 88M84 91L135 267L310 317L520 88M251 64L310 317L361 157L536 283L135 267"/></g><g fill="#883148" stroke="#ffe9b4" stroke-width="4"><circle cx="84" cy="91" r="23"/><circle cx="251" cy="64" r="25"/><circle cx="361" cy="157" r="35"/><circle cx="520" cy="88" r="21"/><circle cx="135" cy="267" r="27"/><circle cx="310" cy="317" r="29"/><circle cx="536" cy="283" r="22"/></g><g fill="#ffe7aa"><circle cx="84" cy="91" r="7"/><circle cx="251" cy="64" r="8"/><circle cx="361" cy="157" r="12"/><circle cx="520" cy="88" r="7"/><circle cx="135" cy="267" r="9"/><circle cx="310" cy="317" r="9"/><circle cx="536" cy="283" r="7"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>HIERARKI PERANCANGAN</figcaption></figure></div></div>
+    <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Meneroka maklumat mengenai perundangan, hala tuju serta peringkat hierarki Rancangan Pemajuan Selangor. Pengenalan &amp; Kerangka Perundangan negeri menetapkan hierarki perancangan fizikal negara dan negeri secara bersepadu.</p><button type="button" class="chapter-panel-action" onclick="switchTab(2)">Lihat Bab RSN 2035 <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Rangkaian dasar, institusi dan perancangan wilayah"><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid1" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg1)"/><rect width="620" height="390" rx="17" fill="url(#grid1)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><g stroke="#f8d78e" stroke-width="3" fill="none"><path d="M84 91L251 64L361 157L520 88M84 91L135 267L310 317L520 88M251 64L310 317L361 157L536 283L135 267"/></g><g fill="#883148" stroke="#ffe9b4" stroke-width="4"><circle cx="84" cy="91" r="23"/><circle cx="251" cy="64" r="25"/><circle cx="361" cy="157" r="35"/><circle cx="520" cy="88" r="21"/><circle cx="135" cy="267" r="27"/><circle cx="310" cy="317" r="29"/><circle cx="536" cy="283" r="22"/></g><g fill="#ffe7aa"><circle cx="84" cy="91" r="7"/><circle cx="251" cy="64" r="8"/><circle cx="361" cy="157" r="12"/><circle cx="520" cy="88" r="7"/><circle cx="135" cy="267" r="9"/><circle cx="310" cy="317" r="9"/><circle cx="536" cy="283" r="7"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>HIERARKI PERANCANGAN</figcaption></figure></div></div>
   </div>
 
   <div class="content-panel" id="panel-2">
@@ -488,9 +646,9 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
   <div class="content-panel" id="panel-3">
     <div class="panel-header">
       <div class="panel-num">04</div>
-      <h3>Rancangan Tempatan (RT) & Rancangan Kawasan Khas (RKK)</h3>
+      <h3>Rancangan Tempatan (RT) &amp; Rancangan Kawasan Khas (RKK)</h3>
     </div>
-    <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Pengurusan & Hierarki Perancangan Fizikal Pihak Berkuasa Tempatan (PBT) Negeri Selangor. Melibatkan perincian cadangan pemajuan di peringkat tempatan bagi setiap PBT di Selangor.</p><button type="button" class="chapter-panel-action" onclick="document.getElementById('pautan-pbt').scrollIntoView({behavior:'smooth',block:'start'})">Lihat Direktori PBT <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Zon perancangan tempatan dan rangkaian PBT"><defs><linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid3" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg3)"/><rect width="620" height="390" rx="17" fill="url(#grid3)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><g fill="#8b3044" stroke="#ffe2a5" stroke-width="3"><path d="M89 95L204 50L302 92L266 194L148 221Z"/><path d="M302 92L393 62L507 130L447 237L334 207L266 194Z"/><path d="M148 221L266 194L334 207L321 324L194 336L108 279Z"/><path d="M334 207L447 237L529 293L452 348L321 324Z"/></g><g fill="none" stroke="#ffd998" stroke-width="2.6"><path d="M192 124L380 134L422 283L231 267Z"/><path d="M192 124L231 267"/></g><g fill="#ffe7af"><circle cx="192" cy="124" r="10"/><circle cx="380" cy="134" r="10"/><circle cx="422" cy="283" r="10"/><circle cx="231" cy="267" r="10"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>RANCANGAN TEMPATAN</figcaption></figure></div></div>
+    <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Pengurusan &amp; Hierarki Perancangan Fizikal Pihak Berkuasa Tempatan (PBT) Negeri Selangor. Melibatkan perincian cadangan pemajuan di peringkat tempatan bagi setiap PBT di Selangor.</p><button type="button" class="chapter-panel-action" onclick="document.getElementById('pautan-pbt').scrollIntoView({behavior:'smooth',block:'start'})">Lihat Direktori PBT <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Zon perancangan tempatan dan rangkaian PBT"><defs><linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid3" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg3)"/><rect width="620" height="390" rx="17" fill="url(#grid3)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><g fill="#8b3044" stroke="#ffe2a5" stroke-width="3"><path d="M89 95L204 50L302 92L266 194L148 221Z"/><path d="M302 92L393 62L507 130L447 237L334 207L266 194Z"/><path d="M148 221L266 194L334 207L321 324L194 336L108 279Z"/><path d="M334 207L447 237L529 293L452 348L321 324Z"/></g><g fill="none" stroke="#ffd998" stroke-width="2.6"><path d="M192 124L380 134L422 283L231 267Z"/><path d="M192 124L231 267"/></g><g fill="#ffe7af"><circle cx="192" cy="124" r="10"/><circle cx="380" cy="134" r="10"/><circle cx="422" cy="283" r="10"/><circle cx="231" cy="267" r="10"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>RANCANGAN TEMPATAN</figcaption></figure></div></div>
   </div>
 
   <div class="content-panel" id="panel-4">
@@ -500,7 +658,6 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
     </div>
     <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Platform digital berpusat bagi menyelaraskan pengurusan laporan dan data perancangan fizikal Negeri Selangor.</p><button type="button" class="chapter-panel-action" onclick="switchTab(0)">Kembali ke Bab 01 <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Analitik spatial dan pemantauan data perancangan"><defs><linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid4" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg4)"/><rect width="620" height="390" rx="17" fill="url(#grid4)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><rect x="59" y="45" width="502" height="300" rx="20" fill="#351527" stroke="#ffe4a9" stroke-width="3"/><rect x="80" y="66" width="460" height="40" rx="7" fill="#9a3d53"/><g fill="#f7d48d"><circle cx="103" cy="86" r="7"/><circle cx="128" cy="86" r="7"/><circle cx="153" cy="86" r="7"/></g><rect x="83" y="121" width="207" height="204" rx="11" fill="#703049"/><path d="M107 274L151 220L177 241L218 160L269 198" fill="none" stroke="#f9d995" stroke-width="8" stroke-linecap="round"/><rect x="305" y="121" width="234" height="95" rx="10" fill="#703049"/><g fill="#f7d48d"><rect x="324" y="176" width="26" height="25"/><rect x="362" y="154" width="26" height="47"/><rect x="400" y="141" width="26" height="60"/><rect x="438" y="159" width="26" height="42"/><rect x="476" y="134" width="26" height="67"/></g><rect x="305" y="229" width="234" height="96" rx="10" fill="#703049"/><g fill="#ffe0a5"><rect x="324" y="246" width="165" height="9" rx="4"/><rect x="324" y="268" width="195" height="8" rx="4" opacity=".66"/><rect x="324" y="290" width="137" height="8" rx="4" opacity=".45"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>DASHBOARD DIGITAL</figcaption></figure></div></div>
   </div>
-
 </main>
 
 <footer class="footer">
@@ -511,28 +668,9 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 
 <!-- Pustaka Leaflet JS untuk inisialisasi peta GIS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script>
-// Peta Leaflet dinyahaktifkan sementara: bekas ini dikhaskan untuk peta masa depan.\nfunction switchTab(index) {
-  const panels = document.querySelectorAll('.content-panel');
-  const buttons = document.querySelectorAll('.tab-btn');
-  const navButtons = document.querySelectorAll('.tab-nav-btn');
-
-  panels.forEach((p, i) => {
-    p.classList.toggle('active', i === index);
-  });
-  buttons.forEach((b, i) => {
-    b.classList.toggle('active', i === index);
-  });
-  navButtons.forEach((nb, i) => {
-    nb.classList.toggle('active', i === index);
-  });
-
-  document.querySelector('.main-section')?.scrollIntoView({behavior:'smooth',block:'start'});
-}
-</script>
-
 <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑<span>ATAS</span></button>
 <script>(function(){const b=document.getElementById('backToTop');const update=()=>b.classList.toggle('show',window.scrollY>380);window.addEventListener('scroll',update,{passive:true});update();})();</script>
+
 <script id="suo-language-switch-active">
 (function(){
  const translations=[
@@ -578,6 +716,7 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
  window.setLang('ms');
 })();
 </script>
+
 <script id="suo-section-navigation">
 function navigateSection(id,button){
  const target=document.getElementById(id);
@@ -595,125 +734,8 @@ document.querySelectorAll('.tab-nav-btn').forEach(btn=>btn.addEventListener('cli
  this.classList.add('section-active');
 }));
 </script>
-<script id="suo-micro-interactions-script">
-(function(){
-  'use strict';
-  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealSelectors=[
-    '.stat-intro','.spatial-stage','.spatial-glass-panel',
-    '.pbt-heading','.pbt-card','.tabs-container',
-    '.content-panel .panel-header','.content-panel .panel-body',
-    '.footer .container'
-  ];
-  const items=Array.from(document.querySelectorAll(revealSelectors.join(',')));
-  if(!reduceMotion && 'IntersectionObserver' in window){
-    // Persistent observer: entering from either direction always starts a NEW animation.
-    // Animations are reset as soon as the element leaves the central viewing band.
-    const observer=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        const el=entry.target;
-        const panel=el.closest('.content-panel');
-        if(panel && !panel.classList.contains('active')){
-          el.classList.remove('suo-visible','suo-replaying');
-          return;
-        }
-        if(entry.isIntersecting){
-          replay(el);
-        }else{
-          el.classList.remove('suo-visible','suo-replaying');
-        }
-      });
-    },{threshold:0,rootMargin:'-12% 0px -12% 0px'});
 
-    function replay(el){
-      // An explicit animation restart; never unobserve after the first reveal.
-      el.classList.remove('suo-replaying');
-      void el.offsetWidth;
-      el.classList.add('suo-visible','suo-replaying');
-    }
-
-    items.forEach(function(el){
-      el.classList.add('suo-reveal');
-      if(el.classList.contains('pbt-card')){
-        el.style.setProperty('--suo-delay',((Array.from(el.parentElement.children).indexOf(el)%3)*85)+'ms');
-      }
-      observer.observe(el);
-    });
-    document.documentElement.classList.add('suo-motion-ready');
-
-    // If the reader changes scroll direction while a section is still visible,
-    // replay it once on the new direction. Don't restart on every scroll event.
-    let lastY=window.scrollY;
-    let direction=0;
-    let raf=0;
-    window.addEventListener('scroll',function(){
-      if(raf)return;
-      raf=requestAnimationFrame(function(){
-        raf=0;
-        const nextY=window.scrollY;
-        const diff=nextY-lastY;
-        lastY=nextY;
-        if(Math.abs(diff)<3)return;
-        const current=diff>0?1:-1;
-        if(direction && current!==direction){
-          items.forEach(function(el){
-            const panel=el.closest('.content-panel');
-            if(panel && !panel.classList.contains('active'))return;
-            const r=el.getBoundingClientRect();
-            const withinBand=r.bottom>window.innerHeight*.20 && r.top<window.innerHeight*.80;
-            if(withinBand && el.classList.contains('suo-visible'))replay(el);
-          });
-        }
-        direction=current;
-      });
-    },{passive:true});
-
-    // Switching tabs resets the inactive content. New content replays on view.
-    if('MutationObserver' in window){
-      const tabObserver=new MutationObserver(function(){
-        document.querySelectorAll('.content-panel').forEach(function(panel){
-          if(!panel.classList.contains('active')){
-            panel.querySelectorAll('.suo-reveal').forEach(function(el){
-              el.classList.remove('suo-visible','suo-replaying');
-            });
-          }else{
-            panel.querySelectorAll('.suo-reveal').forEach(function(el){
-              const rect=el.getBoundingClientRect();
-              if(rect.bottom>0 && rect.top<window.innerHeight)replay(el);
-            });
-          }
-        });
-      });
-      document.querySelectorAll('.content-panel').forEach(function(panel){
-        tabObserver.observe(panel,{attributes:true,attributeFilter:['class']});
-      });
-    }
-  }
-  if(reduceMotion || !window.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
-  document.querySelectorAll('.pbt-card,.spatial-glass-panel').forEach(function(card){
-    let frame=0;
-    card.addEventListener('pointermove',function(ev){
-      if(frame)return;
-      const x=ev.clientX,y=ev.clientY;
-      frame=requestAnimationFrame(function(){
-        const rect=card.getBoundingClientRect();
-        card.style.setProperty('--suo-x',((x-rect.left)/rect.width*100).toFixed(1)+'%');
-        card.style.setProperty('--suo-y',((y-rect.top)/rect.height*100).toFixed(1)+'%');
-        frame=0;
-      });
-    },{passive:true});
-    card.addEventListener('pointerleave',function(){
-      if(frame){cancelAnimationFrame(frame);frame=0}
-      card.style.setProperty('--suo-x','50%');
-      card.style.setProperty('--suo-y','50%');
-    },{passive:true});
-  });
-})();
-</script>
 <script id="pbt-local-logo-loader">
-/* Use an uploaded official local logo if available; otherwise try the favicon.
-   If both fail (or the favicon is a tiny default), retain the visible PBT monogram.
-   This avoids broken image tiles while preserving the original PBT links. */
 function pbtLogoFallback(img){
   if(!img.dataset.faviconAttempted){
     img.dataset.faviconAttempted='1';
@@ -740,122 +762,128 @@ document.querySelectorAll('.pbt-official-icon img').forEach(function(img){
   }
 });
 </script>
-<script id="suo-logo-background-cleaner">
-/* Remove light cream/white rectangular backgrounds embedded in the uploaded
-   local PNG images. Keeps original PNG files and the card border unchanged. */
-(function(){
-  document.querySelectorAll('.pbt-official-icon img').forEach(function(img){
-    function clearLightBackdrop(){
-      if(img.dataset.suoBackgroundCleaned || !img.complete || img.naturalWidth < 24)return;
-      const url=img.currentSrc||img.src;
-      if(!url || !/\/ai-storymap\/(?:MBSA%201|MBPJ%20(?:\(1\)|%281%29)|MBSJ|MPAJ|MPKj)\.png(?:[?#]|$)/i.test(url))return;
-      img.dataset.suoBackgroundCleaned='1';
-      try{
-        const canvas=document.createElement('canvas');
-        canvas.width=img.naturalWidth;
-        canvas.height=img.naturalHeight;
-        const ctx=canvas.getContext('2d',{willReadFrequently:true});
-        if(!ctx)return;
-        ctx.drawImage(img,0,0);
-        const image=ctx.getImageData(0,0,canvas.width,canvas.height);
-        const px=image.data;
-        for(let i=0;i<px.length;i+=4){
-          const r=px[i],g=px[i+1],b=px[i+2];
-          const mn=Math.min(r,g,b),mx=Math.max(r,g,b);
-          // A neutral, very light or pale cream pixel is the background.
-          // Preserve saturated/red/gold/green/blue logo artwork.
-          if(mn>=216 && mx-mn<=56){
-            const fade=Math.max(0,Math.min(1,(227-mn)/11));
-            px[i+3]=Math.round(px[i+3]*fade);
-          }
-        }
-        ctx.putImageData(image,0,0);
-        img.src=canvas.toDataURL('image/png');
-      }catch(error){
-        // On any unexpected image security or memory error, keep original logo.
-      }
-    }
-    img.addEventListener('load',clearLightBackdrop);
-    if(img.complete)clearLightBackdrop();
-  });
-})();
-</script>
+
+<!-- SCRIPT KARUSEL SINEMATIK -->
 <script id="selangor-chapter-carousel-script">
 (function(){
- const track=document.getElementById('chapterCarousel');
- if(!track)return;
- const cards=Array.from(track.querySelectorAll('.tab-btn'));
- const prev=document.querySelector('.chapter-prev');
- const next=document.querySelector('.chapter-next');
- const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- let dragged=false,down=false,startX=0,startLeft=0,dist=0;
- function refresh(){
-  const max=Math.max(0,track.scrollWidth-track.clientWidth);
-  if(prev)prev.disabled=track.scrollLeft<=3;
-  if(next)next.disabled=track.scrollLeft>=max-3;
- }
- window.moveChapterCarousel=function(dir){
-  const card=cards[0];const width=card?card.getBoundingClientRect().width+13:240;
-  track.scrollBy({left:dir*width,behavior:prefersReducedMotion?'auto':'smooth'});
- };
- const prior=window.switchTab;
- window.switchTab=function(index){
-  if(typeof prior==='function')prior(index);
-  cards.forEach(function(card,i){card.setAttribute('aria-selected',String(i===index));card.tabIndex=i===index?0:-1});
-  const card=cards[index];
-  if(card){
-   const left=card.offsetLeft-track.offsetLeft;
-   if(left<track.scrollLeft || left+card.offsetWidth>track.scrollLeft+track.clientWidth){
-    track.scrollTo({left:Math.max(0,left-12),behavior:prefersReducedMotion?'auto':'smooth'});
-   }
+  const track = document.getElementById("chapterCarousel");
+  if (!track) return;
+
+  const cards = Array.from(track.querySelectorAll(".tab-btn"));
+  const prev = document.querySelector(".chapter-prev");
+  const next = document.querySelector(".chapter-next");
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const originalSwitchTab = window.switchTab;
+
+  function updateArrows() {
+    const max = track.scrollWidth - track.clientWidth;
+    if (prev) prev.disabled = track.scrollLeft <= 3;
+    if (next) next.disabled = track.scrollLeft >= max - 3;
   }
-  refresh();
- };
- track.addEventListener('keydown',function(ev){
-  if(ev.key!=='ArrowRight'&&ev.key!=='ArrowLeft')return;
-  ev.preventDefault();
-  const current=Math.max(0,cards.findIndex(x=>x.classList.contains('active')));
-  const index=Math.max(0,Math.min(cards.length-1,current+(ev.key==='ArrowRight'?1:-1)));
-  window.switchTab(index);cards[index].focus({preventScroll:true});
- });
- track.addEventListener('pointerdown',function(ev){
-  if(ev.pointerType==='touch'||ev.button!==0)return;
-  down=true;dragged=false;dist=0;startX=ev.clientX;startLeft=track.scrollLeft;
- },{passive:true});
- track.addEventListener('pointermove',function(ev){
-  if(!down)return;
-  dist=ev.clientX-startX;
-  if(Math.abs(dist)>7){
-   dragged=true;track.classList.add('chapter-dragging');
-   track.scrollLeft=startLeft-dist;
+
+  function setActive(index) {
+    cards.forEach((card, i) => {
+      const active = i === index;
+      card.classList.toggle("active", active);
+      card.setAttribute("aria-selected", String(active));
+      card.tabIndex = active ? 0 : -1;
+    });
+
+    const selected = cards[index];
+    if (selected) {
+      const left = selected.offsetLeft - track.offsetLeft;
+      if (left < track.scrollLeft || left + selected.offsetWidth > track.scrollLeft + track.clientWidth) {
+        track.scrollTo({
+          left: Math.max(0, left - 12),
+          behavior: reduced ? "auto" : "smooth"
+        });
+      }
+    }
+    updateArrows();
   }
- },{passive:true});
- function stop(){down=false;track.classList.remove('chapter-dragging');refresh();}
- track.addEventListener('pointerup',stop);
- track.addEventListener('pointercancel',stop);
- window.addEventListener('pointerup',stop);
- track.addEventListener('click',function(ev){
-  if(dragged){ev.preventDefault();ev.stopPropagation();dragged=false}
- },true);
- track.addEventListener('scroll',refresh,{passive:true});
- window.addEventListener('resize',refresh);
- refresh();
+
+  window.switchTab = function (index) {
+    if (!Number.isInteger(index) || index < 0 || index >= cards.length) return;
+
+    if (typeof originalSwitchTab === "function") {
+      originalSwitchTab(index);
+    } else {
+      document.querySelectorAll(".content-panel").forEach((panel, i) => {
+        panel.classList.toggle("active", i === index);
+      });
+      document.querySelectorAll(".tab-nav-btn").forEach((button, i) => {
+        button.classList.toggle("active", i === index);
+      });
+    }
+    setActive(index);
+  };
+
+  window.moveChapterCarousel = function (direction) {
+    const width = cards[0] ? cards[0].getBoundingClientRect().width + 15 : 305;
+    track.scrollBy({
+      left: direction * width,
+      behavior: reduced ? "auto" : "smooth"
+    });
+  };
+
+  track.addEventListener("keydown", function (event) {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    const activeIndex = Math.max(0, cards.findIndex(card => card.classList.contains("active")));
+    const movement = event.key === "ArrowRight" ? 1 : -1;
+    const index = Math.min(cards.length - 1, Math.max(0, activeIndex + movement));
+    window.switchTab(index);
+    cards[index].focus({ preventScroll: true });
+  });
+
+  let isDown = false;
+  let startX = 0;
+  let startScroll = 0;
+  let dragged = false;
+
+  track.addEventListener("pointerdown", function (event) {
+    if (event.pointerType === "touch" || event.button !== 0) return;
+    isDown = true;
+    dragged = false;
+    startX = event.clientX;
+    startScroll = track.scrollLeft;
+  });
+
+  track.addEventListener("pointermove", function (event) {
+    if (!isDown) return;
+    const distance = event.clientX - startX;
+    if (Math.abs(distance) > 7) {
+      dragged = true;
+      track.classList.add("chapter-dragging");
+      track.scrollLeft = startScroll - distance;
+    }
+  });
+
+  function stopDrag() {
+    isDown = false;
+    track.classList.remove("chapter-dragging");
+    updateArrows();
+  }
+
+  track.addEventListener("pointerup", stopDrag);
+  track.addEventListener("pointercancel", stopDrag);
+  window.addEventListener("pointerup", stopDrag);
+
+  track.addEventListener("click", function (event) {
+    if (dragged) {
+      event.preventDefault();
+      event.stopPropagation();
+      dragged = false;
+    }
+  }, true);
+
+  track.addEventListener("scroll", updateArrows, { passive: true });
+  window.addEventListener("resize", updateArrows);
+
+  setActive(Math.max(0, cards.findIndex(card => card.classList.contains("active"))));
 })();
 </script>
-<script id="chapter-dynamic-motion-script">
-(function(){
-const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(!reduced&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-document.querySelectorAll('#chapterCarousel .tab-btn').forEach(function(card){
-card.addEventListener('pointermove',function(e){if(card.closest('.chapter-carousel-track').classList.contains('chapter-dragging'))return;const r=card.getBoundingClientRect();const x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),y=Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));card.style.setProperty('--chapter-rx',((.5-y)*5).toFixed(2)+'deg');card.style.setProperty('--chapter-ry',((x-.5)*7).toFixed(2)+'deg');card.style.setProperty('--chapter-glow-x',x*100+'%');card.style.setProperty('--chapter-glow-y',y*100+'%')},{passive:true});
-card.addEventListener('pointerleave',function(){card.style.setProperty('--chapter-rx','0deg');card.style.setProperty('--chapter-ry','0deg')},{passive:true});
-});
-}
-if(!reduced&&'IntersectionObserver' in window){
-const io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.target.closest('.content-panel')&&!e.target.closest('.content-panel').classList.contains('active'))return;if(e.isIntersecting){e.target.classList.remove('chapter-art-enter');void e.target.offsetWidth;e.target.classList.add('chapter-art-enter')}else e.target.classList.remove('chapter-art-enter')})},{threshold:.08,rootMargin:'-12% 0px -12% 0px'});
-document.querySelectorAll('.chapter-concept-art').forEach(function(art){io.observe(art)});
-}
-})();
-</script>
+
 </body>
 </html>
