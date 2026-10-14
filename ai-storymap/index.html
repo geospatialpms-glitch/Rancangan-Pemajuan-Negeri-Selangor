@@ -702,5 +702,45 @@ document.querySelectorAll('.pbt-official-icon img').forEach(function(img){
   }
 });
 </script>
+<script id="suo-logo-background-cleaner">
+/* Remove light cream/white rectangular backgrounds embedded in the uploaded
+   local PNG images. Keeps original PNG files and the card border unchanged. */
+(function(){
+  document.querySelectorAll('.pbt-official-icon img').forEach(function(img){
+    function clearLightBackdrop(){
+      if(img.dataset.suoBackgroundCleaned || !img.complete || img.naturalWidth < 24)return;
+      const url=img.currentSrc||img.src;
+      if(!url || !/\/ai-storymap\/(?:MBSA%201|MBPJ%20(?:\(1\)|%281%29)|MBSJ|MPAJ|MPKj)\.png(?:[?#]|$)/i.test(url))return;
+      img.dataset.suoBackgroundCleaned='1';
+      try{
+        const canvas=document.createElement('canvas');
+        canvas.width=img.naturalWidth;
+        canvas.height=img.naturalHeight;
+        const ctx=canvas.getContext('2d',{willReadFrequently:true});
+        if(!ctx)return;
+        ctx.drawImage(img,0,0);
+        const image=ctx.getImageData(0,0,canvas.width,canvas.height);
+        const px=image.data;
+        for(let i=0;i<px.length;i+=4){
+          const r=px[i],g=px[i+1],b=px[i+2];
+          const mn=Math.min(r,g,b),mx=Math.max(r,g,b);
+          // A neutral, very light or pale cream pixel is the background.
+          // Preserve saturated/red/gold/green/blue logo artwork.
+          if(mn>=216 && mx-mn<=56){
+            const fade=Math.max(0,Math.min(1,(227-mn)/11));
+            px[i+3]=Math.round(px[i+3]*fade);
+          }
+        }
+        ctx.putImageData(image,0,0);
+        img.src=canvas.toDataURL('image/png');
+      }catch(error){
+        // On any unexpected image security or memory error, keep original logo.
+      }
+    }
+    img.addEventListener('load',clearLightBackdrop);
+    if(img.complete)clearLightBackdrop();
+  });
+})();
+</script>
 </body>
 </html>
