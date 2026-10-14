@@ -559,11 +559,20 @@ document.querySelectorAll('.tab-nav-btn').forEach(btn=>btn.addEventListener('cli
   ];
   const items=Array.from(document.querySelectorAll(revealSelectors.join(',')));
   if(!reduceMotion && 'IntersectionObserver' in window){
+    // Keep observing: replay the entrance from either scroll direction.
     const observer=new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
+        const el=entry.target;
+        const panel=el.closest('.content-panel');
+        if(panel && !panel.classList.contains('active')){
+          el.classList.remove('suo-visible');
+          return;
+        }
         if(entry.isIntersecting){
-          entry.target.classList.add('suo-visible');
-          observer.unobserve(entry.target);
+          el.classList.add('suo-visible');
+        }else{
+          // Reset off-screen elements so they animate on the next entry.
+          el.classList.remove('suo-visible');
         }
       });
     },{threshold:0.08,rootMargin:'0px 0px -35px 0px'});
@@ -575,14 +584,14 @@ document.querySelectorAll('.tab-nav-btn').forEach(btn=>btn.addEventListener('cli
       observer.observe(el);
     });
     document.documentElement.classList.add('suo-motion-ready');
-    // Reveal previously hidden content when a chapter tab becomes visible.
+    // Reset inactive chapter panels; the observer handles the new active one.
     const panels=document.querySelectorAll('.content-panel');
     if('MutationObserver' in window){
       const tabObserver=new MutationObserver(function(){
         panels.forEach(function(panel){
-          if(panel.classList.contains('active')){
-            panel.querySelectorAll('.suo-reveal:not(.suo-visible)').forEach(function(el){
-              observer.observe(el);
+          if(!panel.classList.contains('active')){
+            panel.querySelectorAll('.suo-reveal').forEach(function(el){
+              el.classList.remove('suo-visible');
             });
           }
         });
