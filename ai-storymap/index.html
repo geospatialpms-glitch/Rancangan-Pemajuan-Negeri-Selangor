@@ -586,6 +586,20 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
   #chapterCarousel #chapter-tab-4{font-size:15px!important}
 }
 </style>
+<style id="chapter-intro-section-design">
+.main-section .chapter-intro{text-align:center;width:100%;max-width:1000px;margin:0 auto;padding:clamp(22px,4vw,54px) 12px clamp(22px,3vw,40px)}
+.main-section .chapter-intro-eyebrow{display:block;color:#922a43;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:800;letter-spacing:.19em;line-height:1.6;text-transform:uppercase;margin-bottom:20px}
+.main-section .chapter-intro h3{font-family:'Merriweather',Georgia,serif;font-size:clamp(27px,3.5vw,48px);line-height:1.33;color:#54172b;text-align:center;font-weight:900;letter-spacing:-.032em;text-wrap:balance;overflow-wrap:break-word;margin:0 auto;max-width:940px}
+.main-section .chapter-intro-accent{display:block;height:5px;width:110px;border-radius:99px;margin:25px auto;background:linear-gradient(90deg,#8b1b2f,#d9a752,#f4d892);box-shadow:0 3px 12px rgba(172,96,39,.2)}
+.main-section .chapter-intro-description{font-size:clamp(14px,1.3vw,17px);line-height:1.85;color:#6b5b62;text-align:center;max-width:810px;margin:0 auto}
+.main-section .chapter-section-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 clamp(26px,3vw,44px)}
+.main-section .chapter-section-divider::before,.main-section .chapter-section-divider::after{content:"";height:1px;flex:1;max-width:38%;background:linear-gradient(90deg,transparent,#ead9c7)}
+.main-section .chapter-section-divider::after{transform:rotate(180deg)}
+.main-section .chapter-section-divider span{width:10px;height:10px;border:2px solid #d8a957;background:#8b1b2f;transform:rotate(45deg);border-radius:2px}
+.main-section .chapter-detail-grid{margin-top:0}
+@media(max-width:760px){.main-section .chapter-intro{padding:16px 0 25px}.main-section .chapter-intro-eyebrow{font-size:11px;margin-bottom:15px}.main-section .chapter-intro h3{font-size:clamp(24px,7vw,34px)}.main-section .chapter-intro-accent{margin:20px auto}.main-section .chapter-intro-description{font-size:14px}}
+@media(prefers-reduced-motion:no-preference){.main-section .content-panel.active .chapter-intro{animation:chapter-intro-rise .58s ease-out both}@keyframes chapter-intro-rise{from{opacity:0;transform:translateY(17px)}to{opacity:1;transform:translateY(0)}}}
+</style>
 </head>
 <body>
 
@@ -700,42 +714,57 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 
   <!-- PANEL KANDUNGAN BAB 01 HINGGA 05 -->
   <div class="content-panel active" id="panel-0">
-    <div class="panel-header">
-      <div class="panel-num">01</div>
-      <h3>Rancangan Selangor, Masa Hadapan</h3>
+    <div class="chapter-intro" aria-labelledby="chapter-title-0">
+      <span class="chapter-intro-eyebrow">BAB 01</span>
+      <h3 id="chapter-title-0">Rancangan Selangor, Masa Hadapan</h3>
+      <span class="chapter-intro-accent" aria-hidden="true"></span>
+      <p class="chapter-intro-description">Menelusuri visi masa hadapan Negeri Selangor melalui perancangan fizikal, pembangunan mampan dan kesejahteraan komuniti.</p>
     </div>
+    <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Meneroka Perancangan, Pembangunan dan Hala Tuju Masa Hadapan Negeri Selangor. Perancangan bandar dan desa di Negeri Selangor dilaksanakan berpandukan Akta Perancangan Bandar dan Desa 1976 (Akta 172). Akta ini menyediakan kerangka perundingan yang sistematik bagi merancang, mengawal dan mengawal selia pemajuan serta penggunaan tanah dan bangunan demi kepentingan awam, kesejahteraan masyarakat dan kemampanan alam sekitar.</p><button type="button" class="chapter-panel-action" onclick="document.getElementById('statistik-pembangunan').scrollIntoView({behavior:'smooth',block:'start'})">Terokai Peta Selangor <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Bandar pintar, persekitaran hijau dan rangkaian digital"><defs><linearGradient id="bg0" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid0" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg0)"/><rect width="620" height="390" rx="17" fill="url(#grid0)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><g fill="#f8daa1"><path d="M76 296V172h55v124zm66 0V104h70v192zm85 0V153h55v143zm67 0V74h77v222zm88 0V130h50v166zm63 0V191h76v105z"/></g><g fill="#5a1933"><path d="M91 195h24v101H91zm67-77h38v178h-38zm85 49h23v129h-23zm67-75h46v204h-46zm86 53h22v151h-22z"/></g><path d="M63 306Q200 348 307 304T552 309" fill="none" stroke="#f7dc9b" stroke-width="7"/><g stroke="#ffe29e" stroke-width="2" fill="#e6b76d"><circle cx="131" cy="153" r="7"/><circle cx="245" cy="136" r="7"/><circle cx="367" cy="93" r="7"/><circle cx="488" cy="157" r="7"/><path d="M131 153L245 136L367 93L488 157" fill="none"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>BANDAR PINTAR MAMPAN</figcaption></figure></div></div>
   </div>
 
   <div class="content-panel" id="panel-1">
-    <div class="panel-header">
-      <div class="panel-num">02</div>
-      <h3>Arah Tuju &amp; Hierarki Pemajuan</h3>
+    <div class="chapter-intro" aria-labelledby="chapter-title-1">
+      <span class="chapter-intro-eyebrow">BAB 02</span>
+      <h3 id="chapter-title-1">Arah Tuju &amp; Hierarki Pemajuan</h3>
+      <span class="chapter-intro-accent" aria-hidden="true"></span>
+      <p class="chapter-intro-description">Memahami hala tuju, kerangka perundangan dan hierarki rancangan pemajuan yang membentuk pembangunan spatial Negeri Selangor.</p>
     </div>
+    <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Meneroka maklumat mengenai perundangan, hala tuju serta peringkat hierarki Rancangan Pemajuan Selangor. Pengenalan &amp; Kerangka Perundangan negeri menetapkan hierarki perancangan fizikal negara dan negeri secara bersepadu.</p><button type="button" class="chapter-panel-action" onclick="switchTab(2)">Lihat Bab RSN 2035 <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Rangkaian dasar, institusi dan perancangan wilayah"><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid1" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg1)"/><rect width="620" height="390" rx="17" fill="url(#grid1)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><g stroke="#f8d78e" stroke-width="3" fill="none"><path d="M84 91L251 64L361 157L520 88M84 91L135 267L310 317L520 88M251 64L310 317L361 157L536 283L135 267"/></g><g fill="#883148" stroke="#ffe9b4" stroke-width="4"><circle cx="84" cy="91" r="23"/><circle cx="251" cy="64" r="25"/><circle cx="361" cy="157" r="35"/><circle cx="520" cy="88" r="21"/><circle cx="135" cy="267" r="27"/><circle cx="310" cy="317" r="29"/><circle cx="536" cy="283" r="22"/></g><g fill="#ffe7aa"><circle cx="84" cy="91" r="7"/><circle cx="251" cy="64" r="8"/><circle cx="361" cy="157" r="12"/><circle cx="520" cy="88" r="7"/><circle cx="135" cy="267" r="9"/><circle cx="310" cy="317" r="9"/><circle cx="536" cy="283" r="7"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>HIERARKI PERANCANGAN</figcaption></figure></div></div>
   </div>
 
   <div class="content-panel" id="panel-2">
-    <div class="panel-header">
-      <div class="panel-num">03</div>
-      <h3>Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</h3>
+    <div class="chapter-intro" aria-labelledby="chapter-title-2">
+      <span class="chapter-intro-eyebrow">BAB 03</span>
+      <h3 id="chapter-title-2">Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</h3>
+      <span class="chapter-intro-accent" aria-hidden="true"></span>
+      <p class="chapter-intro-description">Meneroka dasar, strategi dan cadangan pembangunan fizikal negeri ke arah Selangor 2035 yang berdaya huni dan mampan.</p>
     </div>
+    <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Kerangka Dasar dan Cadangan Am Pemajuan Fizikal Negeri Selangor 2035 (Warta No. 1000). Dokumen ini menggariskan dasar utama pembangunan spatial negeri, penetapan koridor pertumbuhan ekonomi, dan strategi pemeliharaan alam sekitar.</p><button type="button" class="chapter-panel-action" onclick="document.getElementById('statistik-pembangunan').scrollIntoView({behavior:'smooth',block:'start'})">Terokai Peta Selangor <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Peta strategik wilayah dan koridor pertumbuhan"><defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid2" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg2)"/><rect width="620" height="390" rx="17" fill="url(#grid2)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><path d="M179 44L276 72L323 139L410 94L484 157L439 227L495 285L422 350L327 316L265 359L177 299L136 224L93 156Z" fill="#68203d" stroke="#fbe2a5" stroke-width="5"/><g fill="none" stroke="#efb66c" stroke-width="3"><path d="M179 44L323 139L439 227L422 350M93 156L136 224L265 359M276 72L410 94L495 285"/></g><path d="M137 227L239 177L318 229L424 179L476 269" fill="none" stroke="#ffe7a8" stroke-width="8" stroke-linecap="round"/><g fill="#b2d0a1" stroke="#fbe1ac" stroke-width="4"><circle cx="137" cy="227" r="12"/><circle cx="239" cy="177" r="12"/><circle cx="318" cy="229" r="12"/><circle cx="424" cy="179" r="12"/><circle cx="476" cy="269" r="12"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>RSN SELANGOR 2035</figcaption></figure></div></div>
   </div>
 
   <div class="content-panel" id="panel-3">
-    <div class="panel-header">
-      <div class="panel-num">04</div>
-      <h3>RANCANGAN TEMPATAN (RT) &amp; RANCANGAN KAWASAN KHAS (RKK)</h3>
+    <div class="chapter-intro" aria-labelledby="chapter-title-3">
+      <span class="chapter-intro-eyebrow">BAB 04</span>
+      <h3 id="chapter-title-3">RANCANGAN TEMPATAN (RT) &amp; RANCANGAN KAWASAN KHAS (RKK)</h3>
+      <span class="chapter-intro-accent" aria-hidden="true"></span>
+      <p class="chapter-intro-description">Meneliti perancangan di peringkat tempatan dan kawasan khas bagi menyokong pembangunan yang tersusun mengikut keperluan setempat.</p>
     </div>
+    <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Pengurusan &amp; Hierarki Perancangan Fizikal Pihak Berkuasa Tempatan (PBT) Negeri Selangor. Melibatkan perincian cadangan pemajuan di peringkat tempatan bagi setiap PBT di Selangor.</p><button type="button" class="chapter-panel-action" onclick="document.getElementById('pautan-pbt').scrollIntoView({behavior:'smooth',block:'start'})">Lihat Direktori PBT <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Zon perancangan tempatan dan rangkaian PBT"><defs><linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid3" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg3)"/><rect width="620" height="390" rx="17" fill="url(#grid3)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><g fill="#8b3044" stroke="#ffe2a5" stroke-width="3"><path d="M89 95L204 50L302 92L266 194L148 221Z"/><path d="M302 92L393 62L507 130L447 237L334 207L266 194Z"/><path d="M148 221L266 194L334 207L321 324L194 336L108 279Z"/><path d="M334 207L447 237L529 293L452 348L321 324Z"/></g><g fill="none" stroke="#ffd998" stroke-width="2.6"><path d="M192 124L380 134L422 283L231 267Z"/><path d="M192 124L231 267"/></g><g fill="#ffe7af"><circle cx="192" cy="124" r="10"/><circle cx="380" cy="134" r="10"/><circle cx="422" cy="283" r="10"/><circle cx="231" cy="267" r="10"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>RANCANGAN TEMPATAN</figcaption></figure></div></div>
   </div>
 
   <div class="content-panel" id="panel-4">
-    <div class="panel-header">
-      <div class="panel-num">05</div>
-      <h3>SISTEM LPFNS <span class="chapter-coming-soon-inline">AKAN DATANG</span></h3>
+    <div class="chapter-intro" aria-labelledby="chapter-title-4">
+      <span class="chapter-intro-eyebrow">BAB 05 · AKAN DATANG</span>
+      <h3 id="chapter-title-4">SISTEM LPFNS</h3>
+      <span class="chapter-intro-accent" aria-hidden="true"></span>
+      <p class="chapter-intro-description">Pengenalan kepada platform pengurusan laporan perancangan fizikal negeri secara digital. Sistem ini akan disediakan pada masa akan datang.</p>
     </div>
+    <div class="chapter-section-divider" aria-hidden="true"><span></span></div>
     <div class="panel-body"><div class="chapter-detail-grid"><div class="chapter-detail-copy"><p>Platform digital berpusat bagi menyelaraskan pengurusan laporan dan data perancangan fizikal Negeri Selangor.</p><button type="button" class="chapter-panel-action" onclick="switchTab(0)">Kembali ke Bab 01 <span aria-hidden="true">↗</span></button></div><figure class="chapter-concept-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="Analitik spatial dan pemantauan data perancangan"><defs><linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#49142e"/><stop offset=".52" stop-color="#95384b"/><stop offset="1" stop-color="#d4a15a"/></linearGradient><pattern id="grid4" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffe1a3" stroke-opacity=".16"/></pattern></defs><rect width="620" height="390" rx="17" fill="url(#bg4)"/><rect width="620" height="390" rx="17" fill="url(#grid4)"/><circle cx="485" cy="85" r="127" fill="#ffda9d" opacity=".10"/><rect x="59" y="45" width="502" height="300" rx="20" fill="#351527" stroke="#ffe4a9" stroke-width="3"/><rect x="80" y="66" width="460" height="40" rx="7" fill="#9a3d53"/><g fill="#f7d48d"><circle cx="103" cy="86" r="7"/><circle cx="128" cy="86" r="7"/><circle cx="153" cy="86" r="7"/></g><rect x="83" y="121" width="207" height="204" rx="11" fill="#703049"/><path d="M107 274L151 220L177 241L218 160L269 198" fill="none" stroke="#f9d995" stroke-width="8" stroke-linecap="round"/><rect x="305" y="121" width="234" height="95" rx="10" fill="#703049"/><g fill="#f7d48d"><rect x="324" y="176" width="26" height="25"/><rect x="362" y="154" width="26" height="47"/><rect x="400" y="141" width="26" height="60"/><rect x="438" y="159" width="26" height="42"/><rect x="476" y="134" width="26" height="67"/></g><rect x="305" y="229" width="234" height="96" rx="10" fill="#703049"/><g fill="#ffe0a5"><rect x="324" y="246" width="165" height="9" rx="4"/><rect x="324" y="268" width="195" height="8" rx="4" opacity=".66"/><rect x="324" y="290" width="137" height="8" rx="4" opacity=".45"/></g><text x="24" y="372" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#fff0cd">SELANGOR · DIGITAL SPATIAL FUTURES</text></svg><figcaption>DASHBOARD DIGITAL</figcaption></figure></div></div>
   </div>
 </main>
