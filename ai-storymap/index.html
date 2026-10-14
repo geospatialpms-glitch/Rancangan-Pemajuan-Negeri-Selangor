@@ -1034,6 +1034,50 @@ body{background:#faf8f5!important;color:#302e30}
  text-wrap:balance;
 }
 </style>
+<style id="chapter01-linked-cards-style">
+/* Text-first linked geospatial cards: soft Selangor maroon, no empty visual boxes. */
+#panel-0 .ch01-linked-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin:5px 0 22px;position:relative}
+#panel-0 .ch01-linked-grid:before{content:"";height:3px;position:absolute;left:15%;right:15%;top:52px;background:linear-gradient(90deg,#be7587,#e3be78,#be7587);opacity:.55}
+#panel-0 .ch01-linked-card{position:relative;isolation:isolate;border:1px solid #e4d4c9;background:linear-gradient(155deg,#fffefd,#faf5ef);border-radius:20px;padding:25px 22px 20px;min-width:0;box-shadow:0 9px 25px rgba(105,43,56,.075);transition:transform .28s,border-color .28s,box-shadow .28s}
+#panel-0 .ch01-linked-card:hover{transform:translateY(-5px);border-color:#d9aa65;box-shadow:0 18px 31px rgba(105,43,56,.14)}
+#panel-0 .ch01-linked-card:after{content:"";position:absolute;top:0;left:22px;right:22px;height:3px;border-radius:0 0 8px 8px;background:linear-gradient(90deg,#87283e,#d6ab60)}
+#panel-0 .ch01-card-heading{display:flex;align-items:center;gap:11px;font-size:11px;letter-spacing:.095em;font-weight:900;color:#7b3146;min-height:44px}
+#panel-0 .ch01-geo-icon{display:grid;place-items:center;background:#f7eadd;color:#87283e;width:40px;height:40px;flex:0 0 40px;font-size:23px;border:1px solid #edd8bd;border-radius:13px}
+#panel-0 .ch01-big-number{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;margin:23px 0 19px}
+#panel-0 .ch01-big-number>span{font-family:'Merriweather',Georgia,serif;font-size:clamp(35px,3.6vw,54px);font-weight:900;line-height:1.08;color:#87283e;letter-spacing:-.06em}
+#panel-0 .ch01-big-number small{font-size:13px;font-weight:800;color:#926e6b}
+#panel-0 .ch01-linked-card p{font-size:14px;line-height:1.8;color:#514b4e;margin:0 0 16px}
+#panel-0 .ch01-card-footer{display:block;border-top:1px solid #eee0d7;padding-top:12px;color:#a27e80;font-size:10px;letter-spacing:.11em;font-weight:800}
+#panel-0 .ch01-profile-breakdown{grid-column:1/-1;background:#fffefa;border:1px solid #e8d8cd;border-radius:20px;padding:clamp(18px,2.2vw,28px);margin-bottom:18px}
+#panel-0 .ch01-breakdown-title{display:flex;align-items:center;gap:11px;margin:0 0 18px;color:#772b43}
+#panel-0 .ch01-breakdown-title strong{font-family:'Merriweather',Georgia,serif;font-size:19px}
+#panel-0 .ch01-breakdown-title>span:last-child{margin-left:auto;font-size:12px;font-weight:800;color:#aa7376}
+#panel-0 .ch01-link-node{width:13px;height:13px;border-radius:50%;background:#893049;box-shadow:0 0 0 5px #f7e9e8}
+#panel-0 .ch01-pbt-bars{display:flex;gap:5px;min-height:75px;margin-bottom:21px}
+#panel-0 .ch01-pbt-bar{display:flex;flex:var(--bar-flex);flex-direction:column;justify-content:center;align-items:center;border-radius:10px;color:#fff9f4;min-width:0;text-align:center;padding:9px 4px}
+#panel-0 .ch01-bar-city{background:#802a44}#panel-0 .ch01-bar-town{background:#ad5c70}#panel-0 .ch01-bar-district{background:#b99151}
+#panel-0 .ch01-pbt-bar strong{font-size:23px;color:inherit}#panel-0 .ch01-pbt-bar span{font-size:11px;color:inherit;overflow-wrap:anywhere}
+#panel-0 .ch01-pbt-directory-list{display:grid;gap:11px}
+#panel-0 .ch01-pbt-directory-list p{margin:0!important;background:#faf7f3;border-left:3px solid #bd8190;border-radius:7px;padding:12px 15px!important;font-size:13px!important;line-height:1.75}
+#panel-0 .ch01-hierarchy-flow{grid-column:1/-1;display:grid;gap:0;margin:5px 0 21px;position:relative}
+#panel-0 .ch01-hierarchy-flow:before{content:"";position:absolute;left:36px;top:50px;bottom:58px;width:2px;background:linear-gradient(#b65b73,#d6ab60);z-index:0}
+#panel-0 .ch01-hierarchy-step{display:grid;grid-template-columns:74px minmax(0,1fr) 45px;gap:17px;align-items:center;background:linear-gradient(110deg,#fffaf6,#fffefd);border:1px solid #ead9d0;border-radius:17px;padding:21px;margin-bottom:22px;box-shadow:0 8px 23px rgba(100,37,53,.065);position:relative;transition:transform .25s,border-color .25s}
+#panel-0 .ch01-hierarchy-step:not(:last-child):after{content:"↓";position:absolute;bottom:-21px;left:28px;z-index:2;background:#f7f1e9;color:#903550;border:1px solid #dbc5b3;border-radius:50%;width:19px;height:19px;display:grid;place-items:center;font-weight:900;font-size:13px}
+#panel-0 .ch01-hierarchy-step:hover{transform:translateX(5px);border-color:#d5a76f}
+#panel-0 .ch01-hierarchy-num{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:70px;min-height:70px;background:#842c46;color:white;border-radius:15px}
+#panel-0 .ch01-hierarchy-num span{font-size:23px;font-weight:900;line-height:1;color:#fff}
+#panel-0 .ch01-hierarchy-num small{font-size:8px;letter-spacing:.05em;text-align:center;color:#f8dfca}
+#panel-0 .ch01-hierarchy-eyebrow{font-size:10px;font-weight:900;letter-spacing:.10em;color:#a55265}
+#panel-0 .ch01-hierarchy-text h5{font-family:'Merriweather',Georgia,serif;font-size:clamp(16px,1.55vw,20px);color:#752d44;margin:8px 0 10px;line-height:1.4}
+#panel-0 .ch01-hierarchy-text p{margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;font-size:14px!important;line-height:1.75}
+#panel-0 .ch01-step-symbol{font-size:30px;color:#b8935f;text-align:center}
+#panel-0 .ch01-hierarchy-outcome{grid-column:1/-1;display:flex;gap:15px;align-items:flex-start;background:#f8eee6;border:1px solid #ead6c5;border-radius:16px;padding:20px;margin-bottom:14px}
+#panel-0 .ch01-outcome-icon{font-size:25px;color:#9c4760}
+#panel-0 .ch01-hierarchy-outcome p{margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;font-size:14px!important}
+@media(max-width:980px){#panel-0 .ch01-linked-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#panel-0 .ch01-pbt-summary-card{grid-column:1/-1}#panel-0 .ch01-linked-grid:before{display:none}}
+@media(max-width:650px){#panel-0 .ch01-linked-grid{grid-template-columns:1fr}#panel-0 .ch01-pbt-summary-card{grid-column:auto}#panel-0 .ch01-hierarchy-step{grid-template-columns:62px minmax(0,1fr);gap:12px;padding:16px}#panel-0 .ch01-hierarchy-num{width:58px;min-height:62px}#panel-0 .ch01-step-symbol{display:none}#panel-0 .ch01-hierarchy-flow:before{left:29px}#panel-0 .ch01-hierarchy-step:not(:last-child):after{left:20px}#panel-0 .ch01-pbt-bar span{font-size:9px}}
+@media(prefers-reduced-motion:reduce){#panel-0 .ch01-linked-card,#panel-0 .ch01-hierarchy-step{transition:none}#panel-0 .ch01-linked-card:hover,#panel-0 .ch01-hierarchy-step:hover{transform:none}}
+</style>
 </head>
 <body>
 
@@ -1197,31 +1241,66 @@ body{background:#faf8f5!important;color:#302e30}
           <button type="button" class="chapter-panel-action" onclick="showChapter01(1)">Lihat Profil Pentadbiran <span aria-hidden="true">→</span></button>
         </section>
         <section id="ch01-content-1" class="chapter01-topic" role="tabpanel" aria-labelledby="ch01-tab-1" hidden>
-          <div class="chapter01-titleline"><span class="chapter01-kicker">02 / PROFIL NEGERI</span><h4>Profil &amp; Parameter Pentadbiran Utama</h4></div>
-          <div class="chapter01-info-list">
-            <p><strong>Keluasan Negeri:</strong> Kira-kira <strong>8,100 km²</strong>, merangkumi kawasan perbandaran, perindustrian, pertanian dan perlindungan alam sekitar.</p>
-            <p><strong>9 Daerah Pentadbiran:</strong> Petaling, Gombak, Hulu Langat, Sepang, Klang, Kuala Langat, Kuala Selangor, Hulu Selangor dan Sabak Bernam.</p>
-            <p><strong>12 Pihak Berkuasa Tempatan:</strong> Terdiri daripada empat majlis bandaraya, tujuh majlis perbandaran dan satu majlis daerah.</p>
-          </div>
-          <div class="chapter01-pbt-categories">
-            <div><span>04</span><h5>Majlis Bandaraya</h5><p>MBSA, MBPJ, MBSJ dan MBDK</p></div>
-            <div><span>07</span><h5>Majlis Perbandaran</h5><p>MPAJ, MPKj, MPS, MPSp, MPKL, MPKS dan MPHS</p></div>
-            <div><span>01</span><h5>Majlis Daerah</h5><p>MDSB (Sabak Bernam)</p></div>
-          </div>
-          <button type="button" class="chapter-panel-action" onclick="document.getElementById('pautan-pbt').scrollIntoView({behavior:'smooth',block:'start'})">Lihat Direktori 12 PBT <span aria-hidden="true">↗</span></button>
-        </section>
-        <section id="ch01-content-2" class="chapter01-topic" role="tabpanel" aria-labelledby="ch01-tab-2" hidden>
-          <div class="chapter01-titleline"><span class="chapter01-kicker">03 / DASAR &amp; HALA TUJU</span><h4>Kerangka &amp; Halatuju Perancangan Fizikal</h4></div>
-          <p>Pengurusan guna tanah di Negeri Selangor dipandu oleh hierarki perancangan fizikal yang berintegrasi:</p>
-          <div class="chapter01-planning-steps">
-            <div><span>01</span><p><strong>Rancangan Struktur Negeri (RSN) Selangor 2035:</strong> Menetapkan dasar strategik perbandaran dan makro guna tanah negeri.</p></div>
-            <div><span>02</span><p><strong>Rancangan Tempatan (RT):</strong> Memperincikan pengezonan guna tanah, intensiti pembangunan serta penyediaan prasarana di peringkat daerah atau PBT.</p></div>
-            <div><span>03</span><p><strong>Rancangan Kawasan Khas (RKK):</strong> Panduan tindakan khusus, pemeliharaan warisan dan pembangunan semula kawasan yang memerlukan perhatian terperinci.</p></div>
-          </div>
-          <p>Pelaksanaan integrasi perancangan bertujuan mengawal guna tanah secara berhemah, memelihara <strong>Kawasan Sensitif Alam Sekitar (KSAS)</strong> serta memacu kemampanan bandar selaras dengan aspirasi Rancangan Selangor Pertama (RS-1) dan Rancangan Fizikal Negara (RFN).</p>
-          <button type="button" class="chapter-panel-action" onclick="switchTab(1)">Terokai Bab 02 <span aria-hidden="true">→</span></button>
-        </section>
-        <section id="ch01-content-3" class="chapter01-topic" role="tabpanel" aria-labelledby="ch01-tab-3" hidden>
+ <div class="chapter01-titleline"><span class="chapter01-kicker">02 / PROFIL NEGERI</span><h4>Profil &amp; Parameter Pentadbiran Utama</h4></div>
+ <div class="ch01-linked-grid ch01-profile-grid" aria-label="Profil pentadbiran Selangor dalam kad berangkai">
+   <article class="ch01-linked-card ch01-land-card">
+     <div class="ch01-card-heading"><span class="ch01-geo-icon" aria-hidden="true">⌖</span><span>KELUASAN NEGERI</span></div>
+     <div class="ch01-big-number"><span class="ch01-count" data-target="8100" data-comma="true">8,100</span><small>km²</small></div>
+     <p>Kira-kira <strong>8,100 km²</strong>, merangkumi zon perbandaran, perindustrian, pertanian serta kawasan perlindungan alam sekitar.</p>
+     <span class="ch01-card-footer">PROFIL FIZIKAL · SELANGOR</span>
+   </article>
+   <article class="ch01-linked-card ch01-district-card">
+     <div class="ch01-card-heading"><span class="ch01-geo-icon" aria-hidden="true">▦</span><span>DAERAH PENTADBIRAN</span></div>
+     <div class="ch01-big-number"><span class="ch01-count" data-target="9">9</span><small>daerah</small></div>
+     <p>Petaling, Gombak, Hulu Langat, Sepang, Klang, Kuala Langat, Kuala Selangor, Hulu Selangor dan Sabak Bernam.</p>
+     <span class="ch01-card-footer">SEMPADAN PENTADBIRAN</span>
+   </article>
+   <article class="ch01-linked-card ch01-pbt-summary-card">
+     <div class="ch01-card-heading"><span class="ch01-geo-icon" aria-hidden="true">◎</span><span>PIHAK BERKUASA TEMPATAN</span></div>
+     <div class="ch01-big-number"><span class="ch01-count" data-target="12">12</span><small>PBT</small></div>
+     <p>Meliputi <strong>4 Majlis Bandaraya</strong>, <strong>7 Majlis Perbandaran</strong> dan <strong>1 Majlis Daerah</strong>.</p>
+     <span class="ch01-card-footer">TADBIR URUS TEMPATAN</span>
+   </article>
+ </div>
+ <div class="ch01-profile-breakdown" aria-label="Komposisi 12 PBT Negeri Selangor">
+  <div class="ch01-breakdown-title"><span class="ch01-link-node" aria-hidden="true"></span><strong>Komposisi 12 PBT</strong><span>4 + 7 + 1</span></div>
+  <div class="ch01-pbt-bars" aria-label="4 Majlis Bandaraya, 7 Majlis Perbandaran dan 1 Majlis Daerah">
+   <div class="ch01-pbt-bar ch01-bar-city" style="--bar-flex:4"><strong>04</strong><span>Bandaraya</span></div>
+   <div class="ch01-pbt-bar ch01-bar-town" style="--bar-flex:7"><strong>07</strong><span>Perbandaran</span></div>
+   <div class="ch01-pbt-bar ch01-bar-district" style="--bar-flex:1"><strong>01</strong><span>Daerah</span></div>
+  </div>
+  <div class="ch01-pbt-directory-list">
+   <p><strong>4 Majlis Bandaraya:</strong> Majlis Bandaraya Shah Alam (MBSA), Majlis Bandaraya Petaling Jaya (MBPJ), Majlis Bandaraya Subang Jaya (MBSJ) dan Majlis Bandaraya Diraja Klang (MBDK).</p>
+   <p><strong>7 Majlis Perbandaran:</strong> Majlis Perbandaran Ampang Jaya (MPAJ), Majlis Perbandaran Kajang (MPKj), Majlis Perbandaran Selayang (MPS), Majlis Perbandaran Sepang (MPSp), Majlis Perbandaran Kuala Langat (MPKL), Majlis Perbandaran Kuala Selangor (MPKS) dan Majlis Perbandaran Hulu Selangor (MPHS).</p>
+   <p><strong>1 Majlis Daerah:</strong> Majlis Daerah Sabak Bernam (MDSB).</p>
+  </div>
+ </div>
+ <button type="button" class="chapter-panel-action" onclick="document.getElementById('pautan-pbt').scrollIntoView({behavior:'smooth',block:'start'})">Lihat Direktori 12 PBT <span aria-hidden="true">↗</span></button>
+</section>
+<section id="ch01-content-2" class="chapter01-topic" role="tabpanel" aria-labelledby="ch01-tab-2" hidden>
+ <div class="chapter01-titleline"><span class="chapter01-kicker">03 / DASAR &amp; HALA TUJU</span><h4>Kerangka &amp; Halatuju Perancangan Fizikal</h4></div>
+ <p>Pengurusan guna tanah di Negeri Selangor dipandu oleh hierarki perancangan fizikal yang berintegrasi:</p>
+ <div class="ch01-hierarchy-flow" aria-label="Aliran hierarki perancangan fizikal RSN, RT dan RKK">
+  <article class="ch01-hierarchy-step">
+   <div class="ch01-hierarchy-num"><span>01</span><small>NEGERI</small></div>
+   <div class="ch01-hierarchy-text"><span class="ch01-hierarchy-eyebrow">DASAR STRATEGIK · PERINGKAT NEGERI</span><h5>Rancangan Struktur Negeri (RSN) Selangor 2035</h5><p>Menetapkan dasar strategik perbandaran dan makro guna tanah negeri.</p></div>
+   <div class="ch01-step-symbol" aria-hidden="true">◈</div>
+  </article>
+  <article class="ch01-hierarchy-step">
+   <div class="ch01-hierarchy-num"><span>02</span><small>DAERAH / PBT</small></div>
+   <div class="ch01-hierarchy-text"><span class="ch01-hierarchy-eyebrow">PERINCIAN GUNA TANAH · PERINGKAT TEMPATAN</span><h5>Rancangan Tempatan (RT)</h5><p>Memperincikan pengezonan guna tanah, intensiti pembangunan, serta penyediaan prasarana pada peringkat daerah/PBT.</p></div>
+   <div class="ch01-step-symbol" aria-hidden="true">▤</div>
+  </article>
+  <article class="ch01-hierarchy-step">
+   <div class="ch01-hierarchy-num"><span>03</span><small>KAWASAN KHAS</small></div>
+   <div class="ch01-hierarchy-text"><span class="ch01-hierarchy-eyebrow">TINDAKAN TERPERINCI · KAWASAN KHUSUS</span><h5>Rancangan Kawasan Khas (RKK)</h5><p>Panduan tindakan khas, pemeliharaan warisan dan pembangunan semula kawasan khusus yang memerlukan perhatian terperinci.</p></div>
+   <div class="ch01-step-symbol" aria-hidden="true">⌖</div>
+  </article>
+ </div>
+ <div class="ch01-hierarchy-outcome"><span class="ch01-outcome-icon" aria-hidden="true">✦</span><p>Pelaksanaan integrasi perancangan ini bertujuan <strong>mengawal guna tanah secara berhemah</strong>, memelihara <strong>Kawasan Sensitif Alam Sekitar (KSAS)</strong> serta memacu kemampanan bandar selaras dengan aspirasi <strong>Rancangan Selangor Pertama (RS-1)</strong> dan <strong>Rancangan Fizikal Negara (RFN)</strong>.</p></div>
+ <button type="button" class="chapter-panel-action" onclick="switchTab(1)">Terokai Bab 02 <span aria-hidden="true">→</span></button>
+</section>
+<section id="ch01-content-3" class="chapter01-topic" role="tabpanel" aria-labelledby="ch01-tab-3" hidden>
           <div class="chapter01-titleline"><span class="chapter01-kicker">04 / PETA PENTADBIRAN</span><h4>Sempadan 12 Pihak Berkuasa Tempatan</h4></div>
           <p>Negeri Selangor dibahagikan kepada <strong>12 kawasan pentadbiran PBT</strong> bagi menyelaraskan pengurusan guna tanah, perancangan bandar dan penyediaan perkhidmatan awam. Setiap PBT mempunyai kawasan pentadbiran tersendiri yang menjadi asas pelaksanaan rancangan pemajuan.</p>
           <div class="chapter01-map-panel">
@@ -1841,6 +1920,32 @@ function switchTab(index){
    new MutationObserver(function(){if(panel.classList.contains('active'))updateVisibleNumbers(panel)}).observe(panel,{attributes:true,attributeFilter:['class']});
   }
  });
+})();
+</script>
+<script id="chapter01-linked-cards-counters">
+(function(){
+ const stats=Array.from(document.querySelectorAll('#ch01-content-1 .ch01-count'));
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let running=false;
+ function format(n,comma){return comma?n.toLocaleString('en-US'):String(n)}
+ function play(){
+  if(running||document.getElementById('ch01-content-1')?.hidden)return;
+  running=true;
+  if(reduced){stats.forEach(el=>el.textContent=format(Number(el.dataset.target),el.dataset.comma==='true'));return}
+  const start=performance.now(),duration=1100;
+  function step(now){
+   const t=Math.min(1,(now-start)/duration),progress=1-Math.pow(1-t,3);
+   stats.forEach(el=>{const n=Number(el.dataset.target);el.textContent=format(Math.round(n*progress),el.dataset.comma==='true')});
+   if(t<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+ }
+ if('IntersectionObserver' in window){
+  const ob=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)play()})},{threshold:.18});
+  ob.observe(document.getElementById('ch01-content-1'));
+ }
+ const pane=document.getElementById('ch01-content-1');
+ new MutationObserver(()=>{if(!pane.hidden)play()}).observe(pane,{attributes:true,attributeFilter:['hidden']});
 })();
 </script>
 </body>
