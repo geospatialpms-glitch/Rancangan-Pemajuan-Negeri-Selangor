@@ -812,6 +812,34 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
 @media(max-width:600px){.suo-bento-grid{grid-template-columns:1fr;gap:12px}.suo-bento-tile,.suo-bento-wide,.suo-bento-next{grid-column:1}.suo-bento-next{justify-content:stretch}.suo-bento-action{width:100%}}
 @media(prefers-reduced-motion:reduce){.suo-bento-topic{animation:none}.suo-bento-tile,.suo-bento-action{transition:none}.suo-bento-tile:hover,.suo-bento-action:hover{transform:none}}
 </style>
+<style id="suo-chapter01-bento-align-v2">
+/* Extend the same modular Bento visual vocabulary to the screenshot-based Bab 01 content. */
+#panel-0 .chapter01-topic .chapter01-titleline{border-bottom:0;margin-bottom:14px}
+#panel-0 .chapter01-topic .chapter01-titleline h4{color:#7f2039}
+#panel-0 .chapter01-topic.active{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:15px}
+#panel-0 .chapter01-topic>.chapter01-titleline{grid-column:1/-1}
+#panel-0 .chapter01-topic>p{grid-column:1/-1;padding:21px 24px;border:1px solid #ecd9c9;border-radius:18px;background:linear-gradient(125deg,#fffdfb,#fff7f2);box-shadow:0 8px 20px rgba(109,34,49,.055)}
+#panel-0 .chapter01-topic>.chapter-panel-action{grid-column:1/-1;justify-self:start}
+#panel-0 .chapter01-metrics,#panel-0 .chapter01-pbt-categories,#panel-0 .chapter01-planning-steps{grid-column:1/-1;margin:0 0 11px}
+#panel-0 .chapter01-metrics>div,#panel-0 .chapter01-pbt-categories>div,#panel-0 .chapter01-planning-steps>div{
+ background:linear-gradient(135deg,#fff9f3,#fffdfb);border:1px solid #ead3c3;
+ border-radius:19px;box-shadow:0 9px 23px rgba(104,22,43,.065);padding:22px;
+ transition:transform .28s,box-shadow .28s,border-color .28s
+}
+#panel-0 .chapter01-metrics>div:hover,#panel-0 .chapter01-pbt-categories>div:hover,#panel-0 .chapter01-planning-steps>div:hover{
+ transform:translateY(-4px);border-color:#d9a354;box-shadow:0 14px 28px rgba(104,22,43,.13)
+}
+#panel-0 .chapter01-metrics strong{color:#92253f;font-family:'Merriweather',Georgia,serif}
+#panel-0 .chapter01-planning-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+#panel-0 .chapter01-planning-steps>div{display:flex;flex-direction:column;border-left:1px solid #ead3c3;gap:13px}
+#panel-0 .chapter01-planning-steps>div span{width:42px;height:42px;flex:none;background:#8b1b2f;color:#fff0c8}
+#panel-0 .chapter01-planning-steps>div p{margin:0;font-size:14px}
+#panel-0 .chapter01-map-panel{grid-column:1/-1;box-shadow:0 12px 32px rgba(83,24,46,.16)}
+#panel-0 .chapter01-body .chapter-panel-action{margin-top:6px}
+@media(max-width:900px){#panel-0 .chapter01-planning-steps{grid-template-columns:1fr}}
+@media(max-width:760px){#panel-0 .chapter01-topic.active{grid-template-columns:1fr}#panel-0 .chapter01-topic>p{padding:17px}#panel-0 .chapter01-topic>.chapter-panel-action{justify-self:stretch}}
+@media(prefers-reduced-motion:reduce){#panel-0 .chapter01-metrics>div,#panel-0 .chapter01-pbt-categories>div,#panel-0 .chapter01-planning-steps>div{transition:none}#panel-0 .chapter01-metrics>div:hover,#panel-0 .chapter01-pbt-categories>div:hover,#panel-0 .chapter01-planning-steps>div:hover{transform:none}}
+</style>
 </head>
 <body>
 
@@ -954,7 +982,7 @@ html.suo-motion-ready .suo-reveal.suo-replaying{
         <section id="ch01-content-0" class="chapter01-topic active" role="tabpanel" aria-labelledby="ch01-tab-0">
           <div class="chapter01-titleline"><span class="chapter01-kicker">01 / PENGENALAN</span><h4>Pengenalan Negeri Selangor</h4></div>
           <p>Negeri Selangor Darul Ehsan merupakan teras pembangunan fizikal dan ekonomi negara yang berkembang secara dinamik. Sebagai hab perindustrian, perniagaan dan perkhidmatan utama di Malaysia, perancangan fizikal serta tadbir urus wilayah di negeri ini diuruskan secara berstruktur menerusi pembahagian <strong>9 Daerah Pentadbiran</strong> dan <strong>12 Pihak Berkuasa Tempatan (PBT)</strong> bagi memastikan pembangunan yang mampan, teratur dan berdaya huni.</p>
-          <div class="chapter01-metrics" aria-label="Profil ringkas Selangor"><div><strong>±8,100</strong><span>km² keluasan negeri</span></div><div><strong>9</strong><span>Daerah pentadbiran</span></div><div><strong>12</strong><span>Pihak Berkuasa Tempatan</span></div></div>
+          <div class="chapter01-metrics" aria-label="Profil ringkas Selangor"><div><strong>±8,100</strong><span>km² keluasan negeri</span></div><div><strong class="suo-animated-stat" data-value="9">9</strong><span>Daerah pentadbiran</span></div><div><strong class="suo-animated-stat" data-value="12">12</strong><span>Pihak Berkuasa Tempatan</span></div></div>
           <button type="button" class="chapter-panel-action" onclick="showChapter01(1)">Lihat Profil Pentadbiran <span aria-hidden="true">→</span></button>
         </section>
         <section id="ch01-content-1" class="chapter01-topic" role="tabpanel" aria-labelledby="ch01-tab-1" hidden>
