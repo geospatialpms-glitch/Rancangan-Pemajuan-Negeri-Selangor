@@ -1922,6 +1922,18 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 #panel-1 .suo-bab02-separated:has(#suo-bab02-stage-0),#panel-1 .suo-bab02-separated:has(#suo-bab02-stage-1){scroll-margin-top:130px}
 @media(max-width:760px){#panel-1 .suo-bab02-separated-pair{grid-template-columns:1fr}#panel-1 .suo-bab02-section-divider{align-items:flex-start;gap:12px}#panel-1 .suo-bab02-section-num{width:49px;height:49px;border-radius:14px;font-size:18px}#panel-1 .suo-bab02-separated{padding:14px;border-radius:20px}}
 </style>
+<style id="suo-bab02-true-subtopic-tabs-2026">
+/* Bab 02: each navigation tile selects one discrete subtopic, not one continuous page. */
+#panel-1 .suo-bab02-separated[hidden]{display:none!important}
+#panel-1 .suo-bab02-hierarchy{gap:16px!important;margin-bottom:24px!important}
+#panel-1 .suo-bab02-hierarchy .suo-bab02-level{position:relative;min-height:123px;border-radius:20px;background:#612139;border:1px solid #c9a253;transition:transform .2s,box-shadow .2s,border-color .2s}
+#panel-1 .suo-bab02-hierarchy .suo-bab02-level.is-active{background:linear-gradient(135deg,#612139,#87324c);border:2px solid #e9bd6d;box-shadow:0 0 0 4px rgba(201,162,83,.16),0 13px 25px rgba(97,33,57,.15)}
+#panel-1 .suo-bab02-hierarchy .suo-bab02-level.is-active::after{content:"";position:absolute;bottom:0;left:25%;right:25%;height:4px;border-radius:5px 5px 0 0;background:#e9bd6d}
+#panel-1 .suo-bab02-separated{scroll-margin-top:135px;animation:suoBab02TabEnter .34s ease-out both}
+@keyframes suoBab02TabEnter{from{opacity:.6;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){#panel-1 .suo-bab02-hierarchy{gap:10px!important}#panel-1 .suo-bab02-hierarchy .suo-bab02-level{min-height:106px}}
+@media(prefers-reduced-motion:reduce){#panel-1 .suo-bab02-separated{animation:none}}
+</style>
 </head>
 <body>
 
@@ -2223,10 +2235,10 @@ body{background:#fcfaf7!important;color:#302c2d!important}
       <div class="panel-body suo-bento-body"><section class="suo-bento-topic active suo-bab02-topic" role="tabpanel" id="bento-1-0" aria-labelledby="bento-tab-1-0">
  <div class="suo-bab02-heading"><span>RAJAH 1.1 · HIERARKI PERANCANGAN BANDAR &amp; DESA DI MALAYSIA</span><h3>Empat Peringkat Perancangan Pemajuan Negeri Selangor</h3><p>Daripada dasar fizikal kebangsaan kepada tindakan pembangunan terperinci di peringkat tempatan.</p></div>
  <div class="suo-bab02-hierarchy" aria-label="Hierarki RFN, RSN, RT dan RKK">
- <button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-0" aria-label="Lihat RFN 4"><small>01 · KEBANGSAAN</small><strong>RFN 4</strong><span>Terokai ↓</span></button><button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-1" aria-label="Lihat RSN"><small>02 · NEGERI</small><strong>RSN</strong><span>Terokai ↓</span></button><button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-2" aria-label="Lihat RT"><small>03 · TEMPATAN</small><strong>RT</strong><span>Terokai ↓</span></button><button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-3" aria-label="Lihat RKK"><small>04 · KAWASAN KHAS</small><strong>RKK</strong><span>Terokai ↓</span></button>
+ <button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-0" data-bab02-section="rfn" aria-controls="suo-bab02-tabpanel-rfn" aria-pressed="true" aria-label="Lihat RFN 4"><small>01 · KEBANGSAAN</small><strong>RFN 4</strong><span>Terokai ↓</span></button><button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-1" data-bab02-section="rsn" aria-controls="suo-bab02-tabpanel-rsn" aria-pressed="false" aria-label="Lihat RSN"><small>02 · NEGERI</small><strong>RSN</strong><span>Terokai ↓</span></button><button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-2" data-bab02-section="rt" aria-controls="suo-bab02-tabpanel-rt" aria-pressed="false" aria-label="Lihat RT"><small>03 · TEMPATAN</small><strong>RT</strong><span>Terokai ↓</span></button><button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-3" data-bab02-section="rkk" aria-controls="suo-bab02-tabpanel-rkk" aria-pressed="false" aria-label="Lihat RKK"><small>04 · KAWASAN KHAS</small><strong>RKK</strong><span>Terokai ↓</span></button>
  </div>
  <div class="suo-bab02-grid">
- <section class="suo-bab02-separated suo-bab02-separated-rfn" aria-label="Rancangan Fizikal Negara 4 (RFN 4)">
+ <section class="suo-bab02-separated suo-bab02-separated-rfn" id="suo-bab02-tabpanel-rfn" role="tabpanel" aria-label="Subtopik RFN" aria-label="Rancangan Fizikal Negara 4 (RFN 4)">
 <header class="suo-bab02-section-divider"><span class="suo-bab02-section-num">01</span><div><small>SUBTOPIK 01 · PERINGKAT PERANCANGAN</small><h3>Rancangan Fizikal Negara 4 (RFN 4)</h3><p>Dasar strategik nasional sebagai asas hala tuju perancangan spatial.</p></div></header>
 <div class="suo-bab02-separated-content">
 <div class="suo-bab02-rfn-module">
@@ -2269,7 +2281,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  </section>
 </div>
 </div></section>
-<section class="suo-bab02-separated suo-bab02-separated-rsn" aria-label="Rancangan Struktur Negeri (RSN)">
+<section class="suo-bab02-separated suo-bab02-separated-rsn" id="suo-bab02-tabpanel-rsn" role="tabpanel" aria-label="Subtopik RSN" hidden aria-label="Rancangan Struktur Negeri (RSN)">
 <header class="suo-bab02-section-divider"><span class="suo-bab02-section-num">02</span><div><small>SUBTOPIK 02 · PERINGKAT PERANCANGAN</small><h3>Rancangan Struktur Negeri (RSN)</h3><p>Penterjemahan dasar dan cadangan pemajuan di peringkat Negeri Selangor.</p></div></header>
 <div class="suo-bab02-separated-content">
 <section class="suo-bab02-rsn-module" aria-label="Rancangan Struktur Negeri Selangor 2035">
@@ -2324,14 +2336,14 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  </section>
 </section>
 </div></section>
-<section class="suo-bab02-separated suo-bab02-separated-rt" aria-label="Rancangan Tempatan (RT)">
+<section class="suo-bab02-separated suo-bab02-separated-rt" id="suo-bab02-tabpanel-rt" role="tabpanel" aria-label="Subtopik RT" hidden aria-label="Rancangan Tempatan (RT)">
 <header class="suo-bab02-section-divider"><span class="suo-bab02-section-num">03</span><div><small>SUBTOPIK 03 · PERINGKAT PERANCANGAN</small><h3>Rancangan Tempatan (RT)</h3><p>Tindakan dan kawalan perancangan mengikut kawasan Pihak Berkuasa Perancangan Tempatan.</p></div></header>
 <div class="suo-bab02-separated-content">
 <div class="suo-bab02-separated-pair">
 <article class="suo-bab02-card suo-bab02-wide" id="suo-bab02-stage-2"><span class="suo-bab02-card-eyebrow">C · RANCANGAN TEMPATAN</span><h4>Rancangan Tempatan (RT)</h4><p>Dokumen perancangan tindakan dan cadangan oleh Pihak Berkuasa Perancangan Tempatan (PBPT) merangkumi Tindakan &amp; Kawalan Perancangan (guna tanah, landskap, lalulintas, bangunan) selaras dengan Subseksyen 12(4) Akta 172.</p></article>
  <article class="suo-bab02-card suo-bab02-stat"><strong>12</strong><h4>RT Utama PBT Selangor</h4><p>Senarai mengikut dua belas PBT disediakan pada tab Perkaitan Rancangan.</p></article>
  </div></div></section>
-<section class="suo-bab02-separated suo-bab02-separated-rkk" aria-label="Rancangan Kawasan Khas (RKK)">
+<section class="suo-bab02-separated suo-bab02-separated-rkk" id="suo-bab02-tabpanel-rkk" role="tabpanel" aria-label="Subtopik RKK" hidden aria-label="Rancangan Kawasan Khas (RKK)">
 <header class="suo-bab02-section-divider"><span class="suo-bab02-section-num">04</span><div><small>SUBTOPIK 04 · PERINGKAT PERANCANGAN</small><h3>Rancangan Kawasan Khas (RKK)</h3><p>Tindakan khusus bagi pembangunan, pemuliharaan dan penambahbaikan kawasan berkepentingan.</p></div></header>
 <div class="suo-bab02-separated-content">
 <div class="suo-bab02-separated-pair">
@@ -3174,9 +3186,31 @@ function switchTab(index){
    root.querySelectorAll('.suo-bab02-list-panel').forEach(function(panel){panel.hidden=panel.dataset.bab02View!==value});
   });
  });
- root.querySelectorAll('.suo-bab02-level').forEach(function(button){
-  button.addEventListener('click',function(){const target=document.getElementById(button.dataset.target);if(target)target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'})});
- });
+ const chapterTopic=root.querySelector('#bento-1-0');
+ if(chapterTopic){
+  const navButtons=Array.from(chapterTopic.querySelectorAll('.suo-bab02-level'));
+  const sections=Array.from(chapterTopic.querySelectorAll('.suo-bab02-separated'));
+  function chooseSection(key,shouldScroll){
+   const selected=chapterTopic.querySelector('#suo-bab02-tabpanel-'+key);
+   if(!selected)return;
+   sections.forEach(function(section){section.hidden=section!==selected});
+   navButtons.forEach(function(btn){
+    const active=btn.dataset.bab02Section===key;
+    btn.classList.toggle('is-active',active);
+    btn.setAttribute('aria-pressed',String(active));
+   });
+   if(shouldScroll){
+    requestAnimationFrame(function(){selected.scrollIntoView({
+     behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',
+     block:'start'
+    })});
+   }
+  }
+  navButtons.forEach(function(button){
+   button.addEventListener('click',function(){chooseSection(button.dataset.bab02Section,true)});
+  });
+  chooseSection('rfn',false);
+ }
 })();
 </script>
 <script id="suo-bab02-rfn-flip-controls-2026">
