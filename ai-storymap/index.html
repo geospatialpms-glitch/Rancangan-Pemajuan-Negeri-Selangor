@@ -1553,6 +1553,31 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  #panel-0 .selangor-district-leaflet{height:450px!important}
 }
 </style>
+<style id="suo-pbt-composition-interactive-2026">
+/* Profile composition only: soft, accessible selection with original wording fully retained. */
+#panel-0 .ch01-profile-breakdown{position:relative;overflow:hidden;padding:clamp(20px,2.4vw,34px)!important;border:1px solid #ead8c8!important;border-radius:25px!important;background:linear-gradient(140deg,#fffefa 0%,#fff8f2 100%)!important;box-shadow:0 14px 35px rgba(89,0,22,.07)!important}
+#panel-0 .ch01-profile-breakdown::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#590016,#b2677c,#dab56c)}
+#panel-0 .ch01-breakdown-title{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:22px!important}
+#panel-0 .ch01-breakdown-title strong{font-family:'Merriweather',Georgia,serif!important;color:#590016!important;font-size:clamp(19px,2vw,27px)!important}
+#panel-0 .ch01-breakdown-title>span:last-child{padding:7px 13px;border:1px solid #ead6bf;background:#fff7e7;border-radius:999px;color:#98667a!important;font-size:12px!important}
+#panel-0 .ch01-pbt-bars{display:grid!important;grid-template-columns:4fr 7fr 1.7fr!important;gap:12px!important;min-height:110px!important;margin-bottom:21px!important}
+#panel-0 .ch01-pbt-filter{font:inherit;cursor:pointer;min-width:0;min-height:105px;padding:12px 9px!important;border:2px solid transparent!important;border-radius:17px!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;box-shadow:0 9px 21px rgba(89,0,22,.12);transition:transform .2s,box-shadow .2s,filter .2s,border-color .2s}
+#panel-0 .ch01-pbt-filter strong{font-family:'Merriweather',Georgia,serif;font-size:clamp(25px,2.5vw,37px);font-weight:900;line-height:1.1;color:#fff!important}
+#panel-0 .ch01-pbt-filter span{font-size:clamp(11px,1.05vw,14px);font-weight:750;line-height:1.35;color:#fff!important}
+#panel-0 .ch01-pbt-filter.ch01-bar-city{background:linear-gradient(130deg,#590016,#851f42)!important}
+#panel-0 .ch01-pbt-filter.ch01-bar-town{background:linear-gradient(130deg,#a74d67,#bf6c85)!important}
+#panel-0 .ch01-pbt-filter.ch01-bar-district{background:linear-gradient(130deg,#b98d40,#d3ab5c)!important}
+#panel-0 .ch01-pbt-filter:hover{transform:translateY(-4px);box-shadow:0 16px 28px rgba(89,0,22,.18);filter:brightness(1.06)}
+#panel-0 .ch01-pbt-filter[aria-pressed="true"]{border-color:#fff7dc!important;outline:2px solid #d6ad65;outline-offset:2px;box-shadow:0 15px 30px rgba(89,0,22,.18)}
+#panel-0 .ch01-pbt-directory-list{gap:12px!important}
+#panel-0 .ch01-pbt-directory-list .ch01-pbt-description{position:relative;margin:0!important;padding:18px 20px!important;background:rgba(255,255,255,.87)!important;border:1px solid #eadcd2!important;border-left:4px solid #c48899!important;border-radius:15px!important;color:#50464d!important;font-size:clamp(13px,1.06vw,15px)!important;line-height:1.85!important;box-shadow:0 6px 18px rgba(89,0,22,.045);transition:background .2s,box-shadow .2s,transform .2s,border-color .2s}
+#panel-0 .ch01-pbt-directory-list .ch01-pbt-description strong{color:#74203c}
+#panel-0 .ch01-pbt-directory-list .ch01-pbt-description:hover{transform:translateY(-2px);background:#fffcf7!important;box-shadow:0 12px 24px rgba(89,0,22,.07)}
+#panel-0 .ch01-pbt-directory-list .ch01-pbt-description.is-highlight{background:#fff2dc!important;border-left-color:#d0a04d!important;border-color:#e9c691!important;box-shadow:0 12px 27px rgba(89,0,22,.095)}
+#panel-0 .ch01-pbt-filter:focus-visible{outline:3px solid #d6ad65;outline-offset:3px}
+@media(max-width:700px){#panel-0 .ch01-pbt-bars{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}#panel-0 .ch01-pbt-filter{min-height:84px;padding:9px 5px!important}#panel-0 .ch01-pbt-directory-list .ch01-pbt-description{padding:14px!important}}
+@media(prefers-reduced-motion:reduce){#panel-0 .ch01-pbt-filter,#panel-0 .ch01-pbt-description{transition:none!important}#panel-0 .ch01-pbt-filter:hover,#panel-0 .ch01-pbt-description:hover{transform:none!important}}
+</style>
 </head>
 <body>
 
@@ -1772,14 +1797,14 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  <div class="ch01-profile-breakdown" aria-label="Komposisi 12 PBT Negeri Selangor">
   <div class="ch01-breakdown-title"><span class="ch01-link-node" aria-hidden="true"></span><strong>Komposisi 12 PBT</strong><span>4 + 7 + 1</span></div>
   <div class="ch01-pbt-bars" aria-label="4 Majlis Bandaraya, 7 Majlis Perbandaran dan 1 Majlis Daerah">
-   <div class="ch01-pbt-bar ch01-bar-city" style="--bar-flex:4"><strong>04</strong><span>Bandaraya</span></div>
-   <div class="ch01-pbt-bar ch01-bar-town" style="--bar-flex:7"><strong>07</strong><span>Perbandaran</span></div>
-   <div class="ch01-pbt-bar ch01-bar-district" style="--bar-flex:1"><strong>01</strong><span>Daerah</span></div>
+   <button type="button" class="ch01-pbt-bar ch01-bar-city ch01-pbt-filter" style="--bar-flex:4" data-pbt-category="bandaraya" aria-pressed="false" aria-controls="ch01-pbt-description-bandaraya" title="Serlahkan maklumat Bandaraya"><strong>04</strong><span>Bandaraya</span></button>
+   <button type="button" class="ch01-pbt-bar ch01-bar-town ch01-pbt-filter" style="--bar-flex:7" data-pbt-category="perbandaran" aria-pressed="false" aria-controls="ch01-pbt-description-perbandaran" title="Serlahkan maklumat Perbandaran"><strong>07</strong><span>Perbandaran</span></button>
+   <button type="button" class="ch01-pbt-bar ch01-bar-district ch01-pbt-filter" style="--bar-flex:1" data-pbt-category="daerah" aria-pressed="false" aria-controls="ch01-pbt-description-daerah" title="Serlahkan maklumat Daerah"><strong>01</strong><span>Daerah</span></button>
   </div>
   <div class="ch01-pbt-directory-list">
-   <p><strong>4 Majlis Bandaraya:</strong> Majlis Bandaraya Shah Alam (MBSA), Majlis Bandaraya Petaling Jaya (MBPJ), Majlis Bandaraya Subang Jaya (MBSJ) dan Majlis Bandaraya Diraja Klang (MBDK).</p>
-   <p><strong>7 Majlis Perbandaran:</strong> Majlis Perbandaran Ampang Jaya (MPAJ), Majlis Perbandaran Kajang (MPKj), Majlis Perbandaran Selayang (MPS), Majlis Perbandaran Sepang (MPSp), Majlis Perbandaran Kuala Langat (MPKL), Majlis Perbandaran Kuala Selangor (MPKS) dan Majlis Perbandaran Hulu Selangor (MPHS).</p>
-   <p><strong>1 Majlis Daerah:</strong> Majlis Daerah Sabak Bernam (MDSB).</p>
+   <p id="ch01-pbt-description-bandaraya" class="ch01-pbt-description" data-pbt-category="bandaraya"><strong>4 Majlis Bandaraya:</strong> Majlis Bandaraya Shah Alam (MBSA), Majlis Bandaraya Petaling Jaya (MBPJ), Majlis Bandaraya Subang Jaya (MBSJ) dan Majlis Bandaraya Diraja Klang (MBDK).</p>
+   <p id="ch01-pbt-description-perbandaran" class="ch01-pbt-description" data-pbt-category="perbandaran"><strong>7 Majlis Perbandaran:</strong> Majlis Perbandaran Ampang Jaya (MPAJ), Majlis Perbandaran Kajang (MPKj), Majlis Perbandaran Selayang (MPS), Majlis Perbandaran Sepang (MPSp), Majlis Perbandaran Kuala Langat (MPKL), Majlis Perbandaran Kuala Selangor (MPKS) dan Majlis Perbandaran Hulu Selangor (MPHS).</p>
+   <p id="ch01-pbt-description-daerah" class="ch01-pbt-description" data-pbt-category="daerah"><strong>1 Majlis Daerah:</strong> Majlis Daerah Sabak Bernam (MDSB).</p>
   </div>
  </div>
  <button type="button" class="chapter-panel-action" onclick="document.getElementById('pautan-pbt').scrollIntoView({behavior:'smooth',block:'start'})">Lihat Direktori 12 PBT <span aria-hidden="true">↗</span></button>
@@ -2646,6 +2671,24 @@ function switchTab(index){
  const mainPanel=pane.closest('.content-panel');
  if(mainPanel)tabObserver.observe(mainPanel,{attributes:true,attributeFilter:['class']});
  if(!pane.hidden)setup();
+})();
+</script>
+<script id="suo-pbt-composition-interactive-2026">
+(function(){
+ 'use strict';
+ const section=document.querySelector('#panel-0 .ch01-profile-breakdown');
+ if(!section)return;
+ const buttons=Array.from(section.querySelectorAll('.ch01-pbt-filter'));
+ const descriptions=Array.from(section.querySelectorAll('.ch01-pbt-description'));
+ buttons.forEach(function(button){
+  button.addEventListener('click',function(){
+   const chosen=button.dataset.pbtCategory;
+   const already=button.getAttribute('aria-pressed')==='true';
+   buttons.forEach(function(b){b.setAttribute('aria-pressed',String(!already&&b===button))});
+   descriptions.forEach(function(p){p.classList.toggle('is-highlight',!already&&p.dataset.pbtCategory===chosen)});
+   if(!already){const desc=section.querySelector('#ch01-pbt-description-'+chosen);if(desc)desc.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})}
+  });
+ });
 })();
 </script>
 </body>
