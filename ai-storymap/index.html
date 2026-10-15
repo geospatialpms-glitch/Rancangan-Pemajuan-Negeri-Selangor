@@ -1381,6 +1381,42 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 .selangor-district-popup small{display:block;margin-top:10px;color:#817279;line-height:1.5}
 @media(max-width:700px){#panel-0 .selangor-district-map-head{padding:18px}#panel-0 .selangor-district-reset{width:100%}#panel-0 .selangor-district-map-bottom{padding:12px 16px}#panel-0 .selangor-district-leaflet{height:460px}}
 </style>
+<style id="selangor-atlas-poster-design-2026">
+/* Poster-inspired 3-column GIS atlas; original district geometry and popup logic retained. */
+#panel-0 .selangor-atlas-map-card{background:#fffaf2;border-color:#e1bd87}
+#panel-0 .selangor-atlas-map-header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 24px;background:linear-gradient(95deg,#fffdfa,#fff2de);border-bottom:1px solid #ecd9be}
+#panel-0 .selangor-atlas-map-header h5{font-family:'Merriweather',Georgia,serif;font-size:clamp(24px,2.7vw,35px);color:#590016;margin:7px 0}
+#panel-0 .selangor-atlas-map-header p{font-size:13px!important;color:#70545e!important;margin:0!important}
+#panel-0 .selangor-atlas-three-col{display:grid;grid-template-columns:minmax(185px,1fr) minmax(300px,2.3fr) minmax(210px,1.17fr);gap:12px;padding:16px;background:linear-gradient(130deg,#fff7e9,#edf6f7 55%,#fff9ef)}
+#panel-0 .selangor-atlas-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+#panel-0 .selangor-atlas-summary{background:#fffdf8;border:1px solid #e4c79f;border-radius:16px;padding:18px 15px;box-shadow:0 7px 20px rgba(89,0,22,.08)}
+#panel-0 .selangor-atlas-mini{font-size:10px;font-weight:900;letter-spacing:.06em;color:#8d314d}
+#panel-0 .selangor-atlas-summary>strong{font-family:'Merriweather',Georgia,serif;display:block;margin:8px 0;color:#590016;font-size:clamp(28px,3vw,42px);line-height:1.13}
+#panel-0 .selangor-atlas-summary>strong small{font-size:17px}
+#panel-0 .selangor-atlas-summary p{color:#5c4a54!important;font-size:12px!important;line-height:1.7!important;margin:0!important}
+#panel-0 .selangor-atlas-districts{display:grid;grid-template-columns:1fr;gap:3px;margin-top:8px}
+#panel-0 .selangor-atlas-district-btn{border:0;background:transparent;color:#513c47;text-align:left;font-size:12px;font-weight:700;padding:6px;border-radius:6px;cursor:pointer}
+#panel-0 .selangor-atlas-district-btn:hover{background:#f7e9d2;color:#590016}
+#panel-0 .selangor-atlas-map-stage{position:relative;min-width:0;border:1px solid #ddcbb7;border-radius:16px;overflow:hidden;background:radial-gradient(ellipse at 30% 45%,#d9f1f5 0%,#e9f5f5 45%,#fff5de 100%)}
+#panel-0 .selangor-atlas-map-caption{position:absolute;top:13px;left:10px;right:10px;z-index:450;color:#70263e;text-align:center;font-weight:900;letter-spacing:.10em;font-size:10px;pointer-events:none;text-shadow:0 1px white}
+#panel-0 .selangor-atlas-map-caption span{color:#c79b48}
+#panel-0 .selangor-district-leaflet{height:640px!important;max-height:none!important;background:transparent!important}
+#panel-0 .selangor-atlas-compass{position:absolute;right:13px;bottom:16px;z-index:420;color:#590016;text-align:center;font-family:'Merriweather',Georgia,serif;font-size:17px;font-weight:900;line-height:1.2;pointer-events:none}
+#panel-0 .selangor-atlas-pbt-head{background:#590016;color:#fff5df;border-radius:12px;padding:15px 12px;font-size:12px;line-height:1.5;text-align:center;font-weight:900}
+#panel-0 .selangor-atlas-pbt-items{background:#fffdf9;border:1px solid #ebcfaa;border-radius:14px;overflow:hidden;box-shadow:0 7px 22px rgba(89,0,22,.075)}
+#panel-0 .selangor-atlas-pbt-row{display:flex;align-items:center;gap:8px;width:100%;padding:10px 8px;border:0;border-bottom:1px solid #eee1d8;text-align:left;background:transparent;cursor:pointer}
+#panel-0 .selangor-atlas-pbt-row:last-child{border:0}
+#panel-0 .selangor-atlas-pbt-row:hover{background:#fff0d4}
+#panel-0 .selangor-atlas-pbt-row b{display:grid;place-items:center;min-width:23px;height:23px;border-radius:50%;background:#d5aa58;color:#590016;font-size:10px}
+#panel-0 .selangor-atlas-pbt-row>span{flex:1;font-size:11px;font-weight:700;line-height:1.35;color:#4b3442}
+#panel-0 .selangor-atlas-pbt-row small{font-size:10px;font-weight:900;color:#70223c}
+#panel-0 .selangor-atlas-map-card .leaflet-control-attribution{background:rgba(255,253,248,.8)!important;color:#6e5d66!important;font-size:10px!important}
+#panel-0 .selangor-atlas-map-card .leaflet-control-attribution a{color:#70263e!important}
+#panel-0 .selangor-atlas-map-label{background:transparent;border:0}
+#panel-0 .selangor-atlas-map-label span{display:block;width:max-content;max-width:115px;position:relative;left:50%;transform:translateX(-50%);color:#4c182c;text-shadow:0 1px 2px #fff,0 0 5px #fff;font-size:11px;font-weight:900;text-align:center;white-space:normal;line-height:1.2;pointer-events:none}
+@media(max-width:1080px){#panel-0 .selangor-atlas-three-col{grid-template-columns:minmax(165px,1fr) minmax(260px,2fr)}#panel-0 .selangor-atlas-right{grid-column:1/-1}#panel-0 .selangor-atlas-pbt-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}#panel-0 .selangor-atlas-pbt-row{border-right:1px solid #eee1d8}}
+@media(max-width:690px){#panel-0 .selangor-atlas-map-header{padding:18px;flex-wrap:wrap}#panel-0 .selangor-atlas-three-col{grid-template-columns:1fr}#panel-0 .selangor-atlas-left{display:grid;grid-template-columns:1fr 1fr}#panel-0 .selangor-atlas-summary{padding:12px}#panel-0 .selangor-atlas-district-btn{font-size:11px}#panel-0 .selangor-atlas-map-stage{min-height:470px}#panel-0 .selangor-district-leaflet{height:490px!important}#panel-0 .selangor-atlas-pbt-items{grid-template-columns:1fr 1fr}}
+</style>
 </head>
 <body>
 
@@ -1561,15 +1597,21 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  </a>
  <figcaption>Infografik profil Negeri Selangor — rujukan visual pentadbiran. Klik untuk melihat paparan penuh.</figcaption>
 </figure>
- <div class="selangor-district-map-card" id="selangor-interactive-district-map">
- <div class="selangor-district-map-head">
-  <div><span class="selangor-district-map-kicker">PETA GIS INTERAKTIF · NEGERI SELANGOR</span><h5>Terokai 9 Daerah &amp; Lokasi PBT</h5><p>Klik kawasan daerah untuk melihat nama daerah dan PBT yang mempunyai titik lokasi pejabat di dalamnya.</p></div>
-  <button type="button" class="selangor-district-reset" id="selangor-district-reset" aria-label="Set semula paparan peta">↺ Set Semula</button>
+ <div class="selangor-district-map-card selangor-atlas-map-card" id="selangor-interactive-district-map">
+ <div class="selangor-atlas-map-header"><div><span class="selangor-district-map-kicker">ATLAS PENTADBIRAN DIGITAL · SELANGOR</span><h5>Negeri Selangor</h5><p>9 Daerah · 12 Pihak Berkuasa Tempatan · Klik daerah untuk teroka maklumat</p></div><button type="button" class="selangor-district-reset" id="selangor-district-reset">↺ Set Semula</button></div>
+ <div class="selangor-atlas-three-col">
+  <aside class="selangor-atlas-side selangor-atlas-left">
+   <div class="selangor-atlas-summary"><span class="selangor-atlas-mini">KELUASAN NEGERI SELANGOR</span><strong>8,104 <small>km²</small></strong><p>Luas Keseluruhan Negeri Selangor</p></div>
+   <div class="selangor-atlas-summary"><span class="selangor-atlas-mini">DAERAH PENTADBIRAN</span><strong>09</strong><div class="selangor-atlas-districts" id="selangor-atlas-district-list"></div></div>
+  </aside>
+  <div class="selangor-atlas-map-stage">
+   <div class="selangor-atlas-map-caption">PETA SEMPADAN DAERAH SELANGOR <span>✦</span> KLIK UNTUK INFO</div>
+   <div id="selangor-district-leaflet" class="selangor-district-leaflet" role="application" aria-label="Peta GIS sembilan daerah Selangor yang boleh diklik"><p class="selangor-district-map-loading" id="selangor-district-map-status" role="status">Memuatkan peta daerah…</p></div>
+   <div class="selangor-atlas-compass" aria-hidden="true">N<br>↑</div>
+  </div>
+  <aside class="selangor-atlas-side selangor-atlas-right"><div class="selangor-atlas-pbt-head">12 PIHAK BERKUASA TEMPATAN (PBT)</div><div class="selangor-atlas-pbt-items"><button type="button" class="selangor-atlas-pbt-row" data-pbt="MBSA" title="Papar lokasi Majlis Bandaraya Shah Alam"><b>01</b><span>Majlis Bandaraya Shah Alam</span><small>MBSA</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MBPJ" title="Papar lokasi Majlis Bandaraya Petaling Jaya"><b>02</b><span>Majlis Bandaraya Petaling Jaya</span><small>MBPJ</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MBSJ" title="Papar lokasi Majlis Bandaraya Subang Jaya"><b>03</b><span>Majlis Bandaraya Subang Jaya</span><small>MBSJ</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MBDK" title="Papar lokasi Majlis Bandaraya Diraja Klang"><b>04</b><span>Majlis Bandaraya Diraja Klang</span><small>MBDK</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MPS" title="Papar lokasi Majlis Perbandaran Selayang"><b>05</b><span>Majlis Perbandaran Selayang</span><small>MPS</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MPKj" title="Papar lokasi Majlis Perbandaran Kajang"><b>06</b><span>Majlis Perbandaran Kajang</span><small>MPKj</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MPAJ" title="Papar lokasi Majlis Perbandaran Ampang Jaya"><b>07</b><span>Majlis Perbandaran Ampang Jaya</span><small>MPAJ</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MPSp" title="Papar lokasi Majlis Perbandaran Sepang"><b>08</b><span>Majlis Perbandaran Sepang</span><small>MPSp</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MPKL" title="Papar lokasi Majlis Perbandaran Kuala Langat"><b>09</b><span>Majlis Perbandaran Kuala Langat</span><small>MPKL</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MPKS" title="Papar lokasi Majlis Perbandaran Kuala Selangor"><b>10</b><span>Majlis Perbandaran Kuala Selangor</span><small>MPKS</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MDSB" title="Papar lokasi Majlis Daerah Sabak Bernam"><b>11</b><span>Majlis Daerah Sabak Bernam</span><small>MDSB</small></button><button type="button" class="selangor-atlas-pbt-row" data-pbt="MPHS" title="Papar lokasi Majlis Perbandaran Hulu Selangor"><b>12</b><span>Majlis Perbandaran Hulu Selangor</span><small>MPHS</small></button></div></aside>
  </div>
- <div id="selangor-district-leaflet" class="selangor-district-leaflet" role="application" aria-label="Peta GIS sembilan daerah Selangor yang boleh diklik">
-  <p class="selangor-district-map-loading" id="selangor-district-map-status" role="status">Memuatkan peta sembilan daerah Selangor…</p>
- </div>
- <div class="selangor-district-map-bottom"><span><i></i>Sempadan Daerah</span><span><i></i>Lokasi Pejabat PBT</span><small>Maklumat PBT berdasarkan lokasi titik, bukan sempadan kawasan pentadbiran PBT. Sempadan daerah dipermudahkan untuk paparan web.</small></div>
+ <div class="selangor-district-map-bottom"><span><i></i>Sempadan Daerah</span><span><i></i>Lokasi Pejabat PBT</span><small>Peta interaktif daripada Shapefile daerah. PBT yang dipaparkan dalam popup ditentukan oleh lokasi pejabat, bukan sempadan kawasan PBT.</small></div>
 </div>
 <div class="ch01-linked-grid ch01-profile-grid" aria-label="Profil pentadbiran Selangor dalam kad berangkai">
    <article class="ch01-linked-card ch01-land-card">
@@ -2364,7 +2406,7 @@ function switchTab(index){
   ['MPKS','Majlis Perbandaran Kuala Selangor','Kuala Selangor',3.3315,101.2513],
   ['MDSB','Majlis Daerah Sabak Bernam','Sabak Bernam',3.6761,100.9908]
  ];
- const districtColors=['#c2774e','#b44c65','#e5ac57','#9d5e98','#5f9aa3','#8d9a5c','#9b6b45','#6c86ac','#ba6b8c'];
+ const districtColors={'Sabak Bernam':'#ef925e','Hulu Selangor':'#ba8bda','Kuala Selangor':'#9abc74','Kelang':'#ed9c4e','Gombak':'#76c0c9','Petaling':'#db7293','Kuala Langat':'#b38bd6','Sepang':'#efc66b','Hulu Langat':'#6f9cdd'};
  let allBounds=null;
  function decodePolyline(str){
   let at=0,lat=0,lon=0,out=[];
@@ -2395,25 +2437,42 @@ function switchTab(index){
    const data=await response.json();
    if(!pane.closest('.content-panel.active')||pane.hidden){initialized=false;return}
    map=L.map(host,{scrollWheelZoom:false,zoomControl:true,attributionControl:true,preferCanvas:true});
-   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+   // Atlas-style neutral backdrop: no third-party tile layer or API key required.
+   map.attributionControl.setPrefix('Leaflet');
    const groups=[];
    Object.entries(data.encodedRings).forEach(function(entry,index){
     const name=entry[0],rings=entry[1].map(decodePolyline);
-    const group=L.polygon(rings.map(function(ring){return [ring]}),{color:'#590016',weight:1.65,fillColor:districtColors[index%districtColors.length],fillOpacity:.55});
+    const group=L.polygon(rings.map(function(ring){return [ring]}),{color:'#590016',weight:2,fillColor:districtColors[name]||'#d6a76d',fillOpacity:.86});
     group.bindTooltip(name,{sticky:true,direction:'top'});
     group.bindPopup(popup(name),{maxWidth:320});
-    group.on('mouseover',function(){group.setStyle({weight:3,color:'#e4b85f',fillOpacity:.77});group.bringToFront()});
-    group.on('mouseout',function(){group.setStyle({weight:1.65,color:'#590016',fillOpacity:.55})});
+    const coords=group.getBounds().getCenter();
+    const label=L.marker(coords,{interactive:false,icon:L.divIcon({className:'selangor-atlas-map-label',html:'<span>'+name+'</span>',iconSize:[115,25],iconAnchor:[57,12]})});
+    label.addTo(map);
+    group.on('mouseover',function(){group.setStyle({weight:3,color:'#e4b85f',fillOpacity:1});group.bringToFront()});
+    group.on('mouseout',function(){group.setStyle({weight:2,color:'#590016',fillOpacity:.86})});
     group.on('click',function(){map.fitBounds(group.getBounds(),{padding:[40,40],maxZoom:11})});
     group.addTo(map);groups.push(group);
    });
    const all=L.featureGroup(groups);
+   const districtList=document.getElementById('selangor-atlas-district-list');
+   if(districtList){districtList.innerHTML='';
+    Object.keys(data.encodedRings).sort().forEach(function(name,i){
+     const btn=document.createElement('button');btn.type='button';btn.className='selangor-atlas-district-btn';btn.textContent=(i+1)+'. '+(name==='Kelang'?'Klang':name);
+     btn.addEventListener('click',function(){const idx=Object.keys(data.encodedRings).indexOf(name);if(groups[idx]){map.fitBounds(groups[idx].getBounds(),{padding:[30,30],maxZoom:10});groups[idx].openPopup()}});
+     districtList.appendChild(btn);
+    });
+   }
    allBounds=all.getBounds();
+   const officeMarkers={};
    offices.forEach(function(o){
-    L.circleMarker([o[3],o[4]],{radius:5,fillColor:'#590016',fillOpacity:1,color:'#fff3d5',weight:2})
+    const marker=L.circleMarker([o[3],o[4]],{radius:5,fillColor:'#590016',fillOpacity:1,color:'#fff3d5',weight:2})
      .bindTooltip(o[0]+' · '+o[1]).bindPopup(popup(o[2])).addTo(map);
+    officeMarkers[o[0]]=marker;
    });
    map.fitBounds(allBounds,{padding:[25,25]});
+   document.querySelectorAll('#selangor-interactive-district-map .selangor-atlas-pbt-row').forEach(function(btn){
+    btn.addEventListener('click',function(){const marker=officeMarkers[btn.dataset.pbt];if(marker){map.setView(marker.getLatLng(),10,{animate:true});marker.openPopup()}});
+   });
    if(status)status.remove();
    requestAnimationFrame(function(){if(map)map.invalidateSize()});
   }catch(err){
