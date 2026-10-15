@@ -1336,6 +1336,15 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(hover:none){.suo-explore:hover:not(.suo-explore-open):not(:focus-within) .suo-explore-menu{display:none}}
 @media(prefers-reduced-motion:reduce){.suo-explore-chevron{transition:none}}
 </style>
+<style id="suo-floating-home-label-2026">
+/* Replace the 'ATAS' utility with a clearly labeled homepage shortcut. */
+#backToTop.back-to-top{width:75px;height:76px;gap:5px;background:#590016!important;border:1px solid #dcb66e!important;border-radius:17px;color:#fff8ed!important;box-shadow:0 9px 25px rgba(65,0,19,.23)}
+#backToTop.back-to-top svg{flex:0 0 auto;display:block}
+#backToTop.back-to-top span{font-size:9px;line-height:1.2;letter-spacing:.03em;text-align:center;font-weight:900}
+#backToTop.back-to-top:hover{background:#781b35!important}
+#backToTop.back-to-top:focus-visible{outline:3px solid #eac77d;outline-offset:3px}
+@media(max-width:600px){#backToTop.back-to-top{width:65px;height:67px;right:13px;bottom:14px}#backToTop.back-to-top span{font-size:8px}}
+</style>
 </head>
 <body>
 
@@ -1732,7 +1741,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 
 <!-- Pustaka Leaflet JS untuk inisialisasi peta GIS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<button id="backToTop" class="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑<span>ATAS</span></button>
+<button id="backToTop" class="back-to-top" aria-label="Halaman Utama" title="Kembali ke Halaman Utama" onclick="scrollToSuoTarget('utama')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-8h6v8"/></svg><span>HALAMAN<br>UTAMA</span></button>
 <script>(function(){const b=document.getElementById('backToTop');const update=()=>b.classList.toggle('show',window.scrollY>380);window.addEventListener('scroll',update,{passive:true});update();})();</script>
 
 <script id="suo-language-switch-active">
