@@ -2111,6 +2111,54 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:799px){#panel-1 .suo-rsn-flip-grid{grid-template-columns:1fr!important}#panel-1 .suo-rsn-flip-card{height:530px}#panel-1 .suo-rsn-flip-front h5{font-size:22px}}
 @media(prefers-reduced-motion:reduce){#panel-1 .suo-rsn-flip-inner{transition:none}}
 </style>
+<style id="suo-rsn-goal-accordion-2026">
+/* RSN Matlamat: interactive 3D flip with readable full explanations. */
+#panel-1 .suo-rsn-goal-flip{position:relative;min-width:0;height:100%;min-height:650px;perspective:1400px;cursor:pointer;outline-offset:4px}
+#panel-1 .suo-rsn-goal-flip:focus-visible{outline:3px solid #c9a253;border-radius:23px}
+#panel-1 .suo-rsn-goal-inner{position:relative;width:100%;height:100%;min-height:650px;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.2,.7,.2,1)}
+@media(hover:hover) and (pointer:fine){#panel-1 .suo-rsn-goal-flip:hover .suo-rsn-goal-inner{transform:rotateY(180deg)}}
+#panel-1 .suo-rsn-goal-flip.is-flipped .suo-rsn-goal-inner{transform:rotateY(180deg)}
+#panel-1 .suo-rsn-goal-face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;padding:24px 19px;border-radius:23px;border:1px solid rgba(201,162,83,.7);box-shadow:0 13px 29px rgba(97,33,57,.13);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+#panel-1 .suo-rsn-goal-front{background:linear-gradient(135deg,#612139,#78324b 62%,#91536b);color:#fffaf2}
+#panel-1 .suo-rsn-goal-kicker{color:#f3d69b;font-size:10px;letter-spacing:.12em;font-weight:900;line-height:1.5;margin:0 0 14px}
+#panel-1 .suo-rsn-goal-star{font-size:40px;color:#e5c17c;margin:0 0 20px}
+#panel-1 .suo-rsn-goal-front h4{font:800 clamp(20px,2vw,29px)/1.53 'Merriweather',Georgia,serif;margin:0 0 15px;color:#fff9ef;max-width:100%}
+#panel-1 .suo-rsn-goal-front>p{color:#faecea;font-size:12px;line-height:1.85;margin:0 auto 25px;max-width:410px}
+#panel-1 .suo-rsn-goal-hint{border-radius:999px;background:linear-gradient(120deg,#fff2d2,#e9bf71);color:#612139;padding:12px 14px;font-size:10px;font-weight:900;line-height:1.4;box-shadow:0 7px 19px rgba(20,0,7,.18);max-width:100%;display:inline-flex;gap:8px;align-items:center}
+#panel-1 .suo-rsn-goal-hint>span{font-size:19px}
+#panel-1 .suo-rsn-goal-back{transform:rotateY(180deg);background:linear-gradient(145deg,#fffefa,#fbf9f5);justify-content:center}
+#panel-1 .suo-rsn-goal-back .suo-rsn-goal-kicker{color:#9b6073;font-size:9px;margin-bottom:7px}
+#panel-1 .suo-rsn-goal-back h4{font:800 clamp(17px,1.55vw,22px)/1.4 'Merriweather',Georgia,serif;color:#612139;margin:0 0 13px}
+#panel-1 .suo-rsn-goal-items{display:grid;gap:9px;width:100%}
+#panel-1 .suo-rsn-goal-item{display:grid;grid-template-columns:30px 1fr;gap:9px;align-items:start;padding:12px 10px;border:1px solid #eadac7;border-radius:14px;background:#fff8ef;text-align:left}
+#panel-1 .suo-rsn-goal-item>b{display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:#612139;color:white;font-size:11px}
+#panel-1 .suo-rsn-goal-item h5{color:#612139;font:800 15px/1.4 'Merriweather',Georgia,serif;margin:0 0 5px}
+#panel-1 .suo-rsn-goal-item p{color:#584b50;font-size:11px;line-height:1.55;margin:0}
+#panel-1 .suo-rsn-goal-backhint{margin-top:11px;color:#825c38;font-size:11px;font-weight:900}
+/* RSN teras: identical collapsed-list interaction to RFN4. */
+#panel-1 .suo-rsn-teras-accordion{display:grid;gap:13px;width:100%}
+#panel-1 .suo-rsn-acc-item{width:100%;border:1px solid #e5d4bb;border-radius:17px;background:#fffdfa;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+#panel-1 .suo-rsn-acc-item:hover{border-color:#c9a253}
+#panel-1 .suo-rsn-acc-item[open]{box-shadow:0 9px 22px rgba(97,33,57,.07)}
+#panel-1 .suo-rsn-acc-item summary{display:flex;gap:14px;align-items:center;min-height:76px;padding:16px 20px;background:#fff9f1;cursor:pointer;list-style:none}
+#panel-1 .suo-rsn-acc-item summary::-webkit-details-marker{display:none}
+#panel-1 .suo-rsn-acc-item[open] summary{background:#f6e8d1}
+#panel-1 .suo-rsn-acc-number{display:grid;place-items:center;flex:none;width:49px;height:49px;border-radius:13px;background:#612139;color:#fff;font-size:17px;font-weight:900}
+#panel-1 .suo-rsn-acc-title{flex:1;font-size:15px;font-weight:800;color:#612139;line-height:1.5}
+#panel-1 .suo-rsn-acc-chevron{color:#b48b46;font-size:24px}
+#panel-1 .suo-rsn-acc-item[open] .suo-rsn-acc-chevron{transform:rotate(180deg)}
+#panel-1 .suo-rsn-acc-body{padding:18px 22px 22px;color:#564b51;font-size:13px;line-height:1.8}
+#panel-1 .suo-rsn-acc-body>p{margin:0 0 13px}
+#panel-1 .suo-rsn-acc-body ol{padding:0 0 0 24px;margin:0;display:grid;gap:8px}
+#panel-1 .suo-rsn-acc-body li{padding:9px 5px;border-top:1px solid #eadbc9}
+#panel-1 .suo-rsn-acc-body li::marker{color:#612139;font-weight:900}
+#panel-1 .suo-rsn-acc-body small{display:block;color:#826f75;font-size:11px;margin-top:13px}
+#panel-1 .suo-rsn-acc-item summary:focus-visible{outline:3px solid #c9a253;outline-offset:-4px}
+@media(min-width:761px){#panel-1 .suo-bab02-rsn-topgrid .suo-bab02-rsn-intro{min-height:650px}}
+@media(max-width:760px){#panel-1 .suo-rsn-goal-flip,#panel-1 .suo-rsn-goal-inner{height:auto;min-height:690px}#panel-1 .suo-rsn-acc-title{font-size:13px}#panel-1 .suo-rsn-acc-item summary{padding:13px}}
+@media(max-width:390px){#panel-1 .suo-rsn-goal-flip,#panel-1 .suo-rsn-goal-inner{min-height:800px}#panel-1 .suo-rsn-goal-face{padding:17px 12px}}
+@media(prefers-reduced-motion:reduce){#panel-1 .suo-rsn-goal-inner{transition:none}}
+</style>
 </head>
 <body>
 
@@ -2469,12 +2517,27 @@ body{background:#fcfaf7!important;color:#302c2d!important}
    <p>Penyataan dasar dan cadangan am pemajuan serta penggunaan tanah di peringkat negeri, merangkumi pertalian guna tanah dengan negeri bersempadan serta mengambil kira dasar RFN (Diluluskan oleh Jawatankuasa Perancang Negeri / JPN dan Pihak Berkuasa Negeri / PBN).</p>
    <div class="suo-bab02-rsn-mini"><span aria-hidden="true">◈</span><div><strong>Peringkat Negeri</strong><small>Dasar dan cadangan am pemajuan serta penggunaan tanah, berpandukan dasar RFN.</small></div></div>
   </article>
-  <article class="suo-bab02-rsn-matlamat">
-   <span class="suo-bab02-rsn-eyebrow">MATLAMAT PEMBANGUNAN RSN 2035</span>
-   <span class="suo-bab02-rsn-emblem" aria-hidden="true">✧</span>
-   <h4>“Selangor Negeri Pintar, Progresif dan Inklusif”</h4>
-   <div class="suo-bab02-rsn-three-word"><span>PIN​TAR</span><span>PROGRESIF</span><span>INKLUSIF</span></div>
-  </article>
+  <article class="suo-rsn-goal-flip" tabindex="0" role="button" aria-pressed="false" aria-label="Matlamat RSN 2035. Klik untuk membaca makna Produktif, Progresif dan Pintar">
+ <div class="suo-rsn-goal-inner">
+  <div class="suo-rsn-goal-face suo-rsn-goal-front">
+   <span class="suo-rsn-goal-kicker">MATLAMAT PEMBANGUNAN RSN 2035</span>
+   <span class="suo-rsn-goal-star" aria-hidden="true">✧</span>
+   <h4>SELANGOR NEGERI<br>PRODUKTIF, PROGRESIF<br>dan PINTAR</h4>
+   <p>Hala tuju pembangunan yang menggabungkan daya ekonomi, kemajuan sosioekonomi serta kecekapan spatial dan pentadbiran.</p>
+   <span class="suo-rsn-goal-hint"><span aria-hidden="true">↻</span> HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA</span>
+  </div>
+  <div class="suo-rsn-goal-face suo-rsn-goal-back">
+   <span class="suo-rsn-goal-kicker">TERAS MAKNA MATLAMAT RSN 2035</span>
+   <h4>Produktif · Progresif · Pintar</h4>
+   <div class="suo-rsn-goal-items">
+    <div class="suo-rsn-goal-item"><b>01</b><div><h5>Produktif</h5><p>Menekankan peranan Selangor sebagai peneraju utama pertumbuhan ekonomi negara yang berfokuskan sektor pembuatan, perkhidmatan, pembinaan, tenaga kerja, dan pengurusan sumber (disokong oleh insentif seperti Pakej Selangor Prihatin &amp; Pakej Kita Selangor).</p></div></div>
+    <div class="suo-rsn-goal-item"><b>02</b><div><h5>Progresif</h5><p>Tertumpu ke arah mengekalkan dan menambah baik sosioekonomi serta persekitaran dalam menghadapi isu-isu pembangunan baharu seperti perubahan iklim dan sekuriti makanan.</p></div></div>
+    <div class="suo-rsn-goal-item"><b>03</b><div><h5>Pintar</h5><p>Diterapkan merangkumi aspek pembangunan spatial, infrastruktur, dan pengurusan pentadbiran bagi memastikan kemajuan sedia ada dapat ditingkatkan dengan berkesan.</p></div></div>
+   </div>
+   <span class="suo-rsn-goal-backhint">↶ KLIK UNTUK KEMBALI</span>
+  </div>
+ </div>
+</article>
  </div>
  <section class="suo-bab02-rsn-map-section" aria-labelledby="suo-bab02-rsn-map-title">
   <header class="suo-bab02-rsn-section-heading"><span>PEL​AN &amp; VISUAL SPATIAL</span><h4 id="suo-bab02-rsn-map-title">Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan)</h4><p>Ruang paparan dokumen pelan konsep pembangunan rasmi.</p></header>
@@ -2485,65 +2548,20 @@ body{background:#fcfaf7!important;color:#302c2d!important}
   <p class="suo-bab02-rsn-plan-caption">Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan) · Paparan imej tertakluk kepada ketersediaan dokumen rasmi.</p>
  </section>
  <section class="suo-bab02-rsn-core" aria-labelledby="suo-bab02-rsn-core-title">
-  <header class="suo-bab02-rsn-section-heading"><span>TERAS PEMBANGUNAN RSN 2035</span><h4 id="suo-bab02-rsn-core-title">Tiga Teras Pembangunan Negeri Selangor</h4><p>Pilih kad teras untuk melihat fokus pembangunan dan hala tuju strategik dengan lebih terperinci.</p></header>
-  <div class="suo-bab02-rsn-core-grid suo-rsn-flip-grid">
-<article class="suo-rsn-flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Teras Pembangunan 1. Klik atau tekan Enter untuk melihat 5 hala tuju strategik">
- <div class="suo-rsn-flip-inner">
-  <div class="suo-rsn-flip-face suo-rsn-flip-front">
-   <span class="suo-rsn-flip-number">01</span>
-   <span class="suo-rsn-flip-kicker">TERAS PEMBANGUNAN 1</span>
-   <h5>Ke Arah Negeri Dinamik, Maju dan Berdaya Saing</h5>
-   <p>Menitikberatkan pertumbuhan KDNK, pelaburan berkualiti dan pembangunan ekonomi digital untuk memperkukuh kedudukan Selangor sebagai negeri berdaya saing.</p>
-   <span class="suo-rsn-flip-prompt"><span aria-hidden="true">↻</span> KLIK ATAU HALAKAN TETIKUS UNTUK TEROKA</span>
-  </div>
-  <div class="suo-rsn-flip-face suo-rsn-flip-back">
-   <span class="suo-rsn-flip-kicker">TERAS 01 · 5 HALA TUJU STRATEGIK</span>
-   <h5>Ke Arah Negeri Dinamik, Maju dan Berdaya Saing</h5>
-   <div class="suo-rsn-flip-back-scroll"><ol><li>Memperkukuh daya saing dan pertumbuhan ekonomi wilayah</li><li>Menggalakkan pelaburan berkualiti dan transformasi Industri 4.0</li><li>Memperkasa sektor pelancongan dan produk ekonomi negeri</li><li>Memperluas infrastruktur serta ekosistem digital pintar</li><li>Memantapkan hab perdagangan, logistik dan rangkaian pengangkutan</li></ol>
-    <p class="suo-rsn-flip-source">Rumusan tematik berdasarkan skop yang diberikan; bukan petikan verbatim dasar rasmi RSN.</p>
-   </div>
-   <span class="suo-rsn-flip-return"><span aria-hidden="true">↶</span> KLIK UNTUK KEMBALI</span>
-  </div>
- </div>
-</article>
-<article class="suo-rsn-flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Teras Pembangunan 2. Klik atau tekan Enter untuk melihat 6 hala tuju strategik">
- <div class="suo-rsn-flip-inner">
-  <div class="suo-rsn-flip-face suo-rsn-flip-front">
-   <span class="suo-rsn-flip-number">02</span>
-   <span class="suo-rsn-flip-kicker">TERAS PEMBANGUNAN 2</span>
-   <h5>Ke Arah Negeri Mampan dan Berdaya Tahan</h5>
-   <p>Mengimbangi pembangunan fizikal dan alam sekitar melalui pengurusan perbandaran, perlindungan KSAS, sekuriti makanan serta adaptasi perubahan iklim.</p>
-   <span class="suo-rsn-flip-prompt"><span aria-hidden="true">↻</span> KLIK ATAU HALAKAN TETIKUS UNTUK TEROKA</span>
-  </div>
-  <div class="suo-rsn-flip-face suo-rsn-flip-back">
-   <span class="suo-rsn-flip-kicker">TERAS 02 · 6 HALA TUJU STRATEGIK</span>
-   <h5>Ke Arah Negeri Mampan dan Berdaya Tahan</h5>
-   <div class="suo-rsn-flip-back-scroll"><ol><li>Mengurus pertumbuhan perbandaran secara terancang</li><li>Mengawal perluasan bandar tidak terkawal (urban sprawl)</li><li>Melindungi Kawasan Sensitif Alam Sekitar (KSAS)</li><li>Memperkukuh pertanian mampan dan sekuriti makanan</li><li>Memulihara ekosistem serta sumber asli negeri</li><li>Menggalakkan teknologi hijau dan daya tahan iklim</li></ol>
-    <p class="suo-rsn-flip-source">Rumusan tematik berdasarkan skop yang diberikan; bukan petikan verbatim dasar rasmi RSN.</p>
-   </div>
-   <span class="suo-rsn-flip-return"><span aria-hidden="true">↶</span> KLIK UNTUK KEMBALI</span>
-  </div>
- </div>
-</article>
-<article class="suo-rsn-flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Teras Pembangunan 3. Klik atau tekan Enter untuk melihat 6 hala tuju strategik">
- <div class="suo-rsn-flip-inner">
-  <div class="suo-rsn-flip-face suo-rsn-flip-front">
-   <span class="suo-rsn-flip-number">03</span>
-   <span class="suo-rsn-flip-kicker">TERAS PEMBANGUNAN 3</span>
-   <h5>Ke Arah Negeri Cekap Sumber dan Berdaya Huni</h5>
-   <p>Memastikan kesejahteraan rakyat melalui akses perumahan berkualiti, kemudahan awam, kesihatan, pengangkutan bersepadu dan pengurusan bekalan air.</p>
-   <span class="suo-rsn-flip-prompt"><span aria-hidden="true">↻</span> KLIK ATAU HALAKAN TETIKUS UNTUK TEROKA</span>
-  </div>
-  <div class="suo-rsn-flip-face suo-rsn-flip-back">
-   <span class="suo-rsn-flip-kicker">TERAS 03 · 6 HALA TUJU STRATEGIK</span>
-   <h5>Ke Arah Negeri Cekap Sumber dan Berdaya Huni</h5>
-   <div class="suo-rsn-flip-back-scroll"><ol><li>Mempertingkat perumahan berkualiti dan mampu milik</li><li>Menambah baik akses serta pengagihan kemudahan awam</li><li>Memperkukuh perkhidmatan kesihatan dan kesejahteraan komuniti</li><li>Mewujudkan sistem pengangkutan awam bersepadu</li><li>Memastikan pengurusan sumber air dan bekalan yang mampan</li><li>Meningkatkan kualiti persekitaran serta keselesaan penduduk</li></ol>
-    <p class="suo-rsn-flip-source">Rumusan tematik berdasarkan skop yang diberikan; bukan petikan verbatim dasar rasmi RSN.</p>
-   </div>
-   <span class="suo-rsn-flip-return"><span aria-hidden="true">↶</span> KLIK UNTUK KEMBALI</span>
-  </div>
- </div>
-</article>
+  <header class="suo-bab02-rsn-section-heading"><span>TERAS PEMBANGUNAN RSN 2035</span><h4 id="suo-bab02-rsn-core-title">Tiga Teras Pembangunan Negeri Selangor</h4><p>Tekan setiap teras untuk membuka senarai hala tuju strategik. Semua teras tertutup pada paparan awal.</p></header>
+  <div class="suo-rsn-teras-accordion">
+<details class="suo-rsn-acc-item">
+ <summary><span class="suo-rsn-acc-number">01</span><span class="suo-rsn-acc-title">Teras 1: Ke Arah Negeri Dinamik, Maju dan Berdaya Saing</span><span class="suo-rsn-acc-chevron" aria-hidden="true">⌄</span></summary>
+ <div class="suo-rsn-acc-body"><p>Menitikberatkan pertumbuhan KDNK, pelaburan berkualiti dan pembangunan ekonomi digital untuk memperkukuh kedudukan Selangor sebagai negeri berdaya saing.</p><ol><li>Memperkukuh daya saing dan pertumbuhan ekonomi wilayah</li><li>Menggalakkan pelaburan berkualiti dan transformasi Industri 4.0</li><li>Memperkasa sektor pelancongan dan produk ekonomi negeri</li><li>Memperluas infrastruktur serta ekosistem digital pintar</li><li>Memantapkan hab perdagangan, logistik dan rangkaian pengangkutan</li></ol><small>Rumusan tematik berdasarkan skop yang diberikan; bukan petikan verbatim dasar rasmi RSN.</small></div>
+</details>
+<details class="suo-rsn-acc-item">
+ <summary><span class="suo-rsn-acc-number">02</span><span class="suo-rsn-acc-title">Teras 2: Ke Arah Negeri Mampan dan Berdaya Tahan</span><span class="suo-rsn-acc-chevron" aria-hidden="true">⌄</span></summary>
+ <div class="suo-rsn-acc-body"><p>Mengimbangi pembangunan fizikal dan alam sekitar melalui pengurusan perbandaran, perlindungan KSAS, sekuriti makanan serta adaptasi perubahan iklim.</p><ol><li>Mengurus pertumbuhan perbandaran secara terancang</li><li>Mengawal perluasan bandar tidak terkawal (urban sprawl)</li><li>Melindungi Kawasan Sensitif Alam Sekitar (KSAS)</li><li>Memperkukuh pertanian mampan dan sekuriti makanan</li><li>Memulihara ekosistem serta sumber asli negeri</li><li>Menggalakkan teknologi hijau dan daya tahan iklim</li></ol><small>Rumusan tematik berdasarkan skop yang diberikan; bukan petikan verbatim dasar rasmi RSN.</small></div>
+</details>
+<details class="suo-rsn-acc-item">
+ <summary><span class="suo-rsn-acc-number">03</span><span class="suo-rsn-acc-title">Teras 3: Ke Arah Negeri Cekap Sumber dan Berdaya Huni</span><span class="suo-rsn-acc-chevron" aria-hidden="true">⌄</span></summary>
+ <div class="suo-rsn-acc-body"><p>Memastikan kesejahteraan rakyat melalui akses perumahan berkualiti, kemudahan awam, kesihatan, pengangkutan bersepadu dan pengurusan bekalan air.</p><ol><li>Mempertingkat perumahan berkualiti dan mampu milik</li><li>Menambah baik akses serta pengagihan kemudahan awam</li><li>Memperkukuh perkhidmatan kesihatan dan kesejahteraan komuniti</li><li>Mewujudkan sistem pengangkutan awam bersepadu</li><li>Memastikan pengurusan sumber air dan bekalan yang mampan</li><li>Meningkatkan kualiti persekitaran serta keselesaan penduduk</li></ol><small>Rumusan tematik berdasarkan skop yang diberikan; bukan petikan verbatim dasar rasmi RSN.</small></div>
+</details>
 </div>
  </section>
 </section>
@@ -3440,6 +3458,13 @@ card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.p
   card.addEventListener('click',function(e){if(e.target.closest('.suo-rsn-flip-back-scroll') && card.classList.contains('is-flipped'))return;toggle()});
   card.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target===card){e.preventDefault();toggle()}});
  });
+})();
+</script>
+<script id="suo-rsn-goal-flip-controls-2026">
+(function(){const card=document.querySelector('#panel-1 .suo-rsn-goal-flip');if(!card)return;
+function toggle(){const flipped=!card.classList.contains('is-flipped');card.classList.toggle('is-flipped',flipped);card.setAttribute('aria-pressed',String(flipped))}
+card.addEventListener('click',toggle);
+card.addEventListener('keydown',function(event){if((event.key==='Enter'||event.key===' ')&&event.target===card){event.preventDefault();toggle()}});
 })();
 </script>
 </body>
