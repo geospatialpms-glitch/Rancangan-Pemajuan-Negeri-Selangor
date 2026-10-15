@@ -1715,6 +1715,68 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:600px){#panel-1 .suo-bab02-flip,#panel-1 .suo-bab02-flip-inner{min-height:410px}#panel-1 .suo-bab02-flip-face{padding:20px}#panel-1 .suo-bab02-rfn-points>div{padding:10px}}
 @media(prefers-reduced-motion:reduce){#panel-1 .suo-bab02-flip-inner{transition:none}}
 </style>
+<style id="suo-bab02-flip-content-2026">
+/* Aligned front and back, balanced content, accessible readable RFN4 flip. */
+#panel-1 .suo-bab02-flip-refined,
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-inner{height:100%;min-height:730px}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-face{
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ text-align:center;padding:30px 28px;gap:0;border-radius:25px
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-front{
+ background:linear-gradient(140deg,#612139,#7f3150 62%,#91475e);
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-front .suo-bab02-flip-kicker{color:#f3d9a8;margin:0 0 17px}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-glyph{color:#e8c583;margin:0 0 19px;font-size:44px}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-front h4{
+ margin:0 auto 20px;max-width:550px;color:#fffaf2;
+ font-family:'Merriweather',Georgia,serif;font-size:clamp(24px,2.45vw,37px);line-height:1.5;text-align:center
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-subtext{
+ color:#f6e9e1;max-width:390px;font-size:13px;line-height:1.85;margin:0 auto 20px
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-hint{display:block;text-align:center;font-size:12px;line-height:1.6;margin:15px auto 0}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-back{
+ justify-content:center;background:linear-gradient(155deg,#fffefa,#fbf9f5);border:1px solid #dbc292;
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-back .suo-bab02-flip-kicker{
+ color:#9a5871;margin:0 0 9px;font-size:10px
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-back h4{
+ color:#612139;font-family:'Merriweather',Georgia,serif;font-size:clamp(19px,1.85vw,25px);line-height:1.45;
+ margin:0 0 19px;text-align:center
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-goal-list{display:grid;grid-template-columns:1fr;gap:10px;width:100%;max-width:600px}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-goal-item{
+ display:flex;flex-direction:column;align-items:center;gap:4px;padding:13px 16px;
+ background:#fff9ef;border:1px solid #e8d5b7;border-radius:15px;
+ box-shadow:0 4px 15px rgba(97,33,57,.055);transition:border-color .2s,transform .2s,box-shadow .2s
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-goal-item:hover{
+ border-color:#c9a253;transform:translateY(-2px);box-shadow:0 9px 20px rgba(97,33,57,.10)
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-goal-no{
+ display:grid;place-items:center;width:30px;height:30px;flex:none;border-radius:50%;
+ background:#612139;color:#fff7ed;font-weight:900;font-size:11px
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-goal-item h5{
+ margin:2px 0 3px;color:#612139;font-family:'Merriweather',Georgia,serif;
+ font-size:clamp(15px,1.2vw,18px);line-height:1.4;text-align:center
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-goal-item p{
+ margin:0;color:#5b5057;font-size:clamp(11px,.94vw,12px);line-height:1.7;text-align:center;max-width:510px
+}
+#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-back .suo-bab02-flip-hint{color:#8a654c;margin-top:15px}
+@media(max-width:1000px){
+ #panel-1 .suo-bab02-flip-refined,#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-inner{min-height:620px}
+}
+@media(max-width:580px){
+ #panel-1 .suo-bab02-flip-refined,#panel-1 .suo-bab02-flip-refined .suo-bab02-flip-inner{min-height:845px}
+ #panel-1 .suo-bab02-flip-refined .suo-bab02-flip-face{padding:22px 15px}
+ #panel-1 .suo-bab02-flip-refined .suo-bab02-goal-item{padding:11px 9px}
+}
+@media(prefers-reduced-motion:reduce){#panel-1 .suo-bab02-flip-refined .suo-bab02-goal-item{transition:none}}
+</style>
 </head>
 <body>
 
@@ -2031,19 +2093,23 @@ body{background:#fcfaf7!important;color:#302c2d!important}
     <div><span aria-hidden="true">✦</span><strong>Kelulusan MPFN</strong><p>Diluluskan oleh Majlis Perancang Fizikal Negara (MPFN).</p></div>
    </div>
   </article>
-  <div class="suo-bab02-flip" id="suo-bab02-rfn-goal" tabindex="0" role="button" aria-label="Matlamat RFN 4. Tekan untuk lihat perincian instrumen dasar" aria-pressed="false">
+  <div class="suo-bab02-flip suo-bab02-flip-refined" id="suo-bab02-rfn-goal" tabindex="0" role="button" aria-label="Matlamat RFN 4. Klik atau tekan Enter untuk lihat Makmur, Berdaya Tahan dan Sejahtera" aria-pressed="false">
    <div class="suo-bab02-flip-inner">
     <div class="suo-bab02-flip-face suo-bab02-flip-front">
      <span class="suo-bab02-flip-kicker">02 · MATLAMAT RFN 4</span>
      <span class="suo-bab02-flip-glyph" aria-hidden="true">✧</span>
-     <h4>Malaysia Makmur, Berdaya Tahan dan Sejahtera</h4>
+     <h4>Malaysia Makmur,<br>Berdaya Tahan<br>dan Sejahtera</h4>
+     <p class="suo-bab02-flip-subtext">Tiga elemen utama yang membentuk hala tuju pembangunan spatial negara secara menyeluruh.</p>
      <span class="suo-bab02-flip-hint">Halakan tetikus atau klik untuk teroka <span aria-hidden="true">↻</span></span>
     </div>
     <div class="suo-bab02-flip-face suo-bab02-flip-back">
-     <span class="suo-bab02-flip-kicker">INSTRUMEN DASAR RFN 4</span>
-     <h4>Matlamat &amp; Dasar Strategik</h4>
-     <p>Menjadi instrumen untuk merasionalkan Wawasan Kemakmuran Bersama 2030, RMKe-12, dan dasar sektoral.</p>
-     <ul><li>Wawasan Kemakmuran Bersama 2030</li><li>RMKe-12</li><li>Dasar sektoral</li></ul>
+     <span class="suo-bab02-flip-kicker">TERAS MAKNA MATLAMAT RFN 4</span>
+     <h4>Makmur · Berdaya Tahan · Sejahtera</h4>
+     <div class="suo-bab02-goal-list">
+      <div class="suo-bab02-goal-item"><span class="suo-bab02-goal-no">01</span><h5>Makmur</h5><p>Pembangunan yang serba lengkap merangkumi infrastruktur menyeluruh, pemantauan prestasi ekonomi wilayah, penglibatan komuniti dalam pembuatan keputusan, serta penggunaan tenaga bersih yang berinovasi.</p></div>
+      <div class="suo-bab02-goal-item"><span class="suo-bab02-goal-no">02</span><h5>Berdaya Tahan</h5><p>Kapasiti sistem untuk menghadapi ketidaktentuan ekonomi, adaptasi perubahan iklim serta bencana alam, dan kebolehan pulih dengan segera (<em>resilience</em>).</p></div>
+      <div class="suo-bab02-goal-item"><span class="suo-bab02-goal-no">03</span><h5>Sejahtera</h5><p>Perancangan pembangunan yang mewujudkan kualiti hidup serta suasana harmoni melalui keseimbangan teras fizikal, ekonomi, sosial, dan alam sekitar secara kolektif.</p></div>
+     </div>
      <span class="suo-bab02-flip-hint">Klik untuk kembali <span aria-hidden="true">↻</span></span>
     </div>
    </div>
