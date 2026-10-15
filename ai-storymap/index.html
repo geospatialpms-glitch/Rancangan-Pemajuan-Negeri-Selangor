@@ -1270,7 +1270,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
         <small>PLANMALAYSIA SELANGOR · PORTAL INTERAKTIF</small>
       </div>
     </div>
-    <nav class="top-nav" aria-label="Navigasi utama"><button class="home-nav-btn" onclick="document.getElementById('utama').scrollIntoView({behavior:'smooth'})">Utama</button>
+    <nav class="top-nav" aria-label="Navigasi utama"><button class="home-nav-btn" onclick="scrollToSuoTarget('utama')">Utama</button>
       <button class="section-nav-btn" data-section="statistik-pembangunan" onclick="navigateSection('statistik-pembangunan',this)">Peta Interaktif</button>
       <button class="section-nav-btn" data-section="pautan-pbt" onclick="navigateSection('pautan-pbt',this)">Direktori PBT</button>
       <button onclick="switchTab(0)" class="tab-nav-btn active">Bab 01</button>
@@ -1696,7 +1696,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 function navigateSection(id,button){
  const target=document.getElementById(id);
  if(!target)return;
- target.scrollIntoView({behavior:'smooth',block:'start'});
+ scrollToSuoTarget(target);
  document.querySelectorAll('.top-nav button').forEach(btn=>btn.classList.remove('section-active'));
  if(button)button.classList.add('section-active');
 }
@@ -1740,6 +1740,15 @@ document.querySelectorAll('.pbt-official-icon img').forEach(function(img){
 
 <!-- Pemulihan fungsi bab dan animasi masuk ketika skrol -->
 <script id="suo-restored-tab-core">
+function scrollToSuoTarget(target){
+  if(typeof target==='string')target=document.getElementById(target);
+  if(!target)return;
+  const header=document.querySelector('.header');
+  const offset=(header?header.getBoundingClientRect().height:0)+18;
+  const y=Math.max(0,window.scrollY+target.getBoundingClientRect().top-offset);
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({top:y,behavior:reduce?'instant':'smooth'});
+}
 function switchTab(index){
   const panels=Array.from(document.querySelectorAll('.main-section .content-panel'));
   const cards=Array.from(document.querySelectorAll('#chapterCarousel .tab-btn'));
@@ -1757,11 +1766,9 @@ function switchTab(index){
   topButtons.forEach(function(button,i){
     button.classList.toggle('active',i===index);
   });
-  const main=document.querySelector('.main-section');
-  if(main) main.scrollIntoView({
-    behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',
-    block:'start'
-  });
+  const intro=panels[index].querySelector('.chapter-intro');
+  if(intro)scrollToSuoTarget(intro);
+  else scrollToSuoTarget(panels[index]);
 }
 </script>
 <script id="suo-micro-interactions-script">
