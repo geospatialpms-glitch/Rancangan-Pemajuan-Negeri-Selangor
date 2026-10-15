@@ -177,34 +177,32 @@ button{cursor:pointer;font:inherit}
 
 <!-- Subtle animated Selangor hologram behind content; SUO logo remains in the header -->
 <style id="suo-fixed-centered-watermark">
+/* Uploaded holographic video behind StoryMap content, not the hero. */
 .suo-page-watermark{
- position:fixed;
- inset:0;
- width:100%;
- height:100%;
- transform:none;
- background-image:linear-gradient(rgba(255,249,243,.18),rgba(255,249,243,.30)),url("./Futuristic_smart_city_hologram_a%E2%80%A6_20261015121751.gif");
- background-size:cover;
- background-position:center center;
- background-repeat:no-repeat;
- opacity:.23;
- filter:brightness(1.03) saturate(.88) contrast(1.04);
- pointer-events:none;
- user-select:none;
- z-index:0;
- contain:paint;
+ position:fixed;inset:0;width:100%;height:100%;
+ transform:none;z-index:0;overflow:hidden;
+ pointer-events:none;user-select:none;isolation:isolate;
+ background:#f9f5f0;
+}
+.suo-hologram-video{
+ position:absolute;inset:0;width:100%;height:100%;
+ object-fit:cover;object-position:center;
+ display:block;
+ opacity:.30;
+ filter:brightness(1.07) contrast(.95) saturate(.72);
+}
+.suo-hologram-soft-overlay{
+ position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(255,251,246,.56),rgba(255,250,243,.40) 52%,rgba(255,250,246,.57));
 }
 @media(max-width:768px){
- .suo-page-watermark{background-position:center center;opacity:.14}
+ .suo-hologram-video{opacity:.21;object-position:center}
+ .suo-hologram-soft-overlay{background:rgba(255,250,246,.56)}
 }
 @media(prefers-reduced-motion:reduce){
- .suo-page-watermark{
-  background-image:url("./SUO.jpeg");
-  background-size:min(420px,75vw) auto;
-  background-position:center center;
-  opacity:.055;
-  filter:saturate(.75);
- }
+ .suo-hologram-video{display:none}
+ .suo-page-watermark{background:#faf8f5 url("./SUO.jpeg") center center / min(430px,78vw) auto no-repeat}
+ .suo-hologram-soft-overlay{background:rgba(255,250,245,.94)}
 }
 </style>
 
@@ -1636,7 +1634,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 </div></section>
 
 <!-- Logo SUO tunggal fixed di tengah skrin -->
-<div class="suo-page-watermark" aria-hidden="true"></div>
+<div class="suo-page-watermark" aria-hidden="true"><video class="suo-hologram-video" autoplay muted loop playsinline preload="metadata" disablepictureinpicture tabindex="-1"><source src="./Holographic_logo_background_anim%E2%80%A6_20261015130321.mp4" type="video/mp4"></video><div class="suo-hologram-soft-overlay"></div></div>
 
 <section class="development-overview" id="statistik-pembangunan" aria-label="Peta Interaktif Pentadbiran Negeri Selangor">
   <div class="container">
