@@ -1812,6 +1812,38 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 #panel-1 #suo-bab02-stage-0,#panel-1 #suo-bab02-stage-1,#panel-1 #suo-bab02-stage-2,#panel-1 #suo-bab02-stage-3{scroll-margin-top:clamp(95px,9vw,135px)}
 #panel-1 .suo-bab02-level:focus-visible{outline:3px solid #c9a253;outline-offset:2px}
 </style>
+<style id="suo-bab02-flip-hint-glow-2026">
+/* Spotlight the flip interaction prompt while keeping legibility high. */
+#panel-1 .suo-bab02-flip-front .suo-bab02-flip-hint-spotlight{
+ display:inline-flex!important;align-items:center;justify-content:center;gap:10px;
+ width:max-content;max-width:100%;margin:17px auto 0!important;padding:13px 18px;
+ border-radius:999px;border:1.5px solid #f3cb79;
+ background:linear-gradient(125deg,#fff3d0,#e9be70);
+ color:#612139!important;font-size:11px!important;font-weight:900!important;
+ letter-spacing:.045em;line-height:1.45!important;text-align:center;
+ box-shadow:0 7px 23px rgba(29,0,12,.24),0 0 0 4px rgba(239,198,108,.12);
+ animation:suo-bab02-hint-breathe 2.6s ease-in-out infinite;
+ position:relative;z-index:2
+}
+#panel-1 .suo-bab02-flip-front .suo-bab02-hint-pulse{
+ display:block;width:10px;height:10px;flex:0 0 10px;border-radius:50%;
+ background:#842343;box-shadow:0 0 0 4px rgba(132,35,67,.13)
+}
+#panel-1 .suo-bab02-flip-front .suo-bab02-hint-spin{
+ display:grid;place-items:center;width:27px;height:27px;flex:0 0 27px;
+ border-radius:50%;background:#612139;color:#fff5e7;font-size:19px;font-weight:900;line-height:1
+}
+@keyframes suo-bab02-hint-breathe{
+ 0%,100%{box-shadow:0 7px 23px rgba(29,0,12,.24),0 0 0 4px rgba(239,198,108,.10)}
+ 50%{box-shadow:0 11px 29px rgba(29,0,12,.28),0 0 0 9px rgba(239,198,108,.19)}
+}
+@media(max-width:600px){
+ #panel-1 .suo-bab02-flip-front .suo-bab02-flip-hint-spotlight{
+  padding:11px 12px;gap:7px;font-size:9px!important;letter-spacing:0
+ }
+}
+@media(prefers-reduced-motion:reduce){#panel-1 .suo-bab02-flip-front .suo-bab02-flip-hint-spotlight{animation:none}}
+</style>
 </head>
 <body>
 
@@ -2135,7 +2167,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
      <span class="suo-bab02-flip-glyph" aria-hidden="true">✧</span>
      <h4>Malaysia Makmur,<br>Berdaya Tahan<br>dan Sejahtera</h4>
      <p class="suo-bab02-flip-subtext">Tiga elemen utama yang membentuk hala tuju pembangunan spatial negara secara menyeluruh.</p>
-     <span class="suo-bab02-flip-hint">Halakan tetikus atau klik untuk teroka <span aria-hidden="true">↻</span></span>
+     <span class="suo-bab02-flip-hint suo-bab02-flip-hint-spotlight"><span class="suo-bab02-hint-pulse" aria-hidden="true"></span><span>HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA</span><span class="suo-bab02-hint-spin" aria-hidden="true">↻</span></span>
     </div>
     <div class="suo-bab02-flip-face suo-bab02-flip-back">
      <span class="suo-bab02-flip-kicker">TERAS MAKNA MATLAMAT RFN 4</span>
