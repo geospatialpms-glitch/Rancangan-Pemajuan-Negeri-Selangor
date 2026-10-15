@@ -1460,6 +1460,20 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:690px){#panel-0 .selangor-atlas-map-header{padding:19px!important;flex-wrap:wrap}#panel-0 .selangor-atlas-three-col{grid-template-columns:1fr!important;padding:12px!important}#panel-0 .selangor-atlas-left{display:grid;grid-template-columns:1fr 1fr}#panel-0 .selangor-atlas-map-stage{min-height:490px}#panel-0 .selangor-district-leaflet{height:490px!important}#panel-0 .selangor-atlas-pbt-items{grid-template-columns:1fr!important}#panel-0 .selangor-atlas-map-caption{font-size:9px}}
 @media(prefers-reduced-motion:reduce){#panel-0 .selangor-atlas-district-btn{transition:none}#panel-0 .selangor-atlas-district-btn:hover{transform:none}}
 </style>
+<style id="selangor-realworld-basemap-2026">
+/* Real-world roads & satellite toggle with clear district overlays. */
+#panel-0 .selangor-basemap-toggle{position:absolute;right:12px;top:60px;z-index:550;display:flex;gap:3px;padding:4px;border-radius:999px;border:1px solid #d8b77d;background:#fffdf9;box-shadow:0 5px 18px rgba(89,0,22,.17)}
+#panel-0 .selangor-basemap-toggle button{cursor:pointer;border:0;background:transparent;color:#590016;padding:8px 11px;font-size:11px;font-weight:800;border-radius:999px;white-space:nowrap}
+#panel-0 .selangor-basemap-toggle button.is-selected{background:#590016;color:#fff9ec}
+#panel-0 .selangor-basemap-toggle button:hover:not(.is-selected){background:#f8e8ce}
+#panel-0 .selangor-basemap-toggle button:focus-visible{outline:2px solid #d4a557;outline-offset:2px}
+#panel-0 .selangor-district-leaflet{background:#e6f1ed!important}
+#panel-0 .selangor-atlas-map-label{pointer-events:none}
+#panel-0 .selangor-atlas-map-label span{font-size:11px!important;color:#590016!important;border:1px solid rgba(89,0,22,.24)!important;background:rgba(255,253,248,.92)!important;box-shadow:0 3px 11px rgba(32,18,22,.14)!important}
+#panel-0 .selangor-atlas-map-stage .leaflet-popup-content-wrapper{background:#fffdfa}
+#panel-0 .selangor-atlas-map-stage .leaflet-container{background:#eaf3f1}
+@media(max-width:600px){#panel-0 .selangor-basemap-toggle{top:59px;right:8px}#panel-0 .selangor-basemap-toggle button{font-size:10px;padding:7px 9px}}
+</style>
 </head>
 <body>
 
@@ -1648,7 +1662,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
    <div class="selangor-atlas-summary"><span class="selangor-atlas-mini">DAERAH PENTADBIRAN</span><strong>09</strong><div class="selangor-atlas-districts" id="selangor-atlas-district-list"></div></div>
   </aside>
   <div class="selangor-atlas-map-stage">
-   <div class="selangor-atlas-map-caption">PETA SEMPADAN DAERAH SELANGOR <span>✦</span> KLIK UNTUK INFO</div>
+   <div class="selangor-atlas-map-caption">PETA SEMPADAN DAERAH SELANGOR <span>✦</span> KLIK UNTUK INFO</div><div class="selangor-basemap-toggle" role="group" aria-label="Pilihan paparan peta"><button type="button" data-basemap="streets" aria-pressed="true" class="is-selected">Peta Jalan</button><button type="button" data-basemap="satellite" aria-pressed="false">Satelit</button></div>
    <div id="selangor-district-leaflet" class="selangor-district-leaflet" role="application" aria-label="Peta GIS sembilan daerah Selangor yang boleh diklik"><p class="selangor-district-map-loading" id="selangor-district-map-status" role="status">Memuatkan peta daerah…</p></div>
    <div class="selangor-atlas-compass" aria-hidden="true">N<br>↑</div>
   </div>
@@ -2466,7 +2480,7 @@ function switchTab(index){
  }
  function popup(name){
   const list=offices.filter(row=>row[2]===name);
-  return '<div class="selangor-district-popup"><h6>Daerah '+name+'</h6><strong>LOKASI PEJABAT PBT DALAM DAERAH</strong>'+
+  return '<div class="selangor-district-popup"><h6>Daerah '+(name==='Kelang'?'Klang':name)+'</h6><strong>LOKASI PEJABAT PBT DALAM DAERAH</strong>'+
    (list.length?'<ul>'+list.map(row=>'<li><b>'+row[0]+'</b> — '+row[1]+'</li>').join('')+'</ul>':'<p>Tiada rekod lokasi pejabat PBT dalam fail yang dibekalkan.</p>')+
    '<small>Senarai ini berdasarkan titik lokasi pejabat PBT, bukan sempadan bidang kuasa PBT.</small></div>';
  }
@@ -2480,19 +2494,39 @@ function switchTab(index){
    const data=await response.json();
    if(!pane.closest('.content-panel.active')||pane.hidden){initialized=false;return}
    map=L.map(host,{scrollWheelZoom:false,zoomControl:true,attributionControl:true,preferCanvas:true});
-   // Atlas-style neutral backdrop: no third-party tile layer or API key required.
-   map.attributionControl.setPrefix('Leaflet');
+   // Real-world street basemap: OpenStreetMap standard tiles (no API key).
+   const streets=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    maxZoom:19,attribution:'&copy; OpenStreetMap contributors',crossOrigin:true
+   }).addTo(map);
+   // Optional satellite mode for more realistic geographic context.
+   const satellite=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
+    maxZoom:19,attribution:'Imagery &copy; Esri and imagery contributors',crossOrigin:true
+   });
+   let activeBase=streets;
+   const setBase=function(mode){
+    const next=mode==='satellite'?satellite:streets;
+    if(activeBase!==next){map.removeLayer(activeBase);next.addTo(map);activeBase=next;next.bringToBack();}
+    document.querySelectorAll('#selangor-interactive-district-map .selangor-basemap-toggle button').forEach(function(btn){
+     const selected=btn.dataset.basemap===mode;
+     btn.classList.toggle('is-selected',selected);btn.setAttribute('aria-pressed',String(selected));
+    });
+   };
+   document.querySelectorAll('#selangor-interactive-district-map .selangor-basemap-toggle button').forEach(function(btn){
+    btn.addEventListener('click',function(){setBase(btn.dataset.basemap)});
+   });
+   // If optional satellite imagery is unavailable, return to OSM.
+   satellite.on('tileerror',function(){if(map.hasLayer(satellite))setBase('streets')});
    const groups=[];
    Object.entries(data.encodedRings).forEach(function(entry,index){
     const name=entry[0],rings=entry[1].map(decodePolyline);
-    const group=L.polygon(rings.map(function(ring){return [ring]}),{color:'#590016',weight:2,fillColor:districtColors[name]||'#d6a76d',fillOpacity:.86});
-    group.bindTooltip(name,{sticky:true,direction:'top'});
+    const group=L.polygon(rings.map(function(ring){return [ring]}),{color:'#590016',weight:2,fillColor:districtColors[name]||'#d6a76d',fillOpacity:.28});
+    group.bindTooltip(name==='Kelang'?'Klang':name,{sticky:true,direction:'top'});
     group.bindPopup(popup(name),{maxWidth:320});
     const coords=group.getBounds().getCenter();
-    const label=L.marker(coords,{interactive:false,icon:L.divIcon({className:'selangor-atlas-map-label',html:'<span>'+name+'</span>',iconSize:[115,25],iconAnchor:[57,12]})});
+    const label=L.marker(coords,{interactive:false,icon:L.divIcon({className:'selangor-atlas-map-label',html:'<span>'+(name==='Kelang'?'Klang':name)+'</span>',iconSize:[115,25],iconAnchor:[57,12]})});
     label.addTo(map);
-    group.on('mouseover',function(){group.setStyle({weight:4,color:'#f1c670',fillOpacity:1});group.bringToFront()});
-    group.on('mouseout',function(){group.setStyle({weight:2,color:'#590016',fillOpacity:.86})});
+    group.on('mouseover',function(){group.setStyle({weight:4,color:'#f1c670',fillOpacity:.48});group.bringToFront()});
+    group.on('mouseout',function(){group.setStyle({weight:2,color:'#590016',fillOpacity:.28})});
     group.on('click',function(){map.fitBounds(group.getBounds(),{padding:[40,40],maxZoom:11})});
     group.addTo(map);groups.push(group);
    });
