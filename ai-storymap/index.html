@@ -1355,6 +1355,32 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 #panel-0 .ch01-reference-infographic a:hover .ch01-reference-zoom{background:#782037}
 @media(max-width:650px){#panel-0 .ch01-reference-infographic{margin-bottom:21px;padding:6px}#panel-0 .ch01-reference-zoom{font-size:10px;right:8px;bottom:8px;padding:7px 10px}}
 </style>
+<style id="selangor-district-interactive-style">
+#panel-0 .selangor-district-map-card{grid-column:1/-1;border:1px solid #e4d4c7;border-radius:22px;background:#fffefa;box-shadow:0 12px 31px rgba(77,7,31,.095);overflow:hidden;margin:4px 0 24px}
+#panel-0 .selangor-district-map-head{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:22px 24px 20px;border-bottom:1px solid #efded2}
+#panel-0 .selangor-district-map-kicker{font-size:10px;letter-spacing:.13em;color:#98405a;font-weight:900}
+#panel-0 .selangor-district-map-head h5{font-family:'Merriweather',Georgia,serif;font-size:clamp(19px,2.2vw,27px);color:#590016;margin:8px 0}
+#panel-0 .selangor-district-map-head p{margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:none!important;font-size:13px!important;color:#665a60!important;line-height:1.7!important}
+#panel-0 .selangor-district-reset{flex:0 0 auto;background:#590016;border:1px solid #d6ae66;color:#fff7ea;border-radius:999px;padding:11px 16px;font-size:12px;font-weight:800;cursor:pointer}
+#panel-0 .selangor-district-reset:hover{background:#7e1a39}
+#panel-0 .selangor-district-reset:focus-visible{outline:3px solid #d6ae66;outline-offset:2px}
+#panel-0 .selangor-district-leaflet{height:clamp(390px,45vw,590px);width:100%;background:#f3efe8;position:relative;isolation:isolate}
+#panel-0 .selangor-district-map-loading{position:absolute;z-index:2;top:45%;width:100%;text-align:center;color:#590016;font-size:13px!important}
+#panel-0 .selangor-district-map-bottom{display:flex;flex-wrap:wrap;gap:15px;padding:13px 23px;align-items:center;border-top:1px solid #efded2;background:#fff9f4}
+#panel-0 .selangor-district-map-bottom>span{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;color:#7c354b}
+#panel-0 .selangor-district-map-bottom i{width:12px;height:12px;display:inline-block;border:2px solid #590016;background:#f5c871;border-radius:3px}
+#panel-0 .selangor-district-map-bottom>span:nth-child(2) i{width:11px;height:11px;background:#590016;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #d2a054}
+#panel-0 .selangor-district-map-bottom small{width:100%;font-size:11px;color:#766770;line-height:1.6}
+#panel-0 .selangor-district-leaflet .leaflet-container{font-family:'Plus Jakarta Sans',sans-serif}
+#panel-0 .selangor-district-leaflet .leaflet-popup-content-wrapper{border-radius:15px;box-shadow:0 11px 31px rgba(54,0,22,.2)}
+#panel-0 .selangor-district-leaflet .leaflet-popup-content{font-family:'Plus Jakarta Sans',sans-serif;min-width:190px;max-width:280px;margin:16px}
+.selangor-district-popup h6{font-family:'Merriweather',Georgia,serif;font-size:18px;color:#590016;margin:0 0 10px}
+.selangor-district-popup>strong{display:block;font-size:11px;letter-spacing:.04em;color:#935168;margin-bottom:9px}
+.selangor-district-popup ul{margin:0;padding:0 0 0 18px;line-height:1.75;color:#3e3337;font-size:12px}
+.selangor-district-popup p{margin:0!important;padding:0!important;border:0!important;background:none!important;font-size:12px!important;color:#5d5258!important}
+.selangor-district-popup small{display:block;margin-top:10px;color:#817279;line-height:1.5}
+@media(max-width:700px){#panel-0 .selangor-district-map-head{padding:18px}#panel-0 .selangor-district-reset{width:100%}#panel-0 .selangor-district-map-bottom{padding:12px 16px}#panel-0 .selangor-district-leaflet{height:460px}}
+</style>
 </head>
 <body>
 
@@ -1535,7 +1561,17 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  </a>
  <figcaption>Infografik profil Negeri Selangor — rujukan visual pentadbiran. Klik untuk melihat paparan penuh.</figcaption>
 </figure>
- <div class="ch01-linked-grid ch01-profile-grid" aria-label="Profil pentadbiran Selangor dalam kad berangkai">
+ <div class="selangor-district-map-card" id="selangor-interactive-district-map">
+ <div class="selangor-district-map-head">
+  <div><span class="selangor-district-map-kicker">PETA GIS INTERAKTIF · NEGERI SELANGOR</span><h5>Terokai 9 Daerah &amp; Lokasi PBT</h5><p>Klik kawasan daerah untuk melihat nama daerah dan PBT yang mempunyai titik lokasi pejabat di dalamnya.</p></div>
+  <button type="button" class="selangor-district-reset" id="selangor-district-reset" aria-label="Set semula paparan peta">↺ Set Semula</button>
+ </div>
+ <div id="selangor-district-leaflet" class="selangor-district-leaflet" role="application" aria-label="Peta GIS sembilan daerah Selangor yang boleh diklik">
+  <p class="selangor-district-map-loading" id="selangor-district-map-status" role="status">Memuatkan peta sembilan daerah Selangor…</p>
+ </div>
+ <div class="selangor-district-map-bottom"><span><i></i>Sempadan Daerah</span><span><i></i>Lokasi Pejabat PBT</span><small>Maklumat PBT berdasarkan lokasi titik, bukan sempadan kawasan pentadbiran PBT. Sempadan daerah dipermudahkan untuk paparan web.</small></div>
+</div>
+<div class="ch01-linked-grid ch01-profile-grid" aria-label="Profil pentadbiran Selangor dalam kad berangkai">
    <article class="ch01-linked-card ch01-land-card">
      <div class="ch01-card-heading"><span class="ch01-geo-icon" aria-hidden="true">⌖</span><span>KELUASAN NEGERI</span></div>
      <div class="ch01-big-number"><span class="ch01-count" data-target="8104" data-comma="true">8,104</span><small>km²</small></div>
@@ -2303,6 +2339,98 @@ function switchTab(index){
  document.getElementById('langBM')?.addEventListener('click',function(){queueMicrotask(translate)});
  document.getElementById('langEN')?.addEventListener('click',function(){queueMicrotask(translate)});
  translate();
+})();
+</script>
+<script id="selangor-district-interactive-script">
+(function(){
+ 'use strict';
+ const host=document.getElementById('selangor-district-leaflet');
+ const pane=document.getElementById('ch01-content-1');
+ const reset=document.getElementById('selangor-district-reset');
+ const status=document.getElementById('selangor-district-map-status');
+ if(!host||!pane)return;
+ let map=null, initialized=false;
+ const offices=[
+  ['MBPJ','Majlis Bandaraya Petaling Jaya','Petaling',3.0992,101.6450],
+  ['MBSA','Majlis Bandaraya Shah Alam','Petaling',3.0734,101.5199],
+  ['MBSJ','Majlis Bandaraya Subang Jaya','Petaling',3.0516,101.5824],
+  ['MBDK','Majlis Bandaraya Diraja Klang','Kelang',3.0449,101.4447],
+  ['MPKj','Majlis Perbandaran Kajang','Hulu Langat',2.9949,101.7896],
+  ['MPAJ','Majlis Perbandaran Ampang Jaya','Hulu Langat',3.1278,101.7538],
+  ['MPS','Majlis Perbandaran Selayang','Gombak',3.2535,101.6542],
+  ['MPSp','Majlis Perbandaran Sepang','Sepang',2.9338,101.6456],
+  ['MPHS','Majlis Perbandaran Hulu Selangor','Hulu Selangor',3.5601,101.6587],
+  ['MPKL','Majlis Perbandaran Kuala Langat','Kuala Langat',2.8028,101.4957],
+  ['MPKS','Majlis Perbandaran Kuala Selangor','Kuala Selangor',3.3315,101.2513],
+  ['MDSB','Majlis Daerah Sabak Bernam','Sabak Bernam',3.6761,100.9908]
+ ];
+ const districtColors=['#c2774e','#b44c65','#e5ac57','#9d5e98','#5f9aa3','#8d9a5c','#9b6b45','#6c86ac','#ba6b8c'];
+ let allBounds=null;
+ function decodePolyline(str){
+  let at=0,lat=0,lon=0,out=[];
+  while(at<str.length){
+   let shift=0,result=0,byte;
+   do{byte=str.charCodeAt(at++)-63;result|=(byte&0x1f)<<shift;shift+=5}while(byte>=0x20);
+   lat+=result&1?~(result>>1):result>>1;
+   shift=0;result=0;
+   do{byte=str.charCodeAt(at++)-63;result|=(byte&0x1f)<<shift;shift+=5}while(byte>=0x20);
+   lon+=result&1?~(result>>1):result>>1;
+   out.push([lat/1e5,lon/1e5]);
+  }
+  return out;
+ }
+ function popup(name){
+  const list=offices.filter(row=>row[2]===name);
+  return '<div class="selangor-district-popup"><h6>Daerah '+name+'</h6><strong>LOKASI PEJABAT PBT DALAM DAERAH</strong>'+
+   (list.length?'<ul>'+list.map(row=>'<li><b>'+row[0]+'</b> — '+row[1]+'</li>').join('')+'</ul>':'<p>Tiada rekod lokasi pejabat PBT dalam fail yang dibekalkan.</p>')+
+   '<small>Senarai ini berdasarkan titik lokasi pejabat PBT, bukan sempadan bidang kuasa PBT.</small></div>';
+ }
+ async function setup(){
+  if(initialized||pane.hidden||!pane.closest('.content-panel.active'))return;
+  if(!window.L){if(status)status.textContent='Pustaka peta tidak tersedia. Sila muat semula halaman.';return}
+  initialized=true;
+  try{
+   const response=await fetch('./selangor-daerah-encoded.json');
+   if(!response.ok)throw new Error('Data sempadan daerah gagal dimuatkan');
+   const data=await response.json();
+   if(!pane.closest('.content-panel.active')||pane.hidden){initialized=false;return}
+   map=L.map(host,{scrollWheelZoom:false,zoomControl:true,attributionControl:true,preferCanvas:true});
+   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+   const groups=[];
+   Object.entries(data.encodedRings).forEach(function(entry,index){
+    const name=entry[0],rings=entry[1].map(decodePolyline);
+    const group=L.polygon(rings,{color:'#590016',weight:1.65,fillColor:districtColors[index%districtColors.length],fillOpacity:.55});
+    group.bindTooltip(name,{sticky:true,direction:'top'});
+    group.bindPopup(popup(name),{maxWidth:320});
+    group.on('mouseover',function(){group.setStyle({weight:3,color:'#e4b85f',fillOpacity:.77});group.bringToFront()});
+    group.on('mouseout',function(){group.setStyle({weight:1.65,color:'#590016',fillOpacity:.55})});
+    group.on('click',function(){map.fitBounds(group.getBounds(),{padding:[40,40],maxZoom:11})});
+    group.addTo(map);groups.push(group);
+   });
+   const all=L.featureGroup(groups);
+   allBounds=all.getBounds();
+   offices.forEach(function(o){
+    L.circleMarker([o[3],o[4]],{radius:5,fillColor:'#590016',fillOpacity:1,color:'#fff3d5',weight:2})
+     .bindTooltip(o[0]+' · '+o[1]).bindPopup(popup(o[2])).addTo(map);
+   });
+   map.fitBounds(allBounds,{padding:[25,25]});
+   if(status)status.remove();
+   requestAnimationFrame(function(){if(map)map.invalidateSize()});
+  }catch(err){
+   initialized=false;
+   if(status)status.textContent='Peta tidak dapat dimuatkan. Sila cuba muat semula halaman.';
+  }
+ }
+ reset?.addEventListener('click',function(){
+  if(map&&allBounds){map.closePopup();map.fitBounds(allBounds,{padding:[25,25]})}
+ });
+ const tabObserver=new MutationObserver(function(){
+  if(!pane.hidden&&pane.closest('.content-panel.active')){setup();if(map)requestAnimationFrame(function(){map.invalidateSize()})}
+ });
+ tabObserver.observe(pane,{attributes:true,attributeFilter:['hidden']});
+ const mainPanel=pane.closest('.content-panel');
+ if(mainPanel)tabObserver.observe(mainPanel,{attributes:true,attributeFilter:['class']});
+ if(!pane.hidden)setup();
 })();
 </script>
 </body>
