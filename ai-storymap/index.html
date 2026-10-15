@@ -2399,7 +2399,7 @@ function switchTab(index){
    const groups=[];
    Object.entries(data.encodedRings).forEach(function(entry,index){
     const name=entry[0],rings=entry[1].map(decodePolyline);
-    const group=L.polygon(rings,{color:'#590016',weight:1.65,fillColor:districtColors[index%districtColors.length],fillOpacity:.55});
+    const group=L.polygon(rings.map(function(ring){return [ring]}),{color:'#590016',weight:1.65,fillColor:districtColors[index%districtColors.length],fillOpacity:.55});
     group.bindTooltip(name,{sticky:true,direction:'top'});
     group.bindPopup(popup(name),{maxWidth:320});
     group.on('mouseover',function(){group.setStyle({weight:3,color:'#e4b85f',fillOpacity:.77});group.bringToFront()});
