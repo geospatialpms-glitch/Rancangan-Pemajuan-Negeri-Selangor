@@ -1262,21 +1262,30 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 .header .head,.header .top-nav{overflow:visible!important}
 .header .top-nav{align-items:center}
 .suo-explore{position:relative;flex:0 0 auto;z-index:105}
-.header .top-nav .suo-explore-trigger{
- display:flex;align-items:center;justify-content:center;gap:10px;
- border:1px solid #d8ab68!important;background:rgba(255,235,193,.10)!important;
- color:#fff6e8!important;font-size:12px;font-weight:900;white-space:nowrap;
- border-radius:999px;padding:11px 17px!important;
- transition:background .2s,border-color .2s,color .2s
+.header .top-nav .suo-explore-trigger,
+.header .top-nav .suo-explore-trigger.section-active:not([aria-expanded="true"]){
+ display:flex;align-items:center;justify-content:center;gap:9px;
+ border:1px solid transparent!important;background:transparent!important;
+ color:#fff3e9!important;font-size:12px;font-weight:800;white-space:nowrap;
+ border-radius:999px;padding:10px 11px!important;
+ box-shadow:none!important;
+ transition:background .2s,border-color .2s,color .2s;
 }
-.header .top-nav .suo-explore-trigger:hover,
-.header .top-nav .suo-explore-trigger[aria-expanded="true"]{
- color:#590016!important;background:#f5dca6!important;border-color:#edcb83!important;
+.header .top-nav .suo-explore-trigger[aria-expanded="true"],
+.header .top-nav .suo-explore-trigger.section-active[aria-expanded="true"]{
+ color:#590016!important;background:#f5dca6!important;
+ border-color:#e6bf78!important;
 }
-.suo-explore-chevron{font-size:21px;line-height:12px;display:inline-block;transition:transform .2s}
-.suo-explore:hover .suo-explore-chevron,
-.suo-explore:focus-within .suo-explore-chevron,
-.suo-explore.suo-explore-open .suo-explore-chevron{transform:rotate(180deg)}
+.suo-explore-chevron{
+ display:inline-block;flex:0 0 7px;width:7px;height:7px;
+ border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+ transform:translateY(-2px) rotate(45deg);
+ transition:transform .2s;
+}
+.suo-explore.suo-explore-open .suo-explore-chevron,
+.suo-explore:focus-within .suo-explore-chevron{
+ transform:translateY(2px) rotate(225deg);
+}
 .suo-explore-menu{
  display:none;position:absolute;right:0;top:100%;
  width:min(420px,calc(100vw - 30px));max-height:min(74vh,640px);
@@ -1345,7 +1354,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
       <button class="section-nav-btn" data-section="statistik-pembangunan" onclick="navigateSection('statistik-pembangunan',this)">Peta Interaktif</button>
       <button class="section-nav-btn" data-section="pautan-pbt" onclick="navigateSection('pautan-pbt',this)">Direktori PBT</button>
       <div class="suo-explore" id="suo-explore-dropdown">
-  <button type="button" class="suo-explore-trigger" id="suo-explore-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="suo-explore-menu"><span class="suo-explore-i18n" data-ms="Eksplorasi Bab" data-en="Explore Chapters">Eksplorasi Bab</span><span class="suo-explore-chevron" aria-hidden="true">⌄</span></button>
+  <button type="button" class="suo-explore-trigger" id="suo-explore-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="suo-explore-menu"><span class="suo-explore-i18n" data-ms="Eksplorasi Bab" data-en="Explore Chapters">Eksplorasi Bab</span><span class="suo-explore-chevron" aria-hidden="true"></span></button>
   <div class="suo-explore-menu" id="suo-explore-menu" aria-label="Eksplorasi Bab dan subtopik"><section class="suo-explore-group" aria-label="Bab 01">
   <button type="button" class="suo-explore-chapter" data-chapter="0" data-topic="-1"><span class="suo-explore-number">01</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="Rancangan Selangor, Masa Hadapan" data-en="Selangor, The Future">Rancangan Selangor, Masa Hadapan</span></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
   <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="0" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pengenalan Negeri" data-en="State Introduction">Pengenalan Negeri</span></button><button type="button" class="suo-explore-topic" data-chapter="0" data-topic="1"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Profil &amp; Parameter Pentadbiran" data-en="Administrative Profile">Profil &amp; Parameter Pentadbiran</span></button><button type="button" class="suo-explore-topic" data-chapter="0" data-topic="2"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Kerangka Perancangan" data-en="Planning Framework">Kerangka Perancangan</span></button><button type="button" class="suo-explore-topic" data-chapter="0" data-topic="3"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Sempadan 12 PBT" data-en="12 Local Authority Boundaries">Sempadan 12 PBT</span></button></div></section><section class="suo-explore-group" aria-label="Bab 02">
