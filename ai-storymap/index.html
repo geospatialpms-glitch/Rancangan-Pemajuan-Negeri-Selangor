@@ -1673,6 +1673,48 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:650px){#panel-1 .suo-bab02-grid{grid-template-columns:1fr}#panel-1 .suo-bab02-wide{grid-column:span 1}#panel-1 .suo-bab02-hierarchy{grid-template-columns:repeat(2,minmax(0,1fr))}#panel-1 .suo-bab02-records{grid-template-columns:1fr}#panel-1 .suo-bab02-card{padding:17px}#panel-1 .suo-bab02-record{grid-template-columns:32px 43px 1fr;gap:7px;padding:11px}}
 @media(prefers-reduced-motion:reduce){#panel-1 .suo-bab02-topic{animation:none}#panel-1 .suo-bab02-card,#panel-1 .suo-bab02-level{transition:none}#panel-1 .suo-bab02-card:hover,#panel-1 .suo-bab02-level:hover{transform:none}}
 </style>
+<style id="suo-bab02-rfn-flip-layout-2026">
+/* RFN 4 only: balanced introduction/flip grid and uniform full-width accordions. */
+#panel-1 .suo-bab02-rfn-module{grid-column:1/-1;min-width:0;display:grid;gap:20px}
+#panel-1 .suo-bab02-topgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:20px}
+#panel-1 .suo-bab02-rfn-intro{background:linear-gradient(145deg,#fffefa,#fbf9f5);border:1px solid #e7d6c1;border-radius:22px;padding:clamp(19px,2.4vw,28px);box-shadow:0 10px 25px rgba(97,33,57,.06)}
+#panel-1 .suo-bab02-rfn-tag,#panel-1 .suo-bab02-flip-kicker{display:inline-block;color:#9b5264;letter-spacing:.12em;font-size:11px;font-weight:900;margin-bottom:13px}
+#panel-1 .suo-bab02-rfn-intro h4{font-family:'Merriweather',Georgia,serif;color:#612139;font-size:clamp(19px,2vw,27px);line-height:1.5;margin:0 0 12px}
+#panel-1 .suo-bab02-rfn-intro>p{color:#574f54;font-size:14px;line-height:1.85;margin:0 0 16px}
+#panel-1 .suo-bab02-rfn-points{display:grid;gap:9px}
+#panel-1 .suo-bab02-rfn-points>div{position:relative;display:grid;grid-template-columns:30px 1fr;gap:2px 9px;align-items:center;padding:11px 13px;border-radius:13px;background:#fff7ea;border:1px solid #e9d5b7}
+#panel-1 .suo-bab02-rfn-points>div>span{grid-row:span 2;color:#b38a47;font-size:20px}
+#panel-1 .suo-bab02-rfn-points strong{color:#612139;font-size:12px}
+#panel-1 .suo-bab02-rfn-points p{color:#6a5e60;font-size:12px;line-height:1.6;margin:0}
+#panel-1 .suo-bab02-flip{min-width:0;min-height:475px;perspective:1400px;cursor:pointer;outline-offset:4px}
+#panel-1 .suo-bab02-flip-inner{position:relative;width:100%;height:100%;min-height:475px;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+#panel-1 .suo-bab02-flip:hover .suo-bab02-flip-inner,#panel-1 .suo-bab02-flip:focus-visible .suo-bab02-flip-inner,#panel-1 .suo-bab02-flip.is-flipped .suo-bab02-flip-inner{transform:rotateY(180deg)}
+#panel-1 .suo-bab02-flip-face{position:absolute;inset:0;border-radius:22px;padding:clamp(22px,2.5vw,32px);backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;overflow:hidden;box-shadow:0 13px 31px rgba(97,33,57,.13)}
+#panel-1 .suo-bab02-flip-front{background:linear-gradient(130deg,#612139,#883550);color:#fff8ed;border:1px solid #b68b6c}
+#panel-1 .suo-bab02-flip-front::after{content:"";position:absolute;inset:auto -45px -80px auto;width:240px;height:240px;border:1px solid rgba(248,221,165,.22);border-radius:50%;box-shadow:0 0 0 38px rgba(248,221,165,.045);pointer-events:none}
+#panel-1 .suo-bab02-flip-glyph{font-size:45px;color:#e1be77;margin:5px 0 14px}
+#panel-1 .suo-bab02-flip-front h4{font-family:'Merriweather',Georgia,serif;font-size:clamp(23px,2.4vw,33px);line-height:1.48;color:#fff8ed;margin:0 0 24px}
+#panel-1 .suo-bab02-flip-front .suo-bab02-flip-kicker{color:#ebd2a2}
+#panel-1 .suo-bab02-flip-hint{color:#f0ddc3;font-size:12px;font-weight:750;line-height:1.6}
+#panel-1 .suo-bab02-flip-back{transform:rotateY(180deg);background:linear-gradient(140deg,#fffaf0,#fbf9f5);border:1px solid #dec294;color:#612139}
+#panel-1 .suo-bab02-flip-back h4{font-family:'Merriweather',Georgia,serif;font-size:clamp(20px,2vw,27px);line-height:1.45;color:#612139;margin:0 0 14px}
+#panel-1 .suo-bab02-flip-back p{color:#574c54;font-size:14px;line-height:1.85;margin:0 0 14px}
+#panel-1 .suo-bab02-flip-back ul{margin:0 0 20px;padding-left:21px;color:#612139;font-size:13px;line-height:1.9}
+#panel-1 .suo-bab02-flip-back .suo-bab02-flip-hint{color:#86634e}
+#panel-1 .suo-bab02-rfn-teras{padding:clamp(18px,2.1vw,27px);background:#fbf9f5;border:1px solid #e8d7c1;border-radius:22px;min-width:0}
+#panel-1 .suo-bab02-rfn-teras-head{text-align:center;margin-bottom:17px}
+#panel-1 .suo-bab02-rfn-teras-head h4{font-family:'Merriweather',Georgia,serif;font-size:clamp(21px,2.3vw,29px);color:#612139;margin:4px 0 8px}
+#panel-1 .suo-bab02-rfn-teras-head p{color:#6a5f61;font-size:13px;line-height:1.8;margin:0}
+#panel-1 .suo-bab02-rfn-teras .suo-bab02-teras{display:grid;grid-template-columns:1fr;gap:12px}
+#panel-1 .suo-bab02-rfn-teras .suo-bab02-details{width:100%;margin:0;border-radius:15px;background:#fffefa;border-color:#e7d5bb;overflow:hidden}
+#panel-1 .suo-bab02-rfn-teras .suo-bab02-details summary{min-height:72px;padding:15px 19px;background:#fffaf2}
+#panel-1 .suo-bab02-rfn-teras .suo-bab02-details[open] summary{background:#f7ead7}
+#panel-1 .suo-bab02-rfn-teras .suo-bab02-details li{border-color:#efdfc9}
+#panel-1 .suo-bab02-flip:focus-visible{outline:3px solid #c9a253}
+@media(max-width:1000px){#panel-1 .suo-bab02-topgrid{grid-template-columns:1fr}#panel-1 .suo-bab02-flip,#panel-1 .suo-bab02-flip-inner{min-height:330px}}
+@media(max-width:600px){#panel-1 .suo-bab02-flip,#panel-1 .suo-bab02-flip-inner{min-height:410px}#panel-1 .suo-bab02-flip-face{padding:20px}#panel-1 .suo-bab02-rfn-points>div{padding:10px}}
+@media(prefers-reduced-motion:reduce){#panel-1 .suo-bab02-flip-inner{transition:none}}
+</style>
 </head>
 <body>
 
@@ -1977,11 +2019,42 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  <button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-0" aria-label="Lihat RFN 4"><small>01 · KEBANGSAAN</small><strong>RFN 4</strong><span>Terokai ↓</span></button><button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-1" aria-label="Lihat RSN"><small>02 · NEGERI</small><strong>RSN</strong><span>Terokai ↓</span></button><button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-2" aria-label="Lihat RT"><small>03 · TEMPATAN</small><strong>RT</strong><span>Terokai ↓</span></button><button type="button" class="suo-bab02-level" data-target="suo-bab02-stage-3" aria-label="Lihat RKK"><small>04 · KAWASAN KHAS</small><strong>RKK</strong><span>Terokai ↓</span></button>
  </div>
  <div class="suo-bab02-grid">
- <article class="suo-bab02-card suo-bab02-wide suo-bab02-staged"><span class="suo-bab02-card-eyebrow">A · RANCANGAN FIZIKAL NEGARA</span><h4>Rancangan Fizikal Negara 4 (RFN)</h4><p>Penyataan bertulis yang merumuskan dasar-dasar strategik bagi menentukan haluan dan aliran am pemajuan fizikal negara. Ia merupakan Advisory Plan yang menterjemahkan dasar perancangan sosio-ekonomi dalam dimensi spatial, selaras dengan Rancangan Malaysia 5 Tahun (EPU) dan diluluskan oleh Majlis Perancang Fizikal Negara (MPFN).</p></article>
- <article class="suo-bab02-card suo-bab02-feature"><span class="suo-bab02-card-eyebrow">MATLAMAT RFN 4</span><h4>Malaysia Makmur, Berdaya Tahan dan Sejahtera</h4><p>Menjadi instrumen untuk merasionalkan Wawasan Kemakmuran Bersama 2030, RMKe-12, dan dasar sektoral.</p></article>
- <article class="suo-bab02-card suo-bab02-wide" id="suo-bab02-stage-0"><span class="suo-bab02-card-eyebrow">RFN 4 · 3 TERAS · 11 HALA TUJU</span><h4>Teras Pembangunan RFN 4</h4>
- <div class="suo-bab02-teras"><details class="suo-bab02-details" open><summary><span class="suo-bab02-teras-number">01</span><strong>Teras 1: Pertumbuhan Dinamik dan Seimbang</strong><span class="suo-bab02-detail-arrow" aria-hidden="true">⌄</span></summary><ul><li><b>PD 1</b><span>Pengukuhan Kedudukan Strategik Global</span></li><li><b>PD 2</b><span>Pertumbuhan Ekonomi Mampan</span></li><li><b>PD 3</b><span>Rangkaian Pengangkutan Bersepadu</span></li><li><b>PD 4</b><span>Infrastruktur Digital &amp; Pintar</span></li></ul></details><details class="suo-bab02-details" ><summary><span class="suo-bab02-teras-number">02</span><strong>Teras 2: Kemampanan Spatial dan Daya Tahan Perubahan Iklim</strong><span class="suo-bab02-detail-arrow" aria-hidden="true">⌄</span></summary><ul><li><b>KD 1</b><span>Perancangan Guna Tanah Holistik</span></li><li><b>KD 2</b><span>Pengurusan Mampan Sumber Asli/Makanan/Warisan</span></li><li><b>KD 3</b><span>Pembangunan Negara Neutral Karbon</span></li></ul></details><details class="suo-bab02-details" ><summary><span class="suo-bab02-teras-number">03</span><strong>Teras 3: Persekitaran Berdaya Huni dan Komuniti Inklusif</strong><span class="suo-bab02-detail-arrow" aria-hidden="true">⌄</span></summary><ul><li><b>KI 1</b><span>Perumahan untuk Semua</span></li><li><b>KI 2</b><span>Masyarakat Berpendidikan &amp; Berdaya Saing</span></li><li><b>KI 3</b><span>Persekitaran Kondusif &amp; Berdaya Huni</span></li><li><b>KI 4</b><span>Pembangunan Mesra Komuniti</span></li></ul></details></div></article>
- <article class="suo-bab02-card suo-bab02-wide"><span class="suo-bab02-card-eyebrow">B · RANCANGAN STRUKTUR NEGERI</span><h4>Rancangan Struktur Negeri (RSN)</h4><p>Penyataan dasar dan cadangan am pemajuan serta penggunaan tanah di peringkat negeri, merangkumi pertalian guna tanah dengan negeri bersempadan serta mengambil kira dasar RFN (Diluluskan oleh Jawatankuasa Perancang Negeri / JPN dan Pihak Berkuasa Negeri / PBN).</p></article>
+ <div class="suo-bab02-rfn-module" id="suo-bab02-stage-0">
+ <div class="suo-bab02-topgrid">
+  <article class="suo-bab02-rfn-intro">
+   <span class="suo-bab02-rfn-tag">01 · PENGENALAN RFN 4</span>
+   <h4>Rancangan Fizikal Negara 4 (RFN)</h4>
+   <p>Penyataan bertulis yang merumuskan dasar-dasar strategik bagi menentukan haluan dan aliran am pemajuan fizikal negara. Ia merupakan Advisory Plan yang menterjemahkan dasar perancangan sosio-ekonomi dalam dimensi spatial, selaras dengan Rancangan Malaysia 5 Tahun (EPU) dan diluluskan oleh Majlis Perancang Fizikal Negara (MPFN).</p>
+   <div class="suo-bab02-rfn-points">
+    <div><span aria-hidden="true">◇</span><strong>Advisory Plan</strong><p>Menterjemahkan dasar perancangan sosio-ekonomi dalam dimensi spatial.</p></div>
+    <div><span aria-hidden="true">◈</span><strong>Rancangan Malaysia 5 Tahun</strong><p>Selaras dengan Rancangan Malaysia 5 Tahun (EPU).</p></div>
+    <div><span aria-hidden="true">✦</span><strong>Kelulusan MPFN</strong><p>Diluluskan oleh Majlis Perancang Fizikal Negara (MPFN).</p></div>
+   </div>
+  </article>
+  <div class="suo-bab02-flip" id="suo-bab02-rfn-goal" tabindex="0" role="button" aria-label="Matlamat RFN 4. Tekan untuk lihat perincian instrumen dasar" aria-pressed="false">
+   <div class="suo-bab02-flip-inner">
+    <div class="suo-bab02-flip-face suo-bab02-flip-front">
+     <span class="suo-bab02-flip-kicker">02 · MATLAMAT RFN 4</span>
+     <span class="suo-bab02-flip-glyph" aria-hidden="true">✧</span>
+     <h4>Malaysia Makmur, Berdaya Tahan dan Sejahtera</h4>
+     <span class="suo-bab02-flip-hint">Halakan tetikus atau klik untuk teroka <span aria-hidden="true">↻</span></span>
+    </div>
+    <div class="suo-bab02-flip-face suo-bab02-flip-back">
+     <span class="suo-bab02-flip-kicker">INSTRUMEN DASAR RFN 4</span>
+     <h4>Matlamat &amp; Dasar Strategik</h4>
+     <p>Menjadi instrumen untuk merasionalkan Wawasan Kemakmuran Bersama 2030, RMKe-12, dan dasar sektoral.</p>
+     <ul><li>Wawasan Kemakmuran Bersama 2030</li><li>RMKe-12</li><li>Dasar sektoral</li></ul>
+     <span class="suo-bab02-flip-hint">Klik untuk kembali <span aria-hidden="true">↻</span></span>
+    </div>
+   </div>
+  </div>
+ </div>
+ <section class="suo-bab02-rfn-teras">
+  <div class="suo-bab02-rfn-teras-head"><span class="suo-bab02-card-eyebrow">03 · RFN 4 · 3 TERAS · 11 HALA TUJU</span><h4>Teras Pembangunan RFN 4</h4><p>Tekan setiap teras untuk meneroka hala tuju strategik.</p></div>
+  <div class="suo-bab02-teras"><details class="suo-bab02-details" open><summary><span class="suo-bab02-teras-number">01</span><strong>Teras 1: Pertumbuhan Dinamik dan Seimbang</strong><span class="suo-bab02-detail-arrow" aria-hidden="true">⌄</span></summary><ul><li><b>PD 1</b><span>Pengukuhan Kedudukan Strategik Global</span></li><li><b>PD 2</b><span>Pertumbuhan Ekonomi Mampan</span></li><li><b>PD 3</b><span>Rangkaian Pengangkutan Bersepadu</span></li><li><b>PD 4</b><span>Infrastruktur Digital &amp; Pintar</span></li></ul></details><details class="suo-bab02-details" ><summary><span class="suo-bab02-teras-number">02</span><strong>Teras 2: Kemampanan Spatial dan Daya Tahan Perubahan Iklim</strong><span class="suo-bab02-detail-arrow" aria-hidden="true">⌄</span></summary><ul><li><b>KD 1</b><span>Perancangan Guna Tanah Holistik</span></li><li><b>KD 2</b><span>Pengurusan Mampan Sumber Asli/Makanan/Warisan</span></li><li><b>KD 3</b><span>Pembangunan Negara Neutral Karbon</span></li></ul></details><details class="suo-bab02-details" ><summary><span class="suo-bab02-teras-number">03</span><strong>Teras 3: Persekitaran Berdaya Huni dan Komuniti Inklusif</strong><span class="suo-bab02-detail-arrow" aria-hidden="true">⌄</span></summary><ul><li><b>KI 1</b><span>Perumahan untuk Semua</span></li><li><b>KI 2</b><span>Masyarakat Berpendidikan &amp; Berdaya Saing</span></li><li><b>KI 3</b><span>Persekitaran Kondusif &amp; Berdaya Huni</span></li><li><b>KI 4</b><span>Pembangunan Mesra Komuniti</span></li></ul></details></div>
+ </section>
+</div>
+<article class="suo-bab02-card suo-bab02-wide"><span class="suo-bab02-card-eyebrow">B · RANCANGAN STRUKTUR NEGERI</span><h4>Rancangan Struktur Negeri (RSN)</h4><p>Penyataan dasar dan cadangan am pemajuan serta penggunaan tanah di peringkat negeri, merangkumi pertalian guna tanah dengan negeri bersempadan serta mengambil kira dasar RFN (Diluluskan oleh Jawatankuasa Perancang Negeri / JPN dan Pihak Berkuasa Negeri / PBN).</p></article>
  <article class="suo-bab02-card suo-bab02-feature" id="suo-bab02-stage-1"><span class="suo-bab02-card-eyebrow">MATLAMAT PEMBANGUNAN RSN 2035</span><h4>“Selangor Negeri Pintar, Progresif dan Inklusif”</h4></article>
  <article class="suo-bab02-card suo-bab02-wide"><span class="suo-bab02-card-eyebrow">C · RANCANGAN TEMPATAN</span><h4>Rancangan Tempatan (RT)</h4><p>Dokumen perancangan tindakan dan cadangan oleh Pihak Berkuasa Perancangan Tempatan (PBPT) merangkumi Tindakan &amp; Kawalan Perancangan (guna tanah, landskap, lalulintas, bangunan) selaras dengan Subseksyen 12(4) Akta 172.</p></article>
  <article class="suo-bab02-card suo-bab02-stat" id="suo-bab02-stage-2"><strong>12</strong><h4>RT Utama PBT Selangor</h4><p>Senarai mengikut dua belas PBT disediakan pada tab Perkaitan Rancangan.</p></article>
@@ -2826,6 +2899,13 @@ function switchTab(index){
  root.querySelectorAll('.suo-bab02-level').forEach(function(button){
   button.addEventListener('click',function(){const target=document.getElementById(button.dataset.target);if(target)target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'center'})});
  });
+})();
+</script>
+<script id="suo-bab02-rfn-flip-controls-2026">
+(function(){const card=document.getElementById('suo-bab02-rfn-goal');if(!card)return;
+function flip(){const active=!card.classList.contains('is-flipped');card.classList.toggle('is-flipped',active);card.setAttribute('aria-pressed',String(active))}
+card.addEventListener('click',flip);
+card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
 })();
 </script>
 </body>
