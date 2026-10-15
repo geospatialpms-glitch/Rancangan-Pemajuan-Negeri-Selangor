@@ -1256,6 +1256,77 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 .pbt-card:hover{border-color:#d7a55a!important}
 @media(prefers-reduced-motion:reduce){#chapterCarousel .tab-btn{transition:none!important}}
 </style>
+<style id="suo-explore-dropdown-style-2026">
+/* One compact navigation dropdown with accessible chapter + topic links. */
+.header{overflow:visible!important}
+.header .head,.header .top-nav{overflow:visible!important}
+.header .top-nav{align-items:center}
+.suo-explore{position:relative;flex:0 0 auto;z-index:105}
+.header .top-nav .suo-explore-trigger{
+ display:flex;align-items:center;justify-content:center;gap:10px;
+ border:1px solid #d8ab68!important;background:rgba(255,235,193,.10)!important;
+ color:#fff6e8!important;font-size:12px;font-weight:900;white-space:nowrap;
+ border-radius:999px;padding:11px 17px!important;
+ transition:background .2s,border-color .2s,color .2s
+}
+.header .top-nav .suo-explore-trigger:hover,
+.header .top-nav .suo-explore-trigger[aria-expanded="true"]{
+ color:#590016!important;background:#f5dca6!important;border-color:#edcb83!important;
+}
+.suo-explore-chevron{font-size:21px;line-height:12px;display:inline-block;transition:transform .2s}
+.suo-explore:hover .suo-explore-chevron,
+.suo-explore:focus-within .suo-explore-chevron,
+.suo-explore.suo-explore-open .suo-explore-chevron{transform:rotate(180deg)}
+.suo-explore-menu{
+ display:none;position:absolute;right:0;top:calc(100% + 10px);
+ width:min(420px,calc(100vw - 30px));max-height:min(74vh,640px);
+ overflow-y:auto;overscroll-behavior:contain;
+ border:1px solid #d4ad78;border-top:3px solid #d1a457;
+ background:#fffdf9;border-radius:16px;
+ padding:10px;box-shadow:0 20px 55px rgba(53,4,24,.25);
+ scrollbar-color:#cba969 #f9f0e4;z-index:110;
+}
+.suo-explore-menu:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#590016,#d1a457)}
+.suo-explore:hover .suo-explore-menu,
+.suo-explore:focus-within .suo-explore-menu,
+.suo-explore.suo-explore-open .suo-explore-menu{display:block}
+.suo-explore-group{padding:4px 2px 8px;border-bottom:1px solid #f0e3db}
+.suo-explore-group:last-child{border-bottom:0}
+.header .top-nav .suo-explore-chapter{
+ display:flex;align-items:center;gap:11px;width:100%;min-width:0;
+ text-align:left;background:#f9f1e8!important;color:#65142d!important;
+ padding:12px!important;border:1px solid transparent;border-radius:10px;
+ white-space:normal
+}
+.header .top-nav .suo-explore-chapter:hover,
+.header .top-nav .suo-explore-chapter:focus-visible{
+ background:#f4e4cb!important;border-color:#d9b177!important;color:#590016!important
+}
+.suo-explore-number{display:grid;place-items:center;min-width:36px;height:36px;border-radius:10px;background:#590016;color:#ffe3a9;font-family:'Merriweather',Georgia,serif;font-size:15px;font-weight:900}
+.suo-explore-chapter-title{flex:1;min-width:0;font-size:12px;line-height:1.55;font-weight:900;white-space:normal}
+.suo-explore-chapter-arrow{font-size:17px;color:#a77a3c}
+.suo-explore-soon{display:inline-block;padding:2px 8px;margin:4px 0 0;border-radius:999px;border:1px solid #c9a253;color:#7b354b;font-size:9px;letter-spacing:.06em;white-space:nowrap}
+.suo-explore-topics{display:grid;grid-template-columns:1fr;gap:2px;margin:5px 0 0 47px}
+.header .top-nav .suo-explore-topic{
+ display:flex;align-items:start;gap:8px;text-align:left;width:100%;
+ background:transparent!important;color:#68565a!important;
+ padding:7px 11px!important;border:1px solid transparent;
+ border-radius:8px;font-size:11px;line-height:1.5;font-weight:700;white-space:normal
+}
+.header .top-nav .suo-explore-topic:hover,
+.header .top-nav .suo-explore-topic:focus-visible{
+ color:#590016!important;background:#fff2d9!important;border-color:#f0dbb3
+}
+.suo-explore-topic>span:first-child{color:#bd914c;font-size:15px;line-height:1}
+.header .top-nav .suo-explore-chapter:focus-visible,
+.header .top-nav .suo-explore-topic:focus-visible,
+.header .top-nav .suo-explore-trigger:focus-visible{outline:2px solid #b88b42;outline-offset:2px}
+@media(max-width:600px){
+ .suo-explore-menu{position:fixed;left:12px;right:12px;top:var(--suo-dropdown-top,110px);width:auto;max-height:calc(100dvh - var(--suo-dropdown-top,110px) - 12px)}
+}
+@media(hover:none){.suo-explore:hover:not(.suo-explore-open):not(:focus-within) .suo-explore-menu{display:none}}
+@media(prefers-reduced-motion:reduce){.suo-explore-chevron{transition:none}}
+</style>
 </head>
 <body>
 
@@ -1273,11 +1344,20 @@ body{background:#fcfaf7!important;color:#302c2d!important}
     <nav class="top-nav" aria-label="Navigasi utama"><button class="home-nav-btn" onclick="scrollToSuoTarget('utama')">Utama</button>
       <button class="section-nav-btn" data-section="statistik-pembangunan" onclick="navigateSection('statistik-pembangunan',this)">Peta Interaktif</button>
       <button class="section-nav-btn" data-section="pautan-pbt" onclick="navigateSection('pautan-pbt',this)">Direktori PBT</button>
-      <button onclick="switchTab(0)" class="tab-nav-btn active">Bab 01</button>
-      <button onclick="switchTab(1)" class="tab-nav-btn">Bab 02</button>
-      <button onclick="switchTab(2)" class="tab-nav-btn">Bab 03</button>
-      <button onclick="switchTab(3)" class="tab-nav-btn">Bab 04</button>
-      <button onclick="switchTab(4)" class="tab-nav-btn">Bab 05</button>
+      <div class="suo-explore" id="suo-explore-dropdown">
+  <button type="button" class="suo-explore-trigger" id="suo-explore-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="suo-explore-menu"><span class="suo-explore-i18n" data-ms="Eksplorasi Bab" data-en="Explore Chapters">Eksplorasi Bab</span><span class="suo-explore-chevron" aria-hidden="true">⌄</span></button>
+  <div class="suo-explore-menu" id="suo-explore-menu" aria-label="Eksplorasi Bab dan subtopik"><section class="suo-explore-group" aria-label="Bab 01">
+  <button type="button" class="suo-explore-chapter" data-chapter="0" data-topic="-1"><span class="suo-explore-number">01</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="Rancangan Selangor, Masa Hadapan" data-en="Selangor, The Future">Rancangan Selangor, Masa Hadapan</span></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
+  <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="0" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pengenalan Negeri" data-en="State Introduction">Pengenalan Negeri</span></button><button type="button" class="suo-explore-topic" data-chapter="0" data-topic="1"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Profil &amp; Parameter Pentadbiran" data-en="Administrative Profile">Profil &amp; Parameter Pentadbiran</span></button><button type="button" class="suo-explore-topic" data-chapter="0" data-topic="2"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Kerangka Perancangan" data-en="Planning Framework">Kerangka Perancangan</span></button><button type="button" class="suo-explore-topic" data-chapter="0" data-topic="3"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Sempadan 12 PBT" data-en="12 Local Authority Boundaries">Sempadan 12 PBT</span></button></div></section><section class="suo-explore-group" aria-label="Bab 02">
+  <button type="button" class="suo-explore-chapter" data-chapter="1" data-topic="-1"><span class="suo-explore-number">02</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="Arah Tuju &amp; Hierarki Pemajuan" data-en="Direction &amp; Planning Hierarchy">Arah Tuju &amp; Hierarki Pemajuan</span></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
+  <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="1" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Hierarki Perancangan" data-en="Planning Hierarchy">Hierarki Perancangan</span></button><button type="button" class="suo-explore-topic" data-chapter="1" data-topic="1"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Kerangka Perundangan" data-en="Legal Framework">Kerangka Perundangan</span></button><button type="button" class="suo-explore-topic" data-chapter="1" data-topic="2"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Perkaitan Rancangan" data-en="Planning Relationships">Perkaitan Rancangan</span></button></div></section><section class="suo-explore-group" aria-label="Bab 03">
+  <button type="button" class="suo-explore-chapter" data-chapter="2" data-topic="-1"><span class="suo-explore-number">03</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="Rancangan Struktur Negeri Selangor 2035 (Pengubahan)" data-en="Selangor State Structure Plan 2035 (Amendment)">Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</span></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
+  <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="RSN Selangor 2035" data-en="Selangor Structure Plan 2035">RSN Selangor 2035</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="1"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Dasar &amp; Strategi" data-en="Policies &amp; Strategies">Dasar &amp; Strategi</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="2"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pembangunan Mampan" data-en="Sustainable Development">Pembangunan Mampan</span></button></div></section><section class="suo-explore-group" aria-label="Bab 04">
+  <button type="button" class="suo-explore-chapter" data-chapter="3" data-topic="-1"><span class="suo-explore-number">04</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="Rancangan Tempatan (RT) &amp; Rancangan Kawasan Khas (RKK)" data-en="Local Plans (RT) &amp; Special Area Plans (RKK)">Rancangan Tempatan (RT) &amp; Rancangan Kawasan Khas (RKK)</span></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
+  <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="3" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="RT &amp; RKK" data-en="Local &amp; Special Area Plans">RT &amp; RKK</span></button><button type="button" class="suo-explore-topic" data-chapter="3" data-topic="1"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pelaksanaan PBT" data-en="Local Authority Implementation">Pelaksanaan PBT</span></button><button type="button" class="suo-explore-topic" data-chapter="3" data-topic="2"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Akses Direktori" data-en="Directory Access">Akses Direktori</span></button></div></section><section class="suo-explore-group" aria-label="Bab 05">
+  <button type="button" class="suo-explore-chapter" data-chapter="4" data-topic="-1"><span class="suo-explore-number">05</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="SISTEM LPFNS" data-en="LPFNS SYSTEM">SISTEM LPFNS</span><small class="suo-explore-soon suo-explore-i18n" data-ms="AKAN DATANG" data-en="COMING SOON">AKAN DATANG</small></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
+  <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="4" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pratonton Sistem" data-en="System Preview">Pratonton Sistem</span></button></div></section>  </div>
+</div>
     </nav><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
   </div>
 </header>
@@ -2131,6 +2211,63 @@ function switchTab(index){
  }
  const pane=document.getElementById('ch01-content-1');
  new MutationObserver(()=>{if(!pane.hidden)play()}).observe(pane,{attributes:true,attributeFilter:['hidden']});
+})();
+</script>
+<script id="suo-explore-dropdown-script-2026">
+(function(){
+ 'use strict';
+ const root=document.getElementById('suo-explore-dropdown');
+ const trigger=document.getElementById('suo-explore-trigger');
+ if(!root||!trigger)return;
+ function open(value){
+  root.classList.toggle('suo-explore-open',value);
+  trigger.setAttribute('aria-expanded',String(value));
+  if(value){
+   const header=document.querySelector('.header');
+   root.style.setProperty('--suo-dropdown-top',Math.ceil(header?header.getBoundingClientRect().bottom+8:110)+'px');
+  }
+ }
+ trigger.addEventListener('click',function(event){
+  event.stopPropagation();
+  open(!root.classList.contains('suo-explore-open'));
+ });
+ root.addEventListener('mouseenter',function(){
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches)open(true);
+ });
+ root.addEventListener('mouseleave',function(){
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches)open(false);
+ });
+ document.addEventListener('pointerdown',function(event){if(!root.contains(event.target))open(false)});
+ document.addEventListener('keydown',function(event){
+  if(event.key==='Escape'&&root.classList.contains('suo-explore-open')){open(false);trigger.focus()}
+ });
+ root.addEventListener('click',function(event){
+  const btn=event.target.closest('button[data-chapter]');
+  if(!btn)return;
+  const chapter=Number(btn.dataset.chapter),topic=Number(btn.dataset.topic);
+  if(!Number.isInteger(chapter)||chapter<0||chapter>4)return;
+  window.switchTab(chapter);
+  if(topic>=0){
+   if(chapter===0&&typeof window.showChapter01==='function')window.showChapter01(topic);
+   if(chapter>=1&&chapter<=3&&typeof window.showSuoBento==='function')window.showSuoBento(chapter,topic);
+   requestAnimationFrame(function(){
+    const target=chapter===0?document.getElementById('ch01-content-'+topic):
+       chapter>=1&&chapter<=3?document.getElementById('bento-'+chapter+'-'+topic):
+       document.querySelector('#panel-4 .suo-bento-coming');
+    if(target&&typeof window.scrollToSuoTarget==='function')window.scrollToSuoTarget(target);
+   });
+  }
+  document.querySelectorAll('.top-nav button').forEach(function(el){el.classList.remove('section-active')});
+  trigger.classList.add('section-active');
+  open(false);
+ });
+ function translate(){
+  const english=document.documentElement.lang==='en';
+  root.querySelectorAll('.suo-explore-i18n').forEach(function(el){el.textContent=el.getAttribute(english?'data-en':'data-ms')});
+ }
+ document.getElementById('langBM')?.addEventListener('click',function(){queueMicrotask(translate)});
+ document.getElementById('langEN')?.addEventListener('click',function(){queueMicrotask(translate)});
+ translate();
 })();
 </script>
 </body>
