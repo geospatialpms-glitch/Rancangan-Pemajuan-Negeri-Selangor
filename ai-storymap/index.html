@@ -1507,6 +1507,52 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:690px){#panel-0 .selangor-atlas-summary{padding:17px 13px!important}#panel-0 .selangor-atlas-pbt-row{padding:11px 9px!important}}
 @media(prefers-reduced-motion:reduce){#panel-0 .selangor-atlas-summary,#panel-0 .selangor-atlas-district-btn,#panel-0 .selangor-atlas-summary .atlas-counter{transition:none!important}#panel-0 .selangor-atlas-summary:hover,#panel-0 .selangor-atlas-summary:hover .atlas-counter{transform:none}}
 </style>
+<style id="selangor-atlas-responsive-size-2026">
+/* Scale Atlas Negeri Selangor to the portal viewport, without growing other chapters. */
+@media (min-width:1200px){
+ .main-section #panel-0>.chapter-content-card{
+  width:min(1460px,calc(100vw - 64px))!important;
+  max-width:none!important;
+  position:relative;left:50%;transform:translateX(-50%);
+  padding:clamp(22px,2.2vw,32px)!important
+ }
+ #panel-0 .chapter01-topic{max-width:none!important;width:100%}
+ #panel-0 .selangor-atlas-three-col{
+  grid-template-columns:minmax(220px,1.03fr) minmax(440px,2.5fr) minmax(268px,1.25fr)!important;
+  gap:18px!important;padding:22px!important
+ }
+ #panel-0 .selangor-atlas-map-card{width:100%;max-width:none}
+ #panel-0 .selangor-district-leaflet{height:690px!important}
+ #panel-0 .selangor-atlas-map-header{padding:27px 29px!important}
+ #panel-0 .selangor-atlas-pbt-row{padding:14px 12px!important}
+ #panel-0 .selangor-atlas-pbt-row>span{font-size:12px!important}
+}
+@media (min-width:1600px){
+ .main-section #panel-0>.chapter-content-card{width:min(1510px,calc(100vw - 100px))!important}
+ #panel-0 .selangor-district-leaflet{height:725px!important}
+}
+@media (min-width:760px) and (max-width:1199px){
+ #panel-0 .chapter01-topic{max-width:none!important;width:100%}
+ #panel-0 .selangor-atlas-three-col{grid-template-columns:minmax(180px,.95fr) minmax(330px,2.1fr)!important;gap:15px!important}
+ #panel-0 .selangor-atlas-right{grid-column:1/-1!important}
+ #panel-0 .selangor-atlas-pbt-items{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #panel-0 .selangor-district-leaflet{height:620px!important}
+}
+@media(max-width:759px){
+ .main-section #panel-0>.chapter-content-card{padding:clamp(12px,3vw,20px)!important}
+ #panel-0 .chapter01-topic{max-width:none!important;width:100%}
+ #panel-0 .selangor-atlas-three-col{grid-template-columns:minmax(0,1fr)!important;gap:12px!important;padding:12px!important}
+ #panel-0 .selangor-atlas-left{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #panel-0 .selangor-atlas-right{grid-column:auto!important}
+ #panel-0 .selangor-atlas-pbt-items{display:grid!important;grid-template-columns:1fr!important}
+ #panel-0 .selangor-district-leaflet{height:500px!important}
+ #panel-0 .selangor-atlas-map-header{padding:18px!important}
+}
+@media(max-width:420px){
+ #panel-0 .selangor-atlas-left{grid-template-columns:1fr!important}
+ #panel-0 .selangor-district-leaflet{height:450px!important}
+}
+</style>
 </head>
 <body>
 
