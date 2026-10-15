@@ -1078,6 +1078,119 @@ body{background:#faf8f5!important;color:#302e30}
 @media(max-width:650px){#panel-0 .ch01-linked-grid{grid-template-columns:1fr}#panel-0 .ch01-pbt-summary-card{grid-column:auto}#panel-0 .ch01-hierarchy-step{grid-template-columns:62px minmax(0,1fr);gap:12px;padding:16px}#panel-0 .ch01-hierarchy-num{width:58px;min-height:62px}#panel-0 .ch01-step-symbol{display:none}#panel-0 .ch01-hierarchy-flow:before{left:29px}#panel-0 .ch01-hierarchy-step:not(:last-child):after{left:20px}#panel-0 .ch01-pbt-bar span{font-size:9px}}
 @media(prefers-reduced-motion:reduce){#panel-0 .ch01-linked-card,#panel-0 .ch01-hierarchy-step{transition:none}#panel-0 .ch01-linked-card:hover,#panel-0 .ch01-hierarchy-step:hover{transform:none}}
 </style>
+<style id="selangor-crimson-royal-gold-2026">
+/* Corporate Selangor theme: Deep Crimson / Royal Gold / soft ivory.
+   Matching header and footer, clear reading contrast without harsh saturation. */
+:root{
+ --primary:#79263f;
+ --primary-dark:#612139;
+ --gold:#c9a253;
+ --gold-light:#f9f0de;
+ --bg:#fbf9f5;
+ --text:#302d30;
+ --muted:#605960;
+ --border:#e9ded5;
+ --sel-maroon:#79263f;
+ --sel-maroon-deep:#612139;
+ --sel-gold:#c9a253;
+ --sel-cream:#fbf9f5;
+ --sel-reading:#423e42;
+}
+body{background:#fbf9f5!important;color:#302d30!important}
+/* Identical color system for top navigation and bottom footer */
+.header,.footer{
+ background:#612139!important;
+ color:#fff7e9!important;
+ border-color:#b38b52!important;
+}
+.header{
+ border-bottom:3px solid #c9a253!important;
+ box-shadow:0 5px 18px rgba(60,22,40,.14)!important;
+}
+.footer{
+ border-top:3px solid #c9a253!important;
+ box-shadow:0 -5px 18px rgba(60,22,40,.08)!important;
+}
+.header .brand-text b{color:#fff7eb!important}
+.header .brand-text small{color:#e5c686!important}
+.header .top-nav button,.header .section-nav-btn{color:#fff3e9!important;background:transparent!important}
+.header .top-nav button:hover,.header .top-nav button.active,.header .top-nav button.section-active,.header .top-nav .section-nav-btn.section-active{
+ color:#542035!important;background:#f1d7a0!important;
+}
+.header .lang-switch{background:rgba(255,249,236,.095)!important;border:1px solid rgba(235,204,141,.48)!important;color:#f8e7cc!important}
+.header .lang-switch button{color:#fae9d9!important}
+.header .lang-switch button.chosen{background:#d7ae62!important;color:#4a1c30!important}
+.header .top-nav button:focus-visible,.header .lang-switch button:focus-visible{outline:2px solid #f3d994;outline-offset:2px}
+/* Page hierarchy and easy-reading information surfaces */
+#statistik-pembangunan .spatial-heading h2,
+#pautan-pbt .pbt-heading h2,
+.main-section .chapter-section-heading h2,
+.main-section .chapter-intro h3{
+ color:#72283f!important;
+}
+.stat-intro p,.pbt-heading p,.chapter-section-heading p,.main-section .chapter-intro-description{color:#5b555a!important}
+.main-section .chapter-content-card{
+ background:#fffefa!important;
+ border-color:#e8dcd1!important;
+ box-shadow:0 15px 36px rgba(86,41,53,.065)!important;
+}
+.main-section .chapter-content-card:before{
+ background:linear-gradient(90deg,#79263f,#a95768,#c9a253)!important;
+}
+.atlas-sheet-type,.chapter01-titleline h4,.main-section .suo-bento-tile h4{color:#72283f!important}
+.atlas-sheet-kicker,.main-section .chapter-content-label,.main-section .chapter-intro-eyebrow{color:#863b51!important}
+.atlas-sheet-point{background:#79263f!important}
+.atlas-feature-map{border-color:#d3b783!important}
+.atlas-feature-map:after{background:linear-gradient(90deg,rgba(54,19,36,.81),rgba(90,33,52,.53),rgba(54,19,36,.67))!important}
+.atlas-key-maroon{background:#79263f!important}
+.atlas-key-gold{background:#c9a253!important}
+.main-section .suo-bento-tile,
+.main-section .chapter01-topic>p,
+.main-section .ch01-linked-card,
+.main-section .chapter01-metrics>div,
+.main-section .chapter01-pbt-categories>div{
+ background:linear-gradient(145deg,#fffefa,#fbf6f1)!important;
+ border-color:#e9ded5!important;
+ box-shadow:0 7px 20px rgba(88,36,51,.055)!important
+}
+.main-section .suo-bento-tile p,
+.main-section .chapter01-body p,
+.main-section .ch01-linked-card p{color:#4d484b!important}
+.main-section .chapter-subnav-btn{background:#fcf7f1!important;color:#702b43!important;border-color:#e4d6c9!important}
+.main-section .chapter-subnav-btn.chapter-subnav-primary,
+.main-section .chapter-subnav-btn[aria-selected="true"]{
+ background:#79263f!important;border-color:#79263f!important;color:#fff!important;
+}
+.main-section .chapter-panel-action,.main-section .suo-bento-action{
+ background:#79263f!important;color:#fff!important;border-color:#79263f!important;
+ box-shadow:0 8px 19px rgba(90,32,51,.16)!important;
+}
+.main-section .chapter-panel-action:hover,.main-section .suo-bento-action:hover{background:#923a53!important}
+.main-section .suo-bento-tile.suo-bento-stat{
+ background:linear-gradient(145deg,#69233c,#93475d)!important;
+}
+.main-section .suo-bento-tile.suo-bento-stat h4,
+.main-section .suo-bento-tile.suo-bento-stat p{color:#fff9f3!important}
+.main-section .suo-bento-tile.suo-bento-coming{
+ background:linear-gradient(145deg,#632039,#8b4359)!important;
+}
+.main-section .suo-bento-tile.suo-bento-coming h4,
+.main-section .suo-bento-tile.suo-bento-coming p{color:#fff9f3!important}
+.main-section .suo-animated-stat{color:#f4da9e!important}
+.main-section .ch01-hierarchy-num{background:#79263f!important}
+.main-section .ch01-pbt-bars .ch01-bar-city{background:#79263f!important}
+.main-section .ch01-pbt-bars .ch01-bar-town{background:#a75b6e!important}
+.main-section .ch01-pbt-bars .ch01-bar-district{background:#a88444!important}
+.main-section .ch01-linked-card .ch01-big-number>span{color:#79263f!important}
+.main-section .ch01-geo-icon{color:#79263f!important;background:#f9eedc!important}
+.chapter-scroll-meter span{background:linear-gradient(90deg,#79263f,#b56877,#c9a253)!important}
+.chapter-carousel-arrow{background:#fcf3e2!important;color:#79263f!important;border-color:#d5b479!important}
+.chapter-carousel-arrow:hover:not(:disabled){background:#f7e4bb!important}
+#chapterCarousel .tab-btn.active,#chapterCarousel .tab-btn[aria-selected="true"]{border-color:#d4af68!important}
+#chapterCarousel .tab-btn{filter:saturate(1.02) brightness(1.04)!important}
+@media(hover:hover) and (pointer:fine){#chapterCarousel .tab-btn:hover{filter:saturate(1.09) brightness(1.08)!important}}
+@media(prefers-reduced-motion:reduce){.header .top-nav button,.header .lang-switch button{transition:none!important}}
+</style>
 </head>
 <body>
 
