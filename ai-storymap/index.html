@@ -2320,6 +2320,12 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:720px){#panel-1 .suo-rt-map-leaflet{height:330px}#panel-1 .suo-rt-pbt-visual{flex-basis:34px;width:34px;height:34px}#panel-1 .suo-rt-map-heading{padding:14px}}
 @media(prefers-reduced-motion:reduce){#panel-1 .suo-rt-map-action{transition:none}#panel-1 .suo-rt-map-action:hover{transform:none}}
 </style>
+<style id="suo-rt-map-selection-polish-2026">
+#panel-1 .suo-rt-pbt-item.is-map-selected{border-color:#c9a253!important;box-shadow:0 0 0 2px rgba(201,162,83,.16),0 10px 22px rgba(97,33,57,.09)!important}
+#panel-1 .suo-rt-pbt-item.is-map-selected summary{background:#f8ead2!important}
+#panel-1 .suo-rt-pbt-item summary:hover{background:#fdf4e7}
+#panel-1 .suo-rt-location-map{scroll-margin-top:125px}
+</style>
 </head>
 <body>
 
@@ -3677,23 +3683,60 @@ card.addEventListener('keydown',function(event){if((event.key==='Enter'||event.k
 </script>
 <script id="suo-rt-pbt-leaflet-actions-2026">
 (function(){
-const root=document.getElementById('suo-rt-directory-interactive-2026'),shell=document.getElementById('suo-rt-location-map'),host=document.getElementById('suo-rt-map-leaflet');
+const root=document.getElementById('suo-rt-directory-interactive-2026');
+const shell=document.getElementById('suo-rt-location-map');
+const host=document.getElementById('suo-rt-map-leaflet');
 if(!root||!shell||!host)return;
 const points={"MBPJ":[3.0992,101.645,"Majlis Bandaraya Petaling Jaya"],"MBSA":[3.0734,101.5199,"Majlis Bandaraya Shah Alam"],"MBSJ":[3.0516,101.5824,"Majlis Bandaraya Subang Jaya"],"MBDK":[3.0449,101.4447,"Majlis Bandaraya Diraja Klang"],"MPKj":[2.9949,101.7896,"Majlis Perbandaran Kajang"],"MPAJ":[3.1278,101.7538,"Majlis Perbandaran Ampang Jaya"],"MPS":[3.2535,101.6542,"Majlis Perbandaran Selayang"],"MPSp":[2.9338,101.6456,"Majlis Perbandaran Sepang"],"MPHS":[3.5601,101.6587,"Majlis Perbandaran Hulu Selangor"],"MPKL":[2.8028,101.4957,"Majlis Perbandaran Kuala Langat"],"MPKS":[3.3315,101.2513,"Majlis Perbandaran Kuala Selangor"],"MDSB":[3.6761,100.9908,"Majlis Daerah Sabak Bernam"]};
-let map,marker;
-root.addEventListener('click',function(e){
-const button=e.target.closest('button[data-pbt-map]');if(!button)return;
-e.preventDefault();e.stopPropagation();
-const code=button.dataset.pbtMap,point=points[code];if(!point)return;
-shell.hidden=false;document.getElementById('suo-rt-map-title').textContent='Lokasi Pejabat '+code;
-document.getElementById('suo-rt-map-status').textContent=point[2]+' · Titik lokasi rujukan';
-if(!window.L){document.getElementById('suo-rt-map-status').textContent='Pustaka peta belum dimuatkan. Sila muat semula.';return}
-if(!map){map=L.map(host,{scrollWheelZoom:false,zoomControl:true});L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map)}
-if(marker)map.removeLayer(marker);
-marker=L.marker([point[0],point[1]]).addTo(map).bindPopup('<b>'+code+'</b><div>'+point[2]+'</div><small>Pejabat PBT, bukan sempadan kawasan</small>').openPopup();
-requestAnimationFrame(function(){map.invalidateSize();map.flyTo([point[0],point[1]],13,{animate:!matchMedia('(prefers-reduced-motion:reduce)').matches,duration:1});shell.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})});
+let map=null,marker=null,selectedCode=null;
+const title=document.getElementById('suo-rt-map-title'),status=document.getElementById('suo-rt-map-status');
+const reduceMotion=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function closeMap(){
+ shell.hidden=true;selectedCode=null;
+ root.querySelectorAll('.suo-rt-pbt-item').forEach(item=>item.classList.remove('is-map-selected'));
+}
+function showMap(code){
+ const point=points[code];if(!point)return;
+ const wasOpen=!shell.hidden&&selectedCode===code;
+ if(wasOpen){closeMap();return}
+ selectedCode=code;shell.hidden=false;
+ root.querySelectorAll('.suo-rt-pbt-item').forEach(item=>{
+   item.classList.toggle('is-map-selected',item.querySelector('[data-pbt-map="'+code+'"]')!==null);
+ });
+ title.textContent='Lokasi Pejabat '+code;
+ status.textContent=point[2]+' · Titik lokasi rujukan pejabat (bukan sempadan pentadbiran)';
+ if(!window.L){
+  status.textContent='Pustaka peta tidak dapat dimuatkan. Sila muat semula halaman untuk mencuba lagi.';
+  shell.scrollIntoView({behavior:reduceMotion()?'auto':'smooth',block:'start'});return
+ }
+ if(!map){
+  map=L.map(host,{scrollWheelZoom:false,zoomControl:true});
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+ }
+ if(marker)map.removeLayer(marker);
+ marker=L.marker([point[0],point[1]]).addTo(map)
+  .bindPopup('<b>'+code+'</b><div>'+point[2]+'</div><small>Lokasi rujukan pejabat PBT, bukan sempadan pentadbiran.</small>');
+ requestAnimationFrame(function(){
+  map.invalidateSize();
+  map.setView([point[0],point[1]],13,{animate:!reduceMotion()});
+  marker.openPopup();
+  shell.scrollIntoView({behavior:reduceMotion()?'auto':'smooth',block:'start'});
+ });
+}
+root.addEventListener('click',function(event){
+ const button=event.target.closest('button[data-pbt-map]');
+ if(button){
+   event.preventDefault();event.stopPropagation();showMap(button.dataset.pbtMap);return;
+ }
+ const summary=event.target.closest('.suo-rt-pbt-item > summary');
+ if(summary){
+   const item=summary.parentElement;
+   const action=item.querySelector('button[data-pbt-map]');
+   if(action)showMap(action.dataset.pbtMap);
+ }
 });
-shell.querySelector('.suo-rt-map-close').addEventListener('click',function(){shell.hidden=true});
+shell.querySelector('.suo-rt-map-close').addEventListener('click',closeMap);
 })();
 </script>
 </body>
