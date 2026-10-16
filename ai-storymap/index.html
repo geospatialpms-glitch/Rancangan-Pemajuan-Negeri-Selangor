@@ -3721,44 +3721,6 @@ function switchTab(index){
  }));
  shell.querySelector('[data-rt-reset]').addEventListener('click',focus);
 })();
-</script>-rt-pbt-item').forEach(item=>{
-   item.classList.toggle('is-map-selected',item.querySelector('[data-pbt-map="'+code+'"]')!==null);
- });
- title.textContent='Lokasi Pejabat '+code;
- status.textContent=point[2]+' · Titik lokasi rujukan pejabat (bukan sempadan pentadbiran)';
- if(!window.L){
-  status.textContent='Pustaka peta tidak dapat dimuatkan. Sila muat semula halaman untuk mencuba lagi.';
-  shell.scrollIntoView({behavior:reduceMotion()?'auto':'smooth',block:'start'});return
- }
- if(!map){
-  map=L.map(host,{scrollWheelZoom:false,zoomControl:true});
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
- }
- if(marker)map.removeLayer(marker);
- marker=L.marker([point[0],point[1]]).addTo(map)
-  .bindPopup('<b>'+code+'</b><div>'+point[2]+'</div><small>Lokasi rujukan pejabat PBT, bukan sempadan pentadbiran.</small>');
- requestAnimationFrame(function(){
-  map.invalidateSize();
-  map.setView([point[0],point[1]],13,{animate:!reduceMotion()});
-  marker.openPopup();
-  shell.scrollIntoView({behavior:reduceMotion()?'auto':'smooth',block:'start'});
- });
-}
-root.addEventListener('click',function(event){
- const button=event.target.closest('button[data-pbt-map]');
- if(button){
-   event.preventDefault();event.stopPropagation();showMap(button.dataset.pbtMap);return;
- }
- const summary=event.target.closest('.suo-rt-pbt-item > summary');
- if(summary){
-   const item=summary.parentElement;
-   const action=item.querySelector('button[data-pbt-map]');
-   if(action)showMap(action.dataset.pbtMap);
- }
-});
-shell.querySelector('.suo-rt-map-close').addEventListener('click',closeMap);
-})();
 </script>
 </body>
 </html>
