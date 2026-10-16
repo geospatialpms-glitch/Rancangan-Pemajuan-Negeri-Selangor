@@ -3665,7 +3665,11 @@ function switchTab(index){
   navButtons.forEach(function(button){
    button.addEventListener('click',function(){chooseSection(button.dataset.bab02Section,true)});
   });
- <script src="https://unpkg.com/maplibre-gl@5.7.1/dist/maplibre-gl.js"></script>
+  chooseSection('rfn',false);
+ }
+})();
+</script>
+<script src="https://unpkg.com/maplibre-gl@5.7.1/dist/maplibre-gl.js"></script>
 <script id="suo-rt-3d-maplibre-2026">
 (function(){
  const root=document.getElementById('suo-rt-directory-interactive-2026'),shell=document.getElementById('suo-rt-location-map'),host=document.getElementById('suo-rt-map-leaflet');
