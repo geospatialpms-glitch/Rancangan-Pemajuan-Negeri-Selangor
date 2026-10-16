@@ -4035,5 +4035,34 @@ finally{loading=false}
 });
 })();
 </script>
+<!-- Firebase Web SDK: isolated initialization for GitHub Pages; no changes to existing portal UI. -->
+<script type="module" id="suo-firebase-init-2026">
+import { initializeApp, getApp, getApps } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyByLnvtpN5O4HtsSRXOltB2VlHfG80Yq1s",
+  authDomain: "rancangan-pemajuan.firebaseapp.com",
+  projectId: "rancangan-pemajuan",
+  storageBucket: "rancangan-pemajuan.firebasestorage.app",
+  messagingSenderId: "614754044971",
+  appId: "1:614754044971:web:6126d84273d8442b156e6e",
+  measurementId: "G-MCB6ZBH9GD"
+};
+
+try {
+  const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+  window.suoFirebaseApp = app;
+  if (await isSupported()) {
+    try {
+      window.suoFirebaseAnalytics = getAnalytics(app);
+    } catch (analyticsError) {
+      console.warn("Firebase Analytics tidak dapat diaktifkan:", analyticsError);
+    }
+  }
+} catch (firebaseError) {
+  console.warn("Firebase tidak dapat dimulakan:", firebaseError);
+}
+</script>
 </body>
 </html>
