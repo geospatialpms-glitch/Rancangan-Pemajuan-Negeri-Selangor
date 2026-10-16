@@ -2647,6 +2647,35 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  #panel-2 .suo-rsn-project-bento .suo-rsn-project-card{will-change:auto!important}
 }
 </style>
+<style id="suo-rsn-teras-focus-style-2026">
+/* Only within RSN three pillars: focus overlay, no changes to original content or other navigation. */
+#panel-1 .suo-bab02-rsn-core .suo-rsn-acc-item summary{transition:background .2s,transform .2s;cursor:pointer}
+#panel-1 .suo-bab02-rsn-core .suo-rsn-acc-item summary:hover{background:#f2e5d0!important}
+#panel-1 .suo-bab02-rsn-core .suo-rsn-acc-item summary::after{content:"TEROKAI ↗";font:800 10px/1.4 Arial,sans-serif;letter-spacing:.04em;color:#9e7540;white-space:nowrap;margin-left:8px}
+#panel-1 .suo-rsn-teras-focus[hidden]{display:none!important}
+#panel-1 .suo-rsn-teras-focus{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:clamp(10px,3vw,34px);isolation:isolate}
+#panel-1 .suo-rsn-focus-backdrop{position:absolute;inset:0;background:rgba(25,9,16,.73);backdrop-filter:blur(6px)}
+#panel-1 .suo-rsn-focus-page{position:relative;width:min(100%,1040px);max-height:min(90vh,950px);overflow:auto;overscroll-behavior:contain;border-radius:24px;border:2px solid #c9a253;background:#fbf9f5;box-shadow:0 26px 85px rgba(20,0,10,.35);scrollbar-color:#c9a253 #f5ebdd}
+#panel-1 .suo-rsn-focus-head{position:relative;padding:clamp(24px,3.5vw,42px);padding-right:70px;background:linear-gradient(125deg,#612139,#813b56);border-bottom:4px solid #c9a253}
+#panel-1 .suo-rsn-focus-eyebrow{font:900 11px/1.5 Arial,sans-serif;letter-spacing:.13em;color:#f4d9a0}
+#panel-1 .suo-rsn-focus-head h3{font:800 clamp(21px,2.8vw,34px)/1.45 'Merriweather',Georgia,serif;color:#fff8ed;margin:12px 0}
+#panel-1 .suo-rsn-focus-head p{font-size:14px;line-height:1.75;color:#f8e7e9;max-width:830px;margin:0}
+#panel-1 .suo-rsn-focus-x{position:absolute;top:20px;right:20px;width:42px;height:42px;border-radius:12px;border:1px solid #c9a253;color:#612139;background:#fff6e7;font-size:18px;cursor:pointer}
+#panel-1 .suo-rsn-focus-content{padding:clamp(18px,3.3vw,38px)}
+#panel-1 .suo-rsn-focus-meta{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:22px;font-size:11px;font-weight:900;letter-spacing:.11em;color:#8c5870}
+#panel-1 .suo-rsn-focus-meta span:first-child{display:grid;place-items:center;background:#612139;border:1px solid #c9a253;color:#fff;width:44px;height:44px;border-radius:12px;font-size:20px;letter-spacing:0}
+#panel-1 .suo-rsn-focus-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+#panel-1 .suo-rsn-focus-list-item{display:flex;gap:14px;align-items:flex-start;padding:19px;border-radius:17px;background:#fffdf9;border:1px solid #e7d6bd;box-shadow:0 6px 17px rgba(97,33,57,.05);transition:transform .2s,border-color .2s}
+#panel-1 .suo-rsn-focus-list-item:hover{transform:translateY(-2px);border-color:#c9a253}
+#panel-1 .suo-rsn-focus-list-item>span{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#612139;color:#fff;font-size:13px;font-weight:900}
+#panel-1 .suo-rsn-focus-list-item p{margin:4px 0 0;color:#55484e;font-size:14px;line-height:1.75}
+#panel-1 .suo-rsn-focus-source{color:#846f76;font-size:11px;margin:19px 0 0;line-height:1.7}
+#panel-1 .suo-rsn-focus-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px clamp(18px,3.3vw,38px);border-top:1px solid #e6d6bf;background:#fff7eb}
+#panel-1 .suo-rsn-focus-back{border:1px solid #c9a253;border-radius:99px;background:#612139;color:#fffaf2;font-size:13px;font-weight:800;padding:13px 20px;cursor:pointer}
+#panel-1 .suo-rsn-focus-foot>span{font-size:12px;font-weight:800;color:#99714b}
+@media(max-width:720px){#panel-1 .suo-rsn-focus-list{grid-template-columns:1fr}#panel-1 .suo-rsn-teras-focus{padding:8px}#panel-1 .suo-rsn-focus-page{max-height:96dvh;border-radius:17px}#panel-1 .suo-rsn-acc-item summary::after{display:none}#panel-1 .suo-rsn-focus-head{padding-right:58px}#panel-1 .suo-rsn-focus-x{top:14px;right:12px;width:36px;height:36px}}
+@media(prefers-reduced-motion:reduce){#panel-1 .suo-rsn-focus-list-item{transition:none}}
+</style>
 </head>
 <body>
 
@@ -3061,7 +3090,25 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  <div class="suo-rsn-acc-body"><p>Memastikan kesejahteraan rakyat melalui akses perumahan berkualiti, kemudahan awam, kesihatan, pengangkutan bersepadu dan pengurusan bekalan air.</p><ol><li>Mempertingkat perumahan berkualiti dan mampu milik</li><li>Menambah baik akses serta pengagihan kemudahan awam</li><li>Memperkukuh perkhidmatan kesihatan dan kesejahteraan komuniti</li><li>Mewujudkan sistem pengangkutan awam bersepadu</li><li>Memastikan pengurusan sumber air dan bekalan yang mampan</li><li>Meningkatkan kualiti persekitaran serta keselesaan penduduk</li></ol><small>Rumusan tematik berdasarkan skop yang diberikan; bukan petikan verbatim dasar rasmi RSN.</small></div>
 </details>
 </div>
- </section>
+ <div class="suo-rsn-teras-focus" id="suo-rsn-teras-focus-2026" role="dialog" aria-modal="true" aria-labelledby="suo-rsn-focus-title" aria-describedby="suo-rsn-focus-summary" hidden>
+ <div class="suo-rsn-focus-backdrop" data-suo-rsn-close></div>
+ <div class="suo-rsn-focus-page" tabindex="-1">
+  <header class="suo-rsn-focus-head">
+   <div class="suo-rsn-focus-head-copy"><span class="suo-rsn-focus-eyebrow">RSN SELANGOR 2035 · HALA TUJU STRATEGIK</span><h3 id="suo-rsn-focus-title"></h3><p id="suo-rsn-focus-summary"></p></div>
+   <button type="button" class="suo-rsn-focus-x" aria-label="Tutup paparan teras" data-suo-rsn-close>✕</button>
+  </header>
+  <div class="suo-rsn-focus-content">
+   <div class="suo-rsn-focus-meta"><span id="suo-rsn-focus-count"></span><span>HALA TUJU STRATEGIK</span></div>
+   <div class="suo-rsn-focus-list" id="suo-rsn-focus-list"></div>
+   <p class="suo-rsn-focus-source" id="suo-rsn-focus-source"></p>
+  </div>
+  <footer class="suo-rsn-focus-foot">
+    <button type="button" class="suo-rsn-focus-back" data-suo-rsn-close>← Kembali ke Tiga Teras</button>
+    <span id="suo-rsn-focus-index"></span>
+  </footer>
+ </div>
+</div>
+</section>
 <section class="suo-bab02-rsn-map-section" aria-labelledby="suo-bab02-rsn-map-title">
   <header class="suo-bab02-rsn-section-heading"><span>PEL​AN &amp; VISUAL SPATIAL</span><h4 id="suo-bab02-rsn-map-title">Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan)</h4><p>Ruang paparan dokumen pelan konsep pembangunan rasmi.</p></header>
   <div class="suo-bab02-rsn-map-container">
@@ -4443,6 +4490,58 @@ try {
   card.addEventListener('pointermove',move,{passive:true});
   card.addEventListener('pointerleave',reset,{passive:true});
   card.addEventListener('pointercancel',reset,{passive:true});
+ });
+})();
+</script>
+<script id="suo-rsn-teras-focus-controller-2026">
+(function(){
+ const area=document.querySelector('#panel-1 .suo-bab02-rsn-core');
+ const overlay=document.getElementById('suo-rsn-teras-focus-2026');
+ if(!area||!overlay)return;
+ const items=[...area.querySelectorAll('.suo-rsn-teras-accordion > details.suo-rsn-acc-item')];
+ const focusPage=overlay.querySelector('.suo-rsn-focus-page');
+ let trigger=null;
+ function close(){
+  overlay.hidden=true;
+  if(trigger&&trigger.isConnected)trigger.focus({preventScroll:true});
+  trigger=null;
+ }
+ function open(item,index,from){
+  const heading=item.querySelector('.suo-rsn-acc-title');
+  const description=item.querySelector('.suo-rsn-acc-body > p');
+  const points=[...item.querySelectorAll('.suo-rsn-acc-body ol > li')];
+  trigger=from;
+  overlay.querySelector('#suo-rsn-focus-title').textContent=heading?.textContent||'Teras Pembangunan';
+  overlay.querySelector('#suo-rsn-focus-summary').textContent=description?.textContent||'';
+  overlay.querySelector('#suo-rsn-focus-count').textContent=String(points.length).padStart(2,'0');
+  overlay.querySelector('#suo-rsn-focus-index').textContent='TERAS '+String(index+1).padStart(2,'0')+' / 03';
+  overlay.querySelector('#suo-rsn-focus-source').textContent=item.querySelector('.suo-rsn-acc-body small')?.textContent||'';
+  const list=overlay.querySelector('#suo-rsn-focus-list');
+  list.replaceChildren();
+  points.forEach(function(point,i){
+   const box=document.createElement('article');box.className='suo-rsn-focus-list-item';
+   const n=document.createElement('span');n.textContent=String(i+1).padStart(2,'0');
+   const p=document.createElement('p');p.textContent=point.textContent;
+   box.append(n,p);list.append(box);
+  });
+  overlay.hidden=false;
+  focusPage.scrollTop=0;
+  focusPage.focus({preventScroll:true});
+ }
+ items.forEach(function(item,i){
+  const summary=item.querySelector('summary');if(!summary)return;
+  summary.addEventListener('click',function(event){event.preventDefault();item.open=false;open(item,i,summary)});
+ });
+ overlay.querySelectorAll('[data-suo-rsn-close]').forEach(function(btn){btn.addEventListener('click',close)});
+ overlay.addEventListener('keydown',function(event){
+  if(event.key==='Escape'){event.preventDefault();close()}
+  if(event.key==='Tab'){
+   const controls=[...overlay.querySelectorAll('button')].filter(b=>b.getClientRects().length);
+   if(!controls.length)return;
+   const first=controls[0],last=controls[controls.length-1];
+   if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+   else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+  }
  });
 })();
 </script>
