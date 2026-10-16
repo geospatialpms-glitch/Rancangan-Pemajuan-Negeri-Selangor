@@ -2446,6 +2446,24 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:680px){#panel-1 .suo-act172-ref-card{grid-template-columns:1fr}#panel-1 .suo-act172-ref-cover-wrap{grid-row:1}}
 @media(prefers-reduced-motion:reduce){#panel-1 .suo-act172-ref-buttons a{transition:none}#panel-1 .suo-act172-ref-buttons a:hover{transform:none}}
 </style>
+<style id="rt-google3d-style-2026">
+#suo-rt-google3d-2026[hidden],#rt-google3d-setup[hidden],#rt-google3d-stage[hidden]{display:none!important}
+#suo-rt-google3d-2026{border:1px solid #c9a253;border-radius:19px;overflow:hidden;margin:13px 0;background:#fbf9f5;box-shadow:0 12px 26px #61213919}
+#suo-rt-google3d-2026 header{background:linear-gradient(120deg,#612139,#8a4560);color:white;padding:15px 19px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+#suo-rt-google3d-2026 header strong{font-size:15px}
+#suo-rt-google3d-2026 header button{background:#fff4dc;border:1px solid #c9a253;border-radius:11px;color:#612139;padding:9px 13px;font-weight:800}
+#rt-google3d-select{background:#612139!important;color:#fff4e7!important;border:1px solid #c9a253!important}
+#rt-google3d-select[aria-pressed=true]{outline:2px solid #c9a253;outline-offset:2px}
+#rt-google3d-setup{padding:24px;max-width:820px;margin:auto;color:#5c4d53;font-size:13px;line-height:1.8}
+#rt-google3d-setup label{display:block;font-weight:800;color:#612139;margin:12px 0 6px}
+#rt-google3d-form>div{display:flex;gap:9px}#rt-google3d-form input{flex:1;min-width:0;padding:12px;border-radius:10px;border:1px solid #c9a253}
+#rt-google3d-form button{padding:10px 15px;border-radius:10px;background:#612139;color:white;border:1px solid #c9a253;font-weight:800}
+#rt-google3d-setup small{display:block;margin-top:11px}
+#rt-google3d-stage{height:580px}#rt-google3d-stage gmp-map-3d{display:block;width:100%;height:100%}
+#rt-google3d-status{margin:0;padding:12px 19px;font-size:12px;line-height:1.7;color:#66545c;background:#fff7e9}
+#suo-rt-location-map.rt-google3d-active #suo-rt-map-leaflet{display:none!important}
+@media(max-width:700px){#rt-google3d-stage{height:430px}#rt-google3d-form>div{flex-direction:column}}
+</style>
 </head>
 <body>
 
@@ -2914,7 +2932,13 @@ body{background:#fcfaf7!important;color:#302c2d!important}
     </div>
     <section class="suo-rt-location-map" id="suo-rt-location-map" hidden>
 <div class="suo-rt-map-heading"><div><small>PETA INTERAKTIF SELANGOR</small><h5 id="suo-rt-map-title">Lokasi Pejabat PBT</h5><p id="suo-rt-map-status" role="status">Pilih PBT untuk melihat lokasinya</p></div><button type="button" class="suo-rt-map-close" aria-label="Tutup peta">✕</button></div>
-<div class="suo-rt-3d-controls"><button type="button" data-rt-mode="3d" aria-pressed="true">◈ Paparan 3D</button><button type="button" data-rt-mode="2d" aria-pressed="false">▤ Paparan 2D</button><button type="button" data-rt-basemap="satellite" aria-pressed="true">◉ Satelit</button><button type="button" data-rt-basemap="streets" aria-pressed="false">▤ Peta Jalan</button><button type="button" data-rt-reset>⌖ Fokus PBT</button><small>Seret kiri: geser · Seret kanan / Ctrl + seret: putar dan condong · Skrol: zum</small></div><div id="suo-rt-map-leaflet" class="suo-rt-map-leaflet" aria-label="Peta interaktif 3D lokasi pejabat PBT"></div>
+<div class="suo-rt-3d-controls"><button type="button" id="rt-google3d-select" aria-pressed="false">✧ Google 3D Fotorealistik</button><button type="button" data-rt-mode="3d" aria-pressed="true">◈ Paparan 3D</button><button type="button" data-rt-mode="2d" aria-pressed="false">▤ Paparan 2D</button><button type="button" data-rt-basemap="satellite" aria-pressed="true">◉ Satelit</button><button type="button" data-rt-basemap="streets" aria-pressed="false">▤ Peta Jalan</button><button type="button" data-rt-reset>⌖ Fokus PBT</button><small>Seret kiri: geser · Seret kanan / Ctrl + seret: putar dan condong · Skrol: zum</small></div><div id="suo-rt-google3d-2026" hidden>
+<header><strong>Google Maps · Photorealistic 3D</strong><button id="rt-google3d-back" type="button">↶ Peta Asal</button></header>
+<div id="rt-google3d-setup"><p>Untuk menggunakan bangunan 3D bertekstur Google, aktifkan Maps JavaScript API di Google Maps Platform dan masukkan API key yang disekat kepada domain GitHub Pages anda.</p>
+<form id="rt-google3d-form"><label for="rt-google3d-key">Google Maps API key</label><div><input id="rt-google3d-key" type="password" placeholder="API key (tidak disimpan)" required autocomplete="off"><button type="submit">Aktifkan Google 3D</button></div></form>
+<small>Kunci digunakan hanya untuk memuatkan Google Maps dalam sesi semasa. Tanpa API key, peta asal kekal berfungsi.</small></div>
+<div id="rt-google3d-stage" hidden></div><p id="rt-google3d-status" role="status">Pilih PBT untuk paparan 3D kawasan pejabat.</p>
+</div><div id="suo-rt-map-leaflet" class="suo-rt-map-leaflet" aria-label="Peta interaktif 3D lokasi pejabat PBT"></div>
 <p class="suo-rt-map-note">Penanda menunjukkan lokasi rujukan pejabat PBT, <strong>bukan sempadan kawasan pentadbiran PBT.</strong></p></section><p class="suo-rt-directory-note">Nota: Nama, status dan tahun rancangan adalah berdasarkan maklumat rujukan yang dibekalkan. Semakan terhadap rekod pewartaan rasmi disyorkan sebelum penerbitan akhir.</p>
   </section>
   <section class="suo-rt-section suo-rt-summary"><span>RUMUSAN RANCANGAN TEMPATAN</span><p>Rancangan Tempatan menterjemahkan dasar perancangan peringkat negeri kepada cadangan pembangunan setempat melalui penyelarasan guna tanah, pemeliharaan alam sekitar, kemudahan awam dan infrastruktur bagi menyokong pembangunan Selangor yang bersepadu, mampan dan memenuhi keperluan masyarakat.</p></section>
@@ -3985,6 +4009,30 @@ function suoRkkLogoFallback(img){
  document.querySelectorAll('.content-panel,.chapter01-panel,[id^="ch01-content-"]').forEach(function(pane){
   new MutationObserver(checkVisibility).observe(pane,{attributes:true,attributeFilter:['class','hidden']});
  });
+})();
+</script>
+<script id="rt-google3d-script-2026">
+/* Additive only: never modify original map or other chapter/navigation handlers. */
+(function(){
+const root=document.getElementById('suo-rt-directory-interactive-2026'),shell=document.getElementById('suo-rt-location-map');
+const box=document.getElementById('suo-rt-google3d-2026'),stage=document.getElementById('rt-google3d-stage'),setup=document.getElementById('rt-google3d-setup'),status=document.getElementById('rt-google3d-status'),button=document.getElementById('rt-google3d-select');
+if(!root||!shell||!box||!stage||!button)return;
+const points={"MBPJ":[3.0992,101.645,"Majlis Bandaraya Petaling Jaya"],"MBSA":[3.0734,101.5199,"Majlis Bandaraya Shah Alam"],"MBSJ":[3.0516,101.5824,"Majlis Bandaraya Subang Jaya"],"MBDK":[3.0449,101.4447,"Majlis Bandaraya Diraja Klang"],"MPKj":[2.9949,101.7896,"Majlis Perbandaran Kajang"],"MPAJ":[3.1278,101.7538,"Majlis Perbandaran Ampang Jaya"],"MPS":[3.2535,101.6542,"Majlis Perbandaran Selayang"],"MPSp":[2.9338,101.6456,"Majlis Perbandaran Sepang"],"MPHS":[3.5601,101.6587,"Majlis Perbandaran Hulu Selangor"],"MPKL":[2.8028,101.4957,"Majlis Perbandaran Kuala Langat"],"MPKS":[3.3315,101.2513,"Majlis Perbandaran Kuala Selangor"],"MDSB":[3.6761,100.9908,"Majlis Daerah Sabak Bernam"]};
+let code='MBSA',map=null,loading=false;
+function focus(){let p=points[code];status.textContent=p[2]+' · Lokasi pejabat, bukan sempadan pentadbiran. Paparan tekstur 3D bergantung liputan Google.';if(map){map.center={lat:p[0],lng:p[1],altitude:80};map.range=900;map.tilt=66;map.heading=30;}}
+function show(){box.hidden=false;setup.hidden=!!map;stage.hidden=!map;shell.classList.toggle('rt-google3d-active',!!map);button.setAttribute('aria-pressed','true');focus()}
+function hide(){box.hidden=true;stage.hidden=true;shell.classList.remove('rt-google3d-active');button.setAttribute('aria-pressed','false')}
+button.addEventListener('click',()=>{box.hidden?show():hide()});
+document.getElementById('rt-google3d-back').addEventListener('click',hide);
+shell.querySelector('.suo-rt-map-close')?.addEventListener('click',hide);
+root.addEventListener('click',e=>{const target=e.target.closest('button[data-pbt-map]');if(!target||!points[target.dataset.pbtMap])return;code=target.dataset.pbtMap;if(map)requestAnimationFrame(()=>{if(!shell.hidden){show();focus()}});else if(!box.hidden)focus()},true);
+document.getElementById('rt-google3d-form').addEventListener('submit',async e=>{
+e.preventDefault();if(loading)return;const input=document.getElementById('rt-google3d-key');const key=input.value.trim();input.value='';if(!key)return;loading=true;status.textContent='Memuatkan peta Google 3D...';
+try{if(!(window.google&&google.maps&&google.maps.importLibrary)){await new Promise((resolve,reject)=>{const x=document.createElement('script');x.async=true;x.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(key)+'&loading=async&v=weekly&libraries=maps3d';x.onload=resolve;x.onerror=()=>reject(new Error('Google Maps API tidak dapat dimuatkan'));document.head.appendChild(x)})}
+const {Map3DElement}=await google.maps.importLibrary('maps3d');let p=points[code];map=new Map3DElement({center:{lat:p[0],lng:p[1],altitude:80},range:900,tilt:66,heading:30,mode:'HYBRID'});stage.replaceChildren(map);show();}
+catch(err){status.textContent='Google Maps 3D gagal diaktifkan: '+err.message+'. Peta asal masih tersedia.';setup.hidden=false;shell.classList.remove('rt-google3d-active')}
+finally{loading=false}
+});
 })();
 </script>
 </body>
