@@ -3826,5 +3826,81 @@ function suoRkkLogoFallback(img){
 }
 </script>
 <script id="suo-bab02-legal-flip-toggle-2026">(function(){const card=document.querySelector('#panel-1 .suo-bab02-legal-flip');if(!card)return;function flip(){const active=!card.classList.contains('is-flipped');card.classList.toggle('is-flipped',active);card.setAttribute('aria-pressed',String(active))}card.addEventListener('click',flip);card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}})})();</script>
+<script id="suo-additive-scroll-stat-counters-2026">
+/* Additive only: animate visible numeric statistics, not titles, navigation IDs,
+   years, lists, or counters that already have their own animations. */
+(function(){
+ 'use strict';
+ const selectors=[
+  '.map-stat-item > strong',
+  '.chapter01-metrics strong:not(.suo-animated-stat)',
+  '#panel-0 .selangor-atlas-summary .atlas-counter',
+  '#panel-0 .ch01-pbt-filter > strong'
+ ];
+ const done=new WeakSet();
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const observer=('IntersectionObserver' in window)?new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+   if(entry.isIntersecting){play(entry.target);observer.unobserve(entry.target)}
+  });
+ },{threshold:.22,rootMargin:'0px 0px -22px 0px'}):null;
+ function ready(el){
+  if(!el.isConnected||!el.getClientRects().length)return false;
+  const ancestor=el.closest('[hidden]');
+  if(ancestor||el.closest('[aria-hidden="true"]'))return false;
+  const r=el.getBoundingClientRect();
+  return r.bottom>0&&r.top<window.innerHeight;
+ }
+ function play(el){
+  if(done.has(el)||!ready(el))return;
+  const initial=el.dataset.suoCounterOriginal;
+  const match=initial.match(/^(\\s*)([0-9][0-9,]*)([\\s\\S]*)$/);
+  if(!match)return;
+  done.add(el);
+  const value=Number(match[2].replace(/,/g,''));
+  if(!Number.isSafeInteger(value)||value<0||value>10000000)return;
+  const lead=match[1],number=match[2],tail=match[3];
+  const comma=number.includes(','),pad=!comma&&number.length>1&&number.startsWith('0')?number.length:0;
+  const render=function(v){const n=Math.round(v);const label=comma?n.toLocaleString('en-US'):String(n).padStart(pad,'0');el.textContent=lead+label+tail};
+  if(reduce){render(value);return}
+  const duration=value>1000?1400:1050;
+  let begin=null;
+  function tick(now){
+   if(begin===null)begin=now;
+   const t=Math.min(1,(now-begin)/duration);
+   render(value*(1-Math.pow(1-t,3)));
+   if(t<1)requestAnimationFrame(tick);else el.textContent=initial;
+  }
+  requestAnimationFrame(tick);
+ }
+ function register(){
+  document.querySelectorAll(selectors.join(',')).forEach(function(el){
+   if(el.dataset.suoCounterOriginal!==undefined)return;
+   const str=el.textContent.trim();
+   if(!/^\\d[\\d,]*(?:\\s*km²)?$/.test(str))return;
+   el.dataset.suoCounterOriginal=el.textContent;
+   if(observer)observer.observe(el);
+   else if(ready(el))play(el);
+  });
+ }
+ register();
+ /* Previously hidden chapter panels can appear after a tab selection. */
+ let pending=false;
+ function checkVisibility(){
+  if(pending)return;pending=true;
+  requestAnimationFrame(function(){
+   pending=false;register();
+   document.querySelectorAll(selectors.join(',')).forEach(function(el){
+    if(!done.has(el)&&ready(el))play(el);
+   });
+  });
+ }
+ document.addEventListener('scroll',checkVisibility,{passive:true});
+ window.addEventListener('resize',checkVisibility,{passive:true});
+ document.querySelectorAll('.content-panel,.chapter01-panel,[id^="ch01-content-"]').forEach(function(pane){
+  new MutationObserver(checkVisibility).observe(pane,{attributes:true,attributeFilter:['class','hidden']});
+ });
+})();
+</script>
 </body>
 </html>
