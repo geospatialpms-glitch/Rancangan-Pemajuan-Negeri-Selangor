@@ -2619,6 +2619,34 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:720px){#bento-2-3 .suo-rsn-spatial-card{min-height:275px}#bento-2-3 .suo-spatial-ambient-art{width:45%;opacity:.11}}
 @media(prefers-reduced-motion:reduce){#bento-2-3 .suo-rsn-spatial-card,#bento-2-3 .suo-rsn-law-tiles article{transition:none!important}#bento-2-3 .suo-rsn-spatial-card:hover,#bento-2-3 .suo-rsn-law-tiles article:hover{transform:none!important}#bento-2-3 .suo-spatial-ambient-art,#bento-2-3 .suo-rsn-spatial-icon{animation:none!important}}
 </style>
+<style id="suo-project-tilt-glow-2026">
+/* Scoped exclusively to four Strategy & Initiative project cards (Bab 03). */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ #panel-2 .suo-rsn-project-bento{perspective:1100px}
+ #panel-2 .suo-rsn-project-bento .suo-rsn-project-card{
+  position:relative;isolation:isolate;transform-style:preserve-3d;will-change:transform;
+  transform:perspective(1100px) rotateX(var(--project-rx,0deg)) rotateY(var(--project-ry,0deg)) translateY(var(--project-lift,0px));
+  transition:transform .2s ease-out,box-shadow .24s ease,border-color .24s ease;
+ }
+ #panel-2 .suo-rsn-project-bento .suo-rsn-project-card::after{
+  content:"";position:absolute;inset:-1px;pointer-events:none;border-radius:inherit;
+  border:1.5px solid rgba(230,193,116,.1);
+  box-shadow:inset 0 0 0 1px rgba(255,237,192,.04),0 0 0 1px rgba(201,162,83,.08),0 0 24px rgba(201,162,83,0);
+  opacity:0;transition:opacity .25s ease,box-shadow .25s ease;z-index:2;
+ }
+ #panel-2 .suo-rsn-project-bento .suo-rsn-project-card:hover{
+  --project-lift:-5px;border-color:#dcb76d;
+  box-shadow:0 19px 36px rgba(97,33,57,.15),0 0 19px rgba(201,162,83,.16);
+ }
+ #panel-2 .suo-rsn-project-bento .suo-rsn-project-card:hover::after{
+  opacity:1;box-shadow:inset 0 0 0 1px rgba(255,237,192,.14),0 0 0 1px rgba(201,162,83,.3),0 0 19px rgba(201,162,83,.23);
+ }
+ #panel-2 .suo-rsn-project-bento .suo-rsn-project-card>*{position:relative;z-index:1}
+}
+@media(prefers-reduced-motion:reduce){
+ #panel-2 .suo-rsn-project-bento .suo-rsn-project-card{will-change:auto!important}
+}
+</style>
 </head>
 <body>
 
@@ -4383,6 +4411,39 @@ try {
  if(!('IntersectionObserver' in window)){cards.forEach(c=>c.classList.add('suo-spatial-inview'));return;}
  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('suo-spatial-inview',entry.isIntersecting)),{threshold:.12});
  cards.forEach(c=>observer.observe(c));
+})();
+</script>
+<script id="suo-project-tilt-glow-controls-2026">
+(function(){
+ const scope=document.querySelector('#panel-2 .suo-rsn-project-bento');
+ if(!scope||!window.matchMedia)return;
+ const motionOK=window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
+ const cards=scope.querySelectorAll('.suo-rsn-project-card');
+ cards.forEach(function(card){
+  let frame=0;
+  function move(event){
+   if(!motionOK.matches)return;
+   const box=card.getBoundingClientRect();
+   const dx=(event.clientX-box.left)/box.width-.5;
+   const dy=(event.clientY-box.top)/box.height-.5;
+   if(frame)cancelAnimationFrame(frame);
+   frame=requestAnimationFrame(function(){
+    card.style.setProperty('--project-rx',(-dy*9).toFixed(2)+'deg');
+    card.style.setProperty('--project-ry',(dx*9).toFixed(2)+'deg');
+    frame=0;
+   });
+  }
+  function reset(){
+   if(frame)cancelAnimationFrame(frame);
+   frame=0;
+   card.style.setProperty('--project-rx','0deg');
+   card.style.setProperty('--project-ry','0deg');
+   card.style.removeProperty('--project-lift');
+  }
+  card.addEventListener('pointermove',move,{passive:true});
+  card.addEventListener('pointerleave',reset,{passive:true});
+  card.addEventListener('pointercancel',reset,{passive:true});
+ });
 })();
 </script>
 </body>
