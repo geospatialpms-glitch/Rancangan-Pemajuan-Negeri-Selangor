@@ -2793,7 +2793,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
     </div>
     <section class="suo-rt-location-map" id="suo-rt-location-map" hidden>
 <div class="suo-rt-map-heading"><div><small>PETA INTERAKTIF SELANGOR</small><h5 id="suo-rt-map-title">Lokasi Pejabat PBT</h5><p id="suo-rt-map-status" role="status">Pilih PBT untuk melihat lokasinya</p></div><button type="button" class="suo-rt-map-close" aria-label="Tutup peta">✕</button></div>
-<div class="suo-rt-3d-controls"><button type="button" data-rt-mode="3d" aria-pressed="true">◈ Paparan 3D</button><button type="button" data-rt-mode="2d" aria-pressed="false">▤ Paparan 2D</button><button type="button" data-rt-reset>⌖ Fokus PBT</button><small>Seret kiri: geser · Seret kanan / Ctrl + seret: putar dan condong · Skrol: zum</small></div><div id="suo-rt-map-leaflet" class="suo-rt-map-leaflet" aria-label="Peta interaktif 3D lokasi pejabat PBT"></div>
+<div class="suo-rt-3d-controls"><button type="button" data-rt-mode="3d" aria-pressed="true">◈ Paparan 3D</button><button type="button" data-rt-mode="2d" aria-pressed="false">▤ Paparan 2D</button><button type="button" data-rt-basemap="satellite" aria-pressed="true">◉ Satelit</button><button type="button" data-rt-basemap="streets" aria-pressed="false">▤ Peta Jalan</button><button type="button" data-rt-reset>⌖ Fokus PBT</button><small>Seret kiri: geser · Seret kanan / Ctrl + seret: putar dan condong · Skrol: zum</small></div><div id="suo-rt-map-leaflet" class="suo-rt-map-leaflet" aria-label="Peta interaktif 3D lokasi pejabat PBT"></div>
 <p class="suo-rt-map-note">Penanda menunjukkan lokasi rujukan pejabat PBT, <strong>bukan sempadan kawasan pentadbiran PBT.</strong></p></section><p class="suo-rt-directory-note">Nota: Nama, status dan tahun rancangan adalah berdasarkan maklumat rujukan yang dibekalkan. Semakan terhadap rekod pewartaan rasmi disyorkan sebelum penerbitan akhir.</p>
   </section>
   <section class="suo-rt-section suo-rt-summary"><span>RUMUSAN RANCANGAN TEMPATAN</span><p>Rancangan Tempatan menterjemahkan dasar perancangan peringkat negeri kepada cadangan pembangunan setempat melalui penyelarasan guna tanah, pemeliharaan alam sekitar, kemudahan awam dan infrastruktur bagi menyokong pembangunan Selangor yang bersepadu, mampan dan memenuhi keperluan masyarakat.</p></section>
@@ -3677,8 +3677,21 @@ function switchTab(index){
  const points={"MBPJ":[3.0992,101.645,"Majlis Bandaraya Petaling Jaya"],"MBSA":[3.0734,101.5199,"Majlis Bandaraya Shah Alam"],"MBSJ":[3.0516,101.5824,"Majlis Bandaraya Subang Jaya"],"MBDK":[3.0449,101.4447,"Majlis Bandaraya Diraja Klang"],"MPKj":[2.9949,101.7896,"Majlis Perbandaran Kajang"],"MPAJ":[3.1278,101.7538,"Majlis Perbandaran Ampang Jaya"],"MPS":[3.2535,101.6542,"Majlis Perbandaran Selayang"],"MPSp":[2.9338,101.6456,"Majlis Perbandaran Sepang"],"MPHS":[3.5601,101.6587,"Majlis Perbandaran Hulu Selangor"],"MPKL":[2.8028,101.4957,"Majlis Perbandaran Kuala Langat"],"MPKS":[3.3315,101.2513,"Majlis Perbandaran Kuala Selangor"],"MDSB":[3.6761,100.9908,"Majlis Daerah Sabak Bernam"]};
  const heading=document.getElementById('suo-rt-map-title'),status=document.getElementById('suo-rt-map-status');
  const prefersReduced=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- let map=null,loaded=false,marker=null,selected=null,mode='3d';
+ let map=null,loaded=false,marker=null,selected=null,mode='3d',basemap='satellite';
  const safe=t=>{const el=document.createElement('span');el.textContent=t;return el.innerHTML};
+ function addSatellite(){
+  if(map.getSource('suo-satellite'))return;
+  try{
+   map.addSource('suo-satellite',{type:'raster',tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],tileSize:256,maxzoom:18,attribution:'Imagery © Esri and contributors'});
+   const first=(map.getStyle().layers||[]).find(layer=>layer.type==='symbol');
+   map.addLayer({id:'suo-satellite',type:'raster',source:'suo-satellite',layout:{visibility:basemap==='satellite'?'visible':'none'}},first&&first.id);
+  }catch(e){console.warn('Satellite imagery unavailable',e);setBasemap('streets')}
+ }
+ function setBasemap(type){
+  basemap=type;
+  shell.querySelectorAll('[data-rt-basemap]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.rtBasemap===type)));
+  if(map&&loaded&&map.getLayer('suo-satellite'))map.setLayoutProperty('suo-satellite','visibility',type==='satellite'?'visible':'none');
+ }
  function addBuildings(){
   if(!map||!loaded||map.getLayer('suo-rt-building-extrusions'))return;
   try{
@@ -3692,7 +3705,7 @@ function switchTab(index){
  }
  function focus(){
   const point=points[selected];if(!map||!loaded||!point)return;
-  map.flyTo({center:[point[1],point[0]],zoom:16,pitch:mode==='3d'?67:0,bearing:mode==='3d'?-24:0,duration:prefersReduced()?0:1200});
+  map.flyTo({center:[point[1],point[0]],zoom:17,pitch:mode==='3d'?69:0,bearing:mode==='3d'?-28:0,duration:prefersReduced()?0:1200});
   if(marker)marker.remove();
   const pin=document.createElement('div');pin.className='suo-rt-office-pin';
   marker=new maplibregl.Marker({element:pin,anchor:'bottom'}).setLngLat([point[1],point[0]]).setPopup(new maplibregl.Popup({offset:18,maxWidth:'270px'}).setHTML('<b>'+safe(selected)+'</b><div>'+safe(point[2])+'</div><small>Lokasi pejabat PBT, bukan sempadan pentadbiran.</small>')).addTo(map);
@@ -3704,7 +3717,7 @@ function switchTab(index){
   try{
    map=new maplibregl.Map({container:host,style:'https://tiles.openfreemap.org/styles/liberty',center:[101.5199,3.0734],zoom:16,pitch:67,bearing:-24,maxPitch:85,antialias:true,dragPan:true,dragRotate:true,touchPitch:true,scrollZoom:true});
    map.addControl(new maplibregl.NavigationControl({visualizePitch:true}),'top-right');
-   map.on('load',()=>{loaded=true;addBuildings();if(mode==='2d'&&map.getLayer('suo-rt-building-extrusions'))map.setLayoutProperty('suo-rt-building-extrusions','visibility','none');focus()});
+   map.on('load',()=>{loaded=true;addSatellite();addBuildings();if(mode==='2d'&&map.getLayer('suo-rt-building-extrusions'))map.setLayoutProperty('suo-rt-building-extrusions','visibility','none');focus()});
   }catch(error){status.textContent='Peta 3D gagal dibuka: '+error.message}
  }
  function close(){shell.hidden=true;selected=null;root.querySelectorAll('.suo-rt-pbt-item').forEach(e=>e.classList.remove('is-map-selected'))}
@@ -3723,6 +3736,7 @@ function switchTab(index){
   mode=button.dataset.rtMode;shell.querySelectorAll('[data-rt-mode]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.rtMode===mode)));
   if(map&&loaded){if(map.getLayer('suo-rt-building-extrusions'))map.setLayoutProperty('suo-rt-building-extrusions','visibility',mode==='3d'?'visible':'none');map.easeTo({pitch:mode==='3d'?67:0,bearing:mode==='3d'?-24:0,duration:prefersReduced()?0:900})}
  }));
+ shell.querySelectorAll('[data-rt-basemap]').forEach(btn=>btn.addEventListener('click',()=>setBasemap(btn.dataset.rtBasemap)));
  shell.querySelector('[data-rt-reset]').addEventListener('click',focus);
 })();
 </script>
