@@ -2935,8 +2935,8 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 <div class="suo-rt-3d-controls"><button type="button" id="rt-google3d-select" aria-pressed="false">✧ Google 3D Fotorealistik</button><button type="button" data-rt-mode="3d" aria-pressed="true">◈ Paparan 3D</button><button type="button" data-rt-mode="2d" aria-pressed="false">▤ Paparan 2D</button><button type="button" data-rt-basemap="satellite" aria-pressed="true">◉ Satelit</button><button type="button" data-rt-basemap="streets" aria-pressed="false">▤ Peta Jalan</button><button type="button" data-rt-reset>⌖ Fokus PBT</button><small>Seret kiri: geser · Seret kanan / Ctrl + seret: putar dan condong · Skrol: zum</small></div><div id="suo-rt-google3d-2026" hidden>
 <header><strong>Google Maps · Photorealistic 3D</strong><button id="rt-google3d-back" type="button">↶ Peta Asal</button></header>
 <div id="rt-google3d-setup"><p>Untuk menggunakan bangunan 3D bertekstur Google, aktifkan Maps JavaScript API di Google Maps Platform dan masukkan API key yang disekat kepada domain GitHub Pages anda.</p>
-<form id="rt-google3d-form"><label for="rt-google3d-key">Google Maps API key</label><div><input id="rt-google3d-key" type="password" placeholder="API key (tidak disimpan)" required autocomplete="off"><button type="submit">Aktifkan Google 3D</button></div></form>
-<small>Kunci digunakan hanya untuk memuatkan Google Maps dalam sesi semasa. Tanpa API key, peta asal kekal berfungsi.</small></div>
+<form id="rt-google3d-form"><label for="rt-google3d-key">Google Maps Platform · Kunci projek Firebase</label><div><input id="rt-google3d-key" type="password" placeholder="Pilihan: Google Maps API key lain" autocomplete="off"><button type="submit">Cuba Aktifkan Google 3D</button></div></form>
+<small>Klik butang untuk mencuba kunci projek Firebase yang telah diintegrasikan (atau masukkan kunci Maps lain). Google Cloud Billing dan Maps JavaScript API / Maps 3D mesti diaktifkan dalam projek yang berkaitan. Jika gagal, peta asal kekal berfungsi.</small></div>
 <div id="rt-google3d-stage" hidden></div><p id="rt-google3d-status" role="status">Pilih PBT untuk paparan 3D kawasan pejabat.</p>
 </div><div id="suo-rt-map-leaflet" class="suo-rt-map-leaflet" aria-label="Peta interaktif 3D lokasi pejabat PBT"></div>
 <p class="suo-rt-map-note">Penanda menunjukkan lokasi rujukan pejabat PBT, <strong>bukan sempadan kawasan pentadbiran PBT.</strong></p></section><p class="suo-rt-directory-note">Nota: Nama, status dan tahun rancangan adalah berdasarkan maklumat rujukan yang dibekalkan. Semakan terhadap rekod pewartaan rasmi disyorkan sebelum penerbitan akhir.</p>
@@ -4027,10 +4027,10 @@ document.getElementById('rt-google3d-back').addEventListener('click',hide);
 shell.querySelector('.suo-rt-map-close')?.addEventListener('click',hide);
 root.addEventListener('click',e=>{const target=e.target.closest('button[data-pbt-map]');if(!target||!points[target.dataset.pbtMap])return;code=target.dataset.pbtMap;if(map)requestAnimationFrame(()=>{if(!shell.hidden){show();focus()}});else if(!box.hidden)focus()},true);
 document.getElementById('rt-google3d-form').addEventListener('submit',async e=>{
-e.preventDefault();if(loading)return;const input=document.getElementById('rt-google3d-key');const key=input.value.trim();input.value='';if(!key)return;loading=true;status.textContent='Memuatkan peta Google 3D...';
+e.preventDefault();if(loading)return;const input=document.getElementById('rt-google3d-key');const typedKey=input.value.trim();const key=typedKey||(window.suoFirebaseApiKey||'');input.value='';if(!key){status.textContent='Kunci projek belum tersedia. Cuba lagi selepas halaman siap dimuatkan atau masukkan Google Maps API key.';return}loading=true;status.textContent='Mencuba Google Photorealistic 3D menggunakan kunci '+(typedKey?'Google Maps yang dimasukkan':'projek Firebase sedia ada')+'...';
 try{if(!(window.google&&google.maps&&google.maps.importLibrary)){await new Promise((resolve,reject)=>{const x=document.createElement('script');x.async=true;x.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(key)+'&loading=async&v=weekly&libraries=maps3d';x.onload=resolve;x.onerror=()=>reject(new Error('Google Maps API tidak dapat dimuatkan'));document.head.appendChild(x)})}
 const {Map3DElement}=await google.maps.importLibrary('maps3d');let p=points[code];map=new Map3DElement({center:{lat:p[0],lng:p[1],altitude:80},range:900,tilt:66,heading:30,mode:'HYBRID'});stage.replaceChildren(map);show();}
-catch(err){status.textContent='Google Maps 3D gagal diaktifkan: '+err.message+'. Peta asal masih tersedia.';setup.hidden=false;shell.classList.remove('rt-google3d-active')}
+catch(err){status.textContent='Google Maps 3D belum dapat diaktifkan: '+err.message+'. Pastikan Maps JavaScript API / Maps 3D dan Billing Google Cloud diaktifkan serta sekatan API key dan domain GitHub Pages dibenarkan. Peta asal masih tersedia.';setup.hidden=false;shell.classList.remove('rt-google3d-active')}
 finally{loading=false}
 });
 })();
@@ -4049,6 +4049,9 @@ const firebaseConfig = {
   appId: "1:614754044971:web:6126d84273d8442b156e6e",
   measurementId: "G-MCB6ZBH9GD"
 };
+// Public browser API key, used only when the user explicitly requests Google 3D.
+window.suoFirebaseApiKey = firebaseConfig.apiKey;
+
 
 try {
   const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
