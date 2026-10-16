@@ -2596,6 +2596,29 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 #panel-1 #suo-rt-g3d-view gmp-map-3d{display:block;width:100%;height:100%}
 #panel-1 #suo-rt-g3d-toggle:focus-visible,#panel-1 #suo-rt-g3d-load:focus-visible,#panel-1 #suo-rt-g3d-key:focus-visible{outline:3px solid #c9a253;outline-offset:3px}
 </style>
+<style id="suo-spatial-concept-motion-2026">
+/* Limited strictly to Bab 03 > Konsep Pembangunan Spatial Negeri. */
+#bento-2-3 .suo-rsn-spatial-split{align-items:stretch}
+#bento-2-3 .suo-rsn-spatial-card{position:relative;isolation:isolate;overflow:hidden;min-height:330px;display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,2.8vw,38px);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+#bento-2-3 .suo-rsn-spatial-card::before{content:"";position:absolute;inset:-30%;z-index:-1;background:radial-gradient(circle at 78% 28%,rgba(240,207,136,.15),transparent 38%);opacity:.8;pointer-events:none;transition:transform .7s ease}
+#bento-2-3 .suo-rsn-spatial-card:hover{transform:translateY(-6px);border-color:#c9a253;box-shadow:0 20px 36px rgba(97,33,57,.13)}
+#bento-2-3 .suo-rsn-spatial-card:hover::before{transform:translate(-4%,4%)}
+#bento-2-3 .suo-rsn-spatial-card>.suo-rsn-spatial-icon,
+#bento-2-3 .suo-rsn-spatial-card>.suo-rsn-spatial-eyebrow,
+#bento-2-3 .suo-rsn-spatial-card>p{position:relative;z-index:2}
+#bento-2-3 .suo-rsn-spatial-ambient-art{display:none}
+#bento-2-3 .suo-spatial-ambient-art{position:absolute;right:-15px;top:5px;width:min(52%,270px);height:auto;z-index:0;opacity:.17;color:#f8daa2;pointer-events:none;transform-origin:70% 60%}
+#bento-2-3 .suo-rsn-spatial-outer .suo-spatial-ambient-art{color:#9b6d4b;opacity:.16}
+#bento-2-3 .suo-rsn-spatial-icon{box-shadow:0 7px 18px rgba(97,33,57,.12)}
+#bento-2-3 .suo-rsn-spatial-card.suo-spatial-inview .suo-spatial-ambient-art{animation:suoSpatialFloat 9s ease-in-out infinite alternate}
+#bento-2-3 .suo-rsn-spatial-card.suo-spatial-inview .suo-rsn-spatial-icon{animation:suoSpatialIcon 4.5s ease-in-out infinite}
+#bento-2-3 .suo-rsn-law-tiles article{position:relative;overflow:hidden;border-left:3px solid #c9a253;transition:transform .25s ease,box-shadow .25s ease}
+#bento-2-3 .suo-rsn-law-tiles article:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(97,33,57,.08)}
+@keyframes suoSpatialFloat{from{transform:translate3d(0,0,0)}to{transform:translate3d(-11px,10px,0)}}
+@keyframes suoSpatialIcon{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media(max-width:720px){#bento-2-3 .suo-rsn-spatial-card{min-height:275px}#bento-2-3 .suo-spatial-ambient-art{width:45%;opacity:.11}}
+@media(prefers-reduced-motion:reduce){#bento-2-3 .suo-rsn-spatial-card,#bento-2-3 .suo-rsn-law-tiles article{transition:none!important}#bento-2-3 .suo-rsn-spatial-card:hover,#bento-2-3 .suo-rsn-law-tiles article:hover{transform:none!important}#bento-2-3 .suo-spatial-ambient-art,#bento-2-3 .suo-rsn-spatial-icon{animation:none!important}}
+</style>
 </head>
 <body>
 
@@ -3229,7 +3252,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
    <header class="suo-rsn-2026-heading"><span>RANCANGAN STRUKTUR NEGERI SELANGOR 2035 (PENGUBAHAN) · TOPIK 04</span><h4>Konsep Pembangunan &amp; Strategi Pemangkin</h4><p>Pilih tajuk lain di atas untuk melihat kandungan perancangan yang berkaitan.</p></header>
    
    <div class="suo-rsn-2026-body suo-rsn-2026-page-body"><h5>Konsep Pembangunan Spatial Negeri</h5>
-    <div class="suo-rsn-spatial-split" aria-label="Perbandingan konsep pembangunan zon teras dan luar teras"><article class="suo-rsn-spatial-card suo-rsn-spatial-urban"><span class="suo-rsn-spatial-icon" aria-hidden="true">▥</span><span class="suo-rsn-spatial-eyebrow">ZON TERAS · WILAYAH BANDAR</span><p><strong>Pembangunan Tertumpu Wilayah Bandar dan Separuh Bandar (City and Sub City-Focused Oriented Development)</strong> menumpukan pertumbuhan fizikal dan ekonomi di kawasan tepu bina, berkepadatan penduduk tinggi dan mempunyai rangkaian pengangkutan yang baik, termasuk konurbasi Shah Alam, Petaling Jaya, Subang Jaya dan Klang.</p></article><article class="suo-rsn-spatial-card suo-rsn-spatial-outer"><span class="suo-rsn-spatial-icon" aria-hidden="true">♧</span><span class="suo-rsn-spatial-eyebrow">ZON LUAR TERAS · PEMULIHARAAN</span><p>Kawasan di luar teras seperti Sabak Bernam, Hulu Selangor dan Hulu Langat dipelihara untuk pertanian, pelancongan dan warisan bagi mengimbangi pembangunan dengan kelestarian alam sekitar.</p></article></div>
+    <div class="suo-rsn-spatial-split" aria-label="Perbandingan konsep pembangunan zon teras dan luar teras"><article class="suo-rsn-spatial-card suo-rsn-spatial-urban"><svg class="suo-spatial-ambient-art suo-spatial-city-art" viewBox="0 0 300 175" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M4 155H295M15 155V93H42V155M48 155V52H87V155M94 155V75H124V155M134 155V30H166V155M176 155V65H213V155M222 155V95H268V155" /><path d="M66 52V22M61 22H71M149 30V5M195 65V37M235 95V79" stroke-dasharray="3 5"/><path d="M0 130C50 105 94 147 145 110S230 100 300 70" stroke-dasharray="5 8"/><circle cx="145" cy="110" r="5" fill="currentColor"/><circle cx="240" cy="91" r="4" fill="currentColor"/></g><g fill="currentColor" opacity=".55"><rect x="59" y="67" width="6" height="8"/><rect x="72" y="67" width="6" height="8"/><rect x="144" y="52" width="6" height="8"/><rect x="144" y="72" width="6" height="8"/><rect x="188" y="85" width="6" height="8"/></g></svg><span class="suo-rsn-spatial-icon" aria-hidden="true">▥</span><span class="suo-rsn-spatial-eyebrow">ZON TERAS · WILAYAH BANDAR</span><p><strong>Pembangunan Tertumpu Wilayah Bandar dan Separuh Bandar (City and Sub City-Focused Oriented Development)</strong> menumpukan pertumbuhan fizikal dan ekonomi di kawasan tepu bina, berkepadatan penduduk tinggi dan mempunyai rangkaian pengangkutan yang baik, termasuk konurbasi Shah Alam, Petaling Jaya, Subang Jaya dan Klang.</p></article><article class="suo-rsn-spatial-card suo-rsn-spatial-outer"><svg class="suo-spatial-ambient-art suo-spatial-forest-art" viewBox="0 0 300 175" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M0 119Q35 80 72 111T145 99T222 103T300 79M0 143Q46 111 95 132T190 119T300 112M0 162Q56 140 116 154T235 144T300 143"/><path d="M44 122V65M28 91L44 65 60 91M30 103L44 77 58 103M105 125V49M84 83L105 49 125 83M87 99L105 68 123 99M212 129V54M191 86L212 54 232 86M194 103L212 73 230 103"/><path d="M144 156q29-20 55-7t45-12" stroke-dasharray="5 7"/></g><circle cx="244" cy="45" r="19" fill="none" stroke="currentColor" stroke-width="2" opacity=".6"/></svg><span class="suo-rsn-spatial-icon" aria-hidden="true">♧</span><span class="suo-rsn-spatial-eyebrow">ZON LUAR TERAS · PEMULIHARAAN</span><p>Kawasan di luar teras seperti Sabak Bernam, Hulu Selangor dan Hulu Langat dipelihara untuk pertanian, pelancongan dan warisan bagi mengimbangi pembangunan dengan kelestarian alam sekitar.</p></article></div>
     <div class="suo-rsn-law-tiles"><article><strong>Pendekatan Indikatif</strong><p>Pelaksanaan berpandukan kawalan dan garis panduan perancangan.</p></article><article><strong>Pendekatan Imperatif</strong><p>Tumpuan kepada keperluan pemajuan kritikal di kawasan teras utama.</p></article></div><div class="suo-rsn-merged-divider"></div><h5>Strategi &amp; Inisiatif Pemangkin</h5><p><strong>17 hala tuju strategik</strong> merangkumi sektor pembangunan utama negeri. Antara inisiatif dan projek impak tinggi:</p>
     <div class="suo-rsn-project-bento" aria-label="Empat projek pemangkin utama"><article class="suo-rsn-project-card"><div class="suo-rsn-project-head"><span class="suo-rsn-project-symbol" aria-hidden="true">◈</span><span class="suo-rsn-project-index">PROJEK 01</span></div><strong>IDRISS</strong><p>Wilayah Pembangunan Bersepadu di Selangor Selatan.</p></article><article class="suo-rsn-project-card"><div class="suo-rsn-project-head"><span class="suo-rsn-project-symbol" aria-hidden="true">❖</span><span class="suo-rsn-project-index">PROJEK 02</span></div><strong>SABDA</strong><p>Kawasan Pembangunan Sabak Bernam.</p></article><article class="suo-rsn-project-card"><div class="suo-rsn-project-head"><span class="suo-rsn-project-symbol" aria-hidden="true">≋</span><span class="suo-rsn-project-index">PROJEK 03</span></div><strong>ZPE SMG</strong><p>Zon Pembangunan Ekonomi Selangor Maritime Gateway.</p></article><article class="suo-rsn-project-card"><div class="suo-rsn-project-head"><span class="suo-rsn-project-symbol" aria-hidden="true">▦</span><span class="suo-rsn-project-index">PROJEK 04</span></div><strong>SGKV</strong><p>Selangor Greater Klang Valley.</p></article></div></div>
    
@@ -4351,6 +4374,15 @@ try {
    setError(msg);status.textContent='Peta 3D asal masih boleh digunakan.';view.hidden=true;original.hidden=false;
   }finally{loading=false;load.disabled=false}
  });
+})();
+</script>
+<script id="suo-spatial-concept-motion-control-2026">
+(function(){
+ const cards=document.querySelectorAll('#bento-2-3 .suo-rsn-spatial-card');
+ if(!cards.length)return;
+ if(!('IntersectionObserver' in window)){cards.forEach(c=>c.classList.add('suo-spatial-inview'));return;}
+ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('suo-spatial-inview',entry.isIntersecting)),{threshold:.12});
+ cards.forEach(c=>observer.observe(c));
 })();
 </script>
 </body>
