@@ -4335,7 +4335,7 @@ try {
   const key=input.value.trim();
   if(loading)return;
   if(!key){setError('Masukkan Google Maps Platform API key yang sah. Firebase API key tidak semestinya dibenarkan untuk Maps.');return}
-  if(!/^AIza[\\w-]{20,}$/.test(key)){setError('Format API key tidak sah. Semak kunci Google Maps Platform.');return}
+  if(!/^AIza[A-Za-z0-9_-]{20,}$/.test(key)){setError('Format API key tidak sah. Semak kunci Google Maps Platform.');return}
   setError('');loading=true;load.disabled=true;status.textContent='Memuatkan Google Photorealistic 3D…';
   try{
    await loadGoogle(key);
