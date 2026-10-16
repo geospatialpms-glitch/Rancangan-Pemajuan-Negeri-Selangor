@@ -2326,6 +2326,18 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 #panel-1 .suo-rt-pbt-item summary:hover{background:#fdf4e7}
 #panel-1 .suo-rt-location-map{scroll-margin-top:125px}
 </style>
+<link href="https://unpkg.com/maplibre-gl@5.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<style id="suo-rt-3d-layout-2026">
+#panel-1 .suo-rt-3d-controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:10px 0}
+#panel-1 .suo-rt-3d-controls button{border-radius:999px;border:1px solid #d5b77f;background:#fff8ed;color:#612139;padding:10px 16px;font-size:12px;font-weight:800}
+#panel-1 .suo-rt-3d-controls button[aria-pressed=true],#panel-1 .suo-rt-3d-controls button:hover{background:#612139;color:white}
+#panel-1 .suo-rt-3d-controls small{flex:1;min-width:180px;text-align:right;color:#6d5b62;line-height:1.7;font-size:11px}
+#panel-1 .suo-rt-map-leaflet{height:clamp(430px,49vw,650px)!important;position:relative;overflow:hidden;border-radius:18px;background:#ede8df}
+#panel-1 .suo-rt-office-pin{width:20px;height:20px;border-radius:50%;background:#7e193a;border:4px solid #fff3db;box-shadow:0 0 0 4px #c9a253,0 5px 18px #61213970;cursor:pointer}
+#panel-1 .suo-rt-location-map{scroll-margin-top:120px}
+#panel-1 .suo-rt-map-leaflet .maplibregl-popup-content{border-radius:15px;padding:14px;font:12px/1.7 'Plus Jakarta Sans',sans-serif;color:#612139}
+@media(max-width:720px){#panel-1 .suo-rt-3d-controls small{text-align:left;flex-basis:100%}#panel-1 .suo-rt-map-leaflet{height:460px!important}}
+</style>
 </head>
 <body>
 
@@ -2781,7 +2793,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
     </div>
     <section class="suo-rt-location-map" id="suo-rt-location-map" hidden>
 <div class="suo-rt-map-heading"><div><small>PETA INTERAKTIF SELANGOR</small><h5 id="suo-rt-map-title">Lokasi Pejabat PBT</h5><p id="suo-rt-map-status" role="status">Pilih PBT untuk melihat lokasinya</p></div><button type="button" class="suo-rt-map-close" aria-label="Tutup peta">✕</button></div>
-<div id="suo-rt-map-leaflet" class="suo-rt-map-leaflet" aria-label="Peta lokasi pejabat PBT"></div>
+<div class="suo-rt-3d-controls"><button type="button" data-rt-mode="3d" aria-pressed="true">◈ Paparan 3D</button><button type="button" data-rt-mode="2d" aria-pressed="false">▤ Paparan 2D</button><button type="button" data-rt-reset>⌖ Fokus PBT</button><small>Seret kiri: geser · Seret kanan / Ctrl + seret: putar dan condong · Skrol: zum</small></div><div id="suo-rt-map-leaflet" class="suo-rt-map-leaflet" aria-label="Peta interaktif 3D lokasi pejabat PBT"></div>
 <p class="suo-rt-map-note">Penanda menunjukkan lokasi rujukan pejabat PBT, <strong>bukan sempadan kawasan pentadbiran PBT.</strong></p></section><p class="suo-rt-directory-note">Nota: Nama, status dan tahun rancangan adalah berdasarkan maklumat rujukan yang dibekalkan. Semakan terhadap rekod pewartaan rasmi disyorkan sebelum penerbitan akhir.</p>
   </section>
   <section class="suo-rt-section suo-rt-summary"><span>RUMUSAN RANCANGAN TEMPATAN</span><p>Rancangan Tempatan menterjemahkan dasar perancangan peringkat negeri kepada cadangan pembangunan setempat melalui penyelarasan guna tanah, pemeliharaan alam sekitar, kemudahan awam dan infrastruktur bagi menyokong pembangunan Selangor yang bersepadu, mampan dan memenuhi keperluan masyarakat.</p></section>
@@ -3653,54 +3665,63 @@ function switchTab(index){
   navButtons.forEach(function(button){
    button.addEventListener('click',function(){chooseSection(button.dataset.bab02Section,true)});
   });
-  chooseSection('rfn',false);
+ <script src="https://unpkg.com/maplibre-gl@5.7.1/dist/maplibre-gl.js"></script>
+<script id="suo-rt-3d-maplibre-2026">
+(function(){
+ const root=document.getElementById('suo-rt-directory-interactive-2026'),shell=document.getElementById('suo-rt-location-map'),host=document.getElementById('suo-rt-map-leaflet');
+ if(!root||!shell||!host)return;
+ const points={"MBPJ":[3.0992,101.645,"Majlis Bandaraya Petaling Jaya"],"MBSA":[3.0734,101.5199,"Majlis Bandaraya Shah Alam"],"MBSJ":[3.0516,101.5824,"Majlis Bandaraya Subang Jaya"],"MBDK":[3.0449,101.4447,"Majlis Bandaraya Diraja Klang"],"MPKj":[2.9949,101.7896,"Majlis Perbandaran Kajang"],"MPAJ":[3.1278,101.7538,"Majlis Perbandaran Ampang Jaya"],"MPS":[3.2535,101.6542,"Majlis Perbandaran Selayang"],"MPSp":[2.9338,101.6456,"Majlis Perbandaran Sepang"],"MPHS":[3.5601,101.6587,"Majlis Perbandaran Hulu Selangor"],"MPKL":[2.8028,101.4957,"Majlis Perbandaran Kuala Langat"],"MPKS":[3.3315,101.2513,"Majlis Perbandaran Kuala Selangor"],"MDSB":[3.6761,100.9908,"Majlis Daerah Sabak Bernam"]};
+ const heading=document.getElementById('suo-rt-map-title'),status=document.getElementById('suo-rt-map-status');
+ const prefersReduced=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let map=null,loaded=false,marker=null,selected=null,mode='3d';
+ const safe=t=>{const el=document.createElement('span');el.textContent=t;return el.innerHTML};
+ function addBuildings(){
+  if(!map||!loaded||map.getLayer('suo-rt-building-extrusions'))return;
+  try{
+   if(!map.getSource('openfreemap'))map.addSource('openfreemap',{type:'vector',url:'https://tiles.openfreemap.org/planet'});
+   const label=(map.getStyle().layers||[]).find(l=>l.type==='symbol'&&l.layout&&l.layout['text-field']);
+   map.addLayer({id:'suo-rt-building-extrusions',type:'fill-extrusion',source:'openfreemap','source-layer':'building',minzoom:14,filter:['!=',['get','hide_3d'],true],
+    paint:{'fill-extrusion-color':'#c2ad9d','fill-extrusion-opacity':0.85,
+    'fill-extrusion-height':['interpolate',['linear'],['zoom'],14,0,16,['coalesce',['get','render_height'],0]],
+    'fill-extrusion-base':['coalesce',['get','render_min_height'],0]}},label?label.id:undefined);
+  }catch(error){console.warn('Bangunan 3D tidak tersedia:',error)}
  }
-})();
-</script>
-<script id="suo-bab02-rfn-flip-controls-2026">
-(function(){const card=document.getElementById('suo-bab02-rfn-goal');if(!card)return;
-function flip(){const active=!card.classList.contains('is-flipped');card.classList.toggle('is-flipped',active);card.setAttribute('aria-pressed',String(active))}
-card.addEventListener('click',flip);
-card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
-})();
-</script>
-<script id="suo-rsn-three-flips-controls-2026">
-(function(){
- const root=document.getElementById('panel-1');if(!root)return;
- root.querySelectorAll('.suo-rsn-flip-card').forEach(function(card){
-  const toggle=function(){const state=!card.classList.contains('is-flipped');card.classList.toggle('is-flipped',state);card.setAttribute('aria-pressed',String(state))};
-  card.addEventListener('click',function(e){if(e.target.closest('.suo-rsn-flip-back-scroll') && card.classList.contains('is-flipped'))return;toggle()});
-  card.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target===card){e.preventDefault();toggle()}});
+ function focus(){
+  const point=points[selected];if(!map||!loaded||!point)return;
+  map.flyTo({center:[point[1],point[0]],zoom:16,pitch:mode==='3d'?67:0,bearing:mode==='3d'?-24:0,duration:prefersReduced()?0:1200});
+  if(marker)marker.remove();
+  const pin=document.createElement('div');pin.className='suo-rt-office-pin';
+  marker=new maplibregl.Marker({element:pin,anchor:'bottom'}).setLngLat([point[1],point[0]]).setPopup(new maplibregl.Popup({offset:18,maxWidth:'270px'}).setHTML('<b>'+safe(selected)+'</b><div>'+safe(point[2])+'</div><small>Lokasi pejabat PBT, bukan sempadan pentadbiran.</small>')).addTo(map);
+  marker.togglePopup();
+ }
+ function initialize(){
+  if(map)return;
+  if(!window.maplibregl){status.textContent='Pustaka peta 3D tidak dapat dimuatkan. Semak sambungan internet.';return}
+  try{
+   map=new maplibregl.Map({container:host,style:'https://tiles.openfreemap.org/styles/liberty',center:[101.5199,3.0734],zoom:16,pitch:67,bearing:-24,maxPitch:85,antialias:true,dragPan:true,dragRotate:true,touchPitch:true,scrollZoom:true});
+   map.addControl(new maplibregl.NavigationControl({visualizePitch:true}),'top-right');
+   map.on('load',()=>{loaded=true;addBuildings();if(mode==='2d'&&map.getLayer('suo-rt-building-extrusions'))map.setLayoutProperty('suo-rt-building-extrusions','visibility','none');focus()});
+  }catch(error){status.textContent='Peta 3D gagal dibuka: '+error.message}
+ }
+ function close(){shell.hidden=true;selected=null;root.querySelectorAll('.suo-rt-pbt-item').forEach(e=>e.classList.remove('is-map-selected'))}
+ root.addEventListener('click',e=>{
+  const button=e.target.closest('button[data-pbt-map]');if(!button)return;
+  e.preventDefault();e.stopPropagation();const code=button.dataset.pbtMap;if(!points[code])return;
+  if(!shell.hidden&&selected===code){close();return}
+  selected=code;shell.hidden=false;
+  root.querySelectorAll('.suo-rt-pbt-item').forEach(item=>item.classList.toggle('is-map-selected',!!item.querySelector('button[data-pbt-map="'+code+'"]')));
+  heading.textContent='Lokasi Pejabat '+code;status.textContent=points[code][2]+' · Lokasi pejabat, bukan sempadan kawasan pentadbiran';
+  initialize();
+  requestAnimationFrame(()=>{if(map){map.resize();focus()} if(typeof scrollToSuoTarget==='function')scrollToSuoTarget(shell);else shell.scrollIntoView({behavior:prefersReduced()?'auto':'smooth',block:'start'})});
  });
+ shell.querySelector('.suo-rt-map-close').addEventListener('click',close);
+ shell.querySelectorAll('[data-rt-mode]').forEach(button=>button.addEventListener('click',()=>{
+  mode=button.dataset.rtMode;shell.querySelectorAll('[data-rt-mode]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.rtMode===mode)));
+  if(map&&loaded){if(map.getLayer('suo-rt-building-extrusions'))map.setLayoutProperty('suo-rt-building-extrusions','visibility',mode==='3d'?'visible':'none');map.easeTo({pitch:mode==='3d'?67:0,bearing:mode==='3d'?-24:0,duration:prefersReduced()?0:900})}
+ }));
+ shell.querySelector('[data-rt-reset]').addEventListener('click',focus);
 })();
-</script>
-<script id="suo-rsn-goal-flip-controls-2026">
-(function(){const card=document.querySelector('#panel-1 .suo-rsn-goal-flip');if(!card)return;
-function toggle(){const flipped=!card.classList.contains('is-flipped');card.classList.toggle('is-flipped',flipped);card.setAttribute('aria-pressed',String(flipped))}
-card.addEventListener('click',toggle);
-card.addEventListener('keydown',function(event){if((event.key==='Enter'||event.key===' ')&&event.target===card){event.preventDefault();toggle()}});
-})();
-</script>
-<script id="suo-rt-pbt-leaflet-actions-2026">
-(function(){
-const root=document.getElementById('suo-rt-directory-interactive-2026');
-const shell=document.getElementById('suo-rt-location-map');
-const host=document.getElementById('suo-rt-map-leaflet');
-if(!root||!shell||!host)return;
-const points={"MBPJ":[3.0992,101.645,"Majlis Bandaraya Petaling Jaya"],"MBSA":[3.0734,101.5199,"Majlis Bandaraya Shah Alam"],"MBSJ":[3.0516,101.5824,"Majlis Bandaraya Subang Jaya"],"MBDK":[3.0449,101.4447,"Majlis Bandaraya Diraja Klang"],"MPKj":[2.9949,101.7896,"Majlis Perbandaran Kajang"],"MPAJ":[3.1278,101.7538,"Majlis Perbandaran Ampang Jaya"],"MPS":[3.2535,101.6542,"Majlis Perbandaran Selayang"],"MPSp":[2.9338,101.6456,"Majlis Perbandaran Sepang"],"MPHS":[3.5601,101.6587,"Majlis Perbandaran Hulu Selangor"],"MPKL":[2.8028,101.4957,"Majlis Perbandaran Kuala Langat"],"MPKS":[3.3315,101.2513,"Majlis Perbandaran Kuala Selangor"],"MDSB":[3.6761,100.9908,"Majlis Daerah Sabak Bernam"]};
-let map=null,marker=null,selectedCode=null;
-const title=document.getElementById('suo-rt-map-title'),status=document.getElementById('suo-rt-map-status');
-const reduceMotion=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function closeMap(){
- shell.hidden=true;selectedCode=null;
- root.querySelectorAll('.suo-rt-pbt-item').forEach(item=>item.classList.remove('is-map-selected'));
-}
-function showMap(code){
- const point=points[code];if(!point)return;
- const wasOpen=!shell.hidden&&selectedCode===code;
- if(wasOpen){closeMap();return}
- selectedCode=code;shell.hidden=false;
- root.querySelectorAll('.suo-rt-pbt-item').forEach(item=>{
+</script>-rt-pbt-item').forEach(item=>{
    item.classList.toggle('is-map-selected',item.querySelector('[data-pbt-map="'+code+'"]')!==null);
  });
  title.textContent='Lokasi Pejabat '+code;
