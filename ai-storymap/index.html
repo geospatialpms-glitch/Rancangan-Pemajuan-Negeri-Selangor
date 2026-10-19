@@ -3192,6 +3192,45 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  }
 }
 </style>
+<style id="suo-chapter-nav-unified-2026-10-19">
+/* Bab 02–04 navigation only; preserve all tab handlers and content. */
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools{
+display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;flex-wrap:nowrap!important;
+padding:15px 18px!important;border-radius:20px!important;background:#fffdf9!important;
+border:1px solid #ead9c8!important;box-shadow:none!important;overflow:visible!important}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools::before{display:none!important}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-content-label{
+display:inline-flex!important;flex:0 0 auto!important;align-items:center!important;min-width:0!important;
+margin:0!important;white-space:nowrap!important;font-size:11px!important;letter-spacing:.07em!important;color:#9e4561!important}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-content-buttons{
+display:flex!important;flex:1 1 auto!important;flex-wrap:nowrap!important;align-items:stretch!important;justify-content:flex-end!important;
+width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0!important;gap:7px!important;
+overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:thin;scrollbar-color:#c9a253 transparent}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn{
+position:relative!important;display:inline-flex!important;flex:0 1 auto!important;align-items:center!important;justify-content:center!important;
+width:auto!important;min-width:0!important;min-height:46px!important;height:auto!important;overflow:visible!important;
+padding:10px 12px!important;border:1px solid #ead6c9!important;border-radius:12px!important;
+background:#fff9f4!important;background-image:none!important;color:#612139!important;
+box-shadow:none!important;font-family:inherit!important;font-size:clamp(10px,.72vw,12px)!important;
+font-weight:800!important;line-height:1.35!important;white-space:normal!important;text-align:center!important;
+transition:transform .23s,background .23s,border-color .23s,box-shadow .23s!important}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn::before,
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn::after{content:none!important;display:none!important}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn[aria-selected="true"],
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn.chapter-subnav-primary{
+background:#612139!important;background-image:none!important;color:#fffaf2!important;border-color:#612139!important;
+box-shadow:none!important;outline:none!important}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn:hover{
+transform:translateY(-2px)!important;box-shadow:0 6px 13px rgba(97,33,57,.11)!important}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn:focus-visible{
+outline:3px solid #c9a253!important;outline-offset:2px!important}
+@media(max-width:1100px){
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools{flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-content-buttons{justify-content:flex-start!important}
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn{flex:0 0 auto!important;max-width:220px}}
+@media(prefers-reduced-motion:reduce){
+:is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn{transition:none!important}}
+</style>
 </head>
 <body>
 
@@ -3771,7 +3810,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  </div>
  <div class="atlas-sheet-key"><span><i class="atlas-key-maroon"></i>Fokus spatial</span><span><i class="atlas-key-gold"></i>Hierarki perancangan</span><span class="atlas-sheet-footnote">Visual konseptual · Bukan peta rasmi</span></div>
  </div>
-      <nav class="chapter-content-tools" aria-label="Subtopik Bab 03"><span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN BAB 03</span><div class="chapter-content-buttons suo-bento-tabbar" role="tablist" aria-label="Subtopik Bab 03"><button type="button" class="chapter-subnav-btn chapter-subnav-primary" id="bento-tab-2-0" role="tab" aria-selected="true" aria-controls="bento-2-0" onclick="showSuoBento(2,0)" data-atlas-step="01">Pendahuluan &amp; Latar Belakang</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-1" role="tab" aria-selected="false" aria-controls="bento-2-1" onclick="showSuoBento(2,1)" data-atlas-step="02">Kerangka Perundangan &amp; Fungsi RSN</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-2" role="tab" aria-selected="false" aria-controls="bento-2-2" onclick="showSuoBento(2,2)" data-atlas-step="03">Kerangka Strategik &amp; Objektif Perancangan</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-3" role="tab" aria-selected="false" aria-controls="bento-2-3" onclick="showSuoBento(2,3)" data-atlas-step="04">Konsep Pembangunan &amp; Strategi Pemangkin</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-4" role="tab" aria-selected="false" aria-controls="bento-2-4" onclick="showSuoBento(2,4)" data-atlas-step="05">Proses Penyediaan RSN 2035 (Pengubahan)</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-5" role="tab" aria-selected="false" aria-controls="bento-2-5" onclick="showSuoBento(2,5)" data-atlas-step="06">Dokumen Rujukan RSN 2035 (Pengubahan)</button></div></nav>
+      <nav class="chapter-content-tools" aria-label="Subtopik Bab 03"><span class="chapter-content-label"><span class="chapter-content-dot" aria-hidden="true"></span> TEROKAI KANDUNGAN BAB 03</span><div class="chapter-content-buttons suo-bento-tabbar" role="tablist" aria-label="Subtopik Bab 03"><button type="button" class="chapter-subnav-btn chapter-subnav-primary" id="bento-tab-2-0" role="tab" aria-selected="true" aria-controls="bento-2-0" onclick="showSuoBento(2,0)" data-atlas-step="01">Pendahuluan &amp; Latar Belakang</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-1" role="tab" aria-selected="false" aria-controls="bento-2-1" onclick="showSuoBento(2,1)" data-atlas-step="02">Fungsi, Kerangka Perundangan &amp; Objektif RSN</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-3" role="tab" aria-selected="false" aria-controls="bento-2-3" onclick="showSuoBento(2,3)" data-atlas-step="04">Konsep Pembangunan &amp; Strategi Pemangkin</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-4" role="tab" aria-selected="false" aria-controls="bento-2-4" onclick="showSuoBento(2,4)" data-atlas-step="05">Proses Penyediaan RSN 2035 (Pengubahan)</button><button type="button" class="chapter-subnav-btn" id="bento-tab-2-5" role="tab" aria-selected="false" aria-controls="bento-2-5" onclick="showSuoBento(2,5)" data-atlas-step="06">Dokumen Rujukan RSN 2035 (Pengubahan)</button></div></nav>
       <div class="chapter-content-rule" aria-hidden="true"></div>
       <div class="panel-body suo-bento-body" id="suo-rsn-2026-detail-module"><section class="suo-bento-topic active" role="tabpanel" id="bento-2-0" aria-labelledby="bento-tab-2-0">
   <section class="suo-rsn-2026-details suo-rsn-2026-separate-page" aria-label="Pendahuluan &amp; Latar Belakang">
