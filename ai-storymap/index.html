@@ -3231,6 +3231,54 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 @media(prefers-reduced-motion:reduce){
 :is(#panel-1,#panel-2,#panel-3) nav.chapter-content-tools .chapter-subnav-btn{transition:none!important}}
 </style>
+<style id="suo-bab03-nav-compact-cards-fix-2026">
+/* ONLY Bab 03 subtopic navigation. Match Bab 01 compact tab size, preserve all other styles. */
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"]{
+ display:flex!important;align-items:center!important;gap:13px!important;
+ flex-wrap:wrap!important;justify-content:space-between!important;
+ padding:15px 18px!important;
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-content-label{
+ flex:0 0 auto!important;margin:0!important;white-space:nowrap!important
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-content-buttons{
+ display:flex!important;flex:1 1 auto!important;flex-wrap:wrap!important;
+ grid-template-columns:none!important;gap:8px!important;justify-content:flex-end!important;
+ align-items:center!important;width:auto!important;min-width:0!important;overflow:visible!important
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn{
+ display:inline-flex!important;flex:0 1 auto!important;align-items:center!important;
+ justify-content:center!important;width:auto!important;max-width:none!important;
+ min-height:46px!important;height:auto!important;padding:11px 15px!important;
+ border:1px solid #ead6c9!important;border-radius:13px!important;
+ background:#fff9f4!important;color:#612139!important;
+ box-shadow:none!important;font-size:12px!important;font-weight:800!important;
+ line-height:1.4!important;text-align:center!important;white-space:normal!important;
+ transform:none;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease!important
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn::before,
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn::after{
+ content:none!important;display:none!important
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn[aria-selected="true"],
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn.chapter-subnav-primary{
+ background:#612139!important;color:#fffaf2!important;
+ border-color:#c9a253!important;box-shadow:0 4px 12px rgba(97,33,57,.12)!important
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn:hover{
+ transform:translateY(-2px)!important;border-color:#c9a253!important
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn:focus-visible{
+ outline:3px solid #c9a253!important;outline-offset:3px!important
+}
+@media(max-width:1050px){
+ #panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"]{align-items:stretch!important}
+ #panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-content-buttons{justify-content:flex-start!important}
+}
+@media(max-width:600px){
+ #panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn{width:100%!important;max-width:none!important}
+}
+</style>
 </head>
 <body>
 
@@ -4449,7 +4497,7 @@ function switchTab(index){
   const tabs=Array.from(panel.querySelectorAll('.suo-bento-tabbar [role="tab"]'));
   const topics=Array.from(panel.querySelectorAll('.suo-bento-topic'));
   if(!Number.isInteger(index)||index<0||index>=topics.length)return;
-  tabs.forEach(function(tab,i){const active=i===index;tab.setAttribute('aria-selected',String(active));tab.classList.toggle('chapter-subnav-primary',active);tab.tabIndex=active?0:-1});
+  tabs.forEach(function(tab,i){const active=chapter===2 ? tab.getAttribute('aria-controls')==='bento-2-'+index : i===index;tab.setAttribute('aria-selected',String(active));tab.classList.toggle('chapter-subnav-primary',active);tab.tabIndex=active?0:-1});
   topics.forEach(function(el,i){el.hidden=i!==index;el.classList.toggle('active',i===index)});
   updateVisibleNumbers(panel);
  };
@@ -4460,7 +4508,7 @@ function switchTab(index){
    const current=Math.max(0,tabs.findIndex(x=>x.getAttribute('aria-selected')==='true'));
    const next=(current+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
    const n=Number(tabbar.closest('.content-panel').id.split('-')[1]);
-   e.preventDefault();window.showSuoBento(n,next);tabs[next].focus();
+   e.preventDefault();window.showSuoBento(n,n===2?Number(tabs[next].getAttribute('aria-controls').split('-').pop()):next);tabs[next].focus();
   });
  });
  const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
