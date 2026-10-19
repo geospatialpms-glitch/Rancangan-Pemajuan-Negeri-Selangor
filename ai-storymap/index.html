@@ -3104,6 +3104,35 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:760px){#panel-2 .suo-rsn-combined-content .suo-rsn-objectives-grid{grid-template-columns:1fr!important}}
 @media(prefers-reduced-motion:reduce){#panel-2 .suo-rsn-combined-content .suo-rsn-objective-card::after,#panel-2 .suo-rsn-combined-content .suo-rsn-objective-symbol{transition:none}}
 </style>
+<style id="suo-bab03-nav-grid-consistency-2026">
+/* Bab 03 navigation only. Preserve all existing buttons, interactions, animations and text. */
+@media (min-width:1081px){
+ #panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-content-buttons{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:16px!important;
+  align-items:stretch!important;
+ }
+ #panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  min-height:140px!important;
+  height:100%!important;
+  padding:22px 44px 22px 24px!important;
+  align-self:stretch!important;
+ }
+}
+@media (min-width:631px) and (max-width:1080px){
+ #panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-content-buttons{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-items:stretch!important;
+ }
+ #panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn{
+  min-width:0!important;box-sizing:border-box!important;height:100%!important;
+ }
+}
+</style>
 </head>
 <body>
 
