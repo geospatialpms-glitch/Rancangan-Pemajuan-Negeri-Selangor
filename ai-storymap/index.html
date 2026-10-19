@@ -3279,6 +3279,26 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
  #panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn{width:100%!important;max-width:none!important}
 }
 </style>
+<style id="suo-bab01-nav-parity-style-2026">
+/* Bab 01 tab navigation mirrors Bab 02, scoped without touching content or other pages. */
+#panel-0 .chapter01-navigation .chapter01-tabs{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+#panel-0 .chapter01-navigation .chapter-subnav-btn{
+ border:1px solid #ead6c9;border-radius:15px;padding:12px 17px;
+ background:#fff9f4;color:#612139;font-weight:800;
+ transition:background .22s,border-color .22s,box-shadow .22s,transform .22s;
+}
+#panel-0 .chapter01-navigation .chapter-subnav-btn[aria-selected="true"]{
+ background:#612139;color:#fffaf2;border-color:#c9a253;
+ box-shadow:0 7px 17px rgba(97,33,57,.12);
+}
+#panel-0 .chapter01-navigation .chapter-subnav-btn:hover{
+ transform:translateY(-2px);border-color:#c9a253;
+}
+#panel-0 .chapter01-navigation .chapter-subnav-btn:focus-visible{outline:3px solid #c9a253;outline-offset:3px}
+#panel-0 .chapter01-topic{scroll-margin-top:120px}
+@media(max-width:700px){#panel-0 .chapter01-navigation .chapter01-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}#panel-0 .chapter01-navigation .chapter-subnav-btn{min-width:0;width:100%;padding:11px 10px}}
+@media(prefers-reduced-motion:reduce){#panel-0 .chapter01-navigation .chapter-subnav-btn{transition:none}#panel-0 .chapter01-navigation .chapter-subnav-btn:hover{transform:none}}
+</style>
 </head>
 <body>
 
@@ -4486,6 +4506,25 @@ function switchTab(index){
   window.showChapter01(next);buttons[next].focus();
  });
  window.showChapter01(0);
+})();
+</script>
+<script id="suo-bab01-nav-parity-2026">
+(function(){
+ const root=document.getElementById('panel-0');
+ if(!root)return;
+ const nav=root.querySelector('.chapter01-navigation');
+ if(!nav)return;
+ // The existing showChapter01 handler remains responsible for tab switching.
+ // Only user click/touch gets smooth positioning, with the sticky header respected.
+ nav.addEventListener('click',function(ev){
+  const button=ev.target.closest('.chapter01-tabs [role="tab"]');
+  if(!button||!nav.contains(button))return;
+  requestAnimationFrame(function(){
+   const topic=document.getElementById(button.getAttribute('aria-controls'));
+   if(!topic||topic.hidden||!root.classList.contains('active'))return;
+   topic.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
+  });
+ });
 })();
 </script>
 <script id="suo-chapter-bento-script-v2">
