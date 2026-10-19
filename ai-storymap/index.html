@@ -2938,6 +2938,49 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card{transition:none!important}
 }
 </style>
+<style id="suo-rsn-zigzag-autoplay-2026">
+/* Isolated timeline motion for Bab 03 > RSN 2035 (Pengubahan), Topik 05 only.
+   Original cards, layout, accordion, navigation and other animations preserved. */
+@media(min-width:900px){
+ #bento-2-4 .suo-rsn-process-steps::after{
+  content:"";position:absolute;z-index:1;top:0;bottom:0;left:50%;
+  width:4px;border-radius:8px;pointer-events:none;
+  background:linear-gradient(180deg,#f6d78e 0%,#c9a253 48%,#fff2c7 70%,#d2a54e 100%);
+  box-shadow:0 0 11px rgba(201,162,83,.82),0 0 23px rgba(245,209,133,.53);
+  transform:translateX(-50%) scaleY(0);transform-origin:top;
+ }
+ #bento-2-4 .suo-rsn-process-steps.suo-process-playing::after{
+  animation:suoProcessLineTravel 3.6s cubic-bezier(.24,.7,.26,1) forwards;
+ }
+ @keyframes suoProcessLineTravel{
+  0%{transform:translateX(-50%) scaleY(0);opacity:.85}
+  85%,100%{transform:translateX(-50%) scaleY(1);opacity:1}
+ }
+ #bento-2-4 .suo-rsn-process-steps.suo-process-playing>.suo-rsn-timeline-card::after{
+  animation:suoProcessNodeGlow 3.6s ease-in-out infinite;
+ }
+ #bento-2-4 .suo-rsn-process-steps.suo-process-playing>.suo-rsn-timeline-card:nth-child(1)::after{animation-delay:0s}
+ #bento-2-4 .suo-rsn-process-steps.suo-process-playing>.suo-rsn-timeline-card:nth-child(2)::after{animation-delay:.9s}
+ #bento-2-4 .suo-rsn-process-steps.suo-process-playing>.suo-rsn-timeline-card:nth-child(3)::after{animation-delay:1.8s}
+ #bento-2-4 .suo-rsn-process-steps.suo-process-playing>.suo-rsn-timeline-card:nth-child(4)::after{animation-delay:2.7s}
+ @keyframes suoProcessNodeGlow{
+  0%,19%,100%{background:#f4d999;box-shadow:0 0 0 5px #fbf9f5,0 4px 12px rgba(97,33,57,.18)}
+  8%{background:#fff6cf;box-shadow:0 0 0 5px #fbf9f5,0 0 0 12px rgba(201,162,83,.18),0 0 24px 6px rgba(201,162,83,.75)}
+ }
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card.suo-timeline-visible{
+  animation-duration:.76s!important;
+ }
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(even).suo-timeline-visible{
+  animation-delay:.1s!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #bento-2-4 .suo-rsn-process-steps::after,
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card::after{animation:none!important}
+ #bento-2-4 .suo-rsn-process-steps::after{transform:translateX(-50%) scaleY(1)!important;box-shadow:none!important}
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card.suo-timeline-visible{animation:none!important}
+}
+</style>
 </head>
 <body>
 
@@ -4849,6 +4892,26 @@ function setStage(card,move){
 buttons.forEach(btn=>btn.addEventListener('click',()=>{const card=root.querySelector('#suo-rsn-timeline-stage-'+btn.dataset.stage);if(card)setStage(card,true)}));
 items.forEach(card=>card.addEventListener('toggle',()=>{if(card.open){items.forEach(item=>{if(item!==card)item.open=false})}buttons.forEach(btn=>btn.classList.toggle('is-active',card.open&&btn.dataset.stage===card.id.slice(-2)))}));
 if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('suo-timeline-visible');io.unobserve(e.target)}})},{threshold:.12});items.forEach(el=>io.observe(el))}
+})();
+</script>
+<script id="suo-rsn-zigzag-autoplay-controller-2026">
+/* Additive only: start illuminated center line once the timeline becomes visible. */
+(function(){
+ const root=document.querySelector('#bento-2-4 .suo-rsn-process-steps');
+ if(!root)return;
+ const start=function(){
+  if(root.classList.contains('suo-process-playing'))return;
+  root.classList.add('suo-process-playing');
+ };
+ if(!('IntersectionObserver' in window)){start();return}
+ const observer=new IntersectionObserver(function(entries){
+  for(const entry of entries){
+   if(entry.isIntersecting && entry.boundingClientRect.width>0 && entry.boundingClientRect.height>0){
+    start();observer.disconnect();break;
+   }
+  }
+ },{threshold:.08});
+ observer.observe(root);
 })();
 </script>
 </body>
