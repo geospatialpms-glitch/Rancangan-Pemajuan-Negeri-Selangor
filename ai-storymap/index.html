@@ -2851,6 +2851,93 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  #bento-2-4 .suo-rsn-timeline-card:hover,#bento-2-4 .suo-rsn-timeline-jump:hover{transform:none!important}
 }
 </style>
+<style id="suo-rsn-zigzag-timeline-2026">
+/* ONLY Bab 03 > Proses Penyediaan RSN: alternate existing interactive details left/right. No HTML, JS, content or other styles changed. */
+@media (min-width: 900px){
+ #bento-2-4 .suo-rsn-process-steps{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 94px minmax(0,1fr)!important;
+  grid-auto-rows:auto!important;
+  column-gap:0!important;
+  row-gap:26px!important;
+  align-items:start!important;
+  position:relative!important;
+  isolation:isolate;
+  padding:22px 0 28px!important;
+ }
+ #bento-2-4 .suo-rsn-process-steps::before{
+  content:"";position:absolute;z-index:0;top:0;bottom:0;left:50%;
+  width:5px;transform:translateX(-50%);border-radius:12px;
+  background:linear-gradient(180deg,#612139 0%,#7f344d 45%,#612139 100%);
+  box-shadow:0 0 0 6px rgba(201,162,83,.12),0 0 22px rgba(97,33,57,.10);
+  pointer-events:none;
+ }
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card{
+  grid-row:auto!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  z-index:1!important;
+  overflow:visible!important;
+  position:relative!important;
+  border-radius:22px!important;
+ }
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(odd){
+  grid-column:1!important;
+ }
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(even){
+  grid-column:3!important;
+ }
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(1){grid-row:1!important}
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(2){grid-row:2!important}
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(3){grid-row:3!important}
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(4){grid-row:4!important}
+ /* Maroon numbered timeline nodes and fine horizontal connectors. */
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card::before{
+  content:attr(id);position:absolute;top:38px;z-index:2;
+  height:3px;width:47px;background:#c9a253;
+  box-shadow:0 2px 6px rgba(97,33,57,.12);pointer-events:none;
+  font-size:0;color:transparent;
+ }
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(odd)::before{left:100%}
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(even)::before{right:100%}
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card::after{
+  content:"";position:absolute;top:27px;z-index:3;
+  width:24px;height:24px;border-radius:50%;
+  border:5px solid #612139;background:#f4d999;
+  box-shadow:0 0 0 5px #fbf9f5,0 4px 12px rgba(97,33,57,.18);
+  pointer-events:none;box-sizing:border-box;
+ }
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(odd)::after{left:calc(100% + 35px)}
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card:nth-child(even)::after{right:calc(100% + 35px)}
+ #bento-2-4 .suo-rsn-timeline-summary{
+  border-radius:20px!important;
+  gap:clamp(9px,1.1vw,15px)!important;
+  padding:18px clamp(12px,1.35vw,20px)!important;
+  align-items:center!important;
+ }
+ #bento-2-4 .suo-rsn-timeline-num{width:50px!important;height:50px!important;flex:none!important;font-size:18px!important}
+ #bento-2-4 .suo-rsn-timeline-icon{width:39px!important;height:39px!important;flex:none!important;font-size:21px!important}
+ #bento-2-4 .suo-rsn-timeline-text strong{font-size:clamp(13px,1.06vw,17px)!important;line-height:1.55!important}
+ #bento-2-4 .suo-rsn-timeline-text small{font-size:10px!important}
+ #bento-2-4 .suo-rsn-timeline-card[open]>.suo-rsn-timeline-summary{border-radius:20px 20px 0 0!important}
+ #bento-2-4 .suo-rsn-timeline-content{border-radius:0 0 20px 20px!important}
+}
+@media (max-width: 899px){
+ #bento-2-4 .suo-rsn-process-steps{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:17px!important;
+ }
+ #bento-2-4 .suo-rsn-process-steps::before{display:none!important}
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card{
+  grid-column:1!important;grid-row:auto!important;max-width:100%!important;
+ }
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card::before,
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card::after{display:none!important}
+}
+@media (prefers-reduced-motion: reduce){
+ #bento-2-4 .suo-rsn-process-steps>.suo-rsn-timeline-card{transition:none!important}
+}
+</style>
 </head>
 <body>
 
