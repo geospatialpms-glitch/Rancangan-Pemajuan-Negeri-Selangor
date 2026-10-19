@@ -2703,6 +2703,37 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 @media(max-width:850px){#bento-2-4 .suo-rsn-process-rail{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){#bento-2-4 .suo-rsn-process-rail{grid-template-columns:1fr}#bento-2-4 .suo-rsn-process-number{width:48px;height:48px;font-size:19px}#bento-2-4 .suo-rsn-process-card-title{gap:11px}}
 </style>
+<style id="suo-rsn-process-timeline-enhance-2026">
+/* Scoped exclusively to RSN Process topik; no other page/layout changed. */
+#bento-2-4 .suo-rsn-timeline-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative;gap:12px;margin:22px 0 15px}
+#bento-2-4 .suo-rsn-timeline-rail::before{content:"";position:absolute;top:33px;left:12%;right:12%;height:3px;background:linear-gradient(90deg,#612139,#c9a253,#612139);opacity:.28;pointer-events:none}
+#bento-2-4 .suo-rsn-timeline-jump{z-index:1;display:flex;flex-direction:column;align-items:center;gap:5px;min-height:132px;padding:14px 10px;background:#fffaf3;border:1px solid #e7d7be;border-radius:19px;color:#612139;cursor:pointer;text-align:center;box-shadow:0 7px 20px rgba(97,33,57,.045);transition:transform .25s,box-shadow .25s,border-color .25s}
+#bento-2-4 .suo-rsn-timeline-jump:hover,#bento-2-4 .suo-rsn-timeline-jump.is-active{transform:translateY(-3px);border-color:#c9a253;box-shadow:0 11px 24px rgba(97,33,57,.13)}
+#bento-2-4 .suo-rsn-timeline-rail-icon{display:grid;place-items:center;width:43px;height:43px;border-radius:14px;background:#612139;color:#f2d397;font-size:25px;font-weight:900}
+#bento-2-4 .suo-rsn-timeline-jump b{color:#99536d;font-size:11px;letter-spacing:.12em}
+#bento-2-4 .suo-rsn-timeline-jump>span:last-child{color:#612139;font-size:12px;font-weight:800;line-height:1.5}
+#bento-2-4 .suo-rsn-timeline-help{color:#79676c;text-align:center;font-size:12px;line-height:1.7;margin:0 0 20px}
+#bento-2-4 .suo-rsn-process-steps{display:grid;gap:15px;position:relative}
+#bento-2-4 .suo-rsn-timeline-card{display:block;overflow:hidden;padding:0!important;background:#fffdf9!important;border:1px solid #e5d4bc!important;border-radius:19px!important;scroll-margin-top:115px;box-shadow:0 7px 18px rgba(97,33,57,.05);transition:border-color .25s,box-shadow .25s}
+#bento-2-4 .suo-rsn-timeline-card[open]{border-color:#c9a253!important;box-shadow:0 12px 26px rgba(97,33,57,.09)}
+#bento-2-4 .suo-rsn-timeline-summary{display:flex;align-items:center;gap:14px;padding:18px 20px;min-height:96px;cursor:pointer;list-style:none;background:linear-gradient(100deg,#fffaf2,#fbf7f0);color:#612139}
+#bento-2-4 .suo-rsn-timeline-summary::-webkit-details-marker{display:none}
+#bento-2-4 .suo-rsn-timeline-card[open]>.suo-rsn-timeline-summary{background:#f5e8d4;border-bottom:1px solid #e6d6bc}
+#bento-2-4 .suo-rsn-timeline-num{flex:none;display:grid;place-items:center;width:54px;height:54px;background:#612139;color:white;border-radius:15px;font-size:20px;font-weight:900}
+#bento-2-4 .suo-rsn-timeline-icon{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:14px;color:#946324;background:#f8ead0;font-size:25px}
+#bento-2-4 .suo-rsn-timeline-text{flex:1;min-width:0;display:grid;gap:5px}
+#bento-2-4 .suo-rsn-timeline-text small{color:#975973;font-size:10px;font-weight:900;letter-spacing:.07em}
+#bento-2-4 .suo-rsn-timeline-text strong{color:#612139;font-size:clamp(14px,1.2vw,18px);font-weight:800;line-height:1.5}
+#bento-2-4 .suo-rsn-timeline-chevron{font-size:23px;color:#b08742;transition:transform .25s}
+#bento-2-4 .suo-rsn-timeline-card[open] .suo-rsn-timeline-chevron{transform:rotate(180deg)}
+#bento-2-4 .suo-rsn-timeline-content{padding:20px clamp(16px,2vw,28px) 25px;line-height:1.85;color:#5c4e55}
+#bento-2-4 .suo-rsn-timeline-content strong{color:#612139;font-weight:800}
+#bento-2-4 .suo-rsn-timeline-card .suo-rsn-process-accordion{margin-top:15px}
+#bento-2-4 .suo-rsn-timeline-card .suo-rsn-process-tags{margin-top:15px}
+#bento-2-4 .suo-rsn-timeline-card summary:focus-visible,#bento-2-4 .suo-rsn-timeline-jump:focus-visible{outline:3px solid #c9a253;outline-offset:-3px}
+@media(max-width:760px){#bento-2-4 .suo-rsn-timeline-rail{grid-template-columns:repeat(2,minmax(0,1fr))}#bento-2-4 .suo-rsn-timeline-rail::before{display:none}#bento-2-4 .suo-rsn-timeline-summary{padding:14px 12px;gap:9px}#bento-2-4 .suo-rsn-timeline-num{width:43px;height:43px;font-size:16px}#bento-2-4 .suo-rsn-timeline-icon{width:33px;height:33px;font-size:19px}}
+@media(prefers-reduced-motion:reduce){#bento-2-4 .suo-rsn-timeline-jump,#bento-2-4 .suo-rsn-timeline-card,#bento-2-4 .suo-rsn-timeline-chevron{transition:none}}
+</style>
 </head>
 <body>
 
@@ -3364,13 +3395,13 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 <header class="suo-rsn-2026-heading"><span>RANCANGAN STRUKTUR NEGERI SELANGOR 2035 (PENGUBAHAN) · TOPIK 05</span>
 <h4>Proses Penyediaan Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</h4>
 <p>Empat peringkat utama penyediaan pengubahan rancangan struktur, daripada penetapan hala tuju sehingga pengemaskinian sistem pemantauan perancangan negeri.</p></header>
-<div class="suo-rsn-process-rail" aria-label="Empat peringkat penyediaan">
-<div><b>01</b><span>Penetapan Matlamat &amp; Hala Tuju</span></div><div><b>02</b><span>Penyediaan Draf Pengubahan</span></div><div><b>03</b><span>Kelulusan &amp; Pewartaan</span></div><div><b>04</b><span>Pengemaskinian LPFNS</span></div>
-</div>
+<nav class="suo-rsn-timeline-rail" aria-label="Pilih satu daripada empat peringkat">
+<button type="button" class="suo-rsn-timeline-jump" data-stage="01" aria-label="Buka Peringkat 1: Matlamat & Hala Tuju"><span class="suo-rsn-timeline-rail-icon" aria-hidden="true">◎</span><b>01</b><span>Matlamat & Hala Tuju</span></button><button type="button" class="suo-rsn-timeline-jump" data-stage="02" aria-label="Buka Peringkat 2: Draf Pengubahan"><span class="suo-rsn-timeline-rail-icon" aria-hidden="true">▤</span><b>02</b><span>Draf Pengubahan</span></button><button type="button" class="suo-rsn-timeline-jump" data-stage="03" aria-label="Buka Peringkat 3: Kelulusan & Pewartaan"><span class="suo-rsn-timeline-rail-icon" aria-hidden="true">◈</span><b>03</b><span>Kelulusan & Pewartaan</span></button><button type="button" class="suo-rsn-timeline-jump" data-stage="04" aria-label="Buka Peringkat 4: Sistem GIS & LPFNS"><span class="suo-rsn-timeline-rail-icon" aria-hidden="true">⌖</span><b>04</b><span>Sistem GIS & LPFNS</span></button>
+</nav><p class="suo-rsn-timeline-help">Pilih peringkat pada garis masa atau klik kad di bawah untuk memaparkan maklumat.</p>
 <div class="suo-rsn-process-steps">
-<article class="suo-rsn-process-card"><div class="suo-rsn-process-card-title"><span class="suo-rsn-process-number">01</span><div><small>PERINGKAT PERTAMA · HALA TUJU NEGERI</small><h5>Penetapan Semula Matlamat, Hala Tuju dan Teras Pembangunan Negeri Selangor</h5></div></div>
-<p>Menyemak, menyelaras dan menetapkan semula matlamat, teras pembangunan serta hala tuju strategik agar selaras dengan aspirasi pembangunan Negeri Selangor terkini dan agenda perancangan baharu di peringkat <strong>global, persekutuan dan negeri</strong>.</p></article>
-<article class="suo-rsn-process-card"><div class="suo-rsn-process-card-title"><span class="suo-rsn-process-number">02</span><div><small>PERINGKAT KEDUA · ENAM SKOP SEMAKAN</small><h5>Penyediaan Draf RS Negeri Selangor 2035 (Pengubahan)</h5></div></div>
+<details class="suo-rsn-process-card suo-rsn-timeline-card" id="suo-rsn-timeline-stage-01"><summary class="suo-rsn-timeline-summary"><span class="suo-rsn-timeline-num">01</span><span class="suo-rsn-timeline-icon" aria-hidden="true">◎</span><span class="suo-rsn-timeline-text"><small>PERINGKAT PERTAMA · HALA TUJU NEGERI</small><strong>Penetapan Semula Matlamat, Hala Tuju dan Teras Pembangunan Negeri Selangor</strong></span><span class="suo-rsn-timeline-chevron" aria-hidden="true">⌄</span></summary><div class="suo-rsn-timeline-content">
+<p>Menyemak, menyelaras dan menetapkan semula matlamat, teras pembangunan serta hala tuju strategik agar selaras dengan aspirasi pembangunan Negeri Selangor terkini dan agenda perancangan baharu di peringkat <strong>global, persekutuan dan negeri</strong>.</p></div></details>
+<details class="suo-rsn-process-card suo-rsn-timeline-card" id="suo-rsn-timeline-stage-02"><summary class="suo-rsn-timeline-summary"><span class="suo-rsn-timeline-num">02</span><span class="suo-rsn-timeline-icon" aria-hidden="true">▤</span><span class="suo-rsn-timeline-text"><small>PERINGKAT KEDUA · ENAM SKOP SEMAKAN</small><strong>Penyediaan Draf RS Negeri Selangor 2035 (Pengubahan)</strong></span><span class="suo-rsn-timeline-chevron" aria-hidden="true">⌄</span></summary><div class="suo-rsn-timeline-content">
 <p>Penyediaan draf melibatkan enam skop semakan untuk memastikan pengubahan dasar dan inisiatif pelaksanaan kekal relevan, berdaya laksana dan dapat dipantau.</p>
 <div class="suo-rsn-process-accordion">
 <details><summary><span>i</span>Semakan Dasar dan Inisiatif Pelaksanaan</summary><div>Menilai dasar dan inisiatif pelaksanaan RS Negeri Selangor 2035 berdasarkan hasil <strong>Laporan Perancangan Fizikal Negeri Selangor (LPFNS)</strong> dan <strong>Laporan Pemantauan dan Penilaian Outcome (LPPO)</strong>. Dasar sedia ada ditambah baik, manakala dasar baharu digubal menurut matlamat, teras serta hala tuju strategik yang dipinda. Semakan turut mengambil kira dasar-dasar yang digubal selepas penyediaan dan pewartaan RS Negeri Selangor 2035.</div></details>
@@ -3379,12 +3410,12 @@ body{background:#fcfaf7!important;color:#302c2d!important}
 <details><summary><span>iv</span>Semakan Indikator, Sasaran dan Keberhasilan</summary><div>Mengkaji indikator dan sasaran berdasarkan keperluan penilaian serta pemantauan keberhasilan RS Negeri Selangor 2035, termasuk perubahan dasar, teras pembangunan dan hala tuju strategik.</div></details>
 <details><summary><span>v</span>Semakan Pengurusan dan Pelaksanaan (Bab 7)</summary><div>Menyemak semula bahagian <strong>Pengurusan dan Pelaksanaan (Bab 7)</strong> selaras dengan perubahan dasar atau inisiatif pelaksanaan, termasuk keperluan cadangan <strong>Jawatankuasa Pelaksanaan dan Pemantauan RS Negeri Selangor</strong> yang dikemukakan dalam rancangan asal.</div></details>
 <details><summary><span>vi</span>Penstrukturan Semula Format Laporan</summary><div>Menstruktur semula format penulisan laporan RS Negeri Selangor 2035 dengan mengambil kira pindaan dan penyelesaian isu teknikal yang dikenal pasti melalui LPPO RS Negeri Selangor 2035.</div></details>
-</div></article>
-<article class="suo-rsn-process-card"><div class="suo-rsn-process-card-title"><span class="suo-rsn-process-number">03</span><div><small>PERINGKAT KETIGA · TATACARA KELULUSAN</small><h5>Kelulusan dan Pewartaan</h5></div></div><p>Peringkat ini melibatkan <strong>publisiti Draf RS Negeri Selangor 2035 (Pengubahan)</strong> dan proses kelulusan di peringkat <strong>Jawatankuasa Perancang Negeri (JPN)</strong>, <strong>Majlis Perancang Fizikal Negara (MPFN)</strong> serta <strong>Pihak Berkuasa Negeri (PBN)</strong> untuk tujuan pewartaan.</p>
-<div class="suo-rsn-process-tags"><span>Publisiti Draf</span><span>JPN</span><span>MPFN</span><span>PBN</span><span>Pewartaan</span></div></article>
-<article class="suo-rsn-process-card"><div class="suo-rsn-process-card-title"><span class="suo-rsn-process-number">04</span><div><small>PERINGKAT KEEMPAT · PEMANTAUAN SPATIAL</small><h5>Pengemaskinian Sistem Laporan Perancangan Fizikal Negeri Selangor (LPFNS)</h5></div></div>
+</div></div></details>
+<details class="suo-rsn-process-card suo-rsn-timeline-card" id="suo-rsn-timeline-stage-03"><summary class="suo-rsn-timeline-summary"><span class="suo-rsn-timeline-num">03</span><span class="suo-rsn-timeline-icon" aria-hidden="true">◈</span><span class="suo-rsn-timeline-text"><small>PERINGKAT KETIGA · TATACARA KELULUSAN</small><strong>Kelulusan dan Pewartaan</strong></span><span class="suo-rsn-timeline-chevron" aria-hidden="true">⌄</span></summary><div class="suo-rsn-timeline-content"><p>Peringkat ini melibatkan <strong>publisiti Draf RS Negeri Selangor 2035 (Pengubahan)</strong> dan proses kelulusan di peringkat <strong>Jawatankuasa Perancang Negeri (JPN)</strong>, <strong>Majlis Perancang Fizikal Negara (MPFN)</strong> serta <strong>Pihak Berkuasa Negeri (PBN)</strong> untuk tujuan pewartaan.</p>
+<div class="suo-rsn-process-tags"><span>Publisiti Draf</span><span>JPN</span><span>MPFN</span><span>PBN</span><span>Pewartaan</span></div></div></details>
+<details class="suo-rsn-process-card suo-rsn-timeline-card" id="suo-rsn-timeline-stage-04"><summary class="suo-rsn-timeline-summary"><span class="suo-rsn-timeline-num">04</span><span class="suo-rsn-timeline-icon" aria-hidden="true">⌖</span><span class="suo-rsn-timeline-text"><small>PERINGKAT KEEMPAT · PEMANTAUAN SPATIAL</small><strong>Pengemaskinian Sistem Laporan Perancangan Fizikal Negeri Selangor (LPFNS)</strong></span><span class="suo-rsn-timeline-chevron" aria-hidden="true">⌄</span></summary><div class="suo-rsn-timeline-content">
 <p>Pengemaskinian LPFNS dilaksanakan <strong>selepas RS Negeri Selangor 2035 (Pengubahan) dipersetujui oleh Pihak Berkuasa Negeri untuk pewartaan</strong>. Skop pengemaskinian melibatkan:</p>
-<div class="suo-rsn-process-tags"><span>Data GIS</span><span>Matlamat</span><span>Teras Pembangunan</span><span>Hala Tuju Strategik</span><span>Dasar</span><span>Inisiatif Pelaksanaan</span><span>Keberhasilan</span><span>Indikator</span><span>Sasaran</span></div></article>
+<div class="suo-rsn-process-tags"><span>Data GIS</span><span>Matlamat</span><span>Teras Pembangunan</span><span>Hala Tuju Strategik</span><span>Dasar</span><span>Inisiatif Pelaksanaan</span><span>Keberhasilan</span><span>Indikator</span><span>Sasaran</span></div></div></details>
 </div>
 </section>
 </section></div>
@@ -4598,6 +4629,22 @@ try {
    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
   }
  });
+})();
+</script>
+<script id="suo-rsn-process-timeline-controller-2026">
+(function(){
+const root=document.getElementById('bento-2-4');if(!root)return;
+const items=[...root.querySelectorAll('.suo-rsn-timeline-card')];
+const buttons=[...root.querySelectorAll('.suo-rsn-timeline-jump')];
+function setStage(card,move){
+ items.forEach(item=>{if(item!==card)item.open=false});
+ card.open=true;
+ buttons.forEach(btn=>btn.classList.toggle('is-active',btn.dataset.stage===card.id.slice(-2)));
+ if(move)requestAnimationFrame(()=>card.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'}));
+}
+buttons.forEach(btn=>btn.addEventListener('click',()=>{const card=root.querySelector('#suo-rsn-timeline-stage-'+btn.dataset.stage);if(card)setStage(card,true)}));
+items.forEach(card=>card.addEventListener('toggle',()=>{if(card.open){items.forEach(item=>{if(item!==card)item.open=false})}buttons.forEach(btn=>btn.classList.toggle('is-active',card.open&&btn.dataset.stage===card.id.slice(-2)))}));
+if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('suo-timeline-visible');io.unobserve(e.target)}})},{threshold:.12});items.forEach(el=>io.observe(el))}
 })();
 </script>
 </body>
