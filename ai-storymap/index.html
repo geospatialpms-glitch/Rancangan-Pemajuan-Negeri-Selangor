@@ -4289,7 +4289,7 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
         <section id="ch01-content-0" class="chapter01-topic active" role="tabpanel" aria-labelledby="ch01-tab-0">
           <div class="chapter01-titleline"><span class="chapter01-kicker">01 / PENGENALAN</span><h4>Pengenalan Negeri Selangor</h4></div>
           <p>Negeri Selangor Darul Ehsan merupakan teras pembangunan fizikal dan ekonomi negara yang berkembang secara dinamik. Sebagai hab perindustrian, perniagaan dan perkhidmatan utama di Malaysia, perancangan fizikal serta tadbir urus wilayah di negeri ini diuruskan secara berstruktur menerusi pembahagian <strong>9 Daerah Pentadbiran</strong> dan <strong>12 Pihak Berkuasa Tempatan (PBT)</strong> bagi memastikan pembangunan yang mampan, teratur dan berdaya huni.</p>
-          <div class="chapter01-metrics" aria-label="Profil ringkas Selangor"><div><strong>8,104 km²</strong><span>Luas Keseluruhan Negeri Selangor</span></div><div><strong class="suo-animated-stat" data-value="9">9</strong><span>Daerah pentadbiran</span></div><div><strong class="suo-animated-stat" data-value="12">12</strong><span>Pihak Berkuasa Tempatan</span></div></div>
+          <div class="chapter01-metrics" aria-label="Profil ringkas Selangor"><div><strong data-ch01-intro-count="8104" data-ch01-intro-format="area">8,104 km²</strong><span>Luas Keseluruhan Negeri Selangor</span></div><div><strong data-ch01-intro-count="9" data-ch01-intro-format="pad2">09</strong><span>Daerah pentadbiran</span></div><div><strong data-ch01-intro-count="12" data-ch01-intro-format="integer">12</strong><span>Pihak Berkuasa Tempatan</span></div></div>
           <button type="button" class="chapter-panel-action" onclick="showChapter01(1)">Lihat Profil Pentadbiran <span aria-hidden="true">→</span></button>
         </section>
         <section id="ch01-content-1" class="chapter01-topic" role="tabpanel" aria-labelledby="ch01-tab-1" hidden>
@@ -6592,6 +6592,56 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
  nodes.forEach(function(el){observer.observe(el);});
  const atlas=root.querySelector('.lu-hero-atlas');
  if(atlas){const hero=root.querySelector('.lu-hero');if(hero)observer.observe(atlas);}
+})();
+</script>
+<script id="suo-chapter01-intro-three-stat-counters-2026">
+/* Animated Number Counter: HANYA tiga kad Pengenalan Negeri Selangor (Bab 01). */
+(function(){
+ 'use strict';
+ const metrics=document.querySelector('#ch01-content-0 .chapter01-metrics');
+ if(!metrics)return;
+ const nums=Array.from(metrics.querySelectorAll('[data-ch01-intro-count]'));
+ if(nums.length!==3)return;
+ const values=nums.map(function(node){return Number(node.getAttribute('data-ch01-intro-count'));});
+ if(values.some(function(v){return !Number.isFinite(v)||v<0;}))return;
+ const format=new Intl.NumberFormat('en-US',{maximumFractionDigits:0});
+ const reduced=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+ const duration=3600,pause=650,cycle=duration+pause;
+ let startTime=Date.now(),intervalId=0;
+ function write(progress){
+  const eased=1-Math.pow(1-progress,3);
+  nums.forEach(function(node,i){
+   const n=Math.round(values[i]*eased);
+   const kind=node.getAttribute('data-ch01-intro-format');
+   const text=kind==='area'?format.format(n)+' km²':
+              kind==='pad2'?String(n).padStart(2,'0'):String(n);
+   if(node.textContent!==text)node.textContent=text;
+  });
+ }
+ function update(){
+  if(!metrics.isConnected){if(intervalId)clearInterval(intervalId);return;}
+  if(reduced){write(1);return;}
+  if(document.hidden)return;
+  const elapsed=(Date.now()-startTime)%cycle;
+  write(Math.min(1,elapsed/duration));
+ }
+ function restart(){startTime=Date.now();update();}
+ if(reduced){write(1);return;}
+ // Bermula automatik sebaik skrip dimuat, tanpa menunggu skrol atau IntersectionObserver.
+ restart();
+ intervalId=window.setInterval(update,40);
+ document.addEventListener('visibilitychange',function(){if(!document.hidden)restart();});
+ window.addEventListener('pageshow',restart);
+ // Ulang dari 0 apabila pengguna kembali ke Pengenalan Bab 01.
+ if('MutationObserver' in window){
+  const intro=document.getElementById('ch01-content-0');
+  const panel=document.getElementById('panel-0');
+  const observer=new MutationObserver(function(){
+   if(intro&&!intro.hidden&&panel&&panel.classList.contains('active'))restart();
+  });
+  if(intro)observer.observe(intro,{attributes:true,attributeFilter:['hidden']});
+  if(panel)observer.observe(panel,{attributes:true,attributeFilter:['class']});
+ }
 })();
 </script>
 </body>
