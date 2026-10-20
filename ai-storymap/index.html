@@ -3693,6 +3693,22 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 @media(prefers-reduced-motion:reduce){#suo-rsn-zones-2026 .suo-rsn-zone-option{transition:none}#suo-rsn-zones-2026 .suo-rsn-zone-option:hover{transform:none}}
 </style>
 <style id="suo-rsn-zones-text-spacing-2026">#suo-rsn-zones-2026 #suo-rsn-zone-location{white-space:pre-line}</style>
+<style id="suo-rsn-zone-photo-layer-2026">
+/* Photos for 6 strategic zones: no changes to existing headings, symbols, cards or interactions. */
+#suo-rsn-zones-2026 .suo-rsn-zone-art .suo-rsn-zone-photo{
+ position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+ z-index:0;display:block;filter:saturate(.93) contrast(1.04);
+}
+#suo-rsn-zones-2026 .suo-rsn-zone-art::before{
+ content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ background:linear-gradient(100deg,rgba(56,11,30,.63) 0%,rgba(69,18,40,.35) 56%,rgba(64,17,38,.48) 100%);
+}
+#suo-rsn-zones-2026 .suo-rsn-zone-art::after{z-index:1}
+#suo-rsn-zones-2026 .suo-rsn-zone-art-index,
+#suo-rsn-zones-2026 .suo-rsn-zone-art-symbol,
+#suo-rsn-zones-2026 .suo-rsn-zone-art h6{z-index:2}
+#suo-rsn-zones-2026 .suo-rsn-zone-art h6{text-shadow:0 2px 12px rgba(30,0,12,.45)}
+</style>
 </head>
 <body>
 
@@ -4328,7 +4344,7 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
  <div class="suo-rsn-zones-note"><span aria-hidden="true">▦</span><p>Konsep Pembangunan Tertumpu Wilayah Bandar dan Separa Bandar adalah secara <strong>indikatif</strong>, manakala perancangan terperinci <em>lot based</em> tertakluk kepada <strong>Rancangan Tempatan</strong> mengikut subseksyen 18(1) Akta 172.</p><small>TERTAKLUK PBN &amp; PBPT</small></div>
  <div class="suo-rsn-zones-grid">
  <div class="suo-rsn-zone-feature" aria-live="polite">
-  <div class="suo-rsn-zone-art"><span class="suo-rsn-zone-art-index" id="suo-rsn-zone-art-index">ZON 01</span><div class="suo-rsn-zone-art-symbol" id="suo-rsn-zone-art-symbol" aria-hidden="true">⌂</div><h6 id="suo-rsn-zone-feature-title">Zon Perbandaran</h6></div>
+  <div class="suo-rsn-zone-art"><img class="suo-rsn-zone-photo" id="suo-rsn-zone-photo" src="./Zon%20Perbandaran.jpg" alt="Imej Zon Perbandaran" loading="lazy" decoding="async"><span class="suo-rsn-zone-art-index" id="suo-rsn-zone-art-index">ZON 01</span><div class="suo-rsn-zone-art-symbol" id="suo-rsn-zone-art-symbol" aria-hidden="true">⌂</div><h6 id="suo-rsn-zone-feature-title">Zon Perbandaran</h6></div>
   <div class="suo-rsn-zone-feature-body"><strong>FOKUS UTAMA</strong><p id="suo-rsn-zone-focus">Mengenalpasti zon galakan pembangunan perbandaran.</p><strong id="suo-rsn-zone-location-label">LOKASI &amp; LIPUTAN</strong><p id="suo-rsn-zone-location">Kawasan Tumpuan: Bertumpu di Daerah Petaling, Klang, Gombak, Hulu Langat, Sepang, dan Kuala Langat yang dikenali sebagai Konurbasi Nasional.&#10;&#10;Pusat Pertumbuhan Utama: Shah Alam, Petaling Jaya, Klang, Subang Jaya, Damansara, Bandar Baru Bangi, Kajang, Telok Panglima Garang, Banting-Telok Datok-Bandar Mahkota, Kuala Selangor, Puncak Alam, Ijok, Bistari Jaya, Tanjung Karang, Sekinchan, Sungai Besar, Sabak, Bernam Jaya, Kuala Kubu Bharu, Batang Kali, Bukit Beruntung, dan Serendah.</p><div class="suo-rsn-zone-feature-footer">Pilih zon di sebelah untuk meneroka maklumat berkaitan.</div></div>
  </div>
  <div class="suo-rsn-zone-options" aria-label="Pilih satu daripada enam zon pembangunan">
@@ -5710,8 +5726,10 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>
 (function(){
 const root=document.getElementById('suo-rsn-zones-2026');if(!root)return;
 const data=[{"title":"Zon Perbandaran","focus":"Mengenalpasti zon galakan pembangunan perbandaran.","location":"Kawasan Tumpuan: Bertumpu di Daerah Petaling, Klang, Gombak, Hulu Langat, Sepang, dan Kuala Langat yang dikenali sebagai Konurbasi Nasional.\n\nPusat Pertumbuhan Utama: Shah Alam, Petaling Jaya, Klang, Subang Jaya, Damansara, Bandar Baru Bangi, Kajang, Telok Panglima Garang, Banting-Telok Datok-Bandar Mahkota, Kuala Selangor, Puncak Alam, Ijok, Bistari Jaya, Tanjung Karang, Sekinchan, Sungai Besar, Sabak, Bernam Jaya, Kuala Kubu Bharu, Batang Kali, Bukit Beruntung, dan Serendah.","symbol":"⌂"},{"title":"Zon Pengekalan Sumberjaya dan KSAS","focus":"Meliputi kawasan pemuliharaan kepelbagaian biologi.","location":"Kawasan Terlibat: Central Forest Spine (CFS), Hutan Simpanan Kekal (HSK), hutan paya bakau, kawasan FRIM, Permatang Kuarza Gombak, serta kawasan berbukit dan bercerun.","symbol":"♧"},{"title":"Zon Pengekalan Padi","focus":"Meliputi kawasan Jelapang Padi IADA Barat Laut Selangor di Daerah Kuala Selangor dan Sabak Bernam.","location":"Kawasan Terlibat: Jelapang Padi IADA Barat Laut Selangor di Daerah Kuala Selangor dan Sabak Bernam.","symbol":"❋"},{"title":"Zon Pengekalan Pertanian","focus":"Penekanan kepada pemeliharaan kawasan pertanian yang subur, terutamanya kelas tanah pertanian 2 dan 3 yang merupakan sumberjaya tidak boleh diperbaharui.","location":"Kawasan Terlibat: Termasuk kawasan Tanaman Kekal Pengeluaran Makanan (TKPM) bagi memastikan sumberjaya terus dipelihara untuk kegunaan pengeluaran makanan pada masa hadapan.","symbol":"◈"},{"title":"Zon Pemuliharaan Tanah Gambut","focus":"Pembangunan di atas tanah gambut memerlukan kajian terperinci (aspek alam sekitar, ekonomi, dan sosial) kerana melibatkan kos tinggi dan berisiko bencana.","location":"Butiran: Dikategorikan sebagai KSAS Tahap 2 (habitat penting yang belum diwarta). Pertanian komoditi (getah dan kelapa sawit) di atas tanah gambut tertumpu di Daerah Sabak Bernam, Kuala Selangor, Kuala Langat, dan Sepang.","symbol":"♨"},{"title":"Zon Pemuliharaan Persisiran Pantai","focus":"Merupakan kawasan KSAS Tahap 3 (Kawasan Penggunaan Mampan) dan perlu mematuhi garis panduan RFZPP-2.","location":"Kawasan Terlibat: Persisiran pantai yang dikategorikan sebagai KSAS Tahap 3 (Kawasan Penggunaan Mampan), tertakluk kepada garis panduan RFZPP-2.","symbol":"≈"}];
+const zonePhoto=root.querySelector('#suo-rsn-zone-photo');
+const photoFiles=['Zon Perbandaran.jpg','Zon Pengekalan Sumberjaya dan KSAS.jpg','Zon Pengekalan Padi.jpg','Zon Pengekalan Pertanian.jpg','Zon Pemuliharaan Tanah Gambut.jpg','Zon Pemuliharaan Persisiran Pantai.jpg'];
 const title=root.querySelector('#suo-rsn-zone-feature-title'),focus=root.querySelector('#suo-rsn-zone-focus'),location=root.querySelector('#suo-rsn-zone-location'),number=root.querySelector('#suo-rsn-zone-art-index'),symbol=root.querySelector('#suo-rsn-zone-art-symbol');
-root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListener('click',function(){const i=Number(btn.dataset.rsnZone),z=data[i];if(!z)return;title.textContent=z.title;focus.textContent=z.focus;location.textContent=z.location;number.textContent='ZON '+String(i+1).padStart(2,'0');symbol.textContent=z.symbol;root.querySelectorAll('[data-rsn-zone]').forEach(function(other){const selected=other===btn;other.classList.toggle('is-active',selected);other.setAttribute('aria-pressed',String(selected))})})});
+root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListener('click',function(){const i=Number(btn.dataset.rsnZone),z=data[i];if(!z)return;title.textContent=z.title;focus.textContent=z.focus;location.textContent=z.location;number.textContent='ZON '+String(i+1).padStart(2,'0');symbol.textContent=z.symbol;if(zonePhoto&&photoFiles[i]){zonePhoto.src='./'+encodeURIComponent(photoFiles[i]);zonePhoto.alt='Imej '+z.title;}root.querySelectorAll('[data-rsn-zone]').forEach(function(other){const selected=other===btn;other.classList.toggle('is-active',selected);other.setAttribute('aria-pressed',String(selected))})})});
 })();
 </script>
 </body>
