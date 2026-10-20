@@ -5290,5 +5290,75 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>
  }
 }
 </style>
+<script id="suo-chapter-carousel-autoplay-4s-2026">
+/* Additive carousel-only autoplay: preserves manual arrows, drag, progress, active chapter and content. */
+(function(){
+  'use strict';
+  const track=document.getElementById('chapterCarousel');
+  if(!track)return;
+  const cards=Array.from(track.querySelectorAll('.tab-btn'));
+  if(cards.length<2)return;
+  const shell=track.closest('.chapter-carousel-shell')||track;
+  const prev=shell.querySelector('.chapter-prev');
+  const next=shell.querySelector('.chapter-next');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  let timer=null,visible=false,hovered=false,focused=false,dragging=false,userPauseUntil=0;
+  let inFlight=false;
+  const delay=4000;
+  function isPaused(){
+    return !visible||document.hidden||hovered||focused||dragging||reduce.matches||Date.now()<userPauseUntil;
+  }
+  function stop(){if(timer!==null){window.clearInterval(timer);timer=null}}
+  function start(){
+    if(reduce.matches){stop();return}
+    if(timer===null)timer=window.setInterval(advance,delay);
+  }
+  function currentIndex(){
+    const edge=track.scrollLeft;
+    let closest=0,dist=Infinity;
+    cards.forEach(function(card,i){
+      const delta=Math.abs((card.offsetLeft-track.offsetLeft)-edge);
+      if(delta<dist){dist=delta;closest=i}
+    });
+    return closest;
+  }
+  function advance(){
+    if(isPaused()||inFlight)return;
+    const max=track.scrollWidth-track.clientWidth;
+    if(max<=2)return;
+    const index=currentIndex();
+    const lastVisible=track.scrollLeft>=max-8;
+    const target=lastVisible?0:Math.min(max,Math.max(0,cards[Math.min(cards.length-1,index+1)].offsetLeft-track.offsetLeft));
+    if(Math.abs(target-track.scrollLeft)<3&&!lastVisible)return;
+    inFlight=true;
+    track.scrollTo({left:target,behavior:'smooth'});
+    window.setTimeout(function(){inFlight=false},650);
+  }
+  function pauseForInteraction(){
+    userPauseUntil=Date.now()+6000;
+  }
+  shell.addEventListener('pointerenter',function(){hovered=true});
+  shell.addEventListener('pointerleave',function(){hovered=false});
+  shell.addEventListener('focusin',function(){focused=true;pauseForInteraction()});
+  shell.addEventListener('focusout',function(){focused=shell.contains(document.activeElement)});
+  shell.addEventListener('pointerdown',function(){dragging=true;pauseForInteraction()});
+  window.addEventListener('pointerup',function(){dragging=false});
+  window.addEventListener('pointercancel',function(){dragging=false});
+  shell.addEventListener('click',function(){pauseForInteraction()});
+  shell.addEventListener('keydown',function(){pauseForInteraction()});
+  shell.addEventListener('wheel',function(){pauseForInteraction()},{passive:true});
+  if('IntersectionObserver' in window){
+    const obs=new IntersectionObserver(function(entries){
+      visible=entries.some(function(entry){return entry.isIntersecting});
+    },{threshold:0.1});
+    obs.observe(shell);
+  }else{visible=true}
+  document.addEventListener('visibilitychange',function(){if(document.hidden)inFlight=false});
+  if(typeof reduce.addEventListener==='function'){
+    reduce.addEventListener('change',function(){if(reduce.matches)stop();else start()});
+  }
+  start();
+})();
+</script>
 </body>
 </html>
