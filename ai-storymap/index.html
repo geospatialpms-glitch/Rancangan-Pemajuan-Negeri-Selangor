@@ -5290,8 +5290,8 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>
  }
 }
 </style>
-<script id="suo-chapter-carousel-autoplay-4s-2026">
-/* Additive carousel-only autoplay: preserves manual arrows, drag, progress, active chapter and content. */
+<script id="suo-chapter-carousel-autoplay-smooth-2026">
+/* Slow 6.5 s carousel-only autoplay: preserve manual arrows, drag, progress and chapter content. */
 (function(){
   'use strict';
   const track=document.getElementById('chapterCarousel');
@@ -5304,7 +5304,7 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
   let timer=null,visible=false,hovered=false,focused=false,dragging=false,userPauseUntil=0;
   let inFlight=false;
-  const delay=4000;
+  const delay=6500;
   function isPaused(){
     return !visible||document.hidden||hovered||focused||dragging||reduce.matches||Date.now()<userPauseUntil;
   }
@@ -5332,7 +5332,7 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>
     if(Math.abs(target-track.scrollLeft)<3&&!lastVisible)return;
     inFlight=true;
     track.scrollTo({left:target,behavior:'smooth'});
-    window.setTimeout(function(){inFlight=false},650);
+    window.setTimeout(function(){inFlight=false},1250);
   }
   function pauseForInteraction(){
     userPauseUntil=Date.now()+6000;
