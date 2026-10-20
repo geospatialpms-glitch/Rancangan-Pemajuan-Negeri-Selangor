@@ -4116,6 +4116,27 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 @media(max-width:700px){#bento-2-4 .lu-story>.lu-section+.lu-section{padding-top:27px}#bento-2-4 .lu-info-divider{gap:9px;margin:15px 0 13px}#bento-2-4 .lu-info-divider span{font-size:9px;letter-spacing:.06em}#bento-2-4 .lu-section-head{padding-bottom:13px}#bento-2-4 .lu-subhead{gap:8px}}
 @media(prefers-reduced-motion:reduce){#bento-2-4 .lu-stats .lu-stat:after{transition:none}}
 </style>
+<style id="suo-rsn-bab6-actual-counters-2026">
+/* Penampilan paparan counter sebenar, terhad kepada Bab 6.0 / #bento-2-4 sahaja. */
+#bento-2-4 .lu-stats{--lu-counter-p:0;align-items:stretch;margin-bottom:0!important}
+#bento-2-4 .lu-stats .lu-stat{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:20px 21px;min-height:155px}
+#bento-2-4 .lu-stats .lu-stat>span:first-child{margin:0;padding:0 0 9px;border-bottom:1px solid #eee1d3;font-size:12px;line-height:1.45}
+#bento-2-4 .lu-stats .lu-stat>strong{font-size:clamp(25px,2.6vw,39px);line-height:1.3;margin:1px 0!important;letter-spacing:-.035em;min-height:1.3em;display:block;font-weight:900}
+#bento-2-4 .lu-stats .lu-stat strong .lu-count{display:inline!important;font-size:inherit!important;font-weight:inherit!important;color:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;white-space:nowrap;font-variant-numeric:tabular-nums}
+#bento-2-4 .lu-stats .lu-stat strong small{font-size:12px;letter-spacing:0;white-space:nowrap}
+#bento-2-4 .lu-stats .lu-stat>span:last-child{font-size:12px;line-height:1.65}
+#bento-2-4 .lu-counter-progress-row{display:flex;align-items:center;gap:11px;margin:11px 0 18px;padding:0 2px}
+#bento-2-4 .lu-counter-motion-label{display:flex;align-items:center;gap:6px;font-size:9px;line-height:1.2;letter-spacing:.09em;color:#89536a;font-weight:900;white-space:nowrap}
+#bento-2-4 .lu-counter-motion-dot{width:7px;height:7px;background:#bf8877;border-radius:100%;box-shadow:0 0 0 3px rgba(189,136,119,.12)}
+#bento-2-4 .lu-counter-progress-track{flex:1;min-width:24px;height:5px;border-radius:100px;background:#e8e2de;overflow:hidden}
+#bento-2-4 .lu-counter-progress-fill{display:block;width:var(--lu-counter-progress,0%);height:100%;border-radius:inherit;background:linear-gradient(90deg,#7c324e 0%,#b56476 56%,#d2a55b 100%);box-shadow:0 0 9px rgba(137,52,78,.15)}
+#bento-2-4 .lu-counter-motion-state{color:#aa8461;font-weight:900;letter-spacing:.1em;font-size:9px;white-space:nowrap}
+#bento-2-4 .lu-stats .lu-stat:after{width:var(--lu-counter-progress,100%);background:linear-gradient(90deg,#7c324e,#d2a55b)}
+#bento-2-4 .lu-counter-progress-row.lu-counter-is-running .lu-counter-motion-dot{animation:luCounterIndicatorPulse26 1.2s ease-in-out infinite}
+@keyframes luCounterIndicatorPulse26{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:1;transform:scale(1.2)}}
+@media(max-width:700px){#bento-2-4 .lu-stats .lu-stat{min-height:0;padding:17px 18px}#bento-2-4 .lu-stats .lu-stat>strong{font-size:clamp(25px,6vw,36px)}#bento-2-4 .lu-counter-progress-row{gap:7px}#bento-2-4 .lu-counter-motion-label{font-size:8px}}
+@media(prefers-reduced-motion:reduce){#bento-2-4 .lu-counter-motion-dot{animation:none!important}#bento-2-4 .lu-counter-progress-fill{transition:none!important}}
+</style>
 </head>
 <body>
 
@@ -4898,6 +4919,11 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
       <div class="lu-stat"><span>KAWASAN TEPU BINA</span><strong><span class="lu-count" data-lu-count="487610.42">487,610.42</span> <small>hektar</small></strong><span>Kawasan perbandaran dan pembangunan komited</span></div>
       <div class="lu-stat"><span>KAWASAN SENSITIF ALAM SEKITAR (KSAS)</span><strong><span class="lu-count" data-lu-count="283367.98">283,367.98</span> <small>hektar</small></strong><span>Kawasan perlindungan, pemuliharaan dan risiko alam sekitar</span></div>
       <div class="lu-stat"><span>KAWASAN PERTANIAN PRODUKTIF</span><strong><span class="lu-count" data-lu-count="19606.24">19,606.24</span> <small>hektar</small></strong><span>Kawasan penting bagi keselamatan dan keterjaminan makanan</span></div>
+    </div>
+    <div class="lu-counter-progress-row" aria-label="Petunjuk animasi statistik keluasan">
+      <span class="lu-counter-motion-label" aria-hidden="true"><span class="lu-counter-motion-dot"></span> ANIMASI STATISTIK</span>
+      <div class="lu-counter-progress-track" aria-hidden="true"><span class="lu-counter-progress-fill"></span></div>
+      <span class="lu-counter-motion-state" aria-hidden="true">AUTO</span>
     </div>
     <p class="lu-note">Nota: Keluasan dipetik daripada maklumat pelan yang dibekalkan. Kategori spatial mungkin bertindih dan tidak wajar dijumlahkan sebagai satu keluasan keseluruhan.</p>
     <div class="lu-info-divider" role="separator" aria-label="Empat lapisan tapisan spatial"><span>04 Lapisan Tapisan Spatial</span></div>
@@ -6474,113 +6500,106 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
 
 
 <script id="suo-landuse-scroll-motion-controller-2026">
-/* Animated Number Counter nyata; khusus 3 statistik hektar dan timeline Bab 6.0. */
+/* Counter hidup dan progress bar sebenar dalam Bab 6.0 sahaja. */
 (function(){
  'use strict';
  const root=document.getElementById('suo-landuse-storymap-bab6-2026');
  if(!root)return;
  const stats=root.querySelector('.lu-stats');
  const timeline=root.querySelector('.lu-asas-timeline');
+ const progressRow=root.querySelector('.lu-counter-progress-row');
  const counters=stats?Array.from(stats.querySelectorAll('.lu-count[data-lu-count]')):[];
- if(!stats||counters.length!==3)return;
+ if(!stats||counters.length!==3||!progressRow)return;
  const values=counters.map(function(el){return Number(el.getAttribute('data-lu-count'));});
- if(values.some(function(n){return !Number.isFinite(n)||n<0;}))return;
+ if(values.some(function(v){return !Number.isFinite(v)||v<0;}))return;
  const formatter=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
- const reduced=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
- const animate=!reduced&&typeof window.requestAnimationFrame==='function';
- let raf=0,poll=0,start=0,lastEnd=0,running=false,previouslyVisible=false;
- const duration=3800,wait=1250;
- function display(progress){
-  counters.forEach(function(el,i){el.textContent=formatter.format(values[i]*progress);});
-  stats.style.setProperty('--lu-counter-progress',(Math.max(0,Math.min(progress,1))*100).toFixed(2)+'%');
+ const prefersReduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const canAnimate=!prefersReduced&&typeof window.requestAnimationFrame==='function';
+ const duration=3800,hold=900;
+ let frameId=0,startedAt=0,pollId=0,wasVisible=false;
+ function draw(fraction){
+  const p=Math.max(0,Math.min(1,fraction));
+  const eased=p*p*(3-2*p);
+  counters.forEach(function(el,i){el.textContent=formatter.format(values[i]*eased);});
+  root.style.setProperty('--lu-counter-progress',(100*p).toFixed(2)+'%');
  }
- function actuallyVisible(){
+ function rendered(){
   if(document.hidden||!stats.isConnected)return false;
-  const rect=stats.getBoundingClientRect();
-  if(!rect.height||!rect.width)return false;
+  const tab=root.closest('#bento-2-4');
+  if(tab&&(tab.hidden||!tab.classList.contains('active')))return false;
+  const r=stats.getBoundingClientRect();
   const h=window.innerHeight||document.documentElement.clientHeight;
   const w=window.innerWidth||document.documentElement.clientWidth;
-  if(!h||!w)return false;
-  const intersection=Math.max(0,Math.min(rect.bottom,h)-Math.max(rect.top,0));
-  return intersection>=Math.min(32,rect.height*.13)&&rect.right>0&&rect.left<w;
+  if(!h||!w||!r.width||!r.height)return false;
+  const vertical=Math.max(0,Math.min(r.bottom,h)-Math.max(r.top,0));
+  return vertical>=Math.min(32,r.height*.12)&&r.left<w&&r.right>0;
  }
- function cancel(){
-  if(raf)window.cancelAnimationFrame(raf);
-  raf=0;running=false;start=0;
+ function stop(){
+  if(frameId)window.cancelAnimationFrame(frameId);
+  frameId=0;startedAt=0;
+  progressRow.classList.remove('lu-counter-is-running');
   stats.classList.remove('lu-counting');
  }
- function tick(time){
-  raf=0;
-  if(!running)return;
-  if(!actuallyVisible()){cancel();previouslyVisible=false;display(1);return;}
-  if(!start)start=time;
-  const raw=Math.min(1,(time-start)/duration);
-  const progress=raw<.80?raw*.92:.736+(raw-.80)*1.32;
-  display(Math.min(1,Math.max(0,progress)));
-  if(raw<1){raf=window.requestAnimationFrame(tick);}
-  else{
-   display(1);running=false;start=0;lastEnd=Date.now();
-   stats.classList.remove('lu-counting');
+ function animate(timestamp){
+  frameId=0;
+  if(!rendered()){wasVisible=false;stop();draw(1);return;}
+  if(!startedAt)startedAt=timestamp;
+  const span=duration+hold,elapsed=(timestamp-startedAt)%span;
+  const progress=elapsed>=duration?1:elapsed/duration;
+  draw(progress);
+  if(progress===1){
+    stats.classList.remove('lu-counting');
+  }else{
+    stats.classList.add('lu-counting');
   }
+  frameId=window.requestAnimationFrame(animate);
  }
- function begin(){
-  if(!animate||running||!actuallyVisible())return;
-  cancel();
-  display(0);
-  stats.classList.remove('lu-counting');
-  void stats.offsetWidth;
+ function start(){
+  if(!canAnimate||frameId||!rendered())return;
+  startedAt=0;
+  draw(0);
+  progressRow.classList.add('lu-counter-is-running');
   stats.classList.add('lu-counting');
-  running=true;
-  raf=window.requestAnimationFrame(tick);
+  frameId=window.requestAnimationFrame(animate);
  }
- function check(){
-  if(!animate)return;
-  const visible=actuallyVisible();
-  if(!visible){
-   if(previouslyVisible||running){cancel();display(1);}
-   previouslyVisible=false;
-   return;
-  }
-  if(!previouslyVisible){
-   previouslyVisible=true;
-   lastEnd=0;
-   begin();
-  }else if(!running&&Date.now()-lastEnd>=wait){
-   begin();
-  }
+ function update(){
+  if(!canAnimate)return;
+  const shown=rendered();
+  if(shown&&!wasVisible){wasVisible=true;start();}
+  else if(!shown&&wasVisible){wasVisible=false;stop();draw(1);}
+  else if(shown&&!frameId){start();}
  }
- display(1);
+ draw(1);
  if(timeline){
-  timeline.querySelectorAll('.lu-asas-step').forEach(function(el,i){
-   el.style.setProperty('--lu-step',String(i+1));
-  });
-  if(!reduced&&'IntersectionObserver' in window){
-   let active=false;
-   const observer=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-     if(entry.isIntersecting&&!active){
-      active=true;timeline.classList.remove('lu-timeline-playing');
-      void timeline.offsetWidth;timeline.classList.add('lu-timeline-playing');
-     }else if(!entry.isIntersecting){
-      active=false;timeline.classList.remove('lu-timeline-playing');
-     }
-    });
-   },{threshold:.12,rootMargin:'0px 0px -7% 0px'});
-   observer.observe(timeline);
-  }
+   timeline.querySelectorAll('.lu-asas-step').forEach(function(el,i){el.style.setProperty('--lu-step',String(i+1));});
+   if(!prefersReduced&&'IntersectionObserver' in window){
+    let timelineVisible=false;
+    const io=new IntersectionObserver(function(entries){
+     entries.forEach(function(entry){
+      if(entry.isIntersecting&&!timelineVisible){
+       timelineVisible=true;timeline.classList.remove('lu-timeline-playing');
+       void timeline.offsetWidth;timeline.classList.add('lu-timeline-playing');
+      }else if(!entry.isIntersecting){timelineVisible=false;timeline.classList.remove('lu-timeline-playing');}
+     });
+    },{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+    io.observe(timeline);
+   }
  }
- if(!animate)return;
- // Pemeriksaan berkala membaca dimensi paparan sebenar, walaupun subtopik dibuka tanpa skrol.
- poll=window.setInterval(check,240);
- window.addEventListener('scroll',check,{passive:true});
- window.addEventListener('resize',check,{passive:true});
- document.addEventListener('visibilitychange',check);
- const topic=root.closest('#bento-2-4');
- if(topic&&'MutationObserver' in window){
-  const watcher=new MutationObserver(check);
-  watcher.observe(topic,{attributes:true,attributeFilter:['class','hidden','style']});
+ if(!canAnimate)return;
+ window.addEventListener('scroll',update,{passive:true});
+ window.addEventListener('resize',update,{passive:true});
+ document.addEventListener('visibilitychange',update);
+ if('IntersectionObserver' in window){
+  const visibilityObserver=new IntersectionObserver(update,{threshold:[0,.1,.3,.65]});
+  visibilityObserver.observe(stats);
  }
- check();
+ const tab=root.closest('#bento-2-4');
+ if(tab&&'MutationObserver' in window){
+  const switchWatcher=new MutationObserver(update);
+  switchWatcher.observe(tab,{attributes:true,attributeFilter:['class','hidden','style']});
+ }
+ pollId=window.setInterval(update,300);
+ update();
 })();
 </script>
 <script id="suo-landuse-creative-motion-controller-2026">
