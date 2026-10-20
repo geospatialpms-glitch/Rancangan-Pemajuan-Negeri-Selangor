@@ -3985,6 +3985,31 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 @media(max-width:650px){#bento-2-4 .lu-asas{min-width:890px;gap:12px!important}#bento-2-4 .lu-asas-step{height:382px}#bento-2-4 .lu-asas-step .lu-asas-item{height:161px;padding:13px}#bento-2-4 .lu-asas-intro{font-size:9px}#bento-2-4 .lu-asas-step .lu-asas-item strong{font-size:12px}}
 @media(prefers-reduced-motion:reduce){#bento-2-4 .lu-asas-step .lu-asas-item{transition:none!important}#bento-2-4 .lu-asas-step .lu-asas-item:hover{transform:none!important}}
 </style>
+<style id="suo-landuse-scroll-motion-2026">
+/* Animasi terhad kepada statistik hektar dan Lima Asas Strategik, dalam #bento-2-4 sahaja. */
+#bento-2-4 .lu-stats .lu-count{display:inline-block;font-variant-numeric:tabular-nums;white-space:nowrap}
+#bento-2-4 .lu-stats.lu-counting .lu-stat{animation:luStatsRise26 .65s cubic-bezier(.2,.75,.2,1) both}
+#bento-2-4 .lu-stats.lu-counting .lu-stat:nth-child(2){animation-delay:.12s}
+#bento-2-4 .lu-stats.lu-counting .lu-stat:nth-child(3){animation-delay:.24s}
+@keyframes luStatsRise26{0%{box-shadow:0 2px 5px rgba(90,28,48,.03);border-color:#e5d5cb}48%{box-shadow:0 14px 28px rgba(90,28,48,.12);border-color:#d6b38c}100%{box-shadow:0 4px 12px rgba(90,28,48,.03);border-color:#e5d5cb}}
+#bento-2-4 .lu-asas-timeline .lu-asas:after{content:"";display:block;position:absolute;left:30px;right:30px;top:50%;height:4px;border-radius:99px;background:linear-gradient(90deg,#cfa862,#f4deb0,#7e3952,#d8b56e);z-index:1;transform:translateY(-50%) scaleX(0);transform-origin:left center;opacity:0;pointer-events:none}
+#bento-2-4 .lu-asas-timeline.lu-timeline-playing .lu-asas:after{animation:luAsasDraw26 2s cubic-bezier(.18,.85,.25,1) both}
+#bento-2-4 .lu-asas-timeline.lu-timeline-playing .lu-asas-step{animation:luAsasEnter26 .7s cubic-bezier(.2,.78,.2,1) both;animation-delay:calc((var(--lu-step,1) - 1)*.14s)}
+#bento-2-4 .lu-asas-timeline.lu-timeline-playing .lu-asas-node{animation:luAsasPulse26 2.7s ease-in-out infinite;animation-delay:calc(var(--lu-step,1)*.17s)}
+#bento-2-4 .lu-asas-step .lu-asas-item{isolation:isolate}
+#bento-2-4 .lu-asas-step .lu-asas-item:after{content:"";pointer-events:none;position:absolute;inset:0;border-radius:inherit;background:linear-gradient(112deg,transparent 30%,rgba(240,203,144,.18) 47%,transparent 64%);background-size:240% 100%;background-position:120% 0;opacity:0;transition:opacity .35s}
+#bento-2-4 .lu-asas-step .lu-asas-item:hover:after{opacity:1;animation:luAsasSheen26 1.05s ease-out both}
+#bento-2-4 .lu-asas-step .lu-asas-mark{transition:transform .3s,background-color .3s}
+#bento-2-4 .lu-asas-step .lu-asas-item:hover .lu-asas-mark{transform:rotate(11deg) scale(1.08);background:#f4dfb7}
+@keyframes luAsasDraw26{0%{opacity:0;transform:translateY(-50%) scaleX(0)}12%{opacity:.9}100%{opacity:1;transform:translateY(-50%) scaleX(1)}}
+@keyframes luAsasEnter26{from{opacity:.38;transform:translateY(15px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes luAsasPulse26{0%,100%{box-shadow:0 0 0 2px #b78755,0 2px 8px rgba(98,39,61,.2)}45%{box-shadow:0 0 0 2px #b78755,0 0 0 9px rgba(201,162,83,.12),0 2px 13px rgba(98,39,61,.2)}}
+@keyframes luAsasSheen26{from{background-position:120% 0}to{background-position:-140% 0}}
+@media(prefers-reduced-motion:reduce){
+ #bento-2-4 .lu-stats .lu-stat,#bento-2-4 .lu-asas-timeline .lu-asas-step,#bento-2-4 .lu-asas-timeline .lu-asas-node,#bento-2-4 .lu-asas-timeline .lu-asas:after,#bento-2-4 .lu-asas-step .lu-asas-item:after{animation:none!important;transition:none!important}
+ #bento-2-4 .lu-asas-timeline .lu-asas:after{display:none!important}
+}
+</style>
 </head>
 <body>
 
@@ -4708,7 +4733,7 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 <section class="suo-rsn-2026-details suo-rsn-2026-separate-page" aria-label="Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)">
 <header class="suo-rsn-2026-heading">
 <span>RANCANGAN STRUKTUR NEGERI SELANGOR 2035 (PENGUBAHAN) · TOPIK 05</span>
-<h4>Bab 6.0 Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)</h4>
+<h4>Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)</h4>
 </header>
 <div class="lu-story" id="suo-landuse-storymap-bab6-2026">
   <!-- SECTION 1 | HERO TITLE, SIDE NARRATIVE DAN FUNGSI PELAN -->
@@ -4769,9 +4794,9 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
       <p>Teknik tapisan (<em>sieving method</em>) digunakan untuk mengenal pasti kawasan yang berpotensi untuk dimajukan berbanding kawasan yang mempunyai kekangan atau halangan pembangunan. Analisis mengambil kira kawasan tepu bina, Kawasan Sensitif Alam Sekitar (KSAS), kawasan pertanian produktif serta infrastruktur dan utiliti.</p>
     </div>
     <div class="lu-stats" aria-label="Angka statistik keluasan kawasan berdasarkan maklumat pelan">
-      <div class="lu-stat"><span>KAWASAN TEPU BINA</span><strong>487,610.42 <small>hektar</small></strong><span>Kawasan perbandaran dan pembangunan komited</span></div>
-      <div class="lu-stat"><span>KAWASAN SENSITIF ALAM SEKITAR (KSAS)</span><strong>283,367.98 <small>hektar</small></strong><span>Kawasan perlindungan, pemuliharaan dan risiko alam sekitar</span></div>
-      <div class="lu-stat"><span>KAWASAN PERTANIAN PRODUKTIF</span><strong>19,606.24 <small>hektar</small></strong><span>Kawasan penting bagi keselamatan dan keterjaminan makanan</span></div>
+      <div class="lu-stat"><span>KAWASAN TEPU BINA</span><strong><span class="lu-count" data-lu-count="487610.42">487,610.42</span> <small>hektar</small></strong><span>Kawasan perbandaran dan pembangunan komited</span></div>
+      <div class="lu-stat"><span>KAWASAN SENSITIF ALAM SEKITAR (KSAS)</span><strong><span class="lu-count" data-lu-count="283367.98">283,367.98</span> <small>hektar</small></strong><span>Kawasan perlindungan, pemuliharaan dan risiko alam sekitar</span></div>
+      <div class="lu-stat"><span>KAWASAN PERTANIAN PRODUKTIF</span><strong><span class="lu-count" data-lu-count="19606.24">19,606.24</span> <small>hektar</small></strong><span>Kawasan penting bagi keselamatan dan keterjaminan makanan</span></div>
     </div>
     <p class="lu-note">Nota: Keluasan dipetik daripada maklumat pelan yang dibekalkan. Kategori spatial mungkin bertindih dan tidak wajar dijumlahkan sebagai satu keluasan keseluruhan.</p>
     <div class="lu-sieve">
@@ -6345,5 +6370,64 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
 
 
 
+<script id="suo-landuse-scroll-motion-controller-2026">
+/* Kawalan animasi statistik dan timeline Bab 6.0 sahaja; aktif semula ketika skrol keluar/masuk. */
+(function(){
+ const root=document.getElementById('suo-landuse-storymap-bab6-2026');
+ if(!root)return;
+ const stats=root.querySelector('.lu-stats');
+ const timeline=root.querySelector('.lu-asas-timeline');
+ const counts=stats?Array.from(stats.querySelectorAll('.lu-count[data-lu-count]')):[];
+ if(!stats||!timeline||counts.length!==3)return;
+ const formatter=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const full=function(){counts.forEach(function(el){el.textContent=formatter.format(Number(el.dataset.luCount));});};
+ timeline.querySelectorAll('.lu-asas-step').forEach(function(step,i){step.style.setProperty('--lu-step',String(i+1));});
+ if(reduced||!('IntersectionObserver' in window)||!('requestAnimationFrame' in window)){full();return;}
+ let raf=0, active=false, timeBase=0, timelineActive=false;
+ function stop(){
+  if(raf)cancelAnimationFrame(raf);
+  raf=0;active=false;timeBase=0;
+  stats.classList.remove('lu-counting');
+  full();
+ }
+ function frame(t){
+  if(!active)return;
+  if(!timeBase)timeBase=t;
+  const progress=Math.min(1,(t-timeBase)/1700);
+  const easing=1-Math.pow(1-progress,3);
+  counts.forEach(function(el){el.textContent=formatter.format(Number(el.dataset.luCount)*easing);});
+  if(progress<1){raf=requestAnimationFrame(frame);}else{raf=0;full();stats.classList.remove('lu-counting');}
+ }
+ full();
+ const statsObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+   if(entry.isIntersecting){
+    if(active)return;
+    active=true;timeBase=0;
+    stats.classList.remove('lu-counting');
+    void stats.offsetWidth;
+    stats.classList.add('lu-counting');
+    raf=requestAnimationFrame(frame);
+   }else{stop();}
+  });
+ },{threshold:0.18,rootMargin:'0px 0px -8% 0px'});
+ statsObserver.observe(stats);
+ const timelineObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+   if(entry.isIntersecting&&!timelineActive){
+    timelineActive=true;
+    timeline.classList.remove('lu-timeline-playing');
+    void timeline.offsetWidth;
+    timeline.classList.add('lu-timeline-playing');
+   }else if(!entry.isIntersecting){
+    timelineActive=false;
+    timeline.classList.remove('lu-timeline-playing');
+   }
+  });
+ },{threshold:0.12,rootMargin:'0px 0px -7% 0px'});
+ timelineObserver.observe(timeline);
+})();
+</script>
 </body>
 </html>
