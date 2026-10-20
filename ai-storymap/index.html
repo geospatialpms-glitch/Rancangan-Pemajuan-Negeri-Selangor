@@ -4812,16 +4812,6 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 <h4>Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)</h4>
 </header>
 <div class="lu-story" id="suo-landuse-storymap-bab6-2026">
-  <nav class="lu-chapter-journey" aria-label="Navigasi visual Pelan Strategik Guna Tanah">
-    <div class="lu-journey-heading"><span>TEROKAI ATLAS DIGITAL SELANGOR 2035</span><span class="lu-journey-status" aria-live="off">01 / 04</span></div>
-    <div class="lu-journey-progress" aria-hidden="true"><span class="lu-journey-fill"></span></div>
-    <div class="lu-journey-links" role="group" aria-label="Pergi ke bahagian Pelan Strategik Guna Tanah">
-      <button type="button" data-lu-go="lu-landuse-intro" aria-current="step"><b>01</b><span>Pengenalan &amp; Fungsi</span><i aria-hidden="true">↗</i></button>
-      <button type="button" data-lu-go="lu-landuse-tapisan"><b>02</b><span>Tapisan Spatial</span><i aria-hidden="true">↗</i></button>
-      <button type="button" data-lu-go="lu-landuse-asas"><b>03</b><span>Asas Strategik</span><i aria-hidden="true">↗</i></button>
-      <button type="button" data-lu-go="lu-landuse-rajah"><b>04</b><span>Rajah 6.3</span><i aria-hidden="true">↗</i></button>
-    </div>
-  </nav>
   <!-- SECTION 1 | HERO TITLE, SIDE NARRATIVE DAN FUNGSI PELAN -->
   <div class="lu-section" id="lu-landuse-intro" aria-label="Section 1 Pengenalan dan Fungsi Pelan">
     <div class="lu-hero">
@@ -6450,62 +6440,89 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
 
 
 <script id="suo-landuse-scroll-motion-controller-2026">
-/* Kawalan animasi statistik dan timeline Bab 6.0 sahaja; aktif semula ketika skrol keluar/masuk. */
+/* Animated Number Counter untuk tiga angka hektar Bab 6.0 sahaja. */
 (function(){
  const root=document.getElementById('suo-landuse-storymap-bab6-2026');
  if(!root)return;
- const stats=root.querySelector('.lu-stats');
- const timeline=root.querySelector('.lu-asas-timeline');
- const counts=stats?Array.from(stats.querySelectorAll('.lu-count[data-lu-count]')):[];
- if(!stats||!timeline||counts.length!==3)return;
- const formatter=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+ const stats=root.querySelector('.lu-stats'),timeline=root.querySelector('.lu-asas-timeline');
+ const nums=stats?Array.from(stats.querySelectorAll('.lu-count[data-lu-count]')):[];
+ if(!stats||nums.length!==3)return;
+ const values=nums.map(function(el){return Number(el.dataset.luCount);});
+ const fmt=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- const full=function(){counts.forEach(function(el){el.textContent=formatter.format(Number(el.dataset.luCount));});};
- timeline.querySelectorAll('.lu-asas-step').forEach(function(step,i){step.style.setProperty('--lu-step',String(i+1));});
- if(reduced||!('IntersectionObserver' in window)||!('requestAnimationFrame' in window)){full();return;}
- let raf=0, active=false, timeBase=0, timelineActive=false;
- function stop(){
+ const animated=!reduced&&typeof window.requestAnimationFrame==='function';
+ let raf=0,checkRaf=0,loop=0,startTime=0,running=false,seen=false;
+ function paint(factor){nums.forEach(function(el,i){el.textContent=fmt.format(values[i]*factor);});}
+ function isVisible(){
+  if(document.hidden||root.closest('[hidden]')||!stats.isConnected)return false;
+  const box=stats.getBoundingClientRect(),h=window.innerHeight||0,w=window.innerWidth||0;
+  if(!box.height||!box.width||!h||!w)return false;
+  const shown=Math.max(0,Math.min(box.bottom,h)-Math.max(box.top,0));
+  return shown>=Math.min(35,box.height*.15)&&box.right>0&&box.left<w;
+ }
+ function cancel(){
   if(raf)cancelAnimationFrame(raf);
-  raf=0;active=false;timeBase=0;
+  if(loop)clearTimeout(loop);
+  raf=0;loop=0;running=false;startTime=0;
   stats.classList.remove('lu-counting');
-  full();
  }
- function frame(t){
-  if(!active)return;
-  if(!timeBase)timeBase=t;
-  const progress=Math.min(1,(t-timeBase)/1700);
-  const easing=1-Math.pow(1-progress,3);
-  counts.forEach(function(el){el.textContent=formatter.format(Number(el.dataset.luCount)*easing);});
-  if(progress<1){raf=requestAnimationFrame(frame);}else{raf=0;full();stats.classList.remove('lu-counting');}
+ function step(timestamp){
+  if(!running)return;
+  if(!isVisible()){seen=false;cancel();paint(1);return;}
+  if(!startTime)startTime=timestamp;
+  const progress=Math.min(1,(timestamp-startTime)/2400);
+  paint(1-Math.pow(1-progress,3));
+  if(progress<1){raf=requestAnimationFrame(step);}
+  else{
+   raf=0;running=false;startTime=0;paint(1);
+   stats.classList.remove('lu-counting');
+   loop=setTimeout(function(){loop=0;if(isVisible())begin();},4800);
+  }
  }
- full();
- const statsObserver=new IntersectionObserver(function(entries){
-  entries.forEach(function(entry){
-   if(entry.isIntersecting){
-    if(active)return;
-    active=true;timeBase=0;
-    stats.classList.remove('lu-counting');
-    void stats.offsetWidth;
-    stats.classList.add('lu-counting');
-    raf=requestAnimationFrame(frame);
-   }else{stop();}
-  });
- },{threshold:0.18,rootMargin:'0px 0px -8% 0px'});
- statsObserver.observe(stats);
- const timelineObserver=new IntersectionObserver(function(entries){
-  entries.forEach(function(entry){
-   if(entry.isIntersecting&&!timelineActive){
-    timelineActive=true;
-    timeline.classList.remove('lu-timeline-playing');
-    void timeline.offsetWidth;
-    timeline.classList.add('lu-timeline-playing');
-   }else if(!entry.isIntersecting){
-    timelineActive=false;
-    timeline.classList.remove('lu-timeline-playing');
-   }
-  });
- },{threshold:0.12,rootMargin:'0px 0px -7% 0px'});
- timelineObserver.observe(timeline);
+ function begin(){
+  if(!animated||!isVisible()||running)return;
+  cancel();paint(0);
+  stats.classList.remove('lu-counting');void stats.offsetWidth;
+  stats.classList.add('lu-counting');
+  running=true;raf=requestAnimationFrame(step);
+ }
+ function check(){
+  checkRaf=0;
+  const visible=isVisible();
+  if(visible&&!seen){seen=true;begin();}
+  else if(!visible&&seen){seen=false;cancel();paint(1);}
+ }
+ function queue(){if(!animated||checkRaf)return;checkRaf=requestAnimationFrame(check);}
+ paint(1);
+ if(timeline){
+  timeline.querySelectorAll('.lu-asas-step').forEach(function(step,i){step.style.setProperty('--lu-step',String(i+1));});
+  if(!reduced&&'IntersectionObserver' in window){
+   let active=false;
+   const observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+     if(entry.isIntersecting&&!active){active=true;timeline.classList.remove('lu-timeline-playing');void timeline.offsetWidth;timeline.classList.add('lu-timeline-playing');}
+     else if(!entry.isIntersecting){active=false;timeline.classList.remove('lu-timeline-playing');}
+    });
+   },{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+   observer.observe(timeline);
+  }
+ }
+ if(!animated)return;
+ window.addEventListener('scroll',queue,{passive:true});
+ window.addEventListener('resize',queue,{passive:true});
+ document.addEventListener('visibilitychange',queue);
+ if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(queue,{threshold:[0,.1,.25,.5]});
+  observer.observe(stats);
+ }
+ const topic=root.closest('#bento-2-4');
+ if(topic&&'MutationObserver' in window){
+  const watcher=new MutationObserver(queue);
+  watcher.observe(topic,{attributes:true,attributeFilter:['hidden','class','style']});
+  const parent=topic.closest('.content-panel');
+  if(parent)watcher.observe(parent,{attributes:true,attributeFilter:['hidden','class','style','aria-hidden']});
+ }
+ queue();setTimeout(queue,300);
 })();
 </script>
 <script id="suo-landuse-creative-motion-controller-2026">
@@ -6514,37 +6531,6 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
  const root=document.getElementById('suo-landuse-storymap-bab6-2026');
  if(!root)return;
  const reduced=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
- const targets=['lu-landuse-intro','lu-landuse-tapisan','lu-landuse-asas','lu-landuse-rajah'].map(function(id){return document.getElementById(id);});
- const nav=root.querySelector('.lu-chapter-journey');
- const controls=nav?Array.from(nav.querySelectorAll('[data-lu-go]')):[];
- const status=nav?nav.querySelector('.lu-journey-status'):null;
- controls.forEach(function(btn,i){
-  btn.addEventListener('click',function(){
-   if(targets[i])targets[i].scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
-  });
- });
- function updateJourney(){
-  if(!nav||targets.some(function(el){return !el;}))return;
-  const rect=root.getBoundingClientRect();
-  if(rect.height<20||rect.width<20)return;
-  const pivot=Math.min(window.innerHeight*.43,370);
-  let active=0;
-  targets.forEach(function(el,i){if(el.getBoundingClientRect().top<=pivot)active=i;});
-  controls.forEach(function(btn,i){
-   if(i===active)btn.setAttribute('aria-current','step');else btn.removeAttribute('aria-current');
-  });
-  if(status)status.textContent=String(active+1).padStart(2,'0')+' / 04';
-  const total=Math.max(rect.height-window.innerHeight*.45,1);
-  const progress=Math.max(0,Math.min(100,(pivot-rect.top)/total*100));
-  root.style.setProperty('--lu-journey-progress',progress.toFixed(1)+'%');
- }
- let pending=false;
- function onScroll(){if(pending)return;pending=true;requestAnimationFrame(function(){pending=false;updateJourney();});}
- if(typeof requestAnimationFrame==='function'){
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',onScroll,{passive:true});
-  onScroll();
- }
  if(reduced||!('IntersectionObserver' in window))return;
  const nodes=[
   root.querySelector('.lu-hero'),
