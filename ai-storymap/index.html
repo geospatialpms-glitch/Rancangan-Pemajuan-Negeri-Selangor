@@ -3863,13 +3863,13 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 #bento-2-4 .lu-flow span{flex:1;text-align:center;padding:9px 4px;border:1px solid #e3d1bb;background:#fffdfa;border-radius:8px;color:#722c46;font-size:10px;font-weight:900}
 #bento-2-4 .lu-flow i{font-style:normal;align-self:center;color:#ac8354}
 #bento-2-4 .lu-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 14px}
-#bento-2-4 .lu-nav button{display:flex;gap:10px;align-items:center;text-align:left;min-width:0;min-height:72px;padding:13px;background:#fffdf9;border:1px solid #e5d6c8;border-radius:14px;color:#56394b;cursor:pointer;transition:background .22s,color .22s,border-color .22s}
-#bento-2-4 .lu-nav button b{font-size:19px;color:#b48854;flex:none}
-#bento-2-4 .lu-nav button span{font-size:12px;font-weight:900;line-height:1.5}
-#bento-2-4 .lu-nav button:hover{border-color:#be9b6d;background:#faf1e7}
-#bento-2-4 .lu-nav button.is-active{border-color:#63243d;background:#642741;color:#fff8ee;box-shadow:0 7px 17px rgba(91,26,47,.12)}
-#bento-2-4 .lu-nav button.is-active b{color:#f1d18c}
-#bento-2-4 .lu-nav button:focus-visible{outline:3px solid #cb9f55;outline-offset:3px}
+#bento-2-4 .lu-nav label{display:flex;gap:10px;align-items:center;text-align:left;min-width:0;min-height:72px;padding:13px;background:#fffdf9;border:1px solid #e5d6c8;border-radius:14px;color:#56394b;cursor:pointer;transition:background .22s,color .22s,border-color .22s}
+#bento-2-4 .lu-nav label b{font-size:19px;color:#b48854;flex:none}
+#bento-2-4 .lu-nav label span{font-size:12px;font-weight:900;line-height:1.5}
+#bento-2-4 .lu-nav label:hover{border-color:#be9b6d;background:#faf1e7}
+#bento-2-4 .lu-nav label.is-active{border-color:#63243d;background:#642741;color:#fff8ee;box-shadow:0 7px 17px rgba(91,26,47,.12)}
+#bento-2-4 .lu-nav label.is-active b{color:#f1d18c}
+#bento-2-4 .lu-nav label:focus-visible{outline:3px solid #cb9f55;outline-offset:3px}
 #bento-2-4 .lu-detail{padding:clamp(18px,2.4vw,28px);background:#fffdfa;border:1px solid #e5d8c9;border-radius:20px;min-height:330px;box-shadow:0 9px 23px rgba(90,28,48,.045)}
 #bento-2-4 .lu-detail[hidden]{display:none!important}
 #bento-2-4 .lu-detail .lu-eyebrow{display:block;color:#a0754b;margin-bottom:9px}
@@ -3918,11 +3918,33 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
  #bento-2-4 .lu-section-head{gap:11px}
  #bento-2-4 .lu-section-num{width:43px;height:43px;flex-basis:43px;font-size:17px}
  #bento-2-4 .lu-nav{grid-template-columns:1fr}
- #bento-2-4 .lu-nav button{min-height:54px}
+ #bento-2-4 .lu-nav label{min-height:54px}
  #bento-2-4 .lu-ksas-list,#bento-2-4 .lu-asas{grid-template-columns:1fr}
  #bento-2-4 .lu-asas-item{min-height:0}
 }
-@media(prefers-reduced-motion:reduce){#bento-2-4 .lu-function,#bento-2-4 .lu-map .lu-zone,#bento-2-4 .lu-nav button{transition:none!important}#bento-2-4 .lu-function:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){#bento-2-4 .lu-function,#bento-2-4 .lu-map .lu-zone,#bento-2-4 .lu-nav label{transition:none!important}#bento-2-4 .lu-function:hover{transform:none}}
+
+/* Pembetulan pilihan 4 lapisan: kawalan radio natif, tidak bergantung pada JavaScript. */
+#bento-2-4 .lu-nav{position:relative}
+#bento-2-4 .lu-nav .lu-sieve-radio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden}
+#bento-2-4 .lu-nav label{user-select:none;-webkit-user-select:none}
+#bento-2-4 .lu-nav .lu-sieve-radio:checked+label{border-color:#63243d;background:#642741;color:#fff8ee;box-shadow:0 7px 17px rgba(91,26,47,.12)}
+#bento-2-4 .lu-nav .lu-sieve-radio:checked+label b{color:#f1d18c}
+#bento-2-4 .lu-nav .lu-sieve-radio:focus-visible+label{outline:3px solid #cb9f55;outline-offset:3px}
+#bento-2-4 .lu-side .lu-detail{display:none!important}
+#bento-2-4 .lu-side:has(#lu-sieve-built:checked) #lu-detail-built,
+#bento-2-4 .lu-side:has(#lu-sieve-ksas:checked) #lu-detail-ksas,
+#bento-2-4 .lu-side:has(#lu-sieve-farm:checked) #lu-detail-farm,
+#bento-2-4 .lu-side:has(#lu-sieve-infra:checked) #lu-detail-infra{display:block!important}
+#bento-2-4 .lu-map .lu-map-label-option{display:none}
+#bento-2-4 .lu-story:has(#lu-sieve-built:checked) .lu-map [data-lu-map-label="built"],
+#bento-2-4 .lu-story:has(#lu-sieve-ksas:checked) .lu-map [data-lu-map-label="ksas"],
+#bento-2-4 .lu-story:has(#lu-sieve-farm:checked) .lu-map [data-lu-map-label="farm"],
+#bento-2-4 .lu-story:has(#lu-sieve-infra:checked) .lu-map [data-lu-map-label="infra"]{display:block}
+#bento-2-4 .lu-story:has(#lu-sieve-built:checked) .lu-map .lu-zone-built,
+#bento-2-4 .lu-story:has(#lu-sieve-ksas:checked) .lu-map .lu-zone-ksas,
+#bento-2-4 .lu-story:has(#lu-sieve-farm:checked) .lu-map .lu-zone-farm,
+#bento-2-4 .lu-story:has(#lu-sieve-infra:checked) .lu-map .lu-zone-infra{opacity:.96;filter:saturate(1.1);z-index:3}
 </style>
 <style id="suo-landuse-official-map-2026">
 /* Terhad kepada rajah rasmi Bab 6.0 selepas Section 3. */
@@ -4730,22 +4752,32 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
     <div class="lu-sieve">
       <aside class="lu-map-wrap" aria-label="Ilustrasi teknik tapisan spatial dan aliran analisis">
         <div class="lu-map-head"><span class="lu-symbol" aria-hidden="true">⌖</span> Visualisasi Lapisan Tapisan Spatial</div>
-        <div class="lu-map" id="lu-sieving-schematic" data-active="built" role="img" aria-label="Ilustrasi skematik lapisan kawasan tepu bina, KSAS, pertanian dan infrastruktur. Tidak menggambarkan kedudukan geografi sebenar.">
+        <div class="lu-map" id="lu-sieving-schematic" role="img" aria-label="Ilustrasi skematik lapisan kawasan tepu bina, KSAS, pertanian dan infrastruktur. Tidak menggambarkan kedudukan geografi sebenar.">
           <div class="lu-zone lu-zone-built" aria-hidden="true"></div>
           <div class="lu-zone lu-zone-ksas" aria-hidden="true"></div>
           <div class="lu-zone lu-zone-farm" aria-hidden="true"></div>
           <div class="lu-zone lu-zone-infra" aria-hidden="true"></div>
-          <div class="lu-map-overlay" aria-live="polite"><small>LAPISAN DIPILIH</small><strong id="lu-sieving-map-label">Kawasan Tepu Bina</strong></div>
+          <div class="lu-map-overlay" aria-live="polite">
+            <small>LAPISAN DIPILIH</small>
+            <strong class="lu-map-label-option" data-lu-map-label="built">Kawasan Tepu Bina</strong>
+            <strong class="lu-map-label-option" data-lu-map-label="ksas">Kawasan Sensitif Alam Sekitar (KSAS)</strong>
+            <strong class="lu-map-label-option" data-lu-map-label="farm">Kawasan Pertanian Produktif</strong>
+            <strong class="lu-map-label-option" data-lu-map-label="infra">Kemudahan Infrastruktur &amp; Utiliti</strong>
+          </div>
         </div>
         <p class="lu-map-label">Ilustrasi skematik untuk menerangkan kaedah tapisan. <strong>Bukan peta zon atau sempadan GIS rasmi.</strong></p>
         <div class="lu-flow" aria-label="Aliran analisis"><span>DATA SPATIAL</span><i aria-hidden="true">→</i><span>TAPISAN</span><i aria-hidden="true">→</i><span>POTENSI PEMAJUAN</span></div>
       </aside>
       <div class="lu-side">
-        <div class="lu-nav" role="group" aria-label="Pilih lapisan halangan pembangunan">
-          <button type="button" data-lu-layer="built" class="is-active" aria-pressed="true" aria-controls="lu-detail-built"><b>01</b><span>Kawasan Tepu Bina</span></button>
-          <button type="button" data-lu-layer="ksas" aria-pressed="false" aria-controls="lu-detail-ksas"><b>02</b><span>KSAS</span></button>
-          <button type="button" data-lu-layer="farm" aria-pressed="false" aria-controls="lu-detail-farm"><b>03</b><span>Pertanian Produktif</span></button>
-          <button type="button" data-lu-layer="infra" aria-pressed="false" aria-controls="lu-detail-infra"><b>04</b><span>Infrastruktur &amp; Utiliti</span></button>
+        <div class="lu-nav" role="radiogroup" aria-label="Pilih lapisan halangan pembangunan">
+          <input class="lu-sieve-radio" type="radio" name="lu-sieve-layer-bab6" id="lu-sieve-built" value="built" checked>
+          <label for="lu-sieve-built" data-lu-layer="built"><b>01</b><span>Kawasan Tepu Bina</span></label>
+          <input class="lu-sieve-radio" type="radio" name="lu-sieve-layer-bab6" id="lu-sieve-ksas" value="ksas">
+          <label for="lu-sieve-ksas" data-lu-layer="ksas"><b>02</b><span>KSAS</span></label>
+          <input class="lu-sieve-radio" type="radio" name="lu-sieve-layer-bab6" id="lu-sieve-farm" value="farm">
+          <label for="lu-sieve-farm" data-lu-layer="farm"><b>03</b><span>Pertanian Produktif</span></label>
+          <input class="lu-sieve-radio" type="radio" name="lu-sieve-layer-bab6" id="lu-sieve-infra" value="infra">
+          <label for="lu-sieve-infra" data-lu-layer="infra"><b>04</b><span>Infrastruktur &amp; Utiliti</span></label>
         </div>
         <div class="lu-detail-stack">
           <article class="lu-detail" id="lu-detail-built" data-lu-detail="built">
@@ -4755,7 +4787,7 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
             <p><strong>Taburan utama:</strong> Konurbasi Nasional meliputi Daerah Petaling, sebahagian besar Klang, Hulu Langat, Sepang dan Gombak.</p>
             <p>Taburan juga merangkumi pusat-pusat petempatan di Kuala Langat, Hulu Selangor, Kuala Selangor dan Sabak Bernam.</p>
           </article>
-          <article class="lu-detail" id="lu-detail-ksas" data-lu-detail="ksas" hidden>
+          <article class="lu-detail" id="lu-detail-ksas" data-lu-detail="ksas">
             <span class="lu-eyebrow">02 · PERLINDUNGAN ALAM SEKITAR</span>
             <h6>Kawasan Sensitif Alam Sekitar (KSAS)</h6>
             <p>Sepuluh kategori atau lapisan KSAS diambil kira bagi mengawal tekanan pembangunan terhadap sumber alam, kawasan warisan dan kawasan berisiko.</p>
@@ -4772,7 +4804,7 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
               <li>Badan air, sungai dan empangan</li>
             </ol>
           </article>
-          <article class="lu-detail" id="lu-detail-farm" data-lu-detail="farm" hidden>
+          <article class="lu-detail" id="lu-detail-farm" data-lu-detail="farm">
             <span class="lu-eyebrow">03 · KETERJAMINAN MAKANAN</span>
             <h6>Kawasan Pertanian Produktif</h6>
             <p>Memelihara sumber pengeluaran makanan dan menyokong keterjaminan makanan negeri, dengan keutamaan kepada <strong>Zon Kawasan Pertanian Utama (KPU)</strong> dan jelapang padi.</p>
@@ -4783,7 +4815,7 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
               <li>Pusat Agropolitan</li>
             </ul>
           </article>
-          <article class="lu-detail" id="lu-detail-infra" data-lu-detail="infra" hidden>
+          <article class="lu-detail" id="lu-detail-infra" data-lu-detail="infra">
             <span class="lu-eyebrow">04 · KORIDOR INFRASTRUKTUR &amp; UTILITI</span>
             <h6>Kemudahan Infrastruktur &amp; Utiliti</h6>
             <p>Pengambilan kira rangkaian pengangkutan serta kawasan kemudahan dan utiliti utama dalam penentuan kesesuaian pembangunan.</p>
@@ -6248,26 +6280,7 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
 })();
 </script>
 
-<script id="suo-landuse-storymap-bab6-interaction-2026">
-/* Tiada kesan pada tab / peta / komponen bab lain. */
-(function(){
- const root=document.getElementById('suo-landuse-storymap-bab6-2026');
- if(!root)return;
- const btns=[...root.querySelectorAll('[data-lu-layer]')],details=[...root.querySelectorAll('[data-lu-detail]')];
- const map=root.querySelector('#lu-sieving-schematic'),label=root.querySelector('#lu-sieving-map-label');
- const titles={built:'Kawasan Tepu Bina',ksas:'Kawasan Sensitif Alam Sekitar (KSAS)',farm:'Kawasan Pertanian Produktif',infra:'Kemudahan Infrastruktur & Utiliti'};
- btns.forEach(function(btn){
-  btn.addEventListener('click',function(){
-   const key=btn.getAttribute('data-lu-layer');
-   if(!Object.prototype.hasOwnProperty.call(titles,key))return;
-   btns.forEach(function(item){const active=item===btn;item.classList.toggle('is-active',active);item.setAttribute('aria-pressed',String(active))});
-   details.forEach(function(card){card.hidden=card.getAttribute('data-lu-detail')!==key});
-   if(map)map.dataset.active=key;
-   if(label)label.textContent=titles[key];
-  });
- });
-})();
-</script>
+
 
 </body>
 </html>
