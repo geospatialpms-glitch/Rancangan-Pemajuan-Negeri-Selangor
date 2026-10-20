@@ -3371,6 +3371,35 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
  }
 }
 </style>
+<style id="suo-top-nav-position-only-2026">
+/* Position/alignment correction exclusively for the top navigation.
+   Existing colors, interactions, HTML order and dropdown styling are untouched. */
+.header .head{display:flex;align-items:center;column-gap:clamp(12px,2vw,28px)}
+.header .head>.brand-group{flex:0 1 auto;min-width:0}
+.header .head>.top-nav{
+ display:flex;align-items:center;justify-content:flex-end;
+ flex:1 1 auto;min-width:0;width:auto;margin-left:auto;
+ column-gap:clamp(6px,.85vw,15px);row-gap:6px;
+ flex-wrap:nowrap;order:initial
+}
+.header .top-nav>.home-nav-btn,
+.header .top-nav>.section-nav-btn,
+.header .top-nav>.suo-explore{flex:0 0 auto;align-self:center}
+.header .head>.lang-switch{flex:0 0 auto;margin-left:0;align-self:center}
+@media(max-width:1120px){
+ .header .head{flex-wrap:wrap;justify-content:space-between;row-gap:8px;padding-top:9px;padding-bottom:9px}
+ .header .head>.brand-group{order:1;flex:1 1 auto}
+ .header .head>.lang-switch{order:2;margin-left:auto}
+ .header .head>.top-nav{
+  order:3;flex:1 0 100%;width:100%;margin-left:0;
+  justify-content:center;flex-wrap:wrap;gap:6px 13px
+ }
+}
+@media(max-width:640px){
+ .header .head>.top-nav{justify-content:center;gap:4px 8px}
+ .header .head>.top-nav button{white-space:nowrap}
+}
+</style>
 </head>
 <body>
 
