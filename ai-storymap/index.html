@@ -6945,6 +6945,82 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
  border-color:#dfbd81;background:#fffefb;
 }
 </style>
+<style id="suo-main-header-cinematic-selangor-2026">
+/* Visual update ONLY for the portal's original sticky header.
+   Keep logo, menus, language toggle, functionality and other page sections intact. */
+header.header{
+  position:sticky;
+  isolation:isolate;
+  overflow:visible!important;
+  background:#590016!important;
+  border-bottom:3px solid #c9a253!important;
+  box-shadow:0 6px 21px rgba(41,8,24,.20)!important;
+}
+header.header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(90deg,rgba(89,0,22,1) 0%,rgba(89,0,22,.94) 26%,rgba(89,0,22,.73) 47%,rgba(67,8,26,.52) 72%,rgba(42,12,26,.46) 100%),
+    url("./MAIN%20HEADER%20STORYMAP.jpg");
+  background-position:center,center 48%;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+  border-radius:inherit;
+}
+header.header>.container.head{
+  position:relative;
+  z-index:1;
+  min-height:98px;
+  padding-top:7px;
+  padding-bottom:7px;
+  gap:clamp(10px,1.35vw,22px);
+}
+header.header .brand-text b{
+  color:#fff9f0!important;
+  text-shadow:0 1px 9px rgba(25,5,16,.35);
+}
+header.header .brand-text small{
+  color:#edd4a3!important;
+  text-shadow:0 1px 8px rgba(25,5,16,.32);
+}
+header.header .top-nav>.home-nav-btn,
+header.header .top-nav>.section-nav-btn,
+header.header .suo-explore-trigger{
+  text-shadow:0 1px 8px rgba(25,5,16,.32);
+}
+@media(max-width:1120px){
+  header.header>.container.head{
+    min-height:98px;
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+  header.header::before{
+    background-image:
+      linear-gradient(90deg,rgba(89,0,22,.98) 0%,rgba(89,0,22,.85) 48%,rgba(61,8,27,.63) 100%),
+      url("./MAIN%20HEADER%20STORYMAP.jpg");
+    background-position:center,center 47%;
+  }
+}
+@media(max-width:640px){
+  header.header>.container.head{
+    min-height:0;
+    padding-top:9px;
+    padding-bottom:10px;
+    row-gap:6px;
+  }
+  header.header::before{
+    background-image:
+      linear-gradient(90deg,rgba(89,0,22,.98) 0%,rgba(89,0,22,.88) 65%,rgba(61,8,27,.78) 100%),
+      url("./MAIN%20HEADER%20STORYMAP.jpg");
+    background-position:center,60% center;
+  }
+  header.header .brand-text b{font-size:clamp(14px,3.6vw,18px)}
+  header.header .brand-text small{font-size:10px}
+}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
