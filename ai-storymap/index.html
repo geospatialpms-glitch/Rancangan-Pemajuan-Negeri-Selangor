@@ -4210,100 +4210,363 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 .main-section span,.main-section strong,.main-section b,.suo-explore-number{font-variant-numeric:tabular-nums}
 </style>
 <style id="suo-five-chapter-panel-colour-identities-2026">
-/* ONLY the opened chapter content (panel-0..4): colour replacements, no layout changes.
-   BAB 05 remains "Akan Datang"; its palette is reserved without enabling content. */
+/* Chapter-only theming. No dashboard/global selectors, no geometry, no JS changes. */
 #panel-0{
- --chapter-ink:#245E4B; --chapter-primary:#287A60;
- --chapter-accent:#58AB8A; --chapter-soft:#CDEADC;
- --chapter-faint:#E5F3EB; --chapter-rule:#D0E7DC;
+ --ch-ink:#355841;--ch-primary:#55775A;--ch-accent:#8DAD82;
+ --ch-soft:#D5E5C9;--ch-light:#EDF4E9;--ch-rule:#D9E6D2;
+ --ch-glass:rgba(241,248,237,.62);--ch-shadow:rgba(56,107,69,.09);
+ --chapter-ink:var(--ch-ink);--chapter-primary:var(--ch-primary);
+ --chapter-accent:var(--ch-accent);--chapter-soft:var(--ch-soft);
+ --chapter-faint:var(--ch-light);--chapter-rule:var(--ch-rule);
 }
 #panel-1{
- --chapter-ink:#284F7D; --chapter-primary:#356DA2;
- --chapter-accent:#76A6CC; --chapter-soft:#D6E8F5;
- --chapter-faint:#EAF3FA; --chapter-rule:#D5E5F1;
+ --ch-ink:#244B68;--ch-primary:#2D648A;--ch-accent:#75A3C5;
+ --ch-soft:#D2E4EF;--ch-light:#ECF4FA;--ch-rule:#D5E5EF;
+ --ch-glass:rgba(238,247,252,.63);--ch-shadow:rgba(42,99,137,.09);
+ --chapter-ink:var(--ch-ink);--chapter-primary:var(--ch-primary);
+ --chapter-accent:var(--ch-accent);--chapter-soft:var(--ch-soft);
+ --chapter-faint:var(--ch-light);--chapter-rule:var(--ch-rule);
 }
 #panel-2{
- --chapter-ink:#775A32; --chapter-primary:#947343;
- --chapter-accent:#BC9C66; --chapter-soft:#F1E3C9;
- --chapter-faint:#FAF3E6; --chapter-rule:#E8DCC5;
+ --ch-ink:#744D21;--ch-primary:#916123;--ch-accent:#D2A361;
+ --ch-soft:#F1D9B3;--ch-light:#FFF4E7;--ch-rule:#ECDABD;
+ --ch-glass:rgba(255,249,236,.66);--ch-shadow:rgba(143,102,41,.10);
+ --chapter-ink:var(--ch-ink);--chapter-primary:var(--ch-primary);
+ --chapter-accent:var(--ch-accent);--chapter-soft:var(--ch-soft);
+ --chapter-faint:var(--ch-light);--chapter-rule:var(--ch-rule);
 }
 #panel-3{
- --chapter-ink:#59457F; --chapter-primary:#705694;
- --chapter-accent:#A18AC4; --chapter-soft:#E6DCF3;
- --chapter-faint:#F2EDF9; --chapter-rule:#E1D7EE;
+ --ch-ink:#824636;--ch-primary:#A65E49;--ch-accent:#E2A184;
+ --ch-soft:#F4D9C9;--ch-light:#FFF1E9;--ch-rule:#F0D9CD;
+ --ch-glass:rgba(255,245,239,.67);--ch-shadow:rgba(159,86,65,.09);
+ --chapter-ink:var(--ch-ink);--chapter-primary:var(--ch-primary);
+ --chapter-accent:var(--ch-accent);--chapter-soft:var(--ch-soft);
+ --chapter-faint:var(--ch-light);--chapter-rule:var(--ch-rule);
 }
 #panel-4{
- --chapter-ink:#206C75; --chapter-primary:#27828B;
- --chapter-accent:#64B6BB; --chapter-soft:#D1EBEC;
- --chapter-faint:#E8F6F5; --chapter-rule:#D0E9E9;
+ --ch-ink:#774A5A;--ch-primary:#975E71;--ch-accent:#D8A1AB;
+ --ch-soft:#F0CFD9;--ch-light:#F9ECF0;--ch-rule:#EAD4DC;
+ --ch-glass:rgba(251,241,245,.67);--ch-shadow:rgba(142,81,99,.09);
+ --chapter-ink:var(--ch-ink);--chapter-primary:var(--ch-primary);
+ --chapter-accent:var(--ch-accent);--chapter-soft:var(--ch-soft);
+ --chapter-faint:var(--ch-light);--chapter-rule:var(--ch-rule);
 }
-/* Chapter title, upper identification, and soft colour divider. */
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-intro h3{
- color:var(--chapter-ink)!important;
- text-shadow:none!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-intro h3,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-type,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter01-titleline h4,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-tile h4,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-heading h4,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-heading h4,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-page-body h5,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-objective-card h5,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-acc-title,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-accordions summary,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-project-card:not(:first-child)>strong,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-combined-lead h5,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-rsn-section-heading>h4,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-section-head h5,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-subhead,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-heading h4{
+ color:var(--ch-ink)!important;text-shadow:none!important;
 }
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-intro-eyebrow{
- color:var(--chapter-primary)!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-intro-eyebrow,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-kicker,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-label,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-index,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter01-kicker,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-card-eyebrow,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-card-eyebrow,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-heading>span,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-timeline span,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-project-index,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-spatial-eyebrow,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-eyebrow,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-info-label,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-rsn-section-heading>span{
+ color:var(--ch-primary)!important;
 }
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-intro-accent{
- background:linear-gradient(90deg,var(--chapter-primary),var(--chapter-accent),var(--chapter-soft))!important;
- box-shadow:0 3px 12px color-mix(in srgb,var(--chapter-accent) 18%,transparent)!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-intro-accent,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-card::before,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) nav.chapter-content-tools::before,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-section-divider::before,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-merged-divider::before,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-section-head::after,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-official-map-figure h5::after{
+ background:linear-gradient(90deg,var(--ch-primary),var(--ch-accent),var(--ch-soft))!important;box-shadow:none!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-section-divider::before,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-section-divider::after,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-rule,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter01-titleline,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-kicker,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-merged-divider,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-section-head,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-subhead,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-official-map-figure h5{
+ border-color:var(--ch-rule)!important;
 }
 .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-section-divider::before,
 .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-section-divider::after{
- background:linear-gradient(90deg,transparent,var(--chapter-rule))!important;
+ background:linear-gradient(90deg,transparent,var(--ch-rule))!important;
 }
 .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-section-divider span{
- border-color:var(--chapter-accent)!important;
- background:var(--chapter-primary)!important;
+ background:var(--ch-primary)!important;border-color:var(--ch-accent)!important;
 }
-/* Chapter card top rule and Atlas header accents; preserve the original surfaces. */
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-card::before{
- background:linear-gradient(90deg,var(--chapter-primary),var(--chapter-accent),var(--chapter-soft))!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-point,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-dot,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-hierarchy-num,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-outcome-icon,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-icon,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-section-num,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-goal-no,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-teras-number,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-acc-number,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-accordions summary b,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-objective-symbol,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-project-symbol,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-goal-item>b,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-spatial-icon,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-function-icon,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-section-num,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-asas-index,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-symbol,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-count{
+ background:var(--ch-primary)!important;border-color:var(--ch-accent)!important;color:#fff!important;
 }
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-kicker{
- color:var(--chapter-primary)!important;
- border-color:var(--chapter-rule)!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter01-metrics>div,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-linked-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-hierarchy-step,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-tile,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-intro-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-objective-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-timeline>div,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-accordions>details,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-project-card:not(:first-child),
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-acc-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-goal-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-narrative,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-law,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-function,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-component,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-asas-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-official-map-figure{
+ border-color:var(--ch-rule)!important;box-shadow:0 9px 27px var(--ch-shadow)!important;
 }
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-point{
- background:var(--chapter-primary)!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter01-metrics>div,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-linked-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-hierarchy-step,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-tile,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-intro-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-objective-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-timeline>div,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-project-card:not(:first-child),
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-narrative,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-law,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-function,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-component,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-asas-item{
+ background:linear-gradient(145deg,rgba(255,255,255,.95),var(--ch-glass))!important;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
 }
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-type,
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-index,
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-label{
- color:var(--chapter-ink)!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn:not([aria-selected="true"]):not(.chapter-subnav-primary),
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-accordions summary,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-acc-item summary,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-goal-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-accordions details[open] summary,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-acc-item[open] summary{
+ background:var(--ch-light)!important;color:var(--ch-ink)!important;border-color:var(--ch-rule)!important;
 }
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-index{
- border-color:var(--chapter-rule)!important;
-}
-/* Only existing selected topic controls and action-button colours change. */
 .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn[aria-selected="true"],
 .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn.chapter-subnav-primary,
 .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-panel-action,
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-action{
- background-color:var(--chapter-primary)!important;
- border-color:var(--chapter-primary)!important;
- color:#FFFFFF!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-action,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-focus-back,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-open-hierarchy{
+ background:var(--ch-primary)!important;background-image:none!important;border-color:var(--ch-primary)!important;color:#fff!important;box-shadow:0 5px 18px var(--ch-shadow)!important;
 }
-.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn:not([aria-selected="true"]):not(.chapter-subnav-primary):hover{
- border-color:var(--chapter-accent)!important;
- color:var(--chapter-ink)!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn:not([aria-selected="true"]):not(.chapter-subnav-primary):hover,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn:focus-visible,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-panel-action:focus-visible,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-action:focus-visible{
+ border-color:var(--ch-accent)!important;outline-color:var(--ch-accent)!important;
 }
 .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-panel-action:hover,
 .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-action:hover{
- background-color:var(--chapter-ink)!important;
+ background:var(--ch-ink)!important;border-color:var(--ch-ink)!important;
 }
-/* Chapter-specific navigation artwork already using background-image. */
-#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"]::before{
- background:linear-gradient(90deg,var(--chapter-primary),var(--chapter-accent),var(--chapter-soft))!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-big-number,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-breakdown-title,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-card-heading,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-hierarchy-text strong,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-stat,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-animated-stat,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-pbt-number,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-pbt-name,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-objective-number,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-function-index,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-zone-number,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-heading>span,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-stat strong,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-count,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-asas-item strong{
+ color:var(--ch-ink)!important;
 }
-#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-content-label{
- color:var(--chapter-ink)!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-pbt-bar,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-goal-hint,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-accordions details[open] summary{
+ border-color:var(--ch-accent)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-index,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-kicker,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter01-titleline,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-tools,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-directory-grid,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-focus-page,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-section-head,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-accordions>details{
+ border-color:var(--ch-rule)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-legal-front,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-flip-front,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-goal-front,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-focus-head,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-spatial-urban,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-project-card:first-child{
+ background:linear-gradient(135deg,var(--ch-ink),var(--ch-primary))!important;border-color:var(--ch-accent)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-focus-list-item>span,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-focus-meta span:first-child,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-goal-item>b,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-goal-hint,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-acc-number,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-asas-card-top .lu-asas-index{
+ background:var(--ch-primary)!important;color:#fff!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-accordions>details[open],
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-acc-item[open],
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-card:hover,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-tile:hover,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-objective-card:hover{
+ border-color:var(--ch-accent)!important;box-shadow:0 13px 31px var(--ch-shadow)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-project-card:not(:first-child)>strong,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-combined-lead h5,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-policy h5,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-policy h4,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-heading h4,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-acc-title,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-section-head h5{
+ color:var(--ch-ink)!important;
+}
+
+/* Bab 01 — profile, counts and linked-card accents */
+#panel-0 .chapter01-navigation .chapter-subnav-btn[aria-selected="true"]{
+ background:var(--ch-primary)!important;color:#fff!important;border-color:var(--ch-accent)!important;
+}
+#panel-0 .chapter01-topic .chapter01-titleline h4,
+#panel-0 .ch01-card-heading,#panel-0 .ch01-big-number{color:var(--ch-ink)!important;}
+#panel-0 .ch01-geo-icon,#panel-0 .ch01-link-node,#panel-0 .ch01-outcome-icon{
+ background:var(--ch-primary)!important;border-color:var(--ch-accent)!important;
+}
+#panel-0 .ch01-linked-card,#panel-0 .ch01-pbt-summary-card,
+#panel-0 .ch01-land-card,#panel-0 .ch01-district-card{
+ border-color:var(--ch-rule)!important;background:var(--ch-glass)!important;
+}
+/* Bab 02 — legal framework, hierarchies, modal, district badges */
+#panel-1 .suo-rsn-focus-head,#panel-1 .suo-bab02-legal-front,
+#panel-1 .suo-bab02-flip-front{
+ background:linear-gradient(135deg,var(--ch-ink),var(--ch-primary))!important;
+ border-color:var(--ch-accent)!important;
+}
+#panel-1 .suo-rsn-focus-head h3,#panel-1 .suo-rsn-focus-head p{
+ color:#fff!important;
+}
+#panel-1 .suo-rsn-focus-list-item>span,#panel-1 .suo-rsn-focus-meta span:first-child,
+#panel-1 .suo-bab02-section-num,#panel-1 .suo-rsn-acc-number,
+#panel-1 .suo-rt-pbt-number,#panel-1 .suo-rt-count{
+ background:var(--ch-primary)!important;color:#fff!important;
+}
+#panel-1 .suo-rt-pbt-item,#panel-1 .suo-rt-section,
+#panel-1 .suo-bab02-separated,#panel-1 .suo-rt-intro-card{
+ border-color:var(--ch-rule)!important;
+}
+#panel-1 .suo-rsn-focus-back,#panel-1 .suo-rt-map-action{
+ background:var(--ch-primary)!important;border-color:var(--ch-accent)!important;color:#fff!important;
+}
+/* Bab 03 — subtopic selection, thematic cards and number badges */
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"]{
+ border-color:var(--ch-rule)!important;background:var(--ch-glass)!important;
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"]::before,
+#panel-2 #suo-rsn-combined-objectives-2026::before{
+ background:linear-gradient(90deg,var(--ch-primary),var(--ch-accent),var(--ch-soft))!important;
 }
 #panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn[aria-selected="true"]{
- background-image:linear-gradient(135deg,var(--chapter-ink),var(--chapter-primary))!important;
- border-color:var(--chapter-primary)!important;
+ background:var(--ch-primary)!important;background-image:none!important;
+ color:#fff!important;border-color:var(--ch-accent)!important;
 }
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn::before{
+ color:var(--ch-ink)!important;background:var(--ch-soft)!important;border-color:var(--ch-accent)!important;
+}
+#panel-2 .suo-rsn-2026-heading h4,#panel-2 .suo-rsn-objective-number,
+#panel-2 .suo-rsn-function-index,#panel-2 .suo-rsn-zone-number,
+#panel-2 .suo-rsn-policy h5,#panel-2 .suo-rsn-policy h4{
+ color:var(--ch-ink)!important;
+}
+#panel-2 .suo-rsn-objective-symbol,#panel-2 .suo-rsn-function-icon,
+#panel-2 .suo-rsn-project-symbol,#panel-2 .suo-rsn-goal-item>b,
+#panel-2 .suo-rsn-acc-number,#panel-2 .lu-section-num,
+#panel-2 .lu-asas-index{
+ background:var(--ch-primary)!important;color:#fff!important;
+}
+#panel-2 .suo-rsn-project-card:first-child,
+#panel-2 .suo-rsn-spatial-urban,#panel-2 .suo-rsn-goal-front{
+ background:linear-gradient(135deg,var(--ch-ink),var(--ch-primary))!important;
+ border-color:var(--ch-accent)!important;
+}
+#panel-2 .suo-rsn-project-card:first-child>strong,
+#panel-2 .suo-rsn-project-card:first-child>p,
+#panel-2 .suo-rsn-spatial-urban p,#panel-2 .suo-rsn-spatial-urban strong{
+ color:#fff!important;
+}
+#panel-2 .suo-rsn-2026-timeline>div,#panel-2 .suo-rsn-objective-card,
+#panel-2 .suo-rsn-project-card:not(:first-child),
+#panel-2 .suo-rsn-function-tile,#panel-2 .lu-stat{
+ background:var(--ch-glass)!important;border-color:var(--ch-rule)!important;
+}
+#panel-2 .lu-stat>span:first-child,#panel-2 .lu-info-label,
+#panel-2 .lu-eyebrow{color:var(--ch-ink)!important;}
+#panel-2 .lu-info-divider:before,#panel-2 .lu-official-map-section:before,
+#panel-2 .lu-section-head:after{
+ background:linear-gradient(90deg,var(--ch-primary),var(--ch-accent))!important;
+}
+#panel-2 .lu-asas-timeline .lu-asas:before{
+ background:linear-gradient(90deg,var(--ch-primary),var(--ch-accent),var(--ch-primary))!important;
+}
+#panel-2 .lu-asas-node{background:var(--ch-primary)!important;box-shadow:0 0 0 2px var(--ch-accent)!important;}
+#panel-2 .lu-asas-step .lu-asas-item{
+ background:var(--ch-glass)!important;border-color:var(--ch-rule)!important;
+}
+#panel-2 .lu-asas-step .lu-asas-item strong{color:var(--ch-ink)!important;}
+#panel-2 .lu-asas-step .lu-asas-mark{background:var(--ch-soft)!important;color:var(--ch-ink)!important;}
+/* Keep the official image itself and its mask unchanged; only its enclosing
+   text card and its existing maroon overlay are softly tinted for Bab 03. */
+#panel-2 .suo-rsn-policy-lead.suo-rsn-policy-network-lead{
+ background:linear-gradient(105deg,#6F4C27,#9E7143 61%,#C39563)!important;
+}
+#panel-2 .suo-rsn-policy-network-lead::before{
+ background-image:
+  linear-gradient(90deg,rgba(111,76,39,.30),rgba(118,76,41,.20) 52%,rgba(57,40,25,.22)),
+  url("./Pengenalan-Dasar-dasar%20RS%20Negeri%20Selangor%202035%20%28Pengubahan%29.jpg")!important;
+}
+/* Bab 04 — bento tiles and numeric features */
+#panel-3 .suo-bento-tile{background:var(--ch-glass)!important;border-color:var(--ch-rule)!important;}
+#panel-3 .suo-bento-tile h4,#panel-3 .suo-bento-stat{color:var(--ch-ink)!important;}
+#panel-3 .suo-bento-icon{background:var(--ch-primary)!important;color:#fff!important;}
+/* Bab 05 remains deliberately disabled ("Akan Datang"). */
 </style>
 </head>
 <body>
