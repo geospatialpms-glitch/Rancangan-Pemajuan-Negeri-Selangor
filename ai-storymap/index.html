@@ -5823,7 +5823,51 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 @media(max-width:800px){#panel-3 #rr04 .suo-rt-directory-grid{grid-template-columns:1fr}#panel-3 #rr04 .suo-rt-3d-controls small{text-align:left;flex-basis:100%}}
 @media(max-width:530px){#panel-3 #rr04 .suo-rt-pbt-item summary{padding:11px 9px;gap:6px}#panel-3 #rr04 .suo-rt-pbt-visual{flex-basis:36px;width:36px;height:36px}#panel-3 #rr04 .suo-rt-map-leaflet{height:440px!important}#panel-3 #rr04 .suo-rt-pbt-name{font-size:11px}}
 @media(prefers-reduced-motion:reduce){#panel-3 #rr04 .suo-rt-pbt-documents{animation:none}#panel-3 #rr04 .suo-rt-pbt-item,#panel-3 #rr04 .suo-rt-map-action{transition:none}}
-</style></head>
+</style><style id="rr04-rt-rkk-instruction-highlight-2026">
+/* RT dan RKK di Bab 04 sahaja: penekanan arahan tanpa menyentuh senarai PBT / interaksi peta. */
+#panel-3 #rr04 .rr04-directory-instruction.rr04-directory-instruction-highlight{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 17px;
+  margin:0;padding:17px 20px!important;
+  border:1px solid #eac4af!important;border-left:5px solid #ad654c!important;
+  border-radius:14px;
+  background:linear-gradient(110deg,#fff0e4 0%,#fff8f0 55%,#fffdf8 100%)!important;
+  color:#6a4a40!important;box-shadow:0 7px 20px rgba(141,87,63,.075);
+}
+#panel-3 #rr04 .rr04-instruction-kicker{
+  display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;
+  padding:8px 11px;border:1px solid #e6bca6;border-radius:999px;
+  background:#fffdf8;color:#915039;font-size:10px;font-weight:900;
+  letter-spacing:.085em;line-height:1.4;
+}
+#panel-3 #rr04 .rr04-instruction-beacon{
+  display:grid;place-items:center;width:20px;height:20px;flex:none;
+  border-radius:50%;background:#b46a51;color:#fff;font-size:12px;
+  box-shadow:0 0 0 3px rgba(180,106,81,.10);
+  animation:rr04InstructionGlow2026 3.5s ease-in-out infinite;
+}
+#panel-3 #rr04 .rr04-instruction-message{
+  flex:1 1 400px;min-width:0;font-size:13px;line-height:1.85;
+  color:#64483e;overflow-wrap:break-word;
+}
+#panel-3 #rr04 .rr04-instruction-message strong{
+  color:#874329!important;font-weight:900;
+  text-decoration:underline;text-decoration-color:#d8a888;
+  text-decoration-thickness:2px;text-underline-offset:3px;
+}
+@keyframes rr04InstructionGlow2026{
+  0%,100%{box-shadow:0 0 0 3px rgba(180,106,81,.10)}
+  50%{box-shadow:0 0 0 7px rgba(180,106,81,.17)}
+}
+@media(max-width:640px){
+  #panel-3 #rr04 .rr04-directory-instruction.rr04-directory-instruction-highlight{padding:14px 15px!important;gap:9px}
+  #panel-3 #rr04 .rr04-instruction-kicker{font-size:9px}
+  #panel-3 #rr04 .rr04-instruction-message{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  #panel-3 #rr04 .rr04-instruction-beacon{animation:none!important}
+}
+</style>
+</head>
 <body>
 
 
@@ -6831,7 +6875,7 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
    <div class="rr04-functions"><article><span>01</span><h6>Menterjemahkan Dasar RS</h6><p>Menterjemahkan polisi dan strategi RS ke skala pemajuan tempatan.</p></article><article><span>02</span><h6>Panduan Pembangunan Fizikal</h6><p>Rujukan utama pembangunan fizikal daerah/PBT melalui peta cadangan guna tanah.</p></article><article><span>03</span><h6>Kawalan Pemajuan</h6><p>Menyediakan garis panduan serta kawalan perancangan bagi kelulusan Kebenaran Merancang (KM).</p></article><article><span>04</span><h6>Pelaksanaan Projek</h6><p>Mengenal pasti projek utama daerah serta garis panduan pelaksanaannya.</p></article></div>
    <div class="rr04-heading"><span class="rr04-heading-icon" aria-hidden="true">✦</span><div><small>SENARAI PBT SELANGOR BAGI RT</small><h6>Pihak Berkuasa Tempatan</h6></div><span class="rr04-pill">12 PBT</span></div>
    <div class="rr04-directory-adopted" id="rr04-rt-directory-2026" aria-label="Senarai Rancangan Tempatan mengikut 12 PBT">
- <p class="rr04-directory-instruction">Klik nama PBT untuk membuka senarai RT seperti dalam Bab 02. Pilih <strong>Lihat Lokasi PBT di Peta</strong> untuk meneroka lokasi pejabat melalui peta 3D.</p>
+ <p class="rr04-directory-instruction rr04-directory-instruction-highlight" role="note"><span class="rr04-instruction-kicker"><span class="rr04-instruction-beacon" aria-hidden="true">✦</span> PANDUAN INTERAKTIF · RT</span><span class="rr04-instruction-message"><strong>Klik nama PBT</strong> untuk membuka senarai RT seperti dalam Bab 02. Pilih <strong>Lihat Lokasi PBT di Peta</strong> untuk meneroka lokasi pejabat melalui peta 3D.</span></p>
  <div class="suo-rt-directory-grid"><details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">01</span><span class="suo-rt-pbt-visual"><img alt="Logo MBSA" src="./MBSA%201.png" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Shah Alam</span><span class="suo-rt-pbt-code">MBSA</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Majlis Bandaraya Shah Alam 2035</li><li>Rancangan Tempatan Majlis Bandaraya Shah Alam 2035 (Pengubahan 1)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBSA" aria-label="Lihat lokasi pejabat MBSA di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
 <details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">02</span><span class="suo-rt-pbt-visual"><img alt="Logo MBPJ" src="./MBPJ%20(1).png" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Petaling Jaya</span><span class="suo-rt-pbt-code">MBPJ</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Petaling Jaya 1 (RTPJ1) (Pengubahan 4)</li><li>Rancangan Tempatan Petaling Jaya 2 (RTPJ2) (Pengubahan 3)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBPJ" aria-label="Lihat lokasi pejabat MBPJ di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
 <details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">03</span><span class="suo-rt-pbt-visual"><img alt="Logo MBSJ" src="./MBSJ.png" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Subang Jaya</span><span class="suo-rt-pbt-code">MBSJ</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Subang Jaya 2035 (Penggantian)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBSJ" aria-label="Lihat lokasi pejabat MBSJ di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
@@ -6863,7 +6907,7 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
    <div class="rr04-functions"><article><span>01</span><h6>Panduan Kawalan dan Perancangan</h6><p>Panduan terperinci dalam kawalan dan perancangan bagi kawasan yang telah dikhaskan.</p></article><article><span>02</span><h6>Alat Pembangunan Teratur</h6><p>Alat pembangunan yang teratur mengikut prosedur yang telah ditetapkan.</p></article></div>
    <div class="rr04-heading"><span class="rr04-heading-icon" aria-hidden="true">✦</span><div><small>SENARAI PBT SELANGOR BAGI RKK</small><h6>Pihak Berkuasa Tempatan</h6></div><span class="rr04-pill">06 PBT</span></div>
    <div class="rr04-directory-adopted" id="rr04-rkk-directory-2026" aria-label="Senarai Rancangan Kawasan Khas mengikut 6 PBT">
- <p class="rr04-directory-instruction">Klik nama PBT untuk membuka senarai RKK seperti dalam Bab 02. Pilih <strong>Lihat Lokasi PBT di Peta</strong> untuk meneroka lokasi pejabat melalui peta 3D.</p>
+ <p class="rr04-directory-instruction rr04-directory-instruction-highlight" role="note"><span class="rr04-instruction-kicker"><span class="rr04-instruction-beacon" aria-hidden="true">✦</span> PANDUAN INTERAKTIF · RKK</span><span class="rr04-instruction-message"><strong>Klik nama PBT</strong> untuk membuka senarai RKK seperti dalam Bab 02. Pilih <strong>Lihat Lokasi PBT di Peta</strong> untuk meneroka lokasi pejabat melalui peta 3D.</span></p>
  <div class="suo-rt-directory-grid"><details class="suo-rt-pbt-item suo-rkk-pbt-item" name="rr04-rkk-pbt"><summary><span class="suo-rt-pbt-number">01</span><span class="suo-rt-pbt-visual"><img src="./MBPJ%20(1).png" alt="Logo MBPJ" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Petaling Jaya</span><span class="suo-rt-pbt-code">MBPJ</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN KAWASAN KHAS</span><ul><li>Rancangan Kawasan Khas Seksyen 13 Petaling Jaya</li><li>Rancangan Kawasan Khas Seksyen 13 Petaling Jaya (Pengubahan 1)</li><li>Rancangan Kawasan Khas Seksyen 19, 51, 51A, Petaling Jaya</li><li>Rancangan Kawasan Khas Kwasaland Petaling Jaya</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBPJ" aria-label="Lihat lokasi pejabat MBPJ di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
 <details class="suo-rt-pbt-item suo-rkk-pbt-item" name="rr04-rkk-pbt"><summary><span class="suo-rt-pbt-number">02</span><span class="suo-rt-pbt-visual"><img src="https://www.mbdk.gov.my/sites/default/files/media/image/2024-02/logo-mbdk.png" alt="Logo MBDK" loading="lazy" data-pbt="MBDK" onerror="suoRkkLogoFallback(this)"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Diraja Klang</span><span class="suo-rt-pbt-code">MBDK</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN KAWASAN KHAS</span><ul><li>Rancangan Kawasan Khas Bandar Pelabuhan Klang 2015</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBDK" aria-label="Lihat lokasi pejabat MBDK di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
 <details class="suo-rt-pbt-item suo-rkk-pbt-item" name="rr04-rkk-pbt"><summary><span class="suo-rt-pbt-number">03</span><span class="suo-rt-pbt-visual"><img src="./MPKj.png" alt="Logo MPKj" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Kajang</span><span class="suo-rt-pbt-code">MPKj</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN KAWASAN KHAS</span><ul><li>Draf RKK Kampung Sg. Ramal dalam Kajang 2020</li><li>Rancangan Kawasan Khas Pusat Bandar Kajang</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPKj" aria-label="Lihat lokasi pejabat MPKj di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
