@@ -6659,6 +6659,65 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 @media(max-width:480px){#statistik-pembangunan .suo-geo-districts{grid-template-columns:repeat(2,minmax(0,1fr))}#statistik-pembangunan .suo-geo-map-tools{padding:10px}#statistik-pembangunan .suo-geo-map-tools>div{gap:3px}#statistik-pembangunan .suo-geo-map-tools button{padding:6px 8px}#statistik-pembangunan .suo-geo-stage>.spatial-glass-panel{width:180px}#statistik-pembangunan .suo-geo-stage>.spatial-glass-panel .map-stat-item strong{font-size:21px}}
 @media(prefers-reduced-motion:reduce){#statistik-pembangunan .suo-geo-stage button{transition:none;transform:none!important}}
 </style>
+<style id="suo-bab04-rt-rkk-canvas-card-separation-2026">
+/* Bab 04 > RT dan RKK SAHAJA.
+   Latar seksi berwarna lembut, kad isi putih/krim dengan sempadan jelas.
+   Tidak mengubah geometri, teks, grafik, keadaan tab, atau animasi sedia ada. */
+#panel-3 #bento-3-0 #rr04 #rr04-pane-rt{
+  --rr04-card-border:#D9B2A5;
+  --rr04-card-shadow:0 9px 24px rgba(132,73,62,.115);
+  --rr04-card-hover:#B77C6B;
+  background:linear-gradient(152deg,#F5E0DC 0%,#FBEFEA 51%,#F2DCD6 100%)!important;
+}
+#panel-3 #bento-3-0 #rr04 #rr04-pane-rkk{
+  --rr04-card-border:#A8C8DB;
+  --rr04-card-shadow:0 9px 24px rgba(44,76,113,.12);
+  --rr04-card-hover:#719FBE;
+  background:linear-gradient(152deg,#D9EFF2 0%,#EAF5F8 49%,#E1E6F3 100%)!important;
+}
+/* Lapisan bekas kumpulan perlu kekal lutsinar, supaya warna latar sebenar kelihatan. */
+#panel-3 #bento-3-0 #rr04 :is(#rr04-pane-rt,#rr04-pane-rkk) :is(.rr04-details,.rr04-functions,.rr04-directory-shell,.rr04-directory-adopted){
+  background:transparent!important;
+}
+/* Pisahkan KAD daripada latar. Kekalkan saiz, kedudukan dan gerakan asal. */
+#panel-3 #bento-3-0 #rr04 :is(#rr04-pane-rt,#rr04-pane-rkk)
+:is(.rr04-panel-head,.rr04-feature,.rr04-functions article,.rr04-flow-node,.rr04-pbt li,
+.suo-rt-pbt-item,.rr04-directory-intro,.rr04-directory-summary){
+  background:#FFFEFC!important;
+  background-image:none!important;
+  border-color:var(--rr04-card-border)!important;
+  box-shadow:var(--rr04-card-shadow)!important;
+}
+/* Kad nombor dan nota perundangan masih boleh dikenal pasti tetapi tidak bercampur
+   dengan latar induk. */
+#panel-3 #bento-3-0 #rr04 #rr04-pane-rt :is(.rr04-stat,.rr04-law,.rr04-note,.rr04-directory-instruction){
+  background:#FFF9F5!important;
+  background-image:none!important;
+  border-color:#D9B2A5!important;
+  box-shadow:0 7px 20px rgba(132,73,62,.08)!important;
+}
+#panel-3 #bento-3-0 #rr04 #rr04-pane-rkk :is(.rr04-stat,.rr04-law,.rr04-note,.rr04-directory-instruction){
+  background:#F8FCFF!important;
+  background-image:none!important;
+  border-color:#A8C8DB!important;
+  box-shadow:0 7px 20px rgba(44,76,113,.085)!important;
+}
+/* Sempadan kad bertindak balas pada hover; animasi hover asal kekal. */
+#panel-3 #bento-3-0 #rr04 :is(#rr04-pane-rt,#rr04-pane-rkk)
+:is(.rr04-feature,.rr04-functions article,.rr04-flow-node,.rr04-pbt li,.suo-rt-pbt-item):hover{
+  border-color:var(--rr04-card-hover)!important;
+  box-shadow:0 13px 28px rgba(69,66,77,.14)!important;
+}
+/* Kandungan details direktori mestilah kekal berbeza daripada kad utama. */
+#panel-3 #bento-3-0 #rr04 #rr04-pane-rt .suo-rt-pbt-documents{
+  background:#FFF8F4!important;
+  border-top-color:#E7C6B9!important;
+}
+#panel-3 #bento-3-0 #rr04 #rr04-pane-rkk .suo-rt-pbt-documents{
+  background:#F4FAFE!important;
+  border-top-color:#B8D7E5!important;
+}
+</style>
 </head>
 <body>
 
