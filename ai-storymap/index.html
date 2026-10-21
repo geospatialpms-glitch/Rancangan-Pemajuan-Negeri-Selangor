@@ -6718,6 +6718,65 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
   border-top-color:#B8D7E5!important;
 }
 </style>
+<style id="suo-main-geo-pbt-building-3d-2026">
+/* Terhad kepada peta utama Jelajah Spatial Selangor. Tiada perubahan CSS bahagian lain. */
+#statistik-pembangunan #selangorLeafletMap>#suo-geo-office-3d{
+ position:absolute;inset:0;z-index:1200;overflow:hidden;
+ background:linear-gradient(150deg,#dce7e1,#cddae3);
+ color:#553349;font-family:'Plus Jakarta Sans',Arial,sans-serif;
+}
+#statistik-pembangunan #suo-geo-office-3d[hidden]{display:none!important}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-canvas{position:absolute;inset:0;width:100%;height:100%}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-heading{
+ position:absolute;top:13px;left:13px;right:67px;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:10px;
+ background:rgba(255,251,244,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border:1px solid rgba(224,196,172,.95);border-radius:15px;padding:11px 13px;
+ box-shadow:0 10px 30px rgba(36,33,40,.15);pointer-events:auto;
+}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-heading strong{display:block;color:#5f2e43;font-size:12px;line-height:1.45}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-heading small{display:block;color:#725960;font-size:10px;line-height:1.5;font-weight:650}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-close{
+ appearance:none;border:1px solid #d6b6a2;background:#672d44;color:#fff;font-weight:850;
+ border-radius:11px;cursor:pointer;padding:10px 12px;font-size:11px;white-space:nowrap;
+}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-close:hover{background:#84425b}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-controls{
+ position:absolute;z-index:8;bottom:32px;left:12px;display:flex;flex-wrap:wrap;gap:5px;
+ max-width:calc(100% - 25px);padding:8px;border-radius:13px;border:1px solid #e8d4c2;
+ background:rgba(255,251,244,.95);backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);
+ box-shadow:0 8px 27px rgba(30,34,40,.16);
+}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-controls button{
+ appearance:none;padding:8px 11px;border:1px solid #e3ccbb;border-radius:999px;
+ background:#fff;color:#613447;font-size:11px;font-weight:850;cursor:pointer;
+}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-controls button[aria-pressed="true"]{background:#673047;color:#fff;border-color:#673047}
+#statistik-pembangunan #suo-geo-office-3d button:focus-visible{outline:3px solid #d7ae72;outline-offset:2px}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-error{
+ position:absolute;inset:auto 13px 84px;z-index:9;background:#fffaf3;border:1px solid #deb997;
+ border-radius:11px;padding:10px 12px;color:#673047;font-size:12px;
+}
+#statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-error[hidden]{display:none!important}
+#statistik-pembangunan #suo-geo-office-3d .maplibregl-popup-content{
+ border-radius:13px;padding:12px 15px;color:#643b4c;font-size:11px;line-height:1.6;
+ box-shadow:0 7px 23px rgba(46,35,45,.18)
+}
+#statistik-pembangunan #suo-geo-office-3d .maplibregl-popup-close-button{font-size:16px;padding:3px 7px}
+#statistik-pembangunan .suo-geo-pbts button[aria-pressed="true"]{
+ box-shadow:0 0 0 2px rgba(216,172,109,.42),0 4px 12px rgba(92,48,72,.16);
+}
+@media(max-width:700px){
+ #statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-heading{right:55px;top:7px;left:7px;padding:8px}
+ #statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-heading strong{font-size:11px}
+ #statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-heading small{font-size:9px}
+ #statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-close{padding:8px;font-size:10px}
+ #statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-controls{left:6px;bottom:27px;padding:6px}
+ #statistik-pembangunan #suo-geo-office-3d .suo-geo-3d-controls button{padding:7px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ #statistik-pembangunan #suo-geo-office-3d button{transition:none!important}
+}
+</style>
 </head>
 <body>
 
@@ -9839,9 +9898,9 @@ function listPBT(){
  current.forEach(function(row){const b=el('button');b.type='button';b.dataset.pbt=row[0];b.appendChild(el('b',row[0]));b.appendChild(el('span',row[1]));b.addEventListener('click',function(){choosePBT(row[0],true)});pbtList.appendChild(b)});
  sync();
 }
-function choosePBT(code,move){const row=offices.find(function(o){return o[0]===code});if(!row)return;selectedCode=code;selectedDistrict=row[2];listPBT();showDocs(row);sync();if(map&&move&&markers[code]){map.setView(markers[code].getLatLng(),10,{animate:true});markers[code].openPopup()}}
-function chooseDistrict(name,move){selectedDistrict=name;selectedCode=null;listPBT();header.textContent='Daerah '+label(name);info.textContent='Pilih PBT dalam daerah ini untuk melihat dokumen RT dan RKK.';docsNode.replaceChildren();if(map&&move&&polygons[name]){map.fitBounds(polygons[name].getBounds(),{padding:[30,30],maxZoom:10});polygons[name].openPopup()}}
-function reset(){selectedDistrict=null;selectedCode=null;listPBT();header.textContent='Pilih PBT untuk melihat RT & RKK';info.textContent='Senarai dokumen dipautkan terus kepada Bab 04.';docsNode.replaceChildren();if(map&&bounds){map.closePopup();map.fitBounds(bounds,{padding:[25,25]})}}
+function choosePBT(code,move){const row=offices.find(function(o){return o[0]===code});if(!row)return;selectedCode=code;selectedDistrict=row[2];listPBT();showDocs(row);sync();if(map&&move&&markers[code]){map.flyTo(markers[code].getLatLng(),16,{animate:true,duration:1.1});markers[code].openPopup()}window.dispatchEvent(new CustomEvent('suo:geo-office-selected',{detail:{code:row[0],name:row[1],lat:row[3],lng:row[4]}}))}
+function chooseDistrict(name,move){window.dispatchEvent(new Event('suo:geo-return-to-2d'));selectedDistrict=name;selectedCode=null;listPBT();header.textContent='Daerah '+label(name);info.textContent='Pilih PBT dalam daerah ini untuk melihat dokumen RT dan RKK.';docsNode.replaceChildren();if(map&&move&&polygons[name]){map.fitBounds(polygons[name].getBounds(),{padding:[30,30],maxZoom:10});polygons[name].openPopup()}}
+function reset(){window.dispatchEvent(new Event('suo:geo-return-to-2d'));selectedDistrict=null;selectedCode=null;listPBT();header.textContent='Pilih PBT untuk melihat RT & RKK';info.textContent='Senarai dokumen dipautkan terus kepada Bab 04.';docsNode.replaceChildren();if(map&&bounds){map.closePopup();map.fitBounds(bounds,{padding:[25,25]})}}
 async function setup(){
  try{
   if(!window.L)throw Error('Pustaka peta Leaflet belum dimuatkan');
@@ -9873,6 +9932,119 @@ async function setup(){
 }
 let tries=0;function init(){if(window.L){setup();return}if(tries++>28){if(load)load.textContent='Pustaka peta tidak tersedia. Sila muat semula halaman.';return}setTimeout(init,250)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<script id="suo-main-geo-pbt-building-3d-controller-2026">
+/* Pratonton bangunan 3D hanya dalam peta utama; Leaflet dan data RT/RKK kekal. */
+(function(){
+ 'use strict';
+ const host=document.getElementById('selangorLeafletMap');
+ const app=document.getElementById('suo-geo-app');
+ if(!host||!app)return;
+ const overlay=document.createElement('section');
+ overlay.id='suo-geo-office-3d';overlay.hidden=true;
+ overlay.setAttribute('aria-label','Paparan 3D bangunan di sekitar pejabat PBT');
+ overlay.innerHTML='<div class="suo-geo-3d-canvas" aria-label="Peta interaktif tiga dimensi"></div>'+
+ '<div class="suo-geo-3d-heading"><div><strong id="suo-geo-3d-title">Paparan Bangunan 3D</strong>'+
+ '<small id="suo-geo-3d-subtitle">Lokasi rujukan pejabat PBT · Data bangunan mengikut liputan peta</small></div>'+
+ '<button type="button" class="suo-geo-3d-close" aria-label="Kembali ke peta 2D">↩ Peta 2D</button></div>'+
+ '<div class="suo-geo-3d-controls" role="group" aria-label="Kawalan peta 3D">'+
+ '<button type="button" data-suo-3d-base="satellite" aria-pressed="true">◉ Satelit</button>'+
+ '<button type="button" data-suo-3d-base="streets" aria-pressed="false">▤ Peta Jalan</button>'+
+ '<button type="button" class="suo-geo-3d-refocus">⌖ Fokus PBT</button></div>'+
+ '<p class="suo-geo-3d-error" role="status" hidden></p>';
+ host.appendChild(overlay);
+ if(window.L&&window.L.DomEvent){
+  window.L.DomEvent.disableClickPropagation(overlay);
+  window.L.DomEvent.disableScrollPropagation(overlay);
+ }
+ const canvas=overlay.querySelector('.suo-geo-3d-canvas');
+ const title=overlay.querySelector('#suo-geo-3d-title');
+ const subtitle=overlay.querySelector('#suo-geo-3d-subtitle');
+ const error=overlay.querySelector('.suo-geo-3d-error');
+ const prefersReduced=function(){return window.matchMedia('(prefers-reduced-motion: reduce)').matches};
+ let view=null,loaded=false,selected=null,pin=null,base='satellite',satelliteReady=false,initializing=false;
+ function safe(s){const span=document.createElement('span');span.textContent=String(s);return span.innerHTML}
+ function showError(msg){error.textContent=msg;error.hidden=false}
+ function hideError(){error.hidden=true;error.textContent=''}
+ function addImagery(){
+  if(view.getSource('suo-geo-3d-satellite'))return;
+  view.addSource('suo-geo-3d-satellite',{type:'raster',tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],tileSize:256,maxzoom:18,attribution:'Imagery © Esri and contributors'});
+  const label=(view.getStyle().layers||[]).find(function(layer){return layer.type==='symbol'});
+  view.addLayer({id:'suo-geo-3d-satellite',type:'raster',source:'suo-geo-3d-satellite',layout:{visibility:base==='satellite'?'visible':'none'}},label&&label.id);
+  satelliteReady=true;
+ }
+ function addBuildings(){
+  try{
+   if(!view.getSource('suo-geo-3d-buildings'))view.addSource('suo-geo-3d-buildings',{type:'vector',url:'https://tiles.openfreemap.org/planet'});
+   if(view.getLayer('suo-geo-3d-extrusions'))return;
+   const label=(view.getStyle().layers||[]).find(function(layer){return layer.type==='symbol'&&layer.layout&&layer.layout['text-field']});
+   view.addLayer({id:'suo-geo-3d-extrusions',type:'fill-extrusion',source:'suo-geo-3d-buildings','source-layer':'building',minzoom:14,
+    filter:['!=',['get','hide_3d'],true],
+    paint:{'fill-extrusion-color':'#c7b5a6','fill-extrusion-opacity':0.91,
+      'fill-extrusion-height':['interpolate',['linear'],['zoom'],14,0,16,['coalesce',['get','render_height'],['get','height'],12]],
+      'fill-extrusion-base':['coalesce',['get','render_min_height'],0]}},label&&label.id);
+  }catch(err){console.warn('Lapisan bangunan 3D mungkin tidak tersedia untuk lokasi ini',err)}
+ }
+ function updateBase(type){
+  base=type;
+  overlay.querySelectorAll('[data-suo-3d-base]').forEach(function(btn){
+   btn.setAttribute('aria-pressed',String(btn.dataset.suo3dBase===type));
+  });
+  if(view&&loaded&&satelliteReady&&view.getLayer('suo-geo-3d-satellite')){
+   view.setLayoutProperty('suo-geo-3d-satellite','visibility',type==='satellite'?'visible':'none');
+  }
+ }
+ function focus(){
+  if(!view||!loaded||!selected)return;
+  const lng=selected.lng,lat=selected.lat;
+  view.flyTo({center:[lng,lat],zoom:17.7,pitch:65,bearing:24,duration:prefersReduced()?0:1500,essential:true});
+  if(pin){pin.remove();pin=null}
+  const mark=document.createElement('div');
+  mark.style.cssText='width:19px;height:19px;background:#b7774f;border:4px solid #fff8e7;border-radius:50%;box-shadow:0 0 0 4px rgba(192,136,81,.38),0 6px 14px rgba(43,31,34,.35)';
+  pin=new window.maplibregl.Marker({element:mark,anchor:'center'}).setLngLat([lng,lat])
+    .setPopup(new window.maplibregl.Popup({offset:18,maxWidth:'260px'}).setHTML('<b>'+safe(selected.code)+'</b><div>'+safe(selected.name)+'</div><small>Lokasi rujukan pejabat PBT, bukan sempadan pentadbiran.</small>')).addTo(view);
+ }
+ function createMap(){
+  if(view||initializing)return;
+  if(!window.maplibregl){showError('Peta 3D tidak dapat dibuka kerana pustaka peta belum tersedia. Gunakan Peta 2D sementara waktu.');return}
+  initializing=true;
+  try{
+   view=new window.maplibregl.Map({container:canvas,style:'https://tiles.openfreemap.org/styles/liberty',
+    center:[selected.lng,selected.lat],zoom:14,pitch:54,bearing:24,maxPitch:85,
+    antialias:true,dragPan:true,dragRotate:true,touchPitch:true,scrollZoom:true});
+   view.addControl(new window.maplibregl.NavigationControl({visualizePitch:true}),'top-right');
+   view.on('load',function(){
+    loaded=true;initializing=false;
+    try{addImagery()}catch(e){console.warn('Imej satelit tidak tersedia',e);updateBase('streets')}
+    addBuildings();view.resize();focus();
+   });
+   view.on('error',function(evt){if(!loaded&&evt&&evt.error)showError('Paparan 3D sedang mengalami gangguan. Gunakan Peta 2D jika diperlukan.')});
+  }catch(ex){initializing=false;view=null;showError('Paparan 3D gagal dimuatkan. Peta 2D masih tersedia.')}
+ }
+ function open(point){
+  if(!point||!Number.isFinite(point.lat)||!Number.isFinite(point.lng))return;
+  selected=point;
+  title.textContent='Lokasi Pejabat '+point.code+' · Pandangan 3D';
+  subtitle.textContent=point.name+' · Titik rujukan pejabat PBT, bukan sempadan';
+  hideError();overlay.hidden=false;
+  if(!view)createMap();
+  requestAnimationFrame(function(){
+   if(view){view.resize();focus()}
+  });
+ }
+ function close(){
+  overlay.hidden=true;
+  if(view)view.stop();
+ }
+ window.addEventListener('suo:geo-office-selected',function(evt){open(evt.detail)});
+ window.addEventListener('suo:geo-return-to-2d',close);
+ overlay.querySelector('.suo-geo-3d-close').addEventListener('click',close);
+ overlay.querySelector('.suo-geo-3d-refocus').addEventListener('click',focus);
+ overlay.querySelectorAll('[data-suo-3d-base]').forEach(function(btn){
+  btn.addEventListener('click',function(){updateBase(btn.dataset.suo3dBase)});
+ });
+ document.addEventListener('keydown',function(evt){if(evt.key==='Escape'&&!overlay.hidden)close()});
 })();
 </script>
 </body>
