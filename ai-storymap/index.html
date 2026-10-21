@@ -6411,6 +6411,24 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 
 /* Paparan responsif sedia ada, animasi sedia ada dan keadaan hidden tidak disentuh. */
 </style>
+<style id="rsn03-cinematic-viewport-autoplay-css-2026">
+/* Bab 03 / Topik Pengenalan / Spotlight only. */
+#panel-2 #bento-2-0 .rsn03-spotlight{width:100%;max-width:100%;margin:0 0 31px;padding:8px;border-radius:26px;box-shadow:0 22px 52px rgba(82,59,38,.13)}
+#panel-2 #bento-2-0 .rsn03-spotlight-cover{display:block;width:100%;height:clamp(550px,calc(100svh - 176px),940px);min-height:550px;border-radius:19px;overflow:hidden}
+#panel-2 #bento-2-0 .rsn03-ambient-preview{position:absolute;inset:0;z-index:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transform:scale(1.025);filter:brightness(.76) saturate(.9);pointer-events:none;transition:opacity .8s ease,transform 9s linear}
+#panel-2 #bento-2-0 .rsn03-spotlight.is-preview-ready .rsn03-ambient-preview{opacity:1}
+#panel-2 #bento-2-0 .rsn03-spotlight.is-preview-playing .rsn03-ambient-preview{transform:scale(1.065)}
+#panel-2 #bento-2-0 .rsn03-spotlight-cover>img{z-index:0}
+#panel-2 #bento-2-0 .rsn03-shade{z-index:1;pointer-events:none}
+#panel-2 #bento-2-0 .rsn03-spotlight-label,#panel-2 #bento-2-0 .rsn03-play,#panel-2 #bento-2-0 .rsn03-spotlight-copy{z-index:2}
+#panel-2 #bento-2-0 .rsn03-play{top:45%;width:clamp(75px,7vw,99px);height:clamp(75px,7vw,99px);transition:transform .34s ease,background .34s ease,box-shadow .34s ease}
+#panel-2 #bento-2-0 .rsn03-spotlight-cover:hover .rsn03-play{transform:translate(-50%,-50%) scale(1.09);background:rgba(255,250,235,.25);box-shadow:0 0 0 15px rgba(245,213,157,.10),0 0 38px rgba(230,177,83,.27)}
+#panel-2 #bento-2-0 .rsn03-spotlight-copy{max-width:min(890px,84%);bottom:clamp(25px,4vw,58px)}
+#panel-2 #bento-2-0 .rsn03-spotlight-copy strong{font-size:clamp(24px,3.25vw,49px)}
+@media(max-width:850px){#panel-2 #bento-2-0 .rsn03-spotlight-cover{height:clamp(470px,76svh,730px);min-height:470px}#panel-2 #bento-2-0 .rsn03-play{top:41%}#panel-2 #bento-2-0 .rsn03-spotlight-copy{max-width:90%}}
+@media(max-width:640px){#panel-2 #bento-2-0 .rsn03-spotlight{padding:6px;border-radius:20px}#panel-2 #bento-2-0 .rsn03-spotlight-cover{height:clamp(460px,72svh,650px);min-height:460px;border-radius:15px}#panel-2 #bento-2-0 .rsn03-play{top:39%;width:68px;height:68px}#panel-2 #bento-2-0 .rsn03-spotlight-copy{left:19px;right:19px;bottom:24px;max-width:calc(100% - 38px)}#panel-2 #bento-2-0 .rsn03-spotlight-copy strong{font-size:clamp(21px,5.2vw,28px)}}
+@media(prefers-reduced-motion:reduce){#panel-2 #bento-2-0 .rsn03-ambient-preview{transition:none!important;transform:none!important}#panel-2 #bento-2-0 .rsn03-spotlight-cover:hover .rsn03-play{transform:translate(-50%,-50%)}}
+</style>
 </head>
 <body>
 
@@ -6970,12 +6988,13 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 <section id="rsn-bab03-video-spotlight-2026" class="rsn03-spotlight" aria-label="Video Spotlight Bab 03" data-video-src="" data-video-embed="">
  <button class="rsn03-spotlight-cover" id="rsn03-open-video" type="button" aria-haspopup="dialog" aria-controls="rsn03-video-dialog" aria-label="Buka Video Spotlight Rancangan Struktur Negeri Selangor 2035">
   <img src="./bab03-ai.png" alt="" loading="lazy" decoding="async">
+  <video class="rsn03-ambient-preview" muted loop playsinline preload="metadata" poster="./bab03-ai.png" aria-hidden="true" tabindex="-1" disablepictureinpicture><source src="./VIDEO%20MAIN%20PAGE%204.mp4" type="video/mp4"></video>
   <span class="rsn03-shade" aria-hidden="true"></span>
   <span class="rsn03-spotlight-label"><span class="rsn03-led" aria-hidden="true"></span> VIDEO SPOTLIGHT · TAKLIMAT UTAMA</span>
   <span class="rsn03-play" aria-hidden="true">▶</span>
   <span class="rsn03-spotlight-copy"><span>BAB 03 · PAPARAN VISUAL</span><strong>RS Negeri Selangor 2035 (Pengubahan)</strong><small>Hala tuju strategik, perancangan spatial dan masa depan Negeri Selangor.</small></span>
  </button>
- <div class="rsn03-spotlight-footer"><span>✦ Taklimat visual perancangan negeri</span><span>VIDEO BELUM DITERBITKAN</span></div>
+ <div class="rsn03-spotlight-footer"><span>✦ Taklimat visual perancangan negeri</span><span>PRATONTON VISUAL · TAKLIMAT RASMI BELUM DITERBITKAN</span></div>
 </section>
 <dialog class="rsn03-video-dialog" id="rsn03-video-dialog" aria-labelledby="rsn03-dialog-title">
  <div class="rsn03-dialog-head"><div><small>VIDEO SPOTLIGHT · BAB 03</small><strong id="rsn03-dialog-title">RS Negeri Selangor 2035 (Pengubahan)</strong></div><button type="button" class="rsn03-dialog-close" aria-label="Tutup video">✕</button></div>
@@ -9416,6 +9435,61 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
    if(event.key==='Escape'){event.preventDefault();flip(false,true);}
   });
  });
+})();
+</script>
+<script id="rsn03-cinematic-viewport-autoplay-js-2026">
+/* Homepage footage is an ambient illustration only. Bab 03 official briefing remains unpublished. */
+(function(){
+ 'use strict';
+ const root=document.getElementById('rsn-bab03-video-spotlight-2026');
+ if(!root)return;
+ const preview=root.querySelector('.rsn03-ambient-preview');
+ const dialog=document.getElementById('rsn03-video-dialog');
+ const button=root.querySelector('#rsn03-open-video');
+ if(!preview||!dialog||!button)return;
+ preview.muted=true;preview.defaultMuted=true;preview.loop=true;preview.playsInline=true;
+ const motion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
+ const reduced=function(){return !!(motion&&motion.matches);};
+ let inView=false;
+ function mayPlay(){
+  const chapter=root.closest('.content-panel'),topic=root.closest('.suo-bento-topic');
+  if(document.hidden||dialog.open||reduced()||!inView)return false;
+  if(chapter&&!chapter.classList.contains('active'))return false;
+  if(topic&&!topic.classList.contains('active'))return false;
+  const rect=root.getBoundingClientRect();
+  return rect.width>0&&rect.height>0&&rect.bottom>0&&rect.top<window.innerHeight;
+ }
+ function sync(){
+  if(!mayPlay()){preview.pause();root.classList.remove('is-preview-playing');return;}
+  const attempt=preview.play();
+  if(attempt&&typeof attempt.then==='function')attempt.then(function(){
+   if(mayPlay())root.classList.add('is-preview-playing');
+   else preview.pause();
+  }).catch(function(){root.classList.remove('is-preview-playing');});
+ }
+ preview.addEventListener('loadeddata',function(){root.classList.add('is-preview-ready');});
+ preview.addEventListener('error',function(){root.classList.remove('is-preview-ready','is-preview-playing');preview.pause();});
+ preview.addEventListener('pause',function(){root.classList.remove('is-preview-playing');});
+ button.addEventListener('click',function(){preview.pause();root.classList.remove('is-preview-playing');});
+ dialog.addEventListener('close',sync);
+ document.addEventListener('visibilitychange',sync);
+ window.addEventListener('pageshow',sync);
+ if(motion&&motion.addEventListener)motion.addEventListener('change',sync);
+ if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(function(entries){
+   entries.forEach(function(entry){if(entry.target!==root)return;inView=entry.isIntersecting&&entry.intersectionRatio>=.28;sync();});
+  },{threshold:[0,.15,.28,.42,.65],rootMargin:'0px 0px -4% 0px'});
+  io.observe(root);
+ }else{
+  const check=function(){const r=root.getBoundingClientRect();inView=r.height>0&&r.bottom>window.innerHeight*.15&&r.top<window.innerHeight*.8;sync();};
+  window.addEventListener('scroll',check,{passive:true});window.addEventListener('resize',check,{passive:true});check();
+ }
+ if('MutationObserver' in window){
+  const observer=new MutationObserver(sync);
+  const chapter=root.closest('.content-panel'),topic=root.closest('.suo-bento-topic');
+  if(chapter)observer.observe(chapter,{attributes:true,attributeFilter:['class','aria-hidden']});
+  if(topic)observer.observe(topic,{attributes:true,attributeFilter:['class','hidden']});
+ }
 })();
 </script>
 </body>
