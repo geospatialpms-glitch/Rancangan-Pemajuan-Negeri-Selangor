@@ -6261,71 +6261,113 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 /* Fokus kontras sahaja: RT/RKK dalam hierarki Bab 02 dan kandungan Bab 04.
    Tiada struktur HTML, dimensi kad, grafik, animasi atau fungsi diubah. */
 
-/* BAB 02: Pemisahan jelas antara hamparan seksyen dan kad putih. */
+/* BAB 02 ONLY: RSN, RT, RKK and hierarchy choices now match RFN 4.
+   Restore the RFN crimson / soft-rose / cream identity, never blue.
+   Preserve HTML, tab interaction, layout, icons, maps and animations. */
+#panel-1 #bento-1-1{
+ --b02-matched-wine:#612139;
+ --b02-matched-wine-light:#91556d;
+ --b02-matched-rose:#F9E9EB;
+ --b02-matched-cream:#FFFDF9;
+ --b02-matched-line:#E8CDD1;
+ --b02-matched-gold:#C9A253;
+}
+/* Match RFN's maroon section header and comfortable soft pink/cream surrounding stage. */
+#panel-1 #bento-1-1 :is(.suo-bab02-separated-rsn,.suo-bab02-separated-rt,.suo-bab02-separated-rkk){
+ background:linear-gradient(150deg,#FFF9F7 0%,#FBE9EB 100%)!important;
+ border-color:#DEC2C8!important;
+ box-shadow:0 13px 31px rgba(97,33,57,.075)!important;
+}
+#panel-1 #bento-1-1 :is(.suo-bab02-separated-rsn,.suo-bab02-separated-rt,.suo-bab02-separated-rkk) > .suo-bab02-section-divider{
+ background:linear-gradient(115deg,#612139 0%,#78324C 64%,#91556D 100%)!important;
+ background-image:linear-gradient(115deg,#612139 0%,#78324C 64%,#91556D 100%)!important;
+ border-bottom-color:var(--b02-matched-gold)!important;
+}
+#panel-1 #bento-1-1 :is(.suo-bab02-separated-rsn,.suo-bab02-separated-rt,.suo-bab02-separated-rkk) > .suo-bab02-section-divider :is(h3,p){
+ color:#FFF9F2!important;
+}
+#panel-1 #bento-1-1 :is(.suo-bab02-separated-rsn,.suo-bab02-separated-rt,.suo-bab02-separated-rkk) > .suo-bab02-section-divider small{
+ color:#F5DBA7!important;
+}
+#panel-1 #bento-1-1 :is(.suo-bab02-separated-rsn,.suo-bab02-separated-rt,.suo-bab02-separated-rkk) > .suo-bab02-section-divider .suo-bab02-section-num{
+ background:#FFF0E4!important;color:#612139!important;border-color:#E8C782!important;
+}
+/* The RT/RKK document sections use RFN's soft-rose canvas and warm cream cards. */
 #panel-1 #bento-1-1 .suo-bab02-hierarchy,
-#panel-1 #bento-1-1 :is(.suo-bab02-separated-rt,.suo-bab02-separated-rkk),
-#panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026) .suo-rt-section{
-  background:linear-gradient(150deg,#F4F1ED 0%,#EEF3F5 100%)!important;
-  border-color:#D5DEE4!important;
+#panel-1 #bento-1-1 :is(.suo-bab02-separated-rt,.suo-bab02-separated-rkk) :is(.suo-rt-section,.suo-rkk-components),
+#panel-1 #bento-1-1 .suo-bab02-separated-rsn :is(.suo-bab02-rsn-topgrid,.suo-bab02-rsn-map-section,.suo-bab02-rsn-core){
+ background:linear-gradient(150deg,#FFF7F5 0%,#F9E8EB 100%)!important;
+ border-color:var(--b02-matched-line)!important;
 }
 #panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026)
-:is(.suo-rt-intro-card,.suo-rt-law-grid article,.suo-rt-components article,.suo-rt-summary,.suo-rt-pbt-item,.suo-rkk-pbt-item){
-  background:linear-gradient(150deg,#FFFFFF 0%,#FFFCF7 100%)!important;
-  border:1px solid #C6D5DC!important;
-  box-shadow:0 7px 22px rgba(37,74,97,.09)!important;
+:is(.suo-rt-intro-card,.suo-rt-law-grid article,.suo-rt-components article,.suo-rt-summary,.suo-rt-pbt-item,.suo-rkk-pbt-item),
+#panel-1 #bento-1-1 .suo-bab02-separated-rsn
+:is(.suo-bab02-rsn-intro,.suo-bab02-rsn-core-card,.suo-bab02-rsn-mini){
+ background:linear-gradient(150deg,#FFFDF9 0%,#FFF8F5 100%)!important;
+ border-color:var(--b02-matched-line)!important;
+ box-shadow:0 7px 22px rgba(97,33,57,.075)!important;
 }
 #panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026)
-:is(.suo-rt-intro-card,.suo-rt-law-grid article,.suo-rt-components article,.suo-rt-pbt-item,.suo-rkk-pbt-item):hover{
-  border-color:#7FA6B7!important;
-  box-shadow:0 11px 26px rgba(37,74,97,.14)!important;
+:is(.suo-rt-intro-card,.suo-rt-law-grid article,.suo-rt-components article,.suo-rt-pbt-item,.suo-rkk-pbt-item):hover,
+#panel-1 #bento-1-1 .suo-bab02-separated-rsn
+:is(.suo-bab02-rsn-intro,.suo-bab02-rsn-core-card):hover{
+ border-color:#C99AA7!important;
+ box-shadow:0 11px 26px rgba(97,33,57,.115)!important;
+}
+/* Harmonise headings, smaller labels, body text and item details with RFN. */
+#panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026)
+:is(.suo-rt-heading h4,.suo-rt-intro-card h5,.suo-rt-law-grid h5,.suo-rt-components h5,.suo-rt-pbt-name,.suo-rt-summary strong),
+#panel-1 #bento-1-1 .suo-bab02-separated-rsn
+:is(.suo-bab02-rsn-intro h4,.suo-bab02-rsn-core-title h5,.suo-bab02-rsn-mini strong){
+ color:var(--b02-matched-wine)!important;text-shadow:none!important;
 }
 #panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026)
-:is(.suo-rt-heading h4,.suo-rt-intro-card h5,.suo-rt-law-grid h5,.suo-rt-components h5,
-.suo-rt-pbt-name,.suo-rt-summary strong){
-  color:#284D63!important;text-shadow:none!important;
+:is(.suo-rt-heading>span,.suo-rt-card-eyebrow,.suo-rt-doc-label),
+#panel-1 #bento-1-1 .suo-bab02-separated-rsn
+:is(.suo-bab02-rsn-eyebrow,.suo-bab02-rsn-core-kicker){
+ color:#9C6474!important;
 }
 #panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026)
-:is(.suo-rt-heading>span,.suo-rt-card-eyebrow,.suo-rt-doc-label){
-  color:#416A80!important;
-}
-#panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026)
-:is(.suo-rt-intro-card p,.suo-rt-law-grid p,.suo-rt-components p,.suo-rt-heading>p,
-.suo-rt-pbt-documents li,.suo-rt-pbt-documents p){
-  color:#505B61!important;
+:is(.suo-rt-intro-card p,.suo-rt-law-grid p,.suo-rt-components p,.suo-rt-heading>p,.suo-rt-pbt-documents li,.suo-rt-pbt-documents p),
+#panel-1 #bento-1-1 .suo-bab02-separated-rsn
+:is(.suo-bab02-rsn-intro p,.suo-bab02-rsn-core-summary){
+ color:#5D5359!important;
 }
 #panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026) .suo-rt-pbt-item summary{
-  background:transparent!important;
+ background:transparent!important;
 }
 #panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026) .suo-rt-pbt-item:is(:hover,[open]) summary{
-  background:#EDF5F7!important;
+ background:#F8E9E7!important;
 }
 #panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026) .suo-rt-pbt-number{
-  background:#2D648A!important;color:#FFFFFF!important;
-  border-color:#88B0C3!important;text-shadow:none!important;
+ background:#79324B!important;color:#FFF!important;
+ border-color:#D8A8AF!important;text-shadow:none!important;
 }
 #panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026) :is(.suo-rt-pbt-code,.suo-rkk-law-chip){
-  color:#31576C!important;background:#EAF1F5!important;border-color:#C8D8E1!important;
+ color:#703449!important;background:#F9E8EB!important;border-color:#E8CDD1!important;
 }
 #panel-1 #bento-1-1 :is(.suo-rt-2026,.suo-rkk-2026) .suo-rt-pbt-visual{
-  background:#FFFFFF!important;border-color:#D0DEE3!important;
+ background:#FFF!important;border-color:#E7CED3!important;
 }
-
-/* Empat kad hierarki: teks gelap pada kad cerah, putih pada kad aktif. */
+/* All four hierarchy choices: blush cream when idle, RFN maroon when selected. */
 #panel-1 #bento-1-1 .suo-bab02-hierarchy .suo-bab02-level{
-  background:linear-gradient(160deg,#FFFFFF,#F1F6F8)!important;
-  border-color:#BFD1DD!important;
-  box-shadow:0 5px 16px rgba(38,77,104,.07)!important;
+ background:linear-gradient(155deg,#FFFDF9,#F7E9EA)!important;
+ border-color:#DEC3C7!important;
+ box-shadow:0 5px 16px rgba(97,33,57,.07)!important;
 }
 #panel-1 #bento-1-1 .suo-bab02-hierarchy .suo-bab02-level:not([aria-pressed="true"]) :is(small,strong,span){
-  color:#294F68!important;text-shadow:none!important;opacity:1!important;
+ color:#612139!important;text-shadow:none!important;opacity:1!important;
 }
 #panel-1 #bento-1-1 .suo-bab02-hierarchy .suo-bab02-level[aria-pressed="true"]{
-  background:linear-gradient(145deg,#356F92,#285471)!important;
-  border-color:#376B8D!important;
-  box-shadow:0 10px 22px rgba(37,75,101,.17)!important;
+ background:linear-gradient(135deg,#612139,#8D4A64)!important;
+ border-color:#E6BC6E!important;
+ box-shadow:0 10px 22px rgba(97,33,57,.17)!important;
 }
 #panel-1 #bento-1-1 .suo-bab02-hierarchy .suo-bab02-level[aria-pressed="true"] :is(small,strong,span){
-  color:#FFFFFF!important;text-shadow:none!important;opacity:1!important;
+ color:#FFF9F0!important;text-shadow:none!important;opacity:1!important;
+}
+#panel-1 #bento-1-1 .suo-bab02-hierarchy .suo-bab02-level.is-active::after{
+ background:#E9BD6D!important;
 }
 
 /* BAB 04: Latar cream/salmon cair dipisahkan daripada kad maklumat. */
