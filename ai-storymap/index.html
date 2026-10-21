@@ -6138,7 +6138,8 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
  backface-visibility:hidden;-webkit-backface-visibility:hidden;
 }
 #panel-2 #bento-2-0 .rsn03-reading-flip-front{
- align-items:flex-start;justify-content:center;gap:18px;cursor:pointer;
+ align-items:center;justify-content:center;gap:18px;cursor:pointer;
+ text-align:center;
  padding:clamp(23px,3vw,42px);
  background:linear-gradient(148deg,#fffefa 0%,#ffefd4 57%,#e9cca4 100%);
 }
@@ -6161,6 +6162,16 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 #panel-2 #bento-2-0 .rsn03-reading-flip-face h5{
  margin:0!important;color:#6f4b24!important;
  font:800 clamp(21px,2vw,29px)/1.48 'Merriweather',Georgia,serif!important;
+}
+/* Tajuk muka depan dua kad RSN tepat di tengah, tanpa ubah muka belakang. */
+#panel-2 #bento-2-0 .rsn03-reading-flip-front h5{
+ width:100%;max-width:100%;margin-inline:auto!important;text-align:center!important;
+}
+#panel-2 #bento-2-0 .rsn03-reading-flip-front .rsn03-reading-front-hint{
+ width:100%;text-align:center;
+}
+#panel-2 #bento-2-0 .rsn03-reading-flip-front .rsn03-reading-turn{
+ margin-inline:auto;
 }
 #panel-2 #bento-2-0 .rsn03-reading-front-hint{
  color:#795f4c;font-size:13px;line-height:1.6;
@@ -6945,7 +6956,7 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
         <span class="rsn03-reading-card-kicker">RANCANGAN STRUKTUR · 01</span>
         <span class="rsn03-reading-card-symbol" aria-hidden="true">✧</span>
         <h5>Pendahuluan &amp; Keperluan Pengubahan</h5>
-        <span class="rsn03-reading-front-hint">Klik untuk membaca huraian penuh</span>
+        <span class="rsn03-reading-front-hint">Halakan kursor atau ketik untuk membaca huraian penuh</span>
         <button type="button" class="rsn03-reading-turn" aria-expanded="false" aria-controls="rsn03-reading-back-1">Terokai Kandungan <span aria-hidden="true">↗</span></button>
       </div>
       <div class="rsn03-reading-flip-face rsn03-reading-flip-back" id="rsn03-reading-back-1" aria-hidden="true" inert>
@@ -6963,7 +6974,7 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
         <span class="rsn03-reading-card-kicker">RANCANGAN STRUKTUR · 02</span>
         <span class="rsn03-reading-card-symbol" aria-hidden="true">§</span>
         <h5>Definisi Rancangan Struktur · Seksyen 8(3)</h5>
-        <span class="rsn03-reading-front-hint">Klik untuk membaca huraian penuh</span>
+        <span class="rsn03-reading-front-hint">Halakan kursor atau ketik untuk membaca huraian penuh</span>
         <button type="button" class="rsn03-reading-turn" aria-expanded="false" aria-controls="rsn03-reading-back-2">Terokai Kandungan <span aria-hidden="true">↗</span></button>
       </div>
       <div class="rsn03-reading-flip-face rsn03-reading-flip-back" id="rsn03-reading-back-2" aria-hidden="true" inert>
@@ -9320,34 +9331,47 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
  dialog.addEventListener('click',function(e){if(e.target===dialog)dismiss();});
 })();
 </script><script id="rsn03-reading-flip-controller-2026">
-/* Scoped controls: only the two reading cards in Bab 03 > Pengenalan & Latar Belakang. */
+/* Hanya dua kad RSN Bab 03: hover automatik pada desktop; klik/ketik & papan kekunci kekal. */
 (function(){
  'use strict';
  const box=document.querySelector('#panel-2 #bento-2-0 .rsn03-reading-flip-grid');
  if(!box)return;
+ const hoverCapable=window.matchMedia&&window.matchMedia('(hover: hover) and (pointer: fine)');
  box.querySelectorAll('[data-rsn03-reading-flip]').forEach(function(card){
   const front=card.querySelector('.rsn03-reading-flip-front');
   const back=card.querySelector('.rsn03-reading-flip-back');
   const open=card.querySelector('.rsn03-reading-turn');
   const close=card.querySelector('.rsn03-reading-close');
   if(!front||!back||!open||!close)return;
-  function flip(showBack){
+  function flip(showBack,moveFocus){
+   if(card.classList.contains('is-flipped')===showBack)return;
    card.classList.toggle('is-flipped',showBack);
    open.setAttribute('aria-expanded',String(showBack));
    if(showBack){
     front.setAttribute('aria-hidden','true');front.setAttribute('inert','');
     back.removeAttribute('inert');back.setAttribute('aria-hidden','false');
-    close.focus({preventScroll:true});
+    if(moveFocus)close.focus({preventScroll:true});
    }else{
+    // Kembalikan fokus ke butang muka depan hanya bagi tindakan manual.
+    if(moveFocus)open.focus({preventScroll:true});
     back.setAttribute('aria-hidden','true');back.setAttribute('inert','');
     front.removeAttribute('inert');front.setAttribute('aria-hidden','false');
-    open.focus({preventScroll:true});
    }
   }
-  front.addEventListener('click',function(){flip(true);});
-  close.addEventListener('click',function(event){event.stopPropagation();flip(false);});
+  card.addEventListener('pointerenter',function(event){
+   if(hoverCapable&&hoverCapable.matches&&event.pointerType==='mouse')flip(true,false);
+  });
+  card.addEventListener('pointerleave',function(event){
+   if(hoverCapable&&hoverCapable.matches&&event.pointerType==='mouse'){
+    // Jika pengguna sedang menggunakan kawalan keyboard pada muka belakang, jangan tutup.
+    if(back.contains(document.activeElement))return;
+    flip(false,false);
+   }
+  });
+  front.addEventListener('click',function(){flip(true,true);});
+  close.addEventListener('click',function(event){event.stopPropagation();flip(false,true);});
   back.addEventListener('keydown',function(event){
-   if(event.key==='Escape'){event.preventDefault();flip(false);}
+   if(event.key==='Escape'){event.preventDefault();flip(false,true);}
   });
  });
 })();
