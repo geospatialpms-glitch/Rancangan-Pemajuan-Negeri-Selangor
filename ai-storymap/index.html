@@ -4209,6 +4209,102 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 /* Tidak mengubah reka letak, teks, grafik atau susunan kad. */
 .main-section span,.main-section strong,.main-section b,.suo-explore-number{font-variant-numeric:tabular-nums}
 </style>
+<style id="suo-five-chapter-panel-colour-identities-2026">
+/* ONLY the opened chapter content (panel-0..4): colour replacements, no layout changes.
+   BAB 05 remains "Akan Datang"; its palette is reserved without enabling content. */
+#panel-0{
+ --chapter-ink:#245E4B; --chapter-primary:#287A60;
+ --chapter-accent:#58AB8A; --chapter-soft:#CDEADC;
+ --chapter-faint:#E5F3EB; --chapter-rule:#D0E7DC;
+}
+#panel-1{
+ --chapter-ink:#284F7D; --chapter-primary:#356DA2;
+ --chapter-accent:#76A6CC; --chapter-soft:#D6E8F5;
+ --chapter-faint:#EAF3FA; --chapter-rule:#D5E5F1;
+}
+#panel-2{
+ --chapter-ink:#775A32; --chapter-primary:#947343;
+ --chapter-accent:#BC9C66; --chapter-soft:#F1E3C9;
+ --chapter-faint:#FAF3E6; --chapter-rule:#E8DCC5;
+}
+#panel-3{
+ --chapter-ink:#59457F; --chapter-primary:#705694;
+ --chapter-accent:#A18AC4; --chapter-soft:#E6DCF3;
+ --chapter-faint:#F2EDF9; --chapter-rule:#E1D7EE;
+}
+#panel-4{
+ --chapter-ink:#206C75; --chapter-primary:#27828B;
+ --chapter-accent:#64B6BB; --chapter-soft:#D1EBEC;
+ --chapter-faint:#E8F6F5; --chapter-rule:#D0E9E9;
+}
+/* Chapter title, upper identification, and soft colour divider. */
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-intro h3{
+ color:var(--chapter-ink)!important;
+ text-shadow:none!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-intro-eyebrow{
+ color:var(--chapter-primary)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-intro-accent{
+ background:linear-gradient(90deg,var(--chapter-primary),var(--chapter-accent),var(--chapter-soft))!important;
+ box-shadow:0 3px 12px color-mix(in srgb,var(--chapter-accent) 18%,transparent)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-section-divider::before,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-section-divider::after{
+ background:linear-gradient(90deg,transparent,var(--chapter-rule))!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-section-divider span{
+ border-color:var(--chapter-accent)!important;
+ background:var(--chapter-primary)!important;
+}
+/* Chapter card top rule and Atlas header accents; preserve the original surfaces. */
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-card::before{
+ background:linear-gradient(90deg,var(--chapter-primary),var(--chapter-accent),var(--chapter-soft))!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-kicker{
+ color:var(--chapter-primary)!important;
+ border-color:var(--chapter-rule)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-point{
+ background:var(--chapter-primary)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-type,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-index,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-content-label{
+ color:var(--chapter-ink)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-index{
+ border-color:var(--chapter-rule)!important;
+}
+/* Only existing selected topic controls and action-button colours change. */
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn[aria-selected="true"],
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn.chapter-subnav-primary,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-panel-action,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-action{
+ background-color:var(--chapter-primary)!important;
+ border-color:var(--chapter-primary)!important;
+ color:#FFFFFF!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn:not([aria-selected="true"]):not(.chapter-subnav-primary):hover{
+ border-color:var(--chapter-accent)!important;
+ color:var(--chapter-ink)!important;
+}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-panel-action:hover,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-action:hover{
+ background-color:var(--chapter-ink)!important;
+}
+/* Chapter-specific navigation artwork already using background-image. */
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"]::before{
+ background:linear-gradient(90deg,var(--chapter-primary),var(--chapter-accent),var(--chapter-soft))!important;
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-content-label{
+ color:var(--chapter-ink)!important;
+}
+#panel-2 nav.chapter-content-tools[aria-label="Subtopik Bab 03"] .chapter-subnav-btn[aria-selected="true"]{
+ background-image:linear-gradient(135deg,var(--chapter-ink),var(--chapter-primary))!important;
+ border-color:var(--chapter-primary)!important;
+}
+</style>
 </head>
 <body>
 
