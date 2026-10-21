@@ -6923,6 +6923,28 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
  #panel-3 #bento-3-0 #rr04-rt-directory-2026 .rr04-storymap-link{transition:none}
 }
 </style>
+<style id="suo-geo-pbt-logos-only-2026">
+/* Hanya badge di senarai PBT dalam panel Peta Interaktif. */
+#statistik-pembangunan #suo-geo-pbts button .suo-geo-pbt-logo{
+ display:flex;align-items:center;justify-content:center;flex:0 0 38px;
+ width:38px;height:38px;min-width:38px;overflow:hidden;
+ border:1px solid #eadfd2;border-radius:7px;padding:3px;
+ background:#fff;
+}
+#statistik-pembangunan #suo-geo-pbts button .suo-geo-pbt-logo img{
+ display:block;max-width:100%;max-height:100%;
+ width:100%;height:100%;object-fit:contain;
+}
+#statistik-pembangunan #suo-geo-pbts button .suo-geo-pbt-logo img[hidden],
+#statistik-pembangunan #suo-geo-pbts button .suo-geo-pbt-logo b[hidden]{display:none!important}
+#statistik-pembangunan #suo-geo-pbts button .suo-geo-pbt-logo .suo-geo-pbt-logo-fallback{
+ min-width:0;background:transparent;color:#673447;
+ border:0;padding:0;margin:0;font-size:10px;
+}
+#statistik-pembangunan #suo-geo-pbts button[aria-pressed="true"] .suo-geo-pbt-logo{
+ border-color:#dfbd81;background:#fffefb;
+}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -10041,9 +10063,40 @@ function showDocs(row){
  });
 }
 function sync(){districtList.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.district===selectedDistrict))});pbtList.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.pbt===selectedCode))})}
+/* Logo rasmi untuk label PBT dalam panel Peta Interaktif sahaja. */
+const pbtLogos={
+ MBPJ:['./MBPJ%20(1).png','mbpj.gov.my'],
+ MBSA:['./MBSA%201.png','mbsa.gov.my'],
+ MBSJ:['./MBSJ.png','mbsj.gov.my'],
+ MBDK:['https://www.mbdk.gov.my/sites/default/files/media/image/2024-02/logo-mbdk.png','mbdk.gov.my'],
+ MPKj:['./MPKj.png','mpkj.gov.my'],
+ MPAJ:['./MPAJ.png','mpaj.gov.my'],
+ MPS:['https://www.mps.gov.my/themes/custom/mps/img/mps-logo.png','mps.gov.my'],
+ MPSp:['https://pbs.twimg.com/profile_images/1479015755345633281/051QAWtJ.jpg','mpsepang.gov.my'],
+ MPHS:['https://mphs.gov.my/images/mp-hulu-selangor.jpg','mphs.gov.my'],
+ MPKL:['https://www.mpkl.gov.my/images/attachment/Rasional-Logo-MPKL-1.svg','mpkl.gov.my'],
+ MPKS:['https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-original-577x577/s3/092021/mpks_logo.jpg?4Le_1MuHCg87aynB2atG4S2oa5SRQIWC=&itok=VX0eBCA1','mpks.gov.my'],
+ MDSB:['https://3.bp.blogspot.com/-EYPSjZn7Ecc/VeB5hlX1uLI/AAAAAAAAAZ8/VkbGlq_79uc/s1600/LOGO%2BMDSB%2B2015.png','mdsb.gov.my']
+};
+function pbtLogoBadge(code){
+ const slot=el('span');slot.className='suo-geo-pbt-logo';
+ const img=el('img');img.alt='Logo '+code;img.loading='lazy';img.decoding='async';
+ const fallback=el('b',code);fallback.className='suo-geo-pbt-logo-fallback';fallback.hidden=true;
+ const sources=pbtLogos[code]||[];
+ let fallbackAttempted=false;
+ img.addEventListener('error',function(){
+  if(!fallbackAttempted&&sources[1]){
+   fallbackAttempted=true;
+   img.src='https://www.google.com/s2/favicons?domain='+encodeURIComponent(sources[1])+'&sz=128';
+  }else{img.hidden=true;fallback.hidden=false;}
+ });
+ img.src=sources[0]||'';
+ slot.appendChild(img);slot.appendChild(fallback);
+ return slot;
+}
 function listPBT(){
  pbtList.replaceChildren();const current=selectedDistrict?offices.filter(function(o){return o[2]===selectedDistrict}):offices;counter.textContent=current.length+' PBT';
- current.forEach(function(row){const b=el('button');b.type='button';b.dataset.pbt=row[0];b.appendChild(el('b',row[0]));b.appendChild(el('span',row[1]));b.addEventListener('click',function(){choosePBT(row[0],true)});pbtList.appendChild(b)});
+ current.forEach(function(row){const b=el('button');b.type='button';b.dataset.pbt=row[0];b.appendChild(pbtLogoBadge(row[0]));b.appendChild(el('span',row[1]));b.addEventListener('click',function(){choosePBT(row[0],true)});pbtList.appendChild(b)});
  sync();
 }
 function choosePBT(code,move){const row=offices.find(function(o){return o[0]===code});if(!row)return;selectedCode=code;selectedDistrict=row[2];listPBT();showDocs(row);sync();if(map&&move&&markers[code]){map.flyTo(markers[code].getLatLng(),16,{animate:true,duration:1.1});markers[code].openPopup()}window.dispatchEvent(new CustomEvent('suo:geo-office-selected',{detail:{code:row[0],name:row[1],lat:row[3],lng:row[4]}}))}
