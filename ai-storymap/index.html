@@ -5311,7 +5311,130 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 @media(max-width:800px){#panel-3 #bento-3-1 .rr04-directory-layout{grid-template-columns:1fr}#panel-3 #bento-3-1 .rr04-directory-intro,#panel-3 #bento-3-1 .rr04-directory-summary{min-height:0}}
 @media(max-width:480px){#panel-3 #bento-3-1 .rr04-directory-intro,#panel-3 #bento-3-1 .rr04-directory-summary{padding:22px 18px;border-radius:17px}#panel-3 #bento-3-1 .rr04-directory-steps{gap:6px}#panel-3 #bento-3-1 .rr04-directory-steps span{padding:8px;font-size:10px}#panel-3 #bento-3-1 .rr04-directory-orbit{width:70px;height:70px;font-size:40px}}
 @media(prefers-reduced-motion:reduce){#panel-3 #bento-3-1 .rr04-directory-intro,#panel-3 #bento-3-1 .rr04-directory-summary,#panel-3 #bento-3-1 .rr04-directory-orbit{animation:none!important;opacity:1!important;transform:none!important}#panel-3 #bento-3-1 .rr04-directory-button{transition:none!important}}
-</style></head>
+</style><style id="suo-chapter-interior-card-two-tone-gradients-2026">
+/* IMPORTANT: only the information CARD surfaces inside Bab 01–05.
+   The homepage carousel, atlas photos, maps, chapter intro artwork,
+   original layouts and animations are NOT altered. Colours only. */
+#panel-0{--card-top:#E2FBCE;--card-bottom:#076653;--card-ink:#285447;--card-pale:#F6FBEF}
+#panel-1{--card-top:#FFE5F1;--card-bottom:#7226FF;--card-ink:#47356C;--card-pale:#FFF7FB}
+#panel-2{--card-top:#F3F4F5;--card-middle:#FF9408;--card-bottom:#95122C;--card-ink:#753E43;--card-pale:#FFF9F1}
+#panel-3{--card-top:#87F5F5;--card-bottom:#160078;--card-ink:#33376F;--card-pale:#F0FBFC}
+#panel-4{--card-top:#DBE0E1;--card-bottom:#0C342C;--card-ink:#28524A;--card-pale:#F6F8F7}
+:is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4){
+  --card-wash:linear-gradient(180deg,
+    color-mix(in srgb,var(--card-top) 82%,white) 0%,
+    color-mix(in srgb,var(--card-top) 36%,white) 48%,
+    color-mix(in srgb,var(--card-bottom) 25%,white) 100%);
+  --card-outline:color-mix(in srgb,var(--card-bottom) 18%,#e5e1dc);
+}
+#panel-2{
+ --card-wash:linear-gradient(180deg,
+   color-mix(in srgb,#F3F4F5 86%,white) 0%,
+   color-mix(in srgb,#FF9408 15%,white) 50%,
+   color-mix(in srgb,#95122C 23%,white) 100%);
+}
+/* Main chapter pages use a still-lighter gradient. Their content cards get the two-tone wash below. */
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4)>.chapter-content-card{
+ background:linear-gradient(180deg,#fffdfa 0%,color-mix(in srgb,var(--card-top) 13%,white) 58%,#fffaf6 100%)!important;
+ border-color:var(--card-outline)!important;
+}
+/* Two-tone gradient on actual chapter information cards (NOT navigation carousel cards). */
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter01-metrics>div,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-linked-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-land-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-district-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-pbt-summary-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-hierarchy-step,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .ch01-hierarchy-outcome,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .selangor-atlas-mini,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .selangor-atlas-left,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .selangor-atlas-right .selangor-atlas-pbt-head,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-card:not(.suo-bab02-feature),
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-details,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bab02-goal-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-intro-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-summary,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rt-pbt-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rkk-pbt-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-law-tiles article,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-acc-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-goal-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-act172-ref-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-objective-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-2026-timeline>div,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-project-card:not(:first-child),
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-function-tile,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-dual-panel,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-spatial-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-zone-feature-body,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-rsn-document-card,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-narrative,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-law,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-function,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-component,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-asas-item,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-stat,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .lu-official-map-figure,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .suo-bento-tile,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-hero,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-panel-head,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-details,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-stat,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-feature,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-law,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-choice:not(.active),
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-directory-intro,
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-directory-summary{
+ background:var(--card-wash)!important;
+ background-image:var(--card-wash)!important;
+ border-color:var(--card-outline)!important;
+}
+/* Preserve the chapter title area, atlas media, diagrams and all real map tiles. */
+#panel-0 .selangor-atlas-side,
+#panel-0 .selangor-atlas-summary{
+ background:var(--card-wash)!important;border-color:var(--card-outline)!important;
+}
+#panel-1 .suo-rt-law-grid>div,
+#panel-1 .suo-bab02-hierarchy,
+#panel-1 .suo-bab02-law-tiles>div{
+ background:var(--card-wash)!important;border-color:var(--card-outline)!important;
+}
+#panel-2 .suo-rsn-2026-details,
+#panel-2 .suo-rsn-2026-accordions>details,
+#panel-2 .suo-rsn-document-info{
+ background:var(--card-wash)!important;border-color:var(--card-outline)!important;
+}
+#panel-3 .rr04-pane .rr04-pbt,
+#panel-3 .rr04-directory-steps span{
+ background:var(--card-wash)!important;border-color:var(--card-outline)!important;
+}
+/* Legibility on the newly softened cards; retain all original typography/sizing. */
+#panel-3 .rr04-hero h4,#panel-3 .rr04-panel-head h5,
+#panel-3 .rr04-stat>strong,#panel-3 .rr04-directory-intro h4,
+#panel-3 .rr04-directory-summary h5,#panel-3 .rr04-directory-summary .suo-animated-stat,
+#panel-3 .rr04-choice:not(.active),#panel-3 .rr04-feature h5{
+ color:var(--card-ink)!important;
+}
+#panel-3 .rr04-directory-eyebrow,#panel-3 .rr04-directory-eyebrow-small,
+#panel-3 .rr04-eyebrow{
+ color:var(--card-ink)!important;
+}
+/* RT/RKK selection stays interactive and gains the chapter's matching two-tone indigo. */
+#panel-3 .rr04-choice.active{
+ background:linear-gradient(180deg,
+  color-mix(in srgb,var(--card-bottom) 68%,#365487) 0%,
+  var(--card-bottom) 100%)!important;
+ border-color:color-mix(in srgb,var(--card-bottom) 70%,white)!important;
+ color:white!important;
+}
+/* Gradient palettes are muted for long-form reading; no additional animation introduced. */
+@media(prefers-reduced-motion:reduce){
+ .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .rr04-choice{
+   animation:none!important;
+ }
+}
+</style>
+</head>
 <body>
 
 
