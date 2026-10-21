@@ -7611,6 +7611,45 @@ header.header .suo-explore-trigger{
  #suo-dashboard-overview .suo-dash-summary{align-self:center}
  #suo-dashboard-overview .suo-dash-grid{padding-top:23px}
 }
+
+/* 2026-10-22: Reveal existing fixed holographic city/SUO video through the statistics section only. */
+#suo-dashboard-overview{
+  /* The Story Map already has a fixed, animated hologram behind sections.
+     Make this one translucent rather than hiding that video with solid cream. */
+  background-color:transparent;
+  background-image:
+    linear-gradient(180deg,
+      rgba(255,251,247,.20) 0%,
+      rgba(255,249,244,.13) 42%,
+      rgba(255,249,245,.18) 76%,
+      rgba(255,249,245,.29) 100%),
+    radial-gradient(ellipse 65% 48% at 50% 3%,
+      rgba(255,252,248,.23),transparent 82%);
+}
+#suo-dashboard-overview:before{
+  opacity:.12;
+  background-size:64px 64px;
+}
+#suo-dashboard-overview .suo-dash-top{
+  position:relative;
+  z-index:1;
+}
+#suo-dashboard-overview .suo-dash-intro h2,
+#suo-dashboard-overview .suo-dash-intro p{
+  text-shadow:0 1px 0 rgba(255,253,248,.65);
+}
+#suo-dashboard-overview .suo-dash-grid{
+  position:relative;z-index:1;
+}
+#suo-dashboard-overview .suo-dash-card{
+  background:linear-gradient(145deg,rgba(255,254,251,.98),rgba(255,249,243,.97));
+}
+@media(max-width:700px){
+  #suo-dashboard-overview{
+    background-image:linear-gradient(180deg,
+      rgba(255,250,245,.18),rgba(255,250,245,.27));
+  }
+}
 </style>
 </head>
 <body>
