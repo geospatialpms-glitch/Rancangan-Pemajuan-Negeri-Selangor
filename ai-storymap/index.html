@@ -5187,85 +5187,25 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
  background-image:none!important;
 }
 </style>
-<style id="suo-five-navigation-soft-two-tone-gradients-2026">
-/* ONLY the five existing navigation cards in #chapterCarousel.
-   No chapter contents, other dashboard blocks, or maroon branding changes. */
-#chapterCarousel > .tab-btn:is(.chapter-bg-01,.chapter-bg-02,.chapter-bg-03,.chapter-bg-04,.chapter-bg-05){
-  background-repeat:no-repeat!important;
-  background-size:108% 108%,100% 145%!important;
-  background-position:50% 0%,center top!important;
-  border:1.5px solid rgba(255,255,255,.58)!important;
-  box-shadow:0 12px 27px rgba(26,40,45,.13),0 0 0 1px rgba(255,255,255,.22) inset!important;
-  filter:none!important;
-  color:#fffdf8!important;
-  text-shadow:0 2px 3px rgba(15,23,32,.65),0 3px 12px rgba(13,28,35,.34)!important;
-  transition:transform .42s cubic-bezier(.2,.8,.2,1),
-    box-shadow .42s ease,border-color .42s ease,
-    background-position .85s cubic-bezier(.2,.7,.2,1),
-    filter .42s ease!important;
+<style id="suo-chapter-content-soft-two-tone-accent-2026">
+/* Gradient styling ONLY inside opened Bab 01–05; keep photo navigation original. */
+#panel-0{--content-gradient-top:#E2FBCE;--content-gradient-bottom:#076653}
+#panel-1{--content-gradient-top:#FFE5F1;--content-gradient-bottom:#7226FF}
+#panel-2{--content-gradient-top:#F3F4F5;--content-gradient-middle:#FF9408;--content-gradient-bottom:#95122C}
+#panel-3{--content-gradient-top:#87F5F5;--content-gradient-bottom:#160078}
+#panel-4{--content-gradient-top:#DBE0E1;--content-gradient-bottom:#0C342C}
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4)>.chapter-content-card::before{
+ background:linear-gradient(90deg,var(--content-gradient-top),color-mix(in srgb,var(--content-gradient-top) 65%,var(--content-gradient-bottom)) 48%,var(--content-gradient-bottom))!important;
 }
-/* Vertical two-tone colours with a soft, low-contrast organic light wave. */
-#chapterCarousel > .tab-btn.chapter-bg-01{
-  background-color:#076653!important;
-  background-image:
-    radial-gradient(120% 90% at 18% 5%,rgba(255,255,255,.22),transparent 74%),
-    linear-gradient(180deg,#E2FBCE 0%,#D0EFC7 21%,#99CDAE 51%,#438F77 78%,#076653 100%)!important;
-  color:#163F36!important;
-  text-shadow:0 1px 1px rgba(255,255,255,.5),0 1px 10px rgba(255,255,255,.30)!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .atlas-sheet-top{
+ background:linear-gradient(180deg,color-mix(in srgb,var(--content-gradient-top) 24%,white),color-mix(in srgb,var(--content-gradient-bottom) 7%,#fffaf2))!important;
 }
-#chapterCarousel > .tab-btn.chapter-bg-02{
-  background-color:#7226FF!important;
-  background-image:
-    radial-gradient(130% 82% at 18% 8%,rgba(255,255,255,.27),transparent 72%),
-    linear-gradient(180deg,#FFE5F1 0%,#F3CFEF 21%,#CAA4E9 49%,#9860D8 77%,#7226FF 100%)!important;
+.main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn[aria-selected="true"]{
+ background:linear-gradient(155deg,var(--ch-primary),color-mix(in srgb,var(--ch-primary) 75%,var(--content-gradient-bottom)))!important;
+ color:#fff!important;
 }
-#chapterCarousel > .tab-btn.chapter-bg-03{
-  background-color:#95122C!important;
-  background-image:
-    radial-gradient(110% 90% at 18% 8%,rgba(255,255,255,.26),transparent 72%),
-    linear-gradient(180deg,#F3F4F5 0%,#FBE3BF 21%,color-mix(in srgb,#FF9408 48%,#F3F4F5) 48%,#CA6954 76%,#95122C 100%)!important;
-}
-#chapterCarousel > .tab-btn.chapter-bg-04{
-  background-color:#160078!important;
-  background-image:
-    radial-gradient(115% 90% at 18% 8%,rgba(255,255,255,.23),transparent 74%),
-    linear-gradient(180deg,#87F5F5 0%,#A3E9E6 22%,#82BACA 48%,#52599C 77%,#160078 100%)!important;
-}
-#chapterCarousel > .tab-btn.chapter-bg-05{
-  background-color:#0C342C!important;
-  background-image:
-    radial-gradient(118% 88% at 18% 8%,rgba(255,255,255,.25),transparent 74%),
-    linear-gradient(180deg,#DBE0E1 0%,#D0E6E3 22%,#95C6BE 50%,#4B8277 77%,#0C342C 100%)!important;
-}
-/* A restrained highlight replaces the old maroon overlay only on these cards. */
-#chapterCarousel > .tab-btn:is(.chapter-bg-01,.chapter-bg-02,.chapter-bg-03,.chapter-bg-04,.chapter-bg-05)::after{
-  background:linear-gradient(180deg,rgba(255,255,255,.09),transparent 36%,rgba(0,0,0,.065) 100%)!important;
-  transition:opacity .45s ease!important;
-}
-#chapterCarousel > .tab-btn:is(.chapter-bg-01,.chapter-bg-02,.chapter-bg-03,.chapter-bg-04,.chapter-bg-05):hover{
-  background-position:53% 5%,center 78%!important;
-  transform:perspective(900px) rotateX(var(--chapter-rx,0deg)) rotateY(var(--chapter-ry,0deg)) translateY(-6px) scale(1.015)!important;
-  filter:none!important;
-  border-color:rgba(255,255,255,.88)!important;
-  box-shadow:0 19px 36px rgba(26,40,45,.18),0 0 0 2px rgba(255,255,255,.32)!important;
-}
-#chapterCarousel > .tab-btn:is(.chapter-bg-01,.chapter-bg-02,.chapter-bg-03,.chapter-bg-04,.chapter-bg-05).active,
-#chapterCarousel > .tab-btn:is(.chapter-bg-01,.chapter-bg-02,.chapter-bg-03,.chapter-bg-04,.chapter-bg-05)[aria-selected="true"]{
-  border:2px solid rgba(255,255,255,.92)!important;
-  filter:none!important;
-  box-shadow:0 16px 32px rgba(26,40,45,.18),0 0 0 3px rgba(255,255,255,.24)!important;
-}
-#chapterCarousel #chapter-tab-4::before{
-  background:rgba(17,47,43,.78)!important;
-  border-color:rgba(255,255,255,.68)!important;
-  color:#fffdf5!important;
-}
-/* Keep disabled Bab 05 looking deliberate, but do not enable it. */
-#chapterCarousel #chapter-tab-4[aria-disabled="true"]{cursor:default!important;}
 @media(prefers-reduced-motion:reduce){
- #chapterCarousel > .tab-btn:is(.chapter-bg-01,.chapter-bg-02,.chapter-bg-03,.chapter-bg-04,.chapter-bg-05){
-   transition:none!important;
- }
+ .main-section :is(#panel-0,#panel-1,#panel-2,#panel-3,#panel-4) .chapter-subnav-btn[aria-selected="true"]{transition:none!important}
 }
 </style>
 <style id="suo-rt-rkk-2026-design">
