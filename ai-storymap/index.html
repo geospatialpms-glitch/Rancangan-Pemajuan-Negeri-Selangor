@@ -5903,6 +5903,71 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 @keyframes rsn03VideoRipple{0%{opacity:.7;transform:scale(.85)}75%,100%{opacity:0;transform:scale(1.28)}}
 @media(max-width:640px){#panel-2 #bento-2-0 .rsn03-spotlight-cover{min-height:340px}#panel-2 #bento-2-0 .rsn03-spotlight-label{top:14px;left:14px;padding:8px 10px;font-size:9px}#panel-2 #bento-2-0 .rsn03-play{top:38%;width:65px;height:65px}#panel-2 #bento-2-0 .rsn03-spotlight-copy strong{font-size:20px}}
 @media(prefers-reduced-motion:reduce){#panel-2 #bento-2-0 .rsn03-play::before,#panel-2 #bento-2-0 .rsn03-play::after{animation:none}#panel-2 #bento-2-0 .rsn03-spotlight-cover>img{transition:none}}
+</style><style id="suo-rsn-function-tiles-glass-hover-fix-2026">
+/* Scoped to the 7 RSN-function cards and their modal within Bab 03 / Topik 01. */
+#panel-2 #bento-2-0 .suo-rsn-functions-grid .suo-rsn-function-tile{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  transform:translateZ(0);
+  transition:transform .36s cubic-bezier(.2,.72,.2,1),box-shadow .36s ease,border-color .36s ease,background-color .36s ease,filter .36s ease!important;
+}
+#panel-2 #bento-2-0 .suo-rsn-functions-grid .suo-rsn-function-tile::before{
+  content:"";
+  pointer-events:none;
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  opacity:0;
+  border-radius:inherit;
+  background:linear-gradient(125deg,rgba(255,255,255,.51),rgba(243,211,164,.09) 52%,rgba(255,255,255,.27));
+  transition:opacity .34s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  #panel-2 #bento-2-0 .suo-rsn-functions-grid .suo-rsn-function-tile:hover{
+    transform:translate3d(0,-9px,0) scale(1.017)!important;
+    border-color:var(--ch-accent,#d2a361)!important;
+    box-shadow:0 23px 42px rgba(104,72,35,.15),0 7px 18px rgba(104,72,35,.055),inset 0 1px 0 rgba(255,255,255,.75)!important;
+    background:linear-gradient(155deg,rgba(255,255,255,.92),rgba(255,245,226,.68))!important;
+    backdrop-filter:blur(11px) saturate(1.13);
+    -webkit-backdrop-filter:blur(11px) saturate(1.13);
+  }
+}
+#panel-2 #bento-2-0 .suo-rsn-functions-grid .suo-rsn-function-tile:hover::before,
+#panel-2 #bento-2-0 .suo-rsn-functions-grid .suo-rsn-function-tile:focus-within::before{opacity:1;}
+#panel-2 #bento-2-0 .suo-rsn-functions-grid .suo-rsn-function-tile:focus-within{
+  border-color:var(--ch-accent,#d2a361)!important;
+  box-shadow:0 14px 32px rgba(104,72,35,.14)!important;
+}
+#panel-2 #bento-2-0 .suo-rsn-function-more:focus-visible{
+  outline:3px solid var(--ch-primary,#916123);
+  outline-offset:3px;
+}
+#panel-2 #suo-rsn-2026-function-dialog[open]{
+  animation:rsnFunctionModalEnter26 .38s cubic-bezier(.19,.78,.24,1) both;
+  border-color:var(--ch-accent,#d2a361)!important;
+  box-shadow:0 28px 80px rgba(47,31,18,.30),0 0 0 1px rgba(255,255,255,.65)!important;
+}
+#panel-2 #suo-rsn-2026-function-dialog[open]::backdrop{
+  background:rgba(31,23,25,.55);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  animation:rsnFunctionBackdropEnter26 .28s ease-out both;
+}
+@keyframes rsnFunctionModalEnter26{
+  from{opacity:0;transform:translateY(26px) scale(.966)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes rsnFunctionBackdropEnter26{
+  from{opacity:0}
+  to{opacity:1}
+}
+@media(prefers-reduced-motion:reduce){
+  #panel-2 #bento-2-0 .suo-rsn-functions-grid .suo-rsn-function-tile{transition:none!important;}
+  #panel-2 #bento-2-0 .suo-rsn-functions-grid .suo-rsn-function-tile:hover{transform:none!important;}
+  #panel-2 #suo-rsn-2026-function-dialog[open],
+  #panel-2 #suo-rsn-2026-function-dialog[open]::backdrop{animation:none!important;}
+}
 </style></head>
 <body>
 
@@ -5927,7 +5992,7 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
   <button type="button" class="suo-explore-chapter" data-chapter="1" data-topic="-1"><span class="suo-explore-number">02</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="Arah Tuju &amp; Hierarki Pemajuan" data-en="Direction &amp; Planning Hierarchy">Arah Tuju &amp; Hierarki Pemajuan</span></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
   <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="1" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pengenalan &amp; Kerangka Perundangan" data-en="Legal Framework">Pengenalan &amp; Kerangka Perundangan</span></button><button type="button" class="suo-explore-topic" data-chapter="1" data-topic="1"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Hierarki Perancangan" data-en="Planning Hierarchy">Hierarki Perancangan</span></button><button type="button" class="suo-explore-topic" data-chapter="1" data-topic="2"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Dokumen Rujukan Akta 172" data-en="Act 172 Reference Document">Dokumen Rujukan Akta 172</span></button></div></section><section class="suo-explore-group" aria-label="Bab 03">
   <button type="button" class="suo-explore-chapter" data-chapter="2" data-topic="-1"><span class="suo-explore-number">03</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="Rancangan Struktur Negeri Selangor 2035 (Pengubahan)" data-en="Selangor State Structure Plan 2035 (Amendment)">Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</span></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
-  <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pengenalan &amp; Latar Belakang" data-en="Introduction & Background">Pengenalan &amp; Latar Belakang</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="1"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Hala Tuju Strategik dan Konsep Pembangunan" data-en="Strategic Directions and Development Concept">Hala Tuju Strategik dan Konsep Pembangunan</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="2"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Kerangka Strategik &amp; Objektif Perancangan" data-en="Strategic Framework & Planning Objectives">Kerangka Strategik &amp; Objektif Perancangan</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="3"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Dasar-dasar RS Negeri Selangor 2035 (Pengubahan)" data-en="Selangor State Structure Plan 2035 (Amendment) Policies">Dasar-dasar RS Negeri Selangor 2035 (Pengubahan)</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="4"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)" data-en="Selangor State Structure Plan 2035 (Amendment) Strategic Land Use Plan">Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)</span></button></div></section><section class="suo-explore-group" aria-label="Bab 04">
+  <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pengenalan &amp; Latar Belakang" data-en="Introduction & Background">Pengenalan &amp; Latar Belakang</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="1"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Hala Tuju Strategik dan Konsep Pembangunan" data-en="Strategic Directions and Development Concept">Hala Tuju Strategik dan Konsep Pembangunan</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="2"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Kerangka Strategik &amp; Objektif Perancangan" data-en="Strategic Framework & Planning Objectives">Kerangka Strategik &amp; Objektif Perancangan</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="3"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Dasar-dasar RS Negeri Selangor 2035 (Pengubahan)" data-en="Selangor State Structure Plan 2035 (Amendment) Policies">Dasar-dasar RS Negeri Selangor 2035 (Pengubahan)</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="4"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)" data-en="Selangor State Structure Plan 2035 (Amendment) Strategic Land Use Plan">Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)</span></button><button type="button" class="suo-explore-topic" data-chapter="2" data-topic="5"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Dokumen Rancangan Struktur Negeri Selangor 2035 (Pengubahan)" data-en="Selangor State Structure Plan 2035 (Amendment) Document">Dokumen Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</span></button></div></section><section class="suo-explore-group" aria-label="Bab 04">
   <button type="button" class="suo-explore-chapter" data-chapter="3" data-topic="-1"><span class="suo-explore-number">04</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="Rancangan Tempatan (RT) &amp; Rancangan Kawasan Khas (RKK)" data-en="Local Plans (RT) &amp; Special Area Plans (RKK)">Rancangan Tempatan (RT) &amp; Rancangan Kawasan Khas (RKK)</span></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
   <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="3" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="RT &amp; RKK" data-en="Local &amp; Special Area Plans">RT &amp; RKK</span></button><button type="button" class="suo-explore-topic" data-chapter="3" data-topic="1"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Akses Direktori" data-en="Directory Access">Akses Direktori</span></button></div></section><section class="suo-explore-group" aria-label="Bab 05">
   <button type="button" class="suo-explore-chapter" data-chapter="4" data-topic="-1"><span class="suo-explore-number">05</span><span class="suo-explore-chapter-title"><span class="suo-explore-i18n" data-ms="SISTEM LPFNS" data-en="LPFNS SYSTEM">SISTEM LPFNS</span><small class="suo-explore-soon suo-explore-i18n" data-ms="AKAN DATANG" data-en="COMING SOON">AKAN DATANG</small></span><span class="suo-explore-chapter-arrow" aria-hidden="true">↗</span></button>
@@ -6571,10 +6636,10 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 </section>
 
 </div>
-
-<dialog id="suo-rsn-2026-function-dialog" class="suo-rsn-function-dialog" aria-labelledby="suo-rsn-dialog-heading"><div class="suo-rsn-function-dialog-head"><span id="suo-rsn-dialog-number"></span><button type="button" class="suo-rsn-dialog-close" aria-label="Tutup huraian fungsi">✕</button></div><h5 id="suo-rsn-dialog-heading"></h5><p id="suo-rsn-dialog-description"></p><button type="button" class="suo-rsn-dialog-done">Tutup</button></dialog>
   </section>
  </section>
+
+<dialog id="suo-rsn-2026-function-dialog" class="suo-rsn-function-dialog" aria-labelledby="suo-rsn-dialog-heading"><div class="suo-rsn-function-dialog-head"><span id="suo-rsn-dialog-number"></span><button type="button" class="suo-rsn-dialog-close" aria-label="Tutup huraian fungsi">✕</button></div><h5 id="suo-rsn-dialog-heading"></h5><p id="suo-rsn-dialog-description"></p><button type="button" class="suo-rsn-dialog-done">Tutup</button></dialog>
 <section class="suo-bento-topic" role="tabpanel" id="bento-2-2" aria-labelledby="bento-tab-2-2" hidden>
   <section class="suo-rsn-2026-details suo-rsn-2026-separate-page" aria-label="Kerangka Strategik &amp; Objektif Perancangan">
    <header class="suo-rsn-2026-heading"><span>RANCANGAN STRUKTUR NEGERI SELANGOR 2035 (PENGUBAHAN) · TOPIK 03</span><h4>Kerangka Strategik &amp; Objektif Perancangan</h4><p>Pilih tajuk lain di atas untuk melihat kandungan perancangan yang berkaitan.</p></header>
