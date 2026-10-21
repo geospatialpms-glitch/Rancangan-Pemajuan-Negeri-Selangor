@@ -5968,6 +5968,153 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
   #panel-2 #suo-rsn-2026-function-dialog[open],
   #panel-2 #suo-rsn-2026-function-dialog[open]::backdrop{animation:none!important;}
 }
+</style><style id="suo-bab02-electric-pulse-scoped-2026">
+/* ELECTRIC PULSE — ONLY OPENED BAB 02 CONTENT (#panel-1).
+   Do not recolour the homepage chapter carousel, other chapters, map tiles, photographs,
+   data-layer symbol colours, or any elements outside #panel-1.
+   Soft horizontal gradient, made eye-friendly by blending the requested hues with white. */
+.main-section #panel-1{
+  --ep-start:#FF8FA3;
+  --ep-end:#FFB088;
+  --ep-ink:#633941;
+  --ep-deep:#874651;
+  --ep-accent:#C97577;
+  --ep-outline:#EBCBC8;
+  --ep-pale:#FFF7F5;
+  --ep-wash:linear-gradient(105deg,
+    color-mix(in srgb,var(--ep-start) 29%,white) 0%,
+    color-mix(in srgb,var(--ep-start) 17%,white) 46%,
+    color-mix(in srgb,var(--ep-end) 30%,white) 100%);
+  --ep-strong:linear-gradient(105deg,
+    color-mix(in srgb,var(--ep-start) 72%,white) 0%,
+    color-mix(in srgb,var(--ep-end) 73%,white) 100%);
+  --ch-ink:var(--ep-ink);
+  --ch-primary:var(--ep-deep);
+  --ch-accent:var(--ep-accent);
+  --ch-soft:#FFE0D6;
+  --ch-light:var(--ep-pale);
+  --ch-rule:var(--ep-outline);
+  --ch-glass:rgba(255,247,245,.72);
+  --ch-shadow:rgba(148,75,86,.09);
+  --card-top:var(--ep-start);
+  --card-bottom:var(--ep-end);
+  --card-ink:var(--ep-ink);
+  --card-pale:var(--ep-pale);
+  --card-wash:var(--ep-wash);
+  --card-outline:var(--ep-outline);
+  --content-gradient-top:var(--ep-start);
+  --content-gradient-bottom:var(--ep-end);
+}
+/* Only actual cards and written information surfaces, never the underlying page/background. */
+.main-section #panel-1 .suo-bab02-card,
+.main-section #panel-1 .suo-bab02-details,
+.main-section #panel-1 .suo-bab02-goal-item,
+.main-section #panel-1 .suo-bab02-separated,
+.main-section #panel-1 .suo-bab02-rsn-intro,
+.main-section #panel-1 .suo-bab02-rsn-mini,
+.main-section #panel-1 .suo-rt-intro-card,
+.main-section #panel-1 .suo-rt-summary,
+.main-section #panel-1 .suo-rt-pbt-item,
+.main-section #panel-1 .suo-rkk-pbt-item,
+.main-section #panel-1 .suo-rsn-law-tiles article,
+.main-section #panel-1 .suo-rsn-acc-item,
+.main-section #panel-1 .suo-rsn-goal-item,
+.main-section #panel-1 .suo-act172-ref-card,
+.main-section #panel-1 .suo-rt-law-grid>div,
+.main-section #panel-1 .suo-bab02-law-tiles>div,
+.main-section #panel-1 .suo-rt-section,
+.main-section #panel-1 .suo-bab02-hierarchy{
+  background:var(--ep-wash)!important;
+  background-image:var(--ep-wash)!important;
+  border-color:var(--ep-outline)!important;
+  box-shadow:0 9px 26px rgba(145,82,88,.075)!important;
+}
+/* Some selected explanatory faces formerly used opaque corporate colours. */
+.main-section #panel-1 .suo-bab02-feature,
+.main-section #panel-1 .suo-bab02-legal-front,
+.main-section #panel-1 .suo-bab02-flip-front,
+.main-section #panel-1 .suo-rsn-goal-front,
+.main-section #panel-1 .suo-rsn-focus-head{
+  background:var(--ep-strong)!important;
+  background-image:var(--ep-strong)!important;
+  border-color:var(--ep-accent)!important;
+  color:var(--ep-ink)!important;
+}
+/* Contrast on light gradient card, including labels which previously used white. */
+.main-section #panel-1 .suo-bab02-feature h4,
+.main-section #panel-1 .suo-bab02-feature p,
+.main-section #panel-1 .suo-bab02-feature .suo-bab02-card-eyebrow,
+.main-section #panel-1 .suo-bab02-legal-front h4,
+.main-section #panel-1 .suo-bab02-legal-front .suo-bab02-card-eyebrow,
+.main-section #panel-1 .suo-bab02-flip-front h4,
+.main-section #panel-1 .suo-bab02-flip-front p,
+.main-section #panel-1 .suo-bab02-flip-front .suo-bab02-flip-kicker,
+.main-section #panel-1 .suo-rsn-goal-front h4,
+.main-section #panel-1 .suo-rsn-goal-front p,
+.main-section #panel-1 .suo-rsn-focus-head h3,
+.main-section #panel-1 .suo-rsn-focus-head p{
+  color:var(--ep-ink)!important;
+  text-shadow:none!important;
+}
+/* All navigational state colours confined to Bab 02; keep existing click behaviour. */
+.main-section #panel-1 .chapter-subnav-btn[aria-selected="true"],
+.main-section #panel-1 .suo-bab02-level[aria-pressed="true"],
+.main-section #panel-1 .suo-rsn-focus-back,
+.main-section #panel-1 .suo-rt-map-action{
+  background:var(--ep-strong)!important;
+  background-image:var(--ep-strong)!important;
+  color:var(--ep-ink)!important;
+  border-color:var(--ep-accent)!important;
+  box-shadow:0 7px 20px rgba(146,78,82,.12)!important;
+}
+.main-section #panel-1 .chapter-subnav-btn:not([aria-selected="true"]),
+.main-section #panel-1 .suo-bab02-level:not([aria-pressed="true"]){
+  background:linear-gradient(105deg,#FFF9F8,#FFF1E9)!important;
+  background-image:linear-gradient(105deg,#FFF9F8,#FFF1E9)!important;
+  border-color:var(--ep-outline)!important;
+  color:var(--ep-ink)!important;
+}
+/* Number badges, icons and dividing lines consistently harmonised. */
+.main-section #panel-1 .suo-bab02-section-num,
+.main-section #panel-1 .suo-bab02-goal-no,
+.main-section #panel-1 .suo-bab02-teras-number,
+.main-section #panel-1 .suo-rt-count,
+.main-section #panel-1 .suo-rt-symbol,
+.main-section #panel-1 .suo-rsn-acc-number,
+.main-section #panel-1 .suo-rt-pbt-number{
+  background:var(--ep-strong)!important;
+  background-image:var(--ep-strong)!important;
+  border-color:var(--ep-accent)!important;
+  color:var(--ep-ink)!important;
+}
+.main-section #panel-1 .suo-bab02-heading h3,
+.main-section #panel-1 .suo-bab02-card h4,
+.main-section #panel-1 .suo-rt-heading h4,
+.main-section #panel-1 .suo-rt-pbt-name,
+.main-section #panel-1 .suo-rsn-acc-title{
+  color:var(--ep-ink)!important;
+}
+.main-section #panel-1 .chapter-intro-accent,
+.main-section #panel-1 .chapter-content-card::before,
+.main-section #panel-1 .suo-bab02-section-divider::before{
+  background:linear-gradient(90deg,var(--ep-start),var(--ep-end))!important;
+}
+.main-section #panel-1 .suo-rt-section,
+.main-section #panel-1 .suo-bab02-section-divider,
+.main-section #panel-1 .suo-rt-pbt-item,
+.main-section #panel-1 .suo-rkk-pbt-item{
+  border-color:var(--ep-outline)!important;
+}
+/* Smooth and quiet interaction; no continuous motion and no layout/size changes. */
+.main-section #panel-1 :is(.suo-bab02-card,.suo-rt-pbt-item,.suo-rkk-pbt-item,.suo-bab02-level,.chapter-subnav-btn){
+  transition:background .35s ease,background-color .35s ease,border-color .35s ease,
+             box-shadow .35s ease,transform .35s ease;
+}
+@media(prefers-reduced-motion:reduce){
+ .main-section #panel-1 :is(.suo-bab02-card,.suo-rt-pbt-item,.suo-rkk-pbt-item,.suo-bab02-level,.chapter-subnav-btn){
+   transition:none!important;
+ }
+}
 </style></head>
 <body>
 
