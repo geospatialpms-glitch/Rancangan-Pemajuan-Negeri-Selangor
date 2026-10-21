@@ -7387,6 +7387,107 @@ header.header .suo-explore-trigger{
  #panel-3 #rr04 .rr04-register-table tbody tr td{transition:none}
 }
 </style>
+<style id="suo-home-dashboard-statistics-20261021">
+/* New additive homepage statistics only. Existing map, chapters and navigation untouched. */
+#suo-dashboard-overview{
+  --dash-maroon:#6b283f;--dash-deep:#4f1e32;--dash-gold:#c79a58;
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:clamp(55px,6.5vw,92px) 0 clamp(50px,5.8vw,79px);
+  background:radial-gradient(ellipse at 9% 10%,rgba(199,154,88,.10),transparent 33%),radial-gradient(ellipse at 94% 91%,rgba(125,45,74,.075),transparent 35%),#fcf9f5;
+  border-bottom:1px solid #ecdcd0;
+}
+#suo-dashboard-overview:before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.42;
+  background-image:linear-gradient(#8a5a6b0c 1px,transparent 1px),linear-gradient(90deg,#8a5a6b0c 1px,transparent 1px);
+  background-size:56px 56px;
+}
+#suo-dashboard-overview>.container{width:min(1440px,calc(100% - 48px));max-width:none}
+#suo-dashboard-overview .suo-dash-top{display:flex;gap:28px;align-items:flex-end;justify-content:space-between;margin-bottom:32px}
+#suo-dashboard-overview .suo-dash-intro{max-width:760px}
+#suo-dashboard-overview .suo-dash-eyebrow{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.17em;font-size:11px;font-weight:900;color:#965b48}
+#suo-dashboard-overview .suo-dash-eyebrow:before{content:"";width:24px;height:2px;background:linear-gradient(90deg,#8b2d49,#d8aa68);border-radius:5px}
+#suo-dashboard-overview h2{font:900 clamp(29px,3.1vw,45px)/1.2 'Merriweather',Georgia,serif;letter-spacing:-.035em;color:var(--dash-maroon);margin:13px 0 12px;text-wrap:balance}
+#suo-dashboard-overview h2 .suo-dash-punctuation{color:#c79a58}
+#suo-dashboard-overview .suo-dash-intro p{font-size:clamp(13px,1.12vw,16px);line-height:1.75;color:#75636a;margin:0}
+#suo-dashboard-overview .suo-dash-summary{
+  display:inline-flex;align-items:center;gap:9px;flex:none;white-space:nowrap;
+  border:1px solid #dfcdbd;border-radius:999px;background:rgba(255,255,255,.8);
+  padding:10px 16px;color:#774255;font-size:10px;font-weight:900;letter-spacing:.095em;
+  box-shadow:0 8px 20px rgba(93,34,52,.05)
+}
+#suo-dashboard-overview .suo-dash-summary:before{content:"";width:7px;height:7px;border-radius:50%;background:#bc8a53;box-shadow:0 0 0 4px #bc8a531b}
+#suo-dashboard-overview .suo-dash-grid{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(11px,1.35vw,19px);
+  position:relative;
+}
+#suo-dashboard-overview .suo-dash-card{
+  --tile-accent:#8e4158;position:relative;min-width:0;min-height:251px;overflow:hidden;
+  display:flex;flex-direction:column;align-items:flex-start;
+  border:1px solid #ead9ce;border-radius:23px;padding:21px clamp(15px,1.6vw,24px) 24px;
+  background:linear-gradient(152deg,rgba(255,255,255,.98),rgba(253,246,238,.96));
+  box-shadow:0 9px 28px rgba(91,36,53,.055),0 1px 3px rgba(91,36,53,.025);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s,opacity .7s,translate .7s;
+}
+#suo-dashboard-overview .suo-dash-card:nth-child(2){--tile-accent:#a25a5a}
+#suo-dashboard-overview .suo-dash-card:nth-child(3){--tile-accent:#9b6b4d}
+#suo-dashboard-overview .suo-dash-card:nth-child(4){--tile-accent:#84506b}
+#suo-dashboard-overview .suo-dash-card:nth-child(5){--tile-accent:#a47d45}
+#suo-dashboard-overview .suo-dash-card:before{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;
+  background:linear-gradient(90deg,var(--tile-accent),#dfb879);
+}
+#suo-dashboard-overview .suo-dash-card:after{
+  content:"";position:absolute;width:132px;height:132px;top:-79px;right:-63px;border-radius:50%;
+  border:24px solid rgba(178,126,89,.055);pointer-events:none;
+}
+#suo-dashboard-overview .suo-dash-card:hover{transform:translateY(-7px);border-color:#d5b19d;box-shadow:0 22px 36px rgba(91,36,53,.12)}
+#suo-dashboard-overview .suo-dash-card-top{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px}
+#suo-dashboard-overview .suo-dash-icon{
+  display:grid;place-items:center;flex:none;width:50px;height:50px;
+  border-radius:15px;background:color-mix(in srgb,var(--tile-accent) 11%,white);color:var(--tile-accent);
+  border:1px solid color-mix(in srgb,var(--tile-accent) 18%,white);
+  transition:transform .4s;
+}
+#suo-dashboard-overview .suo-dash-icon svg{display:block;width:24px;height:24px;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round;fill:none}
+#suo-dashboard-overview .suo-dash-card:hover .suo-dash-icon{transform:rotate(-5deg) scale(1.08)}
+#suo-dashboard-overview .suo-dash-index{font-size:10px;font-weight:900;letter-spacing:.13em;color:#ad9488}
+#suo-dashboard-overview .suo-dash-number{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(43px,4.4vw,69px);line-height:1;
+  font-weight:800;letter-spacing:-.065em;tab-size:2;font-variant-numeric:tabular-nums;
+  color:var(--dash-maroon);display:block;margin:24px 0 18px
+}
+#suo-dashboard-overview .suo-dash-rule{display:block;height:3px;width:38px;background:linear-gradient(90deg,var(--tile-accent),#dfba83);border-radius:10px;margin-bottom:14px;transition:width .4s}
+#suo-dashboard-overview .suo-dash-card:hover .suo-dash-rule{width:70px}
+#suo-dashboard-overview .suo-dash-label{
+  display:block;margin-top:auto;color:#5a4651;font-size:clamp(12px,1vw,14px);
+  line-height:1.55;font-weight:800;overflow-wrap:break-word
+}
+#suo-dashboard-overview .suo-dash-card.suo-await-inview{opacity:0;translate:0 24px}
+#suo-dashboard-overview .suo-dash-card.suo-await-inview.suo-is-visible{opacity:1;translate:0 0}
+#suo-dashboard-overview .suo-dash-card:focus-within{outline:2px solid #c69a58;outline-offset:3px}
+@media(max-width:1140px){
+ #suo-dashboard-overview .suo-dash-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #suo-dashboard-overview .suo-dash-card{min-height:232px}
+}
+@media(max-width:710px){
+ #suo-dashboard-overview{padding:49px 0 55px}
+ #suo-dashboard-overview>.container{width:calc(100% - 32px)}
+ #suo-dashboard-overview .suo-dash-top{align-items:flex-start;flex-direction:column;gap:17px;margin-bottom:24px}
+ #suo-dashboard-overview .suo-dash-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ #suo-dashboard-overview .suo-dash-card{min-height:214px;border-radius:18px;padding:18px 16px 20px}
+ #suo-dashboard-overview .suo-dash-number{font-size:clamp(43px,11vw,59px);margin:22px 0 15px}
+ #suo-dashboard-overview .suo-dash-card:last-child{grid-column:1/-1;min-height:180px}
+}
+@media(max-width:370px){
+ #suo-dashboard-overview .suo-dash-card{padding:16px 12px 18px}
+ #suo-dashboard-overview .suo-dash-icon{width:44px;height:44px}
+ #suo-dashboard-overview .suo-dash-label{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+ #suo-dashboard-overview .suo-dash-card{transition:none!important;transform:none!important;translate:none!important;opacity:1!important}
+ #suo-dashboard-overview .suo-dash-icon,#suo-dashboard-overview .suo-dash-rule{transition:none!important}
+}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -7431,6 +7532,47 @@ header.header .suo-explore-trigger{
 
 <!-- Logo SUO tunggal fixed di tengah skrin -->
 <div class="suo-page-watermark" aria-hidden="true"><video class="suo-hologram-video" autoplay muted loop playsinline preload="metadata" disablepictureinpicture tabindex="-1"><source src="./Holographic_logo_background_anim%E2%80%A6_20261015130321.mp4" type="video/mp4"></video><div class="suo-hologram-soft-overlay"></div></div>
+
+<!-- HOME DASHBOARD: Statistik pentadbiran dan dokumen; sebelum peta sahaja. -->
+<section id="suo-dashboard-overview" aria-labelledby="suo-dash-heading">
+ <div class="container">
+  <div class="suo-dash-top">
+   <div class="suo-dash-intro">
+    <span class="suo-dash-eyebrow" data-suo-ms="DASHBOARD SPATIAL · SELANGOR" data-suo-en="SELANGOR · SPATIAL DASHBOARD">DASHBOARD SPATIAL · SELANGOR</span>
+    <h2 id="suo-dash-heading"><span data-suo-ms="Selangor Dalam Angka" data-suo-en="Selangor at a Glance">Selangor Dalam Angka</span><span class="suo-dash-punctuation" aria-hidden="true">.</span></h2>
+    <p data-suo-ms="Ringkasan indikator pentadbiran dan dokumen rancangan pemajuan Negeri Selangor." data-suo-en="A snapshot of Selangor's administrative indicators and development planning documents.">Ringkasan indikator pentadbiran dan dokumen rancangan pemajuan Negeri Selangor.</p>
+   </div>
+   <span class="suo-dash-summary" data-suo-ms="05 INDIKATOR UTAMA" data-suo-en="05 KEY INDICATORS">05 INDIKATOR UTAMA</span>
+  </div>
+  <div class="suo-dash-grid" role="list" aria-label="Statistik negeri Selangor">
+   <article class="suo-dash-card" role="listitem">
+    <div class="suo-dash-card-top"><span class="suo-dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="8" height="13" rx="1.5"/><path d="M11 12h10v9H11M6 11h2M6 15h2M15 15h2M15 18h2M6 21v-3h2"/></svg></span><span class="suo-dash-index">01</span></div>
+    <strong class="suo-dash-number" data-suo-target="12">12</strong><span class="suo-dash-rule" aria-hidden="true"></span>
+    <span class="suo-dash-label" data-suo-ms="Pihak Berkuasa Tempatan (PBT)" data-suo-en="Local Authorities (PBT)">Pihak Berkuasa Tempatan (PBT)</span>
+   </article>
+   <article class="suo-dash-card" role="listitem">
+    <div class="suo-dash-card-top"><span class="suo-dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6ZM9 3v15m6-12v15"/></svg></span><span class="suo-dash-index">02</span></div>
+    <strong class="suo-dash-number" data-suo-target="9">9</strong><span class="suo-dash-rule" aria-hidden="true"></span>
+    <span class="suo-dash-label" data-suo-ms="Daerah Pentadbiran" data-suo-en="Administrative Districts">Daerah Pentadbiran</span>
+   </article>
+   <article class="suo-dash-card" role="listitem">
+    <div class="suo-dash-card-top"><span class="suo-dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm8 0v5h4M9 12h6m-6 4h7"/></svg></span><span class="suo-dash-index">03</span></div>
+    <strong class="suo-dash-number" data-suo-target="1">1</strong><span class="suo-dash-rule" aria-hidden="true"></span>
+    <span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Struktur Negeri Selangor" data-suo-en="Selangor State Structure Plan Document">Dokumen Rancangan Struktur Negeri Selangor</span>
+   </article>
+   <article class="suo-dash-card" role="listitem">
+    <div class="suo-dash-card-top"><span class="suo-dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="13" height="16" rx="2"/><path d="M4 7v13a2 2 0 0 0 2 2h11M10 8h7m-7 4h7m-7 4h4"/></svg></span><span class="suo-dash-index">04</span></div>
+    <strong class="suo-dash-number" data-suo-target="20">20</strong><span class="suo-dash-rule" aria-hidden="true"></span>
+    <span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Tempatan (RT)" data-suo-en="Local Plan Documents (RT)">Dokumen Rancangan Tempatan (RT)</span>
+   </article>
+   <article class="suo-dash-card" role="listitem">
+    <div class="suo-dash-card-top"><span class="suo-dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3"/><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3"/></svg></span><span class="suo-dash-index">05</span></div>
+    <strong class="suo-dash-number" data-suo-target="4">4</strong><span class="suo-dash-rule" aria-hidden="true"></span>
+    <span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Kawasan Khas (RKK)" data-suo-en="Special Area Plan Documents (RKK)">Dokumen Rancangan Kawasan Khas (RKK)</span>
+   </article>
+  </div>
+ </div>
+</section>
 
 <section class="development-overview" id="statistik-pembangunan" aria-label="Peta Interaktif Pentadbiran Negeri Selangor">
   <div class="container">
@@ -8688,6 +8830,58 @@ header.header .suo-explore-trigger{
 <button id="backToTop" class="back-to-top" aria-label="Halaman Utama" title="Kembali ke Halaman Utama" onclick="scrollToSuoTarget('utama')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-8h6v8"/></svg><span>HALAMAN<br>UTAMA</span></button>
 <script>(function(){const b=document.getElementById('backToTop');const update=()=>b.classList.toggle('show',window.scrollY>380);window.addEventListener('scroll',update,{passive:true});update();})();</script>
 
+<script id="suo-home-dashboard-statistics-motion-20261021">
+/* Dedicated homepage stats counter. Does not touch existing animated counters. */
+(function(){
+ 'use strict';
+ const section=document.getElementById('suo-dashboard-overview');
+ if(!section)return;
+ const cards=Array.from(section.querySelectorAll('.suo-dash-card'));
+ const prefersReduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const renderLanguage=function(){
+  const language=document.documentElement.lang==='en'?'en':'ms';
+  section.querySelectorAll('[data-suo-ms][data-suo-en]').forEach(function(el){
+   el.textContent=el.getAttribute(language==='en'?'data-suo-en':'data-suo-ms');
+  });
+ };
+ renderLanguage();
+ ['langBM','langEN'].forEach(function(id){
+  const btn=document.getElementById(id);
+  if(btn)btn.addEventListener('click',function(){queueMicrotask(renderLanguage)});
+ });
+ function show(card){
+  if(card.classList.contains('suo-is-visible'))return;
+  card.classList.add('suo-is-visible');
+  const number=card.querySelector('[data-suo-target]');
+  if(!number)return;
+  const target=Number(number.dataset.suoTarget);
+  if(!Number.isFinite(target))return;
+  if(prefersReduced){number.textContent=String(target);return}
+  const duration=1050+Math.min(target,20)*14;
+  let start=null;
+  const tick=function(now){
+   if(start===null)start=now;
+   const fraction=Math.min(1,(now-start)/duration);
+   const eased=1-Math.pow(1-fraction,3);
+   number.textContent=String(Math.round(target*eased));
+   if(fraction<1)requestAnimationFrame(tick);
+   else number.textContent=String(target);
+  };
+  requestAnimationFrame(tick);
+ }
+ if(!prefersReduced&&'IntersectionObserver' in window){
+  cards.forEach(function(card){card.classList.add('suo-await-inview')});
+  const observer=new IntersectionObserver(function(entries){
+   entries.forEach(function(entry){
+    if(!entry.isIntersecting)return;
+    show(entry.target);
+    observer.unobserve(entry.target);
+   });
+  },{threshold:.2,rootMargin:'0px 0px -25px 0px'});
+  cards.forEach(function(card){observer.observe(card)});
+ }else cards.forEach(show);
+})();
+</script>
 <script id="suo-language-switch-active">
 (function(){
  const translations=[
