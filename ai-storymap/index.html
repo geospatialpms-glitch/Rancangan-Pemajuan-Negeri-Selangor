@@ -3843,7 +3843,7 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 #bento-2-4 .lu-stat:nth-child(2){--accent:#368b74}
 #bento-2-4 .lu-stat:nth-child(3){--accent:#b99950}
 #bento-2-4 .lu-note{margin:0 0 21px!important;font-size:11px;color:#887a7b;line-height:1.7}
-#bento-2-4 .lu-sieve{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:21px;align-items:start}
+#bento-2-4 .lu-sieve{display:grid;grid-template-columns:minmax(0,1fr);gap:21px;align-items:start}
 #bento-2-4 .lu-map-wrap{position:sticky;top:122px;background:#f8f6f0;border:1px solid #e7d8cb;border-radius:22px;padding:18px;overflow:hidden;box-shadow:0 10px 25px rgba(80,32,48,.055)}
 #bento-2-4 .lu-map-head{display:flex;align-items:center;gap:9px;color:#62304b;font-weight:900;font-size:13px;margin-bottom:13px}
 #bento-2-4 .lu-map-head .lu-symbol{width:33px;height:33px;border-radius:10px;display:grid;place-items:center;color:#fff;background:#62253d;font-size:18px}
@@ -5351,24 +5351,6 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
     <p class="lu-note">Nota: Keluasan dipetik daripada maklumat pelan yang dibekalkan. Kategori spatial mungkin bertindih dan tidak wajar dijumlahkan sebagai satu keluasan keseluruhan.</p>
     <p class="lu-info-label">04 Lapisan Tapisan Spatial</p>
     <div class="lu-sieve">
-      <aside class="lu-map-wrap" aria-label="Ilustrasi teknik tapisan spatial dan aliran analisis">
-        <div class="lu-map-head"><span class="lu-symbol" aria-hidden="true">⌖</span> Visualisasi Lapisan Tapisan Spatial</div>
-        <div class="lu-map" id="lu-sieving-schematic" role="img" aria-label="Ilustrasi skematik lapisan kawasan tepu bina, KSAS, pertanian dan infrastruktur. Tidak menggambarkan kedudukan geografi sebenar.">
-          <div class="lu-zone lu-zone-built" aria-hidden="true"></div>
-          <div class="lu-zone lu-zone-ksas" aria-hidden="true"></div>
-          <div class="lu-zone lu-zone-farm" aria-hidden="true"></div>
-          <div class="lu-zone lu-zone-infra" aria-hidden="true"></div>
-          <div class="lu-map-overlay" aria-live="polite">
-            <small>LAPISAN DIPILIH</small>
-            <strong class="lu-map-label-option" data-lu-map-label="built">Kawasan Tepu Bina</strong>
-            <strong class="lu-map-label-option" data-lu-map-label="ksas">Kawasan Sensitif Alam Sekitar (KSAS)</strong>
-            <strong class="lu-map-label-option" data-lu-map-label="farm">Kawasan Pertanian Produktif</strong>
-            <strong class="lu-map-label-option" data-lu-map-label="infra">Kemudahan Infrastruktur &amp; Utiliti</strong>
-          </div>
-        </div>
-        <p class="lu-map-label">Ilustrasi skematik untuk menerangkan kaedah tapisan. <strong>Bukan peta zon atau sempadan GIS rasmi.</strong></p>
-        <div class="lu-flow" aria-label="Aliran analisis"><span>DATA SPATIAL</span><i aria-hidden="true">→</i><span>TAPISAN</span><i aria-hidden="true">→</i><span>POTENSI PEMAJUAN</span></div>
-      </aside>
       <div class="lu-side">
         <div class="lu-nav" role="radiogroup" aria-label="Pilih lapisan halangan pembangunan">
           <input class="lu-sieve-radio" type="radio" name="lu-sieve-layer-bab6" id="lu-sieve-built" value="built" checked>
