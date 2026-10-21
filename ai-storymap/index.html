@@ -7540,6 +7540,77 @@ header.header .suo-explore-trigger{
  #suo-dashboard-overview .suo-dash-card,
  #suo-dashboard-overview .suo-dash-illustration{animation:none!important;transition:none!important;transform:none!important}
 }
+
+/* Statistik sebagai seksyen bebas seperti bahagian Peta Interaktif:
+   pemisah fizikal, latar unik dan tajuk berpusat; khusus pada statistik. */
+#suo-dashboard-overview{
+ z-index:1;
+ padding:clamp(64px,7.5vw,110px) 0 clamp(68px,7vw,104px);
+ border-top:11px solid #fffdfb;
+ border-bottom:11px solid #fffdfb;
+ background:
+  radial-gradient(ellipse 85% 70% at 50% 3%,rgba(241,210,177,.25),transparent 75%),
+  radial-gradient(ellipse 55% 70% at 98% 100%,rgba(165,97,105,.10),transparent 75%),
+  linear-gradient(165deg,#fbf6f0 0%,#fffaf6 49%,#f8f0e9 100%);
+ box-shadow:inset 0 2px 0 #e7cdaa,inset 0 -2px 0 #e7cdaa;
+ scroll-margin-top:105px;
+}
+#suo-dashboard-overview:before{
+ opacity:.15;
+ background-size:64px 64px;
+}
+#suo-dashboard-overview:after{
+ content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+ width:min(160px,28vw);height:4px;pointer-events:none;
+ background:linear-gradient(90deg,transparent,#975166 24%,#d7a870 72%,transparent);
+ border-radius:0 0 9px 9px;
+}
+#suo-dashboard-overview .suo-dash-top{
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ text-align:center;gap:17px;
+ margin:0 auto clamp(27px,3.4vw,48px);
+}
+#suo-dashboard-overview .suo-dash-intro{
+ width:100%;max-width:940px;text-align:center;
+}
+#suo-dashboard-overview .suo-dash-eyebrow{
+ justify-content:center;letter-spacing:.17em;font-size:11px;
+}
+#suo-dashboard-overview h2{
+ margin:12px auto 15px;
+ font-size:clamp(32px,3.35vw,52px);
+ line-height:1.22;
+ color:#74283e;
+}
+#suo-dashboard-overview .suo-dash-intro p{
+ margin:0 auto;
+ max-width:740px;
+ line-height:1.72;
+ font-size:clamp(13px,1.06vw,16px);
+}
+#suo-dashboard-overview .suo-dash-summary{
+ align-self:center;margin:0 auto;
+ background:#fffefa;
+}
+#suo-dashboard-overview .suo-dash-grid{
+ padding-top:clamp(20px,2.3vw,32px);
+ border-top:1px solid #e5d1bf;
+}
+@media(max-width:700px){
+ #suo-dashboard-overview{
+  padding:63px 0 69px;
+  border-top-width:8px;
+  border-bottom-width:8px;
+ }
+ #suo-dashboard-overview .suo-dash-top{
+  flex-direction:column;align-items:center;text-align:center;
+  gap:14px;margin-bottom:25px;
+ }
+ #suo-dashboard-overview .suo-dash-intro{text-align:center}
+ #suo-dashboard-overview h2{font-size:clamp(31px,7.6vw,42px)}
+ #suo-dashboard-overview .suo-dash-summary{align-self:center}
+ #suo-dashboard-overview .suo-dash-grid{padding-top:23px}
+}
 </style>
 </head>
 <body>
