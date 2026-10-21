@@ -5429,6 +5429,177 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 }
 /* All pre-existing hover, scroll and number-count animations remain unchanged. */
 </style>
+<style id="suo-rr04-layout-motion-refinement-2026">
+/* RESTRICTED: Bab 04 > RT & RKK only. No changes to global colours, layouts or other bab. */
+#panel-3 #bento-3-0 #rr04{
+ --rr04-salmon:#AC6852;--rr04-amber:#D9AB70;--rr04-cream:#FFF7F0;
+ --rr04-ink:#704635;--rr04-stroke:#EFDCCE;
+ gap:clamp(16px,2vw,24px);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-hero{
+ position:relative;isolation:isolate;overflow:hidden;
+ grid-template-columns:minmax(0,1.65fr) minmax(180px,.65fr);
+ align-items:center;column-gap:clamp(20px,4vw,54px);
+ min-height:235px;
+ padding:clamp(24px,3.4vw,44px);
+ border:1px solid var(--rr04-stroke);
+ border-radius:24px;
+ background:linear-gradient(117deg,#FFFDF9 0%,#FFF8F3 57%,#FAE8DC 100%);
+ box-shadow:0 12px 30px rgba(125,78,58,.06);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-hero::before{
+ content:"";position:absolute;z-index:-1;pointer-events:none;
+ width:45%;aspect-ratio:1;right:-14%;top:-72%;
+ background:radial-gradient(circle,rgba(239,184,138,.28),transparent 69%);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-hero h4{max-width:860px;line-height:1.28;margin:13px 0 13px}
+#panel-3 #bento-3-0 #rr04 .rr04-hero p{max-width:780px;font-size:clamp(13px,1.1vw,15px);line-height:1.85}
+#panel-3 #bento-3-0 #rr04 .rr04-graphic{min-height:190px;overflow:visible}
+#panel-3 #bento-3-0 #rr04 .rr04-graphic b{font-size:clamp(22px,2vw,29px);letter-spacing:.015em;text-shadow:0 2px 7px rgba(158,85,55,.06)}
+#panel-3 #bento-3-0 #rr04 .rr04-shape-a{
+ background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(239,199,171,.47));
+ box-shadow:0 14px 35px rgba(140,85,58,.12);
+ animation:rr04RefineFloat 6s ease-in-out infinite;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-shape-b{animation:rr04-spin 30s linear infinite}
+#panel-3 #bento-3-0 #rr04 .rr04-tabs{position:relative;gap:clamp(11px,1.2vw,19px)}
+#panel-3 #bento-3-0 #rr04 .rr04-choice{
+ min-height:83px;padding:clamp(15px,1.5vw,21px);
+ border-radius:17px;grid-template-columns:44px minmax(0,1fr);gap:5px 13px;
+ box-shadow:0 8px 22px rgba(122,72,52,.035);
+ background:linear-gradient(125deg,#FFFEFB,#FFF7F1);
+ transition:transform .32s cubic-bezier(.2,.7,.3,1),box-shadow .32s,border-color .32s,background-color .32s;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-choice>span{
+ width:42px;height:42px;border-radius:12px;font-size:13px;
+ transition:transform .3s,background-color .3s;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-choice>b{font-size:clamp(13px,1.04vw,15px);line-height:1.38}
+#panel-3 #bento-3-0 #rr04 .rr04-choice>small{font-size:11px;line-height:1.5}
+#panel-3 #bento-3-0 #rr04 .rr04-choice.active{
+ background:linear-gradient(110deg,#9C5A45,#BD7D64 70%,#C58B70);
+ border-color:#AC705A;box-shadow:0 12px 28px rgba(139,78,57,.18);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-choice.active>span{transform:scale(1.05)}
+#panel-3 #bento-3-0 #rr04 .rr04-choice:hover{transform:translateY(-3px);box-shadow:0 13px 25px rgba(135,74,54,.12)}
+#panel-3 #bento-3-0 #rr04 .rr04-pane{gap:clamp(17px,2vw,25px)}
+#panel-3 #bento-3-0 #rr04 .rr04-panel-head{
+ grid-template-columns:minmax(0,1fr) minmax(175px,222px);
+ gap:clamp(20px,3.2vw,50px);
+ align-items:stretch;padding:clamp(22px,3.3vw,40px);
+ border-radius:22px;
+ background:linear-gradient(125deg,#FFFEFC,#FFF7F0 70%,#FFF1E8);
+ box-shadow:0 13px 30px rgba(122,73,51,.055);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-panel-head>div:first-child{
+ min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-panel-head h5{
+ font-size:clamp(26px,2.6vw,36px);line-height:1.28;margin:12px 0 17px;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-panel-head p{max-width:1000px;font-size:clamp(13px,1.12vw,15px);line-height:1.9}
+#panel-3 #bento-3-0 #rr04 .rr04-law{
+ width:100%;box-sizing:border-box;margin-top:20px;
+ padding:13px 16px;border-radius:11px;
+ background:linear-gradient(100deg,#FBE9DE,#FFF3EA);
+ border-left:3px solid var(--rr04-salmon);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-stat{
+ min-height:185px;padding:25px 18px;gap:10px;position:relative;overflow:hidden;
+ border:1px solid #E9CBB8;border-radius:19px;
+ background:linear-gradient(155deg,#FAE8DC,#F6D9C9 62%,#F4D4C0);
+ transition:transform .28s,box-shadow .28s,border-color .28s;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-stat::after{
+ content:"";position:absolute;inset:auto -15% -55% auto;
+ width:165px;height:165px;border:1px solid rgba(170,103,77,.22);
+ border-radius:50%;pointer-events:none;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-stat>strong{font-size:clamp(47px,5vw,68px);font-variant-numeric:tabular-nums;line-height:1.05}
+#panel-3 #bento-3-0 #rr04 .rr04-stat>span{max-width:190px;font-size:13px}
+#panel-3 #bento-3-0 #rr04 .rr04-stat:hover{
+ transform:translateY(-4px);box-shadow:0 17px 30px rgba(158,92,67,.12);
+ border-color:#D5A98E;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-heading{
+ position:relative;margin:6px 0 0;padding:0 0 16px;
+ border-bottom:1px solid #EBD8C8;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-heading::after{
+ content:"";position:absolute;left:0;bottom:-2px;width:clamp(60px,11%,145px);
+ height:3px;border-radius:7px;background:linear-gradient(90deg,#A6634E,#D9AB70);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-heading-icon{width:39px;height:39px;flex-basis:39px;border-radius:12px}
+#panel-3 #bento-3-0 #rr04 .rr04-heading h6{font-size:clamp(17px,1.6vw,22px)}
+#panel-3 #bento-3-0 #rr04 .rr04-flow{gap:12px;align-items:stretch}
+#panel-3 #bento-3-0 #rr04 .rr04-flow-node{
+ padding:18px;min-height:108px;justify-content:center;
+ border-radius:16px;background:linear-gradient(145deg,#FFFFFF,#FFF6EF);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-flow-node strong{font-size:13px}
+#panel-3 #bento-3-0 #rr04 .rr04-flow-node:hover{
+ border-color:#D4A990;box-shadow:0 11px 21px rgba(149,86,59,.10)
+}
+#panel-3 #bento-3-0 #rr04 .rr04-feature,
+#panel-3 #bento-3-0 #rr04 .rr04-functions article{
+ padding:clamp(18px,2vw,25px);border-radius:17px;min-width:0;
+ background:linear-gradient(145deg,#FFFEFC,#FFF9F4);
+ box-shadow:0 8px 18px rgba(124,71,49,.025);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-feature h6,
+#panel-3 #bento-3-0 #rr04 .rr04-functions h6{font-size:clamp(14px,1.2vw,17px)}
+#panel-3 #bento-3-0 #rr04 .rr04-feature p,
+#panel-3 #bento-3-0 #rr04 .rr04-functions p{font-size:clamp(12px,1vw,14px)}
+#panel-3 #bento-3-0 #rr04 .rr04-pbt{gap:11px}
+#panel-3 #bento-3-0 #rr04 .rr04-pbt li{min-height:54px;padding:12px;border-radius:13px}
+#panel-3 #bento-3-0 #rr04 .rr04-pbt li>b{width:29px;height:29px;flex-basis:29px}
+#panel-3 #bento-3-0 #rr04 .rr04-pane:not([hidden]) .rr04-heading-icon{
+ animation:rr04RefineIcon 3.6s ease-in-out infinite;
+}
+#panel-3 #bento-3-0 #rr04 .rr04-pane:not([hidden]) .rr04-flow-node:nth-of-type(1){animation:rr04RefineEnter .65s .05s both}
+#panel-3 #bento-3-0 #rr04 .rr04-pane:not([hidden]) .rr04-flow-node:nth-of-type(2){animation:rr04RefineEnter .65s .14s both}
+#panel-3 #bento-3-0 #rr04 .rr04-pane:not([hidden]) .rr04-flow-node:nth-of-type(3){animation:rr04RefineEnter .65s .23s both}
+#panel-3 #bento-3-0 #rr04 .rr04-pane:not([hidden]) .rr04-stat{animation:rr04RefineEnter .72s .14s both}
+#panel-3 #bento-3-0 #rr04.rr04-motion-ready .rr04-reveal:not(.rr04-on-screen){
+ opacity:.72;transform:translateY(11px);
+}
+#panel-3 #bento-3-0 #rr04 .rr04-reveal.rr04-on-screen{
+ animation:rr04RefineEnter .67s cubic-bezier(.2,.74,.2,1) both;
+}
+@keyframes rr04RefineEnter{from{opacity:.35;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rr04RefineFloat{0%,100%{transform:translateY(0) rotate(45deg)}50%{transform:translateY(-8px) rotate(45deg)}}
+@keyframes rr04RefineIcon{0%,100%{box-shadow:0 0 0 0 rgba(166,94,73,.12)}50%{box-shadow:0 0 0 7px rgba(166,94,73,.045)}}
+@media(max-width:900px){
+ #panel-3 #bento-3-0 #rr04 .rr04-hero{grid-template-columns:minmax(0,1fr) minmax(130px,.45fr)}
+ #panel-3 #bento-3-0 #rr04 .rr04-panel-head{grid-template-columns:minmax(0,1fr) minmax(155px,.35fr);gap:15px}
+}
+@media(max-width:780px){
+ #panel-3 #bento-3-0 #rr04 .rr04-hero{grid-template-columns:1fr}
+ #panel-3 #bento-3-0 #rr04 .rr04-panel-head{grid-template-columns:1fr}
+ #panel-3 #bento-3-0 #rr04 .rr04-stat{min-height:140px}
+ #panel-3 #bento-3-0 #rr04 .rr04-graphic{min-height:145px}
+}
+@media(max-width:540px){
+ #panel-3 #bento-3-0 #rr04 .rr04-tabs,
+ #panel-3 #bento-3-0 #rr04 .rr04-details,
+ #panel-3 #bento-3-0 #rr04 .rr04-functions,
+ #panel-3 #bento-3-0 #rr04 .rr04-pbt{grid-template-columns:1fr}
+ #panel-3 #bento-3-0 #rr04 .rr04-hero{padding:20px}
+ #panel-3 #bento-3-0 #rr04 .rr04-panel-head{padding:20px}
+ #panel-3 #bento-3-0 #rr04 .rr04-flow{flex-direction:column}
+ #panel-3 #bento-3-0 #rr04 .rr04-arrow{transform:rotate(90deg)}
+}
+@media(prefers-reduced-motion:reduce){
+ #panel-3 #bento-3-0 #rr04 .rr04-shape-a,
+ #panel-3 #bento-3-0 #rr04 .rr04-heading-icon,
+ #panel-3 #bento-3-0 #rr04 .rr04-flow-node,
+ #panel-3 #bento-3-0 #rr04 .rr04-stat,
+ #panel-3 #bento-3-0 #rr04 .rr04-reveal,
+ #panel-3 #bento-3-0 #rr04 .rr04-reveal.rr04-on-screen{
+  animation:none!important;transition:none!important;opacity:1!important;transform:none!important;
+ }
+}
+</style>
 </head>
 <body>
 
@@ -8106,6 +8277,44 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
   });
  });
  root.querySelectorAll('.rr04-pbt li').forEach(function(el,i){el.style.setProperty('--rr04-order',String(i%12));});
+})();
+</script><script id="suo-rr04-layout-motion-observer-2026">
+/* Scroll reveal limited to Bab 04 > RT/RKK; existing RT/RKK tab click handler untouched. */
+(function(){
+ const root=document.getElementById('rr04');
+ if(!root||!('IntersectionObserver' in window))return;
+ if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const panels=Array.from(root.querySelectorAll('.rr04-pane'));
+ const elements=Array.from(root.querySelectorAll(
+  '.rr04-hero,.rr04-panel-head,.rr04-details,.rr04-heading,.rr04-functions,.rr04-pbt'
+ ));
+ if(!elements.length)return;
+ const observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+   const el=entry.target;
+   if(entry.isIntersecting){
+    el.classList.remove('rr04-on-screen');
+    void el.offsetWidth;
+    el.classList.add('rr04-on-screen');
+   }else{el.classList.remove('rr04-on-screen');}
+  });
+ },{threshold:.06,rootMargin:'0px 0px -4% 0px'});
+ elements.forEach(function(el){el.classList.add('rr04-reveal');observer.observe(el);});
+ root.classList.add('rr04-motion-ready');
+ // Reapply reveals when selecting RT/RKK; no changes to the existing tab logic.
+ if('MutationObserver' in window){
+  const watch=new MutationObserver(function(){
+   panels.forEach(function(panel){
+    if(panel.hidden)return;
+    panel.querySelectorAll('.rr04-reveal').forEach(function(el){
+     if(el.getBoundingClientRect().height&&el.getBoundingClientRect().top<window.innerHeight){
+      el.classList.remove('rr04-on-screen');void el.offsetWidth;el.classList.add('rr04-on-screen');
+     }
+    });
+   });
+  });
+  panels.forEach(function(panel){watch.observe(panel,{attributes:true,attributeFilter:['hidden']});});
+ }
 })();
 </script></body>
 </html>
