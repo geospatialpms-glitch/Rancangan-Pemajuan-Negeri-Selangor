@@ -5600,6 +5600,176 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
  }
 }
 </style>
+<style id="suo-targeted-contrast-and-timeline-repair-2026">
+/* Repair only elements shown in QA screenshots: Bab 01 atlas, Bab 02 RT/RKK PBT,
+   Bab 03 spatial concept, policy introduction and Five Strategic Foundations.
+   No other StoryMap surfaces, data, navigation or SVG/JS are changed. */
+
+/* Bab 01 — clear PBT header on its green field; keep genuine category meaning. */
+#panel-0 .selangor-atlas-right .selangor-atlas-pbt-head{
+  background:#355841!important;background-image:none!important;
+  color:#fffaf0!important;border:1px solid #567b5f!important;
+  text-shadow:0 1px 2px rgba(21,48,29,.24)!important;
+  box-shadow:0 9px 19px rgba(41,89,60,.11)!important;
+}
+#panel-0 .selangor-atlas-right .selangor-atlas-pbt-row>b{
+  background:#436d53!important;background-image:none!important;
+  color:#fff!important;border:1px solid #70967a!important;
+  font-weight:900!important;text-shadow:none!important;
+}
+#panel-0 .selangor-atlas-right .selangor-atlas-pbt-row>span{
+  color:#294d39!important;font-weight:800!important;
+}
+#panel-0 .selangor-atlas-right .selangor-atlas-pbt-row>small{
+  color:#365741!important;
+  background:#e4f0e2!important;
+}
+
+/* Bab 02 — RT and RKK numeric index must be readable on blue chips. */
+#panel-1 .suo-rt-directory-grid .suo-rt-pbt-item summary .suo-rt-pbt-number,
+#panel-1 .suo-rkk-2026 .suo-rt-pbt-item summary .suo-rt-pbt-number{
+  background:#285d80!important;background-image:none!important;
+  color:#fff!important;border:1px solid #6c9abc!important;
+  opacity:1!important;text-shadow:none!important;
+}
+#panel-1 .suo-rt-directory-grid .suo-rt-pbt-item summary .suo-rt-pbt-name,
+#panel-1 .suo-rkk-2026 .suo-rt-pbt-item summary .suo-rt-pbt-name{
+  color:#254c69!important;font-weight:850!important;
+}
+#panel-1 .suo-rt-directory-grid .suo-rt-pbt-item summary .suo-rt-pbt-code,
+#panel-1 .suo-rkk-2026 .suo-rt-pbt-item summary .suo-rt-pbt-code{
+  color:#40556d!important;background:#f5eadb!important;
+}
+#panel-1 .suo-rt-directory-grid .suo-rt-pbt-item summary .suo-rt-pbt-arrow,
+#panel-1 .suo-rkk-2026 .suo-rt-pbt-item summary .suo-rt-pbt-arrow{
+  color:#72552e!important;
+}
+
+/* Bab 03 spatial theme — original white letters became invisible on
+   a champagne-tinted card after the chapter-wide palette was applied. */
+#panel-2 .suo-rsn-spatial-card.suo-rsn-spatial-urban,
+#panel-2 .suo-bab02-rsn-relocated .suo-rsn-spatial-card.suo-rsn-spatial-urban{
+  background:linear-gradient(155deg,#fff9ee 0%,#f6e6cc 57%,#f0d6c0 100%)!important;
+  border-color:#dfbd88!important;
+}
+#panel-2 .suo-rsn-spatial-card.suo-rsn-spatial-urban>p,
+#panel-2 .suo-rsn-spatial-card.suo-rsn-spatial-urban>p strong,
+#panel-2 .suo-bab02-rsn-relocated .suo-rsn-spatial-card.suo-rsn-spatial-urban>p,
+#panel-2 .suo-bab02-rsn-relocated .suo-rsn-spatial-card.suo-rsn-spatial-urban>p strong{
+  color:#513c2c!important;text-shadow:none!important;
+}
+#panel-2 .suo-rsn-spatial-card.suo-rsn-spatial-urban>.suo-rsn-spatial-eyebrow{
+  color:#775222!important;
+}
+#panel-2 .suo-rsn-spatial-card.suo-rsn-spatial-urban>.suo-rsn-spatial-icon{
+  background:#936627!important;color:#fff9ed!important;
+}
+
+/* Policy Pengenalan — override the global rule which painted its hero heading
+   dark brown on a dark brown image overlay. Preserve existing fade and image. */
+#panel-2 #bento-2-3 .suo-rsn-policy-lead.suo-rsn-policy-network-lead .suo-rsn-policy-lead-text>h5{
+  color:#fff9ef!important;
+  text-shadow:0 2px 8px rgba(42,23,12,.38)!important;
+}
+#panel-2 #bento-2-3 .suo-rsn-policy-lead.suo-rsn-policy-network-lead .suo-rsn-policy-lead-text>p{
+  color:#fff8ef!important;text-shadow:0 1px 3px rgba(42,23,12,.32)!important;
+}
+#panel-2 #bento-2-3 .suo-rsn-policy-lead.suo-rsn-policy-network-lead .suo-rsn-policy-kicker{
+  color:#ffdfa2!important;
+}
+
+/* Lima Asas Strategik — visual separation, generous card gaps and comfortable
+   alternating rows, without modifying five-item structure or existing animation. */
+#panel-2 #bento-2-4 #lu-five-asas-title{
+  margin-top:34px!important;margin-bottom:14px!important;
+  padding:18px 0 15px!important;
+  border-top:1px solid #e8d8bf!important;
+  color:#704a27!important;
+}
+#panel-2 #bento-2-4 .lu-asas-intro{
+  padding:0 4px!important;margin-bottom:13px!important;
+  color:#8a6740!important;
+}
+#panel-2 #bento-2-4 .lu-asas-timeline{
+  padding:26px 22px 27px!important;
+  background:linear-gradient(145deg,rgba(255,254,251,.89),rgba(251,240,219,.72))!important;
+  border:1px solid #ead7b9!important;
+  border-radius:22px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.86),0 13px 28px rgba(120,84,39,.06)!important;
+  scrollbar-color:#b99761 #f3e8d9;
+}
+#panel-2 #bento-2-4 .lu-asas{
+  min-width:1200px!important;
+  gap:28px!important;
+  padding:0 10px!important;
+}
+#panel-2 #bento-2-4 .lu-asas-step{
+  height:454px!important;
+}
+#panel-2 #bento-2-4 .lu-asas-step .lu-asas-item{
+  height:183px!important;
+  min-height:0!important;
+  padding:19px 18px!important;
+  gap:8px!important;
+  background:linear-gradient(155deg,#fffdf8,#f7ebd9)!important;
+  border:1px solid #dcbf93!important;
+  border-left:4px solid #bb8c53!important;
+  border-radius:19px!important;
+  box-shadow:0 10px 22px rgba(110,75,43,.11)!important;
+}
+#panel-2 #bento-2-4 .lu-asas-step:nth-child(even) .lu-asas-item{
+  background:linear-gradient(145deg,#fffaf6,#f2e2d5)!important;
+  border-color:#dfc4ae!important;
+  border-left-color:#aa7758!important;
+}
+#panel-2 #bento-2-4 .lu-asas-step .lu-asas-item>small{
+  color:#785527!important;font-weight:900!important;
+}
+#panel-2 #bento-2-4 .lu-asas-step .lu-asas-item>strong{
+  color:#624424!important;
+  font-size:clamp(12px,1.01vw,14px)!important;
+  line-height:1.58!important;
+}
+#panel-2 #bento-2-4 .lu-asas-card-top .lu-asas-index{
+  background:#92682b!important;color:#fff!important;
+  box-shadow:0 4px 10px rgba(128,89,39,.15)!important;
+}
+#panel-2 #bento-2-4 .lu-asas-mark{
+  background:#f2dfba!important;color:#704b23!important;
+  border-color:#e4c899!important;
+}
+#panel-2 #bento-2-4 .lu-asas-step::before{
+  background:linear-gradient(#a77e4b,#d6b17c)!important;
+  height:44px!important;
+  top:calc(50% - 44px)!important;
+}
+#panel-2 #bento-2-4 .lu-asas-step:nth-child(even)::before{
+  top:50%!important;
+}
+#panel-2 #bento-2-4 .lu-asas-node{
+  background:#a47639!important;
+  box-shadow:0 0 0 2px #d0ab71,0 0 0 7px rgba(212,174,110,.09)!important;
+}
+#panel-2 #bento-2-4 .lu-asas-step .lu-asas-item:hover{
+  border-color:#c69a5c!important;
+  box-shadow:0 16px 31px rgba(116,82,43,.17)!important;
+}
+#panel-2 #bento-2-4 .lu-asas-step:nth-child(odd) .lu-asas-item:hover{
+  transform:translateY(-5px);
+}
+#panel-2 #bento-2-4 .lu-asas-step:nth-child(even) .lu-asas-item:hover{
+  transform:translateY(5px);
+}
+@media(max-width:680px){
+  #panel-2 #bento-2-4 .lu-asas-timeline{padding:20px 14px 24px!important;}
+  #panel-2 #bento-2-4 .lu-asas{min-width:1030px!important;gap:23px!important;}
+  #panel-2 #bento-2-4 .lu-asas-step{height:435px!important;}
+  #panel-2 #bento-2-4 .lu-asas-step .lu-asas-item{height:184px!important;padding:15px!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  #panel-2 #bento-2-4 .lu-asas-step .lu-asas-item:hover{transform:none!important;}
+}
+</style>
 </head>
 <body>
 
