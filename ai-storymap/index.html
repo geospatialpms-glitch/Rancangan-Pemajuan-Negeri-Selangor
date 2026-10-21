@@ -7021,7 +7021,293 @@ header.header .suo-explore-trigger{
   header.header .brand-text small{font-size:10px}
 }
 </style>
-</head>
+<style id="suo-admin-map-clarity-polish-20261021">
+/* Scope A: Bab 01 > Atlas Pentadbiran, PBT title only.
+   Scope B: Homepage > Peta Interaktif Pentadbiran Negeri Selangor.
+   No changes to geographical layers, Leaflet, events or any other Story Map panels. */
+
+/* The pale-green heading previously had near-white lettering: use reliable dark contrast. */
+#panel-0 .selangor-atlas-right .selangor-atlas-pbt-head{
+ background:#dcecdf!important;
+ background-image:linear-gradient(112deg,#eaf4e8 0%,#d1e6d7 100%)!important;
+ color:#254e39!important;
+ -webkit-text-fill-color:#254e39!important;
+ opacity:1!important;
+ filter:none!important;
+ text-shadow:none!important;
+ border:1px solid #afcdb7!important;
+ box-shadow:0 7px 19px rgba(34,86,56,.09)!important;
+ font-size:clamp(12px,1.1vw,14px)!important;
+ font-weight:900!important;
+ letter-spacing:.025em;
+ line-height:1.45!important;
+}
+
+/* Main Selangor administrative map: restrained maroon/cream outside the chapter cards. */
+#statistik-pembangunan{
+ --geo-ink:#543445;--geo-main:#65304a;--geo-gold:#c59a5d;
+ --geo-border:#ead9ca;--geo-soft:#fffaf4;--geo-wash:#f9f1e8;
+}
+#statistik-pembangunan .spatial-heading h2{
+ text-wrap:balance;
+}
+#statistik-pembangunan .selangor-map-banner.suo-geo-stage{
+ border:1px solid #e5d2c1!important;
+ border-radius:23px!important;
+ background:#fffaf4!important;
+ box-shadow:0 20px 46px rgba(82,40,54,.12)!important;
+}
+#statistik-pembangunan .suo-geo-app{
+ grid-template-columns:minmax(0,1.51fr) minmax(350px,.91fr);
+ align-items:stretch;
+}
+#statistik-pembangunan .suo-geo-left{
+ background:#e4ede5;
+ border-right:1px solid #e7d5c8;
+}
+#statistik-pembangunan .suo-geo-map-tools{
+ position:relative;z-index:6;
+ background:linear-gradient(120deg,rgba(255,253,249,.98),rgba(251,243,233,.97))!important;
+ color:#553346!important;
+ border-bottom:1px solid var(--geo-border);
+ padding:13px 17px;
+ gap:12px;
+ box-shadow:0 5px 17px rgba(54,46,45,.055);
+}
+#statistik-pembangunan .suo-geo-map-tools>strong{
+ color:#6e334d;
+ font-size:clamp(10px,.83vw,12px);
+ font-weight:900;
+ letter-spacing:.06em;
+ line-height:1.5;
+}
+#statistik-pembangunan .suo-geo-map-tools>div{
+ display:flex;align-items:center;gap:6px;
+}
+#statistik-pembangunan .suo-geo-map-tools button{
+ border:1px solid #e4cfc0;
+ background:#fffdfa;
+ color:#603c4d;
+ padding:9px 13px;
+ border-radius:999px;
+ font-size:11px;
+ font-weight:850;
+ box-shadow:0 2px 5px rgba(75,43,51,.035);
+ transition:background .22s,color .22s,border-color .22s,transform .22s,box-shadow .22s;
+}
+#statistik-pembangunan .suo-geo-map-tools button[aria-pressed="true"]{
+ background:#65304a!important;
+ color:#fff!important;
+ border-color:#65304a!important;
+ box-shadow:0 4px 11px rgba(91,43,68,.17);
+}
+#statistik-pembangunan .suo-geo-map-tools button:hover{
+ transform:translateY(-1px);
+ border-color:#b98d87;
+ box-shadow:0 5px 11px rgba(96,52,71,.12);
+}
+#statistik-pembangunan .suo-geo-map-foot{
+ background:rgba(255,252,247,.98);
+ border-top:1px solid var(--geo-border);
+ padding:12px 16px;
+ gap:11px 17px;
+ color:#594d50;
+ font-size:11px;
+ line-height:1.5;
+}
+#statistik-pembangunan .suo-geo-map-foot small{
+ font-size:10px;line-height:1.45;
+ color:#806770;
+}
+#statistik-pembangunan .suo-geo-side{
+ background:linear-gradient(155deg,#fffcf8,#f8f2eb);
+ color:#543e49;
+ border-left:1px solid var(--geo-border);
+ max-height:720px;
+}
+#statistik-pembangunan .suo-geo-side>header{
+ padding:20px 22px 21px;
+}
+#statistik-pembangunan .suo-geo-side>header>small{
+ font-size:11px;
+ letter-spacing:.10em;
+}
+#statistik-pembangunan .suo-geo-side>header>h3{
+ font-size:clamp(18px,1.45vw,23px);
+ line-height:1.27;
+ margin:8px 0 9px;
+ text-wrap:balance;
+}
+#statistik-pembangunan .suo-geo-side>header>p{
+ font-size:12px;
+ line-height:1.65;
+ max-width:43ch;
+ color:#fff2e8!important;
+}
+#statistik-pembangunan .suo-geo-side-inner{
+ padding:3px 18px 22px;
+ scrollbar-color:#cbb1a0 #f5ede4;
+ scrollbar-width:thin;
+}
+#statistik-pembangunan .suo-geo-side-inner>section{
+ padding:17px 0;
+ border-bottom:1px solid #e9dbcd;
+}
+#statistik-pembangunan .suo-geo-rowhead{
+ gap:9px;
+ margin-bottom:12px;
+}
+#statistik-pembangunan .suo-geo-rowhead h4,
+#statistik-pembangunan .suo-geo-docs>h4{
+ color:#633248;
+ font-size:14px;
+ font-weight:900;
+ line-height:1.4;
+}
+#statistik-pembangunan .suo-geo-rowhead small{
+ font-size:11px;color:#855b44;
+}
+#statistik-pembangunan .suo-geo-rowhead button{
+ color:#663e50;
+ background:#fffdf9;
+ border-color:#dec7b7;
+ font-size:11px;
+ font-weight:850;
+ padding:9px 12px;
+ transition:background .22s,color .22s,border-color .22s;
+}
+#statistik-pembangunan .suo-geo-rowhead button:hover{
+ color:white;background:#67314a;border-color:#67314a;
+}
+#statistik-pembangunan .suo-geo-districts{
+ gap:8px;
+}
+#statistik-pembangunan .suo-geo-pbts{
+ gap:9px;
+}
+#statistik-pembangunan .suo-geo-districts button,
+#statistik-pembangunan .suo-geo-pbts button{
+ background:#fffefd;
+ color:#57414b;
+ border:1px solid #e7d5c6;
+ border-radius:12px;
+ box-shadow:0 2px 7px rgba(87,51,67,.035);
+ transition:background .2s,transform .2s,border-color .2s,box-shadow .2s,color .2s;
+}
+#statistik-pembangunan .suo-geo-districts button{
+ padding:12px 7px;
+ font-size:11px;
+ font-weight:850;
+ line-height:1.3;
+ min-height:43px;
+}
+#statistik-pembangunan .suo-geo-pbts button{
+ font-size:11px;
+ line-height:1.48;
+ gap:10px;
+ padding:10px 9px;
+ min-height:64px;
+ font-weight:800;
+}
+#statistik-pembangunan .suo-geo-pbts button b{
+ background:#f6ebe4;
+ color:#603247;
+ border:1px solid #eee0d2;
+ border-radius:9px;
+ min-width:43px;
+ padding:7px 5px;
+}
+#statistik-pembangunan .suo-geo-districts button:hover,
+#statistik-pembangunan .suo-geo-pbts button:hover{
+ transform:translateY(-2px);
+ border-color:#b78b83;
+ background:#fff7ef;
+ box-shadow:0 8px 18px rgba(87,51,67,.095);
+}
+#statistik-pembangunan .suo-geo-districts button[aria-pressed="true"],
+#statistik-pembangunan .suo-geo-pbts button[aria-pressed="true"]{
+ background:#65304a!important;
+ border-color:#65304a!important;
+ color:#fff!important;
+ box-shadow:0 4px 13px rgba(84,35,59,.2)!important;
+}
+#statistik-pembangunan .suo-geo-pbts button[aria-pressed="true"] b{
+ background:#fff5ed;
+ color:#65304a;
+ border-color:#e8cdb1;
+}
+#statistik-pembangunan .suo-geo-docs>p{
+ font-size:12px;
+ line-height:1.65;
+ color:#716068;
+}
+#statistik-pembangunan .suo-geo-doc-block{
+ border-color:#e6d3c3;
+ border-radius:13px;
+ box-shadow:0 4px 13px rgba(82,40,54,.055);
+}
+#statistik-pembangunan .suo-geo-doc-block h5{
+ font-size:12px;
+ line-height:1.4;
+ color:#633248;
+}
+#statistik-pembangunan .suo-geo-doc-block li button{
+ font-size:11.5px;
+ line-height:1.5;
+ border-radius:8px;
+}
+#statistik-pembangunan .suo-geo-stage>.spatial-glass-panel{
+ border:1px solid rgba(255,255,255,.84);
+ background:rgba(255,251,244,.92)!important;
+ box-shadow:0 9px 26px rgba(31,39,34,.21);
+ backdrop-filter:blur(13px);
+ -webkit-backdrop-filter:blur(13px);
+}
+#statistik-pembangunan .suo-geo-stage>.spatial-glass-panel .badge-tag{
+ color:#78334e;
+ font-size:9.5px;
+}
+#statistik-pembangunan .suo-geo-stage>.spatial-glass-panel .map-stat-item span{
+ color:#5e4b53;
+ font-size:10px;
+}
+#statistik-pembangunan .suo-geo-stage button:focus-visible{
+ outline:3px solid #cda367;
+ outline-offset:2px;
+}
+@media(max-width:1100px){
+ #statistik-pembangunan .suo-geo-app{
+  grid-template-columns:minmax(0,1.32fr) minmax(325px,.9fr);
+ }
+ #statistik-pembangunan .suo-geo-map-tools{padding:11px 12px}
+ #statistik-pembangunan .suo-geo-pbts button{padding:9px 8px}
+}
+@media(max-width:950px){
+ #statistik-pembangunan .suo-geo-app{grid-template-columns:1fr}
+ #statistik-pembangunan .suo-geo-side{max-height:none;border-left:0;border-top:1px solid var(--geo-border)}
+ #statistik-pembangunan .suo-geo-side-inner{max-height:600px;overflow-y:auto}
+ #statistik-pembangunan .suo-geo-districts{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:580px){
+ #statistik-pembangunan .selangor-map-banner.suo-geo-stage{border-radius:17px!important}
+ #statistik-pembangunan .suo-geo-map-tools{padding:10px;gap:9px}
+ #statistik-pembangunan .suo-geo-map-tools>strong{flex:1 0 100%;font-size:10px}
+ #statistik-pembangunan .suo-geo-map-tools>div{width:100%;gap:5px}
+ #statistik-pembangunan .suo-geo-map-tools button{flex:1;padding:9px 7px;font-size:10px}
+ #statistik-pembangunan .suo-geo-side>header{padding:18px 16px}
+ #statistik-pembangunan .suo-geo-side-inner{padding:0 12px 15px}
+ #statistik-pembangunan .suo-geo-districts{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #statistik-pembangunan .suo-geo-pbts{grid-template-columns:1fr}
+ #statistik-pembangunan .suo-geo-pbts button{min-height:52px}
+ #statistik-pembangunan .suo-geo-map-foot{padding:10px;gap:7px}
+ #statistik-pembangunan .suo-geo-map-foot small{margin-left:0}
+}
+@media(prefers-reduced-motion:reduce){
+ #statistik-pembangunan .suo-geo-map-tools button,
+ #statistik-pembangunan .suo-geo-pbts button,
+ #statistik-pembangunan .suo-geo-districts button{transition:none!important;transform:none!important}
+}
+</style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
