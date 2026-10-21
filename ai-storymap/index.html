@@ -6902,7 +6902,7 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
       <div class="spatial-stage-glow" aria-hidden="true"></div>
       <div class="suo-geo-app" id="suo-geo-app">
         <div class="suo-geo-left">
-          <div class="suo-geo-map-tools"><strong>◈ ATLAS GIS · 9 DAERAH / 12 PBT</strong><div role="group" aria-label="Jenis peta"><button type="button" data-geo-base="street" aria-pressed="true">Peta Jalan</button><button type="button" data-geo-base="satellite" aria-pressed="false">Satelit</button><button type="button" id="suo-geo-reset">↺ Set Semula</button></div></div>
+          <div class="suo-geo-map-tools"><strong>◈ ATLAS GIS · 9 DAERAH / 12 PBT</strong><div role="group" aria-label="Jenis peta"><button type="button" data-geo-base="street" aria-pressed="false">Peta Jalan</button><button type="button" data-geo-base="satellite" aria-pressed="true">Satelit</button><button type="button" id="suo-geo-reset">↺ Set Semula</button></div></div>
           <div id="selangorLeafletMap" class="suo-geo-map" role="application" aria-label="Peta interaktif 9 daerah Selangor dan 12 lokasi pejabat PBT"><p id="suo-geo-load" role="status">Memuatkan sempadan daerah dan lokasi PBT…</p></div>
           <div class="suo-geo-map-foot"><span><i class="suo-geo-keyline"></i> 9 sempadan daerah</span><span><i class="suo-geo-keydot"></i> 12 lokasi pejabat PBT</span><small>Penanda PBT bukan sempadan bidang kuasa PBT.</small></div>
         </div>
@@ -9980,9 +9980,9 @@ async function setup(){
   const d=await r.json(),names=Object.keys(d.encodedRings||{});
   if(names.length!==9)throw Error('Data tidak mempunyai sembilan daerah');
   map=L.map(host,{scrollWheelZoom:false,preferCanvas:true});
-  const street=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
-  const satellite=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imagery &copy; Esri and contributors'});
-  let base=street;
+  const street=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'});
+  const satellite=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imagery &copy; Esri and contributors'}).addTo(map);
+  let base=satellite;
   function setBase(mode){const next=mode==='satellite'?satellite:street;if(next!==base){map.removeLayer(base);next.addTo(map);next.bringToBack();base=next;}app.querySelectorAll('[data-geo-base]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.geoBase===mode))})}
   app.querySelectorAll('[data-geo-base]').forEach(function(b){b.addEventListener('click',function(){setBase(b.dataset.geoBase)})});
   satellite.on('tileerror',function(){if(map.hasLayer(satellite))setBase('street')});
