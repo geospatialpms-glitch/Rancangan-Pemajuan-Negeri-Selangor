@@ -5770,7 +5770,60 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
   #panel-2 #bento-2-4 .lu-asas-step .lu-asas-item:hover{transform:none!important;}
 }
 </style>
-</head>
+<style id="rr04-reused-bab02-rt-rkk-directory-map-2026">
+/* BAB 04 ONLY: reuse the actual Bab 02 RT/RKK details, logos, lists and office-map controls. */
+#panel-3 #rr04 .rr04-directory-adopted{min-width:0;display:grid;gap:16px}
+#panel-3 #rr04 .rr04-directory-instruction,
+#panel-3 #rr04 .rr04-map-disclaimer{margin:0;color:#745f58;font-size:12px;line-height:1.85}
+#panel-3 #rr04 .rr04-directory-instruction{padding:13px 17px;background:linear-gradient(105deg,#fff8f1,#ffefe6);border:1px solid #eed7c9;border-radius:13px}
+#panel-3 #rr04 .suo-rt-directory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+#panel-3 #rr04 .suo-rt-pbt-item{min-width:0;overflow:hidden;border:1px solid #eacfc2;border-radius:16px;background:#fffcf9;box-shadow:0 5px 15px rgba(139,78,57,.045);transition:border-color .25s,box-shadow .25s,transform .25s}
+#panel-3 #rr04 .suo-rt-pbt-item:hover,#panel-3 #rr04 .suo-rt-pbt-item[open]{border-color:#b87b60;box-shadow:0 11px 23px rgba(140,79,58,.10)}
+#panel-3 #rr04 .suo-rt-pbt-item[open]{transform:translateY(-2px)}
+#panel-3 #rr04 .suo-rt-pbt-item summary{display:flex;align-items:center;gap:9px;min-height:75px;padding:12px 14px;list-style:none;cursor:pointer;outline-offset:-3px;color:#704635}
+#panel-3 #rr04 .suo-rt-pbt-item summary::-webkit-details-marker{display:none}
+#panel-3 #rr04 .suo-rt-pbt-item[open] summary,#panel-3 #rr04 .suo-rt-pbt-item summary:hover{background:#fff0e6}
+#panel-3 #rr04 .suo-rt-pbt-item summary:focus-visible,
+#panel-3 #rr04 .suo-rt-map-action:focus-visible{outline:3px solid #dfa77f}
+#panel-3 #rr04 .suo-rt-pbt-number{flex:0 0 35px;width:35px;height:35px;display:grid;place-items:center;border-radius:11px;background:#a65e49;color:#fff!important;font-size:12px;font-weight:900}
+#panel-3 #rr04 .suo-rt-pbt-visual{flex:0 0 43px;width:43px;height:43px;display:grid;place-items:center;background:#fff;border:1px solid #efdccd;border-radius:12px;overflow:hidden}
+#panel-3 #rr04 .suo-rt-pbt-visual img{width:100%;height:100%;padding:3px;object-fit:contain;display:block}
+#panel-3 #rr04 .suo-rt-pbt-visual img[hidden],#panel-3 #rr04 .suo-rt-pbt-icon-fallback[hidden]{display:none!important}
+#panel-3 #rr04 .suo-rt-pbt-visual svg{width:27px;height:27px}
+#panel-3 #rr04 .suo-rt-pbt-icon-fallback{display:grid;place-items:center;width:100%;height:100%;color:#895341}
+#panel-3 #rr04 .suo-rt-pbt-name{flex:1;min-width:0;color:#754936!important;font-size:12px;font-weight:850;line-height:1.5}
+#panel-3 #rr04 .suo-rt-pbt-code{color:#91563f!important;background:#f8e4d7!important;padding:5px 8px;border-radius:99px;font-size:10px;font-weight:900;white-space:nowrap}
+#panel-3 #rr04 .suo-rt-pbt-arrow{font-size:20px;color:#ab765b;transition:transform .23s}
+#panel-3 #rr04 .suo-rt-pbt-item[open] .suo-rt-pbt-arrow{transform:rotate(180deg)}
+#panel-3 #rr04 .suo-rt-pbt-documents{border-top:1px solid #eedbd0;padding:15px 18px 19px;background:#fffdfb;animation:rr04DocReveal26 .33s ease both}
+#panel-3 #rr04 .suo-rt-doc-label{display:block;color:#975941!important;font-size:10px;font-weight:900;letter-spacing:.1em}
+#panel-3 #rr04 .suo-rt-pbt-documents ul{display:grid;gap:9px;padding-left:18px;margin:10px 0 0}
+#panel-3 #rr04 .suo-rt-pbt-documents li{font-size:12px;line-height:1.7;color:#5e5450}
+#panel-3 #rr04 .suo-rt-pbt-documents li::marker{color:#b67f60}
+#panel-3 #rr04 .suo-rt-map-action{display:inline-flex;align-items:center;justify-content:center;margin-top:14px;padding:10px 15px;border-radius:999px;border:1px solid #ad6d55;background:#a65e49;color:#fff!important;font-size:12px;font-weight:850;transition:transform .2s,background .2s}
+#panel-3 #rr04 .suo-rt-map-action:hover{background:#824936;transform:translateY(-2px)}
+#panel-3 #rr04 .suo-rt-pbt-item.is-map-selected{border-color:#b57e61;box-shadow:0 0 0 2px rgba(188,132,96,.20)!important}
+#panel-3 #rr04 .suo-rt-location-map{margin-top:4px;border:1px solid #e3b99f;border-radius:19px;background:#fffdfa;overflow:hidden;scroll-margin-top:115px}
+#panel-3 #rr04 .suo-rt-location-map[hidden]{display:none!important}
+#panel-3 #rr04 .suo-rt-map-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;background:linear-gradient(110deg,#874a3a,#b8785d);border-bottom:3px solid #dcb68e;color:#fff}
+#panel-3 #rr04 .suo-rt-map-heading small{font-size:10px;font-weight:900;color:#ffe8c9;letter-spacing:.1em}
+#panel-3 #rr04 .suo-rt-map-heading h5{margin:6px 0;font:800 22px/1.4 Merriweather,Georgia,serif;color:#fff!important}
+#panel-3 #rr04 .suo-rt-map-heading p{margin:0;color:#fff4e9;font-size:12px}
+#panel-3 #rr04 .suo-rt-map-close{flex:none;width:39px;height:39px;border-radius:50%;border:1px solid #efd1b2;background:#fff3e0;color:#77432f;font-weight:900;cursor:pointer}
+#panel-3 #rr04 .suo-rt-3d-controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:12px}
+#panel-3 #rr04 .suo-rt-3d-controls button{border-radius:999px;border:1px solid #e4c3ab;background:#fff8f3;padding:10px 16px;color:#7a4d3c;font-size:12px;font-weight:850;cursor:pointer}
+#panel-3 #rr04 .suo-rt-3d-controls button[aria-pressed=true],#panel-3 #rr04 .suo-rt-3d-controls button:hover{background:#995540;color:#fff}
+#panel-3 #rr04 .suo-rt-3d-controls small{flex:1;min-width:170px;text-align:right;color:#796b66;font-size:11px;line-height:1.65}
+#panel-3 #rr04 .suo-rt-map-leaflet{height:clamp(420px,49vw,650px)!important;width:100%;position:relative;z-index:1;overflow:hidden;background:#eeeae3}
+#panel-3 #rr04 .suo-rt-office-pin{width:20px;height:20px;border-radius:50%;background:#a65e49;border:4px solid #fff2dc;box-shadow:0 0 0 4px #d6ad7f,0 6px 19px #74403480;cursor:pointer}
+#panel-3 #rr04 .suo-rt-map-leaflet .maplibregl-popup-content{border-radius:14px;padding:14px;font:12px/1.7 'Plus Jakarta Sans',sans-serif;color:#774936}
+#panel-3 #rr04 .suo-rt-map-note{margin:0;padding:13px 19px;background:#fff4e8;color:#705950;font-size:12px;line-height:1.7}
+#panel-3 #rr04 .suo-rt-map-note strong{color:#754936}
+@keyframes rr04DocReveal26{from{opacity:.2;transform:translateY(-7px)}to{opacity:1;transform:none}}
+@media(max-width:800px){#panel-3 #rr04 .suo-rt-directory-grid{grid-template-columns:1fr}#panel-3 #rr04 .suo-rt-3d-controls small{text-align:left;flex-basis:100%}}
+@media(max-width:530px){#panel-3 #rr04 .suo-rt-pbt-item summary{padding:11px 9px;gap:6px}#panel-3 #rr04 .suo-rt-pbt-visual{flex-basis:36px;width:36px;height:36px}#panel-3 #rr04 .suo-rt-map-leaflet{height:440px!important}#panel-3 #rr04 .suo-rt-pbt-name{font-size:11px}}
+@media(prefers-reduced-motion:reduce){#panel-3 #rr04 .suo-rt-pbt-documents{animation:none}#panel-3 #rr04 .suo-rt-pbt-item,#panel-3 #rr04 .suo-rt-map-action{transition:none}}
+</style></head>
 <body>
 
 
@@ -6777,7 +6830,26 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
    <div class="rr04-heading"><span class="rr04-heading-icon" aria-hidden="true">✦</span><div><small>04 FUNGSI & MATLAMAT</small><h6>Fungsi Utama Rancangan Tempatan</h6></div></div>
    <div class="rr04-functions"><article><span>01</span><h6>Menterjemahkan Dasar RS</h6><p>Menterjemahkan polisi dan strategi RS ke skala pemajuan tempatan.</p></article><article><span>02</span><h6>Panduan Pembangunan Fizikal</h6><p>Rujukan utama pembangunan fizikal daerah/PBT melalui peta cadangan guna tanah.</p></article><article><span>03</span><h6>Kawalan Pemajuan</h6><p>Menyediakan garis panduan serta kawalan perancangan bagi kelulusan Kebenaran Merancang (KM).</p></article><article><span>04</span><h6>Pelaksanaan Projek</h6><p>Mengenal pasti projek utama daerah serta garis panduan pelaksanaannya.</p></article></div>
    <div class="rr04-heading"><span class="rr04-heading-icon" aria-hidden="true">✦</span><div><small>SENARAI PBT SELANGOR BAGI RT</small><h6>Pihak Berkuasa Tempatan</h6></div><span class="rr04-pill">12 PBT</span></div>
-   <ul class="rr04-pbt"><li><b>01</b><span>Majlis Bandaraya Petaling Jaya</span></li><li><b>02</b><span>Majlis Bandaraya Shah Alam</span></li><li><b>03</b><span>Majlis Bandaraya Subang Jaya</span></li><li><b>04</b><span>Majlis Bandaraya Diraja Klang</span></li><li><b>05</b><span>Majlis Perbandaran Kajang</span></li><li><b>06</b><span>Majlis Perbandaran Ampang Jaya</span></li><li><b>07</b><span>Majlis Perbandaran Selayang</span></li><li><b>08</b><span>Majlis Perbandaran Sepang</span></li><li><b>09</b><span>Majlis Perbandaran Hulu Selangor</span></li><li><b>10</b><span>Majlis Perbandaran Kuala Langat</span></li><li><b>11</b><span>Majlis Perbandaran Kuala Selangor</span></li><li><b>12</b><span>Majlis Daerah Sabak Bernam</span></li></ul>
+   <div class="rr04-directory-adopted" id="rr04-rt-directory-2026" aria-label="Senarai Rancangan Tempatan mengikut 12 PBT">
+ <p class="rr04-directory-instruction">Klik nama PBT untuk membuka senarai RT seperti dalam Bab 02. Pilih <strong>Lihat Lokasi PBT di Peta</strong> untuk meneroka lokasi pejabat melalui peta 3D.</p>
+ <div class="suo-rt-directory-grid"><details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">01</span><span class="suo-rt-pbt-visual"><img alt="Logo MBSA" src="./MBSA%201.png" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Shah Alam</span><span class="suo-rt-pbt-code">MBSA</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Majlis Bandaraya Shah Alam 2035</li><li>Rancangan Tempatan Majlis Bandaraya Shah Alam 2035 (Pengubahan 1)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBSA" aria-label="Lihat lokasi pejabat MBSA di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">02</span><span class="suo-rt-pbt-visual"><img alt="Logo MBPJ" src="./MBPJ%20(1).png" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Petaling Jaya</span><span class="suo-rt-pbt-code">MBPJ</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Petaling Jaya 1 (RTPJ1) (Pengubahan 4)</li><li>Rancangan Tempatan Petaling Jaya 2 (RTPJ2) (Pengubahan 3)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBPJ" aria-label="Lihat lokasi pejabat MBPJ di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">03</span><span class="suo-rt-pbt-visual"><img alt="Logo MBSJ" src="./MBSJ.png" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Subang Jaya</span><span class="suo-rt-pbt-code">MBSJ</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Subang Jaya 2035 (Penggantian)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBSJ" aria-label="Lihat lokasi pejabat MBSJ di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">04</span><span class="suo-rt-pbt-visual"><img alt="Logo MBDK" src="https://www.mbdk.gov.my/sites/default/files/media/image/2024-02/logo-mbdk.png" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Diraja Klang</span><span class="suo-rt-pbt-code">MBDK</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Majlis Perbandaran Klang 2035 (Penggantian)</li><li>Rancangan Tempatan Bandaraya Diraja Klang 2035 (Pengubahan 1)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBDK" aria-label="Lihat lokasi pejabat MBDK di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">05</span><span class="suo-rt-pbt-visual"><img alt="Logo MPAJ" src="./MPAJ.png" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Ampang Jaya</span><span class="suo-rt-pbt-code">MPAJ</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Majlis Perbandaran Ampang Jaya 2035 (Penggantian)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPAJ" aria-label="Lihat lokasi pejabat MPAJ di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">06</span><span class="suo-rt-pbt-visual"><img alt="Logo MPKj" src="./MPKj.png" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Kajang</span><span class="suo-rt-pbt-code">MPKj</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Majlis Perbandaran Kajang 2035 (Penggantian)</li><li>Rancangan Tempatan Majlis Perbandaran Kajang Selangor 2035 (Pengubahan 1 &amp; Pengubahan 2)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPKj" aria-label="Lihat lokasi pejabat MPKj di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">07</span><span class="suo-rt-pbt-visual"><img alt="Logo MPS" src="https://www.mps.gov.my/themes/custom/mps/img/mps-logo.png" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Selayang</span><span class="suo-rt-pbt-code">MPS</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Majlis Perbandaran Selayang 2030 (Penggantian)</li><li>Rancangan Tempatan Majlis Perbandaran Selayang 2030 (Pengubahan 1)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPS" aria-label="Lihat lokasi pejabat MPS di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">08</span><span class="suo-rt-pbt-visual"><img alt="Logo MPSp" src="https://pbs.twimg.com/profile_images/1479015755345633281/051QAWtJ.jpg" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Sepang</span><span class="suo-rt-pbt-code">MPSp</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Majlis Perbandaran Sepang 2035 (Penggantian)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPSp" aria-label="Lihat lokasi pejabat MPSp di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">09</span><span class="suo-rt-pbt-visual"><img alt="Logo MPKL" src="https://www.mpkl.gov.my/images/attachment/Rasional-Logo-MPKL-1.svg" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Kuala Langat</span><span class="suo-rt-pbt-code">MPKL</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Kuala Langat 2030</li><li>Rancangan Tempatan Kuala Langat 2030 (Pengubahan 2)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPKL" aria-label="Lihat lokasi pejabat MPKL di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">10</span><span class="suo-rt-pbt-visual"><img alt="Logo MPKS" src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-original-577x577/s3/092021/mpks_logo.jpg?4Le_1MuHCg87aynB2atG4S2oa5SRQIWC=&amp;itok=VX0eBCA1" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Kuala Selangor</span><span class="suo-rt-pbt-code">MPKS</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Majlis Daerah Kuala Selangor 2025 (Penggantian)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPKS" aria-label="Lihat lokasi pejabat MPKS di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">11</span><span class="suo-rt-pbt-visual"><img alt="Logo MPHS" src="https://mphs.gov.my/images/mp-hulu-selangor.jpg" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Hulu Selangor</span><span class="suo-rt-pbt-code">MPHS</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Daerah Hulu Selangor 2035 (Penggantian)</li><li>Rancangan Tempatan Daerah Hulu Selangor 2035 (Pengubahan 1)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPHS" aria-label="Lihat lokasi pejabat MPHS di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item" name="rr04-rt-pbt"><summary><span class="suo-rt-pbt-number">12</span><span class="suo-rt-pbt-visual"><img alt="Logo MDSB" src="https://3.bp.blogspot.com/-EYPSjZn7Ecc/VeB5hlX1uLI/AAAAAAAAAZ8/VkbGlq_79uc/s1600/LOGO%2BMDSB%2B2015.png" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Daerah Sabak Bernam</span><span class="suo-rt-pbt-code">MDSB</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN TEMPATAN</span><ul><li>Rancangan Tempatan Majlis Daerah Sabak Bernam 2025</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MDSB" aria-label="Lihat lokasi pejabat MDSB di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details></div>
+ <section class="suo-rt-location-map" id="rr04-rt-location-map" hidden>
+<div class="suo-rt-map-heading"><div><small>PETA INTERAKTIF SELANGOR · RT</small><h5 id="rr04-rt-map-title">Lokasi Pejabat PBT</h5><p id="rr04-rt-map-status" role="status">Pilih PBT untuk melihat lokasinya</p></div><button type="button" class="suo-rt-map-close" aria-label="Tutup peta">✕</button></div>
+<div class="suo-rt-3d-controls"><button type="button" data-rt-basemap="satellite" aria-pressed="true">◉ Satelit</button><button type="button" data-rt-basemap="streets" aria-pressed="false">▤ Peta Jalan</button><button type="button" data-rt-reset>⌖ Fokus PBT</button><small>Klik kiri + seret: gerakkan peta · Klik kanan + seret / Ctrl + seret: putar & condongkan · Skrol: zum</small></div><div id="rr04-rt-map-leaflet" class="suo-rt-map-leaflet" aria-label="Peta interaktif 3D lokasi pejabat PBT"></div>
+<p class="suo-rt-map-note">Penanda menunjukkan lokasi rujukan pejabat PBT, <strong>bukan sempadan kawasan pentadbiran PBT.</strong></p></section>
+ <p class="rr04-map-disclaimer">Nama dan tahun RT disalin daripada senarai rujukan Bab 02. Pengesahan pewartaan rasmi perlu dirujuk kepada pihak berkuasa berkaitan.</p>
+</div>
   </section>
   <section id="rr04-pane-rkk" class="rr04-pane" role="tabpanel" aria-labelledby="rr04-tab-rkk" tabindex="0" hidden>
    <header class="rr04-panel-head"><div><span class="rr04-eyebrow">02 · PENGENALAN & DEFINISI</span><h5>Rancangan Kawasan Khas (RKK)</h5><p>Rancangan tindakan khusus (<em>Action Plan Area</em>) untuk sesuatu kawasan yang dikenal pasti oleh Pihak Berkuasa Negeri (PBN) / Pihak Berkuasa Perancang Tempatan (PBPT).</p><div class="rr04-law"><span aria-hidden="true">§</span><span>Pindaan <strong>Akta A1129 di bawah Seksyen 16B(1), (2) dan (3), Akta 172.</strong></span></div></div><div class="rr04-stat"><strong>06</strong><span>PBT dalam senarai RKK</span><small>Fokus kawasan khas</small></div></header>
@@ -6790,7 +6862,20 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
    <div class="rr04-heading"><span class="rr04-heading-icon" aria-hidden="true">✦</span><div><small>02 FUNGSI & MATLAMAT</small><h6>Fungsi Utama Rancangan Kawasan Khas</h6></div></div>
    <div class="rr04-functions"><article><span>01</span><h6>Panduan Kawalan dan Perancangan</h6><p>Panduan terperinci dalam kawalan dan perancangan bagi kawasan yang telah dikhaskan.</p></article><article><span>02</span><h6>Alat Pembangunan Teratur</h6><p>Alat pembangunan yang teratur mengikut prosedur yang telah ditetapkan.</p></article></div>
    <div class="rr04-heading"><span class="rr04-heading-icon" aria-hidden="true">✦</span><div><small>SENARAI PBT SELANGOR BAGI RKK</small><h6>Pihak Berkuasa Tempatan</h6></div><span class="rr04-pill">06 PBT</span></div>
-   <ul class="rr04-pbt"><li><b>01</b><span>Majlis Bandaraya Petaling Jaya</span></li><li><b>02</b><span>Majlis Bandaraya Diraja Klang</span></li><li><b>03</b><span>Majlis Perbandaran Kajang</span></li><li><b>04</b><span>Majlis Perbandaran Selayang</span></li><li><b>05</b><span>Majlis Perbandaran Hulu Selangor</span></li><li><b>06</b><span>Majlis Perbandaran Kuala Selangor</span></li></ul>
+   <div class="rr04-directory-adopted" id="rr04-rkk-directory-2026" aria-label="Senarai Rancangan Kawasan Khas mengikut 6 PBT">
+ <p class="rr04-directory-instruction">Klik nama PBT untuk membuka senarai RKK seperti dalam Bab 02. Pilih <strong>Lihat Lokasi PBT di Peta</strong> untuk meneroka lokasi pejabat melalui peta 3D.</p>
+ <div class="suo-rt-directory-grid"><details class="suo-rt-pbt-item suo-rkk-pbt-item" name="rr04-rkk-pbt"><summary><span class="suo-rt-pbt-number">01</span><span class="suo-rt-pbt-visual"><img src="./MBPJ%20(1).png" alt="Logo MBPJ" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Petaling Jaya</span><span class="suo-rt-pbt-code">MBPJ</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN KAWASAN KHAS</span><ul><li>Rancangan Kawasan Khas Seksyen 13 Petaling Jaya</li><li>Rancangan Kawasan Khas Seksyen 13 Petaling Jaya (Pengubahan 1)</li><li>Rancangan Kawasan Khas Seksyen 19, 51, 51A, Petaling Jaya</li><li>Rancangan Kawasan Khas Kwasaland Petaling Jaya</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBPJ" aria-label="Lihat lokasi pejabat MBPJ di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item suo-rkk-pbt-item" name="rr04-rkk-pbt"><summary><span class="suo-rt-pbt-number">02</span><span class="suo-rt-pbt-visual"><img src="https://www.mbdk.gov.my/sites/default/files/media/image/2024-02/logo-mbdk.png" alt="Logo MBDK" loading="lazy" data-pbt="MBDK" onerror="suoRkkLogoFallback(this)"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Bandaraya Diraja Klang</span><span class="suo-rt-pbt-code">MBDK</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN KAWASAN KHAS</span><ul><li>Rancangan Kawasan Khas Bandar Pelabuhan Klang 2015</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MBDK" aria-label="Lihat lokasi pejabat MBDK di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item suo-rkk-pbt-item" name="rr04-rkk-pbt"><summary><span class="suo-rt-pbt-number">03</span><span class="suo-rt-pbt-visual"><img src="./MPKj.png" alt="Logo MPKj" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Kajang</span><span class="suo-rt-pbt-code">MPKj</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN KAWASAN KHAS</span><ul><li>Draf RKK Kampung Sg. Ramal dalam Kajang 2020</li><li>Rancangan Kawasan Khas Pusat Bandar Kajang</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPKj" aria-label="Lihat lokasi pejabat MPKj di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item suo-rkk-pbt-item" name="rr04-rkk-pbt"><summary><span class="suo-rt-pbt-number">04</span><span class="suo-rt-pbt-visual"><img src="https://www.google.com/s2/favicons?domain=mps.gov.my&sz=128" alt="Logo MPS" loading="lazy" data-pbt="MPS" onerror="suoRkkLogoFallback(this)"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Selayang</span><span class="suo-rt-pbt-code">MPS</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN KAWASAN KHAS</span><ul><li>Rancangan Kawasan Khas Pusat Kawalan Kusta Negara (PKKN) Sungai Buloh</li><li>Rancangan Kawasan Khas Kampung Sungai Pusu 2020</li><li>Rancangan Kawasan Khas Batu Arang</li><li>RKK Kawasan Perindustrian Sg. Choh 2020</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPS" aria-label="Lihat lokasi pejabat MPS di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item suo-rkk-pbt-item" name="rr04-rkk-pbt"><summary><span class="suo-rt-pbt-number">05</span><span class="suo-rt-pbt-visual"><img src="https://mphs.gov.my/images/mp-hulu-selangor.jpg" alt="Logo MPHS" loading="lazy" data-pbt="MPHS" onerror="suoRkkLogoFallback(this)"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Hulu Selangor</span><span class="suo-rt-pbt-code">MPHS</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN KAWASAN KHAS</span><ul><li>Rancangan Kawasan Khas Bandar Warisan Kuala Kubu Bharu</li><li>Rancangan Kawasan Khas Bandar Warisan Kuala Kubu Bharu 2025</li><li>Rancangan Kawasan Khas Genting Highlands Hulu Selangor</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPHS" aria-label="Lihat lokasi pejabat MPHS di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details>
+<details class="suo-rt-pbt-item suo-rkk-pbt-item" name="rr04-rkk-pbt"><summary><span class="suo-rt-pbt-number">06</span><span class="suo-rt-pbt-visual"><img src="https://www.google.com/s2/favicons?domain=mpks.gov.my&sz=128" alt="Logo MPKS" loading="lazy" data-pbt="MPKS" onerror="suoRkkLogoFallback(this)"><span class="suo-rt-pbt-icon-fallback" hidden><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 28h24M7 28V9l9-5 9 5v19M12 28v-8h8v8M11 11h2m6 0h2m-10 5h2m6 0h2"/></svg></span></span><span class="suo-rt-pbt-name">Majlis Perbandaran Kuala Selangor</span><span class="suo-rt-pbt-code">MPKS</span><span class="suo-rt-pbt-arrow" aria-hidden="true">⌄</span></summary><div class="suo-rt-pbt-documents"><span class="suo-rt-doc-label">SENARAI RANCANGAN KAWASAN KHAS</span><ul><li>Rancangan Kawasan Khas Bandar Warisan Alam Melawati, Kuala Selangor</li><li>Rancangan Kawasan Khas Bestari Jaya (2004–2040)</li></ul><button type="button" class="suo-rt-map-action" data-pbt-map="MPKS" aria-label="Lihat lokasi pejabat MPKS di peta">⌖ &nbsp;Lihat Lokasi PBT di Peta &nbsp;↗</button></div></details></div>
+ <section class="suo-rt-location-map" id="rr04-rkk-location-map" hidden>
+<div class="suo-rt-map-heading"><div><small>PETA INTERAKTIF SELANGOR · RKK</small><h5 id="rr04-rkk-map-title">Lokasi Pejabat PBT</h5><p id="rr04-rkk-map-status" role="status">Pilih PBT untuk melihat lokasinya</p></div><button type="button" class="suo-rt-map-close" aria-label="Tutup peta">✕</button></div>
+<div class="suo-rt-3d-controls"><button type="button" data-rt-basemap="satellite" aria-pressed="true">◉ Satelit</button><button type="button" data-rt-basemap="streets" aria-pressed="false">▤ Peta Jalan</button><button type="button" data-rt-reset>⌖ Fokus PBT</button><small>Klik kiri + seret: gerakkan peta · Klik kanan + seret / Ctrl + seret: putar & condongkan · Skrol: zum</small></div><div id="rr04-rkk-map-leaflet" class="suo-rt-map-leaflet" aria-label="Peta interaktif 3D lokasi pejabat PBT"></div>
+<p class="suo-rt-map-note">Penanda menunjukkan lokasi rujukan pejabat PBT, <strong>bukan sempadan kawasan pentadbiran PBT.</strong></p></section>
+ <p class="rr04-map-disclaimer">Nama dan status RKK dipetik daripada senarai Bab 02 dan memerlukan semakan pewartaan rasmi. Peta menunjukkan lokasi pejabat PBT, bukan sempadan pentadbiran atau sempadan RKK.</p>
+</div>
   </section>
   <p class="rr04-note">Nota: Maklumat dan senarai PBT berdasarkan bahan yang dibekalkan bagi Story Map ini.</p>
  </div>
@@ -8485,6 +8570,137 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
   });
   panels.forEach(function(panel){watch.observe(panel,{attributes:true,attributeFilter:['hidden']});});
  }
+})();
+</script><script id="rr04-rt-pbt-map-script-2026">(function(){
+ const root=document.getElementById('rr04-rt-directory-2026'),shell=document.getElementById('rr04-rt-location-map'),host=document.getElementById('rr04-rt-map-leaflet');
+ if(!root||!shell||!host)return;
+ const points={"MBPJ":[3.0992,101.645,"Majlis Bandaraya Petaling Jaya"],"MBSA":[3.0734,101.5199,"Majlis Bandaraya Shah Alam"],"MBSJ":[3.0516,101.5824,"Majlis Bandaraya Subang Jaya"],"MBDK":[3.0449,101.4447,"Majlis Bandaraya Diraja Klang"],"MPKj":[2.9949,101.7896,"Majlis Perbandaran Kajang"],"MPAJ":[3.1278,101.7538,"Majlis Perbandaran Ampang Jaya"],"MPS":[3.2535,101.6542,"Majlis Perbandaran Selayang"],"MPSp":[2.9338,101.6456,"Majlis Perbandaran Sepang"],"MPHS":[3.5601,101.6587,"Majlis Perbandaran Hulu Selangor"],"MPKL":[2.8028,101.4957,"Majlis Perbandaran Kuala Langat"],"MPKS":[3.3315,101.2513,"Majlis Perbandaran Kuala Selangor"],"MDSB":[3.6761,100.9908,"Majlis Daerah Sabak Bernam"]};
+ const heading=document.getElementById('rr04-rt-map-title'),status=document.getElementById('rr04-rt-map-status');
+ const prefersReduced=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let map=null,loaded=false,marker=null,selected=null,mode='2d',basemap='satellite';
+ const safe=t=>{const el=document.createElement('span');el.textContent=t;return el.innerHTML};
+ function addSatellite(){
+  if(map.getSource('suo-satellite'))return;
+  try{
+   map.addSource('suo-satellite',{type:'raster',tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],tileSize:256,maxzoom:18,attribution:'Imagery © Esri and contributors'});
+   const first=(map.getStyle().layers||[]).find(layer=>layer.type==='symbol');
+   map.addLayer({id:'suo-satellite',type:'raster',source:'suo-satellite',layout:{visibility:basemap==='satellite'?'visible':'none'}},first&&first.id);
+  }catch(e){console.warn('Satellite imagery unavailable',e);setBasemap('streets')}
+ }
+ function setBasemap(type){
+  basemap=type;
+  shell.querySelectorAll('[data-rt-basemap]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.rtBasemap===type)));
+  if(map&&loaded&&map.getLayer('suo-satellite'))map.setLayoutProperty('suo-satellite','visibility',type==='satellite'?'visible':'none');
+ }
+ function addBuildings(){
+  if(!map||!loaded||map.getLayer('suo-rt-building-extrusions'))return;
+  try{
+   if(!map.getSource('openfreemap'))map.addSource('openfreemap',{type:'vector',url:'https://tiles.openfreemap.org/planet'});
+   const label=(map.getStyle().layers||[]).find(l=>l.type==='symbol'&&l.layout&&l.layout['text-field']);
+   map.addLayer({id:'suo-rt-building-extrusions',type:'fill-extrusion',source:'openfreemap','source-layer':'building',minzoom:14,filter:['!=',['get','hide_3d'],true],
+    paint:{'fill-extrusion-color':'#c2ad9d','fill-extrusion-opacity':0.85,
+    'fill-extrusion-height':['interpolate',['linear'],['zoom'],14,0,16,['coalesce',['get','render_height'],0]],
+    'fill-extrusion-base':['coalesce',['get','render_min_height'],0]}},label?label.id:undefined);
+  }catch(error){console.warn('Bangunan 3D tidak tersedia:',error)}
+ }
+ function focus(){
+  const point=points[selected];if(!map||!loaded||!point)return;
+  map.flyTo({center:[point[1],point[0]],zoom:17,pitch:62,bearing:25,duration:prefersReduced()?0:1200});
+  if(marker)marker.remove();
+  const pin=document.createElement('div');pin.className='suo-rt-office-pin';
+  marker=new maplibregl.Marker({element:pin,anchor:'bottom'}).setLngLat([point[1],point[0]]).setPopup(new maplibregl.Popup({offset:18,maxWidth:'270px'}).setHTML('<b>'+safe(selected)+'</b><div>'+safe(point[2])+'</div><small>Lokasi pejabat PBT, bukan sempadan pentadbiran.</small>')).addTo(map);
+  marker.togglePopup();
+ }
+ function initialize(){
+  if(map)return;
+  if(!window.maplibregl){status.textContent='Pustaka peta 3D tidak dapat dimuatkan. Semak sambungan internet.';return}
+  try{
+   map=new maplibregl.Map({container:host,style:'https://tiles.openfreemap.org/styles/liberty',center:[101.5199,3.0734],zoom:16,pitch:62,bearing:25,maxPitch:85,antialias:true,dragPan:true,dragRotate:true,touchPitch:true,scrollZoom:true});
+   map.addControl(new maplibregl.NavigationControl({visualizePitch:true}),'top-right');
+   map.on('load',()=>{loaded=true;addSatellite();addBuildings();focus()});
+  }catch(error){status.textContent='Peta 3D gagal dibuka: '+error.message}
+ }
+ function close(){shell.hidden=true;selected=null;root.querySelectorAll('.suo-rt-pbt-item').forEach(e=>e.classList.remove('is-map-selected'))}
+ root.addEventListener('click',e=>{
+  const button=e.target.closest('button[data-pbt-map]');if(!button)return;
+  e.preventDefault();e.stopPropagation();const code=button.dataset.pbtMap;if(!points[code])return;
+  if(!shell.hidden&&selected===code){close();return}
+  selected=code;shell.hidden=false;
+  root.querySelectorAll('.suo-rt-pbt-item').forEach(item=>item.classList.toggle('is-map-selected',!!item.querySelector('button[data-pbt-map="'+code+'"]')));
+  heading.textContent='Lokasi Pejabat '+code;status.textContent=points[code][2]+' · Lokasi pejabat, bukan sempadan kawasan pentadbiran';
+  initialize();
+  requestAnimationFrame(()=>{if(map){map.resize();focus()} if(typeof scrollToSuoTarget==='function')scrollToSuoTarget(shell);else shell.scrollIntoView({behavior:prefersReduced()?'auto':'smooth',block:'start'})});
+ });
+ shell.querySelector('.suo-rt-map-close').addEventListener('click',close);
+
+ shell.querySelectorAll('[data-rt-basemap]').forEach(btn=>btn.addEventListener('click',()=>setBasemap(btn.dataset.rtBasemap)));
+ shell.querySelector('[data-rt-reset]').addEventListener('click',focus);
+})();
+</script>
+<script id="rr04-rkk-pbt-map-script-2026">(function(){
+ const root=document.getElementById('rr04-rkk-directory-2026'),shell=document.getElementById('rr04-rkk-location-map'),host=document.getElementById('rr04-rkk-map-leaflet');
+ if(!root||!shell||!host)return;
+ const points={"MBPJ":[3.0992,101.645,"Majlis Bandaraya Petaling Jaya"],"MBSA":[3.0734,101.5199,"Majlis Bandaraya Shah Alam"],"MBSJ":[3.0516,101.5824,"Majlis Bandaraya Subang Jaya"],"MBDK":[3.0449,101.4447,"Majlis Bandaraya Diraja Klang"],"MPKj":[2.9949,101.7896,"Majlis Perbandaran Kajang"],"MPAJ":[3.1278,101.7538,"Majlis Perbandaran Ampang Jaya"],"MPS":[3.2535,101.6542,"Majlis Perbandaran Selayang"],"MPSp":[2.9338,101.6456,"Majlis Perbandaran Sepang"],"MPHS":[3.5601,101.6587,"Majlis Perbandaran Hulu Selangor"],"MPKL":[2.8028,101.4957,"Majlis Perbandaran Kuala Langat"],"MPKS":[3.3315,101.2513,"Majlis Perbandaran Kuala Selangor"],"MDSB":[3.6761,100.9908,"Majlis Daerah Sabak Bernam"]};
+ const heading=document.getElementById('rr04-rkk-map-title'),status=document.getElementById('rr04-rkk-map-status');
+ const prefersReduced=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let map=null,loaded=false,marker=null,selected=null,mode='2d',basemap='satellite';
+ const safe=t=>{const el=document.createElement('span');el.textContent=t;return el.innerHTML};
+ function addSatellite(){
+  if(map.getSource('suo-satellite'))return;
+  try{
+   map.addSource('suo-satellite',{type:'raster',tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],tileSize:256,maxzoom:18,attribution:'Imagery © Esri and contributors'});
+   const first=(map.getStyle().layers||[]).find(layer=>layer.type==='symbol');
+   map.addLayer({id:'suo-satellite',type:'raster',source:'suo-satellite',layout:{visibility:basemap==='satellite'?'visible':'none'}},first&&first.id);
+  }catch(e){console.warn('Satellite imagery unavailable',e);setBasemap('streets')}
+ }
+ function setBasemap(type){
+  basemap=type;
+  shell.querySelectorAll('[data-rt-basemap]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.rtBasemap===type)));
+  if(map&&loaded&&map.getLayer('suo-satellite'))map.setLayoutProperty('suo-satellite','visibility',type==='satellite'?'visible':'none');
+ }
+ function addBuildings(){
+  if(!map||!loaded||map.getLayer('suo-rt-building-extrusions'))return;
+  try{
+   if(!map.getSource('openfreemap'))map.addSource('openfreemap',{type:'vector',url:'https://tiles.openfreemap.org/planet'});
+   const label=(map.getStyle().layers||[]).find(l=>l.type==='symbol'&&l.layout&&l.layout['text-field']);
+   map.addLayer({id:'suo-rt-building-extrusions',type:'fill-extrusion',source:'openfreemap','source-layer':'building',minzoom:14,filter:['!=',['get','hide_3d'],true],
+    paint:{'fill-extrusion-color':'#c2ad9d','fill-extrusion-opacity':0.85,
+    'fill-extrusion-height':['interpolate',['linear'],['zoom'],14,0,16,['coalesce',['get','render_height'],0]],
+    'fill-extrusion-base':['coalesce',['get','render_min_height'],0]}},label?label.id:undefined);
+  }catch(error){console.warn('Bangunan 3D tidak tersedia:',error)}
+ }
+ function focus(){
+  const point=points[selected];if(!map||!loaded||!point)return;
+  map.flyTo({center:[point[1],point[0]],zoom:17,pitch:62,bearing:25,duration:prefersReduced()?0:1200});
+  if(marker)marker.remove();
+  const pin=document.createElement('div');pin.className='suo-rt-office-pin';
+  marker=new maplibregl.Marker({element:pin,anchor:'bottom'}).setLngLat([point[1],point[0]]).setPopup(new maplibregl.Popup({offset:18,maxWidth:'270px'}).setHTML('<b>'+safe(selected)+'</b><div>'+safe(point[2])+'</div><small>Lokasi pejabat PBT, bukan sempadan pentadbiran.</small>')).addTo(map);
+  marker.togglePopup();
+ }
+ function initialize(){
+  if(map)return;
+  if(!window.maplibregl){status.textContent='Pustaka peta 3D tidak dapat dimuatkan. Semak sambungan internet.';return}
+  try{
+   map=new maplibregl.Map({container:host,style:'https://tiles.openfreemap.org/styles/liberty',center:[101.5199,3.0734],zoom:16,pitch:62,bearing:25,maxPitch:85,antialias:true,dragPan:true,dragRotate:true,touchPitch:true,scrollZoom:true});
+   map.addControl(new maplibregl.NavigationControl({visualizePitch:true}),'top-right');
+   map.on('load',()=>{loaded=true;addSatellite();addBuildings();focus()});
+  }catch(error){status.textContent='Peta 3D gagal dibuka: '+error.message}
+ }
+ function close(){shell.hidden=true;selected=null;root.querySelectorAll('.suo-rt-pbt-item').forEach(e=>e.classList.remove('is-map-selected'))}
+ root.addEventListener('click',e=>{
+  const button=e.target.closest('button[data-pbt-map]');if(!button)return;
+  e.preventDefault();e.stopPropagation();const code=button.dataset.pbtMap;if(!points[code])return;
+  if(!shell.hidden&&selected===code){close();return}
+  selected=code;shell.hidden=false;
+  root.querySelectorAll('.suo-rt-pbt-item').forEach(item=>item.classList.toggle('is-map-selected',!!item.querySelector('button[data-pbt-map="'+code+'"]')));
+  heading.textContent='Lokasi Pejabat '+code;status.textContent=points[code][2]+' · Lokasi pejabat, bukan sempadan kawasan pentadbiran';
+  initialize();
+  requestAnimationFrame(()=>{if(map){map.resize();focus()} if(typeof scrollToSuoTarget==='function')scrollToSuoTarget(shell);else shell.scrollIntoView({behavior:prefersReduced()?'auto':'smooth',block:'start'})});
+ });
+ shell.querySelector('.suo-rt-map-close').addEventListener('click',close);
+
+ shell.querySelectorAll('[data-rt-basemap]').forEach(btn=>btn.addEventListener('click',()=>setBasemap(btn.dataset.rtBasemap)));
+ shell.querySelector('[data-rt-reset]').addEventListener('click',focus);
 })();
 </script></body>
 </html>
