@@ -6880,8 +6880,39 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
  #statistik-pembangunan .suo-geo-side > header::after{background:linear-gradient(90deg,rgba(63,24,42,.58),rgba(44,19,33,.24))}
 }
 </style>
-</head>
+<style id="suo-portal-interactive-experience-2026">
+/* Optional portal UX layer. Original content, layout, map and chapter behaviours untouched. */
+#suo-read-progress{position:fixed;inset:0 auto auto 0;width:0;height:3px;z-index:2147483000;pointer-events:none;background:linear-gradient(90deg,#976936,#efc97c,#fff1b4);box-shadow:0 1px 9px #d2a05d66;transition:width .09s linear}
+#suo-ux-controls{position:fixed;right:16px;top:105px;z-index:1200;display:flex;align-items:center;gap:6px;padding:5px;border:1px solid #e1c9ac;border-radius:50px;background:rgba(255,250,243,.94);box-shadow:0 7px 24px #35182822;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+#suo-ux-controls button{display:grid;place-items:center;width:35px;height:35px;border:0;border-radius:50%;background:transparent;color:#672b42;font-size:17px;cursor:pointer;transition:background-color .24s,color .24s}
+#suo-ux-controls button:hover,#suo-ux-controls button:focus-visible{background:#f1e2d0;outline:2px solid #d4ad69;outline-offset:1px}
+#suo-ux-controls button[aria-pressed="true"]{background:#71334b;color:#fff}
+#utama .suo-hero-particles{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;opacity:.55}
+#utama .suo-hero-particles:before,#utama .suo-hero-particles:after{content:"";position:absolute;inset:-12%;background-image:radial-gradient(circle,#f5d8a5aa 1px,transparent 2px),radial-gradient(circle,#fff2d8a3 1px,transparent 1.8px);background-size:100px 120px,170px 145px;background-position:12px 19px,60px 42px;transform:translate3d(var(--suo-parallax-x,0px),var(--suo-parallax-y,0px),0);animation:suoParticleDrift26 30s ease-in-out infinite alternate}
+#utama .suo-hero-particles:after{opacity:.38;background-size:165px 170px,125px 170px;animation-duration:39s;animation-direction:alternate-reverse}
+#utama .hero-layout{position:relative;z-index:2}
+@keyframes suoParticleDrift26{from{background-position:0 0,45px 25px}to{background-position:80px 110px,-40px 60px}}
+.suo-ux-reveal:not(.suo-ux-seen){opacity:0;transform:translateY(15px)}
+.suo-ux-reveal.suo-ux-seen{opacity:1;transform:translateY(0);transition:opacity .67s ease,transform .67s cubic-bezier(.2,.75,.2,1)}
+.suo-ux-tilt{transform-style:preserve-3d;transition:transform .22s ease,box-shadow .22s ease;will-change:transform}
+.suo-ux-tilt:hover{box-shadow:0 17px 40px #4f293229}
+body.suo-night{background:#10171f!important;color:#ecedf1!important}
+body.suo-night .main-section,body.suo-night #statistik-pembangunan,body.suo-night #pautan-pbt{background-color:#141c26!important}
+body.suo-night .content-panel.active,body.suo-night .chapter-content-card,body.suo-night .atlas-sheet,body.suo-night .suo-bento-tile,body.suo-night .chapter01-metrics>div,body.suo-night .lu-stat{background:#202a36!important;border-color:#47515f!important}
+body.suo-night .main-section h2,body.suo-night .main-section h3,body.suo-night .main-section h4,body.suo-night .main-section h5,body.suo-night .main-section p,body.suo-night .main-section .chapter-intro-description,body.suo-night .main-section .atlas-sheet-type{color:#e9e9ee!important}
+body.suo-night .header,body.suo-night .footer{background:#261923!important}
+body.suo-night #suo-ux-controls{background:#242b35;border-color:#59606a}
+body.suo-night #suo-ux-controls button{color:#faf2df}
+body.suo-night #suo-ux-controls button[aria-pressed="true"]{background:#c1975e;color:#16181d}
+@media(max-width:650px){#suo-ux-controls{right:10px;top:76px;gap:3px;padding:3px}#suo-ux-controls button{width:31px;height:31px}}
+@media(prefers-reduced-motion:reduce){.suo-ux-reveal,.suo-ux-reveal:not(.suo-ux-seen){opacity:1!important;transform:none!important;transition:none!important}.suo-ux-tilt{transform:none!important;transition:none!important}#utama .suo-hero-particles:before,#utama .suo-hero-particles:after{animation:none!important;transform:none!important}}
+</style></head>
 <body>
+<div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div id="suo-ux-controls" role="group" aria-label="Tetapan paparan portal">
+<button id="suo-mode-switch" type="button" aria-label="Tukar mod gelap" aria-pressed="false" title="Mod gelap atau cerah">☾</button>
+<button id="suo-sound-switch" type="button" aria-label="Aktifkan bunyi klik" aria-pressed="false" title="Bunyi antara muka (dimatikan secara lalai)">♪</button>
+</div>
 
 
 
@@ -6916,7 +6947,7 @@ animation:rr04DirectoryRise .68s .14s cubic-bezier(.2,.75,.25,1) both}
 </header>
 <div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
 
-<section class="hero" id="utama"><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./VIDEO%20MAIN%20PAGE%204.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
+<section class="hero" id="utama"><div class="suo-hero-particles" aria-hidden="true"></div><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./VIDEO%20MAIN%20PAGE%204.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
 <div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="document.getElementById('selangorLeafletMap').closest('.development-overview').scrollIntoView({behavior:'smooth',block:'start'})">TEROKAI PETA INTERAKTIF SELANGOR ↗</button></div></div>
 </div></section>
 
@@ -10150,5 +10181,66 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  document.addEventListener('keydown',function(evt){if(evt.key==='Escape'&&!overlay.hidden)close()});
 })();
 </script>
-</body>
+<script id="suo-portal-interactions-2026">
+(function(){
+'use strict';
+const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mobile=window.matchMedia&&window.matchMedia('(hover: none)').matches;
+const mode=document.getElementById('suo-mode-switch'),sound=document.getElementById('suo-sound-switch'),bar=document.getElementById('suo-read-progress'),hero=document.getElementById('utama');
+if(!mode||!sound||!bar)return;
+let sounding=false,audio=null,scrollFrame=0,mouseFrame=0;
+function switchMode(){const dark=document.body.classList.toggle('suo-night');mode.setAttribute('aria-pressed',String(dark));mode.setAttribute('aria-label',dark?'Tukar mod cerah':'Tukar mod gelap');mode.textContent=dark?'☀':'☾';}
+mode.addEventListener('click',switchMode);
+sound.addEventListener('click',function(){
+ sounding=!sounding;sound.setAttribute('aria-pressed',String(sounding));
+ sound.setAttribute('aria-label',sounding?'Matikan bunyi klik':'Aktifkan bunyi klik');
+ if(sounding&&window.AudioContext){try{audio=audio||new window.AudioContext();if(audio.state==='suspended')audio.resume();}catch(e){sounding=false;sound.setAttribute('aria-pressed','false');}}
+});
+document.addEventListener('click',function(e){
+ if(!sounding||!audio||!e.target.closest('button,[role="tab"],a[href]'))return;
+ try{const osc=audio.createOscillator(),gain=audio.createGain(),t=audio.currentTime;
+ osc.type='sine';osc.frequency.setValueAtTime(510,t);osc.frequency.exponentialRampToValueAtTime(330,t+.045);
+ gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(.014,t+.009);gain.gain.exponentialRampToValueAtTime(.0001,t+.07);
+ osc.connect(gain);gain.connect(audio.destination);osc.start(t);osc.stop(t+.075);}catch(err){}
+},{passive:true});
+function progress(){
+ scrollFrame=0;const d=document.documentElement;
+ const max=Math.max(1,d.scrollHeight-window.innerHeight);
+ const pct=Math.max(0,Math.min(100,window.scrollY/max*100));
+ bar.style.width=pct.toFixed(2)+'%';bar.setAttribute('aria-valuenow',String(Math.round(pct)));
+}
+window.addEventListener('scroll',function(){if(!scrollFrame)scrollFrame=requestAnimationFrame(progress)},{passive:true});
+window.addEventListener('resize',progress,{passive:true});progress();
+if(!reduced&&'IntersectionObserver' in window){
+ const reveal=new IntersectionObserver(function(entries){
+ entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('suo-ux-seen');reveal.unobserve(entry.target);}});
+ },{threshold:.07,rootMargin:'0px 0px 16px 0px'});
+ document.querySelectorAll('.chapter-intro,.chapter-section-heading,.atlas-sheet-top,.suo-bento-tile,.chapter01-metrics>div').forEach(function(el){
+  el.classList.add('suo-ux-reveal');reveal.observe(el);
+ });
+}
+if(!reduced&&!mobile){
+ document.querySelectorAll('#chapterCarousel .tab-btn,.suo-bento-tile,.chapter01-metrics>div').forEach(function(card){
+  card.classList.add('suo-ux-tilt');
+  card.addEventListener('pointermove',function(e){
+   if(e.pointerType&&e.pointerType!=='mouse')return;
+   const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+   card.style.transform='perspective(900px) rotateX('+(-y*4).toFixed(2)+'deg) rotateY('+(x*5).toFixed(2)+'deg) translateY(-2px)';
+  });
+  card.addEventListener('pointerleave',function(){card.style.transform='';});
+  card.addEventListener('blur',function(){card.style.transform='';});
+ });
+ if(hero){
+  hero.addEventListener('pointermove',function(e){
+   if(mouseFrame)return;
+   mouseFrame=requestAnimationFrame(function(){mouseFrame=0;const r=hero.getBoundingClientRect();
+    hero.style.setProperty('--suo-parallax-x',(((e.clientX-r.left)/r.width-.5)*15).toFixed(1)+'px');
+    hero.style.setProperty('--suo-parallax-y',(((e.clientY-r.top)/r.height-.5)*12).toFixed(1)+'px');
+   });
+  },{passive:true});
+  hero.addEventListener('pointerleave',function(){hero.style.setProperty('--suo-parallax-x','0px');hero.style.setProperty('--suo-parallax-y','0px');});
+ }
+}
+})();
+</script></body>
 </html>
