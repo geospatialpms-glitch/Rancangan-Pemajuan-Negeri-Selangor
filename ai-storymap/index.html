@@ -13274,5 +13274,43 @@ if(!reduced&&!mobile){
  ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(()=>set(state),0)));
 })();
 </script>
+<script id="suo-expanded-bilingual-v1-20261022">
+(function(){
+'use strict';
+const terms=new Map([["Statistik Utama Rancangan Pemajuan","Key Development Plan Statistics"],["Selangor Dalam Angka","Selangor at a Glance"],["MENU UTAMA","MAIN MENU"],["DOKUMENTASI & BAB","DOCUMENTATION & CHAPTERS"],["DIREKTORI","DIRECTORY"],["Peta Interaktif","Interactive Map"],["Peta Jalan","Street Map"],["Satelit","Satellite"],["Set Semula","Reset"],["Halaman Utama","Home"],["Terokai","Explore"],["Pengenalan","Introduction"],["Latar Belakang","Background"],["Rancangan Selangor, Masa Hadapan","Selangor Plans for the Future"],["Arah Tuju & Hierarki Pemajuan","Development Direction & Hierarchy"],["RSN Selangor 2035 (Pengubahan)","Selangor Structure Plan 2035 (Amendment)"],["Rancangan Tempatan & RKK","Local Plans & Special Area Plans"],["Sistem LPFNS","LPFNS System"],["Daerah Pentadbiran","Administrative Districts"],["Pihak Berkuasa Tempatan","Local Authorities"],["Daerah, PBT & Dokumen Perancangan","Districts, Local Authorities & Planning Documents"],["9 Daerah Pentadbiran","9 Administrative Districts"],["Semua PBT","All Local Authorities"],["Pilih PBT","Select Local Authority"],["Senarai Dokumen","Document List"],["Dokumen Perancangan","Planning Documents"],["Rancangan Struktur Negeri","State Structure Plan"],["Rancangan Tempatan","Local Plan"],["Rancangan Kawasan Khas","Special Area Plan"],["Pelan Strategik Guna Tanah","Strategic Land Use Plan"],["Dasar-dasar RSN 2035 (Pengubahan)","Structure Plan 2035 (Amendment) Policies"],["Kaedah Analisis Spatial","Spatial Analysis Method"],["Kerangka Pembentukan Pelan","Plan Development Framework"],["Peta Rujukan Rasmi","Official Reference Map"],["Fungsi Pelan","Plan Functions"],["Matlamat Pembangunan","Development Goals"],["Teras Pembangunan","Development Pillars"],["Konsep Pembangunan","Development Concept"],["Cadangan Guna Tanah","Proposed Land Use"],["Projek Berimpak Tinggi","High-impact Projects"],["Maklumat Lanjut","More Information"],["Info Lanjut","More Info"],["Seterusnya","Next"],["Sebelumnya","Previous"],["Kembali","Back"],["Tutup","Close"],["Sumber","Source"],["Jumlah","Total"],["Bilangan","Number"],["Tahun","Year"],["Kad","Card"],["Rancangan Pemajuan Negeri Selangor","Selangor State Development Plans"],["Rancangan Pemajuan Selangor","Selangor Development Plans"],["Dokumen Rancangan Kawasan Khas","Special Area Plan Documents"],["Dokumen Rancangan Tempatan","Local Plan Documents"],["DOKUMEN PERANCANGAN","PLANNING DOCUMENTS"],["PERANCANGAN NEGERI","STATE PLANNING"],["Klik daerah atau PBT pada peta ataupun dalam senarai.","Select a district or local authority on the map or from the list."],["Pilih PBT dalam daerah ini untuk melihat dokumen RT dan RKK.","Select a local authority in this district to view Local and Special Area Plan documents."],["Pilih PBT untuk melihat RT & RKK","Select a Local Authority to View Local and Special Area Plans"],["Senarai dokumen dipautkan terus kepada Bab 04.","Documents link directly to Chapter 04."],["Data peta tersedia","Map data available"],["Data peta tidak tersedia","Map data unavailable"],["Menyemak sambungan…","Checking connection…"],["Taklimat visual perancangan negeri","State planning video briefing"],["VIDEO SPOTLIGHT · TAKLIMAT UTAMA","VIDEO SPOTLIGHT · MAIN BRIEFING"],["BAB 03 · PAPARAN VISUAL","CHAPTER 03 · VISUAL PRESENTATION"],["Klik Play untuk menonton video di sini.","Click Play to watch the video here."],["Hala tuju strategik, perancangan spatial dan masa depan Negeri Selangor.","Strategic direction, spatial planning and Selangor's future."],["PORTAL INTERAKTIF SELANGOR","SELANGOR INTERACTIVE PORTAL"],["DASHBOARD SPATIAL · SELANGOR","SELANGOR SPATIAL DASHBOARD"],["INDIKATOR UTAMA","KEY INDICATORS"],["Perancangan Spatial ke Arah Pembangunan Mampan.","Spatial Planning Towards Sustainable Development."],["BAB 04 · ATLAS PERANCANGAN TEMPATAN","CHAPTER 04 · LOCAL PLANNING ATLAS"],["DASAR & PELAKSANAAN","POLICIES & IMPLEMENTATION"],["Terokai Portal","Explore Portal"],["Akses Direktori","Open Directory"],["Ringkasan indikator pentadbiran dan dokumen rancangan pemajuan Negeri Selangor.","Summary of administrative indicators and development planning documents for Selangor."],["Dua instrumen perancangan yang saling melengkapi: RT memperincikan pembangunan tempatan, manakala RKK memberikan tindakan khusus bagi kawasan terpilih.","Two complementary planning instruments: Local Plans detail local development, while Special Area Plans set out targeted actions for selected areas."]]);
+const saved=new WeakMap();
+let busy=false;
+function sync(){
+ if(busy)return;busy=true;
+ try{
+  const english=document.documentElement.lang==='en';
+  document.querySelectorAll('[data-ms][data-en], [data-suo-ms][data-suo-en]').forEach(el=>{
+   const ms=el.getAttribute('data-suo-ms')||el.getAttribute('data-ms');
+   const en=el.getAttribute('data-suo-en')||el.getAttribute('data-en');
+   if(!ms||!en)return;
+   const node=[...el.childNodes].find(n=>n.nodeType===3&&n.nodeValue.trim());
+   if(node)node.nodeValue=english?en:ms;
+  });
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  let node;
+  while(node=walker.nextNode()){
+   if(node.parentElement?.closest('script,style,svg,textarea,pre,code,[contenteditable]'))continue;
+   let original=saved.get(node);
+   if(original===undefined){original=node.nodeValue;saved.set(node,original)}
+   const text=original.trim();
+   const en=terms.get(text);
+   if(!en)continue;
+   const desired=original.replace(text,english?en:text);
+   if(node.nodeValue!==desired)node.nodeValue=desired;
+  }
+ }finally{busy=false}
+}
+const old=window.setLang;
+window.setLang=function(lang){if(typeof old==='function')old(lang);queueMicrotask(sync)};
+['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>queueMicrotask(sync)));
+new MutationObserver(()=>{if(document.documentElement.lang==='en'&&!busy)queueMicrotask(sync)}).observe(document.body,{childList:true,subtree:true});
+sync();
+})();
+</script>
 </body>
 </html>
