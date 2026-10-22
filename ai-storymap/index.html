@@ -12308,30 +12308,49 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
 })();
 </script><script id="rsn03-spotlight-js-2026">
 (function(){
+ 'use strict';
  const root=document.getElementById('rsn-bab03-video-spotlight-2026');
  const dialog=document.getElementById('rsn03-video-dialog');
  if(!root||!dialog)return;
- const btn=root.querySelector('#rsn03-open-video'),close=dialog.querySelector('.rsn03-dialog-close');
- const video=dialog.querySelector('video'),pending=dialog.querySelector('.rsn03-video-pending');
+ const btn=root.querySelector('#rsn03-open-video');
+ const close=dialog.querySelector('.rsn03-dialog-close');
+ const body=dialog.querySelector('.rsn03-dialog-body');
+ const video=body.querySelector('video'),pending=body.querySelector('.rsn03-video-pending');
  let iframe=null;
- function open(){
-  const mp4=root.getAttribute('data-video-src')||'';
-  const embed=root.getAttribute('data-video-embed')||'';
-  video.hidden=!mp4;pending.hidden=!!(mp4||embed);
-  if(mp4){video.src=mp4;video.load();}
-  if(embed){iframe=document.createElement('iframe');iframe.src=embed;iframe.allow='autoplay; encrypted-media; picture-in-picture';iframe.allowFullscreen=true;iframe.title='Video Taklimat RS Negeri Selangor 2035';iframe.style.cssText='display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:13px';dialog.querySelector('.rsn03-dialog-body').appendChild(iframe);}
-  if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');
-  if(mp4){const play=video.play();if(play&&play.catch)play.catch(function(){});}
+ function cleanup(){
+  if(video){video.pause();video.removeAttribute('src');video.load();video.hidden=true;}
+  if(iframe){iframe.remove();iframe=null;}
  }
  function dismiss(){
-  video.pause();video.removeAttribute('src');video.load();
-  if(iframe){iframe.remove();iframe=null;}
-  if(dialog.open&&dialog.close)dialog.close();else dialog.removeAttribute('open');
+  cleanup();
+  if(dialog.open&&typeof dialog.close==='function')dialog.close();
+  else dialog.removeAttribute('open');
  }
- btn.addEventListener('click',open);
- close.addEventListener('click',dismiss);
+ function open(event){
+  if(event)event.preventDefault();
+  cleanup();
+  const mp4=root.dataset.videoSrc||'';
+  const embed=root.dataset.videoEmbed||'';
+  pending.hidden=!!(mp4||embed);
+  if(embed){
+   iframe=document.createElement('iframe');
+   const url=new URL(embed,location.href);
+   url.searchParams.set('autoplay','1');
+   iframe.src=url.href;
+   iframe.title='Video Taklimat RS Negeri Selangor 2035';
+   iframe.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+   iframe.allowFullscreen=true;
+   iframe.style.cssText='display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:13px;background:#111';
+   body.appendChild(iframe);
+  }else if(mp4){video.hidden=false;video.src=mp4;video.load();}
+  if(typeof dialog.showModal==='function'&&!dialog.open)dialog.showModal();
+  else dialog.setAttribute('open','');
+  if(mp4&&!embed){const playback=video.play();if(playback?.catch)playback.catch(()=>{});}
+ }
+ btn?.addEventListener('click',open);
+ close?.addEventListener('click',dismiss);
  dialog.addEventListener('cancel',function(e){e.preventDefault();dismiss()});
- dialog.addEventListener('click',function(e){if(e.target===dialog)dismiss();});
+ dialog.addEventListener('click',function(e){if(e.target===dialog)dismiss()});
 })();
 </script><script id="rsn03-reading-flip-controller-2026">
 /* Hanya dua kad RSN Bab 03: hover automatik pada desktop; klik/ketik & papan kekunci kekal. */
