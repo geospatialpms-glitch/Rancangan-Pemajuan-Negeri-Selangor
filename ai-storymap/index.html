@@ -8659,6 +8659,7 @@ body.suo-drawer-mode .selangor-ticker{margin:0!important}
 @media(max-height:430px){
  body.suo-drawer-mode #utama.hero{min-height:260px!important}
 }
+</style>
 <style id="suo-restore-header-announcement-20261022">
 /* Restore full-size original official header and persistent announcement bar only. */
 body.suo-drawer-mode .header .container.head{
@@ -8693,6 +8694,31 @@ body.suo-drawer-mode[data-suo-drawer-page="home"] > .selangor-ticker{
  body.suo-drawer-mode > .selangor-ticker{height:38px!important;min-height:38px!important}
 }
 </style>
+<style id="suo-home-viewport-fit-20261022">
+/* Homepage only: header + ticker + cinematic hero occupy precisely one viewport. */
+body.suo-drawer-mode[data-suo-drawer-page="home"]{
+ height:100dvh!important;
+ min-height:100dvh!important;
+ overflow-y:hidden!important;
+}
+body.suo-drawer-mode[data-suo-drawer-page="home"] > footer.footer{
+ display:none!important;
+}
+body.suo-drawer-mode[data-suo-drawer-page="home"] > #utama.hero,
+body.suo-drawer-mode[data-suo-drawer-page="home"] section#utama.hero{
+ height:calc(100dvh - var(--suo-drawer-top,114px) - var(--suo-announce-h,46px))!important;
+ min-height:0!important;
+ max-height:none!important;
+}
+body.suo-drawer-mode[data-suo-drawer-page="home"] #utama .container.hero-layout{
+ height:100%!important;
+ min-height:0!important;
+}
+@media(max-width:740px){
+ body.suo-drawer-mode[data-suo-drawer-page="home"] section#utama.hero{
+  height:calc(100dvh - var(--suo-drawer-top,86px) - var(--suo-announce-h,38px))!important;
+ }
+}
 </style>
 </head>
 <body>
