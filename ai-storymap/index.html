@@ -8896,24 +8896,30 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
  :is(.suo-bab02-legal-front,.suo-bab02-flip-front,.suo-rsn-flip-front,.rsn03-reading-flip-front){transition:none}
 }
 </style>
-<style id="suo-quick-search-style-20261022">
-.suo-quick-search{position:relative;display:flex;align-items:center;flex:0 1 185px;min-width:115px;max-width:215px;height:38px;border:1px solid rgba(236,205,162,.54);border-radius:23px;background:rgba(30,18,36,.28);color:#ffe2ae;z-index:2147310}
-.suo-quick-search:focus-within{border-color:#f1c978;background:rgba(33,16,33,.8);box-shadow:0 0 0 3px rgba(242,198,76,.12)}
-.suo-quick-search label{display:flex;padding-left:12px;align-items:center}
-.suo-quick-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#fff;font:600 12px 'Plus Jakarta Sans',sans-serif;padding:7px 10px}
-.suo-quick-search input::placeholder{color:#f5e2d2}
-.suo-search-results{position:absolute;top:calc(100% + 12px);right:0;width:min(385px,calc(100vw - 28px));max-height:min(56vh,390px);overflow:auto;border:1px solid #dfba8d;border-radius:16px;background:#fffaf3;color:#5c263c;box-shadow:0 20px 44px #18081666;padding:8px;z-index:2147311}
-.suo-search-results[hidden]{display:none!important}
-.suo-search-result{width:100%;display:grid;gap:5px;text-align:left;border:0;border-bottom:1px solid #eee2d8;padding:11px;border-radius:9px;background:transparent;color:#623149;cursor:pointer}
-.suo-search-result:hover,.suo-search-result:focus-visible{background:#f7ecdd;outline:2px solid #e3bb7e}
-.suo-search-result strong{font-size:12px}
-.suo-search-result small{font-size:10px;line-height:1.5;color:#866e6e}
-.suo-search-result mark{background:#ffe4a5;color:#5e1935;border-radius:2px}
-.suo-search-empty{padding:12px;font-size:12px;color:#78596a}
-body.suo-drawer-mode .suo-quick-search{margin-left:auto!important}
-body.suo-drawer-mode .lang-switch{margin-left:0!important}
-@media(max-width:700px){.suo-quick-search{flex-basis:135px;height:34px}.suo-quick-search input{font-size:11px}.suo-quick-search label{padding-left:8px}}
-@media(max-width:450px){.suo-quick-search{flex-basis:100px;min-width:88px}.suo-search-results{right:-80px}}
+<style id="suo-document-centre-styles">
+#suo-document-centre{width:min(1460px,calc(100% - 36px));margin:24px auto 52px;padding:clamp(18px,3vw,36px);border:1px solid #ead8c7;border-radius:24px;background:linear-gradient(135deg,#fffefa,#f9f1e9);box-shadow:0 16px 40px #6b213015;color:#603245}
+#suo-document-centre .suo-doc-eyebrow{font-size:11px;color:#a16d44;letter-spacing:.14em;font-weight:900}
+#suo-document-centre h2{font:800 clamp(23px,3vw,38px)/1.25 Georgia,serif;color:#702d45;margin:12px 0}
+#suo-document-centre .suo-doc-intro p{line-height:1.75;max-width:1000px;color:#695761}
+#suo-document-centre .suo-doc-controls{display:grid;grid-template-columns:minmax(180px,2fr) minmax(150px,1fr) minmax(180px,1.1fr);gap:12px;margin:26px 0 15px}
+#suo-document-centre :is(select,input){width:100%;min-width:0;border:1px solid #e2cabb;border-radius:12px;padding:13px;background:#fff;color:#4b3040;font:inherit;font-size:13px}
+#suo-document-centre .suo-doc-search{display:flex;align-items:center;gap:6px;color:#8d4660;background:#fff;border:1px solid #e2cabb;border-radius:12px;padding-left:14px}
+#suo-document-centre .suo-doc-search input{border:0;outline-offset:-3px}
+#suo-document-centre .suo-doc-total{font-size:12px;color:#805f61;font-weight:700}
+#suo-document-centre .suo-doc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+#suo-document-centre .suo-doc-card{min-width:0;padding:19px;border-radius:16px;background:linear-gradient(140deg,#fff,#fff8f0);border:1px solid #e9d7c9;box-shadow:0 8px 24px #60243c0b}
+#suo-document-centre .suo-doc-card-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#suo-document-centre .suo-doc-type{font-size:10px;font-weight:900;letter-spacing:.09em;background:#742b46;color:#fff;padding:5px 10px;border-radius:99px}
+#suo-document-centre .suo-doc-status{font-size:10px;color:#875b49;background:#f7ebdc;padding:5px 8px;border-radius:99px}
+#suo-document-centre .suo-doc-card h3{font-size:17px;line-height:1.45;color:#68334a;margin:16px 0 6px;overflow-wrap:anywhere}
+#suo-document-centre .suo-doc-area{font-size:12px;color:#886b67;margin:0 0 18px}
+#suo-document-centre .suo-doc-actions{display:flex;flex-wrap:wrap;gap:9px}
+#suo-document-centre .suo-doc-actions a{font-size:12px;font-weight:800;border-radius:10px;padding:10px 12px;background:#742b46;color:#fff;text-decoration:none}
+#suo-document-centre .suo-doc-actions a.download{background:#fff;color:#742b46;border:1px solid #d9bda8}
+#suo-document-centre .suo-doc-disclaimer{font-size:12px;line-height:1.6;margin-top:22px;color:#876d69}
+#suo-document-centre .suo-doc-empty{grid-column:1/-1;text-align:center;padding:30px;color:#795d66}
+@media(max-width:950px){#suo-document-centre .suo-doc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){#suo-document-centre .suo-doc-grid,#suo-document-centre .suo-doc-controls{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -8950,18 +8956,14 @@ body.suo-drawer-mode .lang-switch{margin-left:0!important}
   <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="4" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pratonton Sistem" data-en="System Preview">Pratonton Sistem</span></button></div></section>  </div>
 </div>
       <button class="section-nav-btn" data-section="pautan-pbt" onclick="navigateSection('pautan-pbt',this)">Direktori PBT</button>
-    </nav><div class="suo-quick-search" id="suo-quick-search">
- <label for="suo-search-input" aria-label="Carian pantas"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg></label>
- <input id="suo-search-input" type="search" autocomplete="off" placeholder="Cari topik…" aria-label="Cari kandungan Story Map" aria-controls="suo-search-results" aria-expanded="false">
- <div id="suo-search-results" class="suo-search-results" role="listbox" hidden></div>
-</div><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
+    </nav><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
   </div>
 </header>
 <div id="suo-glass-drawer-backdrop" aria-hidden="true"></div>
 <aside id="suo-glass-drawer" class="suo-glass-drawer" role="dialog" aria-modal="true" aria-label="Navigasi halaman" aria-hidden="true" inert tabindex="-1">
  <div class="suo-side-brand"><div class="suo-side-brand-logo" aria-hidden="true"><img src="./SUO.jpeg" alt="" width="36" height="36" style="display:block;width:100%;height:100%;object-fit:contain;border-radius:8px;background:#fff;padding:2px;"></div><div class="suo-side-brand-title"><strong>Rancangan Pemajuan Selangor</strong><small>PLANMalaysia Selangor · SUO</small></div><button type="button" id="suo-drawer-close" aria-label="Tutup menu" title="Tutup menu">×</button></div>
  <nav class="suo-side-menu" aria-label="Menu sidebar">
-  <div class="suo-side-group"><div class="suo-side-group-title">MENU UTAMA</div><button class="suo-side-link" type="button" data-suo-side-page="home" title="Utama"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7"/></svg></span><span class="suo-side-text" data-ms="Utama" data-en="Home">Utama</span></button><button class="suo-side-link" type="button" data-suo-side-page="stats" title="Statistik Utama Rancangan Pemajuan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="4" height="10" rx="1"/><rect x="10" y="6" width="4" height="15" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></span><span class="suo-side-text" data-ms="Statistik Utama Rancangan Pemajuan" data-en="Key Development Plan Statistics">Statistik Utama Rancangan Pemajuan</span></button><button class="suo-side-link" type="button" data-suo-side-page="map" title="Peta Interaktif"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6 9 3l6 3 6-3v15l-6 3-6-3-6 3Z M9 3v15M15 6v15"/></svg></span><span class="suo-side-text" data-ms="Peta Interaktif" data-en="Interactive Map">Peta Interaktif</span></button></div>
+  <div class="suo-side-group"><div class="suo-side-group-title">MENU UTAMA</div><button class="suo-side-link" type="button" data-suo-side-page="home" title="Utama"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7"/></svg></span><span class="suo-side-text" data-ms="Utama" data-en="Home">Utama</span></button><button class="suo-side-link" type="button" data-suo-side-page="stats" title="Statistik Utama Rancangan Pemajuan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="4" height="10" rx="1"/><rect x="10" y="6" width="4" height="15" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></span><span class="suo-side-text" data-ms="Statistik Utama Rancangan Pemajuan" data-en="Key Development Plan Statistics">Statistik Utama Rancangan Pemajuan</span></button><button class="suo-side-link" type="button" data-suo-side-page="docs" title="Pusat Dokumentasi"><span class="suo-side-svg" aria-hidden="true">▤</span><span class="suo-side-text" data-ms="Pusat Dokumentasi" data-en="Document Repository">Pusat Dokumentasi</span></button><button class="suo-side-link" type="button" data-suo-side-page="map" title="Peta Interaktif"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6 9 3l6 3 6-3v15l-6 3-6-3-6 3Z M9 3v15M15 6v15"/></svg></span><span class="suo-side-text" data-ms="Peta Interaktif" data-en="Interactive Map">Peta Interaktif</span></button></div>
   <div class="suo-side-group"><div class="suo-side-group-title">DOKUMENTASI & BAB</div><button class="suo-side-link" type="button" data-suo-side-page="chapter-1" title="01 · Rancangan Selangor, Masa Hadapan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5h7a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H3zM21 5h-5a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h5z"/></svg></span><span class="suo-side-text" data-ms="01 · Rancangan Selangor, Masa Hadapan" data-en="01 · Selangor, the Future">01 · Rancangan Selangor, Masa Hadapan</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-2" title="02 · Arah Tuju & Hierarki Pemajuan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.4 4.6-4.6 2.4 2.4-4.6z"/></svg></span><span class="suo-side-text" data-ms="02 · Arah Tuju & Hierarki Pemajuan" data-en="02 · Planning Direction & Hierarchy">02 · Arah Tuju & Hierarki Pemajuan</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-3" title="03 · RSN Selangor 2035 (Pengubahan)"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5ZM3 12l9 5 9-5M3 17l9 5 9-5"/></svg></span><span class="suo-side-text" data-ms="03 · RSN Selangor 2035 (Pengubahan)" data-en="03 · State Structure Plan 2035">03 · RSN Selangor 2035 (Pengubahan)</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-4" title="04 · Rancangan Tempatan & RKK"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 2h7l5 5v15H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2ZM14 2v6h5M9 13h6m-6 4h6"/></svg></span><span class="suo-side-text" data-ms="04 · Rancangan Tempatan & RKK" data-en="04 · Local & Special Area Plans">04 · Rancangan Tempatan & RKK</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-5" title="05 · Sistem LPFNS"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="suo-side-text" data-ms="05 · Sistem LPFNS" data-en="05 · LPFNS System">05 · Sistem LPFNS</span></button></div>
   <div class="suo-side-group"><div class="suo-side-group-title">DIREKTORI</div><button class="suo-side-link" type="button" data-suo-side-page="pbt" title="Direktori 12 PBT"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V7l8-4 8 4v12M2 21h20M9 21v-8h6v8M9 9h1m4 0h1"/></svg></span><span class="suo-side-text" data-ms="Direktori 12 PBT" data-en="12 Local Authorities">Direktori 12 PBT</span></button></div>
  </nav>
@@ -10335,6 +10337,12 @@ body.suo-drawer-mode .lang-switch{margin-left:0!important}
 <a class="pbt-card" href="https://www.mdsb.gov.my/index.php/ms/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Daerah Sabak Bernam"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mdsb.png" data-favicon="https://www.google.com/s2/favicons?domain=mdsb.gov.my&sz=128" alt="Logo MDSB" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MDSB</span></span><span class="pbt-label"><strong>MDSB</strong><small>Majlis Daerah Sabak Bernam</small></span><span class="pbt-arrow">↗</span></a>
 </div></div></section>
 
+<section id="suo-document-centre" class="suo-document-centre" aria-labelledby="suo-doc-heading">
+ <div class="suo-doc-intro"><span class="suo-doc-eyebrow">PLANMALAYSIA SELANGOR · REPOSITORI</span><h2 id="suo-doc-heading">Pusat Dokumentasi Rancangan Pemajuan</h2><p>Terokai dokumen RSN, Rancangan Tempatan (RT) dan Rancangan Kawasan Khas (RKK) melalui pautan yang telah tersedia dalam portal. Status kelulusan hanya dipaparkan apabila maklumat rasmi dapat disahkan.</p></div>
+ <div class="suo-doc-controls"><label class="suo-doc-search">⌕ <input id="suo-doc-query" type="search" placeholder="Cari dokumen, daerah atau PBT…" aria-label="Carian dokumen"></label><select id="suo-doc-category" aria-label="Kategori dokumen"><option value="all">Semua kategori</option><option value="RSN">RSN</option><option value="RT">Rancangan Tempatan</option><option value="RKK">Rancangan Kawasan Khas</option></select><select id="suo-doc-pbt" aria-label="Pilih PBT atau daerah"><option value="all">Semua PBT / Daerah</option></select></div>
+ <p class="suo-doc-total" id="suo-doc-total" role="status" aria-live="polite">Memuatkan indeks dokumen…</p><div class="suo-doc-grid" id="suo-doc-grid"></div>
+ <p class="suo-doc-disclaimer">Nota: Pautan ArcGIS StoryMap membuka paparan dokumen, tetapi tidak semestinya mempunyai fail PDF untuk dimuat turun. Status kelulusan ditandakan “Belum disahkan” jika tiada metadata rasmi.</p>
+</section>
 <footer class="footer">
   <div class="container">
     RANCANGAN PEMAJUAN NEGERI SELANGOR · Portal Interaktif Rasmi · PLANMalaysia Selangor
@@ -13000,12 +13008,12 @@ if(!reduced&&!mobile){
  drawer=document.getElementById('suo-glass-drawer'),
  backdrop=document.getElementById('suo-glass-drawer-backdrop'),
  close=document.getElementById('suo-drawer-close'),
- nodes={home:document.getElementById('utama'),stats:document.getElementById('suo-dashboard-overview'),map:document.getElementById('statistik-pembangunan'),chapters:document.querySelector('main.main-section'),pbt:document.getElementById('pautan-pbt')};
+ nodes={home:document.getElementById('utama'),stats:document.getElementById('suo-dashboard-overview'),map:document.getElementById('statistik-pembangunan'),docs:document.getElementById('suo-document-centre'),chapters:document.querySelector('main.main-section'),pbt:document.getElementById('pautan-pbt')};
  if(!header||!toggle||!drawer||!backdrop||!close||Object.values(nodes).some(x=>!x))return;
  const panels=Array.from(nodes.chapters.querySelectorAll('.content-panel'));
  const buttons=Array.from(drawer.querySelectorAll('[data-suo-side-page]'));
  const originalScroll=window.scrollToSuoTarget;
- if(panels.length!==5||buttons.length!==9)return;
+ if(panels.length!==5||buttons.length!==10)return;
  let current='home',priorFocus=null;
  function setOpen(open){
   if(open){
@@ -13329,69 +13337,52 @@ if(!reduced&&!mobile){
  ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(()=>set(state),0)));
 })();
 </script>
-<script id="suo-quick-search-script-20261022">
+<script id="suo-document-centre-index">
 (function(){
 'use strict';
-const box=document.getElementById('suo-quick-search'),input=document.getElementById('suo-search-input'),results=document.getElementById('suo-search-results');
-if(!box||!input||!results)return;
-const primary=document.querySelectorAll('section[id],.content-panel[id],.suo-bento-topic[id],.chapter-intro[id],.suo-bento-tile[id],.rr04-pane[id],.suo-side-link[data-suo-side-page]');
-let index=[];
-function titleFor(el){return (el.querySelector('h1,h2,h3,h4,h5,strong')?.textContent||el.getAttribute('aria-label')||el.id||'').trim()}
-function build(){
- index=[];
- const seen=new Set();
- primary.forEach(el=>{
-  if(el.closest('#suo-glass-drawer'))return;
-  const text=(el.innerText||el.textContent||'').replace(/\s+/g,' ').trim();
-  if(text.length<12)return;
-  const title=titleFor(el);
-  const key=(title||text.slice(0,60)).toLowerCase();
+const host=document.getElementById('suo-document-centre');if(!host)return;
+const grid=host.querySelector('#suo-doc-grid'),query=host.querySelector('#suo-doc-query'),category=host.querySelector('#suo-doc-category'),pbt=host.querySelector('#suo-doc-pbt'),total=host.querySelector('#suo-doc-total');
+const items=[],seen=new Set();
+function add(type,area,title,url){
+ try{
+  const address=new URL(url,location.href);
+  if(!/^https?:$/.test(address.protocol))return;
+  if(!/(arcg\.is|storymaps\.arcgis\.com|\.pdf(?:$|\?))/i.test(address.href))return;
+  const key=type+'|'+address.href;
   if(seen.has(key))return;seen.add(key);
-  const page=el.closest('#panel-0,#panel-1,#panel-2,#panel-3,#panel-4')?.id;
-  const map=el.closest('#statistik-pembangunan,#suo-dashboard-overview,#pautan-pbt');
-  const route=page?'chapter-'+(Number(page.slice(-1))+1):map?.id==='statistik-pembangunan'?'map':map?.id==='suo-dashboard-overview'?'stats':map?.id==='pautan-pbt'?'directory':null;
-  index.push({el,title:title||text.slice(0,45),text,route});
- });
+  const isPDF=/\.pdf(?:$|\?)/i.test(address.pathname+address.search);
+  items.push({type,area:area||'Negeri Selangor',title:title||'Dokumen Perancangan',url:address.href,pdf:isPDF});
+ }catch(e){}
 }
-function close(){results.hidden=true;input.setAttribute('aria-expanded','false')}
-function fragmentHighlight(text,q){
- const frag=document.createDocumentFragment(),at=text.toLocaleLowerCase().indexOf(q.toLocaleLowerCase());
- if(at<0){frag.append(document.createTextNode(text));return frag}
- frag.append(document.createTextNode(text.slice(0,at)));
- const mark=document.createElement('mark');mark.textContent=text.slice(at,at+q.length);frag.append(mark,document.createTextNode(text.slice(at+q.length)));return frag;
+function getArea(a){
+ const block=a.closest('.suo-rt-pbt-item,.rr04-rt-pbt-item,.rr04-rkk-pbt-card,details,article');
+ return block?.querySelector('.suo-rt-pbt-name,.suo-rt-pbt-code,.rr04-pbt-name,h5,h6')?.textContent.trim()||a.closest('[data-pbt]')?.getAttribute('data-pbt')||'Negeri Selangor';
 }
-function find(){
- const q=input.value.trim();results.replaceChildren();if(q.length<2){close();return}
- build();
- const found=index.filter(x=>(x.title+' '+x.text).toLocaleLowerCase().includes(q.toLocaleLowerCase())).sort((a,b)=>Number(b.title.toLocaleLowerCase().includes(q.toLocaleLowerCase()))-Number(a.title.toLocaleLowerCase().includes(q.toLocaleLowerCase()))).slice(0,12);
- if(!found.length){const empty=document.createElement('p');empty.className='suo-search-empty';empty.textContent='Tiada hasil / No results';results.append(empty)}
- found.forEach(item=>{
-  const button=document.createElement('button');button.type='button';button.className='suo-search-result';button.setAttribute('role','option');
-  const title=document.createElement('strong');title.append(fragmentHighlight(item.title,q));
-  const excerpt=document.createElement('small');const pos=item.text.toLowerCase().indexOf(q.toLowerCase());const start=Math.max(0,pos-55);excerpt.append(fragmentHighlight(item.text.slice(start,start+155),q));
-  button.append(title,excerpt);
-  button.addEventListener('click',()=>{
-   if(item.route&&typeof window.suoPortalNavigate==='function')window.suoPortalNavigate(item.route);
-   close();input.blur();
-   const dest=item.el;
-   requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    if(dest.getBoundingClientRect().width){dest.scrollIntoView({behavior:'smooth',block:'start'})}
-    else if(item.route==='stats')document.getElementById('suo-dashboard-overview')?.scrollIntoView({behavior:'smooth'});
-   }));
-  });
-  results.append(button);
- });
- results.hidden=false;input.setAttribute('aria-expanded','true');
-}
-input.addEventListener('input',find);
-input.addEventListener('keydown',e=>{if(e.key==='Escape')close();if(e.key==='Enter'){e.preventDefault();results.querySelector('button')?.click()}});
-document.addEventListener('click',e=>{if(!box.contains(e.target))close()});
-document.addEventListener('keydown',e=>{
- if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='f'&&!e.altKey){
-  e.preventDefault();input.focus();input.select();find();
- }
+[['RT','#rr04-rt-directory-2026'],['RKK','#rr04-rkk-directory-2026']].forEach(([type,sel])=>{
+ document.querySelectorAll(sel+' a[href]').forEach(a=>add(type,getArea(a),a.textContent.trim()||type,a.href));
 });
+document.querySelectorAll('#panel-2 a[href]').forEach(a=>{if(/\.pdf(?:$|\?)/i.test(a.href))add('RSN','Negeri Selangor',a.textContent.trim()||'Rancangan Struktur Negeri Selangor',a.href)});
+const areas=[...new Set(items.map(x=>x.area))].sort((a,b)=>a.localeCompare(b,'ms'));
+areas.forEach(area=>{const o=document.createElement('option');o.value=area;o.textContent=area;pbt.appendChild(o)});
+function make(tag,cls,value){const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=value;return el}
+function render(){
+ const q=query.value.toLocaleLowerCase('ms').trim();
+ const data=items.filter(x=>(category.value==='all'||category.value===x.type)&&(pbt.value==='all'||pbt.value===x.area)&&(!q||(x.area+' '+x.title+' '+x.type).toLocaleLowerCase('ms').includes(q)));
+ total.textContent=data.length+' pautan dokumen ditemui';
+ grid.replaceChildren();
+ if(!data.length){grid.appendChild(make('p','suo-doc-empty','Tiada pautan dokumen sepadan. Cuba carian atau kategori lain.'));return}
+ data.forEach(x=>{
+  const card=make('article','suo-doc-card'),head=make('div','suo-doc-card-head');
+  head.append(make('span','suo-doc-type',x.type),make('span','suo-doc-status','Kelulusan: Belum disahkan'));
+  card.append(head,make('h3','',x.title),make('p','suo-doc-area',x.area));
+  const actions=make('div','suo-doc-actions'),view=make('a','','Papar Dokumen ↗');
+  view.href=x.url;view.target='_blank';view.rel='noopener noreferrer';actions.appendChild(view);
+  if(x.pdf){const download=make('a','download','Muat Turun PDF ↓');download.href=x.url;download.target='_blank';download.rel='noopener noreferrer';actions.appendChild(download)}
+  card.appendChild(actions);grid.appendChild(card);
+ });
+}
+[query,category,pbt].forEach(el=>el.addEventListener(el===query?'input':'change',render));
+render();
 })();
-</script>
-</body>
+</script></body>
 </html>
