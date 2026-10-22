@@ -8906,7 +8906,7 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 #suo-document-centre .suo-doc-search{display:flex;align-items:center;gap:6px;color:#8d4660;background:#fff;border:1px solid #e2cabb;border-radius:12px;padding-left:14px}
 #suo-document-centre .suo-doc-search input{border:0;outline-offset:-3px}
 #suo-document-centre .suo-doc-total{font-size:12px;color:#805f61;font-weight:700}
-#suo-document-centre .suo-doc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+#suo-document-centre .suo-doc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
 #suo-document-centre .suo-doc-card{min-width:0;padding:19px;border-radius:16px;background:linear-gradient(140deg,#fff,#fff8f0);border:1px solid #e9d7c9;box-shadow:0 8px 24px #60243c0b}
 #suo-document-centre .suo-doc-card-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
 #suo-document-centre .suo-doc-type{font-size:10px;font-weight:900;letter-spacing:.09em;background:#742b46;color:#fff;padding:5px 10px;border-radius:99px}
@@ -10338,10 +10338,19 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 </div></div></section>
 
 <section id="suo-document-centre" class="suo-document-centre" aria-labelledby="suo-doc-heading">
- <div class="suo-doc-intro"><span class="suo-doc-eyebrow">PLANMALAYSIA SELANGOR · REPOSITORI</span><h2 id="suo-doc-heading">Pusat Dokumentasi Rancangan Pemajuan</h2><p>Terokai dokumen RSN, Rancangan Tempatan (RT) dan Rancangan Kawasan Khas (RKK) melalui pautan yang telah tersedia dalam portal. Status kelulusan hanya dipaparkan apabila maklumat rasmi dapat disahkan.</p></div>
- <div class="suo-doc-controls"><label class="suo-doc-search">⌕ <input id="suo-doc-query" type="search" placeholder="Cari dokumen, daerah atau PBT…" aria-label="Carian dokumen"></label><select id="suo-doc-category" aria-label="Kategori dokumen"><option value="all">Semua kategori</option><option value="RSN">RSN</option><option value="RT">Rancangan Tempatan</option><option value="RKK">Rancangan Kawasan Khas</option></select><select id="suo-doc-pbt" aria-label="Pilih PBT atau daerah"><option value="all">Semua PBT / Daerah</option></select></div>
- <p class="suo-doc-total" id="suo-doc-total" role="status" aria-live="polite">Memuatkan indeks dokumen…</p><div class="suo-doc-grid" id="suo-doc-grid"></div>
- <p class="suo-doc-disclaimer">Nota: Pautan ArcGIS StoryMap membuka paparan dokumen, tetapi tidak semestinya mempunyai fail PDF untuk dimuat turun. Status kelulusan ditandakan “Belum disahkan” jika tiada metadata rasmi.</p>
+ <div class="suo-doc-intro"><span class="suo-doc-eyebrow">PLANMALAYSIA SELANGOR · REPOSITORI</span><h2 id="suo-doc-heading">Pusat Dokumentasi Rancangan Pemajuan</h2><p>Rujuk dua dokumen utama perancangan negeri: Akta Perancangan Bandar dan Desa 1976 (Akta 172) serta Rancangan Struktur Negeri Selangor 2035 (Pengubahan). Gunakan carian pantas di header, bersebelahan pilihan bahasa, untuk mencari kandungan portal.</p></div>
+ <div class="suo-doc-grid">
+  <article class="suo-doc-card">
+   <div class="suo-doc-card-head"><span class="suo-doc-type">AKTA 172</span><span class="suo-doc-status">Perundangan Perancangan</span></div>
+   <h3>Akta Perancangan Bandar dan Desa 1976 (Akta 172)</h3><p class="suo-doc-area">Naskhah dikemas kini sebagaimana 1 Jun 2021</p>
+   <div class="suo-doc-actions"><a href="./AKTA_172_MUKTAMAD_SEBAGAIMANA_1_JUN_2021%20%281%29.pdf" target="_blank" rel="noopener noreferrer">Papar Dokumen ↗</a><a class="download" href="./AKTA_172_MUKTAMAD_SEBAGAIMANA_1_JUN_2021%20%281%29.pdf" download="Akta_Perancangan_Bandar_dan_Desa_1976_Akta_172.pdf">Muat Turun PDF ↓</a></div>
+  </article>
+  <article class="suo-doc-card">
+   <div class="suo-doc-card-head"><span class="suo-doc-type">RSN</span><span class="suo-doc-status">Dokumen Perancangan Negeri</span></div>
+   <h3>Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</h3><p class="suo-doc-area">Negeri Selangor · Dokumen rasmi PLANMalaysia Selangor</p>
+   <div class="suo-doc-actions"><a href="https://www.jpbdselangor.gov.my/images/pdf/RSN%20Selangor%202035%20Pengubahan/V24_Final%20Draf%20RS%20Negeri%20Selangor%202035%20Pengubahan%20-%20WARTA%20COMPRESS.pdf" target="_blank" rel="noopener noreferrer">Papar Dokumen ↗</a><a class="download" href="https://www.jpbdselangor.gov.my/images/pdf/RSN%20Selangor%202035%20Pengubahan/V24_Final%20Draf%20RS%20Negeri%20Selangor%202035%20Pengubahan%20-%20WARTA%20COMPRESS.pdf" target="_blank" rel="noopener noreferrer">Buka PDF ↓</a></div>
+  </article>
+ </div>
 </section>
 <footer class="footer">
   <div class="container">
@@ -13337,52 +13346,5 @@ if(!reduced&&!mobile){
  ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(()=>set(state),0)));
 })();
 </script>
-<script id="suo-document-centre-index">
-(function(){
-'use strict';
-const host=document.getElementById('suo-document-centre');if(!host)return;
-const grid=host.querySelector('#suo-doc-grid'),query=host.querySelector('#suo-doc-query'),category=host.querySelector('#suo-doc-category'),pbt=host.querySelector('#suo-doc-pbt'),total=host.querySelector('#suo-doc-total');
-const items=[],seen=new Set();
-function add(type,area,title,url){
- try{
-  const address=new URL(url,location.href);
-  if(!/^https?:$/.test(address.protocol))return;
-  if(!/(arcg\.is|storymaps\.arcgis\.com|\.pdf(?:$|\?))/i.test(address.href))return;
-  const key=type+'|'+address.href;
-  if(seen.has(key))return;seen.add(key);
-  const isPDF=/\.pdf(?:$|\?)/i.test(address.pathname+address.search);
-  items.push({type,area:area||'Negeri Selangor',title:title||'Dokumen Perancangan',url:address.href,pdf:isPDF});
- }catch(e){}
-}
-function getArea(a){
- const block=a.closest('.suo-rt-pbt-item,.rr04-rt-pbt-item,.rr04-rkk-pbt-card,details,article');
- return block?.querySelector('.suo-rt-pbt-name,.suo-rt-pbt-code,.rr04-pbt-name,h5,h6')?.textContent.trim()||a.closest('[data-pbt]')?.getAttribute('data-pbt')||'Negeri Selangor';
-}
-[['RT','#rr04-rt-directory-2026'],['RKK','#rr04-rkk-directory-2026']].forEach(([type,sel])=>{
- document.querySelectorAll(sel+' a[href]').forEach(a=>add(type,getArea(a),a.textContent.trim()||type,a.href));
-});
-document.querySelectorAll('#panel-2 a[href]').forEach(a=>{if(/\.pdf(?:$|\?)/i.test(a.href))add('RSN','Negeri Selangor',a.textContent.trim()||'Rancangan Struktur Negeri Selangor',a.href)});
-const areas=[...new Set(items.map(x=>x.area))].sort((a,b)=>a.localeCompare(b,'ms'));
-areas.forEach(area=>{const o=document.createElement('option');o.value=area;o.textContent=area;pbt.appendChild(o)});
-function make(tag,cls,value){const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=value;return el}
-function render(){
- const q=query.value.toLocaleLowerCase('ms').trim();
- const data=items.filter(x=>(category.value==='all'||category.value===x.type)&&(pbt.value==='all'||pbt.value===x.area)&&(!q||(x.area+' '+x.title+' '+x.type).toLocaleLowerCase('ms').includes(q)));
- total.textContent=data.length+' pautan dokumen ditemui';
- grid.replaceChildren();
- if(!data.length){grid.appendChild(make('p','suo-doc-empty','Tiada pautan dokumen sepadan. Cuba carian atau kategori lain.'));return}
- data.forEach(x=>{
-  const card=make('article','suo-doc-card'),head=make('div','suo-doc-card-head');
-  head.append(make('span','suo-doc-type',x.type),make('span','suo-doc-status','Kelulusan: Belum disahkan'));
-  card.append(head,make('h3','',x.title),make('p','suo-doc-area',x.area));
-  const actions=make('div','suo-doc-actions'),view=make('a','','Papar Dokumen ↗');
-  view.href=x.url;view.target='_blank';view.rel='noopener noreferrer';actions.appendChild(view);
-  if(x.pdf){const download=make('a','download','Muat Turun PDF ↓');download.href=x.url;download.target='_blank';download.rel='noopener noreferrer';actions.appendChild(download)}
-  card.appendChild(actions);grid.appendChild(card);
- });
-}
-[query,category,pbt].forEach(el=>el.addEventListener(el===query?'input':'change',render));
-render();
-})();
-</script></body>
+</body>
 </html>
