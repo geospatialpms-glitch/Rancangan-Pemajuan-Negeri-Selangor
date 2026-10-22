@@ -8866,7 +8866,7 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 </style>
 <style id="suo-flip-card-constellation-polish-20261022">
 /* Front surfaces of existing flip cards only; never touch 3D transforms or back faces. */
-:is(.suo-bab02-legal-front,.suo-bab02-flip-front,.suo-rsn-goal-front,.suo-rsn-flip-front,.rsn03-reading-flip-front){
+:is(.suo-bab02-legal-front,.suo-bab02-flip-front,.suo-rsn-flip-front,.rsn03-reading-flip-front){
  position:relative;
  isolation:isolate;
  overflow:hidden;
@@ -8875,7 +8875,7 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
  linear-gradient(132deg,rgba(255,254,249,.28),rgba(238,204,154,.19) 52%,rgba(181,123,74,.11))!important;
  box-shadow:inset 0 1px 0 rgba(255,255,255,.62),inset 0 -12px 34px rgba(144,92,43,.055),0 12px 25px rgba(73,46,29,.09);
 }
-:is(.suo-bab02-legal-front,.suo-bab02-flip-front,.suo-rsn-goal-front,.suo-rsn-flip-front,.rsn03-reading-flip-front)::before{
+:is(.suo-bab02-legal-front,.suo-bab02-flip-front,.suo-rsn-flip-front,.rsn03-reading-flip-front)::before{
  content:"";
  position:absolute;
  inset:0;
@@ -8891,44 +8891,29 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
  linear-gradient(143deg,transparent 57%,#997049 57.15%,#997049 57.35%,transparent 57.5%);
  background-size:240px 200px;
 }
-:is(.suo-bab02-legal-front,.suo-bab02-flip-front,.suo-rsn-goal-front,.suo-rsn-flip-front,.rsn03-reading-flip-front)>*{position:relative;z-index:1}
+:is(.suo-bab02-legal-front,.suo-bab02-flip-front,.suo-rsn-flip-front,.rsn03-reading-flip-front)>*{position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){
- :is(.suo-bab02-legal-front,.suo-bab02-flip-front,.suo-rsn-goal-front,.suo-rsn-flip-front,.rsn03-reading-flip-front){transition:none}
+ :is(.suo-bab02-legal-front,.suo-bab02-flip-front,.suo-rsn-flip-front,.rsn03-reading-flip-front){transition:none}
 }
 </style>
-<style id="suo-all-flip-card-fronts-complete-20261022">
-#panel-1 .suo-bab02-legal-front,
-#panel-1 .suo-bab02-flip-front,
-#panel-2 .suo-rsn-goal-front,
-#panel-2 .rsn03-reading-flip-front{
- background-color:#f9ecd9;
- background-image:radial-gradient(ellipse at 77% 8%,rgba(250,204,135,.30),transparent 58%),linear-gradient(145deg,rgba(255,253,247,.35),rgba(224,176,119,.17))!important;
- box-shadow:inset 0 1px rgba(255,255,255,.58),inset 0 -12px 28px rgba(118,70,37,.065),0 12px 25px rgba(61,34,23,.10)!important;
-}
-</style>
-<style id="suo-rsn-concept-plan-full-width-20261022">
-/* Only the RSN 2035 Concept Development Plan image: remove side gutters without cropping details. */
-#panel-1 .suo-bab02-rsn-map-container.has-official-plan{
- display:block!important;
- min-height:0!important;
- padding:0!important;
- background:transparent!important;
- overflow:visible!important;
- border:0!important;
- border-radius:14px!important;
-}
-#panel-1 .suo-bab02-rsn-map-container .suo-bab02-rsn-plan-image:not([hidden]){
- display:block!important;
- width:100%!important;
- max-width:none!important;
- height:auto!important;
- max-height:none!important;
- object-fit:contain!important;
- object-position:center top!important;
- margin:0!important;
- background:transparent!important;
- border-radius:14px!important;
-}
+<style id="suo-quick-search-style-20261022">
+.suo-quick-search{position:relative;display:flex;align-items:center;flex:0 1 185px;min-width:115px;max-width:215px;height:38px;border:1px solid rgba(236,205,162,.54);border-radius:23px;background:rgba(30,18,36,.28);color:#ffe2ae;z-index:2147310}
+.suo-quick-search:focus-within{border-color:#f1c978;background:rgba(33,16,33,.8);box-shadow:0 0 0 3px rgba(242,198,76,.12)}
+.suo-quick-search label{display:flex;padding-left:12px;align-items:center}
+.suo-quick-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#fff;font:600 12px 'Plus Jakarta Sans',sans-serif;padding:7px 10px}
+.suo-quick-search input::placeholder{color:#f5e2d2}
+.suo-search-results{position:absolute;top:calc(100% + 12px);right:0;width:min(385px,calc(100vw - 28px));max-height:min(56vh,390px);overflow:auto;border:1px solid #dfba8d;border-radius:16px;background:#fffaf3;color:#5c263c;box-shadow:0 20px 44px #18081666;padding:8px;z-index:2147311}
+.suo-search-results[hidden]{display:none!important}
+.suo-search-result{width:100%;display:grid;gap:5px;text-align:left;border:0;border-bottom:1px solid #eee2d8;padding:11px;border-radius:9px;background:transparent;color:#623149;cursor:pointer}
+.suo-search-result:hover,.suo-search-result:focus-visible{background:#f7ecdd;outline:2px solid #e3bb7e}
+.suo-search-result strong{font-size:12px}
+.suo-search-result small{font-size:10px;line-height:1.5;color:#866e6e}
+.suo-search-result mark{background:#ffe4a5;color:#5e1935;border-radius:2px}
+.suo-search-empty{padding:12px;font-size:12px;color:#78596a}
+body.suo-drawer-mode .suo-quick-search{margin-left:auto!important}
+body.suo-drawer-mode .lang-switch{margin-left:0!important}
+@media(max-width:700px){.suo-quick-search{flex-basis:135px;height:34px}.suo-quick-search input{font-size:11px}.suo-quick-search label{padding-left:8px}}
+@media(max-width:450px){.suo-quick-search{flex-basis:100px;min-width:88px}.suo-search-results{right:-80px}}
 </style>
 </head>
 <body>
@@ -8965,7 +8950,11 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
   <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="4" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pratonton Sistem" data-en="System Preview">Pratonton Sistem</span></button></div></section>  </div>
 </div>
       <button class="section-nav-btn" data-section="pautan-pbt" onclick="navigateSection('pautan-pbt',this)">Direktori PBT</button>
-    </nav><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
+    </nav><div class="suo-quick-search" id="suo-quick-search">
+ <label for="suo-search-input" aria-label="Carian pantas"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg></label>
+ <input id="suo-search-input" type="search" autocomplete="off" placeholder="Cari topik…" aria-label="Cari kandungan Story Map" aria-controls="suo-search-results" aria-expanded="false">
+ <div id="suo-search-results" class="suo-search-results" role="listbox" hidden></div>
+</div><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
   </div>
 </header>
 <div id="suo-glass-drawer-backdrop" aria-hidden="true"></div>
@@ -9413,7 +9402,7 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 <section class="suo-bab02-rsn-map-section" aria-labelledby="suo-bab02-rsn-map-title">
   <header class="suo-bab02-rsn-section-heading"><span>PEL​AN &amp; VISUAL SPATIAL</span><h4 id="suo-bab02-rsn-map-title">Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan)</h4><p>Ruang paparan dokumen pelan konsep pembangunan rasmi.</p></header>
   <div class="suo-bab02-rsn-map-container">
-   <img class="suo-bab02-rsn-plan-image" src="./pelan-konsep-rsn-selangor-2035-pengubahan.png" alt="Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan)" loading="lazy" onload="this.parentElement.classList.add('has-official-plan')" onerror="this.dispatchEvent(new CustomEvent('suo:plan-image-missing',{bubbles:true}))">
+   <img class="suo-bab02-rsn-plan-image" src="./pelan-konsep-rsn-selangor-2035-pengubahan.png" alt="Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan)" loading="lazy" onload="this.parentElement.classList.add('has-official-plan')" onerror="this.parentElement.classList.remove('has-official-plan');this.hidden=true">
    <div class="suo-bab02-rsn-plan-fallback" role="status"><span aria-hidden="true">▧</span><strong>Ruang Pelan Konsep Rasmi RSN 2035</strong><p>Imej pelan rasmi belum tersedia dalam repositori. Sila masukkan fail pelan yang disahkan untuk dipaparkan di sini.</p><small>Nama fail: pelan-konsep-rsn-selangor-2035-pengubahan.png</small></div>
   </div>
   <p class="suo-bab02-rsn-plan-caption">Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan) · Paparan imej tertakluk kepada ketersediaan dokumen rasmi.</p>
@@ -13340,47 +13329,68 @@ if(!reduced&&!mobile){
  ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(()=>set(state),0)));
 })();
 </script>
-<script id="suo-official-plan-image-autodetect-20261022">
-/* BAB 02 official concept plan: resolve already-uploaded map image even if filename differs. */
+<script id="suo-quick-search-script-20261022">
 (function(){
- 'use strict';
- const area=document.querySelector('.suo-bab02-rsn-map-container');
- if(!area)return;
- const img=area.querySelector('.suo-bab02-rsn-plan-image');
- if(!img)return;
- const fallback=area.querySelector('.suo-bab02-rsn-plan-fallback');
- let attempted=false;
- async function locate(){
-  if(attempted)return;
-  attempted=true;
-  try{
-   const url='https://api.github.com/repos/geospatialpms-glitch/Rancangan-Pemajuan-Negeri-Selangor/contents/ai-storymap?ref=main';
-   const response=await fetch(url,{headers:{Accept:'application/vnd.github+json'}});
-   if(!response.ok)throw Error('Directory unavailable');
-   const files=await response.json();
-   if(!Array.isArray(files))throw Error('Unexpected response');
-   const scored=files.filter(f=>f.type==='file'&&/\.(png|jpe?g|webp)$/i.test(f.name))
-    .map(f=>{const n=f.name.toLowerCase();let points=0;
-      if(/pelan|plan/.test(n))points+=3;
-      if(/konsep|concept/.test(n))points+=5;
-      if(/rsn|struktur/.test(n))points+=2;
-      if(/selangor/.test(n))points+=1;
-      if(/2035/.test(n))points+=1;
-      if(/pengubahan/.test(n))points+=1;
-      return {f,points};
-    }).filter(x=>x.points>=8).sort((a,b)=>b.points-a.points);
-   if(!scored.length)throw Error('Map image not found');
-   img.src=scored[0].f.download_url;
-   img.hidden=false;
-  }catch(e){
-   img.hidden=true;
-   area.classList.remove('has-official-plan');
-   if(fallback)fallback.hidden=false;
-  }
+'use strict';
+const box=document.getElementById('suo-quick-search'),input=document.getElementById('suo-search-input'),results=document.getElementById('suo-search-results');
+if(!box||!input||!results)return;
+const primary=document.querySelectorAll('section[id],.content-panel[id],.suo-bento-topic[id],.chapter-intro[id],.suo-bento-tile[id],.rr04-pane[id],.suo-side-link[data-suo-side-page]');
+let index=[];
+function titleFor(el){return (el.querySelector('h1,h2,h3,h4,h5,strong')?.textContent||el.getAttribute('aria-label')||el.id||'').trim()}
+function build(){
+ index=[];
+ const seen=new Set();
+ primary.forEach(el=>{
+  if(el.closest('#suo-glass-drawer'))return;
+  const text=(el.innerText||el.textContent||'').replace(/\s+/g,' ').trim();
+  if(text.length<12)return;
+  const title=titleFor(el);
+  const key=(title||text.slice(0,60)).toLowerCase();
+  if(seen.has(key))return;seen.add(key);
+  const page=el.closest('#panel-0,#panel-1,#panel-2,#panel-3,#panel-4')?.id;
+  const map=el.closest('#statistik-pembangunan,#suo-dashboard-overview,#pautan-pbt');
+  const route=page?'chapter-'+(Number(page.slice(-1))+1):map?.id==='statistik-pembangunan'?'map':map?.id==='suo-dashboard-overview'?'stats':map?.id==='pautan-pbt'?'directory':null;
+  index.push({el,title:title||text.slice(0,45),text,route});
+ });
+}
+function close(){results.hidden=true;input.setAttribute('aria-expanded','false')}
+function fragmentHighlight(text,q){
+ const frag=document.createDocumentFragment(),at=text.toLocaleLowerCase().indexOf(q.toLocaleLowerCase());
+ if(at<0){frag.append(document.createTextNode(text));return frag}
+ frag.append(document.createTextNode(text.slice(0,at)));
+ const mark=document.createElement('mark');mark.textContent=text.slice(at,at+q.length);frag.append(mark,document.createTextNode(text.slice(at+q.length)));return frag;
+}
+function find(){
+ const q=input.value.trim();results.replaceChildren();if(q.length<2){close();return}
+ build();
+ const found=index.filter(x=>(x.title+' '+x.text).toLocaleLowerCase().includes(q.toLocaleLowerCase())).sort((a,b)=>Number(b.title.toLocaleLowerCase().includes(q.toLocaleLowerCase()))-Number(a.title.toLocaleLowerCase().includes(q.toLocaleLowerCase()))).slice(0,12);
+ if(!found.length){const empty=document.createElement('p');empty.className='suo-search-empty';empty.textContent='Tiada hasil / No results';results.append(empty)}
+ found.forEach(item=>{
+  const button=document.createElement('button');button.type='button';button.className='suo-search-result';button.setAttribute('role','option');
+  const title=document.createElement('strong');title.append(fragmentHighlight(item.title,q));
+  const excerpt=document.createElement('small');const pos=item.text.toLowerCase().indexOf(q.toLowerCase());const start=Math.max(0,pos-55);excerpt.append(fragmentHighlight(item.text.slice(start,start+155),q));
+  button.append(title,excerpt);
+  button.addEventListener('click',()=>{
+   if(item.route&&typeof window.suoPortalNavigate==='function')window.suoPortalNavigate(item.route);
+   close();input.blur();
+   const dest=item.el;
+   requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    if(dest.getBoundingClientRect().width){dest.scrollIntoView({behavior:'smooth',block:'start'})}
+    else if(item.route==='stats')document.getElementById('suo-dashboard-overview')?.scrollIntoView({behavior:'smooth'});
+   }));
+  });
+  results.append(button);
+ });
+ results.hidden=false;input.setAttribute('aria-expanded','true');
+}
+input.addEventListener('input',find);
+input.addEventListener('keydown',e=>{if(e.key==='Escape')close();if(e.key==='Enter'){e.preventDefault();results.querySelector('button')?.click()}});
+document.addEventListener('click',e=>{if(!box.contains(e.target))close()});
+document.addEventListener('keydown',e=>{
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='f'&&!e.altKey){
+  e.preventDefault();input.focus();input.select();find();
  }
- img.addEventListener('load',()=>{img.hidden=false;area.classList.add('has-official-plan');if(fallback)fallback.hidden=true});
- img.addEventListener('error',locate);
- if(img.complete&&img.naturalWidth===0)locate();
+});
 })();
 </script>
 </body>
