@@ -13274,5 +13274,63 @@ if(!reduced&&!mobile){
  ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(()=>set(state),0)));
 })();
 </script>
+<script id="suo-expanded-bilingual-content-20261022">
+/* Additional non-destructive bilingual layer for existing interactive Story Map. */
+(function(){
+ 'use strict';
+ const pairs=[["Statistik Utama Rancangan Pemajuan","Key Development Plan Statistics"],["Selangor Dalam Angka","Selangor at a Glance"],["MENU UTAMA","MAIN MENU"],["DOKUMENTASI & BAB","DOCUMENTATION & CHAPTERS"],["DIREKTORI","DIRECTORY"],["Direktori 12 PBT","Directory of 12 Local Authorities"],["Peta Interaktif","Interactive Map"],["Peta Jalan","Street Map"],["Satelit","Satellite"],["Set Semula","Reset"],["Halaman Utama","Home"],["HALAMAN UTAMA","HOME"],["Terokai","Explore"],["Pengenalan","Introduction"],["Latar Belakang","Background"],["Dokumentasi & Bab Perancangan Negeri","State Planning Documentation & Chapters"],["Rancangan Selangor, Masa Hadapan","Selangor Plans for the Future"],["Arah Tuju & Hierarki Pemajuan","Development Direction & Hierarchy"],["RSN Selangor 2035 (Pengubahan)","Selangor Structure Plan 2035 (Amendment)"],["Rancangan Tempatan & RKK","Local Plans & Special Area Plans"],["Sistem LPFNS","LPFNS System"],["Daerah Pentadbiran","Administrative Districts"],["Pihak Berkuasa Tempatan","Local Authorities"],["Daerah, PBT & Dokumen Perancangan","Districts, Local Authorities & Planning Documents"],["9 Daerah Pentadbiran","9 Administrative Districts"],["12 PBT","12 Local Authorities"],["Semua PBT","All Local Authorities"],["Pilih PBT","Select Local Authority"],["Senarai Dokumen","Document List"],["Dokumen Perancangan","Planning Documents"],["Rancangan Struktur Negeri","State Structure Plan"],["Rancangan Tempatan","Local Plan"],["Rancangan Kawasan Khas","Special Area Plan"],["Pelan Strategik Guna Tanah","Strategic Land Use Plan"],["Dasar-dasar RSN 2035 (Pengubahan)","Structure Plan 2035 (Amendment) Policies"],["Kaedah Analisis Spatial","Spatial Analysis Method"],["Kerangka Pembentukan Pelan","Plan Development Framework"],["Peta Rujukan Rasmi","Official Reference Map"],["Fungsi Pelan","Plan Functions"],["Kawasan Pentadbiran","Administrative Area"],["Matlamat Pembangunan","Development Goals"],["Teras Pembangunan","Development Pillars"],["Konsep Pembangunan","Development Concept"],["Cadangan Guna Tanah","Proposed Land Use"],["Projek Berimpak Tinggi","High-impact Projects"],["Maklumat Lanjut","More Information"],["Info Lanjut","More Info"],["Lihat Selanjutnya","View More"],["Klik untuk melihat","Click to view"],["Pilih daerah","Select district"],["Daerah","District"],["Pentadbiran","Administration"],["Perancangan Negeri","State Planning"],["Pembangunan Spatial","Spatial Development"],["Dokumen Rancangan Struktur Negeri Selangor","Selangor State Structure Plan Document"],["Dokumen Rancangan Kawasan Khas (RKK)","Special Area Plan Documents (RKK)"],["Dokumen Rancangan Tempatan (RT)","Local Plan Documents (RT)"],["DOKUMEN PERANCANGAN","PLANNING DOCUMENTS"],["PERANCANGAN NEGERI","STATE PLANNING"],["Statistik","Statistics"],["Utama","Home"],["Seterusnya","Next"],["Sebelumnya","Previous"],["Kembali","Back"],["Tutup","Close"],["Paparan","View"],["Lihat","View"],["Muat Turun","Download"],["Sumber","Source"],["Jumlah","Total"],["Bilangan","Number"],["Tahun","Year"],["PBT","Local Authority"],["Kad","Card"],["Rancangan Pemajuan Negeri Selangor","Selangor State Development Plans"],["Rancangan Pemajuan Selangor","Selangor Development Plans"],["Selangor Dalam Angka.","Selangor at a Glance."],["Dokumen Rancangan Kawasan Khas","Special Area Plan Documents"],["Dokumen Rancangan Tempatan","Local Plan Documents"],["Ringkasan indikator pentadbiran dan dokumen rancangan pemajuan Negeri Selangor.","Summary of administrative indicators and development planning documents for Selangor."],["Dua instrumen perancangan yang saling melengkapi: RT memperincikan pembangunan tempatan, manakala RKK memberikan tindakan khusus bagi kawasan terpilih.","Two complementary planning instruments: Local Plans detail local development, while Special Area Plans set out targeted actions for selected areas."],["Klik daerah atau PBT pada peta ataupun dalam senarai.","Select a district or local authority on the map or from the list."],["Pilih PBT dalam daerah ini untuk melihat dokumen RT dan RKK.","Select a local authority in this district to view Local Plan and Special Area Plan documents."],["Pilih PBT untuk melihat RT & RKK","Select a Local Authority to View Local and Special Area Plans"],["Senarai dokumen dipautkan terus kepada Bab 04.","Documents link directly to Chapter 04."],["Data peta tersedia","Map data available"],["Data peta tidak tersedia","Map data unavailable"],["Menyemak sambungan…","Checking connection…"],["Taklimat visual perancangan negeri","State planning video briefing"],["VIDEO SPOTLIGHT · TAKLIMAT UTAMA","VIDEO SPOTLIGHT · MAIN BRIEFING"],["BAB 03 · PAPARAN VISUAL","CHAPTER 03 · VISUAL PRESENTATION"],["Klik Play untuk menonton video di sini.","Click Play to watch the video here."],["Hala tuju strategik, perancangan spatial dan masa depan Negeri Selangor.","Strategic direction, spatial planning and Selangor's future."],["PORTAL INTERAKTIF SELANGOR","SELANGOR INTERACTIVE PORTAL"],["DASHBOARD SPATIAL · SELANGOR","SELANGOR SPATIAL DASHBOARD"],["INDIKATOR UTAMA","KEY INDICATORS"],["Perancangan Spatial ke Arah Pembangunan Mampan.","Spatial Planning Towards Sustainable Development."],["BAB 04 · ATLAS PERANCANGAN TEMPATAN","CHAPTER 04 · LOCAL PLANNING ATLAS"],["DASAR & PELAKSANAAN","POLICIES & IMPLEMENTATION"],["Terokai Portal","Explore Portal"],["Akses Direktori","Open Directory"],["Peta Interaktif Pentadbiran Negeri Selangor","Selangor Administrative Interactive Map"]];
+ const dict=new Map(pairs);
+ const originals=new WeakMap();
+ const excluded='script,style,svg,code,pre,textarea,option,[contenteditable="true"]';
+ let current='ms',writing=false;
+ function process(root){
+  if(writing||!root)return;
+  writing=true;
+  try{
+   const elements=[];
+   if(root.nodeType===1)elements.push(root);
+   if(root.querySelectorAll)elements.push(...root.querySelectorAll('[data-suo-ms][data-suo-en],[data-ms][data-en]'));
+   elements.forEach(el=>{
+    const bm=el.getAttribute('data-suo-ms')||el.getAttribute('data-ms');
+    const en=el.getAttribute('data-suo-en')||el.getAttribute('data-en');
+    if(!bm||!en||el.closest(excluded))return;
+    if(el.matches('[data-suo-ms][data-suo-en], [data-ms][data-en]')){
+     const textNode=Array.from(el.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
+     if(textNode)textNode.textContent=current==='en'?en:bm;
+    }
+   });
+   const walker=document.createTreeWalker(root.nodeType===9?root.body:root,NodeFilter.SHOW_TEXT);
+   let node;
+   while((node=walker.nextNode())){
+    if(node.parentElement?.closest(excluded))continue;
+    let orig=originals.get(node);
+    if(orig===undefined){orig=node.nodeValue;originals.set(node,orig)}
+    const cleaned=orig.trim();
+    if(!cleaned)continue;
+    const translated=dict.get(cleaned);
+    if(!translated)continue;
+    const val=current==='en'?translated:cleaned;
+    const output=orig.replace(cleaned,val);
+    if(node.nodeValue!==output)node.nodeValue=output;
+   }
+  }finally{writing=false}
+ }
+ const oldSet=window.setLang;
+ window.setLang=function(lang){
+  if(typeof oldSet==='function')oldSet(lang);
+  current=lang==='en'?'en':'ms';
+  process(document);
+ };
+ ['langBM','langEN'].forEach(id=>{
+  document.getElementById(id)?.addEventListener('click',()=>queueMicrotask(()=>{current=document.documentElement.lang==='en'?'en':'ms';process(document)}));
+ });
+ const observer=new MutationObserver(mutations=>{
+  if(writing||current!=='en')return;
+  for(const m of mutations)if(m.type==='childList')m.addedNodes.forEach(node=>{if(node.nodeType===1||node.nodeType===3)process(node.nodeType===3?node.parentNode:node)});
+ });
+ observer.observe(document.body,{childList:true,subtree:true});
+ current=document.documentElement.lang==='en'?'en':'ms';process(document);
+})();
+</script>
 </body>
 </html>
