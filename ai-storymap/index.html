@@ -12543,6 +12543,12 @@ if(!reduced&&!mobile){
   links.forEach(link=>{const on=link.dataset.suoSidePage===page;link.classList.toggle('is-active',on);if(on)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
   if(chapter>=0&&!options.skipChapter)activateChapter(chapter);
   if(!options.noReset)window.scrollTo({top:0,behavior:'instant'});
+  // Existing Leaflet / MapLibre maps may have initialized while this page was hidden.
+  // Trigger their existing resize listeners after a page becomes visible; data and map code stay untouched.
+  if(page==='map'||page.startsWith('chapter-')){
+    requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));
+    setTimeout(()=>window.dispatchEvent(new Event('resize')),320);
+  }
   closeDrawer();return true;
  }
  function pageOf(target){
