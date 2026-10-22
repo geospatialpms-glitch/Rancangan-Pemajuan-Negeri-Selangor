@@ -8363,6 +8363,43 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
 @keyframes rr04-navy-orbit{from{transform:rotate(-27deg) translateY(0);opacity:.45}to{transform:rotate(-18deg) translateY(-18px);opacity:.75}}
 @media(prefers-reduced-motion:reduce){#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-grid::before,#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-preview::before,#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-preview::after{animation:none!important}}
 </style>
+<style id="rr04-rt-dosm-info-slide-20261022">
+/* Bab 04 > RT > centre StoryMap information ONLY.
+   DOSM-style two-phase vertical exit and staggered entrance.
+   Image preview, PBT rail, page theme and other BAB are unchanged. */
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary{position:relative;isolation:isolate}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary> :is(.rr04-rt-portal-eyebrow,.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){will-change:opacity,transform}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary>.rr04-rt-portal-eyebrow{--rr04-info-seq:0}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary>.rr04-rt-portal-identity{--rr04-info-seq:1}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary>h5{--rr04-info-seq:2}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary>.rr04-rt-portal-subtitle{--rr04-info-seq:3}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary>p{--rr04-info-seq:4}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary>.rr04-rt-portal-docs{--rr04-info-seq:5}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary>.rr04-rt-portal-actions{--rr04-info-seq:6}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-exit.rr04-pop-down .rr04-rt-portal-summary> :is(.rr04-rt-portal-eyebrow,.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){
+ animation:rr04-info-exit-up .18s cubic-bezier(.45,0,.85,.3) both!important;
+}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-exit.rr04-pop-up .rr04-rt-portal-summary> :is(.rr04-rt-portal-eyebrow,.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){
+ animation:rr04-info-exit-down .18s cubic-bezier(.45,0,.85,.3) both!important;
+}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-enter.rr04-pop-down .rr04-rt-portal-summary> :is(.rr04-rt-portal-eyebrow,.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){
+ animation:rr04-info-enter-up .50s cubic-bezier(.18,.8,.22,1) both!important;
+ animation-delay:calc(var(--rr04-info-seq,0) * 46ms)!important;
+}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-enter.rr04-pop-up .rr04-rt-portal-summary> :is(.rr04-rt-portal-eyebrow,.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){
+ animation:rr04-info-enter-down .50s cubic-bezier(.18,.8,.22,1) both!important;
+ animation-delay:calc(var(--rr04-info-seq,0) * 46ms)!important;
+}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-exit .rr04-rt-portal-summary{pointer-events:none}
+@keyframes rr04-info-exit-up{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-28px)}}
+@keyframes rr04-info-exit-down{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(28px)}}
+@keyframes rr04-info-enter-up{from{opacity:0;transform:translateY(53px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rr04-info-enter-down{from{opacity:0;transform:translateY(-53px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+ #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-exit .rr04-rt-portal-summary>*,
+ #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-enter .rr04-rt-portal-summary>*{animation:none!important;transition:none!important;will-change:auto!important}
+}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -12264,6 +12301,9 @@ if(!reduced&&!mobile){
  const railPrev=document.getElementById('rr04-rt-rail-prev');
  const railNext=document.getElementById('rr04-rt-rail-next');
  let lastWheelStep=0;
+ let requestedIndex=-1, visibleIndex=-1;
+ let infoExitTimer=0, infoFinishTimer=0;
+ const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
  if(!options||!frame||!open||!docList)return;
  // Butang peta berada dalam panel yang dialihkan, jadi hantar tindakan
  // kepada butang asal dalam direktori supaya peta dan listeners kekal sama.
@@ -12277,7 +12317,7 @@ if(!reduced&&!mobile){
    if(/penggantian/i.test(title))return 'Dokumen penggantian Rancangan Tempatan yang disenaraikan sebagai rujukan perancangan. Rujuk portal StoryMap bagi butiran rasmi.';
    return 'Dokumen Rancangan Tempatan dalam senarai rujukan bagi kawasan PBT berkenaan. Kandungan penuh boleh diterokai melalui portal StoryMap.';
  }
- function select(index){
+ function renderSelection(index){
    const p=items[index];
    if(!p)return;
    count.textContent='BAB 04 · RANCANGAN TEMPATAN · '+String(index+1).padStart(2,'0')+' / '+items.length;
@@ -12319,6 +12359,36 @@ if(!reduced&&!mobile){
      options.scrollTo({top:Math.max(0,y),behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
    }
  }
+ // DOSM-inspired information popup: the current PBT slides out before the new
+ // name, overview and document list rise or descend in a staggered sequence.
+ // Keep the original buttons, links, map actions and Esri iframe intact.
+ function select(index){
+   if(!items[index]||index===requestedIndex)return;
+   requestedIndex=index;
+   clearTimeout(infoExitTimer);
+   clearTimeout(infoFinishTimer);
+   host.classList.remove('rr04-pop-exit','rr04-pop-enter','rr04-pop-up','rr04-pop-down','is-switching');
+   if(visibleIndex<0||reduceMotion.matches){
+     renderSelection(index);
+     visibleIndex=index;
+     return;
+   }
+   const direction=index<visibleIndex?'rr04-pop-up':'rr04-pop-down';
+   host.classList.add(direction);
+   void host.offsetWidth;
+   host.classList.add('rr04-pop-exit');
+   infoExitTimer=setTimeout(()=>{
+     if(requestedIndex!==index)return;
+     host.classList.remove('rr04-pop-exit');
+     renderSelection(index);
+     visibleIndex=index;
+     void host.offsetWidth;
+     host.classList.add('rr04-pop-enter');
+     infoFinishTimer=setTimeout(()=>{
+       host.classList.remove('rr04-pop-enter','rr04-pop-up','rr04-pop-down');
+     },870);
+   },185);
+ }
  items.forEach((p,i)=>{
    const btn=document.createElement('button');btn.type='button';btn.className='rr04-rt-portal-option';
    btn.setAttribute('aria-pressed',String(i===0));btn.setAttribute('aria-label','Papar StoryMap dan dokumen '+p.name);
@@ -12329,7 +12399,7 @@ if(!reduced&&!mobile){
    btn.addEventListener('click',()=>select(i));
    options.appendChild(btn);buttons.push(btn);
  });
- function active(){return buttons.findIndex(btn=>btn.getAttribute('aria-pressed')==='true')}
+ function active(){return requestedIndex}
  function move(delta){select(Math.max(0,Math.min(items.length-1,active()+delta)))}
  options.addEventListener('wheel',function(e){
    if(Math.abs(e.deltaY)<5)return;
