@@ -7832,6 +7832,127 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
   transition:none!important;transform:none!important;filter:none!important;opacity:1!important;
  }
 }
+
+/* SUO RESPONSIVE BENTO CONTENT FIT 2026-10-22 */
+/* Sizes of text, numbers, pictograms and Explore action now track each card's
+   OWN width while Bento columns animate. No elements outside statistics are touched. */
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]{
+ container-name:suo-stat-card;
+ container-type:inline-size;
+}
+@media(min-width:1101px){
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-card-head{
+  gap:clamp(5px,1.65cqw,14px);flex-shrink:0;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-card-id{
+  font-size:clamp(10px,2.4cqw,14px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-stat-explore{
+  gap:clamp(4px,1cqw,7px);
+  padding:clamp(5px,1.4cqw,9px) clamp(7px,1.9cqw,12px);
+  font-size:clamp(9px,2.2cqw,12px);
+  max-width:56%;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-stat-explore svg{
+  width:clamp(12px,2.6cqw,17px);
+  height:clamp(12px,2.6cqw,17px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-card-visual{
+  flex:1 1 auto;min-width:0;min-height:0;
+  max-width:100%;overflow:visible;
+  gap:clamp(3px,1.7cqw,17px);
+  justify-content:space-between;
+  align-items:center;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-number{
+  flex:0 1 auto;min-width:0;
+  font-size:clamp(49px,18cqw,111px);
+  line-height:.95;
+  letter-spacing:-.065em;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(1) .suo-dash-number{
+  font-size:clamp(80px,20cqw,165px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(4) .suo-dash-number{
+  font-size:clamp(63px,18.5cqw,127px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-illustration{
+  flex:0 1 auto;
+  width:clamp(70px,26cqw,162px);
+  height:clamp(70px,min(21cqw,13svh),132px);
+  max-width:47%;max-height:100%;
+  object-fit:contain;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(1) .suo-dash-illustration{
+  width:clamp(108px,33cqw,239px);
+  height:clamp(105px,min(30cqw,23svh),211px);
+  max-width:47%;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(4) .suo-dash-illustration{
+  width:clamp(88px,28cqw,193px);
+  height:clamp(80px,min(23cqw,16svh),158px);
+  max-width:44%;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-illustration svg{
+  display:block;width:100%;height:100%;object-fit:contain;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-card-foot{
+  flex:0 0 auto;min-width:0;
+  gap:clamp(3px,.85cqw,7px);
+  max-width:100%;padding-bottom:0;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-label,
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(3) .suo-dash-label,
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5) .suo-dash-label{
+  font-size:clamp(11px,3.2cqw,18px);
+  line-height:1.28;
+  overflow-wrap:anywhere;
+  text-wrap:pretty;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(1) .suo-dash-label{
+  font-size:clamp(15px,3.35cqw,25px);
+  line-height:1.22;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(4) .suo-dash-label{
+  font-size:clamp(12px,3.1cqw,20px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-detail{
+  font-size:clamp(9px,2.14cqw,12px);
+  line-height:1.24;
+ }
+}
+/* Prevent text clipping at short desktop heights; maintain a stable card frame. */
+@media(min-width:1101px) and (max-height:780px){
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-number{
+  font-size:clamp(48px,16cqw,89px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(1) .suo-dash-number{
+  font-size:clamp(78px,18cqw,121px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(4) .suo-dash-number{
+  font-size:clamp(61px,17cqw,101px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-illustration{
+  height:clamp(66px,min(18cqw,12svh),105px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(1) .suo-dash-illustration{
+  height:clamp(93px,min(27cqw,20svh),150px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-card-foot{gap:3px}
+}
+/* Tablet and phone retain the existing single/two-column arrangement,
+   while illustrations cannot overlap labels or spill outside the card. */
+@media(max-width:1100px){
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-card-visual{
+  min-width:0;max-width:100%;gap:8px;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-illustration{
+  max-width:45%;max-height:100%;min-width:0;flex-shrink:1;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-card-foot{
+  flex-shrink:0;min-width:0;
+ }
+}
 </style>
 </head>
 <body>
