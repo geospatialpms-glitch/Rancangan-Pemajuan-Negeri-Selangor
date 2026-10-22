@@ -7953,6 +7953,74 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
   flex-shrink:0;min-width:0;
  }
 }
+
+/* SUO STATS SMOOTH DIVIDERS AND CARD 05 2026-10-22 */
+/* Smooth section edges: suppress ONLY the statistics frame's old white/gold
+   horizontal bars. Do not change hero, GIS map, chapters or other sections. */
+#suo-dashboard-overview{
+ border-top:0;
+ border-bottom:0;
+ box-shadow:none;
+ background:linear-gradient(180deg,rgba(255,250,243,.055),rgba(255,248,241,.025) 58%,rgba(255,250,243,.055));
+}
+#suo-dashboard-overview::before,
+#suo-dashboard-overview::after,
+#suo-dashboard-overview .suo-dash-top::before,
+#suo-dashboard-overview .suo-dash-top::after{
+ content:none;
+ display:none;
+ box-shadow:none;
+}
+/* Card 05: truly expands its own 3 Bento tracks (not just the 2.7% transform).
+   Other four card-specific hover rules and all default grid proportions remain. */
+@media(min-width:1101px) and (hover:hover) and (pointer:fine){
+ #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(5):hover){
+  grid-template-columns:
+   repeat(4,minmax(0,.82fr))
+   repeat(4,minmax(0,.82fr))
+   minmax(0,.82fr)
+   repeat(3,minmax(0,1.75fr));
+ }
+ #suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(5):hover{
+  transform:translateX(-3px) translateY(-3px) scale(1.042);
+  transform-origin:right center;
+  z-index:4;
+ }
+}
+/* Harmonize card 05 typography with the other four statistic cards, including
+   smooth adaptive font scaling as it grows. */
+#suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-label{
+ font-family:'Plus Jakarta Sans',sans-serif;
+ font-weight:700;
+ letter-spacing:-.015em;
+ line-height:1.3;
+ text-wrap:pretty;
+ overflow-wrap:break-word;
+}
+#suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-detail,
+#suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-card-id{
+ font-family:'Plus Jakarta Sans',sans-serif;
+}
+@media(min-width:1101px){
+ #suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-label{
+  font-size:clamp(13px,3.2cqw,18px);
+ }
+}
+@media(max-width:1100px){
+ #suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-label{
+  font-size:14px;
+ }
+}
+@media(max-width:630px){
+ #suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-label{
+  font-size:15px;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(5):hover{
+  transform:none!important;
+ }
+}
 </style>
 </head>
 <body>
