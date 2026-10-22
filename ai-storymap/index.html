@@ -9389,7 +9389,7 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 <section class="suo-bab02-rsn-map-section" aria-labelledby="suo-bab02-rsn-map-title">
   <header class="suo-bab02-rsn-section-heading"><span>PEL​AN &amp; VISUAL SPATIAL</span><h4 id="suo-bab02-rsn-map-title">Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan)</h4><p>Ruang paparan dokumen pelan konsep pembangunan rasmi.</p></header>
   <div class="suo-bab02-rsn-map-container">
-   <img class="suo-bab02-rsn-plan-image" src="./pelan-konsep-rsn-selangor-2035-pengubahan.png" alt="Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan)" loading="lazy" onload="this.parentElement.classList.add('has-official-plan')" onerror="this.parentElement.classList.remove('has-official-plan');this.hidden=true">
+   <img class="suo-bab02-rsn-plan-image" src="./pelan-konsep-rsn-selangor-2035-pengubahan.png" alt="Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan)" loading="lazy" onload="this.parentElement.classList.add('has-official-plan')" onerror="this.dispatchEvent(new CustomEvent('suo:plan-image-missing',{bubbles:true}))">
    <div class="suo-bab02-rsn-plan-fallback" role="status"><span aria-hidden="true">▧</span><strong>Ruang Pelan Konsep Rasmi RSN 2035</strong><p>Imej pelan rasmi belum tersedia dalam repositori. Sila masukkan fail pelan yang disahkan untuk dipaparkan di sini.</p><small>Nama fail: pelan-konsep-rsn-selangor-2035-pengubahan.png</small></div>
   </div>
   <p class="suo-bab02-rsn-plan-caption">Pelan Konsep Pembangunan RS Negeri Selangor 2035 (Pengubahan) · Paparan imej tertakluk kepada ketersediaan dokumen rasmi.</p>
@@ -13314,6 +13314,49 @@ if(!reduced&&!mobile){
  }
  refresh();
  ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(()=>set(state),0)));
+})();
+</script>
+<script id="suo-official-plan-image-autodetect-20261022">
+/* BAB 02 official concept plan: resolve already-uploaded map image even if filename differs. */
+(function(){
+ 'use strict';
+ const area=document.querySelector('.suo-bab02-rsn-map-container');
+ if(!area)return;
+ const img=area.querySelector('.suo-bab02-rsn-plan-image');
+ if(!img)return;
+ const fallback=area.querySelector('.suo-bab02-rsn-plan-fallback');
+ let attempted=false;
+ async function locate(){
+  if(attempted)return;
+  attempted=true;
+  try{
+   const url='https://api.github.com/repos/geospatialpms-glitch/Rancangan-Pemajuan-Negeri-Selangor/contents/ai-storymap?ref=main';
+   const response=await fetch(url,{headers:{Accept:'application/vnd.github+json'}});
+   if(!response.ok)throw Error('Directory unavailable');
+   const files=await response.json();
+   if(!Array.isArray(files))throw Error('Unexpected response');
+   const scored=files.filter(f=>f.type==='file'&&/\.(png|jpe?g|webp)$/i.test(f.name))
+    .map(f=>{const n=f.name.toLowerCase();let points=0;
+      if(/pelan|plan/.test(n))points+=3;
+      if(/konsep|concept/.test(n))points+=5;
+      if(/rsn|struktur/.test(n))points+=2;
+      if(/selangor/.test(n))points+=1;
+      if(/2035/.test(n))points+=1;
+      if(/pengubahan/.test(n))points+=1;
+      return {f,points};
+    }).filter(x=>x.points>=8).sort((a,b)=>b.points-a.points);
+   if(!scored.length)throw Error('Map image not found');
+   img.src=scored[0].f.download_url;
+   img.hidden=false;
+  }catch(e){
+   img.hidden=true;
+   area.classList.remove('has-official-plan');
+   if(fallback)fallback.hidden=false;
+  }
+ }
+ img.addEventListener('load',()=>{img.hidden=false;area.classList.add('has-official-plan');if(fallback)fallback.hidden=true});
+ img.addEventListener('error',locate);
+ if(img.complete&&img.naturalWidth===0)locate();
 })();
 </script>
 </body>
