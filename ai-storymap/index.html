@@ -7717,6 +7717,90 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
  #suo-dashboard-overview .suo-stat-explore,
  #suo-dashboard-overview .suo-stat-explore svg{transition:none!important;transform:none!important}
 }
+
+/* SUO CONSTELLATION + EXPANDING BENTO 2026-10-22 */
+/* Network animation stays in the five-card grid; the main hologram and other sections remain intact. */
+#suo-dashboard-overview .suo-dash-grid{
+ isolation:isolate;
+ grid-template-columns:repeat(4,minmax(0,1fr)) repeat(4,minmax(0,1fr)) minmax(0,1fr) repeat(3,minmax(0,1fr));
+ transition:grid-template-columns .54s cubic-bezier(.2,.75,.25,1);
+}
+#suo-dashboard-overview .suo-dash-grid::before{
+ content:"";position:absolute;z-index:-2;inset:-11px;border-radius:30px;pointer-events:none;
+ background:
+  radial-gradient(ellipse at 12% 15%,rgba(23,99,180,.30),transparent 44%),
+  radial-gradient(ellipse at 82% 85%,rgba(20,95,176,.25),transparent 46%),
+  linear-gradient(127deg,#06132f,#0a224b 52%,#070f2b 100%);
+ box-shadow:inset 0 0 0 1px rgba(105,190,255,.22),
+   inset 0 0 55px rgba(3,12,35,.65),0 14px 34px rgba(15,29,64,.13);
+}
+#suo-dashboard-overview .suo-dash-grid::after{
+ content:"";position:absolute;z-index:-1;inset:-11px;border-radius:30px;pointer-events:none;
+ background:linear-gradient(125deg,rgba(34,113,185,.03),transparent 35%,rgba(61,122,221,.055));
+}
+#suo-dashboard-overview .suo-stat-constellation{
+ position:absolute;inset:-11px;width:calc(100% + 22px);height:calc(100% + 22px);
+ display:block;z-index:0;pointer-events:none;border-radius:30px;opacity:.94;
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]{
+ position:relative;z-index:1;
+ transform-origin:center center;
+ transition:transform .52s cubic-bezier(.18,.8,.24,1),
+   opacity .48s ease,filter .48s ease,
+   box-shadow .32s ease,border-color .32s ease;
+ will-change:auto;
+}
+/* Real redistribution of the 12 grid tracks, with a gentle spotlight scale.
+   Resets automatically when cursor leaves the grid. */
+@media(min-width:1101px) and (hover:hover) and (pointer:fine){
+ #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(1):hover){
+  grid-template-columns:repeat(4,minmax(0,1.32fr)) repeat(4,minmax(0,.84fr)) minmax(0,.84fr) repeat(3,minmax(0,.84fr));
+ }
+ #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(2):hover){
+  grid-template-columns:repeat(4,minmax(0,.89fr)) repeat(4,minmax(0,1.24fr)) minmax(0,.89fr) repeat(3,minmax(0,.89fr));
+ }
+ #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(3):hover){
+  grid-template-columns:repeat(4,minmax(0,.89fr)) repeat(4,minmax(0,.89fr)) minmax(0,1.22fr) repeat(3,minmax(0,1.22fr));
+ }
+ #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(4):hover){
+  grid-template-columns:repeat(4,minmax(0,.87fr)) repeat(4,minmax(0,1.18fr)) minmax(0,1.18fr) repeat(3,minmax(0,.87fr));
+ }
+ #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(5):hover){
+  grid-template-columns:repeat(4,minmax(0,.91fr)) repeat(4,minmax(0,.90fr)) minmax(0,.90fr) repeat(3,minmax(0,1.30fr));
+ }
+ #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:hover) > .suo-dash-card:not(:hover){
+  transform:scale(.966);opacity:.84;filter:saturate(.87) brightness(.9);
+ }
+ #suo-dashboard-overview .suo-dash-grid > .suo-dash-card:hover{
+  transform:scale(1.027) translateY(-3px);opacity:1;filter:none;z-index:3;
+ }
+}
+/* Keyboard focus highlights the chosen card, while links remain accessible. */
+#suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:focus-within) > .suo-dash-card:not(:focus-within){
+ opacity:.88;
+}
+#suo-dashboard-overview .suo-dash-grid > .suo-dash-card:focus-within{
+ z-index:3;
+}
+@media(max-width:1100px){
+ #suo-dashboard-overview .suo-dash-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  transition:none;
+ }
+}
+@media(max-width:630px){
+ #suo-dashboard-overview .suo-dash-grid{grid-template-columns:1fr}
+ #suo-dashboard-overview .suo-dash-grid::before,
+ #suo-dashboard-overview .suo-dash-grid::after,
+ #suo-dashboard-overview .suo-stat-constellation{inset:-7px;border-radius:22px}
+ #suo-dashboard-overview .suo-stat-constellation{width:calc(100% + 14px);height:calc(100% + 14px)}
+}
+@media(prefers-reduced-motion:reduce){
+ #suo-dashboard-overview .suo-dash-grid{transition:none!important}
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]{
+  transition:none!important;transform:none!important;filter:none!important;opacity:1!important
+ }
+}
 </style>
 </head>
 <body>
@@ -7801,6 +7885,7 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="4">4</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="66" cy="103" rx="49" ry="7" fill="#6f3441" opacity=".12"/><rect x="30" y="17" width="65" height="81" rx="6" fill="#c4a18b" transform="rotate(-5 62 57)"/><rect x="29" y="10" width="66" height="82" rx="6" fill="#fff0dc" stroke="#d3bca8" stroke-width="2"/><path d="M40 25h31M40 32h22" stroke="#c4a193" stroke-width="3" stroke-linecap="round"/><circle cx="59" cy="58" r="19" fill="#f1dbb8"/><path d="M59 58V39a19 19 0 0 1 19 19Z" fill="#b56e62"/><path d="M59 58h19A19 19 0 0 1 48 74Z" fill="#d3a269"/><path d="M83 75 111 99" stroke="#a36b5e" stroke-width="11" stroke-linecap="round"/><path d="M83 75 111 99" stroke="#e8b77e" stroke-width="6" stroke-linecap="round"/><circle cx="74" cy="64" r="22" fill="#ffffff2e" stroke="#8e5164" stroke-width="7"/><path d="M62 53a15 15 0 0 1 15-5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Kawasan Khas (RKK)" data-suo-en="Special Area Plan Documents (RKK)">Dokumen Rancangan Kawasan Khas (RKK)</span><span class="suo-dash-detail" data-suo-ms="DOKUMEN PERANCANGAN" data-suo-en="PLANNING DOCUMENTS">DOKUMEN PERANCANGAN</span></div>
  </article>
+  <canvas class="suo-stat-constellation" id="suo-constellation-canvas-2026" aria-hidden="true"></canvas>
   </div>
  </div>
 </section>
@@ -9204,6 +9289,133 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
   const btn=document.getElementById(id);
   if(btn)btn.addEventListener('click',function(){queueMicrotask(renderLabels)});
  });
+})();
+</script>
+
+<script id="suo-stat-constellation-interaction-20261022">
+/* Canvas-only GIS network: animated, pointer-reactive, performance-bounded,
+   automatically paused when off screen or tab hidden. */
+(function(){
+ 'use strict';
+ const grid=document.querySelector('#suo-dashboard-overview .suo-dash-grid');
+ const canvas=document.getElementById('suo-constellation-canvas-2026');
+ if(!grid||!canvas||!canvas.getContext)return;
+ const ctx=canvas.getContext('2d',{alpha:true});
+ if(!ctx)return;
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+ let w=0,h=0,dpr=1,nodes=[],raf=0,last=0,visible=false;
+ const pointer={x:0,y:0,active:false};
+ const strokeBase=[67,159,245];
+ function random(min,max){return min+Math.random()*(max-min)}
+ function size(){
+  const rect=canvas.getBoundingClientRect();
+  const width=Math.round(rect.width),height=Math.round(rect.height);
+  if(!width||!height)return false;
+  if(width===w&&height===h)return true;
+  const wasW=w,wasH=h;w=width;h=height;
+  dpr=Math.min(window.devicePixelRatio||1,1.6);
+  canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  const count=Math.max(24,Math.min(85,Math.round(w*h/10500)));
+  if(wasW&&wasH&&nodes.length){
+   nodes.forEach(function(p){p.x=p.x*w/wasW;p.y=p.y*h/wasH});
+  }
+  while(nodes.length>count)nodes.pop();
+  while(nodes.length<count){
+   nodes.push({x:random(0,w),y:random(0,h),vx:random(-.12,.12),vy:random(-.12,.12),r:random(1,2.4),phase:random(0,6.29)});
+  }
+  return true;
+ }
+ function draw(time){
+  if(!w||!h)return;
+  ctx.clearRect(0,0,w,h);
+  const linkDist=w<680?140:165,link2=linkDist*linkDist;
+  const px=pointer.x,py=pointer.y;
+  // Fine network links with bright cyan nodes and a subtle blue glow.
+  for(let i=0;i<nodes.length;i++){
+   const a=nodes[i];
+   for(let j=i+1;j<nodes.length;j++){
+    const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,dist2=dx*dx+dy*dy;
+    if(dist2>link2)continue;
+    let intensity=.04+.26*(1-Math.sqrt(dist2)/linkDist);
+    if(pointer.active){
+     const da=Math.hypot(a.x-px,a.y-py);
+     const db=Math.hypot(b.x-px,b.y-py);
+     if(Math.min(da,db)<165)intensity+=.15*(1-Math.min(da,db)/165);
+    }
+    ctx.strokeStyle='rgba('+strokeBase.join(',')+','+Math.min(.48,intensity).toFixed(3)+')';
+    ctx.lineWidth=dist2<6200?1:.65;
+    ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+   }
+  }
+  if(pointer.active){
+   // Cursor adds a local interactive web of connections, never affects card clicks.
+   for(let i=0;i<nodes.length;i++){
+    const p=nodes[i],dist=Math.hypot(p.x-px,p.y-py);
+    if(dist>=178)continue;
+    const alpha=.44*(1-dist/178);
+    ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(p.x,p.y);
+    ctx.strokeStyle='rgba(108,209,255,'+alpha.toFixed(3)+')';
+    ctx.lineWidth=1.15;ctx.stroke();
+   }
+   const halo=ctx.createRadialGradient(px,py,2,px,py,125);
+   halo.addColorStop(0,'rgba(67,170,255,.13)');
+   halo.addColorStop(1,'rgba(67,170,255,0)');
+   ctx.fillStyle=halo;ctx.beginPath();ctx.arc(px,py,125,0,Math.PI*2);ctx.fill();
+  }
+  for(let i=0;i<nodes.length;i++){
+   const p=nodes[i],twinkle=.5+.5*Math.sin(time*.0011+p.phase);
+   ctx.beginPath();ctx.arc(p.x,p.y,p.r+twinkle*.5,0,Math.PI*2);
+   ctx.fillStyle='rgba(92,194,255,'+(.52+.38*twinkle).toFixed(3)+')';
+   ctx.shadowColor='rgba(79,171,255,.75)';ctx.shadowBlur=7;ctx.fill();ctx.shadowBlur=0;
+  }
+ }
+ function advance(dt){
+  nodes.forEach(function(p){
+   p.x+=p.vx*dt;p.y+=p.vy*dt;
+   if(p.x<0||p.x>w){p.vx*=-1;p.x=Math.max(0,Math.min(w,p.x))}
+   if(p.y<0||p.y>h){p.vy*=-1;p.y=Math.max(0,Math.min(h,p.y))}
+   if(pointer.active){
+    const dx=pointer.x-p.x,dy=pointer.y-p.y,dsq=dx*dx+dy*dy;
+    if(dsq>100&&dsq<28000){
+     const d=Math.sqrt(dsq),effect=(1-d/168)*.012*dt;
+     p.x+=dx/d*effect;p.y+=dy/d*effect;
+    }
+   }
+  });
+ }
+ function loop(time){
+  raf=0;if(!visible||document.hidden||reduced)return;
+  if(!size())return;
+  if(time-last>=33){
+   const dt=Math.min(2.2,(time-last)/33||1);
+   advance(dt);draw(time);last=time;
+  }
+  raf=requestAnimationFrame(loop);
+ }
+ function start(){
+  if(!visible||document.hidden||!size())return;
+  if(reduced){draw(0);return}
+  if(!raf){last=performance.now();raf=requestAnimationFrame(loop)}
+ }
+ function stop(){if(raf){cancelAnimationFrame(raf);raf=0}last=0}
+ function refresh(){if(size()){if(reduced)draw(0);else if(visible)start()}}
+ grid.addEventListener('pointermove',function(event){
+  if(event.pointerType==='touch'||reduced)return;
+  const rect=canvas.getBoundingClientRect();
+  pointer.x=event.clientX-rect.left;pointer.y=event.clientY-rect.top;pointer.active=true;
+ },{passive:true});
+ grid.addEventListener('pointerleave',function(){pointer.active=false},{passive:true});
+ if('ResizeObserver' in window){new ResizeObserver(refresh).observe(grid)}
+ else window.addEventListener('resize',refresh,{passive:true});
+ if('IntersectionObserver' in window){
+  new IntersectionObserver(function(entries){
+   visible=entries.some(function(e){return e.isIntersecting});
+   if(visible)start();else stop();
+  },{threshold:0,rootMargin:'100px 0px 100px 0px'}).observe(grid);
+ }else{visible=true;start()}
+ document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start()});
+ window.addEventListener('pageshow',start);
 })();
 </script>
 <script id="suo-language-switch-active">
