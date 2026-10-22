@@ -7668,6 +7668,55 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
  #suo-dashboard-overview .suo-dash-card:nth-child(1) .suo-dash-number,
  #suo-dashboard-overview .suo-dash-card:nth-child(4) .suo-dash-number{font-size:clamp(60px,17vw,85px)}
 }
+
+/* Only statistic-card navigation affordances; map and chapter styles unchanged. */
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]{
+ cursor:pointer;
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]:focus-visible{
+ outline:3px solid #ffe0a6;outline-offset:4px;
+ box-shadow:0 0 0 6px rgba(127,52,75,.35),0 18px 36px rgba(43,16,30,.2);
+}
+#suo-dashboard-overview .suo-dash-card-head{
+ position:relative;z-index:3;
+}
+#suo-dashboard-overview .suo-stat-explore{
+ display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ flex:none;max-width:52%;
+ padding:6px 9px;border-radius:999px;
+ border:1px solid rgba(255,221,158,.46);
+ background:rgba(255,236,207,.13);
+ color:#ffe7b8;font:800 10px/1.2 'Plus Jakarta Sans',sans-serif;
+ letter-spacing:.015em;white-space:nowrap;
+ box-shadow:inset 0 1px 0 rgba(255,248,224,.13);
+ backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+ transition:background .2s,border-color .2s,transform .2s,color .2s;
+ cursor:pointer;
+}
+#suo-dashboard-overview .suo-stat-explore svg{
+ width:13px;height:13px;flex:none;fill:none;stroke:currentColor;
+ stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+ transition:transform .25s;
+}
+#suo-dashboard-overview .suo-dash-card:hover .suo-stat-explore,
+#suo-dashboard-overview .suo-stat-explore:hover{
+ background:rgba(255,218,155,.22);border-color:rgba(255,232,185,.8);color:#fff8df;
+}
+#suo-dashboard-overview .suo-dash-card:hover .suo-stat-explore svg,
+#suo-dashboard-overview .suo-stat-explore:hover svg{
+ transform:translateX(3px);
+}
+#suo-dashboard-overview .suo-stat-explore:focus-visible{
+ outline:2px solid #ffe0a6;outline-offset:3px;
+}
+#suo-dashboard-overview .suo-dash-card:active{transform:translateY(-2px)}
+@media(max-width:630px){
+ #suo-dashboard-overview .suo-stat-explore{padding:7px 10px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ #suo-dashboard-overview .suo-stat-explore,
+ #suo-dashboard-overview .suo-stat-explore svg{transition:none!important;transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -7727,28 +7776,28 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
    <span class="suo-dash-summary" data-suo-ms="05 INDIKATOR UTAMA" data-suo-en="05 KEY INDICATORS">05 INDIKATOR UTAMA</span>
   </div>
   <div class="suo-dash-grid" role="list" aria-label="Statistik negeri Selangor">
-   <article class="suo-dash-card" role="listitem" style="--tile-order:0">
-  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 01" data-suo-en="Card 01">Kad 01</span><span class="suo-dash-card-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+   <article class="suo-dash-card" role="listitem" style="--tile-order:0" data-suo-jump="pbt-directory" tabindex="0" aria-label="Terokai Pihak Berkuasa Tempatan (PBT)" data-suo-ms-label="Terokai Pihak Berkuasa Tempatan (PBT)" data-suo-en-label="Explore Local Authorities (PBT)">
+  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 01" data-suo-en="Card 01">Kad 01</span><button type="button" class="suo-stat-explore" aria-label="Terokai Pihak Berkuasa Tempatan (PBT)" data-suo-ms-label="Terokai Pihak Berkuasa Tempatan (PBT)" data-suo-en-label="Explore Local Authorities (PBT)"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="12">12</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="68" cy="102" rx="51" ry="8" fill="#6f3441" opacity=".12"/><path d="M14 50 72 23 124 50 68 76Z" fill="#bd725b"/><path d="M23 55 68 76 68 97 23 78Z" fill="#ddb18c"/><path d="M68 76 116 54 116 79 68 97Z" fill="#f9dfb5"/><path d="M16 49 73 19 125 49 118 56 72 31 25 58Z" fill="#864255"/><path d="M16 49 73 19 125 49" fill="none" stroke="#d69a7c" stroke-width="4" stroke-linejoin="round"/><path d="M32 62 61 76 61 90 32 76Z" fill="#fff1d7"/><path d="M76 76 106 63 106 80 76 91Z" fill="#f9efdd"/><path d="M36 64v15m9-9v13m8-9v12M84 73v13m13-17v14" stroke="#b8806d" stroke-width="3"/><path d="M68 97v-18l10-4v18" fill="#7d4146"/><path d="M24 57 68 78 117 57" stroke="#a86a58" stroke-width="2" fill="none"/><rect x="57" y="35" width="26" height="10" rx="2" fill="#fff1d5" transform="rotate(-1 57 35)"/><path d="M62 41h17" stroke="#8d5361" stroke-width="2.2"/></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Pihak Berkuasa Tempatan (PBT)" data-suo-en="Local Authorities (PBT)">Pihak Berkuasa Tempatan (PBT)</span><span class="suo-dash-detail" data-suo-ms="PENTADBIRAN" data-suo-en="ADMINISTRATION">PENTADBIRAN</span></div>
  </article>
-   <article class="suo-dash-card" role="listitem" style="--tile-order:1">
-  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 02" data-suo-en="Card 02">Kad 02</span><span class="suo-dash-card-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+   <article class="suo-dash-card" role="listitem" style="--tile-order:1" data-suo-jump="district-map" tabindex="0" aria-label="Terokai Daerah Pentadbiran" data-suo-ms-label="Terokai Daerah Pentadbiran" data-suo-en-label="Explore Administrative Districts">
+  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 02" data-suo-en="Card 02">Kad 02</span><button type="button" class="suo-stat-explore" aria-label="Terokai Daerah Pentadbiran" data-suo-ms-label="Terokai Daerah Pentadbiran" data-suo-en-label="Explore Administrative Districts"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="9">9</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="66" cy="103" rx="43" ry="7" fill="#6f3441" opacity=".12"/><path d="M30 20 53 11 65 19 78 16 86 28 109 31 117 49 106 58 118 73 99 79 102 91 82 98 63 88 50 95 36 80 17 72 25 54 16 41 28 32Z" fill="#c18a60" transform="translate(0 5)"/><path d="M30 20 53 11 65 19 78 16 86 28 109 31 117 49 106 58 118 73 99 79 102 91 82 98 63 88 50 95 36 80 17 72 25 54 16 41 28 32Z" fill="#f4d7a7" stroke="#d7ae7c" stroke-width="2"/><path d="m34 33 24 16-7 33m13-57 7 32 28 20M19 60l33-11 38-27m-5 12 16 42-34 16" fill="none" stroke="#c89170" stroke-width="1.6" stroke-dasharray="3 3"/><g transform="translate(46 34)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(65 22)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(83 41)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(99 56)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(75 63)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(52 55)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(42 73)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(75 84)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(103 82)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Daerah Pentadbiran" data-suo-en="Administrative Districts">Daerah Pentadbiran</span><span class="suo-dash-detail" data-suo-ms="PENTADBIRAN" data-suo-en="ADMINISTRATION">PENTADBIRAN</span></div>
  </article>
-   <article class="suo-dash-card" role="listitem" style="--tile-order:2">
-  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 03" data-suo-en="Card 03">Kad 03</span><span class="suo-dash-card-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+   <article class="suo-dash-card" role="listitem" style="--tile-order:2" data-suo-jump="state-structure" tabindex="0" aria-label="Terokai Rancangan Struktur Negeri Selangor" data-suo-ms-label="Terokai Rancangan Struktur Negeri Selangor" data-suo-en-label="Explore Selangor State Structure Plan">
+  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 03" data-suo-en="Card 03">Kad 03</span><button type="button" class="suo-stat-explore" aria-label="Terokai Rancangan Struktur Negeri Selangor" data-suo-ms-label="Terokai Rancangan Struktur Negeri Selangor" data-suo-en-label="Explore Selangor State Structure Plan"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="1">1</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="71" cy="103" rx="42" ry="7" fill="#6f3441" opacity=".12"/><rect x="38" y="22" width="65" height="80" rx="8" fill="#b8876b" transform="rotate(6 70 60)"/><rect x="30" y="13" width="69" height="81" rx="8" fill="#fff1d8" stroke="#decab0" stroke-width="2"/><path d="M77 13v19h22" fill="#e6bb92" stroke="#d1ad8a" stroke-width="1.5"/><path d="M43 43h41M43 52h37M43 61h32" stroke="#b79e8e" stroke-width="3.2" stroke-linecap="round"/><circle cx="75" cy="75" r="12" fill="#b6715c"/><circle cx="75" cy="75" r="8" fill="#e4ba78" stroke="#fff2ce" stroke-width="1.5"/><path d="m70 75 4 4 7-9" stroke="#86465b" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Struktur Negeri Selangor" data-suo-en="Selangor State Structure Plan Document">Dokumen Rancangan Struktur Negeri Selangor</span><span class="suo-dash-detail" data-suo-ms="PERANCANGAN NEGERI" data-suo-en="STATE PLANNING">PERANCANGAN NEGERI</span></div>
  </article>
-   <article class="suo-dash-card" role="listitem" style="--tile-order:3">
-  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 04" data-suo-en="Card 04">Kad 04</span><span class="suo-dash-card-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+   <article class="suo-dash-card" role="listitem" style="--tile-order:3" data-suo-jump="rt-register" tabindex="0" aria-label="Terokai Jadual Rancangan Tempatan" data-suo-ms-label="Terokai Jadual Rancangan Tempatan" data-suo-en-label="Explore Local Plan Register">
+  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 04" data-suo-en="Card 04">Kad 04</span><button type="button" class="suo-stat-explore" aria-label="Terokai Jadual Rancangan Tempatan" data-suo-ms-label="Terokai Jadual Rancangan Tempatan" data-suo-en-label="Explore Local Plan Register"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="20">20</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="67" cy="105" rx="58" ry="7" fill="#6f3441" opacity=".13"/><path d="M10 62 69 34 127 62 68 91Z" fill="#8c7691"/><path d="M10 62v12l58 29V91Zm58 29v12l59-30V62Z" fill="#866d89"/><path d="M12 61 69 33 126 61 68 90Z" fill="#e3d6ba"/><path d="M29 61 69 42 109 61 68 82Z" fill="#fff1d4"/><path d="m45 53 45 22m0-22-45 22" stroke="#b9bc9d" stroke-width="3"/><path d="M40 48 53 42 65 48 51 55Z" fill="#98aaac"/><path d="M40 48v18l11 6V55Z" fill="#b3c4bb"/><path d="M51 55v17l14-7V48Z" fill="#769f9c"/><path d="M71 40 84 34 98 41 85 47Z" fill="#d29c75"/><path d="M71 40v22l14 7V47Z" fill="#e4be9f"/><path d="M85 47v22l13-7V41Z" fill="#b97e6f"/><path d="M32 70 45 64 58 70 45 77Z" fill="#82aa7f"/><path d="M32 70v5l13 7v-5Zm13 7v5l13-7v-5Z" fill="#6d9074"/><circle cx="103" cy="61" r="5" fill="#78a77b"/><path d="M103 66v7" stroke="#6e775c" stroke-width="2"/></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Tempatan (RT)" data-suo-en="Local Plan Documents (RT)">Dokumen Rancangan Tempatan (RT)</span><span class="suo-dash-detail" data-suo-ms="DOKUMEN PERANCANGAN" data-suo-en="PLANNING DOCUMENTS">DOKUMEN PERANCANGAN</span></div>
  </article>
-   <article class="suo-dash-card" role="listitem" style="--tile-order:4">
-  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 05" data-suo-en="Card 05">Kad 05</span><span class="suo-dash-card-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+   <article class="suo-dash-card" role="listitem" style="--tile-order:4" data-suo-jump="rkk-directory" tabindex="0" aria-label="Terokai Senarai Rancangan Kawasan Khas" data-suo-ms-label="Terokai Senarai Rancangan Kawasan Khas" data-suo-en-label="Explore Special Area Plans Directory">
+  <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 05" data-suo-en="Card 05">Kad 05</span><button type="button" class="suo-stat-explore" aria-label="Terokai Senarai Rancangan Kawasan Khas" data-suo-ms-label="Terokai Senarai Rancangan Kawasan Khas" data-suo-en-label="Explore Special Area Plans Directory"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="4">4</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="66" cy="103" rx="49" ry="7" fill="#6f3441" opacity=".12"/><rect x="30" y="17" width="65" height="81" rx="6" fill="#c4a18b" transform="rotate(-5 62 57)"/><rect x="29" y="10" width="66" height="82" rx="6" fill="#fff0dc" stroke="#d3bca8" stroke-width="2"/><path d="M40 25h31M40 32h22" stroke="#c4a193" stroke-width="3" stroke-linecap="round"/><circle cx="59" cy="58" r="19" fill="#f1dbb8"/><path d="M59 58V39a19 19 0 0 1 19 19Z" fill="#b56e62"/><path d="M59 58h19A19 19 0 0 1 48 74Z" fill="#d3a269"/><path d="M83 75 111 99" stroke="#a36b5e" stroke-width="11" stroke-linecap="round"/><path d="M83 75 111 99" stroke="#e8b77e" stroke-width="6" stroke-linecap="round"/><circle cx="74" cy="64" r="22" fill="#ffffff2e" stroke="#8e5164" stroke-width="7"/><path d="M62 53a15 15 0 0 1 15-5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Kawasan Khas (RKK)" data-suo-en="Special Area Plan Documents (RKK)">Dokumen Rancangan Kawasan Khas (RKK)</span><span class="suo-dash-detail" data-suo-ms="DOKUMEN PERANCANGAN" data-suo-en="PLANNING DOCUMENTS">DOKUMEN PERANCANGAN</span></div>
  </article>
@@ -9081,6 +9130,79 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
     if(r.bottom>0&&r.top<window.innerHeight){play(card)}
    });
   }
+ });
+})();
+</script>
+
+<script id="suo-stat-cards-deeplink-20261022">
+/* Direct links from home statistics to the existing map and planning sections. */
+(function(){
+ 'use strict';
+ const section=document.getElementById('suo-dashboard-overview');
+ if(!section)return;
+ const cards=Array.from(section.querySelectorAll('.suo-dash-card[data-suo-jump]'));
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function goto(target){
+  if(!target)return;
+  if(typeof window.scrollToSuoTarget==='function')window.scrollToSuoTarget(target);
+  else target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+ }
+ function showChapter(chapter){
+  if(typeof window.switchTab==='function')window.switchTab(chapter);
+ }
+ function showRtRkk(which){
+  showChapter(3);
+  if(typeof window.showSuoBento==='function')window.showSuoBento(3,0);
+  const tab=document.getElementById(which==='rt'?'rr04-tab-rt':'rr04-tab-rkk');
+  if(tab)tab.click();
+ }
+ function navigate(key){
+  if(key==='pbt-directory'||key==='district-map'){
+   const id=key==='pbt-directory'?'pautan-pbt':'statistik-pembangunan';
+   const nav=document.querySelector('.top-nav .section-nav-btn[data-section="'+id+'"]');
+   if(typeof window.navigateSection==='function')window.navigateSection(id,nav);
+   else goto(document.getElementById(id));
+   return;
+  }
+  if(key==='state-structure'){
+   showChapter(2);
+   requestAnimationFrame(function(){goto(document.getElementById('chapter-title-2')||document.getElementById('panel-2'))});
+   return;
+  }
+  if(key==='rt-register'||key==='rkk-directory'){
+   showRtRkk(key==='rt-register'?'rt':'rkk');
+   const id=key==='rt-register'?'rr04-rt-register-2026':'rr04-rkk-directory-2026';
+   /* Wait for the existing chapter/tab visibility change before the final scroll. */
+   requestAnimationFrame(function(){
+    requestAnimationFrame(function(){goto(document.getElementById(id))});
+   });
+  }
+ }
+ function renderLabels(){
+  const attr=document.documentElement.lang==='en'?'data-suo-en-label':'data-suo-ms-label';
+  cards.forEach(function(card){
+   card.setAttribute('aria-label',card.getAttribute(attr));
+   const action=card.querySelector('.suo-stat-explore');
+   if(action)action.setAttribute('aria-label',action.getAttribute(attr));
+  });
+ }
+ cards.forEach(function(card){
+  card.addEventListener('click',function(event){
+   if(event.target.closest('a[href]'))return;
+   navigate(card.dataset.suoJump);
+  });
+  card.addEventListener('keydown',function(event){
+   if(event.target!==card)return;
+   if(event.key==='Enter'||event.key===' '){
+    event.preventDefault();
+    navigate(card.dataset.suoJump);
+   }
+  });
+ });
+ renderLabels();
+ ['langBM','langEN'].forEach(function(id){
+  const btn=document.getElementById(id);
+  if(btn)btn.addEventListener('click',function(){queueMicrotask(renderLabels)});
  });
 })();
 </script>
