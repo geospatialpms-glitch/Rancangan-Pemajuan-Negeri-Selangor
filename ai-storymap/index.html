@@ -8400,6 +8400,62 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
  #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-enter .rr04-rt-portal-summary>*{animation:none!important;transition:none!important;will-change:auto!important}
 }
 </style>
+<style id="suo-glass-hamburger-drawer-20261022-css">
+/* Drawer-only enhancement for existing Selangor StoryMap. Header, original hero, all BAB markup untouched. */
+body.suo-drawer-mode{--suo-drawer-top:78px}
+body.suo-drawer-mode .suo-drawer-view:not(.suo-drawer-visible){display:none!important}
+body.suo-drawer-mode .suo-drawer-visible{animation:suo-drawer-page-enter .27s ease both}
+body.suo-drawer-mode.suo-drawer-open{overflow:hidden;scrollbar-gutter:stable}
+body.suo-drawer-mode .header{position:sticky!important;top:0!important;z-index:2147305!important}
+body.suo-drawer-mode .header .container.head{display:flex;align-items:center;gap:clamp(8px,1.2vw,18px)}
+body.suo-drawer-mode #suo-drawer-hamburger{display:flex;align-items:center;justify-content:center;flex:none;width:43px;height:43px;padding:0;border:1px solid rgba(255,223,178,.52);background:rgba(255,247,232,.10);border-radius:12px;color:#fff6e8;cursor:pointer;transition:background .22s,box-shadow .22s}
+body.suo-drawer-mode #suo-drawer-hamburger:hover,body.suo-drawer-mode #suo-drawer-hamburger[aria-expanded="true"]{background:rgba(238,196,130,.21);box-shadow:0 0 0 3px rgba(245,225,188,.08)}
+body.suo-drawer-mode #suo-drawer-hamburger>span{width:20px;display:flex;flex-direction:column;gap:4px}
+body.suo-drawer-mode #suo-drawer-hamburger i{width:20px;height:2px;display:block;border-radius:4px;background:currentColor;transition:transform .25s,opacity .25s}
+body.suo-drawer-mode.suo-drawer-open #suo-drawer-hamburger i:first-child{transform:translateY(6px) rotate(45deg)}
+body.suo-drawer-mode.suo-drawer-open #suo-drawer-hamburger i:nth-child(2){opacity:0}
+body.suo-drawer-mode.suo-drawer-open #suo-drawer-hamburger i:last-child{transform:translateY(-6px) rotate(-45deg)}
+body.suo-drawer-mode #suo-glass-drawer-backdrop{position:fixed;inset:var(--suo-drawer-top) 0 0;z-index:2147280;background:rgba(8,15,30,.48);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .32s,visibility .32s}
+body.suo-drawer-mode.suo-drawer-open #suo-glass-drawer-backdrop{opacity:1;visibility:visible;pointer-events:auto}
+body.suo-drawer-mode #suo-glass-drawer{
+ position:fixed!important;top:calc(var(--suo-drawer-top) + 13px)!important;bottom:13px!important;left:13px!important;
+ z-index:2147300!important;width:min(344px,calc(100vw - 26px))!important;max-height:calc(100dvh - var(--suo-drawer-top) - 26px);
+ display:flex!important;flex-direction:column;box-sizing:border-box;overflow:hidden!important;
+ padding:14px 12px 12px;border:1px solid rgba(236,245,255,.25);border-radius:23px;
+ color:#fff;background:linear-gradient(145deg,rgba(56,62,74,.88),rgba(21,33,48,.84) 53%,rgba(16,26,42,.91));
+ -webkit-backdrop-filter:blur(22px) saturate(133%);backdrop-filter:blur(22px) saturate(133%);
+ box-shadow:0 25px 64px rgba(5,13,29,.45),inset 0 1px rgba(255,255,255,.14),0 0 29px rgba(118,188,224,.11);
+ transform:translate3d(calc(-100% - 30px),0,0);visibility:hidden;
+ transition:transform .37s cubic-bezier(.2,.77,.22,1),visibility .37s;
+ font-family:'Plus Jakarta Sans',Arial,sans-serif;isolation:isolate;
+}
+body.suo-drawer-mode #suo-glass-drawer:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 6% 0%,rgba(186,213,242,.16),transparent 55%)}
+body.suo-drawer-mode.suo-drawer-open #suo-glass-drawer{transform:translate3d(0,0,0);visibility:visible}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-brand{display:flex;align-items:center;gap:10px;padding:7px 4px 14px;border-bottom:1px solid rgba(223,236,249,.20)}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-brand-logo{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:10px;background:linear-gradient(140deg,#d13b52,#82172d);font-size:20px;font-weight:900;color:#fff}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-brand-title{display:grid;gap:3px;flex:1;min-width:0}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-brand-title strong{color:#fff;font-size:11px;line-height:1.38}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-brand-title small{color:#d4e2f2;font-size:9px}
+body.suo-drawer-mode #suo-drawer-close{display:grid;place-items:center;flex:none;width:31px;height:31px;color:#fff;background:rgba(244,249,255,.11);border:1px solid rgba(255,255,255,.22);border-radius:10px;cursor:pointer;font-size:23px;line-height:1}
+body.suo-drawer-mode #suo-drawer-close:hover{background:rgba(194,58,76,.58)}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-menu{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:7px 1px;scrollbar-width:thin;scrollbar-color:rgba(192,213,235,.48) transparent}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-group{margin-top:15px}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-group-title{margin:0 9px 8px;color:#c2d2e3;letter-spacing:.13em;font-size:9px;font-weight:900}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-link{display:flex;align-items:center;gap:10px;min-height:48px;padding:9px 11px;margin:3px 0;width:100%;color:#edf4fc;background:transparent;border:1px solid transparent;border-radius:12px;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-link:hover{background:rgba(245,250,255,.12);border-color:rgba(230,240,255,.15);transform:translateX(2px)}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-link.is-active{background:linear-gradient(95deg,rgba(203,43,69,.92),rgba(120,30,55,.85));border-color:rgba(253,208,206,.28);box-shadow:inset 3px 0 #f1c67c,0 6px 15px rgba(68,13,32,.25);color:#fff}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-svg{display:grid;place-items:center;width:26px;height:26px;flex:none}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-svg svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-text{font-size:11px;font-weight:760;line-height:1.43;color:inherit}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{display:flex;align-items:center;gap:9px;border-top:1px solid rgba(255,255,255,.19);padding:13px 7px 2px;color:#d9e5f0}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-indicator{width:8px;height:8px;flex:none;border-radius:50%;background:#4bdbab;box-shadow:0 0 0 4px rgba(80,221,171,.18)}
+body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom-text{font-size:9px;color:#d8e8f0}
+body.suo-drawer-mode :is(#suo-drawer-hamburger,#suo-drawer-close,.suo-side-link):focus-visible{outline:2px solid #f6d389;outline-offset:3px}
+@keyframes suo-drawer-page-enter{from{opacity:.60;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:780px){body.suo-drawer-mode #suo-drawer-hamburger{width:39px;height:39px}body.suo-drawer-mode .header .container.head{gap:8px}body.suo-drawer-mode #suo-glass-drawer{top:calc(var(--suo-drawer-top) + 8px)!important;left:8px!important;bottom:8px!important;width:min(320px,calc(100vw - 16px))!important;max-height:calc(100dvh - var(--suo-drawer-top) - 16px)}}
+@media(prefers-reduced-motion:reduce){body.suo-drawer-mode #suo-glass-drawer,body.suo-drawer-mode #suo-glass-drawer-backdrop,body.suo-drawer-mode .suo-drawer-visible{transition:none!important;animation:none!important}}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){body.suo-drawer-mode #suo-glass-drawer{background:#1e2b3c}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -8409,6 +8465,7 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
 
 <header class="header">
   <div class="container head">
+    <button type="button" id="suo-drawer-hamburger" class="suo-drawer-hamburger" aria-label="Buka menu navigasi" aria-controls="suo-glass-drawer" aria-expanded="false"><span aria-hidden="true"><i></i><i></i><i></i></span></button>
     <div class="brand-group">
       <div class="logo suo-logo"><img src="https://raw.githubusercontent.com/geospatialpms-glitch/Rancangan-Pemajuan-Negeri-Selangor/main/ai-storymap/SUO.jpeg" alt="Logo Selangor Urban Observatory (SUO)"></div>
       <div class="brand-text">
@@ -8437,6 +8494,17 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
     </nav><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
   </div>
 </header>
+<div id="suo-glass-drawer-backdrop" aria-hidden="true"></div>
+<aside id="suo-glass-drawer" class="suo-glass-drawer" role="dialog" aria-modal="true" aria-label="Navigasi halaman" aria-hidden="true" inert tabindex="-1">
+ <div class="suo-side-brand"><div class="suo-side-brand-logo" aria-hidden="true">S</div><div class="suo-side-brand-title"><strong>Rancangan Pemajuan Selangor</strong><small>PLANMalaysia Selangor · SUO</small></div><button type="button" id="suo-drawer-close" aria-label="Tutup menu" title="Tutup menu">×</button></div>
+ <nav class="suo-side-menu" aria-label="Menu sidebar">
+  <div class="suo-side-group"><div class="suo-side-group-title">MENU UTAMA</div><button class="suo-side-link" type="button" data-suo-side-page="home" title="Utama"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7"/></svg></span><span class="suo-side-text" data-ms="Utama" data-en="Home">Utama</span></button><button class="suo-side-link" type="button" data-suo-side-page="stats" title="Selangor Dalam Angka"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="4" height="10" rx="1"/><rect x="10" y="6" width="4" height="15" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></span><span class="suo-side-text" data-ms="Selangor Dalam Angka" data-en="Selangor at a Glance">Selangor Dalam Angka</span></button><button class="suo-side-link" type="button" data-suo-side-page="map" title="Peta Interaktif"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6 9 3l6 3 6-3v15l-6 3-6-3-6 3Z M9 3v15M15 6v15"/></svg></span><span class="suo-side-text" data-ms="Peta Interaktif" data-en="Interactive Map">Peta Interaktif</span></button></div>
+  <div class="suo-side-group"><div class="suo-side-group-title">DOKUMENTASI & BAB</div><button class="suo-side-link" type="button" data-suo-side-page="chapter-1" title="01 · Rancangan Selangor, Masa Hadapan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5h7a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H3zM21 5h-5a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h5z"/></svg></span><span class="suo-side-text" data-ms="01 · Rancangan Selangor, Masa Hadapan" data-en="01 · Selangor, the Future">01 · Rancangan Selangor, Masa Hadapan</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-2" title="02 · Arah Tuju & Hierarki Pemajuan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.4 4.6-4.6 2.4 2.4-4.6z"/></svg></span><span class="suo-side-text" data-ms="02 · Arah Tuju & Hierarki Pemajuan" data-en="02 · Planning Direction & Hierarchy">02 · Arah Tuju & Hierarki Pemajuan</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-3" title="03 · RSN Selangor 2035 (Pengubahan)"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5ZM3 12l9 5 9-5M3 17l9 5 9-5"/></svg></span><span class="suo-side-text" data-ms="03 · RSN Selangor 2035 (Pengubahan)" data-en="03 · State Structure Plan 2035">03 · RSN Selangor 2035 (Pengubahan)</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-4" title="04 · Rancangan Tempatan & RKK"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 2h7l5 5v15H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2ZM14 2v6h5M9 13h6m-6 4h6"/></svg></span><span class="suo-side-text" data-ms="04 · Rancangan Tempatan & RKK" data-en="04 · Local & Special Area Plans">04 · Rancangan Tempatan & RKK</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-5" title="05 · Sistem LPFNS"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="suo-side-text" data-ms="05 · Sistem LPFNS" data-en="05 · LPFNS System">05 · Sistem LPFNS</span></button></div>
+  <div class="suo-side-group"><div class="suo-side-group-title">DIREKTORI</div><button class="suo-side-link" type="button" data-suo-side-page="pbt" title="Direktori 12 PBT"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V7l8-4 8 4v12M2 21h20M9 21v-8h6v8M9 9h1m4 0h1"/></svg></span><span class="suo-side-text" data-ms="Direktori 12 PBT" data-en="12 Local Authorities">Direktori 12 PBT</span></button></div>
+ </nav>
+ <div class="suo-side-bottom"><span class="suo-side-indicator"></span><span class="suo-side-bottom-text">PORTAL INTERAKTIF SELANGOR</span></div>
+</aside>
+
 <div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
 
 <section class="hero" id="utama"><div class="suo-hero-particles" aria-hidden="true"></div><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./VIDEO%20MAIN%20PAGE%204.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
@@ -12434,6 +12502,135 @@ if(!reduced&&!mobile){
    },130);
  },{passive:true});
  select(0);
+})();
+</script>
+<script id="suo-glass-hamburger-drawer-20261022-js">
+(function(){
+ 'use strict';
+ const body=document.body,header=document.querySelector('header.header'),
+ toggle=document.getElementById('suo-drawer-hamburger'),
+ drawer=document.getElementById('suo-glass-drawer'),
+ backdrop=document.getElementById('suo-glass-drawer-backdrop'),
+ close=document.getElementById('suo-drawer-close'),
+ nodes={home:document.getElementById('utama'),stats:document.getElementById('suo-dashboard-overview'),map:document.getElementById('statistik-pembangunan'),chapters:document.querySelector('main.main-section'),pbt:document.getElementById('pautan-pbt')};
+ if(!header||!toggle||!drawer||!backdrop||!close||Object.values(nodes).some(x=>!x))return;
+ const panels=Array.from(nodes.chapters.querySelectorAll('.content-panel'));
+ const buttons=Array.from(drawer.querySelectorAll('[data-suo-side-page]'));
+ const originalScroll=window.scrollToSuoTarget;
+ if(panels.length!==5||buttons.length!==9)return;
+ let current='home',priorFocus=null;
+ function setOpen(open){
+  if(open){
+   priorFocus=document.activeElement;
+   body.classList.add('suo-drawer-open');drawer.removeAttribute('inert');
+   drawer.setAttribute('aria-hidden','false');toggle.setAttribute('aria-expanded','true');
+   toggle.setAttribute('aria-label','Tutup menu navigasi');
+   close.focus({preventScroll:true});
+  }else{
+   body.classList.remove('suo-drawer-open');drawer.setAttribute('aria-hidden','true');
+   drawer.setAttribute('inert','');toggle.setAttribute('aria-expanded','false');
+   toggle.setAttribute('aria-label','Buka menu navigasi');
+   const node=priorFocus&&typeof priorFocus.focus==='function'?priorFocus:toggle;
+   node.focus({preventScroll:true});
+  }
+ }
+ function chapter(index){
+  panels.forEach((panel,i)=>{
+   const selected=i===index;panel.classList.toggle('active',selected);
+   panel.setAttribute('aria-hidden',String(!selected));
+  });
+  document.querySelectorAll('#chapterCarousel .tab-btn').forEach((b,i)=>{
+   b.classList.toggle('active',i===index);b.setAttribute('aria-selected',String(i===index))
+  });
+  document.querySelectorAll('.tab-nav-btn').forEach((b,i)=>b.classList.toggle('active',i===index));
+ }
+ function pageOf(el){
+  if(typeof el==='string')el=document.getElementById(el);
+  if(!el||!(el instanceof Element))return null;
+  if(el===nodes.chapters||nodes.chapters.contains(el)){
+   const pnl=el.closest('.content-panel');
+   const idx=pnl?panels.indexOf(pnl):-1;
+   return idx<0?(current.startsWith('chapter-')?current:'chapter-1'):'chapter-'+(idx+1);
+  }
+  for(const [key,node] of Object.entries(nodes))if(key!=='chapters'&&(node===el||node.contains(el)))return key;
+  return null;
+ }
+ function navigate(key,options){
+  options=options||{};
+  if(!buttons.some(x=>x.dataset.suoSidePage===key))return false;
+  const index=key.startsWith('chapter-')?Number(key.slice(8))-1:-1;
+  const target=index>=0?nodes.chapters:nodes[key];
+  if(!target)return false;
+  current=key;body.dataset.suoDrawerPage=key;
+  Object.values(nodes).forEach(node=>node.classList.toggle('suo-drawer-visible',node===target));
+  if(index>=0)chapter(index);
+  buttons.forEach(b=>{
+   const active=b.dataset.suoSidePage===key;
+   b.classList.toggle('is-active',active);
+   if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');
+  });
+  if(!options.keepScroll)window.scrollTo({top:0,behavior:'instant'});
+  if(body.classList.contains('suo-drawer-open'))setOpen(false);
+  if(key==='map'||index>=0){
+   requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));
+   setTimeout(()=>window.dispatchEvent(new Event('resize')),320);
+  }
+  return true;
+ }
+ toggle.addEventListener('click',()=>setOpen(!body.classList.contains('suo-drawer-open')));
+ close.addEventListener('click',()=>setOpen(false));
+ backdrop.addEventListener('click',()=>setOpen(false));
+ drawer.addEventListener('click',e=>{
+  const b=e.target.closest('[data-suo-side-page]');
+  if(b)navigate(b.dataset.suoSidePage);
+ });
+ document.addEventListener('keydown',e=>{
+  if(!body.classList.contains('suo-drawer-open'))return;
+  if(e.key==='Escape'){e.preventDefault();setOpen(false);return}
+  if(e.key==='Tab'){
+   const focusable=Array.from(drawer.querySelectorAll('button:not([disabled])'));
+   const first=focusable[0],last=focusable[focusable.length-1];
+   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+  }
+ });
+ window.suoPortalNavigate=navigate;
+ if(typeof originalScroll==='function')window.scrollToSuoTarget=function(target){
+  const el=typeof target==='string'?document.getElementById(target):target;
+  const page=pageOf(el);
+  if(page&&page!==current){navigate(page);return}
+  return originalScroll(target);
+ };
+ window.switchTab=function(index){
+  if(Number.isInteger(index)&&index>=0&&index<=4)navigate('chapter-'+(index+1));
+ };
+ header.addEventListener('click',e=>{
+  const home=e.target.closest('.home-nav-btn'),btn=e.target.closest('.top-nav .section-nav-btn');
+  if(!home&&!btn)return;
+  const page=home?'home':btn.dataset.section==='suo-dashboard-overview'?'stats':btn.dataset.section==='statistik-pembangunan'?'map':btn.dataset.section==='pautan-pbt'?'pbt':null;
+  if(!page)return;
+  e.preventDefault();e.stopImmediatePropagation();navigate(page);
+ },true);
+ nodes.home.querySelector('.primary-cta')?.addEventListener('click',e=>{
+  e.preventDefault();e.stopImmediatePropagation();navigate('chapter-1');
+ },true);
+ nodes.home.querySelector('.secondary-cta')?.addEventListener('click',e=>{
+  e.preventDefault();e.stopImmediatePropagation();navigate('map');
+ },true);
+ function translate(){
+  const en=document.documentElement.lang==='en';
+  drawer.querySelectorAll('[data-ms][data-en]').forEach(el=>el.textContent=el.getAttribute(en?'data-en':'data-ms'));
+ }
+ ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>queueMicrotask(translate)));
+ function size(){body.style.setProperty('--suo-drawer-top',Math.ceil(header.getBoundingClientRect().height)+'px')}
+ size();
+ if(typeof ResizeObserver!=='undefined')new ResizeObserver(size).observe(header);
+ else window.addEventListener('resize',size,{passive:true});
+ Object.values(nodes).forEach(x=>x.classList.add('suo-drawer-view'));
+ body.classList.add('suo-drawer-mode');
+ const hash=location.hash?document.getElementById(decodeURIComponent(location.hash.slice(1))):null;
+ navigate(pageOf(hash)||'home');
+ translate();
 })();
 </script>
 </body>
