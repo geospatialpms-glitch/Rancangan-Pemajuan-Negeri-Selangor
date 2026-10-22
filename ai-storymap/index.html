@@ -12427,7 +12427,30 @@ async function setup(){
   bounds=L.featureGroup(shapes).getBounds();
   offices.forEach(function(o){const marker=L.circleMarker([o[3],o[4]],{radius:7,color:'#fff0d2',weight:2,fillColor:'#672a42',fillOpacity:1}).bindTooltip(o[0]+' · '+o[1]).bindPopup('<strong>'+o[1]+'</strong><br>'+label(o[2]));marker.on('click',function(){choosePBT(o[0],false)});marker.addTo(map);markers[o[0]]=marker});
   app.querySelector('#suo-geo-reset').addEventListener('click',reset);app.querySelector('#suo-geo-all').addEventListener('click',reset);
-  listPBT();map.fitBounds(bounds,{padding:[25,25]});if(load)load.remove();requestAnimationFrame(function(){map.invalidateSize()});
+  listPBT();
+  /* Initial framing must run after the drawer page becomes visible.
+     Leaflet computes an incorrect extreme zoom when initialized in a hidden panel. */
+  function fitSelangorOverview(){
+   if(!map||!bounds||!host.getBoundingClientRect().width||!host.getBoundingClientRect().height)return;
+   map.invalidateSize({pan:false});
+   if(!selectedDistrict&&!selectedCode)map.fitBounds(bounds,{padding:[35,35],animate:false,maxZoom:10});
+  }
+  map.whenReady(function(){requestAnimationFrame(function(){requestAnimationFrame(fitSelangorOverview)})});
+  const geoPage=app.closest('.suo-drawer-view')||app.closest('section');
+  if(geoPage){
+   let wasVisible=false;
+   const visibilityObserver=new MutationObserver(function(){
+    const visible=geoPage.classList.contains('suo-drawer-visible')&&host.getBoundingClientRect().width>0;
+    if(visible&&!wasVisible){
+     requestAnimationFrame(function(){requestAnimationFrame(fitSelangorOverview)});
+     setTimeout(fitSelangorOverview,350);
+    }
+    wasVisible=visible;
+   });
+   visibilityObserver.observe(geoPage,{attributes:true,attributeFilter:['class']});
+  }
+  map.fitBounds(bounds,{padding:[35,35],animate:false,maxZoom:10});
+  if(load)load.remove();requestAnimationFrame(function(){map.invalidateSize({pan:false})});
  }catch(err){if(load)load.textContent='Peta tidak dapat dimuatkan. '+err.message}
 }
 let tries=0;function init(){if(window.L){setup();return}if(tries++>28){if(load)load.textContent='Pustaka peta tidak tersedia. Sila muat semula halaman.';return}setTimeout(init,250)}
