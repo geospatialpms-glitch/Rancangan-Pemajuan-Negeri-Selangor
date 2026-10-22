@@ -8264,7 +8264,7 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
 </style>
 <style id="rr04-rt-dosm-scrollflow-20261022">
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022{--rrflow-gold:#f1c56d;width:100%;margin:0 0 18px;scroll-margin-top:110px}
-#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-grid{width:100%;height:clamp(565px,calc(100dvh - 145px),760px);max-height:calc(100dvh - 95px);min-height:0;grid-template-columns:minmax(0,1.17fr) minmax(0,1fr) minmax(245px,.64fr);align-items:stretch;overflow:hidden;border:1px solid #57b9ad;border-radius:22px;box-shadow:0 18px 42px #0b5d5730;background:linear-gradient(115deg,#078b8f,#16776e 66%,#115b4c)}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-grid{width:100%;height:clamp(480px,calc(100dvh - var(--suo-top-h,80px) - 44px),710px);max-height:calc(100dvh - var(--suo-top-h,80px) - 36px);min-height:0;grid-template-columns:minmax(0,1.17fr) minmax(0,1fr) minmax(245px,.64fr);align-items:stretch;overflow:hidden;border:1px solid #57b9ad;border-radius:22px;box-shadow:0 18px 42px #0b5d5730;background:linear-gradient(115deg,#078b8f,#16776e 66%,#115b4c)}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-preview{min-height:0;align-self:stretch;display:flex;flex-direction:column;align-items:stretch;justify-content:center;padding:clamp(16px,1.7vw,28px);background:radial-gradient(ellipse at 15% 14%,#c9fce59f,transparent 56%),linear-gradient(150deg,#43b9ba,#9fdcda 55%,#d5e8e1)}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-browser{min-height:41px;height:41px;max-height:41px;flex:0 0 auto;font-size:10px}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-cover{width:100%;height:auto!important;min-height:0!important;max-height:min(55dvh,470px);aspect-ratio:1.46/1;flex:0 0 auto!important;overflow:hidden;isolation:isolate;box-shadow:0 13px 24px #104b5342}
@@ -8377,24 +8377,24 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary>.rr04-rt-portal-docs{--rr04-info-seq:5}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-summary>.rr04-rt-portal-actions{--rr04-info-seq:6}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-exit.rr04-pop-down .rr04-rt-portal-summary> :is(.rr04-rt-portal-eyebrow,.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){
- animation:rr04-info-exit-up .18s cubic-bezier(.45,0,.85,.3) both!important;
+ animation:rr04-info-exit-up .235s cubic-bezier(.38,.02,.68,.28) both!important;
 }
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-exit.rr04-pop-up .rr04-rt-portal-summary> :is(.rr04-rt-portal-eyebrow,.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){
- animation:rr04-info-exit-down .18s cubic-bezier(.45,0,.85,.3) both!important;
+ animation:rr04-info-exit-down .235s cubic-bezier(.38,.02,.68,.28) both!important;
 }
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-enter.rr04-pop-down .rr04-rt-portal-summary> :is(.rr04-rt-portal-eyebrow,.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){
- animation:rr04-info-enter-up .50s cubic-bezier(.18,.8,.22,1) both!important;
- animation-delay:calc(var(--rr04-info-seq,0) * 46ms)!important;
+ animation:rr04-info-enter-up .66s cubic-bezier(.16,1,.3,1) both!important;
+ animation-delay:calc(var(--rr04-info-seq,0) * 38ms)!important;
 }
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-enter.rr04-pop-up .rr04-rt-portal-summary> :is(.rr04-rt-portal-eyebrow,.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){
- animation:rr04-info-enter-down .50s cubic-bezier(.18,.8,.22,1) both!important;
- animation-delay:calc(var(--rr04-info-seq,0) * 46ms)!important;
+ animation:rr04-info-enter-down .66s cubic-bezier(.16,1,.3,1) both!important;
+ animation-delay:calc(var(--rr04-info-seq,0) * 38ms)!important;
 }
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-exit .rr04-rt-portal-summary{pointer-events:none}
-@keyframes rr04-info-exit-up{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-28px)}}
-@keyframes rr04-info-exit-down{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(28px)}}
-@keyframes rr04-info-enter-up{from{opacity:0;transform:translateY(53px)}to{opacity:1;transform:translateY(0)}}
-@keyframes rr04-info-enter-down{from{opacity:0;transform:translateY(-53px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rr04-info-exit-up{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-18px)}}
+@keyframes rr04-info-exit-down{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(18px)}}
+@keyframes rr04-info-enter-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rr04-info-enter-down{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){
  #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-exit .rr04-rt-portal-summary>*,
  #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-enter .rr04-rt-portal-summary>*{animation:none!important;transition:none!important;will-change:auto!important}
@@ -9593,7 +9593,7 @@ body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-bottom{justify-
     <span class="rr04-rt-portal-eyebrow" id="rr04-rt-portal-count">BAB 04 · RANCANGAN TEMPATAN · 01/12</span>
     <div class="rr04-rt-portal-identity"><span class="rr04-rt-portal-logo" id="rr04-rt-portal-logo" aria-hidden="true"></span><span class="rr04-rt-portal-code" id="rr04-rt-portal-code">MBSA</span></div>
     <h5 id="rr04-rt-portal-name">Majlis Bandaraya Shah Alam</h5>
-    <span class="rr04-rt-portal-subtitle">OVERVIEW DOKUMENTASI RT</span>
+    <span class="rr04-rt-portal-subtitle">PENGENALAN DOKUMENTASI RT</span>
     <p id="rr04-rt-portal-overview">Pilih nama PBT untuk meneroka ringkasan dokumen Rancangan Tempatan.</p>
     <div class="rr04-rt-portal-docs"><div class="rr04-rt-portal-docs-head"><strong>Nama Dokumen &amp; Gambaran Keseluruhan</strong><span id="rr04-rt-portal-doc-count"></span></div><div id="rr04-rt-portal-doc-list" class="rr04-rt-portal-doc-list"></div></div>
     <div class="rr04-rt-portal-actions"><a class="rr04-rt-portal-cta" id="rr04-rt-portal-cta" target="_blank" rel="noopener noreferrer">Terokai Portal <span aria-hidden="true">↗</span></a><button type="button" id="rr04-rt-portal-map-button" class="rr04-rt-portal-map-button">⌖ &nbsp; Lihat Lokasi PBT di Peta</button></div>
@@ -12454,8 +12454,8 @@ if(!reduced&&!mobile){
      host.classList.add('rr04-pop-enter');
      infoFinishTimer=setTimeout(()=>{
        host.classList.remove('rr04-pop-enter','rr04-pop-up','rr04-pop-down');
-     },870);
-   },185);
+     },1030);
+   },240);
  }
  items.forEach((p,i)=>{
    const btn=document.createElement('button');btn.type='button';btn.className='rr04-rt-portal-option';
