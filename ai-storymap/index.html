@@ -8400,105 +8400,6 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
  #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-enter .rr04-rt-portal-summary>*{animation:none!important;transition:none!important;will-change:auto!important}
 }
 </style>
-<style id="suo-sidebar-pages-20261022-css">
-/* Scoped, additive portal shell: content HTML and all dashboard/storymap designs untouched. */
-body.suo-portal-pages{--suo-side-w:258px;--suo-top-h:80px}
-body.suo-portal-pages.suo-side-small{--suo-side-w:74px}
-body.suo-portal-pages .header{position:sticky!important;top:0!important;z-index:120!important}
-body.suo-portal-pages .suo-portal-view:not(.suo-portal-visible){display:none!important}
-body.suo-portal-pages .suo-portal-visible{animation:suo-portal-enter .28s ease both}
-body.suo-portal-pages .selangor-ticker{margin-left:var(--suo-side-w);width:calc(100% - var(--suo-side-w));transition:margin-left .25s,width .25s}
-body.suo-portal-pages :is(.hero,#suo-dashboard-overview,#statistik-pembangunan,.main-section,#pautan-pbt,.footer){margin-left:var(--suo-side-w);transition:margin-left .25s ease;box-sizing:border-box}
-body.suo-portal-pages .main-section.container{width:calc(100% - var(--suo-side-w) - 40px);max-width:1450px;margin-right:auto}
-body.suo-portal-pages .footer{width:calc(100% - var(--suo-side-w))}
-body.suo-portal-pages :is(.hero,#suo-dashboard-overview,#statistik-pembangunan,#pautan-pbt)>.container{width:min(1420px,calc(100% - 40px));max-width:1420px}
-body.suo-portal-pages #suo-page-sidebar{position:fixed;left:0;top:var(--suo-top-h);bottom:0;z-index:108;isolation:isolate;box-sizing:border-box;width:var(--suo-side-w);display:flex;flex-direction:column;overflow:hidden;padding:13px 9px 12px;border-right:1px solid #ffffff36;color:#fff;background:linear-gradient(150deg,#24252c,#191e28 60%,#11151e);box-shadow:7px 8px 28px #0002;transition:width .25s,transform .25s;font-family:'Plus Jakarta Sans',Arial,sans-serif}
-body.suo-portal-pages #suo-page-sidebar:before{content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 0 0,#ffffff1c,transparent 56%),linear-gradient(120deg,transparent 25%,#ffffff08 55%,transparent 80%)}
-#suo-page-sidebar .suo-side-brand{display:flex;gap:8px;align-items:center;padding:7px 5px 14px;border-bottom:1px solid #ffffff2e}
-#suo-page-sidebar .suo-side-brand-logo{width:32px;height:32px;flex:none;border-radius:9px;background:linear-gradient(145deg,#dc3045,#81172a);display:grid;place-items:center;font-size:20px;font-weight:900;box-shadow:0 5px 13px #0003}
-#suo-page-sidebar .suo-side-brand-title{min-width:0;flex:1;display:grid;gap:3px}
-#suo-page-sidebar .suo-side-brand-title strong{font-size:10px;line-height:1.3}
-#suo-page-sidebar .suo-side-brand-title small{font-size:8px;color:#c5c7d0;white-space:nowrap}
-#suo-side-collapse{background:#ffffff15;border:1px solid #ffffff35;color:#fff;width:28px;height:28px;flex:none;border-radius:8px;font-size:18px}
-#suo-side-collapse:hover{background:#ba2944}
-#suo-page-sidebar .suo-side-menu{flex:1;min-height:0;overflow-x:hidden;overflow-y:auto;padding:8px 1px;scrollbar-width:thin;scrollbar-color:#ffffff50 transparent}
-#suo-page-sidebar .suo-side-group{margin-top:15px}
-#suo-page-sidebar .suo-side-group-title{margin:0 10px 8px;color:#b9bcc8;font-size:9px;letter-spacing:.13em;font-weight:900;white-space:nowrap}
-#suo-page-sidebar .suo-side-link{display:flex;align-items:center;width:100%;min-height:48px;gap:10px;padding:9px 9px;margin:3px 0;text-align:left;color:#e4e5e8;border:1px solid transparent;border-radius:10px;background:transparent;transition:background .2s,transform .2s,border-color .2s}
-#suo-page-sidebar .suo-side-link:hover{background:#ffffff17;transform:translateX(2px)}
-#suo-page-sidebar .suo-side-link.is-active{background:linear-gradient(100deg,#dc263d,#98102a);border-color:#e6586561;color:#fff;box-shadow:0 5px 16px #73142a50}
-#suo-page-sidebar .suo-side-svg{width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center}
-#suo-page-sidebar .suo-side-svg svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-#suo-page-sidebar .suo-side-text{font-size:11px;font-weight:750;line-height:1.35}
-#suo-page-sidebar .suo-side-bottom{display:flex;align-items:center;gap:10px;border-top:1px solid #ffffff2f;padding:13px 8px 2px}
-#suo-page-sidebar .suo-side-indicator{width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:#39c69e;box-shadow:0 0 0 4px #39c69e24}
-#suo-page-sidebar .suo-side-bottom-text{font-size:9px;color:#d7dde3;font-weight:800}
-body.suo-portal-pages.suo-side-small #suo-page-sidebar :is(.suo-side-brand-title,.suo-side-text,.suo-side-group-title,.suo-side-bottom-text){display:none}
-body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-link{justify-content:center;padding:9px 4px}
-body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-group{border-top:1px solid #ffffff27;padding-top:10px}
-body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-brand{flex-wrap:wrap;justify-content:center}
-body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-bottom{justify-content:center}
-#suo-side-mobile,#suo-side-backdrop{display:none}
-@keyframes suo-portal-enter{from{opacity:.6;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:1080px){
- body.suo-portal-pages{--suo-side-w:0px!important}
- body.suo-portal-pages #suo-page-sidebar{width:min(286px,86vw)!important;transform:translateX(-105%);box-shadow:6px 0 34px #07112070}
- body.suo-portal-pages.suo-side-open #suo-page-sidebar{transform:translateX(0)}
- body.suo-portal-pages.suo-side-small #suo-page-sidebar :is(.suo-side-brand-title,.suo-side-text,.suo-side-group-title,.suo-side-bottom-text){display:block}
- body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-link{justify-content:flex-start;padding:9px}
- body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-brand{justify-content:flex-start;flex-wrap:nowrap}
- body.suo-portal-pages :is(.hero,#suo-dashboard-overview,#statistik-pembangunan,.main-section,#pautan-pbt,.footer){margin-left:0!important}
- body.suo-portal-pages .main-section.container{width:calc(100% - 30px)!important}
- body.suo-portal-pages .selangor-ticker{margin-left:0;width:100%}
- body.suo-portal-pages #suo-side-mobile{display:flex;position:fixed;right:13px;bottom:88px;z-index:112;align-items:center;gap:6px;background:#8b1831;border:1px solid #f3c779;border-radius:25px;padding:11px 15px;color:#fff;font-size:12px;font-weight:850;box-shadow:0 7px 20px #70192f4f}
- body.suo-portal-pages.suo-side-open #suo-side-backdrop{display:block;position:fixed;inset:var(--suo-top-h) 0 0;z-index:105;background:#0710208c}
-}
-@media(prefers-reduced-motion:reduce){body.suo-portal-pages .suo-portal-visible{animation:none}body.suo-portal-pages #suo-page-sidebar{transition:none}}
-</style>
-<style id="suo-mysub-home-layout-20261022-css">
-/* MySubNasional-inspired official header and homepage, with existing SUO content maintained. */
-body.suo-portal-pages .header{background:#fcfdfeeb!important;border-bottom:1px solid #d7e4e9!important;box-shadow:0 5px 24px #213d5116!important;backdrop-filter:blur(14px)!important}
-body.suo-portal-pages .header .container.head{max-width:1710px!important;width:calc(100% - 40px)!important;gap:13px;min-height:80px}
-body.suo-portal-pages .header .brand-text b{color:#1a3044!important;font-size:clamp(14px,1.1vw,18px)!important}
-body.suo-portal-pages .header .brand-text small{color:#718896!important;letter-spacing:.03em!important}
-body.suo-portal-pages .header .logo.suo-logo{background:#fff!important;box-shadow:0 2px 14px #08365712!important}
-body.suo-portal-pages .header .top-nav{gap:2px!important;align-items:center!important;justify-content:center!important;margin:auto!important;overflow:visible}
-body.suo-portal-pages .header .top-nav>button,body.suo-portal-pages .header #suo-explore-trigger{background:transparent!important;border:0!important;border-radius:14px!important;color:#526273!important;box-shadow:none!important;white-space:nowrap;padding:10px clamp(8px,.9vw,14px)!important;font-size:clamp(11px,.85vw,13px)!important;font-weight:800!important}
-body.suo-portal-pages .header .top-nav>button:hover,body.suo-portal-pages .header #suo-explore-trigger:hover{background:#e6f4f8!important;color:#097591!important}
-body.suo-portal-pages .header .top-nav>button.suo-msub-current,body.suo-portal-pages .header #suo-explore-trigger.suo-msub-current{background:#e6f3f7!important;color:#08728c!important}
-body.suo-portal-pages .header .lang-switch{background:#f2f7fa!important;border:1px solid #c7dfe9!important;color:#4a6374!important}
-body.suo-portal-pages .header .lang-switch button{color:#526b7d!important}
-body.suo-portal-pages .header .lang-switch button.chosen{background:#167b96!important;color:#fff!important}
-body.suo-portal-pages .header #suo-msub-date{display:inline-flex;align-items:center;gap:8px;flex:none;white-space:nowrap;font-size:11px;font-weight:750;color:#526778;padding:10px 13px;border:1px solid #e0e9ed;border-radius:90px;background:#f8fafa}
-body.suo-portal-pages .header #suo-msub-date::before{content:'◷';font-size:15px}
-body.suo-portal-pages.suo-side-small #suo-page-sidebar{background:linear-gradient(150deg,#22313c,#142533)!important}
-body.suo-portal-pages #utama.hero{min-height:max(610px,calc(100dvh - var(--suo-top-h,80px) - 10px))!important;height:auto;background:#0a2e46!important;border-bottom:4px solid #e9c679!important}
-body.suo-portal-pages #utama .hero-tint{background:linear-gradient(93deg,#051f35d0,#0b394aa9 49%,#082c47c9)!important}
-body.suo-portal-pages #utama .container.hero-layout{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(320px,.86fr);align-items:center;gap:clamp(24px,4vw,75px)!important;max-width:1520px!important;width:calc(100% - 54px)!important;padding:clamp(46px,6vh,90px) 0!important}
-body.suo-portal-pages #utama .hero-copy{min-width:0;text-shadow:none!important}
-body.suo-portal-pages #utama .suo-msub-kicker{display:inline-flex;align-items:center;gap:10px;margin-bottom:23px;padding:9px 14px;border:1px solid #c8f2f857;border-radius:24px;background:#b8f1fa20;backdrop-filter:blur(9px);font-size:10px;font-weight:900;letter-spacing:.06em;color:#d5f1f6}
-body.suo-portal-pages #utama .suo-msub-kicker i,body.suo-portal-pages #utama .suo-msub-foot i{display:inline-block;width:8px;height:8px;flex:none;border-radius:50%;background:#3be3b5;box-shadow:0 0 0 4px #3be3b529}
-body.suo-portal-pages #utama h1.suo-msub-title{font-family:'Plus Jakarta Sans',Arial,sans-serif!important;font-size:clamp(35px,4.35vw,71px)!important;font-weight:900!important;line-height:1.1!important;letter-spacing:-.052em!important;margin:0 0 23px!important;color:#fff!important;max-width:810px;text-wrap:balance}
-body.suo-portal-pages #utama h1.suo-msub-title span{display:block;color:#fff!important}
-body.suo-portal-pages #utama h1.suo-msub-title .suo-msub-highlight{background:linear-gradient(93deg,#e6faff,#5edcf1 45%,#5da6ff 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-body.suo-portal-pages #utama p.suo-msub-intro{color:#eff9fd!important;font-size:clamp(12px,1.08vw,16px)!important;line-height:1.75!important;max-width:740px!important;padding:15px 18px!important;border:1px solid #d2f5fb38;background:#0b2b4159;border-radius:15px;backdrop-filter:blur(7px);text-shadow:none!important}
-body.suo-portal-pages #utama .hero-actions{margin-top:23px!important;gap:12px!important}
-body.suo-portal-pages #utama .hero-cta{min-height:46px;padding:12px 18px!important;border-radius:13px!important;font-size:12px!important;font-weight:850!important;box-shadow:0 8px 19px #031d3754!important;transition:transform .2s}
-body.suo-portal-pages #utama .hero-cta:hover{transform:translateY(-2px)}
-body.suo-portal-pages #utama .primary-cta{color:#23334b!important;background:#e8c97e!important;border-color:#e8c97e!important}
-body.suo-portal-pages #utama .secondary-cta{color:#fff!important;background:#0b416086!important;border-color:#d2eefa9c!important}
-body.suo-portal-pages #utama .suo-msub-stat-area{display:flex;flex-direction:column;gap:13px;width:100%;max-width:610px;min-width:0;justify-self:end}
-body.suo-portal-pages #utama .suo-msub-stat-caption{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#f3fcff;font-size:11px;letter-spacing:.06em}
-body.suo-portal-pages #utama .suo-msub-stat-caption small{font-size:10px;letter-spacing:0;color:#d4e8f3}
-body.suo-portal-pages #utama .suo-msub-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-body.suo-portal-pages #utama .suo-msub-stat{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:9px;min-height:153px;padding:18px 12px;border-radius:24px;color:#fff;border:1px solid #ecfbfc6b;background:linear-gradient(140deg,#d5f4f750,#d5e9ec2a);backdrop-filter:blur(17px);box-shadow:0 13px 26px #071a3a44,inset 0 1px #fff3;transition:transform .24s,background .24s,border-color .24s}
-body.suo-portal-pages #utama .suo-msub-stat:hover{transform:translateY(-5px);border-color:#e5faffc9;background:linear-gradient(140deg,#e2f7fa7b,#d8eaef42)}
-body.suo-portal-pages #utama .suo-msub-icon{font-size:25px;color:#f1fcff}
-body.suo-portal-pages #utama .suo-msub-stat strong{font-size:clamp(31px,2.9vw,47px);color:#fff;line-height:1;font-weight:900}
-body.suo-portal-pages #utama .suo-msub-stat [data-msub-ms]{font-size:11px;letter-spacing:.06em;font-weight:900;color:#e3f8ff}
-body.suo-portal-pages #utama .suo-msub-stat i{position:absolute;right:13px;top:10px;font-style:normal;color:#e9fbff}
-body.suo-portal-pages #utama .suo-msub-foot{display:flex;align-items:center;gap:9px;color:#d7ecf3;font-size:10px;font-weight:730}
-@media(max-width:1510px){body.suo-portal-pages .header #suo-msub-date{display:none}}@media(max-width:1080px){body.suo-portal-pages #utama .container.hero-layout{grid-template-columns:minmax(0,1fr)!important;gap:30px!important;padding:48px 0!important}body.suo-portal-pages #utama .suo-msub-stat-area{max-width:750px;justify-self:center}body.suo-portal-pages #utama .suo-msub-stat{min-height:130px}}@media(max-width:650px){body.suo-portal-pages #utama .container.hero-layout{width:calc(100% - 30px)!important}body.suo-portal-pages #utama h1.suo-msub-title{font-size:clamp(29px,8vw,43px)!important}body.suo-portal-pages #utama .suo-msub-kicker{font-size:8px}body.suo-portal-pages #utama .suo-msub-stat-grid{gap:9px}body.suo-portal-pages #utama .suo-msub-stat{min-height:117px;border-radius:17px}body.suo-portal-pages #utama .suo-msub-stat strong{font-size:29px}body.suo-portal-pages #utama .suo-msub-stat [data-msub-ms]{font-size:9px}body.suo-portal-pages #utama .suo-msub-stat-caption small{display:none}}@media(prefers-reduced-motion:reduce){body.suo-portal-pages #utama .suo-msub-stat,body.suo-portal-pages #utama .hero-cta{transition:none!important}}</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -8533,28 +8434,14 @@ body.suo-portal-pages #utama .suo-msub-foot{display:flex;align-items:center;gap:
   <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="4" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pratonton Sistem" data-en="System Preview">Pratonton Sistem</span></button></div></section>  </div>
 </div>
       <button class="section-nav-btn" data-section="pautan-pbt" onclick="navigateSection('pautan-pbt',this)">Direktori PBT</button>
-    </nav><span id="suo-msub-date" class="suo-msub-date" aria-label="Tarikh hari ini"></span><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
+    </nav><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
   </div>
 </header>
-<!-- Sidebar portal: navigation only; original heading and document content stay intact. -->
-<aside id="suo-page-sidebar" aria-label="Navigasi halaman">
- <div class="suo-side-brand"><div class="suo-side-brand-logo" aria-hidden="true">S</div><div class="suo-side-brand-title"><strong>Rancangan Pemajuan Selangor</strong><small>PLANMalaysia Selangor · SUO</small></div><button type="button" id="suo-side-collapse" aria-label="Kecilkan menu" aria-expanded="true" title="Kembang / kecilkan menu">‹</button></div>
- <nav class="suo-side-menu" aria-label="Menu sidebar">
-  <div class="suo-side-group"><div class="suo-side-group-title">MENU UTAMA</div><button class="suo-side-link" type="button" data-suo-side-page="home" title="Utama"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7"/></svg></span><span class="suo-side-text" data-ms="Utama" data-en="Home">Utama</span></button><button class="suo-side-link" type="button" data-suo-side-page="stats" title="Selangor Dalam Angka"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="4" height="10" rx="1"/><rect x="10" y="6" width="4" height="15" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></span><span class="suo-side-text" data-ms="Selangor Dalam Angka" data-en="Selangor at a Glance">Selangor Dalam Angka</span></button><button class="suo-side-link" type="button" data-suo-side-page="map" title="Peta Interaktif"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6 9 3l6 3 6-3v15l-6 3-6-3-6 3Z M9 3v15M15 6v15"/></svg></span><span class="suo-side-text" data-ms="Peta Interaktif" data-en="Interactive Map">Peta Interaktif</span></button></div>
-  <div class="suo-side-group"><div class="suo-side-group-title">DOKUMENTASI & BAB</div><button class="suo-side-link" type="button" data-suo-side-page="chapter-1" title="01 · Rancangan Selangor, Masa Hadapan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5h7a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H3zM21 5h-5a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h5z"/></svg></span><span class="suo-side-text" data-ms="01 · Rancangan Selangor, Masa Hadapan" data-en="01 · Selangor, the Future">01 · Rancangan Selangor, Masa Hadapan</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-2" title="02 · Arah Tuju & Hierarki Pemajuan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.4 4.6-4.6 2.4 2.4-4.6z"/></svg></span><span class="suo-side-text" data-ms="02 · Arah Tuju & Hierarki Pemajuan" data-en="02 · Planning Direction & Hierarchy">02 · Arah Tuju & Hierarki Pemajuan</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-3" title="03 · RSN Selangor 2035 (Pengubahan)"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5ZM3 12l9 5 9-5M3 17l9 5 9-5"/></svg></span><span class="suo-side-text" data-ms="03 · RSN Selangor 2035 (Pengubahan)" data-en="03 · State Structure Plan 2035">03 · RSN Selangor 2035 (Pengubahan)</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-4" title="04 · Rancangan Tempatan & RKK"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 2h7l5 5v15H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2ZM14 2v6h5M9 13h6m-6 4h6"/></svg></span><span class="suo-side-text" data-ms="04 · Rancangan Tempatan & RKK" data-en="04 · Local & Special Area Plans">04 · Rancangan Tempatan & RKK</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-5" title="05 · Sistem LPFNS"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="suo-side-text" data-ms="05 · Sistem LPFNS" data-en="05 · LPFNS System">05 · Sistem LPFNS</span></button></div>
-  <div class="suo-side-group"><div class="suo-side-group-title">DIREKTORI</div><button class="suo-side-link" type="button" data-suo-side-page="pbt" title="Direktori 12 PBT"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V7l8-4 8 4v12M2 21h20M9 21v-8h6v8M9 9h1m4 0h1"/></svg></span><span class="suo-side-text" data-ms="Direktori 12 PBT" data-en="12 Local Authorities">Direktori 12 PBT</span></button></div>
- </nav>
- <div class="suo-side-bottom"><span class="suo-side-indicator"></span><span class="suo-side-bottom-text">PORTAL INTERAKTIF SELANGOR</span></div>
-</aside>
-<div id="suo-side-backdrop" aria-hidden="true"></div>
-<button type="button" id="suo-side-mobile" aria-controls="suo-page-sidebar" aria-expanded="false" aria-label="Buka menu">☰ <span>Menu</span></button>
-
 <div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
 
 <section class="hero" id="utama"><div class="suo-hero-particles" aria-hidden="true"></div><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./VIDEO%20MAIN%20PAGE%204.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
-<div class="container hero-layout"><div class="hero-copy"><div class="suo-msub-kicker"><i aria-hidden="true"></i><span data-msub-ms="ATLAS DIGITAL SELANGOR · PERANCANGAN SPATIAL" data-msub-en="SELANGOR DIGITAL ATLAS · SPATIAL PLANNING">ATLAS DIGITAL SELANGOR · PERANCANGAN SPATIAL</span></div>
-<h1 class="suo-msub-title"><span data-msub-ms="Satu Negeri." data-msub-en="One State.">Satu Negeri.</span><span class="suo-msub-highlight" data-msub-ms="Pelbagai Perspektif." data-msub-en="Many Perspectives.">Pelbagai Perspektif.</span><span data-msub-ms="Satu Platform Perancangan." data-msub-en="One Planning Platform.">Satu Platform Perancangan.</span></h1>
-<p class="suo-msub-intro" data-msub-ms="Terokai hala tuju pembangunan Selangor melalui dokumen rancangan pemajuan, peta spatial interaktif dan direktori Pihak Berkuasa Tempatan dalam satu portal bersepadu." data-msub-en="Explore Selangor's planning direction through development plans, interactive spatial maps and local authority directories in one integrated portal.">Terokai hala tuju pembangunan Selangor melalui dokumen rancangan pemajuan, peta spatial interaktif dan direktori Pihak Berkuasa Tempatan dalam satu portal bersepadu.</p><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="document.getElementById('selangorLeafletMap').closest('.development-overview').scrollIntoView({behavior:'smooth',block:'start'})">TEROKAI PETA INTERAKTIF SELANGOR ↗</button></div><aside class="suo-msub-stat-area" aria-label="Ringkasan perancangan Selangor"><div class="suo-msub-stat-caption"><strong data-msub-ms="SELANGOR DALAM PERSPEKTIF" data-msub-en="SELANGOR AT A GLANCE">SELANGOR DALAM PERSPEKTIF</strong><small data-msub-ms="Pilih kad untuk meneroka" data-msub-en="Select a card to explore">Pilih kad untuk meneroka</small></div><div class="suo-msub-stat-grid"><button type="button" class="suo-msub-stat" data-msub-route="pbt" aria-label="Terokai PBT SELANGOR"><span class="suo-msub-icon" aria-hidden="true">⌂</span><strong>12</strong><span data-msub-ms="PBT SELANGOR" data-msub-en="LOCAL AUTHORITIES">PBT SELANGOR</span><i aria-hidden="true">↗</i></button><button type="button" class="suo-msub-stat" data-msub-route="map" aria-label="Terokai DAERAH"><span class="suo-msub-icon" aria-hidden="true">◇</span><strong>9</strong><span data-msub-ms="DAERAH" data-msub-en="DISTRICTS">DAERAH</span><i aria-hidden="true">↗</i></button><button type="button" class="suo-msub-stat" data-msub-route="chapter-1" aria-label="Terokai BAB PERANCANGAN"><span class="suo-msub-icon" aria-hidden="true">▤</span><strong>5</strong><span data-msub-ms="BAB PERANCANGAN" data-msub-en="PLANNING CHAPTERS">BAB PERANCANGAN</span><i aria-hidden="true">↗</i></button><button type="button" class="suo-msub-stat" data-msub-route="chapter-3" aria-label="Terokai RSN SELANGOR"><span class="suo-msub-icon" aria-hidden="true">▥</span><strong>2035</strong><span data-msub-ms="RSN SELANGOR" data-msub-en="STATE STRUCTURE PLAN">RSN SELANGOR</span><i aria-hidden="true">↗</i></button></div><div class="suo-msub-foot"><i aria-hidden="true"></i><span data-msub-ms="PLANMalaysia Selangor · Data dan dokumen perancangan" data-msub-en="PLANMalaysia Selangor · Planning data and documents">PLANMalaysia Selangor · Data dan dokumen perancangan</span></div></aside></div></section>
+<div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="document.getElementById('selangorLeafletMap').closest('.development-overview').scrollIntoView({behavior:'smooth',block:'start'})">TEROKAI PETA INTERAKTIF SELANGOR ↗</button></div></div>
+</div></section>
 
 <!-- Logo SUO tunggal fixed di tengah skrin -->
 <div class="suo-page-watermark" aria-hidden="true"><video class="suo-hologram-video" autoplay muted loop playsinline preload="metadata" disablepictureinpicture tabindex="-1"><source src="./Holographic_logo_background_anim%E2%80%A6_20261015130321.mp4" type="video/mp4"></video><div class="suo-hologram-soft-overlay"></div></div>
@@ -12549,125 +12436,5 @@ if(!reduced&&!mobile){
  select(0);
 })();
 </script>
-<script id="suo-sidebar-pages-20261022-js">
-(function(){
- 'use strict';
- const body=document.body;
- const header=document.querySelector('header.header');
- const sidebar=document.getElementById('suo-page-sidebar');
- const backdrop=document.getElementById('suo-side-backdrop');
- const mobile=document.getElementById('suo-side-mobile');
- const collapse=document.getElementById('suo-side-collapse');
- const sections={
-  home:document.getElementById('utama'),
-  stats:document.getElementById('suo-dashboard-overview'),
-  map:document.getElementById('statistik-pembangunan'),
-  chapters:document.querySelector('main.main-section'),
-  pbt:document.getElementById('pautan-pbt')
- };
- const originalSwitch=window.switchTab,originalScroll=window.scrollToSuoTarget;
- if(!sidebar||!header||Object.values(sections).some(x=>!x)||typeof originalSwitch!=='function')return;
- const links=Array.from(sidebar.querySelectorAll('[data-suo-side-page]'));
- const panels=Array.from(sections.chapters.querySelectorAll('.content-panel'));
- Object.values(sections).forEach(el=>el.classList.add('suo-portal-view'));
- let current='home';
- function closeDrawer(){body.classList.remove('suo-side-open');mobile.setAttribute('aria-expanded','false')}
- function activateChapter(index){
-  if(index<4){originalSwitch(index);return}
-  panels.forEach((el,i)=>{const on=i===index;el.classList.toggle('active',on);el.setAttribute('aria-hidden',String(!on))});
-  document.querySelectorAll('#chapterCarousel .tab-btn').forEach((el,i)=>{el.classList.toggle('active',i===index);el.setAttribute('aria-selected',String(i===index))});
- }
- function open(page,options){
-  options=options||{};
-  if(!links.some(el=>el.dataset.suoSidePage===page))return false;
-  const chapter=page.startsWith('chapter-')?parseInt(page.slice(8),10)-1:-1;
-  const active=chapter>=0?sections.chapters:sections[page];
-  if(!active)return false;
-  current=page;body.dataset.suoPage=page;
-  Object.values(sections).forEach(el=>el.classList.toggle('suo-portal-visible',el===active));
-  links.forEach(link=>{const on=link.dataset.suoSidePage===page;link.classList.toggle('is-active',on);if(on)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
-  if(chapter>=0&&!options.skipChapter)activateChapter(chapter);
-  if(!options.noReset)window.scrollTo({top:0,behavior:'instant'});
-  // Existing Leaflet / MapLibre maps may have initialized while this page was hidden.
-  // Trigger their existing resize listeners after a page becomes visible; data and map code stay untouched.
-  if(page==='map'||page.startsWith('chapter-')){
-    requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));
-    setTimeout(()=>window.dispatchEvent(new Event('resize')),320);
-  }
-  closeDrawer();return true;
- }
- function pageOf(target){
-  if(typeof target==='string')target=document.getElementById(target);
-  if(!target||!(target instanceof Element))return null;
-  if(sections.chapters===target||sections.chapters.contains(target)){
-   const p=target.closest('.content-panel');
-   const index=p?panels.indexOf(p):panels.findIndex(el=>el.classList.contains('active'));
-   return 'chapter-'+(Math.max(0,index)+1);
-  }
-  for(const [key,value] of Object.entries(sections))if(target===value||value.contains(target))return key;
-  return null;
- }
- window.suoPortalNavigate=open;
- if(typeof originalScroll==='function')window.scrollToSuoTarget=function(target){
-  const el=typeof target==='string'?document.getElementById(target):target;
-  const page=pageOf(el);
-  if(page&&page!==current){open(page);return}
-  if(page&&page.startsWith('chapter-')&&el&&el.closest&&el.closest('.chapter-intro'))return;
-  return originalScroll(target);
- };
- window.switchTab=function(index){
-  if(!Number.isInteger(index)||index<0||index>4)return;
-  open('chapter-'+(index+1),{skipChapter:true});
-  activateChapter(index);
- };
- sidebar.addEventListener('click',e=>{const btn=e.target.closest('[data-suo-side-page]');if(btn)open(btn.dataset.suoSidePage)});
- collapse.addEventListener('click',()=>{
-  if(matchMedia('(max-width:1080px)').matches){closeDrawer();return}
-  const small=body.classList.toggle('suo-side-small');
-  collapse.textContent=small?'›':'‹';collapse.setAttribute('aria-expanded',String(!small));
-  collapse.setAttribute('aria-label',small?'Besarkan menu':'Kecilkan menu');
- });
- mobile.addEventListener('click',()=>{const on=body.classList.toggle('suo-side-open');mobile.setAttribute('aria-expanded',String(on))});
- backdrop.addEventListener('click',closeDrawer);
- document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
- // Capture hero CTAs so they switch pages rather than trying to scroll to hidden content.
- const hero=sections.home;
- hero.querySelector('.primary-cta')?.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();open('chapter-1')},true);
- hero.querySelector('.secondary-cta')?.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();open('map')},true);
- function translate(){
-  const lang=document.documentElement.lang==='en'?'en':'ms';
-  sidebar.querySelectorAll('[data-ms][data-en]').forEach(el=>el.textContent=el.getAttribute('data-'+lang));
- }
- ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>queueMicrotask(translate)));
- function sizing(){body.style.setProperty('--suo-top-h',Math.ceil(header.getBoundingClientRect().height)+'px')}
- sizing();if('ResizeObserver' in window)new ResizeObserver(sizing).observe(header);else window.addEventListener('resize',sizing,{passive:true});
- body.classList.add('suo-portal-pages');
- const deep=location.hash?document.getElementById(decodeURIComponent(location.hash.slice(1))):null;
- open(deep?pageOf(deep)||'home':'home');
- translate();
-})();
-</script>
-<script id="suo-mysub-home-layout-20261022-js">(function(){
- const home=document.getElementById('utama'),date=document.getElementById('suo-msub-date');
- if(!home||!date)return;
- function translate(){
-  const en=document.documentElement.lang==='en';
-  home.querySelectorAll('[data-msub-ms][data-msub-en]').forEach(x=>x.textContent=x.getAttribute(en?'data-msub-en':'data-msub-ms'));
-  date.textContent=new Intl.DateTimeFormat(en?'en-MY':'ms-MY',{weekday:'long',day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Kuala_Lumpur'}).format(new Date());
- }
- home.addEventListener('click',e=>{const card=e.target.closest('[data-msub-route]');if(card&&typeof window.suoPortalNavigate==='function')window.suoPortalNavigate(card.dataset.msubRoute)});
- ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>queueMicrotask(translate)));
- function nav(){
-  const pg=document.body.dataset.suoPage||'home';
-  document.querySelectorAll('.header .top-nav>button').forEach(b=>{
-   const route=b.classList.contains('home-nav-btn')?'home':b.dataset.section==='suo-dashboard-overview'?'stats':b.dataset.section==='statistik-pembangunan'?'map':b.dataset.section==='pautan-pbt'?'pbt':'';
-   b.classList.toggle('suo-msub-current',pg===route);
-  });
-  document.getElementById('suo-explore-trigger')?.classList.toggle('suo-msub-current',pg.startsWith('chapter-'));
- }
- if(matchMedia('(min-width:1081px)').matches&&!document.body.classList.contains('suo-side-small'))document.getElementById('suo-side-collapse')?.click();
- new MutationObserver(nav).observe(document.body,{attributes:true,attributeFilter:['data-suo-page']});
- translate();nav();
-})();</script>
 </body>
 </html>
