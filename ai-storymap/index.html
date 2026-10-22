@@ -8291,7 +8291,7 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-rail-arrows button:hover:not(:disabled){background:#f2cc77;color:#075a4f;transform:translateY(-2px)}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-rail-arrows button:disabled{opacity:.36;cursor:not-allowed}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-rail-arrows button:focus-visible{outline:3px solid #f3ce7b;outline-offset:3px}
-#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .is-switching .rr04-rt-portal-cover{animation:rr04-slide-cover .42s cubic-bezier(.2,.75,.2,1) both}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.is-switching .rr04-rt-portal-cover{animation:rr04-slide-cover .42s cubic-bezier(.2,.75,.2,1) both}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.is-switching .rr04-rt-portal-summary> :is(.rr04-rt-portal-identity,h5,.rr04-rt-portal-subtitle,p,.rr04-rt-portal-docs,.rr04-rt-portal-actions){animation:rr04-slide-copy .44s cubic-bezier(.2,.75,.2,1) both!important}
 @keyframes rr04-slide-copy{from{opacity:.15;transform:translateY(17px)}to{opacity:1;transform:translateY(0)}}
 @keyframes rr04-slide-cover{from{opacity:.75;transform:translateY(11px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -8307,8 +8307,8 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-rail{grid-column:auto;min-height:280px;padding:19px 14px}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-options{grid-template-columns:minmax(0,1fr);max-height:295px!important}
 }
-@media(prefers-reduced-motion:reduce){#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .is-switching .rr04-rt-portal-cover{animation:none!important}
-#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .is-switching .rr04-rt-portal-summary>*{animation:none!important}
+@media(prefers-reduced-motion:reduce){#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.is-switching .rr04-rt-portal-cover{animation:none!important}
+#panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.is-switching .rr04-rt-portal-summary>*{animation:none!important}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-options{scroll-behavior:auto!important}
 #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022 .rr04-rt-portal-option{transition:none!important}
 }
