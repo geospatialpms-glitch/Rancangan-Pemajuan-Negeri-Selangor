@@ -8854,6 +8854,16 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
  }
 }
 </style>
+<style id="rsn03-inline-drive-video-20261022">
+/* BAB 03: actual Drive video appears inside the original spotlight card, no dialog. */
+#panel-2 #bento-2-0 .rsn03-inline-player{position:relative;display:block;min-height:0!important;aspect-ratio:16/9;cursor:default;background:#141925}
+#panel-2 #bento-2-0 .rsn03-inline-iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:inherit;display:block;background:#10121a}
+#panel-2 #bento-2-0 .rsn03-inline-start{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:0;background:transparent;color:white;text-align:left;cursor:pointer;font:inherit}
+#panel-2 #bento-2-0 .rsn03-inline-start .rsn03-spotlight-copy,#panel-2 #bento-2-0 .rsn03-inline-start .rsn03-spotlight-label,#panel-2 #bento-2-0 .rsn03-inline-start .rsn03-play{z-index:3}
+#panel-2 #bento-2-0 .rsn03-is-playing .rsn03-inline-start{display:none!important}
+#panel-2 #bento-2-0 .rsn03-video-dialog{display:none!important}
+@media(max-width:640px){#panel-2 #bento-2-0 .rsn03-inline-player{min-height:230px!important;aspect-ratio:16/9}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -9485,14 +9495,15 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
       <div class="panel-body suo-bento-body" id="suo-rsn-2026-detail-module"><section class="suo-bento-topic active" role="tabpanel" id="bento-2-0" aria-labelledby="bento-tab-2-0">
 <!-- Video Spotlight Bab 03 · kandungan khusus sebelum Pengenalan & Latar Belakang -->
 <section id="rsn-bab03-video-spotlight-2026" class="rsn03-spotlight" aria-label="Video Spotlight Bab 03" data-video-src="" data-video-embed="https://drive.google.com/file/d/1qvHLeX6vC_7hrGgKMsEzIP4_Tj9h6AGc/preview">
- <button class="rsn03-spotlight-cover" id="rsn03-open-video" type="button" aria-haspopup="dialog" aria-controls="rsn03-video-dialog" aria-label="Buka Video Spotlight Rancangan Struktur Negeri Selangor 2035">
-  <img src="./bab03-ai.png" alt="" loading="lazy" decoding="async">
-  <video class="rsn03-ambient-preview" muted loop playsinline preload="metadata" poster="./bab03-ai.png" aria-hidden="true" tabindex="-1" disablepictureinpicture><source src="./VIDEO%20MAIN%20PAGE%204.mp4" type="video/mp4"></video>
-  <span class="rsn03-shade" aria-hidden="true"></span>
-  <span class="rsn03-spotlight-label"><span class="rsn03-led" aria-hidden="true"></span> VIDEO SPOTLIGHT · TAKLIMAT UTAMA</span>
-  <span class="rsn03-play" aria-hidden="true">▶</span>
-  <span class="rsn03-spotlight-copy"><span>BAB 03 · PAPARAN VISUAL</span><strong>RS Negeri Selangor 2035 (Pengubahan)</strong><small>Hala tuju strategik, perancangan spatial dan masa depan Negeri Selangor.</small></span>
- </button>
+ <div class="rsn03-spotlight-cover rsn03-inline-player" id="rsn03-inline-player">
+  <iframe class="rsn03-inline-iframe" src="https://drive.google.com/file/d/1qvHLeX6vC_7hrGgKMsEzIP4_Tj9h6AGc/preview" title="Video Taklimat RS Negeri Selangor 2035 (Pengubahan)" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <button type="button" class="rsn03-inline-start" id="rsn03-open-video" aria-label="Mainkan video Google Drive dalam kad ini">
+   <span class="rsn03-shade" aria-hidden="true"></span>
+   <span class="rsn03-spotlight-label"><span class="rsn03-led" aria-hidden="true"></span> VIDEO SPOTLIGHT · TAKLIMAT UTAMA</span>
+   <span class="rsn03-play" aria-hidden="true">▶</span>
+   <span class="rsn03-spotlight-copy"><span>BAB 03 · PAPARAN VISUAL</span><strong>RS Negeri Selangor 2035 (Pengubahan)</strong><small>Klik Play untuk menonton video di sini.</small></span>
+  </button>
+ </div>
  <div class="rsn03-spotlight-footer"><span>✦ Taklimat visual perancangan negeri</span><span>VIDEO TAKLIMAT · GOOGLE DRIVE</span></div>
 </section>
 <dialog class="rsn03-video-dialog" id="rsn03-video-dialog" aria-labelledby="rsn03-dialog-title">
@@ -12310,47 +12321,16 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
 (function(){
  'use strict';
  const root=document.getElementById('rsn-bab03-video-spotlight-2026');
- const dialog=document.getElementById('rsn03-video-dialog');
- if(!root||!dialog)return;
- const btn=root.querySelector('#rsn03-open-video');
- const close=dialog.querySelector('.rsn03-dialog-close');
- const body=dialog.querySelector('.rsn03-dialog-body');
- const video=body.querySelector('video'),pending=body.querySelector('.rsn03-video-pending');
- let iframe=null;
- function cleanup(){
-  if(video){video.pause();video.removeAttribute('src');video.load();video.hidden=true;}
-  if(iframe){iframe.remove();iframe=null;}
- }
- function dismiss(){
-  cleanup();
-  if(dialog.open&&typeof dialog.close==='function')dialog.close();
-  else dialog.removeAttribute('open');
- }
- function open(event){
-  if(event)event.preventDefault();
-  cleanup();
-  const mp4=root.dataset.videoSrc||'';
-  const embed=root.dataset.videoEmbed||'';
-  pending.hidden=!!(mp4||embed);
-  if(embed){
-   iframe=document.createElement('iframe');
-   const url=new URL(embed,location.href);
-   url.searchParams.set('autoplay','1');
-   iframe.src=url.href;
-   iframe.title='Video Taklimat RS Negeri Selangor 2035';
-   iframe.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
-   iframe.allowFullscreen=true;
-   iframe.style.cssText='display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:13px;background:#111';
-   body.appendChild(iframe);
-  }else if(mp4){video.hidden=false;video.src=mp4;video.load();}
-  if(typeof dialog.showModal==='function'&&!dialog.open)dialog.showModal();
-  else dialog.setAttribute('open','');
-  if(mp4&&!embed){const playback=video.play();if(playback?.catch)playback.catch(()=>{});}
- }
- btn?.addEventListener('click',open);
- close?.addEventListener('click',dismiss);
- dialog.addEventListener('cancel',function(e){e.preventDefault();dismiss()});
- dialog.addEventListener('click',function(e){if(e.target===dialog)dismiss()});
+ if(!root)return;
+ const button=root.querySelector('#rsn03-open-video');
+ const frame=root.querySelector('.rsn03-inline-iframe');
+ if(!button||!frame)return;
+ button.addEventListener('click',function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  root.classList.add('rsn03-is-playing');
+  frame.src='https://drive.google.com/file/d/1qvHLeX6vC_7hrGgKMsEzIP4_Tj9h6AGc/preview?autoplay=1';
+ });
 })();
 </script><script id="rsn03-reading-flip-controller-2026">
 /* Hanya dua kad RSN Bab 03: hover automatik pada desktop; klik/ketik & papan kekunci kekal. */
