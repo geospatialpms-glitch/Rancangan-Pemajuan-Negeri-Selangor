@@ -8634,6 +8634,32 @@ body.suo-drawer-mode #suo-glass-drawer{
  }
 }
 </style>
+<style id="suo-drawer-clean-header-20261022-css">
+/* Keep existing drawer, all page content and announcement ticker. Hide duplicate horizontal menu. */
+body.suo-drawer-mode .header .top-nav{display:none!important}
+body.suo-drawer-mode .header .container.head{width:min(100% - 36px,1740px)!important;max-width:1740px!important;justify-content:space-between;gap:clamp(10px,1.3vw,21px)}
+body.suo-drawer-mode .header .brand-group{margin-right:auto;min-width:0}
+body.suo-drawer-mode .header .lang-switch{margin-left:auto;flex:none}
+body.suo-drawer-mode #suo-drawer-hamburger{margin-left:0!important;flex:none}
+body.suo-drawer-mode #utama.hero{
+ height:calc(100dvh - var(--suo-drawer-top,90px) - var(--suo-announce-h,47px))!important;
+ min-height:0!important;max-height:none!important;box-sizing:border-box!important;
+ margin:0!important;padding:0!important;border-bottom:4px solid #e8c671!important;
+ overflow:hidden!important;
+}
+body.suo-drawer-mode #utama .container.hero-layout{min-height:0!important;height:100%!important;box-sizing:border-box!important;display:flex!important;align-items:flex-end!important;justify-content:flex-start!important;padding:clamp(12px,2vw,28px)!important;margin:0!important;max-width:100%!important;width:100%!important}
+body.suo-drawer-mode #utama .hero-copy{width:auto!important;max-width:min(950px,100%)!important}
+body.suo-drawer-mode #utama .hero-actions{margin:0!important}
+body.suo-drawer-mode .selangor-ticker{margin:0!important}
+@media(max-width:740px){
+ body.suo-drawer-mode .header .container.head{width:calc(100% - 20px)!important;gap:8px}
+ body.suo-drawer-mode #utama.hero{height:calc(100dvh - var(--suo-drawer-top,76px) - var(--suo-announce-h,45px))!important;min-height:0!important}
+ body.suo-drawer-mode #utama .container.hero-layout{padding:14px!important}
+}
+@media(max-height:430px){
+ body.suo-drawer-mode #utama.hero{min-height:260px!important}
+}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -13016,6 +13042,19 @@ if(!reduced&&!mobile){
  select(0);
 })();
 
+</script>
+<script id="suo-drawer-clean-header-20261022-js">
+(function(){
+ const body=document.body,header=document.querySelector('header.header'),ticker=document.querySelector('.selangor-ticker');
+ if(!header||!ticker)return;
+ function fit(){
+  body.style.setProperty('--suo-drawer-top',Math.ceil(header.getBoundingClientRect().height)+'px');
+  body.style.setProperty('--suo-announce-h',Math.ceil(ticker.getBoundingClientRect().height)+'px');
+ }
+ fit();
+ if('ResizeObserver' in window){const observer=new ResizeObserver(fit);observer.observe(header);observer.observe(ticker)}
+ else window.addEventListener('resize',fit,{passive:true});
+})();
 </script>
 </body>
 </html>
