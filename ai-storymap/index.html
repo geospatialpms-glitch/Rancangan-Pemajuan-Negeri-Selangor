@@ -8781,6 +8781,19 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-menu{
  body.suo-drawer-mode #suo-glass-drawer .suo-side-link{min-height:47px!important}
 }
 </style>
+<style id="suo-stat-card05-safe-hover-20261022">
+/* Kad 05 only: maintain an in-grid hover enlargement without covering Kad 04. */
+@media(min-width:1101px) and (hover:hover) and (pointer:fine){
+ #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(5):hover){
+  grid-template-columns:repeat(4,minmax(0,.91fr)) repeat(4,minmax(0,.90fr)) minmax(0,.90fr) repeat(3,minmax(0,1.30fr))!important;
+ }
+ #suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(5):hover{
+  transform:translateY(-3px) scale(1.005)!important;
+  transform-origin:right center!important;
+  z-index:3!important;
+ }
+}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
