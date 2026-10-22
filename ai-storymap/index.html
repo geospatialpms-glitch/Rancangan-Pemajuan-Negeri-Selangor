@@ -7833,14 +7833,19 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
  #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(3):hover){
   grid-template-columns:repeat(4,minmax(0,.89fr)) repeat(4,minmax(0,.89fr)) minmax(0,1.22fr) repeat(3,minmax(0,1.22fr));
  }
- /* Kad 04: restrained width expansion; keeps Kad 05 readable beside it. */
+ /* Kad 04: enlarge to the same visual prominence as other hovered cards.
+    Rebalance only its five occupied tracks; Kad 05 stays readable. */
  #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(4):hover){
-  grid-template-columns:repeat(4,minmax(0,.98fr)) repeat(4,minmax(0,1.075fr)) minmax(0,1.075fr) repeat(3,minmax(0,1fr));
+  grid-template-columns:
+    repeat(4,minmax(0,.97fr))
+    repeat(4,minmax(0,1.22fr))
+    minmax(0,1.22fr)
+    repeat(3,minmax(0,.82fr));
  }
  #suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(4):hover{
-  transform:scale(1.018) translateY(-2px);
+  transform:scale(1.032) translateY(-3px);
   transform-origin:center center;
-  z-index:3;
+  z-index:4;
  }
  #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(5):hover){
   grid-template-columns:repeat(4,minmax(0,.91fr)) repeat(4,minmax(0,.90fr)) minmax(0,.90fr) repeat(3,minmax(0,1.30fr));
@@ -8058,23 +8063,22 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
  }
 }
 
-/* 2026-10-22 CYAN INDIGO GRADIENT + CARD 05 PROPORTIONS */
-/* Only the five cards: richer cyan -> cobalt -> indigo blue, with existing
-   constellation canvas particles/lines untouched and above the gradient. */
+/* 2026-10-22 SUBDUED PETROLEUM-NAVY-INDIGO GRADIENT + CARD 05 PROPORTIONS */
+/* Five statistic cards only. Preserve glowing GIS nodes/links, hover and CTA. */
 #suo-dashboard-overview .suo-dash-card[data-suo-jump],
 #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(1),
 #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(4){
  background:
-  radial-gradient(ellipse 82% 95% at 3% 0%,rgba(0,194,242,.64) 0%,rgba(0,115,216,.40) 35%,transparent 83%),
-  radial-gradient(ellipse 90% 105% at 57% 65%,rgba(7,95,240,.44) 0%,rgba(5,37,129,.10) 63%,transparent 95%),
-  radial-gradient(ellipse 95% 90% at 100% 93%,rgba(4,9,66,.92),transparent 82%),
-  linear-gradient(127deg,#07498e 0%,#0756b4 32%,#072b8d 64%,#050b42 100%);
- background-color:#061a60;
+  radial-gradient(ellipse 82% 95% at 3% 0%,rgba(11,124,166,.30) 0%,rgba(9,73,136,.21) 39%,transparent 82%),
+  radial-gradient(ellipse 91% 104% at 57% 65%,rgba(32,66,150,.18) 0%,rgba(12,30,89,.08) 64%,transparent 95%),
+  radial-gradient(ellipse 95% 90% at 100% 93%,rgba(6,10,45,.48),transparent 82%),
+  linear-gradient(127deg,#103c60 0%,#0e3467 30%,#0b255b 64%,#090e30 100%);
+ background-color:#0b244b;
 }
 #suo-dashboard-overview .suo-dash-card[data-suo-jump]::before{
  background:
-  linear-gradient(0deg,rgba(1,7,40,.29),transparent 45%),
-  radial-gradient(ellipse at 16% 9%,rgba(153,225,255,.10),transparent 58%);
+  linear-gradient(0deg,rgba(1,7,32,.23),transparent 45%),
+  radial-gradient(ellipse at 16% 9%,rgba(145,211,255,.08),transparent 58%);
 }
 /* Card 05 alone: stronger but contained Bento enlargement; the adjacent
    Kad 04 remains visible and the other four hover layouts are unchanged. */
