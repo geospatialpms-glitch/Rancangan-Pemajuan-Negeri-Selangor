@@ -7803,8 +7803,14 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
  #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(3):hover){
   grid-template-columns:repeat(4,minmax(0,.89fr)) repeat(4,minmax(0,.89fr)) minmax(0,1.22fr) repeat(3,minmax(0,1.22fr));
  }
+ /* Kad 04: restrained width expansion; keeps Kad 05 readable beside it. */
  #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(4):hover){
-  grid-template-columns:repeat(4,minmax(0,.87fr)) repeat(4,minmax(0,1.18fr)) minmax(0,1.18fr) repeat(3,minmax(0,.87fr));
+  grid-template-columns:repeat(4,minmax(0,.98fr)) repeat(4,minmax(0,1.075fr)) minmax(0,1.075fr) repeat(3,minmax(0,1fr));
+ }
+ #suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(4):hover{
+  transform:scale(1.018) translateY(-2px);
+  transform-origin:center center;
+  z-index:3;
  }
  #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(5):hover){
   grid-template-columns:repeat(4,minmax(0,.91fr)) repeat(4,minmax(0,.90fr)) minmax(0,.90fr) repeat(3,minmax(0,1.30fr));
