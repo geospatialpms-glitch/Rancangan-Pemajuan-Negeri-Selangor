@@ -8027,6 +8027,97 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
   transform:none!important;
  }
 }
+
+/* 2026-10-22 CYAN INDIGO GRADIENT + CARD 05 PROPORTIONS */
+/* Only the five cards: richer cyan -> cobalt -> indigo blue, with existing
+   constellation canvas particles/lines untouched and above the gradient. */
+#suo-dashboard-overview .suo-dash-card[data-suo-jump],
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(1),
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(4){
+ background:
+  radial-gradient(ellipse 82% 95% at 3% 0%,rgba(0,194,242,.64) 0%,rgba(0,115,216,.40) 35%,transparent 83%),
+  radial-gradient(ellipse 90% 105% at 57% 65%,rgba(7,95,240,.44) 0%,rgba(5,37,129,.10) 63%,transparent 95%),
+  radial-gradient(ellipse 95% 90% at 100% 93%,rgba(4,9,66,.92),transparent 82%),
+  linear-gradient(127deg,#07498e 0%,#0756b4 32%,#072b8d 64%,#050b42 100%);
+ background-color:#061a60;
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]::before{
+ background:
+  linear-gradient(0deg,rgba(1,7,40,.29),transparent 45%),
+  radial-gradient(ellipse at 16% 9%,rgba(153,225,255,.10),transparent 58%);
+}
+/* Card 05 alone: stronger but contained Bento enlargement; the adjacent
+   Kad 04 remains visible and the other four hover layouts are unchanged. */
+@media(min-width:1101px) and (hover:hover) and (pointer:fine){
+ #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(5):hover){
+  grid-template-columns:
+    repeat(4,minmax(0,.80fr))
+    repeat(4,minmax(0,.80fr))
+    minmax(0,.80fr)
+    repeat(3,minmax(0,1.89fr));
+ }
+ #suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(5):hover{
+  transform:translateX(-2px) translateY(-3px) scale(1.035);
+  transform-origin:right center;
+  z-index:4;
+ }
+}
+/* Responsive content proportions of Card 05 follow its actual card width. */
+@media(min-width:1101px){
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5) .suo-dash-number{
+  font-size:clamp(71px,18.5cqw,108px);
+  transition:font-size .48s cubic-bezier(.2,.75,.24,1);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5) .suo-dash-illustration{
+  width:clamp(89px,24cqw,146px);
+  height:clamp(82px,min(19cqw,14svh),121px);
+  max-width:43%;
+  transition:width .48s cubic-bezier(.2,.75,.24,1),height .48s cubic-bezier(.2,.75,.24,1);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5) .suo-dash-label{
+  font-size:clamp(13px,3.1cqw,18px);
+  line-height:1.26;
+  transition:font-size .48s cubic-bezier(.2,.75,.24,1);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5) .suo-dash-detail{
+  transition:font-size .48s cubic-bezier(.2,.75,.24,1);
+ }
+}
+@media(min-width:1101px) and (hover:hover) and (pointer:fine){
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5):hover .suo-dash-number{
+  font-size:clamp(106px,21cqw,147px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5):hover .suo-dash-illustration{
+  width:clamp(137px,27cqw,192px);
+  height:clamp(109px,min(21cqw,19svh),154px);
+  max-width:42%;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5):hover .suo-dash-label{
+  font-size:clamp(18px,3.15cqw,23px);
+  line-height:1.22;
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5):hover .suo-dash-detail{
+  font-size:clamp(11px,1.75cqw,13px);
+ }
+}
+@media(min-width:1101px) and (max-height:780px){
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5):hover .suo-dash-number{
+  font-size:clamp(85px,18.6cqw,122px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5):hover .suo-dash-illustration{
+  height:clamp(85px,min(17cqw,14svh),123px);
+ }
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5):hover .suo-dash-label{
+  font-size:clamp(16px,2.9cqw,21px);
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5) .suo-dash-number,
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5) .suo-dash-illustration,
+ #suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(5) .suo-dash-label{
+  transition:none!important;
+ }
+}
 </style>
 </head>
 <body>
