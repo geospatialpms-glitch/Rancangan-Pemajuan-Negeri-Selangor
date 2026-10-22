@@ -7719,39 +7719,80 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
 }
 
 /* SUO CONSTELLATION + EXPANDING BENTO 2026-10-22 */
-/* Network animation stays in the five-card grid; the main hologram and other sections remain intact. */
+/* CORRECTION: animated GIS constellations live INSIDE individual statistic cards,
+   never beneath/between the cards. The rest of StoryMap is unchanged. */
 #suo-dashboard-overview .suo-dash-grid{
- isolation:isolate;
+ isolation:isolate;background:transparent;
  grid-template-columns:repeat(4,minmax(0,1fr)) repeat(4,minmax(0,1fr)) minmax(0,1fr) repeat(3,minmax(0,1fr));
  transition:grid-template-columns .54s cubic-bezier(.2,.75,.25,1);
 }
-#suo-dashboard-overview .suo-dash-grid::before{
- content:"";position:absolute;z-index:-2;inset:-11px;border-radius:30px;pointer-events:none;
- background:
-  radial-gradient(ellipse at 12% 15%,rgba(23,99,180,.30),transparent 44%),
-  radial-gradient(ellipse at 82% 85%,rgba(20,95,176,.25),transparent 46%),
-  linear-gradient(127deg,#06132f,#0a224b 52%,#070f2b 100%);
- box-shadow:inset 0 0 0 1px rgba(105,190,255,.22),
-   inset 0 0 55px rgba(3,12,35,.65),0 14px 34px rgba(15,29,64,.13);
-}
+#suo-dashboard-overview .suo-dash-grid::before,
 #suo-dashboard-overview .suo-dash-grid::after{
- content:"";position:absolute;z-index:-1;inset:-11px;border-radius:30px;pointer-events:none;
- background:linear-gradient(125deg,rgba(34,113,185,.03),transparent 35%,rgba(61,122,221,.055));
-}
-#suo-dashboard-overview .suo-stat-constellation{
- position:absolute;inset:-11px;width:calc(100% + 22px);height:calc(100% + 22px);
- display:block;z-index:0;pointer-events:none;border-radius:30px;opacity:.94;
+ content:none;display:none;
 }
 #suo-dashboard-overview .suo-dash-card[data-suo-jump]{
- position:relative;z-index:1;
- transform-origin:center center;
+ position:relative;z-index:1;isolation:isolate;
+ overflow:hidden;transform-origin:center center;
+ background:
+  radial-gradient(ellipse at 76% 20%,rgba(43,112,201,.24),transparent 58%),
+  linear-gradient(145deg,rgba(9,27,65,.96) 0%,rgba(15,32,76,.97) 55%,rgba(36,25,69,.97) 100%);
+ border-color:rgba(123,183,255,.43);
+ box-shadow:inset 0 1px 0 rgba(192,224,255,.19),
+  inset 0 -8px 21px rgba(0,12,34,.21),0 13px 29px rgba(35,37,72,.16),
+  0 0 0 1px rgba(70,158,255,.07);
  transition:transform .52s cubic-bezier(.18,.8,.24,1),
-   opacity .48s ease,filter .48s ease,
-   box-shadow .32s ease,border-color .32s ease;
- will-change:auto;
+  opacity .48s ease,filter .48s ease,
+  box-shadow .32s ease,border-color .32s ease;
 }
-/* Real redistribution of the 12 grid tracks, with a gentle spotlight scale.
-   Resets automatically when cursor leaves the grid. */
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(1){
+ background:
+  radial-gradient(ellipse at 80% 15%,rgba(60,128,219,.28),transparent 57%),
+  linear-gradient(141deg,rgba(13,36,86,.97),rgba(28,32,79,.96) 63%,rgba(48,28,72,.97));
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]:nth-child(4){
+ background:
+  radial-gradient(ellipse at 83% 24%,rgba(31,105,207,.3),transparent 50%),
+  linear-gradient(140deg,rgba(11,32,79,.97),rgba(19,29,71,.96) 54%,rgba(51,28,76,.97));
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]::before{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background:linear-gradient(0deg,rgba(2,13,40,.38),transparent 44%),
+  radial-gradient(ellipse at 22% 9%,rgba(132,200,255,.08),transparent 58%);
+}
+#suo-dashboard-overview .suo-dash-card > canvas.suo-stat-constellation{
+ position:absolute;inset:0;display:block;width:100%;height:100%;
+ max-width:100%;max-height:100%;z-index:0;pointer-events:none;
+ opacity:.89;border-radius:inherit;
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump] > :not(canvas){
+ position:relative;z-index:2;
+}
+#suo-dashboard-overview .suo-dash-card-head{z-index:3!important}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]:hover{
+ border-color:rgba(145,208,255,.88);
+ box-shadow:inset 0 1px 0 rgba(213,242,255,.32),
+  0 19px 35px rgba(19,31,77,.24),
+  0 0 20px rgba(47,159,255,.24);
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-number{
+ background:linear-gradient(180deg,#fff8e5,#ffe6ad 34%,#eec28b 75%,#b482a1 100%);
+ -webkit-background-clip:text;background-clip:text;
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-label{
+ color:#fffaf3;text-shadow:0 2px 7px rgba(0,10,30,.52);
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-detail{
+ color:#e6d2b4;text-shadow:0 1px 4px rgba(0,8,27,.4);
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-stat-explore{
+ background:rgba(34,104,168,.29);border-color:rgba(143,209,255,.57);color:#fff3d9;
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump]:hover .suo-stat-explore{
+ border-color:rgba(192,228,255,.88);background:rgba(42,124,207,.39);
+}
+#suo-dashboard-overview .suo-dash-card[data-suo-jump] .suo-dash-card-id{
+ color:#ebdfcb;
+}
 @media(min-width:1101px) and (hover:hover) and (pointer:fine){
  #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:nth-child(1):hover){
   grid-template-columns:repeat(4,minmax(0,1.32fr)) repeat(4,minmax(0,.84fr)) minmax(0,.84fr) repeat(3,minmax(0,.84fr));
@@ -7769,36 +7810,26 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
   grid-template-columns:repeat(4,minmax(0,.91fr)) repeat(4,minmax(0,.90fr)) minmax(0,.90fr) repeat(3,minmax(0,1.30fr));
  }
  #suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:hover) > .suo-dash-card:not(:hover){
-  transform:scale(.966);opacity:.84;filter:saturate(.87) brightness(.9);
+  transform:scale(.966);opacity:.84;filter:saturate(.87) brightness(.92);
  }
  #suo-dashboard-overview .suo-dash-grid > .suo-dash-card:hover{
   transform:scale(1.027) translateY(-3px);opacity:1;filter:none;z-index:3;
  }
 }
-/* Keyboard focus highlights the chosen card, while links remain accessible. */
-#suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:focus-within) > .suo-dash-card:not(:focus-within){
- opacity:.88;
-}
-#suo-dashboard-overview .suo-dash-grid > .suo-dash-card:focus-within{
- z-index:3;
-}
+#suo-dashboard-overview .suo-dash-grid:has(> .suo-dash-card:focus-within) > .suo-dash-card:not(:focus-within){opacity:.88}
+#suo-dashboard-overview .suo-dash-grid > .suo-dash-card:focus-within{z-index:3}
 @media(max-width:1100px){
  #suo-dashboard-overview .suo-dash-grid{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  transition:none;
+  grid-template-columns:repeat(2,minmax(0,1fr));transition:none;
  }
 }
 @media(max-width:630px){
  #suo-dashboard-overview .suo-dash-grid{grid-template-columns:1fr}
- #suo-dashboard-overview .suo-dash-grid::before,
- #suo-dashboard-overview .suo-dash-grid::after,
- #suo-dashboard-overview .suo-stat-constellation{inset:-7px;border-radius:22px}
- #suo-dashboard-overview .suo-stat-constellation{width:calc(100% + 14px);height:calc(100% + 14px)}
 }
 @media(prefers-reduced-motion:reduce){
  #suo-dashboard-overview .suo-dash-grid{transition:none!important}
  #suo-dashboard-overview .suo-dash-card[data-suo-jump]{
-  transition:none!important;transform:none!important;filter:none!important;opacity:1!important
+  transition:none!important;transform:none!important;filter:none!important;opacity:1!important;
  }
 }
 </style>
@@ -7861,31 +7892,36 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
   </div>
   <div class="suo-dash-grid" role="list" aria-label="Statistik negeri Selangor">
    <article class="suo-dash-card" role="listitem" style="--tile-order:0" data-suo-jump="pbt-directory" tabindex="0" aria-label="Terokai Pihak Berkuasa Tempatan (PBT)" data-suo-ms-label="Terokai Pihak Berkuasa Tempatan (PBT)" data-suo-en-label="Explore Local Authorities (PBT)">
+    <canvas class="suo-stat-constellation" data-suo-network="0" aria-hidden="true"></canvas>
   <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 01" data-suo-en="Card 01">Kad 01</span><button type="button" class="suo-stat-explore" aria-label="Terokai Pihak Berkuasa Tempatan (PBT)" data-suo-ms-label="Terokai Pihak Berkuasa Tempatan (PBT)" data-suo-en-label="Explore Local Authorities (PBT)"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="12">12</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="68" cy="102" rx="51" ry="8" fill="#6f3441" opacity=".12"/><path d="M14 50 72 23 124 50 68 76Z" fill="#bd725b"/><path d="M23 55 68 76 68 97 23 78Z" fill="#ddb18c"/><path d="M68 76 116 54 116 79 68 97Z" fill="#f9dfb5"/><path d="M16 49 73 19 125 49 118 56 72 31 25 58Z" fill="#864255"/><path d="M16 49 73 19 125 49" fill="none" stroke="#d69a7c" stroke-width="4" stroke-linejoin="round"/><path d="M32 62 61 76 61 90 32 76Z" fill="#fff1d7"/><path d="M76 76 106 63 106 80 76 91Z" fill="#f9efdd"/><path d="M36 64v15m9-9v13m8-9v12M84 73v13m13-17v14" stroke="#b8806d" stroke-width="3"/><path d="M68 97v-18l10-4v18" fill="#7d4146"/><path d="M24 57 68 78 117 57" stroke="#a86a58" stroke-width="2" fill="none"/><rect x="57" y="35" width="26" height="10" rx="2" fill="#fff1d5" transform="rotate(-1 57 35)"/><path d="M62 41h17" stroke="#8d5361" stroke-width="2.2"/></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Pihak Berkuasa Tempatan (PBT)" data-suo-en="Local Authorities (PBT)">Pihak Berkuasa Tempatan (PBT)</span><span class="suo-dash-detail" data-suo-ms="PENTADBIRAN" data-suo-en="ADMINISTRATION">PENTADBIRAN</span></div>
  </article>
    <article class="suo-dash-card" role="listitem" style="--tile-order:1" data-suo-jump="district-map" tabindex="0" aria-label="Terokai Daerah Pentadbiran" data-suo-ms-label="Terokai Daerah Pentadbiran" data-suo-en-label="Explore Administrative Districts">
+    <canvas class="suo-stat-constellation" data-suo-network="1" aria-hidden="true"></canvas>
   <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 02" data-suo-en="Card 02">Kad 02</span><button type="button" class="suo-stat-explore" aria-label="Terokai Daerah Pentadbiran" data-suo-ms-label="Terokai Daerah Pentadbiran" data-suo-en-label="Explore Administrative Districts"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="9">9</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="66" cy="103" rx="43" ry="7" fill="#6f3441" opacity=".12"/><path d="M30 20 53 11 65 19 78 16 86 28 109 31 117 49 106 58 118 73 99 79 102 91 82 98 63 88 50 95 36 80 17 72 25 54 16 41 28 32Z" fill="#c18a60" transform="translate(0 5)"/><path d="M30 20 53 11 65 19 78 16 86 28 109 31 117 49 106 58 118 73 99 79 102 91 82 98 63 88 50 95 36 80 17 72 25 54 16 41 28 32Z" fill="#f4d7a7" stroke="#d7ae7c" stroke-width="2"/><path d="m34 33 24 16-7 33m13-57 7 32 28 20M19 60l33-11 38-27m-5 12 16 42-34 16" fill="none" stroke="#c89170" stroke-width="1.6" stroke-dasharray="3 3"/><g transform="translate(46 34)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(65 22)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(83 41)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(99 56)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(75 63)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(52 55)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(42 73)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(75 84)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g><g transform="translate(103 82)"><path d="M0 7C-12 -7 12 -7 0 7Z" fill="#964255" stroke="#75364c" stroke-width=".6"/><circle cy="-1" r="2.2" fill="#f9dca6"/></g></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Daerah Pentadbiran" data-suo-en="Administrative Districts">Daerah Pentadbiran</span><span class="suo-dash-detail" data-suo-ms="PENTADBIRAN" data-suo-en="ADMINISTRATION">PENTADBIRAN</span></div>
  </article>
    <article class="suo-dash-card" role="listitem" style="--tile-order:2" data-suo-jump="state-structure" tabindex="0" aria-label="Terokai Rancangan Struktur Negeri Selangor" data-suo-ms-label="Terokai Rancangan Struktur Negeri Selangor" data-suo-en-label="Explore Selangor State Structure Plan">
+    <canvas class="suo-stat-constellation" data-suo-network="2" aria-hidden="true"></canvas>
   <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 03" data-suo-en="Card 03">Kad 03</span><button type="button" class="suo-stat-explore" aria-label="Terokai Rancangan Struktur Negeri Selangor" data-suo-ms-label="Terokai Rancangan Struktur Negeri Selangor" data-suo-en-label="Explore Selangor State Structure Plan"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="1">1</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="71" cy="103" rx="42" ry="7" fill="#6f3441" opacity=".12"/><rect x="38" y="22" width="65" height="80" rx="8" fill="#b8876b" transform="rotate(6 70 60)"/><rect x="30" y="13" width="69" height="81" rx="8" fill="#fff1d8" stroke="#decab0" stroke-width="2"/><path d="M77 13v19h22" fill="#e6bb92" stroke="#d1ad8a" stroke-width="1.5"/><path d="M43 43h41M43 52h37M43 61h32" stroke="#b79e8e" stroke-width="3.2" stroke-linecap="round"/><circle cx="75" cy="75" r="12" fill="#b6715c"/><circle cx="75" cy="75" r="8" fill="#e4ba78" stroke="#fff2ce" stroke-width="1.5"/><path d="m70 75 4 4 7-9" stroke="#86465b" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Struktur Negeri Selangor" data-suo-en="Selangor State Structure Plan Document">Dokumen Rancangan Struktur Negeri Selangor</span><span class="suo-dash-detail" data-suo-ms="PERANCANGAN NEGERI" data-suo-en="STATE PLANNING">PERANCANGAN NEGERI</span></div>
  </article>
    <article class="suo-dash-card" role="listitem" style="--tile-order:3" data-suo-jump="rt-register" tabindex="0" aria-label="Terokai Jadual Rancangan Tempatan" data-suo-ms-label="Terokai Jadual Rancangan Tempatan" data-suo-en-label="Explore Local Plan Register">
+    <canvas class="suo-stat-constellation" data-suo-network="3" aria-hidden="true"></canvas>
   <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 04" data-suo-en="Card 04">Kad 04</span><button type="button" class="suo-stat-explore" aria-label="Terokai Jadual Rancangan Tempatan" data-suo-ms-label="Terokai Jadual Rancangan Tempatan" data-suo-en-label="Explore Local Plan Register"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="20">20</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="67" cy="105" rx="58" ry="7" fill="#6f3441" opacity=".13"/><path d="M10 62 69 34 127 62 68 91Z" fill="#8c7691"/><path d="M10 62v12l58 29V91Zm58 29v12l59-30V62Z" fill="#866d89"/><path d="M12 61 69 33 126 61 68 90Z" fill="#e3d6ba"/><path d="M29 61 69 42 109 61 68 82Z" fill="#fff1d4"/><path d="m45 53 45 22m0-22-45 22" stroke="#b9bc9d" stroke-width="3"/><path d="M40 48 53 42 65 48 51 55Z" fill="#98aaac"/><path d="M40 48v18l11 6V55Z" fill="#b3c4bb"/><path d="M51 55v17l14-7V48Z" fill="#769f9c"/><path d="M71 40 84 34 98 41 85 47Z" fill="#d29c75"/><path d="M71 40v22l14 7V47Z" fill="#e4be9f"/><path d="M85 47v22l13-7V41Z" fill="#b97e6f"/><path d="M32 70 45 64 58 70 45 77Z" fill="#82aa7f"/><path d="M32 70v5l13 7v-5Zm13 7v5l13-7v-5Z" fill="#6d9074"/><circle cx="103" cy="61" r="5" fill="#78a77b"/><path d="M103 66v7" stroke="#6e775c" stroke-width="2"/></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Tempatan (RT)" data-suo-en="Local Plan Documents (RT)">Dokumen Rancangan Tempatan (RT)</span><span class="suo-dash-detail" data-suo-ms="DOKUMEN PERANCANGAN" data-suo-en="PLANNING DOCUMENTS">DOKUMEN PERANCANGAN</span></div>
  </article>
    <article class="suo-dash-card" role="listitem" style="--tile-order:4" data-suo-jump="rkk-directory" tabindex="0" aria-label="Terokai Senarai Rancangan Kawasan Khas" data-suo-ms-label="Terokai Senarai Rancangan Kawasan Khas" data-suo-en-label="Explore Special Area Plans Directory">
+    <canvas class="suo-stat-constellation" data-suo-network="4" aria-hidden="true"></canvas>
   <div class="suo-dash-card-head"><span class="suo-dash-card-id" data-suo-ms="Kad 05" data-suo-en="Card 05">Kad 05</span><button type="button" class="suo-stat-explore" aria-label="Terokai Senarai Rancangan Kawasan Khas" data-suo-ms-label="Terokai Senarai Rancangan Kawasan Khas" data-suo-en-label="Explore Special Area Plans Directory"><span data-suo-ms="Terokai" data-suo-en="Explore">Terokai</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
   <div class="suo-dash-card-visual"><strong class="suo-dash-number" data-suo-target="4">4</strong><span class="suo-dash-illustration" aria-hidden="true"><svg viewBox="0 0 134 112" aria-hidden="true" focusable="false"><ellipse cx="66" cy="103" rx="49" ry="7" fill="#6f3441" opacity=".12"/><rect x="30" y="17" width="65" height="81" rx="6" fill="#c4a18b" transform="rotate(-5 62 57)"/><rect x="29" y="10" width="66" height="82" rx="6" fill="#fff0dc" stroke="#d3bca8" stroke-width="2"/><path d="M40 25h31M40 32h22" stroke="#c4a193" stroke-width="3" stroke-linecap="round"/><circle cx="59" cy="58" r="19" fill="#f1dbb8"/><path d="M59 58V39a19 19 0 0 1 19 19Z" fill="#b56e62"/><path d="M59 58h19A19 19 0 0 1 48 74Z" fill="#d3a269"/><path d="M83 75 111 99" stroke="#a36b5e" stroke-width="11" stroke-linecap="round"/><path d="M83 75 111 99" stroke="#e8b77e" stroke-width="6" stroke-linecap="round"/><circle cx="74" cy="64" r="22" fill="#ffffff2e" stroke="#8e5164" stroke-width="7"/><path d="M62 53a15 15 0 0 1 15-5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></div>
   <div class="suo-dash-card-foot"><span class="suo-dash-label" data-suo-ms="Dokumen Rancangan Kawasan Khas (RKK)" data-suo-en="Special Area Plan Documents (RKK)">Dokumen Rancangan Kawasan Khas (RKK)</span><span class="suo-dash-detail" data-suo-ms="DOKUMEN PERANCANGAN" data-suo-en="PLANNING DOCUMENTS">DOKUMEN PERANCANGAN</span></div>
  </article>
-  <canvas class="suo-stat-constellation" id="suo-constellation-canvas-2026" aria-hidden="true"></canvas>
+  
   </div>
  </div>
 </section>
@@ -9293,126 +9329,131 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
 </script>
 
 <script id="suo-stat-constellation-interaction-20261022">
-/* Canvas-only GIS network: animated, pointer-reactive, performance-bounded,
-   automatically paused when off screen or tab hidden. */
+/* Five independent clipped constellation canvases, each INSIDE its own statistic card.
+   No network is drawn behind the Bento layout; existing links and counters stay active. */
 (function(){
  'use strict';
- const grid=document.querySelector('#suo-dashboard-overview .suo-dash-grid');
- const canvas=document.getElementById('suo-constellation-canvas-2026');
- if(!grid||!canvas||!canvas.getContext)return;
- const ctx=canvas.getContext('2d',{alpha:true});
- if(!ctx)return;
- const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
- let w=0,h=0,dpr=1,nodes=[],raf=0,last=0,visible=false;
- const pointer={x:0,y:0,active:false};
- const strokeBase=[67,159,245];
- function random(min,max){return min+Math.random()*(max-min)}
- function size(){
-  const rect=canvas.getBoundingClientRect();
-  const width=Math.round(rect.width),height=Math.round(rect.height);
-  if(!width||!height)return false;
-  if(width===w&&height===h)return true;
-  const wasW=w,wasH=h;w=width;h=height;
-  dpr=Math.min(window.devicePixelRatio||1,1.6);
-  canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  const count=Math.max(24,Math.min(85,Math.round(w*h/10500)));
-  if(wasW&&wasH&&nodes.length){
-   nodes.forEach(function(p){p.x=p.x*w/wasW;p.y=p.y*h/wasH});
-  }
-  while(nodes.length>count)nodes.pop();
-  while(nodes.length<count){
-   nodes.push({x:random(0,w),y:random(0,h),vx:random(-.12,.12),vy:random(-.12,.12),r:random(1,2.4),phase:random(0,6.29)});
+ const section=document.getElementById('suo-dashboard-overview');
+ if(!section)return;
+ const cards=Array.from(section.querySelectorAll('.suo-dash-card[data-suo-jump]'));
+ const reduce=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches);
+ const scenes=[];
+ let raf=0,last=0,visible=false;
+ function random(a,b){return a+Math.random()*(b-a)}
+ cards.forEach(function(card,index){
+  const canvas=card.querySelector('canvas.suo-stat-constellation');
+  if(!canvas||!canvas.getContext)return;
+  const ctx=canvas.getContext('2d',{alpha:true});
+  if(!ctx)return;
+  const scene={card,canvas,ctx,w:0,h:0,points:[],pointer:{active:false,x:0,y:0},index:index};
+  scenes.push(scene);
+  card.addEventListener('pointermove',function(e){
+   if(reduce||e.pointerType==='touch')return;
+   const r=canvas.getBoundingClientRect();
+   if(!r.width||!r.height)return;
+   scene.pointer.x=(e.clientX-r.left)*scene.w/r.width;
+   scene.pointer.y=(e.clientY-r.top)*scene.h/r.height;
+   scene.pointer.active=true;
+  },{passive:true});
+  card.addEventListener('pointerleave',function(){scene.pointer.active=false},{passive:true});
+ });
+ if(scenes.length!==5)return;
+ function resize(scene){
+  const rect=scene.canvas.getBoundingClientRect();
+  const w=Math.round(rect.width),h=Math.round(rect.height);
+  if(!w||!h)return false;
+  if(scene.w===w&&scene.h===h)return true;
+  const lastW=scene.w,lastH=scene.h;scene.w=w;scene.h=h;
+  const dpr=Math.min(window.devicePixelRatio||1,1.5);
+  scene.canvas.width=Math.round(w*dpr);
+  scene.canvas.height=Math.round(h*dpr);
+  scene.ctx.setTransform(dpr,0,0,dpr,0,0);
+  const count=Math.max(14,Math.min(48,Math.round(w*h/8800)));
+  if(lastW&&lastH)scene.points.forEach(function(p){p.x=p.x*w/lastW;p.y=p.y*h/lastH});
+  while(scene.points.length>count)scene.points.pop();
+  while(scene.points.length<count){
+   scene.points.push({x:random(0,w),y:random(0,h),vx:random(-.14,.14),vy:random(-.14,.14),r:random(1.1,2.15),phase:random(0,6.3)});
   }
   return true;
  }
- function draw(time){
-  if(!w||!h)return;
+ function render(scene,time,delta){
+  if(!resize(scene))return;
+  const ctx=scene.ctx,w=scene.w,h=scene.h,points=scene.points,pointer=scene.pointer;
   ctx.clearRect(0,0,w,h);
-  const linkDist=w<680?140:165,link2=linkDist*linkDist;
-  const px=pointer.x,py=pointer.y;
-  // Fine network links with bright cyan nodes and a subtle blue glow.
-  for(let i=0;i<nodes.length;i++){
-   const a=nodes[i];
-   for(let j=i+1;j<nodes.length;j++){
-    const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,dist2=dx*dx+dy*dy;
-    if(dist2>link2)continue;
-    let intensity=.04+.26*(1-Math.sqrt(dist2)/linkDist);
+  const reach=Math.min(165,Math.max(110,w*.32)),reach2=reach*reach;
+  // Thin luminous GIS connections, low contrast enough to stay behind the copy.
+  points.forEach(function(a,i){
+   if(!reduce){
+    a.x+=a.vx*delta;a.y+=a.vy*delta;
+    if(a.x<=0||a.x>=w){a.vx=-a.vx;a.x=Math.max(0,Math.min(w,a.x))}
+    if(a.y<=0||a.y>=h){a.vy=-a.vy;a.y=Math.max(0,Math.min(h,a.y))}
     if(pointer.active){
-     const da=Math.hypot(a.x-px,a.y-py);
-     const db=Math.hypot(b.x-px,b.y-py);
-     if(Math.min(da,db)<165)intensity+=.15*(1-Math.min(da,db)/165);
+     const dx=pointer.x-a.x,dy=pointer.y-a.y,dist=Math.hypot(dx,dy);
+     if(dist>18&&dist<145){
+      const force=(1-dist/145)*.09*delta;
+      a.x+=dx/dist*force;a.y+=dy/dist*force;
+     }
     }
-    ctx.strokeStyle='rgba('+strokeBase.join(',')+','+Math.min(.48,intensity).toFixed(3)+')';
-    ctx.lineWidth=dist2<6200?1:.65;
-    ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
    }
-  }
-  if(pointer.active){
-   // Cursor adds a local interactive web of connections, never affects card clicks.
-   for(let i=0;i<nodes.length;i++){
-    const p=nodes[i],dist=Math.hypot(p.x-px,p.y-py);
-    if(dist>=178)continue;
-    const alpha=.44*(1-dist/178);
-    ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(p.x,p.y);
-    ctx.strokeStyle='rgba(108,209,255,'+alpha.toFixed(3)+')';
-    ctx.lineWidth=1.15;ctx.stroke();
-   }
-   const halo=ctx.createRadialGradient(px,py,2,px,py,125);
-   halo.addColorStop(0,'rgba(67,170,255,.13)');
-   halo.addColorStop(1,'rgba(67,170,255,0)');
-   ctx.fillStyle=halo;ctx.beginPath();ctx.arc(px,py,125,0,Math.PI*2);ctx.fill();
-  }
-  for(let i=0;i<nodes.length;i++){
-   const p=nodes[i],twinkle=.5+.5*Math.sin(time*.0011+p.phase);
-   ctx.beginPath();ctx.arc(p.x,p.y,p.r+twinkle*.5,0,Math.PI*2);
-   ctx.fillStyle='rgba(92,194,255,'+(.52+.38*twinkle).toFixed(3)+')';
-   ctx.shadowColor='rgba(79,171,255,.75)';ctx.shadowBlur=7;ctx.fill();ctx.shadowBlur=0;
-  }
- }
- function advance(dt){
-  nodes.forEach(function(p){
-   p.x+=p.vx*dt;p.y+=p.vy*dt;
-   if(p.x<0||p.x>w){p.vx*=-1;p.x=Math.max(0,Math.min(w,p.x))}
-   if(p.y<0||p.y>h){p.vy*=-1;p.y=Math.max(0,Math.min(h,p.y))}
-   if(pointer.active){
-    const dx=pointer.x-p.x,dy=pointer.y-p.y,dsq=dx*dx+dy*dy;
-    if(dsq>100&&dsq<28000){
-     const d=Math.sqrt(dsq),effect=(1-d/168)*.012*dt;
-     p.x+=dx/d*effect;p.y+=dy/d*effect;
-    }
+   for(let j=i+1;j<points.length;j++){
+    const b=points[j],dx=a.x-b.x,dy=a.y-b.y,dist2=dx*dx+dy*dy;
+    if(dist2>reach2)continue;
+    const t=1-Math.sqrt(dist2)/reach;
+    let opacity=.09+.29*t;
+    if(pointer.active&&Math.min(Math.hypot(a.x-pointer.x,a.y-pointer.y),Math.hypot(b.x-pointer.x,b.y-pointer.y))<120)opacity+=.13;
+    ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+    ctx.strokeStyle='rgba(76,180,255,'+Math.min(.5,opacity).toFixed(3)+')';
+    ctx.lineWidth=.8;ctx.stroke();
    }
   });
- }
- function loop(time){
-  raf=0;if(!visible||document.hidden||reduced)return;
-  if(!size())return;
-  if(time-last>=33){
-   const dt=Math.min(2.2,(time-last)/33||1);
-   advance(dt);draw(time);last=time;
+  if(pointer.active&&!reduce){
+   const halo=ctx.createRadialGradient(pointer.x,pointer.y,0,pointer.x,pointer.y,120);
+   halo.addColorStop(0,'rgba(44,144,242,.21)');halo.addColorStop(1,'rgba(44,144,242,0)');
+   ctx.fillStyle=halo;ctx.beginPath();ctx.arc(pointer.x,pointer.y,120,0,Math.PI*2);ctx.fill();
+   points.forEach(function(p){
+    const d=Math.hypot(p.x-pointer.x,p.y-pointer.y);
+    if(d>155)return;
+    ctx.beginPath();ctx.moveTo(pointer.x,pointer.y);ctx.lineTo(p.x,p.y);
+    ctx.strokeStyle='rgba(118,214,255,'+(.48*(1-d/155)).toFixed(3)+')';
+    ctx.lineWidth=1.1;ctx.stroke();
+   });
   }
-  raf=requestAnimationFrame(loop);
+  points.forEach(function(p){
+   const pulse=.5+.5*Math.sin(time*.001+p.phase);
+   ctx.beginPath();ctx.arc(p.x,p.y,p.r+(.45*pulse),0,Math.PI*2);
+   ctx.fillStyle='rgba(112,212,255,'+(.58+.3*pulse).toFixed(3)+')';
+   ctx.shadowColor='#42b9ff';ctx.shadowBlur=6;ctx.fill();ctx.shadowBlur=0;
+  });
+ }
+ function frame(time){
+  raf=0;
+  if(!visible||document.hidden||reduce)return;
+  if(time-last>=32){
+   const delta=Math.min(2.1,(time-last)/32||1);
+   scenes.forEach(function(s){render(s,time,delta)});
+   last=time;
+  }
+  raf=requestAnimationFrame(frame);
  }
  function start(){
-  if(!visible||document.hidden||!size())return;
-  if(reduced){draw(0);return}
-  if(!raf){last=performance.now();raf=requestAnimationFrame(loop)}
+  if(!visible||document.hidden)return;
+  if(reduce){scenes.forEach(function(s){render(s,0,0)});return}
+  if(!raf){last=performance.now();raf=requestAnimationFrame(frame)}
  }
- function stop(){if(raf){cancelAnimationFrame(raf);raf=0}last=0}
- function refresh(){if(size()){if(reduced)draw(0);else if(visible)start()}}
- grid.addEventListener('pointermove',function(event){
-  if(event.pointerType==='touch'||reduced)return;
-  const rect=canvas.getBoundingClientRect();
-  pointer.x=event.clientX-rect.left;pointer.y=event.clientY-rect.top;pointer.active=true;
- },{passive:true});
- grid.addEventListener('pointerleave',function(){pointer.active=false},{passive:true});
- if('ResizeObserver' in window){new ResizeObserver(refresh).observe(grid)}
- else window.addEventListener('resize',refresh,{passive:true});
+ function stop(){if(raf)cancelAnimationFrame(raf);raf=0;last=0;scenes.forEach(function(s){s.pointer.active=false})}
+ if('ResizeObserver' in window){
+  const resizeObserver=new ResizeObserver(function(){
+   if(reduce&&visible)scenes.forEach(function(s){render(s,0,0)});
+  });
+  scenes.forEach(function(s){resizeObserver.observe(s.card)});
+ }else{
+  window.addEventListener('resize',function(){if(reduce&&visible)start()},{passive:true});
+ }
  if('IntersectionObserver' in window){
   new IntersectionObserver(function(entries){
    visible=entries.some(function(e){return e.isIntersecting});
    if(visible)start();else stop();
-  },{threshold:0,rootMargin:'100px 0px 100px 0px'}).observe(grid);
+  },{threshold:0,rootMargin:'120px 0px 120px 0px'}).observe(section);
  }else{visible=true;start()}
  document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start()});
  window.addEventListener('pageshow',start);
