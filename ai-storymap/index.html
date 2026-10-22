@@ -8400,6 +8400,61 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
  #panel-3 #rr04-pane-rt #rr04-rt-portal-20261022.rr04-pop-enter .rr04-rt-portal-summary>*{animation:none!important;transition:none!important;will-change:auto!important}
 }
 </style>
+<style id="suo-sidebar-pages-20261022-css">
+/* Scoped, additive portal shell: content HTML and all dashboard/storymap designs untouched. */
+body.suo-portal-pages{--suo-side-w:258px;--suo-top-h:80px}
+body.suo-portal-pages.suo-side-small{--suo-side-w:74px}
+body.suo-portal-pages .header{position:sticky!important;top:0!important;z-index:120!important}
+body.suo-portal-pages .suo-portal-view:not(.suo-portal-visible){display:none!important}
+body.suo-portal-pages .suo-portal-visible{animation:suo-portal-enter .28s ease both}
+body.suo-portal-pages .selangor-ticker{margin-left:var(--suo-side-w);width:calc(100% - var(--suo-side-w));transition:margin-left .25s,width .25s}
+body.suo-portal-pages :is(.hero,#suo-dashboard-overview,#statistik-pembangunan,.main-section,#pautan-pbt,.footer){margin-left:var(--suo-side-w);transition:margin-left .25s ease;box-sizing:border-box}
+body.suo-portal-pages .main-section.container{width:calc(100% - var(--suo-side-w) - 40px);max-width:1450px;margin-right:auto}
+body.suo-portal-pages .footer{width:calc(100% - var(--suo-side-w))}
+body.suo-portal-pages :is(.hero,#suo-dashboard-overview,#statistik-pembangunan,#pautan-pbt)>.container{width:min(1420px,calc(100% - 40px));max-width:1420px}
+body.suo-portal-pages #suo-page-sidebar{position:fixed;left:0;top:var(--suo-top-h);bottom:0;z-index:108;isolation:isolate;box-sizing:border-box;width:var(--suo-side-w);display:flex;flex-direction:column;overflow:hidden;padding:13px 9px 12px;border-right:1px solid #ffffff36;color:#fff;background:linear-gradient(150deg,#24252c,#191e28 60%,#11151e);box-shadow:7px 8px 28px #0002;transition:width .25s,transform .25s;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+body.suo-portal-pages #suo-page-sidebar:before{content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 0 0,#ffffff1c,transparent 56%),linear-gradient(120deg,transparent 25%,#ffffff08 55%,transparent 80%)}
+#suo-page-sidebar .suo-side-brand{display:flex;gap:8px;align-items:center;padding:7px 5px 14px;border-bottom:1px solid #ffffff2e}
+#suo-page-sidebar .suo-side-brand-logo{width:32px;height:32px;flex:none;border-radius:9px;background:linear-gradient(145deg,#dc3045,#81172a);display:grid;place-items:center;font-size:20px;font-weight:900;box-shadow:0 5px 13px #0003}
+#suo-page-sidebar .suo-side-brand-title{min-width:0;flex:1;display:grid;gap:3px}
+#suo-page-sidebar .suo-side-brand-title strong{font-size:10px;line-height:1.3}
+#suo-page-sidebar .suo-side-brand-title small{font-size:8px;color:#c5c7d0;white-space:nowrap}
+#suo-side-collapse{background:#ffffff15;border:1px solid #ffffff35;color:#fff;width:28px;height:28px;flex:none;border-radius:8px;font-size:18px}
+#suo-side-collapse:hover{background:#ba2944}
+#suo-page-sidebar .suo-side-menu{flex:1;min-height:0;overflow-x:hidden;overflow-y:auto;padding:8px 1px;scrollbar-width:thin;scrollbar-color:#ffffff50 transparent}
+#suo-page-sidebar .suo-side-group{margin-top:15px}
+#suo-page-sidebar .suo-side-group-title{margin:0 10px 8px;color:#b9bcc8;font-size:9px;letter-spacing:.13em;font-weight:900;white-space:nowrap}
+#suo-page-sidebar .suo-side-link{display:flex;align-items:center;width:100%;min-height:48px;gap:10px;padding:9px 9px;margin:3px 0;text-align:left;color:#e4e5e8;border:1px solid transparent;border-radius:10px;background:transparent;transition:background .2s,transform .2s,border-color .2s}
+#suo-page-sidebar .suo-side-link:hover{background:#ffffff17;transform:translateX(2px)}
+#suo-page-sidebar .suo-side-link.is-active{background:linear-gradient(100deg,#dc263d,#98102a);border-color:#e6586561;color:#fff;box-shadow:0 5px 16px #73142a50}
+#suo-page-sidebar .suo-side-svg{width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center}
+#suo-page-sidebar .suo-side-svg svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#suo-page-sidebar .suo-side-text{font-size:11px;font-weight:750;line-height:1.35}
+#suo-page-sidebar .suo-side-bottom{display:flex;align-items:center;gap:10px;border-top:1px solid #ffffff2f;padding:13px 8px 2px}
+#suo-page-sidebar .suo-side-indicator{width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:#39c69e;box-shadow:0 0 0 4px #39c69e24}
+#suo-page-sidebar .suo-side-bottom-text{font-size:9px;color:#d7dde3;font-weight:800}
+body.suo-portal-pages.suo-side-small #suo-page-sidebar :is(.suo-side-brand-title,.suo-side-text,.suo-side-group-title,.suo-side-bottom-text){display:none}
+body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-link{justify-content:center;padding:9px 4px}
+body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-group{border-top:1px solid #ffffff27;padding-top:10px}
+body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-brand{flex-wrap:wrap;justify-content:center}
+body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-bottom{justify-content:center}
+#suo-side-mobile,#suo-side-backdrop{display:none}
+@keyframes suo-portal-enter{from{opacity:.6;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1080px){
+ body.suo-portal-pages{--suo-side-w:0px!important}
+ body.suo-portal-pages #suo-page-sidebar{width:min(286px,86vw)!important;transform:translateX(-105%);box-shadow:6px 0 34px #07112070}
+ body.suo-portal-pages.suo-side-open #suo-page-sidebar{transform:translateX(0)}
+ body.suo-portal-pages.suo-side-small #suo-page-sidebar :is(.suo-side-brand-title,.suo-side-text,.suo-side-group-title,.suo-side-bottom-text){display:block}
+ body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-link{justify-content:flex-start;padding:9px}
+ body.suo-portal-pages.suo-side-small #suo-page-sidebar .suo-side-brand{justify-content:flex-start;flex-wrap:nowrap}
+ body.suo-portal-pages :is(.hero,#suo-dashboard-overview,#statistik-pembangunan,.main-section,#pautan-pbt,.footer){margin-left:0!important}
+ body.suo-portal-pages .main-section.container{width:calc(100% - 30px)!important}
+ body.suo-portal-pages .selangor-ticker{margin-left:0;width:100%}
+ body.suo-portal-pages #suo-side-mobile{display:flex;position:fixed;right:13px;bottom:88px;z-index:112;align-items:center;gap:6px;background:#8b1831;border:1px solid #f3c779;border-radius:25px;padding:11px 15px;color:#fff;font-size:12px;font-weight:850;box-shadow:0 7px 20px #70192f4f}
+ body.suo-portal-pages.suo-side-open #suo-side-backdrop{display:block;position:fixed;inset:var(--suo-top-h) 0 0;z-index:105;background:#0710208c}
+}
+@media(prefers-reduced-motion:reduce){body.suo-portal-pages .suo-portal-visible{animation:none}body.suo-portal-pages #suo-page-sidebar{transition:none}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -8437,6 +8492,19 @@ header.header .top-nav .section-nav-btn[data-section="suo-dashboard-overview"]{w
     </nav><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
   </div>
 </header>
+<!-- Sidebar portal: navigation only; original heading and document content stay intact. -->
+<aside id="suo-page-sidebar" aria-label="Navigasi halaman">
+ <div class="suo-side-brand"><div class="suo-side-brand-logo" aria-hidden="true">S</div><div class="suo-side-brand-title"><strong>Rancangan Pemajuan Selangor</strong><small>PLANMalaysia Selangor · SUO</small></div><button type="button" id="suo-side-collapse" aria-label="Kecilkan menu" aria-expanded="true" title="Kembang / kecilkan menu">‹</button></div>
+ <nav class="suo-side-menu" aria-label="Menu sidebar">
+  <div class="suo-side-group"><div class="suo-side-group-title">MENU UTAMA</div><button class="suo-side-link" type="button" data-suo-side-page="home" title="Utama"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7"/></svg></span><span class="suo-side-text" data-ms="Utama" data-en="Home">Utama</span></button><button class="suo-side-link" type="button" data-suo-side-page="stats" title="Selangor Dalam Angka"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="4" height="10" rx="1"/><rect x="10" y="6" width="4" height="15" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></span><span class="suo-side-text" data-ms="Selangor Dalam Angka" data-en="Selangor at a Glance">Selangor Dalam Angka</span></button><button class="suo-side-link" type="button" data-suo-side-page="map" title="Peta Interaktif"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6 9 3l6 3 6-3v15l-6 3-6-3-6 3Z M9 3v15M15 6v15"/></svg></span><span class="suo-side-text" data-ms="Peta Interaktif" data-en="Interactive Map">Peta Interaktif</span></button></div>
+  <div class="suo-side-group"><div class="suo-side-group-title">DOKUMENTASI & BAB</div><button class="suo-side-link" type="button" data-suo-side-page="chapter-1" title="01 · Rancangan Selangor, Masa Hadapan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5h7a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H3zM21 5h-5a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h5z"/></svg></span><span class="suo-side-text" data-ms="01 · Rancangan Selangor, Masa Hadapan" data-en="01 · Selangor, the Future">01 · Rancangan Selangor, Masa Hadapan</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-2" title="02 · Arah Tuju & Hierarki Pemajuan"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.4 4.6-4.6 2.4 2.4-4.6z"/></svg></span><span class="suo-side-text" data-ms="02 · Arah Tuju & Hierarki Pemajuan" data-en="02 · Planning Direction & Hierarchy">02 · Arah Tuju & Hierarki Pemajuan</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-3" title="03 · RSN Selangor 2035 (Pengubahan)"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5ZM3 12l9 5 9-5M3 17l9 5 9-5"/></svg></span><span class="suo-side-text" data-ms="03 · RSN Selangor 2035 (Pengubahan)" data-en="03 · State Structure Plan 2035">03 · RSN Selangor 2035 (Pengubahan)</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-4" title="04 · Rancangan Tempatan & RKK"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 2h7l5 5v15H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2ZM14 2v6h5M9 13h6m-6 4h6"/></svg></span><span class="suo-side-text" data-ms="04 · Rancangan Tempatan & RKK" data-en="04 · Local & Special Area Plans">04 · Rancangan Tempatan & RKK</span></button><button class="suo-side-link" type="button" data-suo-side-page="chapter-5" title="05 · Sistem LPFNS"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="suo-side-text" data-ms="05 · Sistem LPFNS" data-en="05 · LPFNS System">05 · Sistem LPFNS</span></button></div>
+  <div class="suo-side-group"><div class="suo-side-group-title">DIREKTORI</div><button class="suo-side-link" type="button" data-suo-side-page="pbt" title="Direktori 12 PBT"><span class="suo-side-svg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V7l8-4 8 4v12M2 21h20M9 21v-8h6v8M9 9h1m4 0h1"/></svg></span><span class="suo-side-text" data-ms="Direktori 12 PBT" data-en="12 Local Authorities">Direktori 12 PBT</span></button></div>
+ </nav>
+ <div class="suo-side-bottom"><span class="suo-side-indicator"></span><span class="suo-side-bottom-text">PORTAL INTERAKTIF SELANGOR</span></div>
+</aside>
+<div id="suo-side-backdrop" aria-hidden="true"></div>
+<button type="button" id="suo-side-mobile" aria-controls="suo-page-sidebar" aria-expanded="false" aria-label="Buka menu">☰ <span>Menu</span></button>
+
 <div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
 
 <section class="hero" id="utama"><div class="suo-hero-particles" aria-hidden="true"></div><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./VIDEO%20MAIN%20PAGE%204.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
@@ -12434,6 +12502,98 @@ if(!reduced&&!mobile){
    },130);
  },{passive:true});
  select(0);
+})();
+</script>
+<script id="suo-sidebar-pages-20261022-js">
+(function(){
+ 'use strict';
+ const body=document.body;
+ const header=document.querySelector('header.header');
+ const sidebar=document.getElementById('suo-page-sidebar');
+ const backdrop=document.getElementById('suo-side-backdrop');
+ const mobile=document.getElementById('suo-side-mobile');
+ const collapse=document.getElementById('suo-side-collapse');
+ const sections={
+  home:document.getElementById('utama'),
+  stats:document.getElementById('suo-dashboard-overview'),
+  map:document.getElementById('statistik-pembangunan'),
+  chapters:document.querySelector('main.main-section'),
+  pbt:document.getElementById('pautan-pbt')
+ };
+ const originalSwitch=window.switchTab,originalScroll=window.scrollToSuoTarget;
+ if(!sidebar||!header||Object.values(sections).some(x=>!x)||typeof originalSwitch!=='function')return;
+ const links=Array.from(sidebar.querySelectorAll('[data-suo-side-page]'));
+ const panels=Array.from(sections.chapters.querySelectorAll('.content-panel'));
+ Object.values(sections).forEach(el=>el.classList.add('suo-portal-view'));
+ let current='home';
+ function closeDrawer(){body.classList.remove('suo-side-open');mobile.setAttribute('aria-expanded','false')}
+ function activateChapter(index){
+  if(index<4){originalSwitch(index);return}
+  panels.forEach((el,i)=>{const on=i===index;el.classList.toggle('active',on);el.setAttribute('aria-hidden',String(!on))});
+  document.querySelectorAll('#chapterCarousel .tab-btn').forEach((el,i)=>{el.classList.toggle('active',i===index);el.setAttribute('aria-selected',String(i===index))});
+ }
+ function open(page,options){
+  options=options||{};
+  if(!links.some(el=>el.dataset.suoSidePage===page))return false;
+  const chapter=page.startsWith('chapter-')?parseInt(page.slice(8),10)-1:-1;
+  const active=chapter>=0?sections.chapters:sections[page];
+  if(!active)return false;
+  current=page;body.dataset.suoPage=page;
+  Object.values(sections).forEach(el=>el.classList.toggle('suo-portal-visible',el===active));
+  links.forEach(link=>{const on=link.dataset.suoSidePage===page;link.classList.toggle('is-active',on);if(on)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
+  if(chapter>=0&&!options.skipChapter)activateChapter(chapter);
+  if(!options.noReset)window.scrollTo({top:0,behavior:'instant'});
+  closeDrawer();return true;
+ }
+ function pageOf(target){
+  if(typeof target==='string')target=document.getElementById(target);
+  if(!target||!(target instanceof Element))return null;
+  if(sections.chapters===target||sections.chapters.contains(target)){
+   const p=target.closest('.content-panel');
+   const index=p?panels.indexOf(p):panels.findIndex(el=>el.classList.contains('active'));
+   return 'chapter-'+(Math.max(0,index)+1);
+  }
+  for(const [key,value] of Object.entries(sections))if(target===value||value.contains(target))return key;
+  return null;
+ }
+ window.suoPortalNavigate=open;
+ if(typeof originalScroll==='function')window.scrollToSuoTarget=function(target){
+  const el=typeof target==='string'?document.getElementById(target):target;
+  const page=pageOf(el);
+  if(page&&page!==current){open(page);return}
+  if(page&&page.startsWith('chapter-')&&el&&el.closest&&el.closest('.chapter-intro'))return;
+  return originalScroll(target);
+ };
+ window.switchTab=function(index){
+  if(!Number.isInteger(index)||index<0||index>4)return;
+  open('chapter-'+(index+1),{skipChapter:true});
+  activateChapter(index);
+ };
+ sidebar.addEventListener('click',e=>{const btn=e.target.closest('[data-suo-side-page]');if(btn)open(btn.dataset.suoSidePage)});
+ collapse.addEventListener('click',()=>{
+  if(matchMedia('(max-width:1080px)').matches){closeDrawer();return}
+  const small=body.classList.toggle('suo-side-small');
+  collapse.textContent=small?'›':'‹';collapse.setAttribute('aria-expanded',String(!small));
+  collapse.setAttribute('aria-label',small?'Besarkan menu':'Kecilkan menu');
+ });
+ mobile.addEventListener('click',()=>{const on=body.classList.toggle('suo-side-open');mobile.setAttribute('aria-expanded',String(on))});
+ backdrop.addEventListener('click',closeDrawer);
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
+ // Capture hero CTAs so they switch pages rather than trying to scroll to hidden content.
+ const hero=sections.home;
+ hero.querySelector('.primary-cta')?.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();open('chapter-1')},true);
+ hero.querySelector('.secondary-cta')?.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();open('map')},true);
+ function translate(){
+  const lang=document.documentElement.lang==='en'?'en':'ms';
+  sidebar.querySelectorAll('[data-ms][data-en]').forEach(el=>el.textContent=el.getAttribute('data-'+lang));
+ }
+ ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>queueMicrotask(translate)));
+ function sizing(){body.style.setProperty('--suo-top-h',Math.ceil(header.getBoundingClientRect().height)+'px')}
+ sizing();if('ResizeObserver' in window)new ResizeObserver(sizing).observe(header);else window.addEventListener('resize',sizing,{passive:true});
+ body.classList.add('suo-portal-pages');
+ const deep=location.hash?document.getElementById(decodeURIComponent(location.hash.slice(1))):null;
+ open(deep?pageOf(deep)||'home':'home');
+ translate();
 })();
 </script>
 </body>
