@@ -8996,7 +8996,20 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 @media(max-width:1050px){.header .suo-find{flex:0 1 175px;width:175px;min-width:125px}}
 @media(max-width:680px){.header .suo-find{flex:0 1 145px;width:145px;min-width:105px}.header .suo-find .suo-find-label{height:39px;gap:8px;padding:0 11px}.header .suo-find .suo-find-label input{font-size:12px}}
 </style>
-</head>
+<style id="suo-spatial-flip-readability-auto-20261023">
+/* Readable typography on both sides regardless of inherited urban-card white text. */
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip .suo-spatial-flip-face,
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip .suo-spatial-flip-face p,
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip .suo-spatial-flip-face p strong{color:#4a3940!important;text-shadow:none!important;opacity:1!important}
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip .suo-spatial-flip-face h6{color:#49342d!important;text-shadow:none!important}
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip .suo-spatial-flip-face .suo-rsn-spatial-eyebrow,
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip .suo-spatial-flip-hint{color:#80521f!important;opacity:1!important;text-shadow:none!important}
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip-back{background:linear-gradient(140deg,#fff9ef,#f2e4da)!important}
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip-outer .suo-spatial-flip-back{background:linear-gradient(140deg,#fffaf5,#f1dfe4)!important}
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip-back p{font-size:clamp(15px,1.15vw,17px)!important;line-height:1.8!important;font-weight:500!important}
+#panel-2 #suo-rsn-relocated-content .suo-spatial-flip .suo-spatial-flip-front{justify-content:flex-start}
+@media(prefers-reduced-motion:reduce){#suo-rsn-relocated-content .suo-spatial-flip-inner{transition:none!important}}
+</style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
@@ -13472,6 +13485,31 @@ document.addEventListener('DOMContentLoaded',buildIndex,{once:true});
 })();
 </script>
 
-<script id="suo-spatial-flip-restoration-20261023-js">(function(){document.querySelectorAll('#suo-rsn-relocated-content .suo-spatial-flip').forEach(function(card){function flip(){const active=!card.classList.contains('is-flipped');card.classList.toggle('is-flipped',active);card.setAttribute('aria-pressed',String(active))}card.addEventListener('click',flip);card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}})})})();</script>
+<script id="suo-spatial-flip-restoration-20261023-js">
+(function(){
+'use strict';
+const cards=[...document.querySelectorAll('#suo-rsn-relocated-content .suo-spatial-flip')];
+if(!cards.length)return;
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+cards.forEach((card,index)=>{
+ let visible=false,hovered=false,focused=false,manualUntil=0;
+ function setFlip(state){card.classList.toggle('is-flipped',state);card.setAttribute('aria-pressed',String(state))}
+ function manualFlip(){setFlip(!card.classList.contains('is-flipped'));manualUntil=Date.now()+16000}
+ card.addEventListener('click',manualFlip);
+ card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();manualFlip()}});
+ card.addEventListener('mouseenter',()=>hovered=true);
+ card.addEventListener('mouseleave',()=>hovered=false);
+ card.addEventListener('focusin',()=>focused=true);
+ card.addEventListener('focusout',e=>{if(!card.contains(e.relatedTarget))focused=false});
+ const observer=new IntersectionObserver(entries=>{visible=entries.some(e=>e.isIntersecting&&e.intersectionRatio>=.25);if(!visible)setFlip(false)},{threshold:[0,.25,.6]});
+ observer.observe(card);
+ let tick=0;
+ setInterval(()=>{
+  if(!visible||document.hidden||reduce.matches||hovered||focused||Date.now()<manualUntil)return;
+  tick++;setFlip(tick%2===1);
+ },index===0?8500:9900);
+});
+})();
+</script>
 </body>
 </html>
