@@ -9147,7 +9147,10 @@ body.suo-spotlight-visible #suo-adaptive-spotlight{opacity:1}
  #panel-1 #bento-1-0 .suo-bab02-grid > .suo-legal-cards-pair{grid-template-columns:1fr!important;grid-auto-rows:auto!important}
  #panel-1 #bento-1-0 .suo-bab02-grid > .suo-legal-cards-pair > article.suo-bab02-card{height:auto!important;min-height:0!important}
 }
-</style><style id="rr04-genting-storymap-link-style">#panel-3 .rr04-genting-storymap{display:inline-flex;align-items:center;gap:5px;margin-top:9px;padding:8px 12px;border:1px solid #c5a16b;border-radius:999px;background:#fff8e8;color:#712c47;font-size:12px;font-weight:800;text-decoration:none;line-height:1.4;transition:background .2s,transform .2s}#panel-3 .rr04-genting-storymap:hover,#panel-3 .rr04-genting-storymap:focus-visible{background:#f7e5c8;transform:translateY(-2px)}</style></head>
+</style><style id="rr04-genting-storymap-link-style">#panel-3 .rr04-genting-storymap{display:inline-flex;align-items:center;gap:5px;margin-top:9px;padding:8px 12px;border:1px solid #c5a16b;border-radius:999px;background:#fff8e8;color:#712c47;font-size:12px;font-weight:800;text-decoration:none;line-height:1.4;transition:background .2s,transform .2s}#panel-3 .rr04-genting-storymap:hover,#panel-3 .rr04-genting-storymap:focus-visible{background:#f7e5c8;transform:translateY(-2px)}</style><style id="rr04-rkk-genting-link-20261023">
+#rr04-rkk-portal-20261022 .rr04-rkk-genting-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:9px 13px;border-radius:11px;background:#eaca84;color:#16354a!important;font-size:12px;font-weight:850;text-decoration:none;border:1px solid #f3dca8;transition:transform .2s,background .2s}
+#rr04-rkk-portal-20261022 .rr04-rkk-genting-link:hover{transform:translateY(-2px);background:#ffe3a2}
+</style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
@@ -13413,7 +13416,18 @@ window.renderSuoPbtDocumentTable=function(type,code){
      const entry=document.createElement('article');entry.className='rr04-rt-portal-doc-entry';
      const head=document.createElement('strong');head.textContent=String(i+1).padStart(2,'0')+' · '+title;
      const description=document.createElement('p');description.textContent=documentOverview(title);
-     entry.append(head,description);docList.appendChild(entry);
+     entry.append(head,description);
+     if(p.code==='MPHS' && /Genting Highlands/i.test(title)){
+       const link=document.createElement('a');
+       link.className='rr04-genting-storymap rr04-rkk-genting-link';
+       link.href='https://arcg.is/1O1KeP0';
+       link.target='_blank';
+       link.rel='noopener noreferrer';
+       link.textContent='Terokai StoryMap RKK Genting Highlands ↗';
+       link.setAttribute('aria-label','Buka StoryMap RKK Genting Highlands Hulu Selangor');
+       entry.appendChild(link);
+     }
+     docList.appendChild(entry);
    });
    if(!p.docs.length){const note=document.createElement('p');note.textContent='Senarai dokumen RKK belum tersedia dalam direktori.';docList.appendChild(note);}
    if(p.url){
