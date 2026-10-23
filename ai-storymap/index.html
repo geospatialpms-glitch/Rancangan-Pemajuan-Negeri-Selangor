@@ -9122,6 +9122,31 @@ body.suo-spotlight-visible #suo-adaptive-spotlight{opacity:1}
 #panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info:nth-of-type(1){grid-column:1!important}
 #panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info:nth-of-type(2){grid-column:2!important}
 @media(max-width:780px){#panel-1 #bento-1-0 .suo-bab02-grid{grid-template-columns:minmax(0,1fr)!important}#panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info{grid-column:1!important;grid-row:auto!important;height:auto!important}}
+</style><style id="suo-legal-pair-equal-height-fix-20261023">
+/* Target the actual nested pair (not the outer grid): force equal row track heights. */
+#panel-1 #bento-1-0 .suo-bab02-grid > .suo-legal-cards-pair{
+ display:grid!important;
+ grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ grid-auto-rows:1fr!important;
+ align-items:stretch!important;
+ gap:18px!important;
+}
+#panel-1 #bento-1-0 .suo-bab02-grid > .suo-legal-cards-pair > article.suo-bab02-card{
+ display:flex!important;
+ flex-direction:column!important;
+ align-self:stretch!important;
+ justify-self:stretch!important;
+ height:100%!important;
+ min-height:100%!important;
+ max-height:none!important;
+ box-sizing:border-box!important;
+ margin:0!important;
+ padding:24px 26px!important;
+}
+@media(max-width:780px){
+ #panel-1 #bento-1-0 .suo-bab02-grid > .suo-legal-cards-pair{grid-template-columns:1fr!important;grid-auto-rows:auto!important}
+ #panel-1 #bento-1-0 .suo-bab02-grid > .suo-legal-cards-pair > article.suo-bab02-card{height:auto!important;min-height:0!important}
+}
 </style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
