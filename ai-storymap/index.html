@@ -12227,76 +12227,64 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
 })();
 </script>
 <script id="suo-rsn-live-hectare-counter-v4-2026">
-/* Three live hectare counters: footer-mounted, only when visible. */
+/* Keluasan Bab 6: count from 0 to original values when shown; pause offscreen. */
 (function(){
  'use strict';
- let active=false, attempt=0, retry=0;
- function init(){
-  if(active)return true;
-  const root=document.getElementById('suo-landuse-storymap-bab6-2026');
-  if(!root)return false;
-  const stat=root.querySelector('.lu-stats'),bar=root.querySelector('.lu-counter-progress-row');
-  if(!stat||!bar)return false;
-  const counters=Array.from(stat.querySelectorAll('.lu-count[data-lu-count]'));
-  if(counters.length!==3)return false;
-  const values=counters.map(function(e){return Number(e.getAttribute('data-lu-count'));});
-  if(values.some(function(n){return !Number.isFinite(n)||n<0;}))return false;
-  const number=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-  const reduced=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const countMs=4100,holdMs=550;
-  let previous=false,clock=0;
-  function draw(progress){
-   const p=Math.max(0,Math.min(1,progress));
-   counters.forEach(function(e,i){e.textContent=number.format(values[i]*p);});
-   root.style.setProperty('--lu-counter-progress',(p*100).toFixed(2)+'%');
-  }
-  function visible(){
-   if(document.hidden||!stat.isConnected)return false;
-   const r=stat.getBoundingClientRect();
-   const h=window.innerHeight||document.documentElement.clientHeight||0;
-   const w=window.innerWidth||document.documentElement.clientWidth||0;
-   const overlap=Math.max(0,Math.min(r.bottom,h)-Math.max(r.top,0));
-   return r.width>0&&r.height>0&&overlap>=Math.min(25,r.height*.12)&&r.left<w&&r.right>0;
-  }
-  function tick(){
-   if(!root.isConnected){window.clearInterval(timer);return;}
-   if(reduced){draw(1);return;}
-   if(!visible()){
-    if(previous){bar.classList.remove('lu-counter-is-running');}
-    previous=false;bar.dataset.countStatus='waiting';draw(1);return;
-   }
-   if(!previous){
-    previous=true;clock=Date.now();
-    bar.classList.add('lu-counter-is-running');
-    bar.dataset.countStatus='running';
-    draw(0);return;
-   }
-   const elapsed=(Date.now()-clock)%(countMs+holdMs);
-   const progress=elapsed>=countMs?1:elapsed/countMs;
-   bar.dataset.countStatus=elapsed>=countMs?'pause':'running';
-   draw(progress);
-  }
-  bar.classList.add('lu-counter-js-ready');
-  bar.dataset.countVersion='v4';
-  draw(1);
-  const timer=window.setInterval(tick,40);
-  active=true;
-  tick();
-  window.addEventListener('pageshow',function(){previous=false;tick();});
-  window.addEventListener('scroll',tick,{passive:true});
-  document.addEventListener('visibilitychange',tick);
-  return true;
+ const root=document.getElementById('suo-landuse-storymap-bab6-2026');
+ if(!root)return;
+ const stat=root.querySelector('.lu-stats'),bar=root.querySelector('.lu-counter-progress-row');
+ if(!stat)return;
+ const counters=[...stat.querySelectorAll('.lu-count[data-lu-count]')];
+ if(counters.length!==3)return;
+ const values=counters.map(el=>Number(el.dataset.luCount));
+ if(values.some(n=>!Number.isFinite(n)))return;
+ const format=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+ let raf=0,started=0,running=false,wasVisible=false;
+ const duration=2600;
+ const draw=p=>{
+  const progress=Math.max(0,Math.min(1,p));
+  const eased=1-Math.pow(1-progress,3);
+  counters.forEach((el,i)=>{el.textContent=format.format(values[i]*eased)});
+  root.style.setProperty('--lu-counter-progress',(progress*100).toFixed(1)+'%');
+ };
+ const visible=()=>{
+  if(document.hidden||!stat.isConnected)return false;
+  if(stat.closest('[hidden]'))return false;
+  const r=stat.getBoundingClientRect(),height=window.innerHeight||0;
+  return r.width>0&&r.height>0&&r.bottom>80&&r.top<height-20;
+ };
+ const stop=()=>{if(raf)cancelAnimationFrame(raf);raf=0;running=false;started=0};
+ function animate(time){
+  if(!visible()){stop();wasVisible=false;draw(1);bar?.classList.remove('lu-counter-is-running');return}
+  if(!started)started=time;
+  const progress=Math.min(1,(time-started)/duration);
+  draw(progress);
+  if(progress<1){raf=requestAnimationFrame(animate)}
+  else{stop();bar?.classList.remove('lu-counter-is-running');bar&&(bar.dataset.countStatus='complete')}
  }
- function boot(){
-  if(init()||retry)return;
-  retry=window.setInterval(function(){
-   if(init()||++attempt>40){window.clearInterval(retry);retry=0;}
-  },250);
+ function check(){
+  const on=visible();
+  if(!on){if(wasVisible){stop();draw(1)}wasVisible=false;return}
+  if(on&&!wasVisible){
+   wasVisible=true;
+   if(reduce.matches){draw(1);return}
+   stop();draw(0);running=true;bar?.classList.add('lu-counter-is-running');
+   bar&&(bar.dataset.countStatus='running');
+   raf=requestAnimationFrame(animate);
+  }
  }
- if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',boot,{once:true});
- }else boot();
- window.addEventListener('pageshow',boot);
+ draw(1);
+ if('IntersectionObserver' in window){
+  new IntersectionObserver(check,{threshold:[0,.05,.2]}).observe(stat);
+ }
+ window.addEventListener('scroll',check,{passive:true});
+ window.addEventListener('resize',check,{passive:true});
+ document.addEventListener('visibilitychange',check);
+ window.addEventListener('pageshow',()=>{wasVisible=false;check()});
+ document.addEventListener('click',()=>requestAnimationFrame(check),true);
+ new MutationObserver(check).observe(document.body,{attributes:true,subtree:true,attributeFilter:['hidden','class','data-suo-drawer-page']});
+ check();
 })();
 </script>
 <script id="suo-rt-rkk-2026-interaction">
