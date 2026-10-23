@@ -12862,6 +12862,24 @@ if(!reduced&&!mobile){
 })();
 </script>
 
+<script id="rr04-excel-doc-table-js">
+(function(){
+'use strict';
+const docs={"RT":[["MBPJ","Rancangan Tempatan Petaling Jaya 1 (RTPJ1) (Pengubahan 4)","No. 515 pada 16.2.2023"],["MBPJ","Rancangan Tempatan Petaling Jaya 2 (RTPJ2) (Pengubahan 3","No. 514 pada 16.2.2023"],["MBSA","Rancangan Tempatan Majlis Bandaraya Shah Alam 2035","No. 2642 pada 7.7.2022"],["MBSA","Rancangan Tempatan Majlis Bandaraya Shah Alam 2035 (Pengubahan 1)","Telah dipersetujui oleh PBN melalui MMKN pada 1 Oktober 2025"],["MBSJ","Rancangan Tempatan Subang Jaya 2035 (Penggantian)","No. 1920 pada 26.5.2022"],["MBDK","Rancangan Tempatan Majlis Perbandaran Klang 2035 (Penggantian)","No. 342 pada 18.2.2021"],["MBDK","Rancangan Tempatan Majlis Bandaraya Diraja Klang 2035 (Pengubahan 1)","No. 5082 pada 10.10.2024"],["MPKJ","Rancangan Tempatan Majlis Perbandaran Kajang Selangor 2035 (Penggantian)","No. 1800 pada 13.8.2020"],["MPKJ","Rancangan Tempatan Majlis Perbandaran Kajang Selangor 2035 (Pengubahan 1)","No. 4185 pada 16.11.2023"],["MPKJ","Rancangan Tempatan Majlis Perbandaran Kajang Selangor 2035 (Pengubahan 2)","Telah dipersetujui oleh PBN melalui MMKN pada 30 Mac 2026"],["MPAJ","Rancangan Tempatan Majlis Perbandaran Ampang Jaya 2035 (Penggantian)","No. 540 pada 6.2.2025"],["MPS","Rancangan Tempatan Majlis Perbandaran Selayang 2030 (Penggantian)","No. 1387 pada 20.4.2023"],["MPS","Rancangan Tempatan Majlis Perbandaran Selayang 2030 (Pengubahan 1)","Telah dipersetujui oleh PBN melalui MMKN pada 19 Mac 2025"],["MPSP","Rancangan Tempatan Majlis Perbandaran Sepang,Selangor 2035 (Penggantian)","No. 1388 pada 9 April 2026"],["MPHS","Rancangan Tempatan Daerah Hulu Selangor 2035 (Penggantian)","No. 1809 pada 12.8.2021"],["MPHS","Rancangan Tempatan Daerah Hulu Selangor 2035 (Pengubahan1)","No. 1750 pada 8.5.2025"],["MPKL","Rancangan Tempatan Kuala Langat 2030","No. 2382 pada 5.7.2018"],["MPKL","Rancangan Tempatan Kuala Langat 2030 (Pengubahan 2)","No. 4202 pada 22.9.2022"],["MPKS","Rancangan Tempatan Majlis Daerah Kuala Langat Selangor 2035 (Penggantian)","Telah dipersetujui oleh PBN melalui MMKN pada 10 Disember 2025"],["MDSB","Rancangan Tempatan Majlis Daerah Sabak Bernam 2025","No. 2964 pada 8.10.2015"]],"RKK":[["MBPJ","Rancangan Kawasan Khas Seksyen 13 Petaling Jaya (Pengubahan 1)","No. 2818 pada 7.8.2025"],["MPHS","Rancangan Kawasan Khas Bandar Kuala Kubu Bharu","No. 1568 pada 27.5.2010"],["MPKS","Rancangan Kawasan Khas Bandar Warisan Alam Melawati, Kuala Selangor","No. 1944 pada 2.9.2021"],["MPHS","Rancangan Kawasan Khas Genting Highlands Hulu Selangor","Telah dipersetujui oleh PBN melalui MMKN ke-9/2026 pada 30 Mac 2026"]]};
+window.renderSuoPbtDocumentTable=function(type,code){
+ const host=document.getElementById('rr04-'+type.toLowerCase()+'-excel-table');if(!host)return;
+ host.replaceChildren();
+ const aliases={'MPSP':'MPSP','MPSP.':'MPSP','MPSEPANG':'MPSP'};
+ const selected=aliases[(code||'').toUpperCase()]||(code||'').toUpperCase();
+ const rows=(docs[type.toUpperCase()]||[]).filter(r=>r[0].toUpperCase()===selected);
+ if(!rows.length){const p=document.createElement('p');p.className='rr04-excel-note';p.textContent='Tiada rekod tambahan dalam senarai Excel bagi PBT ini.';host.append(p);return;}
+ const table=document.createElement('table'),caption=document.createElement('caption');caption.textContent='Senarai '+type.toUpperCase()+' Mengikut PBT · '+rows.length+' dokumen';table.append(caption);
+ const thead=document.createElement('thead'),tr=document.createElement('tr');
+ ['Bil.','Nama Dokumen','No. Warta / Status'].forEach(t=>{const th=document.createElement('th');th.scope='col';th.textContent=t;tr.append(th)});thead.append(tr);table.append(thead);
+ const tbody=document.createElement('tbody');rows.forEach((record,i)=>{const tr=document.createElement('tr');[String(i+1),record[1],record[2]].forEach(t=>{const td=document.createElement('td');td.textContent=t;tr.append(td)});tbody.append(tr)});table.append(tbody);host.append(table);
+};
+})();
+</script>
 <script id="rr04-rt-storymap-explorer-js-20261022">
 /* Only BAB 04 / RT directory. Read existing 12 PBT & documents; keep the original dataset and map listeners. */
 (function(){
@@ -13409,23 +13427,6 @@ document.addEventListener('click',e=>{if(!root.contains(e.target))closeResults()
 document.addEventListener('DOMContentLoaded',buildIndex,{once:true});
 })();
 </script>
-<script id="rr04-excel-doc-table-js">
-(function(){
-'use strict';
-const docs={"RT":[["MBPJ","Rancangan Tempatan Petaling Jaya 1 (RTPJ1) (Pengubahan 4)","No. 515 pada 16.2.2023"],["MBPJ","Rancangan Tempatan Petaling Jaya 2 (RTPJ2) (Pengubahan 3","No. 514 pada 16.2.2023"],["MBSA","Rancangan Tempatan Majlis Bandaraya Shah Alam 2035","No. 2642 pada 7.7.2022"],["MBSA","Rancangan Tempatan Majlis Bandaraya Shah Alam 2035 (Pengubahan 1)","Telah dipersetujui oleh PBN melalui MMKN pada 1 Oktober 2025"],["MBSJ","Rancangan Tempatan Subang Jaya 2035 (Penggantian)","No. 1920 pada 26.5.2022"],["MBDK","Rancangan Tempatan Majlis Perbandaran Klang 2035 (Penggantian)","No. 342 pada 18.2.2021"],["MBDK","Rancangan Tempatan Majlis Bandaraya Diraja Klang 2035 (Pengubahan 1)","No. 5082 pada 10.10.2024"],["MPKJ","Rancangan Tempatan Majlis Perbandaran Kajang Selangor 2035 (Penggantian)","No. 1800 pada 13.8.2020"],["MPKJ","Rancangan Tempatan Majlis Perbandaran Kajang Selangor 2035 (Pengubahan 1)","No. 4185 pada 16.11.2023"],["MPKJ","Rancangan Tempatan Majlis Perbandaran Kajang Selangor 2035 (Pengubahan 2)","Telah dipersetujui oleh PBN melalui MMKN pada 30 Mac 2026"],["MPAJ","Rancangan Tempatan Majlis Perbandaran Ampang Jaya 2035 (Penggantian)","No. 540 pada 6.2.2025"],["MPS","Rancangan Tempatan Majlis Perbandaran Selayang 2030 (Penggantian)","No. 1387 pada 20.4.2023"],["MPS","Rancangan Tempatan Majlis Perbandaran Selayang 2030 (Pengubahan 1)","Telah dipersetujui oleh PBN melalui MMKN pada 19 Mac 2025"],["MPSP","Rancangan Tempatan Majlis Perbandaran Sepang,Selangor 2035 (Penggantian)","No. 1388 pada 9 April 2026"],["MPHS","Rancangan Tempatan Daerah Hulu Selangor 2035 (Penggantian)","No. 1809 pada 12.8.2021"],["MPHS","Rancangan Tempatan Daerah Hulu Selangor 2035 (Pengubahan1)","No. 1750 pada 8.5.2025"],["MPKL","Rancangan Tempatan Kuala Langat 2030","No. 2382 pada 5.7.2018"],["MPKL","Rancangan Tempatan Kuala Langat 2030 (Pengubahan 2)","No. 4202 pada 22.9.2022"],["MPKS","Rancangan Tempatan Majlis Daerah Kuala Langat Selangor 2035 (Penggantian)","Telah dipersetujui oleh PBN melalui MMKN pada 10 Disember 2025"],["MDSB","Rancangan Tempatan Majlis Daerah Sabak Bernam 2025","No. 2964 pada 8.10.2015"]],"RKK":[["MBPJ","Rancangan Kawasan Khas Seksyen 13 Petaling Jaya (Pengubahan 1)","No. 2818 pada 7.8.2025"],["MPHS","Rancangan Kawasan Khas Bandar Kuala Kubu Bharu","No. 1568 pada 27.5.2010"],["MPKS","Rancangan Kawasan Khas Bandar Warisan Alam Melawati, Kuala Selangor","No. 1944 pada 2.9.2021"],["MPHS","Rancangan Kawasan Khas Genting Highlands Hulu Selangor","Telah dipersetujui oleh PBN melalui MMKN ke-9/2026 pada 30 Mac 2026"]]};
-window.renderSuoPbtDocumentTable=function(type,code){
- const host=document.getElementById('rr04-'+type.toLowerCase()+'-excel-table');if(!host)return;
- host.replaceChildren();
- const aliases={'MPSP':'MPSP','MPSP.':'MPSP','MPSEPANG':'MPSP'};
- const selected=aliases[(code||'').toUpperCase()]||(code||'').toUpperCase();
- const rows=(docs[type.toUpperCase()]||[]).filter(r=>r[0].toUpperCase()===selected);
- if(!rows.length){const p=document.createElement('p');p.className='rr04-excel-note';p.textContent='Tiada rekod tambahan dalam senarai Excel bagi PBT ini.';host.append(p);return;}
- const table=document.createElement('table'),caption=document.createElement('caption');caption.textContent='Senarai '+type.toUpperCase()+' Mengikut PBT · '+rows.length+' dokumen';table.append(caption);
- const thead=document.createElement('thead'),tr=document.createElement('tr');
- ['Bil.','Nama Dokumen','No. Warta / Status'].forEach(t=>{const th=document.createElement('th');th.scope='col';th.textContent=t;tr.append(th)});thead.append(tr);table.append(thead);
- const tbody=document.createElement('tbody');rows.forEach((record,i)=>{const tr=document.createElement('tr');[String(i+1),record[1],record[2]].forEach(t=>{const td=document.createElement('td');td.textContent=t;tr.append(td)});tbody.append(tr)});table.append(tbody);host.append(table);
-};
-})();
-</script>
+
 </body>
 </html>
