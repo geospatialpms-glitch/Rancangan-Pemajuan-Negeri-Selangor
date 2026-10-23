@@ -9071,7 +9071,17 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 #panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info:nth-child(2){grid-column:2!important;grid-row:1!important}
 #panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info:first-child{grid-column:1!important;grid-row:1!important}
 @media(max-width:760px){#panel-1 #bento-1-0 .suo-bab02-grid{grid-template-columns:1fr!important}#panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info:first-child,#panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info:nth-child(2){grid-column:1!important;grid-row:auto!important;height:auto!important}}
-</style></head>
+</style><style id="suo-adaptive-cursor-spotlight-20261023">
+/* Lightweight global cursor illumination; no impact on clicking or scrolling. */
+#suo-adaptive-spotlight{position:fixed;left:0;top:0;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:2147483000;opacity:0;transform:translate3d(-600px,-600px,0);background:radial-gradient(circle,rgba(var(--spot-rgb,164,99,118),.20) 0%,rgba(var(--spot-rgb,164,99,118),.10) 26%,transparent 69%);mix-blend-mode:screen;transition:opacity .35s,background-color .5s;will-change:transform;isolation:isolate}
+body.suo-spotlight-visible #suo-adaptive-spotlight{opacity:1}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){#suo-adaptive-spotlight{display:none!important}}
+/* Equal-height legal intro cards while retaining flexible content sizing. */
+#panel-1 #bento-1-0 .suo-bab02-grid{align-items:stretch!important}
+#panel-1 #bento-1-0 .suo-bab02-compact-info{height:100%!important;align-self:stretch!important;min-height:0!important}
+@media(max-width:780px){#panel-1 #bento-1-0 .suo-bab02-compact-info{height:auto!important}}
+</style>
+</head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
@@ -13538,5 +13548,46 @@ cards.forEach((card,index)=>{
 });
 })();
 </script>
-<script id="suo-hierarchy-motion-20261023">(function(){const flow=document.querySelector('#bento-1-0 .suo-hierarchy-live');if(!flow)return;const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;if(reduced||!('IntersectionObserver'in window))flow.classList.add('is-visible');else{const obs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){flow.classList.add('is-visible');obs.unobserve(flow)}})},{threshold:.15});obs.observe(flow)}flow.querySelectorAll('[data-hierarchy-target]').forEach(btn=>btn.addEventListener('click',()=>{if(typeof window.showSuoBento==='function')window.showSuoBento(1,1);const name=btn.dataset.hierarchyTarget;setTimeout(()=>{document.querySelector('#bento-1-1 [data-bab02-section="'+name+'"]')?.click()},120)}))})();</script></body>
+<script id="suo-hierarchy-motion-20261023">(function(){const flow=document.querySelector('#bento-1-0 .suo-hierarchy-live');if(!flow)return;const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;if(reduced||!('IntersectionObserver'in window))flow.classList.add('is-visible');else{const obs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){flow.classList.add('is-visible');obs.unobserve(flow)}})},{threshold:.15});obs.observe(flow)}flow.querySelectorAll('[data-hierarchy-target]').forEach(btn=>btn.addEventListener('click',()=>{if(typeof window.showSuoBento==='function')window.showSuoBento(1,1);const name=btn.dataset.hierarchyTarget;setTimeout(()=>{document.querySelector('#bento-1-1 [data-bab02-section="'+name+'"]')?.click()},120)}))})();</script><script id="suo-adaptive-cursor-spotlight-script">
+(function(){
+'use strict';
+if(!window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches)return;
+const light=document.createElement('div');
+light.id='suo-adaptive-spotlight';light.setAttribute('aria-hidden','true');document.body.appendChild(light);
+const palette={green:[83,181,131],blue:[91,152,221],yellow:[225,179,80],orange:[219,137,74],red:[204,92,111],purple:[154,109,207],pink:[206,115,151],teal:[62,181,175]};
+let x=-500,y=-500,tx=-500,ty=-500,last=null,loop=0,shown=false;
+const rgbCache=new WeakMap();
+function parseColor(v){const m=v&&v.match(/rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/);return m?[+m[1],+m[2],+m[3]]:null}
+function tone(el){
+ if(!el)return [164,99,118];
+ const target=el.closest('.suo-spatial-flip,.suo-bab02-card,.suo-doc-card,.suo-rsn-project-card,.suo-hierarchy-node,.lu-stat,.card,.carousel-item,article,section,button,.suo-bento-topic')||el;
+ if(rgbCache.has(target))return rgbCache.get(target);
+ let color;const cls=(target.className&&typeof target.className==='string'?target.className:'').toLowerCase();
+ for(const [key,v] of Object.entries(palette)){if(cls.includes(key)||cls.includes(key==='green'?'emerald':'___')){color=v;break}}
+ let node=target;
+ for(let i=0;!color&&node&&i<5;i++,node=node.parentElement){
+  const style=getComputedStyle(node);
+  const bg=parseColor(style.backgroundColor);
+  if(bg&&Math.max(...bg)-Math.min(...bg)>22&&!(bg.every(n=>n>235))){color=bg;break}
+  const border=parseColor(style.borderTopColor);
+  if(border&&Math.max(...border)-Math.min(...border)>30){color=border;break}
+ }
+ color=color||[164,99,118];const softened=color.map(v=>Math.round(v*.82+255*.18));
+ rgbCache.set(target,softened);return softened
+}
+function animate(){loop=0;x+=(tx-x)*.18;y+=(ty-y)*.18;light.style.transform='translate3d('+(x-170)+'px,'+(y-170)+'px,0)';if(shown&&(Math.abs(tx-x)>.4||Math.abs(ty-y)>.4))loop=requestAnimationFrame(animate)}
+document.addEventListener('pointermove',e=>{
+ if(e.pointerType==='touch')return;
+ tx=e.clientX;ty=e.clientY;shown=true;
+ document.body.classList.add('suo-spotlight-visible');
+ const el=document.elementFromPoint(tx,ty);
+ const target=el?.closest('.suo-spatial-flip,.suo-bab02-card,.suo-doc-card,.suo-rsn-project-card,.suo-hierarchy-node,.lu-stat,.card,article,section,button')||el;
+ if(target!==last){last=target;light.style.setProperty('--spot-rgb',tone(target).join(','))}
+ if(!loop)loop=requestAnimationFrame(animate);
+},{passive:true});
+document.addEventListener('pointerout',e=>{if(!e.relatedTarget){shown=false;document.body.classList.remove('suo-spotlight-visible')}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)document.body.classList.remove('suo-spotlight-visible')});
+})();
+</script>
+</body>
 </html>
