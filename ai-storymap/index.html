@@ -9009,7 +9009,7 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 #panel-2 #suo-rsn-relocated-content .suo-spatial-flip-back p{font-size:clamp(15px,1.15vw,17px)!important;line-height:1.8!important;font-weight:500!important}
 #panel-2 #suo-rsn-relocated-content .suo-spatial-flip .suo-spatial-flip-front{justify-content:flex-start}
 @media(prefers-reduced-motion:reduce){#suo-rsn-relocated-content .suo-spatial-flip-inner{transition:none!important}}
-</style></head>
+</style><style id="suo-find-live-glow-20261023">@keyframes suoFindSoftPulse{0%,100%{box-shadow:0 2px 12px rgba(106,39,70,.07),0 0 0 0 rgba(156,77,105,.10);border-color:#e9cfbe}50%{box-shadow:0 4px 18px rgba(112,41,77,.15),0 0 0 4px rgba(170,95,119,.09);border-color:#cba0af}}.header .suo-find .suo-find-label{animation:suoFindSoftPulse 4.8s ease-in-out infinite}.header .suo-find .suo-find-label:focus-within{animation-play-state:paused}.suo-find-highlight{background:#ffdb77!important;color:#422631!important;border-radius:4px;padding:0 2px;box-decoration-break:clone}@media(prefers-reduced-motion:reduce){.header .suo-find .suo-find-label{animation:none!important}}</style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
@@ -13458,7 +13458,7 @@ if(!root||!input||!results)return;
 let indexed=[],marks=[];
 const clean=text=>(text||'').replace(/\s+/g,' ').trim();
 function buildIndex(){
- const nodes=document.querySelectorAll('main h1,main h2,main h3,main h4,main p,main li,main article,section h1,section h2,section h3,section h4,section p,section li,.content-panel h1,.content-panel h2,.content-panel h3,.content-panel h4,.content-panel p,.content-panel li');
+ const nodes=document.querySelectorAll('main h1,main h2,main h3,main h4,main h5,main h6,main p,main li,main article,section h1,section h2,section h3,section h4,section h5,section h6,section p,section li,.content-panel h1,.content-panel h2,.content-panel h3,.content-panel h4,.content-panel p,.content-panel li');
  indexed=[...nodes].filter(el=>!el.closest('#suo-find,#suo-glass-drawer,nav,script,style,footer') && !el.closest('article') && clean(el.textContent).length>=4).map(el=>({el,text:clean(el.textContent).slice(0,800)}));
 }
 function clearMarks(){marks.forEach(m=>{if(m.isConnected)m.replaceWith(document.createTextNode(m.textContent))});marks=[];}
@@ -13472,9 +13472,18 @@ function closeResults(){results.hidden=true;input.setAttribute('aria-expanded','
 function render(){
  const term=clean(input.value);results.replaceChildren();if(term.length<2){closeResults();return}
  if(!indexed.length)buildIndex();
- const found=indexed.filter(x=>x.text.toLocaleLowerCase().includes(term.toLocaleLowerCase())).slice(0,30);
+ const found=indexed.filter(x=>x.text.toLocaleLowerCase().includes(term.toLocaleLowerCase())).sort((a,b)=>{const score=x=>(/^H[1-6]$/.test(x.el.tagName)?100:0)+(x.text.toLocaleLowerCase().startsWith(term.toLocaleLowerCase())?40:0)-(x.text.length/1000);return score(b)-score(a)}).slice(0,30);
  if(!found.length){const p=document.createElement('p');p.className='suo-find-message';p.textContent='Tiada hasil ditemui. Cuba kata kunci lain.';results.append(p)}
- found.forEach(x=>{const btn=document.createElement('button');btn.type='button';const title=document.createElement('strong'),subtitle=document.createElement('small');let pos=x.text.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());title.textContent=clean(x.text.slice(Math.max(0,pos-35),Math.min(x.text.length,pos+110)));subtitle.textContent=x.el.closest('.content-panel')?.querySelector('.chapter-intro-eyebrow')?.textContent||x.el.closest('section[id]')?.id?.replaceAll('-',' ')||'Kandungan portal';btn.append(title,subtitle);btn.addEventListener('click',()=>{const panel=x.el.closest('.content-panel');if(panel&&typeof window.switchTab==='function'){const m=panel.id.match(/^panel-(\d+)$/);if(m)window.switchTab(Number(m[1]));}closeResults();setTimeout(()=>{highlight(x.el,term);const target=marks[0]||x.el;if(typeof window.scrollToSuoTarget==='function')window.scrollToSuoTarget(target);else target.scrollIntoView({behavior:'smooth',block:'center'});},160)});results.append(btn)});
+ found.forEach(x=>{const btn=document.createElement('button');btn.type='button';const title=document.createElement('strong'),subtitle=document.createElement('small');let pos=x.text.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());title.textContent=clean(x.text.slice(Math.max(0,pos-35),Math.min(x.text.length,pos+110)));subtitle.textContent=x.el.closest('.content-panel')?.querySelector('.chapter-intro-eyebrow')?.textContent||x.el.closest('section[id]')?.id?.replaceAll('-',' ')||'Kandungan portal';btn.append(title,subtitle);btn.addEventListener('click',()=>{
+ const panel=x.el.closest('.content-panel');
+ if(panel&&typeof window.switchTab==='function'){const m=panel.id.match(/^panel-(\d+)$/);if(m)window.switchTab(Number(m[1]));}
+ const hiddenSection=x.el.closest('[id^="suo-bab02-tabpanel-"]');
+ if(hiddenSection){const mode=hiddenSection.id.replace('suo-bab02-tabpanel-','');document.querySelector('[data-bab02-section="'+mode+'"]')?.click();}
+ const hiddenBento=x.el.closest('.suo-bento-topic[id]');
+ if(hiddenBento){const match=hiddenBento.id.match(/^bento-(\d+)-(\d+)$/);if(match&&typeof window.showSuoBento==='function')window.showSuoBento(Number(match[1]),Number(match[2]));}
+ closeResults();
+ setTimeout(()=>{highlight(x.el,term);const target=marks[0]||x.el;const offset=(document.querySelector('.header')?.getBoundingClientRect().height||72)+22;window.scrollTo({top:Math.max(0,window.scrollY+target.getBoundingClientRect().top-offset),behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});},460)
+});results.append(btn)});
  openResults();
 }
 input.addEventListener('input',render);
