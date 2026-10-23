@@ -9108,7 +9108,14 @@ body.suo-spotlight-visible #suo-adaptive-spotlight{opacity:1}
 }
 @supports not (backdrop-filter:blur(5px)){.header .suo-find .suo-find-label{background:#fff8fa!important}.header .suo-find .suo-find-results{background:#fff8fa!important}}
 </style>
-</head>
+<style id="suo-bab02-equal-legal-cards-20261023">
+/* The two introductory cards share an equal row height on desktop. */
+#panel-1 #bento-1-0 .suo-bab02-grid{align-items:stretch!important;grid-auto-rows:auto!important}
+#panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info{align-self:stretch!important;height:100%!important;min-height:0!important;box-sizing:border-box!important;margin:0!important}
+#panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info:nth-child(1),
+#panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info:nth-child(2){grid-row:1!important}
+@media(max-width:780px){#panel-1 #bento-1-0 .suo-bab02-grid>.suo-bab02-compact-info{height:auto!important;grid-row:auto!important}}
+</style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
