@@ -8921,6 +8921,21 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 @media(max-width:950px){#suo-document-centre .suo-doc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){#suo-document-centre .suo-doc-grid,#suo-document-centre .suo-doc-controls{grid-template-columns:1fr}}
 </style>
+<style id="suo-find-style">
+.suo-find{position:relative;flex:0 1 175px;min-width:115px;z-index:999}
+.suo-find-label{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid #ead4c1;border-radius:999px;background:#fffdf9;color:#79344b}
+.suo-find-label input{font:inherit;font-size:12px;color:#573248;width:100%;min-width:0;outline:0;border:0;background:transparent}
+.suo-find-label:focus-within{outline:2px solid #b67b8f;outline-offset:2px}
+.suo-find-results{position:absolute;top:calc(100% + 9px);right:0;width:min(390px,calc(100vw - 28px));max-height:min(420px,65vh);overflow:auto;background:#fffdf9;border:1px solid #e4c9bf;box-shadow:0 18px 46px #45172d30;border-radius:16px;padding:9px;z-index:1001}
+.suo-find-results[hidden]{display:none!important}
+.suo-find-results button{display:block;text-align:left;width:100%;border:0;background:none;color:#653148;padding:11px;border-radius:10px;cursor:pointer;font:inherit}
+.suo-find-results button:hover,.suo-find-results button:focus-visible{background:#f9e9ec;outline:none}
+.suo-find-results strong{display:block;font-size:12px;line-height:1.45}
+.suo-find-results small{display:block;font-size:11px;color:#806977;margin-top:3px;line-height:1.5}
+.suo-find-results .suo-find-message{font-size:12px;color:#79566b;padding:10px;margin:0}
+.suo-find-highlight{background:#ffe58a!important;color:#3d2530!important;border-radius:3px;box-decoration-break:clone}
+@media(max-width:760px){.suo-find{flex:0 1 120px}.suo-find-label{padding:6px 8px}.suo-find-label input{font-size:11px}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -8956,7 +8971,7 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
   <div class="suo-explore-topics"><button type="button" class="suo-explore-topic" data-chapter="4" data-topic="0"><span aria-hidden="true">›</span><span class="suo-explore-i18n" data-ms="Pratonton Sistem" data-en="System Preview">Pratonton Sistem</span></button></div></section>  </div>
 </div>
       <button class="section-nav-btn" data-section="pautan-pbt" onclick="navigateSection('pautan-pbt',this)">Direktori PBT</button>
-    </nav><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
+    </nav><div class="suo-find" id="suo-find"><label for="suo-find-input" class="suo-find-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><input type="search" id="suo-find-input" placeholder="Cari..." aria-label="Carian pantas kandungan portal" autocomplete="off" aria-controls="suo-find-results" aria-expanded="false"></label><div id="suo-find-results" class="suo-find-results" role="region" aria-label="Hasil carian portal" hidden></div></div><div class="lang-switch" role="group" aria-label="Bahasa / Language"><button id="langBM" class="chosen" onclick="setLang('ms')" aria-pressed="true">BM</button><span aria-hidden="true">|</span><button id="langEN" onclick="setLang('en')" aria-pressed="false">EN</button></div>
   </div>
 </header>
 <div id="suo-glass-drawer-backdrop" aria-hidden="true"></div>
@@ -13344,6 +13359,40 @@ if(!reduced&&!mobile){
  }
  refresh();
  ['langBM','langEN'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(()=>set(state),0)));
+})();
+</script>
+<script id="suo-find-script">
+(function(){
+'use strict';
+const root=document.getElementById('suo-find'),input=document.getElementById('suo-find-input'),results=document.getElementById('suo-find-results');
+if(!root||!input||!results)return;
+let indexed=[],marks=[];
+const clean=text=>(text||'').replace(/\s+/g,' ').trim();
+function buildIndex(){
+ const nodes=document.querySelectorAll('main h1,main h2,main h3,main h4,main p,main li,main article,section h1,section h2,section h3,section h4,section p,section li,.content-panel h1,.content-panel h2,.content-panel h3,.content-panel h4,.content-panel p,.content-panel li');
+ indexed=[...nodes].filter(el=>!el.closest('#suo-find,#suo-glass-drawer,nav,script,style,footer') && !el.closest('article') && clean(el.textContent).length>=4).map(el=>({el,text:clean(el.textContent).slice(0,800)}));
+}
+function clearMarks(){marks.forEach(m=>{if(m.isConnected)m.replaceWith(document.createTextNode(m.textContent))});marks=[];}
+function highlight(el,term){
+ clearMarks();const needle=term.toLocaleLowerCase();if(!needle)return;
+ const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const texts=[];while(walker.nextNode())texts.push(walker.currentNode);
+ for(const node of texts){if(node.parentElement?.closest('script,style,mark,a,button'))continue;const raw=node.nodeValue;const pos=raw.toLocaleLowerCase().indexOf(needle);if(pos<0)continue;const range=document.createRange();range.setStart(node,pos);range.setEnd(node,Math.min(raw.length,pos+term.length));const mark=document.createElement('mark');mark.className='suo-find-highlight';range.surroundContents(mark);marks.push(mark);if(marks.length>=8)break;}
+}
+function openResults(){results.hidden=false;input.setAttribute('aria-expanded','true')}
+function closeResults(){results.hidden=true;input.setAttribute('aria-expanded','false')}
+function render(){
+ const term=clean(input.value);results.replaceChildren();if(term.length<2){closeResults();return}
+ if(!indexed.length)buildIndex();
+ const found=indexed.filter(x=>x.text.toLocaleLowerCase().includes(term.toLocaleLowerCase())).slice(0,30);
+ if(!found.length){const p=document.createElement('p');p.className='suo-find-message';p.textContent='Tiada hasil ditemui. Cuba kata kunci lain.';results.append(p)}
+ found.forEach(x=>{const btn=document.createElement('button');btn.type='button';const title=document.createElement('strong'),subtitle=document.createElement('small');let pos=x.text.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());title.textContent=clean(x.text.slice(Math.max(0,pos-35),Math.min(x.text.length,pos+110)));subtitle.textContent=x.el.closest('.content-panel')?.querySelector('.chapter-intro-eyebrow')?.textContent||x.el.closest('section[id]')?.id?.replaceAll('-',' ')||'Kandungan portal';btn.append(title,subtitle);btn.addEventListener('click',()=>{const panel=x.el.closest('.content-panel');if(panel&&typeof window.switchTab==='function'){const m=panel.id.match(/^panel-(\d+)$/);if(m)window.switchTab(Number(m[1]));}closeResults();setTimeout(()=>{highlight(x.el,term);const target=marks[0]||x.el;if(typeof window.scrollToSuoTarget==='function')window.scrollToSuoTarget(target);else target.scrollIntoView({behavior:'smooth',block:'center'});},160)});results.append(btn)});
+ openResults();
+}
+input.addEventListener('input',render);
+input.addEventListener('keydown',e=>{if(e.key==='Escape'){closeResults();input.blur()}else if(e.key==='Enter'){e.preventDefault();results.querySelector('button')?.click()}});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();input.focus();input.select()}});
+document.addEventListener('click',e=>{if(!root.contains(e.target))closeResults()});
+document.addEventListener('DOMContentLoaded',buildIndex,{once:true});
 })();
 </script>
 </body>
