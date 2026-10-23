@@ -9026,6 +9026,13 @@ body.suo-drawer-mode #suo-glass-drawer .suo-side-bottom{border-top:0!important;p
 #bento-2-4 #lu-landuse-intro .lu-hero .lu-hero-tag{color:#ffdfae!important}
 #bento-2-4 #lu-landuse-intro .lu-hero .lu-hero-pill{color:#ffedcb!important}
 @media(max-width:760px){#bento-2-4 #lu-landuse-intro .lu-hero{min-height:400px!important;background-image:linear-gradient(90deg,rgba(72,37,29,.94),rgba(54,34,42,.7)),url("./MAIN%20HEADER%20STORYMAP.jpg")!important;background-position:center center!important}#bento-2-4 #lu-landuse-intro .lu-hero-copy{max-width:100%}}
+</style><style id="suo-lu-scroll-reveal-20261023">
+/* Only prepare motion after JS initializes, avoiding invisible content without JS. */
+#bento-2-4 .lu-stats.suo-lu-motion-ready .lu-stat{opacity:0;transform:translate3d(0,36px,0) scale(.965);filter:blur(5px);transition:opacity .7s ease,transform .75s cubic-bezier(.2,.8,.2,1),filter .75s ease;will-change:opacity,transform}
+#bento-2-4 .lu-stats.suo-lu-motion-ready .lu-stat.suo-lu-revealed{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
+#bento-2-4 .lu-stats .lu-stat:nth-child(2){transition-delay:110ms!important}
+#bento-2-4 .lu-stats .lu-stat:nth-child(3){transition-delay:220ms!important}
+@media(prefers-reduced-motion:reduce){#bento-2-4 .lu-stats.suo-lu-motion-ready .lu-stat{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}
 </style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -12227,64 +12234,32 @@ root.querySelectorAll('[data-rsn-zone]').forEach(function(btn){btn.addEventListe
 })();
 </script>
 <script id="suo-rsn-live-hectare-counter-v4-2026">
-/* Keluasan Bab 6: count from 0 to original values when shown; pause offscreen. */
 (function(){
- 'use strict';
- const root=document.getElementById('suo-landuse-storymap-bab6-2026');
- if(!root)return;
- const stat=root.querySelector('.lu-stats'),bar=root.querySelector('.lu-counter-progress-row');
- if(!stat)return;
- const counters=[...stat.querySelectorAll('.lu-count[data-lu-count]')];
- if(counters.length!==3)return;
- const values=counters.map(el=>Number(el.dataset.luCount));
- if(values.some(n=>!Number.isFinite(n)))return;
- const format=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
- const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
- let raf=0,started=0,running=false,wasVisible=false;
- const duration=2600;
- const draw=p=>{
-  const progress=Math.max(0,Math.min(1,p));
-  const eased=1-Math.pow(1-progress,3);
-  counters.forEach((el,i)=>{el.textContent=format.format(values[i]*eased)});
-  root.style.setProperty('--lu-counter-progress',(progress*100).toFixed(1)+'%');
- };
- const visible=()=>{
-  if(document.hidden||!stat.isConnected)return false;
-  if(stat.closest('[hidden]'))return false;
-  const r=stat.getBoundingClientRect(),height=window.innerHeight||0;
-  return r.width>0&&r.height>0&&r.bottom>80&&r.top<height-20;
- };
- const stop=()=>{if(raf)cancelAnimationFrame(raf);raf=0;running=false;started=0};
- function animate(time){
-  if(!visible()){stop();wasVisible=false;draw(1);bar?.classList.remove('lu-counter-is-running');return}
-  if(!started)started=time;
-  const progress=Math.min(1,(time-started)/duration);
-  draw(progress);
-  if(progress<1){raf=requestAnimationFrame(animate)}
-  else{stop();bar?.classList.remove('lu-counter-is-running');bar&&(bar.dataset.countStatus='complete')}
- }
- function check(){
-  const on=visible();
-  if(!on){if(wasVisible){stop();draw(1)}wasVisible=false;return}
-  if(on&&!wasVisible){
-   wasVisible=true;
-   if(reduce.matches){draw(1);return}
-   stop();draw(0);running=true;bar?.classList.add('lu-counter-is-running');
-   bar&&(bar.dataset.countStatus='running');
-   raf=requestAnimationFrame(animate);
-  }
- }
- draw(1);
- if('IntersectionObserver' in window){
-  new IntersectionObserver(check,{threshold:[0,.05,.2]}).observe(stat);
- }
- window.addEventListener('scroll',check,{passive:true});
- window.addEventListener('resize',check,{passive:true});
- document.addEventListener('visibilitychange',check);
- window.addEventListener('pageshow',()=>{wasVisible=false;check()});
- document.addEventListener('click',()=>requestAnimationFrame(check),true);
- new MutationObserver(check).observe(document.body,{attributes:true,subtree:true,attributeFilter:['hidden','class','data-suo-drawer-page']});
- check();
+'use strict';
+const stat=document.querySelector('#suo-landuse-storymap-bab6-2026 .lu-stats');
+if(!stat)return;
+const cards=[...stat.querySelectorAll('.lu-stat')];
+const counters=[...stat.querySelectorAll('.lu-count[data-lu-count]')];
+if(cards.length!==3||counters.length!==3)return;
+const values=counters.map(el=>Number(el.dataset.luCount));
+if(values.some(n=>!Number.isFinite(n)))return;
+const root=document.getElementById('suo-landuse-storymap-bab6-2026');
+const bar=root.querySelector('.lu-counter-progress-row');
+const reduced=window.matchMedia('(prefers-reduced-motion:reduce)');
+const number=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+let raf=0,lastActive=false,start=0,runToken=0;
+function paint(t){const p=Math.max(0,Math.min(t,1)),ease=1-(1-p)**3;counters.forEach((el,i)=>el.textContent=number.format(values[i]*ease));root.style.setProperty('--lu-counter-progress',(p*100).toFixed(1)+'%')}
+function cancel(){if(raf)cancelAnimationFrame(raf);raf=0;start=0;runToken++}
+function inView(){if(document.hidden||stat.closest('[hidden]'))return false;const rect=stat.getBoundingClientRect(),h=window.innerHeight;return rect.width>0&&rect.height>0&&rect.top<h*.82&&rect.bottom>h*.15}
+function run(){cancel();if(reduced.matches){cards.forEach(el=>el.classList.add('suo-lu-revealed'));paint(1);return}const token=runToken;paint(0);cards.forEach(el=>el.classList.add('suo-lu-revealed'));bar?.classList.add('lu-counter-is-running');function frame(now){if(token!==runToken)return;if(!inView()){cancel();paint(1);return}if(!start)start=now;const p=Math.min(1,(now-start)/2600);paint(p);if(p<1)raf=requestAnimationFrame(frame);else{raf=0;bar?.classList.remove('lu-counter-is-running')}}raf=requestAnimationFrame(frame)}
+function check(){const active=inView();if(active&&!lastActive)run();if(!active&&lastActive){cancel();paint(1);cards.forEach(el=>el.classList.remove('suo-lu-revealed'));bar?.classList.remove('lu-counter-is-running')}lastActive=active}
+if(reduced.matches){paint(1);return}
+paint(0);stat.classList.add('suo-lu-motion-ready');
+if('IntersectionObserver' in window){new IntersectionObserver(check,{threshold:[0,.12,.35],rootMargin:'0px 0px -10% 0px'}).observe(stat)}
+window.addEventListener('scroll',check,{passive:true});window.addEventListener('resize',check,{passive:true});document.addEventListener('visibilitychange',check);
+window.addEventListener('pageshow',()=>{lastActive=false;check()});
+new MutationObserver(check).observe(stat.closest('.content-panel')||stat.parentElement,{attributes:true,subtree:false,attributeFilter:['class','hidden']});
+check();
 })();
 </script>
 <script id="suo-rt-rkk-2026-interaction">
