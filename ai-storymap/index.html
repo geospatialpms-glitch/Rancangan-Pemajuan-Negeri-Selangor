@@ -13704,6 +13704,44 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)document.bo
 .gh-rkk-image-fallback,.gh-rkk-note{background:#fff4df;border:1px solid #f0dcac;color:#765e2b;padding:16px;border-radius:10px}.gh-rkk-feature{padding:22px;background:#e6f4ed;border:1px solid #bce0cc;border-radius:12px;font-weight:bold;color:#1b6246}
 .gh-rkk-footer{padding:45px 20px;text-align:center;background:#113c31;color:#e7f1eb}.gh-rkk-footer a{color:#ffe09b}
 @media(max-width:790px){.gh-rkk-layout{display:block;padding:18px}.gh-rkk-nav{position:relative;top:auto;margin-bottom:20px;display:flex;overflow:auto;white-space:nowrap}.gh-rkk-nav a{min-width:max-content}.gh-rkk-chapter{margin-bottom:17px}}
+
+/* Genting Highlands immersive editorial refresh — isolated to this reader. */
+#gh-rkk-story{scroll-behavior:smooth;scrollbar-color:#8bb5a2 #e7eee9}
+#gh-rkk-story .gh-rkk-topbar{min-height:73px;padding-inline:clamp(18px,5vw,78px);background:rgba(12,46,40,.9);backdrop-filter:blur(18px);border-bottom:1px solid #ffffff24}
+#gh-rkk-story .gh-rkk-topbar strong{font-size:clamp(11px,1vw,14px);letter-spacing:.09em}
+#gh-rkk-story .gh-rkk-topbar button{transition:transform .25s,background .25s,box-shadow .25s}
+#gh-rkk-story .gh-rkk-topbar button:hover{transform:translateY(-2px);box-shadow:0 8px 24px #0003;background:#e6f5ed}
+#gh-rkk-story .gh-rkk-hero{min-height:min(790px,calc(100svh - 73px));overflow:hidden;isolation:isolate;padding:110px 24px 105px;background:linear-gradient(180deg,rgba(8,27,31,.52) 0%,rgba(9,44,39,.40) 48%,rgba(5,31,27,.82) 100%),url('https://www.arcgis.com/sharing/rest/content/items/f1d5b48f583c4b3ebb3c447eaf408e50/resources/zvCBZF0Z9ZUSiPQwgVI4w.jpg') center/cover,#164d40}
+#gh-rkk-story .gh-rkk-hero:before{content:"";position:absolute;inset:-10%;z-index:-1;background:radial-gradient(ellipse at 50% 44%,transparent 10%,#092b2833 80%);pointer-events:none}
+#gh-rkk-story .gh-rkk-hero:after{content:"";position:absolute;inset:auto 0 0;height:5px;background:linear-gradient(90deg,#0d604e,#d6b05b,#17745d)}
+#gh-rkk-story .gh-rkk-hero h1{font-size:clamp(40px,5.8vw,84px);line-height:1.08;letter-spacing:-.042em;text-wrap:balance;text-shadow:0 12px 50px #081d1caa;margin:26px 0 23px}
+#gh-rkk-story .gh-rkk-hero p{line-height:1.55;max-width:650px;margin:0 0 42px;font-size:clamp(15px,1.6vw,21px);text-shadow:0 3px 20px #0008}
+#gh-rkk-story .gh-rkk-hero small:first-child{display:inline-block;padding:11px 19px;border:1px solid #ffffff5e;border-radius:50px;background:#092e2880;backdrop-filter:blur(8px);font-size:11px;letter-spacing:.12em}
+#gh-rkk-story .gh-rkk-hero small:last-child{display:inline-flex;gap:9px;align-items:center;border:1px solid #ffffff59;border-radius:30px;padding:12px 18px;background:#ffffff18;animation:gh-rkk-bob 3s ease-in-out infinite;font-size:11px}
+@keyframes gh-rkk-bob{50%{transform:translateY(7px)}}
+#gh-rkk-story .gh-rkk-layout{max-width:1480px;grid-template-columns:260px minmax(0,1fr);gap:clamp(22px,3vw,54px);padding-block:65px;background:radial-gradient(circle at 3% 3%,#e7f1e9,transparent 40%)}
+#gh-rkk-story .gh-rkk-nav{top:100px;gap:5px;padding:20px 14px;border:1px solid #dce9df;border-radius:20px;box-shadow:0 14px 48px #123e3510}
+#gh-rkk-story .gh-rkk-nav:before{content:"KANDUNGAN RKK";display:block;padding:4px 13px 14px;font-size:10px;letter-spacing:.16em;color:#a07b3d;font-weight:800}
+#gh-rkk-story .gh-rkk-nav a{position:relative;padding:13px 14px;border-radius:10px;font-size:12px;white-space:normal;line-height:1.4;transition:background .2s,color .2s,transform .2s}
+#gh-rkk-story .gh-rkk-nav a:hover{transform:translateX(3px)}
+#gh-rkk-story .gh-rkk-nav a.is-active{background:linear-gradient(105deg,#17664f,#267e63);color:#fff;box-shadow:0 8px 20px #21735629}
+#gh-rkk-story .gh-rkk-chapter{position:relative;overflow:hidden;margin-bottom:32px;padding:clamp(28px,4.5vw,64px);border:1px solid #e2eae4;border-radius:24px;box-shadow:0 20px 60px #1741320a;transition:box-shadow .3s,transform .3s}
+#gh-rkk-story .gh-rkk-chapter:hover{box-shadow:0 22px 65px #17413219}
+#gh-rkk-story .gh-rkk-chapter:before{content:"";position:absolute;top:0;left:0;width:105px;height:4px;border-radius:0 0 6px 0;background:linear-gradient(90deg,#dfb459,#36896b)}
+#gh-rkk-story .gh-rkk-chapter h2{margin:17px 0 30px;font-size:clamp(27px,3.2vw,43px);letter-spacing:-.035em}
+#gh-rkk-story .gh-rkk-chapter p{max-width:79ch;font-size:clamp(14px,1.12vw,16px);line-height:2.02;margin:0 0 20px}
+#gh-rkk-story .gh-rkk-overline{display:inline-block;letter-spacing:.13em;color:#a57d35}
+#gh-rkk-story .gh-rkk-figure{padding:16px;background:#f7f9f6;border:1px solid #e5ece5;border-radius:17px;margin:30px 0}
+#gh-rkk-story .gh-rkk-figure img{display:block;border-radius:9px;max-height:750px}
+#gh-rkk-story .gh-rkk-figure img[hidden]{display:none}
+#gh-rkk-story .gh-rkk-figure figcaption{padding:14px 7px 2px;line-height:1.5}
+#gh-rkk-story .gh-rkk-feature{padding:25px 28px;background:linear-gradient(115deg,#e2f2e8,#f4f8ee);border-left:5px solid #2b8a64}
+#gh-rkk-story .gh-rkk-chapter blockquote{background:linear-gradient(130deg,#e8f4ea,#fff9e9);padding:clamp(25px,4vw,48px);line-height:1.65;box-shadow:0 10px 30px #1741320b}
+#gh-rkk-story .gh-rkk-chapter.gh-rkk-reveal{opacity:0;transform:translateY(22px)}
+#gh-rkk-story .gh-rkk-chapter.gh-rkk-reveal.gh-rkk-visible{opacity:1;transform:translateY(0);transition:opacity .7s ease,transform .7s ease,box-shadow .3s}
+#gh-rkk-story .gh-rkk-footer{padding:52px 20px}
+@media(max-width:790px){#gh-rkk-story .gh-rkk-hero{min-height:67svh;padding:75px 18px 85px}#gh-rkk-story .gh-rkk-hero h1{font-size:clamp(34px,8vw,55px)}#gh-rkk-story .gh-rkk-hero small:first-child{font-size:9px}#gh-rkk-story .gh-rkk-layout{display:block;padding:20px 14px}#gh-rkk-story .gh-rkk-nav{position:sticky;top:69px;z-index:4;display:flex;flex-wrap:nowrap;overflow-x:auto;border-radius:13px;padding:8px;gap:5px}#gh-rkk-story .gh-rkk-nav:before{display:none}#gh-rkk-story .gh-rkk-nav a{min-width:max-content;white-space:nowrap;padding:10px 12px}#gh-rkk-story .gh-rkk-chapter{padding:25px 20px;border-radius:16px;margin-bottom:18px}#gh-rkk-story .gh-rkk-topbar{min-height:65px}#gh-rkk-story .gh-rkk-topbar button{font-size:11px;padding:8px 11px}}
+@media(prefers-reduced-motion:reduce){#gh-rkk-story,#gh-rkk-story *{animation:none!important;scroll-behavior:auto!important;transition:none!important}#gh-rkk-story .gh-rkk-chapter.gh-rkk-reveal{opacity:1;transform:none}}
 </style>
 <div id="gh-rkk-story" role="dialog" aria-modal="true" aria-label="StoryMap RKK Genting Highlands" hidden>
  <div class="gh-rkk-topbar"><strong>RKK GENTING HIGHLANDS · MPHS</strong><button type="button" id="gh-rkk-exit">✕ Kembali ke Portal</button></div>
@@ -13715,6 +13753,10 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)document.bo
 (function(){const dlg=document.getElementById('gh-rkk-story');if(!dlg)return;let last=null,oldOverflow='';
 function close(){dlg.hidden=true;document.body.style.overflow=oldOverflow;if(last&&last.focus)last.focus()}
 document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(!a||dlg.contains(a))return;const url=a.getAttribute('href');if(!/^(?:https:\/\/arcg\.is\/1O1KeP0|https:\/\/storymaps\.arcgis\.com\/stories\/f1d5b48f583c4b3ebb3c447eaf408e50)\/?(?:[?#].*)?$/.test(url))return;e.preventDefault();e.stopPropagation();last=document.activeElement;oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';dlg.hidden=false;dlg.scrollTop=0;dlg.querySelector('#gh-rkk-exit').focus()},true);
+const chapters=[...dlg.querySelectorAll('.gh-rkk-chapter')],links=[...dlg.querySelectorAll('.gh-rkk-nav a')];
+if('IntersectionObserver' in window){const appear=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('gh-rkk-visible');appear.unobserve(entry.target)}})},{root:dlg,threshold:.08});chapters.forEach(ch=>{ch.classList.add('gh-rkk-reveal');appear.observe(ch)});
+const active=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+entry.target.id))}})},{root:dlg,rootMargin:'-12% 0px -65% 0px',threshold:0});chapters.forEach(ch=>active.observe(ch));}
+links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const el=dlg.querySelector(a.getAttribute('href'));if(el)dlg.scrollTo({top:el.getBoundingClientRect().top-dlg.getBoundingClientRect().top+dlg.scrollTop-90,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}));
 document.getElementById('gh-rkk-exit').addEventListener('click',close);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dlg.hidden)close()});
 })();
