@@ -13684,45 +13684,6 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)document.bo
 })();
 </script>
 
-<!-- RKK GitHub reader: preliminary internal index; source StoryMaps remain available until full migration. -->
-<style>
-#suo-rkk-reader[hidden]{display:none!important}
-#suo-rkk-reader{position:fixed;inset:0;z-index:2147480000;background:rgba(15,24,24,.73);backdrop-filter:blur(10px);display:grid;place-items:center;padding:18px}
-.suo-rkk-reader-panel{position:relative;width:min(880px,100%);max-height:91vh;overflow:auto;background:linear-gradient(145deg,#fff,#f4f9f6);color:#173e32;border-radius:23px;box-shadow:0 28px 95px #0005;padding:clamp(22px,4vw,44px);font-family:Arial,sans-serif}
-.suo-rkk-reader-close{position:absolute;top:15px;right:16px;border:1px solid #d6e3db;background:#fff;color:#173e32;padding:8px 14px;border-radius:30px;cursor:pointer;font-weight:bold}
-.suo-rkk-reader-tag{display:inline-block;background:#e0f4e8;color:#146146;padding:8px 12px;border-radius:30px;font-size:11px;font-weight:700;letter-spacing:.08em}
-.suo-rkk-reader-panel h2{font-size:clamp(25px,4vw,42px);line-height:1.2;margin:20px 0 9px;color:#143f32}
-.suo-rkk-reader-panel p{font-size:14px;line-height:1.7;color:#53675d}
-.suo-rkk-reader-panel h3{font-size:17px;margin:27px 0 14px;color:#173e32}
-.suo-rkk-reader-panel ul{list-style:none;padding:0;display:grid;gap:10px}
-.suo-rkk-reader-panel li{padding:16px 18px;border:1px solid #dce8de;border-radius:13px;background:#fff;font-size:14px}
-.suo-rkk-reader-alert{padding:14px 17px;background:#fff5e6;border:1px solid #ebd6aa;border-radius:13px}
-.suo-rkk-reader-panel .suo-rkk-reader-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-.suo-rkk-reader-actions a,.suo-rkk-reader-actions button{background:#14634c;color:#fff;text-decoration:none;border:0;border-radius:11px;padding:12px 18px;font-size:13px;font-weight:bold;cursor:pointer}
-.suo-rkk-reader-actions button{background:#e8eee9;color:#174b3b}
-</style>
-<div id="suo-rkk-reader" role="dialog" aria-modal="true" aria-labelledby="suo-rkk-reader-title" hidden>
- <div class="suo-rkk-reader-panel">
- <button type="button" class="suo-rkk-reader-close" aria-label="Tutup paparan RKK">✕ Tutup</button>
- <span class="suo-rkk-reader-tag">BAB 04 · RANCANGAN KAWASAN KHAS</span>
- <h2 id="suo-rkk-reader-title"></h2><p id="suo-rkk-reader-pbt"></p>
- <p class="suo-rkk-reader-alert">Versi awal GitHub: senarai dokumen di bawah diambil daripada direktori portal sedia ada. Kandungan teks penuh, gambar dan peta asal ESRI belum dipindahkan atau disahkan.</p>
- <h3>Senarai dokumen RKK</h3><ul id="suo-rkk-reader-docs"></ul>
- <div class="suo-rkk-reader-actions"><a id="suo-rkk-reader-source" target="_blank" rel="noopener noreferrer">Rujuk StoryMap ESRI asal ↗</a><button type="button" class="suo-rkk-reader-back">Kembali ke direktori RKK</button></div>
- </div>
-</div>
-<script>
-(function(){
- const items={"1niTnK3":{"pbt":"MBPJ","title":"RKK Petaling Jaya","docs":["Rancangan Kawasan Khas Seksyen 13 Petaling Jaya","Rancangan Kawasan Khas Seksyen 13 Petaling Jaya (Pengubahan 1)","Rancangan Kawasan Khas Seksyen 19, 51, 51A, Petaling Jaya","Rancangan Kawasan Khas Kwasaland Petaling Jaya"]},"051DjS0":{"pbt":"MPKS","title":"RKK Kuala Selangor","docs":["Rancangan Kawasan Khas Bandar Warisan Alam Melawati, Kuala Selangor","Rancangan Kawasan Khas Bestari Jaya (2004–2040)"]},"CSHfS1":{"pbt":"MPHS","title":"RKK Bandar Warisan Kuala Kubu Bharu","docs":["Rancangan Kawasan Khas Bandar Warisan Kuala Kubu Bharu 2025"]},"1O1KeP0":{"pbt":"MPHS","title":"RKK Genting Highlands","docs":["Rancangan Kawasan Khas Genting Highlands Hulu Selangor"]}};
- const dlg=document.getElementById('suo-rkk-reader');if(!dlg)return;
- let previous=null;
- function close(){dlg.hidden=true;document.body.style.overflow=dlg.dataset.previousOverflow||'';if(previous&&previous.focus)previous.focus();}
- function open(id){const d=items[id];if(!d)return;previous=document.activeElement;dlg.querySelector('#suo-rkk-reader-title').textContent=d.title;dlg.querySelector('#suo-rkk-reader-pbt').textContent='Pihak Berkuasa Tempatan: '+d.pbt;const ul=dlg.querySelector('#suo-rkk-reader-docs');ul.replaceChildren();d.docs.forEach(name=>{const li=document.createElement('li');li.textContent=name;ul.appendChild(li)});dlg.querySelector('#suo-rkk-reader-source').href='https://arcg.is/'+id;dlg.dataset.previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';dlg.hidden=false;dlg.querySelector('.suo-rkk-reader-close').focus();}
- document.addEventListener('click',function(e){const a=e.target.closest&&e.target.closest('a[href]');if(!a)return;const m=a.getAttribute('href').match(/^https:\/\/arcg\.is\/(1niTnK3|051DjS0|CSHfS1|1O1KeP0)\/?$/);if(!m||dlg.contains(a))return;e.preventDefault();e.stopPropagation();open(m[1]);},true);
- dlg.querySelector('.suo-rkk-reader-close').addEventListener('click',close);dlg.querySelector('.suo-rkk-reader-back').addEventListener('click',close);
- dlg.addEventListener('click',e=>{if(e.target===dlg)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dlg.hidden)close()});
-})();
-</script>
 
 </body>
 </html>
