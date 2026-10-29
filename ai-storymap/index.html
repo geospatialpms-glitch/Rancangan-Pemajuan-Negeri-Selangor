@@ -13797,6 +13797,11 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)document.bo
 #gh-rkk-story .gh-rkk-chapter{padding:clamp(28px,3.2vw,52px)!important}
 #gh-rkk-story .gh-rkk-chapter h2{font-size:clamp(32px,3.2vw,46px)!important}
 @media(max-width:790px){#gh-rkk-story .gh-rkk-chapter p{font-size:16px!important;line-height:1.75!important}#gh-rkk-story .gh-rkk-chapter p:first-of-type{padding-left:15px!important}}
+
+/* Justified content and removal of the first-paragraph gold rule */
+#gh-rkk-story .gh-rkk-chapter p{text-align:justify!important;text-justify:inter-word!important;hyphens:auto}
+#gh-rkk-story .gh-rkk-chapter p:first-of-type{border-left:0!important;padding-left:0!important}
+@media(max-width:790px){#gh-rkk-story .gh-rkk-chapter p:first-of-type{border-left:0!important;padding-left:0!important}}
 </style>
 <div id="gh-rkk-story" role="dialog" aria-modal="true" aria-label="StoryMap RKK Genting Highlands" hidden>
  <div class="gh-rkk-topbar"><strong>RKK GENTING HIGHLANDS · MPHS</strong><button type="button" id="gh-rkk-exit">✕ Kembali ke Portal</button></div>
