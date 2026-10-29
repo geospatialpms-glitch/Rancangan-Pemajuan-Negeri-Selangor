@@ -13771,6 +13771,25 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)document.bo
 @keyframes gh-rkk-ambient{50%{transform:translateY(-17px) translateX(8px)}}
 @media(max-width:790px){#gh-rkk-story .gh-rkk-layout{display:block;padding:18px 13px}#gh-rkk-story .gh-rkk-nav{top:69px;border-radius:15px}#gh-rkk-story .gh-rkk-nav a:before{display:none}#gh-rkk-story .gh-rkk-chapter{padding:26px 21px;border-radius:19px}#gh-rkk-story .gh-rkk-progress{top:65px}#gh-rkk-story .gh-rkk-chapter p{font-size:15px;line-height:1.8}}
 @media(prefers-reduced-motion:reduce){#gh-rkk-story .gh-rkk-float-orb,#gh-rkk-story .gh-rkk-main:before{animation:none}#gh-rkk-story .gh-rkk-figure img{transition:none}}
+
+/* RKK Genting Highlands: visibly improved editorial sizing and animated geo-network */
+#gh-rkk-story{background:linear-gradient(105deg,#e8f2ed 0%,#eaf2ed 27%,#f4f8f3 72%,#e7f3ed 100%)!important;isolation:isolate}
+#gh-rkk-story .gh-rkk-layout{position:relative;isolation:isolate;max-width:1460px!important;grid-template-columns:minmax(235px,275px) minmax(0,1fr)!important;gap:30px!important;padding:45px clamp(18px,3vw,40px) 80px!important}
+#gh-rkk-story .gh-rkk-layout:before{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;opacity:.55;background-image:linear-gradient(#28876a1d 1px,transparent 1px),linear-gradient(90deg,#28876a1d 1px,transparent 1px),radial-gradient(circle,#238d6b6b 1.5px,transparent 2.5px);background-size:64px 64px,64px 64px,78px 78px;mask-image:linear-gradient(90deg,#000 0%,#000a 50%,transparent 100%);animation:gh-rkk-grid-drift 28s linear infinite}
+#gh-rkk-story .gh-rkk-layout:after{content:"";position:absolute;top:130px;left:3%;width:min(370px,36vw);aspect-ratio:1;z-index:-1;pointer-events:none;opacity:.8;border:1px solid #2b95642f;border-radius:50%;box-shadow:0 0 0 35px #2d95740b,0 0 0 72px #2d957407,inset 0 0 65px #277d5b18;background:radial-gradient(circle at 50% 50%,#35b88b2a 0 3px,transparent 5px),radial-gradient(circle at 32% 30%,#43bc9d 0 5px,transparent 6px),radial-gradient(circle at 76% 58%,#51c18d 0 4px,transparent 6px),conic-gradient(from 40deg,transparent 0 15%,#36b88b30 22%,transparent 30% 65%,#42c18b30 75%,transparent 85%);animation:gh-rkk-orbit 32s linear infinite}
+@keyframes gh-rkk-grid-drift{to{background-position:64px 64px,-64px 64px,78px 78px}}
+@keyframes gh-rkk-orbit{to{transform:rotate(360deg)}}
+#gh-rkk-story .gh-rkk-nav{border:1px solid #cfe7db!important;background:#fffffff0!important;box-shadow:0 17px 45px #1d725827!important}
+#gh-rkk-story .gh-rkk-chapter{max-width:100%;padding:clamp(24px,3vw,46px)!important;background:#ffffffed!important;border:1px solid #dbe9e0!important;box-shadow:0 24px 58px #17443117!important}
+#gh-rkk-story .gh-rkk-chapter h2{font-size:clamp(27px,2.8vw,39px)!important;line-height:1.2!important;margin:14px 0 22px!important}
+#gh-rkk-story .gh-rkk-chapter p{font-family:Arial,sans-serif!important;font-size:15px!important;line-height:1.75!important;letter-spacing:0!important;max-width:72ch!important;margin:0 0 18px!important;color:#355348!important;overflow-wrap:break-word;text-align:left}
+#gh-rkk-story .gh-rkk-chapter p:first-of-type{padding-left:18px!important;border-left:3px solid #d7ae59!important}
+#gh-rkk-story .gh-rkk-overline{font-size:10px!important;letter-spacing:.12em}
+#gh-rkk-story .gh-rkk-chapter blockquote{font-size:clamp(17px,1.8vw,24px)!important}
+#gh-rkk-story .gh-rkk-chapter h3{font-size:18px!important}
+#gh-rkk-story .gh-rkk-figure img{max-width:100%;height:auto}
+@media(max-width:790px){#gh-rkk-story .gh-rkk-layout{display:block!important;padding:16px 12px 48px!important}#gh-rkk-story .gh-rkk-layout:after{left:5%;width:75vw;top:220px;opacity:.5}#gh-rkk-story .gh-rkk-chapter{padding:25px 18px!important}#gh-rkk-story .gh-rkk-chapter p{font-size:14px!important;line-height:1.78!important}#gh-rkk-story .gh-rkk-chapter h2{font-size:clamp(25px,6vw,34px)!important}}
+@media(prefers-reduced-motion:reduce){#gh-rkk-story .gh-rkk-layout:before,#gh-rkk-story .gh-rkk-layout:after{animation:none!important}}
 </style>
 <div id="gh-rkk-story" role="dialog" aria-modal="true" aria-label="StoryMap RKK Genting Highlands" hidden>
  <div class="gh-rkk-topbar"><strong>RKK GENTING HIGHLANDS · MPHS</strong><button type="button" id="gh-rkk-exit">✕ Kembali ke Portal</button></div>
