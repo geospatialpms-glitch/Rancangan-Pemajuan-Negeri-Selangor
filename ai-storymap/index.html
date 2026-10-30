@@ -14308,9 +14308,10 @@ cards.forEach((card,i)=>{
  const head=card.querySelector('h3'),desc=card.querySelector('p'),tag=card.querySelector('span');
  if(!head||!desc)return;
  const title=head.outerHTML,detail=desc.outerHTML,top=tag?tag.outerHTML:'';
- card.innerHTML='<div class="kkb-flip-inner"><div class="kkb-flip-face kkb-flip-front">'+top+title+'</div><div class="kkb-flip-face kkb-flip-back">'+detail+'</div></div>';
+ card.innerHTML='<div class="kkb-flip-inner"><div class="kkb-flip-face kkb-flip-front"><div class="kkb-card-orb" aria-hidden="true">✧</div><div class="kkb-card-kicker">'+top+'</div><div class="kkb-card-heading">'+title+'</div><div class="kkb-card-invite"><span class="kkb-card-invite-dot"></span> HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA <span class="kkb-card-invite-arrow">↻</span></div></div><div class="kkb-flip-face kkb-flip-back"><div class="kkb-back-kicker">TERAS '+String(i+1).padStart(2,'0')+' · HURAIAN STRATEGI</div><div class="kkb-card-orb" aria-hidden="true">✧</div><div class="kkb-back-description">'+detail+'</div><div class="kkb-back-hint">KLIK UNTUK KEMBALI ↻</div></div></div>';
  card.setAttribute('tabindex','0');card.setAttribute('aria-label','Teras '+(i+1)+'. Tekan Enter untuk melihat penerangan');
  card.addEventListener('mouseenter',()=>card.classList.add('is-flipped'));
+ card.addEventListener('click',()=>card.classList.toggle('is-flipped'));
  card.addEventListener('mouseleave',()=>card.classList.remove('is-flipped'));
  card.addEventListener('focus',()=>card.classList.add('is-flipped'));
  card.addEventListener('blur',()=>card.classList.remove('is-flipped'));
@@ -14343,6 +14344,27 @@ let cursor=0;setInterval(()=>{
 #kkb-rkk-story .kkb-history-lower::after{top:50%!important}
 @media(min-width:1450px){#kkb-rkk-story .kkb-history-grid{min-width:0!important;grid-template-columns:repeat(4,minmax(0,1fr))!important}#kkb-rkk-story .kkb-history-card{padding:18px!important}#kkb-rkk-story .kkb-history-card p{font-size:14px!important}}
 @media(max-width:820px){#kkb-rkk-story .kkb-history-grid{min-width:1160px!important}#kkb-rkk-story :is(#kkb-native-3,#kkb-native-6,#kkb-native-7)>.kkb-figure{padding:5px!important}}
+</style>
+
+<style id="kkb-flip-premium-20261030">
+/* Premium editorial-style flip cards; strictly within KKB Teras Pembangunan */
+#kkb-rkk-story #kkb-native-5 .kkb-pillars{gap:25px!important}
+#kkb-rkk-story #kkb-native-5 .kkb-pillars>article{height:365px!important;min-height:365px!important;overflow:visible!important;padding:0!important;border:1px solid rgba(174,85,102,.4)!important;background:transparent!important;border-radius:27px!important;box-shadow:0 16px 32px rgba(116,54,69,.12),0 2px 15px rgba(242,167,125,.12)!important;cursor:pointer}
+#kkb-rkk-story #kkb-native-5 .kkb-flip-inner{height:100%!important;min-height:0!important;border-radius:27px!important}
+#kkb-rkk-story #kkb-native-5 .kkb-flip-face{overflow:hidden;border-radius:27px;padding:35px 32px!important;box-sizing:border-box;align-items:center!important;text-align:center!important;justify-content:center!important;gap:16px;background:linear-gradient(125deg,#ffb0c1 0%,#ffc4a7 100%)!important;color:#683d4b!important;isolation:isolate}
+#kkb-rkk-story #kkb-native-5 .kkb-flip-face::before{content:"";pointer-events:none;position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(148deg,transparent 0 100px,rgba(138,80,84,.075) 101px,transparent 102px 220px),radial-gradient(circle at 10% 15%,rgba(132,50,90,.1) 0 2px,transparent 3px),radial-gradient(circle at 78% 72%,rgba(132,50,90,.09) 0 2px,transparent 3px);background-size:auto,120px 140px,145px 135px}
+#kkb-rkk-story #kkb-native-5 .kkb-flip-back{background:linear-gradient(135deg,#fae5db,#ffd4bb)!important}
+#kkb-rkk-story #kkb-native-5 .kkb-card-kicker span,#kkb-rkk-story #kkb-native-5 .kkb-back-kicker{font-size:12px!important;font-weight:850!important;letter-spacing:.15em;color:#7f4253!important}
+#kkb-rkk-story #kkb-native-5 .kkb-card-orb{color:#fff0bb;font-size:40px;line-height:1;filter:drop-shadow(0 0 10px rgba(255,220,126,.85))}
+#kkb-rkk-story #kkb-native-5 .kkb-card-heading h3{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(22px,2vw,31px)!important;line-height:1.28!important;color:#6d3a4b!important;margin:0!important;font-weight:750!important;letter-spacing:-.02em}
+#kkb-rkk-story #kkb-native-5 .kkb-card-invite{margin-top:4px;display:flex;gap:10px;align-items:center;justify-content:center;max-width:100%;padding:11px 13px;border-radius:99px;border:2px solid #fff3cd;background:linear-gradient(90deg,#fff6d7,#f0cc85);color:#6d3445;font-size:10px;font-weight:900;letter-spacing:.025em;box-shadow:0 5px 18px rgba(183,101,72,.2);text-align:center}
+#kkb-rkk-story #kkb-native-5 .kkb-card-invite-dot{flex:0 0 10px;width:10px;height:10px;background:#87354d;border-radius:50%;box-shadow:0 0 0 4px #e6bbab}
+#kkb-rkk-story #kkb-native-5 .kkb-card-invite-arrow{display:grid;place-items:center;flex:0 0 25px;width:25px;height:25px;border-radius:50%;background:#8c4254;color:#fff;font-size:18px}
+#kkb-rkk-story #kkb-native-5 .kkb-back-description p{font-size:clamp(17px,1.35vw,21px)!important;color:#63464c!important;line-height:1.7!important;margin:0!important}
+#kkb-rkk-story #kkb-native-5 .kkb-back-hint{color:#865663;font-size:11px;font-weight:800;letter-spacing:.1em}
+#kkb-rkk-story #kkb-native-5 .kkb-pillars>article:hover{box-shadow:0 25px 55px rgba(117,55,69,.25),0 0 28px rgba(251,174,118,.4)!important}
+#kkb-rkk-story #kkb-native-5 .kkb-pillars>article:focus-visible{outline:3px solid #ad6b40;outline-offset:5px}
+@media(max-width:820px){#kkb-rkk-story #kkb-native-5 .kkb-pillars>article{height:370px!important;min-height:370px!important}#kkb-rkk-story #kkb-native-5 .kkb-flip-face{padding:26px 20px!important}#kkb-rkk-story #kkb-native-5 .kkb-card-heading h3{font-size:clamp(21px,5vw,28px)!important}}
 </style>
 </body>
 </html>
