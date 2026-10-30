@@ -9230,6 +9230,15 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
 #suo-horizontal-nav .suo-horizontal-group.is-open>.suo-horizontal-trigger{background:#f6d895!important}
 @media(min-width:1051px) and (max-width:1230px){#suo-horizontal-nav .suo-horizontal-trigger{padding:9px 8px!important;font-size:11px!important}#suo-horizontal-nav{gap:3px!important}.header .brand-text small{font-size:8px!important}}
 </style>
+<style id="suo-document-access-nav-order-fix">
+/* Preserve the existing document repository and align dropdown hierarchy */
+#suo-document-centre{display:block!important;visibility:visible!important;opacity:1!important;position:relative!important;height:auto!important;max-height:none!important;overflow:visible!important;scroll-margin-top:calc(var(--suo-header-height,90px) + 24px);content-visibility:visible!important}
+#suo-document-centre .suo-doc-grid{display:grid!important}
+#suo-horizontal-nav .suo-horizontal-dropdown{min-width:285px;max-width:min(350px,90vw);gap:2px}
+#suo-horizontal-nav .suo-dropdown-heading{font-size:10px;letter-spacing:.11em;font-weight:850;color:#9a6072;padding:9px 12px 8px;border-bottom:1px solid #e8d7df;margin-bottom:3px}
+#suo-horizontal-nav .suo-dropdown-hint{display:block;font-size:10px;font-weight:500;color:#866a76;margin-top:4px}
+#suo-horizontal-nav .suo-horizontal-dropdown a{display:block;text-align:left;white-space:normal}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -9248,9 +9257,9 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
       </div>
     </div>
     <nav id="suo-horizontal-nav" aria-label="Navigasi portal">
- <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Menu Utama <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><a href="#utama">Utama</a><a href="#suo-dashboard-overview">Statistik</a><a href="#statistik-pembangunan">Peta Interaktif</a></div></div>
- <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Dokumentasi &amp; Bab <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><a href="#panel-0">01 · Rancangan Selangor</a><a href="#panel-1">02 · Arah Tuju &amp; Hierarki</a><a href="#panel-2">03 · Rancangan Struktur Negeri (RSN)</a><a href="#panel-3">04 · Rancangan Tempatan &amp; RKK</a></div></div>
- <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Direktori <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><a href="#suo-document-centre">Pusat Dokumentasi</a><a href="#statistik-pembangunan">Data Peta GIS</a><a href="#pautan-pbt">Direktori PBT</a></div></div>
+ <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Menu Utama <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><span class="suo-dropdown-heading">MENU UTAMA</span><a href="#utama">Utama</a><a href="#suo-dashboard-overview">Statistik Utama</a><a href="#statistik-pembangunan">Peta Interaktif</a></div></div>
+ <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Dokumentasi &amp; Bab <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><span class="suo-dropdown-heading">DOKUMENTASI &amp; BAB</span><a href="#chapterCarousel">Senarai Bab Perancangan Negeri</a><a href="#panel-0">Bab 01 · Rancangan Selangor</a><a href="#panel-1">Bab 02 · Arah Tuju &amp; Hierarki</a><a href="#panel-2">Bab 03 · Rancangan Struktur Negeri (RSN)</a><a href="#panel-3">Bab 04 · Rancangan Tempatan (RT) &amp; RKK</a></div></div>
+ <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Direktori <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><span class="suo-dropdown-heading">DIREKTORI &amp; RUJUKAN</span><a href="#suo-document-centre">Pusat Dokumentasi <span class="suo-dropdown-hint">Papar dan muat turun dokumen</span></a><a href="#statistik-pembangunan">Data Peta GIS</a><a href="#pautan-pbt">Direktori PBT</a></div></div>
 </nav><nav class="top-nav" aria-label="Navigasi utama"><button class="home-nav-btn" onclick="scrollToSuoTarget('utama')">Utama</button>
       <button type="button" class="section-nav-btn" data-section="suo-dashboard-overview" onclick="navigateSection('suo-dashboard-overview',this)">Statistik</button>
       <button class="section-nav-btn" data-section="statistik-pembangunan" onclick="navigateSection('statistik-pembangunan',this)">Peta Interaktif</button>
