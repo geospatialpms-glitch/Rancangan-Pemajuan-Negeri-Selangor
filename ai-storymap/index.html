@@ -13545,7 +13545,7 @@ window.renderSuoPbtDocumentTable=function(type,code){
    const docs=Array.from(el.querySelectorAll('.suo-rt-pbt-documents li')).map(li=>{const copy=li.cloneNode(true);copy.querySelectorAll('a,button').forEach(node=>node.remove());return copy.textContent.trim();}).filter(Boolean);
    const link=el.querySelector('.rr04-storymap-link[href]')||el.querySelector('.rr04-storymap-name[href]');
    const url=link?.getAttribute('href')||'';
-   return {index:i+1,name,code,logo,docs,url:/^https:\/\/arcg\.is\/[a-z0-9]+$/i.test(url)?url:''};
+   return {index:i+1,name,code,logo,docs,url:/^https:\/\/(?:arcg\.is\/[a-z0-9]+|storymaps\.arcgis\.com\/stories\/[a-z0-9]+)\/?$/i.test(url)?url:''};
  }).filter(p=>Boolean(p.url));
  if(!items.length)return;
  /* Semua enam rekod RKK masih dalam direktori asal; hanya pautan Esri disenarai di sini. */
