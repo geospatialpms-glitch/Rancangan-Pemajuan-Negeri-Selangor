@@ -9252,7 +9252,30 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
 #suo-horizontal-nav .suo-chapter-subtopics button:hover,#suo-horizontal-nav .suo-chapter-subtopics button:focus-visible{background:#f5e2e9;color:#752342}
 #suo-horizontal-nav .suo-topic-number{font-size:10px;color:#ad7488;font-weight:800;flex-shrink:0}
 @media(prefers-reduced-motion:reduce){#suo-horizontal-nav .suo-chapter-caret{transition:none}}
-</style></head>
+<style id="suo-header-flyout-fit-20261030">
+/* Only header fit and chapter flyout: keep the rest of the story map untouched. */
+@media(min-width:1001px){
+.header .container.head{width:calc(100% - 32px)!important;max-width:1800px!important;gap:clamp(8px,1vw,18px)!important}
+.header .brand-group{flex:0 1 auto!important;min-width:0!important;max-width:380px!important}
+.header .brand-text{min-width:0!important}
+.header .brand-text b{font-size:clamp(12px,1vw,16px)!important}
+.header .brand-text small{font-size:clamp(8px,.65vw,10px)!important}
+#suo-horizontal-nav{margin-left:auto!important;margin-right:0!important;flex:0 0 auto!important;gap:clamp(2px,.5vw,9px)!important}
+#suo-horizontal-nav .suo-horizontal-trigger{padding:10px clamp(7px,.75vw,12px)!important;font-size:clamp(10px,.8vw,12px)!important}
+.header .head > :not(.brand-group):not(#suo-horizontal-nav){flex-shrink:1;min-width:0}
+}
+#suo-horizontal-nav .suo-chapters-nested{width:min(340px,calc(100vw - 26px))!important;max-width:none!important;max-height:min(68vh,590px)!important;overflow:visible!important}
+#suo-horizontal-nav .suo-chapter-group{position:relative!important}
+#suo-horizontal-nav .suo-chapter-caret{transform:rotate(-90deg)!important}
+#suo-horizontal-nav .suo-chapter-expand[aria-expanded="true"] .suo-chapter-caret{transform:rotate(-90deg)!important}
+#suo-horizontal-nav .suo-chapter-subtopics:not([hidden]){position:absolute!important;top:-8px!important;left:calc(100% + 10px)!important;width:clamp(245px,21vw,330px)!important;max-height:min(58vh,520px)!important;overflow-y:auto!important;padding:12px!important;background:rgba(255,251,251,.98)!important;border:1px solid #e9d3db!important;border-radius:16px!important;box-shadow:0 18px 42px #34162930!important;z-index:1005!important}
+#suo-horizontal-nav .suo-chapter-subtopics.suo-flyout-left:not([hidden]){left:auto!important;right:calc(100% + 10px)!important}
+#suo-horizontal-nav .suo-chapter-subtopics button{min-height:39px}
+@media(max-width:700px){
+#suo-horizontal-nav .suo-chapters-nested{width:min(310px,calc(100vw - 22px))!important;max-height:70vh!important;overflow-y:auto!important}
+#suo-horizontal-nav .suo-chapter-subtopics:not([hidden]){position:static!important;width:100%!important;max-height:35vh!important;box-shadow:none!important;background:#fff8fa!important;margin-top:5px!important}
+}
+</style></style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
@@ -14066,7 +14089,7 @@ nav.addEventListener('click',e=>{
  const expand=e.target.closest('.suo-chapter-expand');
  if(expand){e.preventDefault();const group=expand.closest('.suo-chapter-group');const opening=expand.getAttribute('aria-expanded')!=='true';
  nav.querySelectorAll('.suo-chapter-expand').forEach(b=>{b.setAttribute('aria-expanded','false');b.nextElementSibling.hidden=true});
- expand.setAttribute('aria-expanded',String(opening));expand.nextElementSibling.hidden=!opening;return;}
+ expand.setAttribute('aria-expanded',String(opening));expand.nextElementSibling.hidden=!opening;if(opening){const pane=expand.nextElementSibling;pane.classList.remove('suo-flyout-left');const bounds=group.getBoundingClientRect();const space=window.innerWidth-bounds.right;if(window.innerWidth>700&&space<350)pane.classList.add('suo-flyout-left');}return;}
  const item=e.target.closest('[data-topic-chapter][data-topic-index]');
  if(item){e.preventDefault();selectTopic(Number(item.dataset.topicChapter),Number(item.dataset.topicIndex));nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));}
 });
