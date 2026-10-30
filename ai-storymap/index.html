@@ -12132,48 +12132,42 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>
 #chapterCarousel.suo-carousel-gliding{scroll-snap-type:none!important;scroll-behavior:auto!important}
 </style>
 <script id="suo-chapter-carousel-autoplay-smooth-2026">
-/* Slow uninterrupted cinematic glide with gently eased end reversals; scoped to chapter carousel. */
+/* Automatic reversible horizontal glide; pauses briefly on intentional interaction. */
 (function(){
  'use strict';
  const track=document.getElementById('chapterCarousel');
  if(!track||track.querySelectorAll('.tab-btn').length<2)return;
  const shell=track.closest('.chapter-carousel-shell')||track;
  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
- let visible=false,hovered=false,focused=false,dragging=false,pauseUntil=0;
- let direction=1,frame=null,last=0;
- const pace=26; // pixels per second; markedly slower than card-by-card jumps
- function paused(){return !visible||document.hidden||hovered||focused||dragging||reduced.matches||performance.now()<pauseUntil}
- function pauseForUser(){pauseUntil=performance.now()+3500;track.classList.remove('suo-carousel-gliding')}
+ let visible=true,dragging=false,pauseUntil=0,direction=1,last=0;
+ const pace=36;
+ function pause(){pauseUntil=performance.now()+2500;track.classList.remove('suo-carousel-gliding')}
  function tick(time){
-  frame=requestAnimationFrame(tick);
-  const delta=last?Math.min(0.05,(time-last)/1000):0;last=time;
-  if(paused()){track.classList.remove('suo-carousel-gliding');return}
+  requestAnimationFrame(tick);
+  const delta=last?Math.min(.06,(time-last)/1000):0;last=time;
+  if(!visible||document.hidden||dragging||reduced.matches||time<pauseUntil){track.classList.remove('suo-carousel-gliding');return}
   const max=Math.max(0,track.scrollWidth-track.clientWidth);
-  if(max<3)return;
+  if(max<2)return;
   track.classList.add('suo-carousel-gliding');
   const x=track.scrollLeft;
+  if(direction>0&&x>=max-1){direction=-1;return}
+  if(direction<0&&x<=1){direction=1;return}
   const distance=direction>0?max-x:x;
-  if(distance<=1.5){direction*=-1;return}
-  const easing=Math.min(1,Math.sqrt(Math.max(0,distance)/105));
-  track.scrollLeft=Math.max(0,Math.min(max,x+direction*pace*easing*delta));
+  const easing=Math.min(1,Math.sqrt(Math.max(0,distance)/90));
+  track.scrollLeft=Math.min(max,Math.max(0,x+direction*pace*easing*delta));
  }
- shell.addEventListener('pointerenter',()=>{hovered=true});
- shell.addEventListener('pointerleave',()=>{hovered=false;last=0});
- shell.addEventListener('focusin',()=>{focused=true;pauseForUser()});
- shell.addEventListener('focusout',()=>{focused=shell.contains(document.activeElement);last=0});
- shell.addEventListener('pointerdown',()=>{dragging=true;pauseForUser()});
+ shell.addEventListener('pointerdown',()=>{dragging=true;pause()});
  window.addEventListener('pointerup',()=>{dragging=false;last=0});
  window.addEventListener('pointercancel',()=>{dragging=false;last=0});
- shell.addEventListener('click',pauseForUser);
- shell.addEventListener('keydown',pauseForUser);
- shell.addEventListener('wheel',pauseForUser,{passive:true});
+ shell.addEventListener('click',pause);
+ shell.addEventListener('keydown',pause);
+ shell.addEventListener('wheel',pause,{passive:true});
  if('IntersectionObserver' in window){
-  const observer=new IntersectionObserver(entries=>{visible=entries.some(e=>e.isIntersecting);last=0},{threshold:.1});
+  const observer=new IntersectionObserver(entries=>{visible=entries.some(e=>e.isIntersecting);last=0},{threshold:0});
   observer.observe(shell);
- }else visible=true;
+ }
  document.addEventListener('visibilitychange',()=>{last=0});
- if(typeof reduced.addEventListener==='function')reduced.addEventListener('change',()=>{last=0});
- frame=requestAnimationFrame(tick);
+ requestAnimationFrame(tick);
 })();
 </script>
 <script id="suo-rsn-2026-strategic-flip-control">
