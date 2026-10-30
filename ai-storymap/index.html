@@ -9239,7 +9239,20 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
 #suo-horizontal-nav .suo-dropdown-hint{display:block;font-size:10px;font-weight:500;color:#866a76;margin-top:4px}
 #suo-horizontal-nav .suo-horizontal-dropdown a{display:block;text-align:left;white-space:normal}
 </style>
-</head>
+<style id="suo-nested-chapters-20261030">
+#suo-horizontal-nav .suo-chapters-nested{width:min(385px,calc(100vw - 30px));max-height:min(68vh,600px);overflow-y:auto;overscroll-behavior:contain}
+#suo-horizontal-nav .suo-chapter-group{border-bottom:1px solid #d9c8ce66}
+#suo-horizontal-nav .suo-chapter-expand{display:flex;justify-content:space-between;align-items:center;gap:13px;width:100%;text-align:left;color:#61243a;background:transparent;border:0;padding:12px 13px;border-radius:10px;font-size:12px;font-weight:750;line-height:1.5}
+#suo-horizontal-nav .suo-chapter-expand:hover,#suo-horizontal-nav .suo-chapter-expand[aria-expanded="true"]{background:#f9ebef}
+#suo-horizontal-nav .suo-chapter-caret{transition:transform .2s;flex-shrink:0}
+#suo-horizontal-nav .suo-chapter-expand[aria-expanded="true"] .suo-chapter-caret{transform:rotate(180deg)}
+#suo-horizontal-nav .suo-chapter-subtopics{display:grid;gap:3px;padding:2px 5px 10px 15px}
+#suo-horizontal-nav .suo-chapter-subtopics[hidden]{display:none!important}
+#suo-horizontal-nav .suo-chapter-subtopics button{display:flex;align-items:start;gap:10px;width:100%;border:0;background:transparent;border-radius:9px;padding:10px;color:#603d4e;text-align:left;font-size:11px;line-height:1.5;cursor:pointer}
+#suo-horizontal-nav .suo-chapter-subtopics button:hover,#suo-horizontal-nav .suo-chapter-subtopics button:focus-visible{background:#f5e2e9;color:#752342}
+#suo-horizontal-nav .suo-topic-number{font-size:10px;color:#ad7488;font-weight:800;flex-shrink:0}
+@media(prefers-reduced-motion:reduce){#suo-horizontal-nav .suo-chapter-caret{transition:none}}
+</style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
@@ -9258,7 +9271,7 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
     </div>
     <nav id="suo-horizontal-nav" aria-label="Navigasi portal">
  <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Menu Utama <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><span class="suo-dropdown-heading">MENU UTAMA</span><a href="#utama">Utama</a><a href="#suo-dashboard-overview">Statistik Utama</a><a href="#statistik-pembangunan">Peta Interaktif</a></div></div>
- <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Dokumentasi &amp; Bab <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><span class="suo-dropdown-heading">DOKUMENTASI &amp; BAB</span><a href="#chapterCarousel">Senarai Bab Perancangan Negeri</a><a href="#panel-0">Bab 01 · Rancangan Selangor</a><a href="#panel-1">Bab 02 · Arah Tuju &amp; Hierarki</a><a href="#panel-2">Bab 03 · Rancangan Struktur Negeri (RSN)</a><a href="#panel-3">Bab 04 · Rancangan Tempatan (RT) &amp; RKK</a></div></div>
+ <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Dokumentasi &amp; Bab <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown suo-chapters-nested"><span class="suo-dropdown-heading">DOKUMENTASI &amp; BAB</span><a href="#chapterCarousel">Senarai Bab Perancangan Negeri</a><div class="suo-chapter-group"><button type="button" class="suo-chapter-expand" data-chapter-index="0" aria-expanded="false"><span>01 · Rancangan Selangor</span><span aria-hidden="true" class="suo-chapter-caret">⌄</span></button><div class="suo-chapter-subtopics" hidden><button type="button" data-topic-chapter="0" data-topic-index="0"><span class="suo-topic-number">01</span>Pengenalan Negeri</button><button type="button" data-topic-chapter="0" data-topic-index="1"><span class="suo-topic-number">02</span>Profil &amp; Parameter Pentadbiran</button><button type="button" data-topic-chapter="0" data-topic-index="2"><span class="suo-topic-number">03</span>Kerangka Perancangan</button></div></div><div class="suo-chapter-group"><button type="button" class="suo-chapter-expand" data-chapter-index="1" aria-expanded="false"><span>02 · Arah Tuju &amp; Hierarki</span><span aria-hidden="true" class="suo-chapter-caret">⌄</span></button><div class="suo-chapter-subtopics" hidden><button type="button" data-topic-chapter="1" data-topic-index="0"><span class="suo-topic-number">01</span>Pengenalan &amp; Kerangka Perundangan</button><button type="button" data-topic-chapter="1" data-topic-index="1"><span class="suo-topic-number">02</span>Hierarki Perancangan</button><button type="button" data-topic-chapter="1" data-topic-index="2"><span class="suo-topic-number">03</span>Dokumen Rujukan Akta 172</button></div></div><div class="suo-chapter-group"><button type="button" class="suo-chapter-expand" data-chapter-index="2" aria-expanded="false"><span>03 · Rancangan Struktur Negeri (RSN)</span><span aria-hidden="true" class="suo-chapter-caret">⌄</span></button><div class="suo-chapter-subtopics" hidden><button type="button" data-topic-chapter="2" data-topic-index="0"><span class="suo-topic-number">01</span>Pengenalan &amp; Latar Belakang</button><button type="button" data-topic-chapter="2" data-topic-index="1"><span class="suo-topic-number">02</span>Hala Tuju Strategik dan Konsep Pembangunan</button><button type="button" data-topic-chapter="2" data-topic-index="2"><span class="suo-topic-number">03</span>Kerangka Strategik &amp; Objektif Perancangan</button><button type="button" data-topic-chapter="2" data-topic-index="3"><span class="suo-topic-number">04</span>Dasar-dasar RS Negeri Selangor 2035 (Pengubahan)</button><button type="button" data-topic-chapter="2" data-topic-index="4"><span class="suo-topic-number">05</span>Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)</button><button type="button" data-topic-chapter="2" data-topic-index="5"><span class="suo-topic-number">06</span>Dokumen Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</button></div></div><div class="suo-chapter-group"><button type="button" class="suo-chapter-expand" data-chapter-index="3" aria-expanded="false"><span>04 · Rancangan Tempatan &amp; RKK</span><span aria-hidden="true" class="suo-chapter-caret">⌄</span></button><div class="suo-chapter-subtopics" hidden><button type="button" data-topic-chapter="3" data-topic-index="0"><span class="suo-topic-number">01</span>RT &amp; RKK</button><button type="button" data-topic-chapter="3" data-topic-index="1"><span class="suo-topic-number">02</span>Akses Direktori</button></div></div></div></div>
  <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Direktori <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><span class="suo-dropdown-heading">DIREKTORI &amp; RUJUKAN</span><a href="#suo-document-centre">Pusat Dokumentasi <span class="suo-dropdown-hint">Papar dan muat turun dokumen</span></a><a href="#statistik-pembangunan">Data Peta GIS</a><a href="#pautan-pbt">Direktori PBT</a></div></div>
 </nav><nav class="top-nav" aria-label="Navigasi utama"><button class="home-nav-btn" onclick="scrollToSuoTarget('utama')">Utama</button>
       <button type="button" class="section-nav-btn" data-section="suo-dashboard-overview" onclick="navigateSection('suo-dashboard-overview',this)">Statistik</button>
@@ -14021,6 +14034,22 @@ function selectChapter(i){
  document.querySelectorAll('.tab-nav-btn').forEach((btn,j)=>btn.classList.toggle('active',i===j));
  requestAnimationFrame(()=>{go('panel-'+i);window.dispatchEvent(new Event('resize'))});
 }
+function selectTopic(chapter,topic){
+ selectChapter(chapter);
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  const tab=document.getElementById('bento-tab-'+chapter+'-'+topic);
+  if(tab){tab.click();const target=document.getElementById('bento-'+chapter+'-'+topic)||tab;go(target.id)}
+  else{const fallback=panels[chapter].querySelectorAll('.suo-bento-topic')[topic];if(fallback)go(fallback.id);else go('panel-'+chapter)}
+ }));
+}
+nav.addEventListener('click',e=>{
+ const expand=e.target.closest('.suo-chapter-expand');
+ if(expand){e.preventDefault();const group=expand.closest('.suo-chapter-group');const opening=expand.getAttribute('aria-expanded')!=='true';
+ nav.querySelectorAll('.suo-chapter-expand').forEach(b=>{b.setAttribute('aria-expanded','false');b.nextElementSibling.hidden=true});
+ expand.setAttribute('aria-expanded',String(opening));expand.nextElementSibling.hidden=!opening;return;}
+ const item=e.target.closest('[data-topic-chapter][data-topic-index]');
+ if(item){e.preventDefault();selectTopic(Number(item.dataset.topicChapter),Number(item.dataset.topicIndex));nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));}
+});
 window.switchTab=selectChapter;
 document.querySelectorAll('#chapterCarousel .tab-btn').forEach((btn,i)=>{if(i<4)btn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();selectChapter(i)},true)});
 panels.forEach((p,i)=>{p.classList.remove('suo-chapter-selected');p.classList.remove('active');p.setAttribute('aria-hidden','true')});
