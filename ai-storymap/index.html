@@ -9252,6 +9252,7 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
 #suo-horizontal-nav .suo-chapter-subtopics button:hover,#suo-horizontal-nav .suo-chapter-subtopics button:focus-visible{background:#f5e2e9;color:#752342}
 #suo-horizontal-nav .suo-topic-number{font-size:10px;color:#ad7488;font-weight:800;flex-shrink:0}
 @media(prefers-reduced-motion:reduce){#suo-horizontal-nav .suo-chapter-caret{transition:none}}
+</style>
 <style id="suo-header-flyout-fit-20261030">
 /* Only header fit and chapter flyout: keep the rest of the story map untouched. */
 @media(min-width:1001px){
@@ -9275,7 +9276,37 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
 #suo-horizontal-nav .suo-chapters-nested{width:min(310px,calc(100vw - 22px))!important;max-height:70vh!important;overflow-y:auto!important}
 #suo-horizontal-nav .suo-chapter-subtopics:not([hidden]){position:static!important;width:100%!important;max-height:35vh!important;box-shadow:none!important;background:#fff8fa!important;margin-top:5px!important}
 }
-</style></style></head>
+<style id="suo-final-flyout-hero-20261030">
+/* Rightward flyout: compact, aligned and deliberately layered above the hero. */
+@media(min-width:701px){
+#suo-horizontal-nav .suo-chapters-nested{width:330px!important;overflow:visible!important}
+#suo-horizontal-nav .suo-chapter-group{position:relative!important}
+#suo-horizontal-nav .suo-chapter-subtopics:not([hidden]),
+#suo-horizontal-nav .suo-chapter-subtopics.suo-flyout-left:not([hidden]){
+position:absolute!important;top:-6px!important;left:calc(100% + 8px)!important;right:auto!important;width:300px!important;
+display:grid!important;gap:5px!important;padding:13px!important;background:rgba(255,252,250,.98)!important;
+border:1px solid rgba(186,130,147,.38)!important;border-radius:16px!important;
+box-shadow:0 18px 40px rgba(57,22,38,.23)!important;z-index:3000!important;
+}
+#suo-horizontal-nav .suo-chapter-subtopics:not([hidden]) button{padding:11px 12px!important;border-radius:10px!important;font-size:12px!important}
+}
+#suo-horizontal-nav .suo-chapters-nested .suo-chapter-expand{padding:12px 14px!important}
+#suo-horizontal-nav .suo-chapters-nested .suo-chapter-expand[aria-expanded="true"]{background:linear-gradient(100deg,#fbeaf0,#fff5ed)!important;box-shadow:inset 3px 0 #9b3652}
+#suo-horizontal-nav .suo-chapter-subtopics button:hover{background:#f9e8ef!important}
+#suo-horizontal-nav .suo-chapters-nested{border-color:rgba(255,255,255,.8)!important;box-shadow:0 22px 48px rgba(52,15,33,.23)!important}
+#utama.hero{height:calc(100vh - var(--suo-hero-start,140px))!important;height:calc(100svh - var(--suo-hero-start,140px))!important;min-height:0!important;max-height:none!important;box-sizing:border-box!important}
+#utama.hero .hero-layout{min-height:0!important;height:100%!important;box-sizing:border-box!important;padding-top:20px!important;padding-bottom:20px!important}
+@media(max-height:580px){#utama.hero .hero-layout{padding-block:8px!important}#utama.hero .hero-actions{padding:8px!important}}
+@media(max-width:700px){#utama.hero .hero-layout{height:100%!important;min-height:0!important}}
+</style>
+<script id="suo-hero-viewport-height-20261030">
+(function(){
+ const hero=document.getElementById('utama');if(!hero)return;
+ function fit(){const top=hero.getBoundingClientRect().top+window.scrollY;document.documentElement.style.setProperty('--suo-hero-start',Math.max(0,Math.round(top))+'px')}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fit);else fit();
+ window.addEventListener('load',fit);window.addEventListener('resize',fit);
+})();
+</script></style></head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
@@ -14089,7 +14120,7 @@ nav.addEventListener('click',e=>{
  const expand=e.target.closest('.suo-chapter-expand');
  if(expand){e.preventDefault();const group=expand.closest('.suo-chapter-group');const opening=expand.getAttribute('aria-expanded')!=='true';
  nav.querySelectorAll('.suo-chapter-expand').forEach(b=>{b.setAttribute('aria-expanded','false');b.nextElementSibling.hidden=true});
- expand.setAttribute('aria-expanded',String(opening));expand.nextElementSibling.hidden=!opening;if(opening){const pane=expand.nextElementSibling;pane.classList.remove('suo-flyout-left');const bounds=group.getBoundingClientRect();const space=window.innerWidth-bounds.right;if(window.innerWidth>700&&space<350)pane.classList.add('suo-flyout-left');}return;}
+ expand.setAttribute('aria-expanded',String(opening));expand.nextElementSibling.hidden=!opening;if(opening){const pane=expand.nextElementSibling;pane.classList.remove('suo-flyout-left');const bounds=group.getBoundingClientRect();const space=window.innerWidth-bounds.right;/* Keep right-side flyout as requested. */}return;}
  const item=e.target.closest('[data-topic-chapter][data-topic-index]');
  if(item){e.preventDefault();selectTopic(Number(item.dataset.topicChapter),Number(item.dataset.topicIndex));nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));}
 });
