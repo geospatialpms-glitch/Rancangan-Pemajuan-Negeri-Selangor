@@ -9183,6 +9183,31 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
 @media(max-width:520px){#suo-horizontal-nav{justify-content:space-between}#suo-horizontal-nav .suo-horizontal-trigger{font-size:10px;padding:9px 6px}#suo-horizontal-nav .suo-horizontal-dropdown{min-width:min(270px,90vw)}#suo-horizontal-nav .suo-horizontal-group:last-child .suo-horizontal-dropdown{left:auto;right:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}#suo-horizontal-nav *{transition:none!important}}
 </style>
+<style id="suo-header-refinement-20261030">
+/* Header-only balance and minimalist glowing navigation */
+.header .container.head{width:min(1600px,calc(100% - 44px))!important;max-width:1600px!important;display:flex!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:space-between!important;gap:clamp(12px,1.5vw,26px)!important;min-height:80px;overflow:visible}
+.header .brand-group{flex:0 1 auto;min-width:235px;max-width:425px;gap:10px!important}
+.header .brand-text{min-width:0}
+.header .brand-text b{font-size:clamp(13px,1.05vw,17px)!important;line-height:1.2}
+.header .brand-text small{font-size:clamp(9px,.68vw,11px)!important;letter-spacing:.015em}
+.header .suo-logo{flex-shrink:0}
+#suo-horizontal-nav{flex:0 1 auto!important;min-width:0;display:flex!important;align-items:center!important;justify-content:center!important;gap:clamp(12px,1.4vw,27px)!important;margin:0 auto!important}
+#suo-horizontal-nav .suo-horizontal-group{flex:0 0 auto}
+#suo-horizontal-nav .suo-horizontal-trigger{position:relative;display:inline-flex;align-items:center;gap:5px;padding:12px 2px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#fff2e6!important;font-size:clamp(11px,.83vw,13px)!important;font-weight:750!important;letter-spacing:.005em;white-space:nowrap}
+#suo-horizontal-nav .suo-horizontal-trigger::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;border-radius:4px;background:linear-gradient(90deg,transparent,#ffd883,#fff1c9,#ffd883,transparent);transform:scaleX(0);transform-origin:center;opacity:0;box-shadow:0 0 12px #ffd36bbb,0 0 20px #ffd36b77;transition:transform .25s ease,opacity .25s ease}
+#suo-horizontal-nav .suo-horizontal-trigger:hover,#suo-horizontal-nav .suo-horizontal-group:focus-within>.suo-horizontal-trigger,#suo-horizontal-nav .suo-horizontal-group.is-open>.suo-horizontal-trigger{background:transparent!important;border:0!important;box-shadow:none!important;color:#fff!important}
+#suo-horizontal-nav .suo-horizontal-trigger:hover::after,#suo-horizontal-nav .suo-horizontal-group:focus-within>.suo-horizontal-trigger::after,#suo-horizontal-nav .suo-horizontal-group.is-open>.suo-horizontal-trigger::after{transform:scaleX(1);opacity:1}
+#suo-horizontal-nav .suo-horizontal-trigger:focus-visible{outline:2px solid #ffd883;outline-offset:5px}
+.header .suo-find{flex:0 1 175px!important;width:clamp(130px,11vw,175px)!important;min-width:120px!important;max-width:175px!important;margin:0!important}
+.header .suo-find .suo-find-label{width:100%!important;max-width:100%!important;min-width:0!important}
+.header .suo-find input{width:100%!important;min-width:0!important;max-width:100%!important}
+.header .lang-switch{flex:0 0 auto!important;margin:0!important;white-space:nowrap}
+@media(min-width:1051px){.header .container.head{flex-wrap:nowrap!important}}
+@media(max-width:1200px){.header .container.head{gap:12px!important}.header .brand-group{min-width:200px}.header .brand-text small{font-size:9px!important}#suo-horizontal-nav{gap:11px!important}.header .suo-find{width:138px!important;flex-basis:138px!important}}
+@media(max-width:1050px){.header .container.head{flex-wrap:wrap!important;row-gap:4px!important;padding-block:8px!important}.header .brand-group{flex:1 1 55%;max-width:none}.header .suo-find{margin-left:auto!important;flex:0 1 155px!important}.header .lang-switch{order:2}#suo-horizontal-nav{order:3;flex:0 0 100%!important;width:100%!important;justify-content:center!important;gap:clamp(16px,4vw,45px)!important}}
+@media(max-width:600px){.header .container.head{width:calc(100% - 24px)!important;gap:7px!important}.header .brand-group{flex:1 0 calc(100% - 110px);min-width:0!important}.header .brand-text b{font-size:12px!important}.header .brand-text small{font-size:8px!important}.header .suo-logo img{max-height:38px}.header .suo-find{order:3;flex:1 1 120px!important;width:auto!important;max-width:none!important}.header .lang-switch{order:2}#suo-horizontal-nav{order:4;justify-content:space-between!important;gap:8px!important}#suo-horizontal-nav .suo-horizontal-trigger{font-size:10px!important;padding:10px 0!important}#suo-horizontal-nav .suo-horizontal-dropdown{max-width:min(280px,calc(100vw - 30px))}}
+@media(prefers-reduced-motion:reduce){#suo-horizontal-nav .suo-horizontal-trigger::after{transition:none!important}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
