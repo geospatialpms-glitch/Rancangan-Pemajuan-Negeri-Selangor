@@ -9208,6 +9208,14 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
 @media(max-width:600px){.header .container.head{width:calc(100% - 24px)!important;gap:7px!important}.header .brand-group{flex:1 0 calc(100% - 110px);min-width:0!important}.header .brand-text b{font-size:12px!important}.header .brand-text small{font-size:8px!important}.header .suo-logo img{max-height:38px}.header .suo-find{order:3;flex:1 1 120px!important;width:auto!important;max-width:none!important}.header .lang-switch{order:2}#suo-horizontal-nav{order:4;justify-content:space-between!important;gap:8px!important}#suo-horizontal-nav .suo-horizontal-trigger{font-size:10px!important;padding:10px 0!important}#suo-horizontal-nav .suo-horizontal-dropdown{max-width:min(280px,calc(100vw - 30px))}}
 @media(prefers-reduced-motion:reduce){#suo-horizontal-nav .suo-horizontal-trigger::after{transition:none!important}}
 </style>
+<style id="suo-chapter-selective-display-20261030">
+/* Continuous portal sections; only one explicitly selected BAB panel is visible */
+.main-section .content-panel{display:none!important}
+.main-section .content-panel.suo-chapter-selected{display:block!important;visibility:visible!important;opacity:1!important;height:auto!important;max-height:none!important;transform:none!important;position:relative!important;overflow:visible!important;animation:suo-bab-enter .38s ease both}
+#panel-4{display:none!important}
+@keyframes suo-bab-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.main-section .content-panel.suo-chapter-selected{animation:none!important}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -13978,12 +13986,19 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dlg.hidden)close()
 const nav=document.getElementById('suo-horizontal-nav');if(!nav)return;
 const panels=[...document.querySelectorAll('.main-section .content-panel')];
 function go(id){const el=document.getElementById(id);if(!el)return;const top=el.getBoundingClientRect().top+window.scrollY-(document.querySelector('.header')?.getBoundingClientRect().height||90)-14;window.scrollTo({top:Math.max(0,top),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
-nav.addEventListener('click',e=>{const link=e.target.closest('a[href^="#"]');if(link){e.preventDefault();go(link.getAttribute('href').slice(1));nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));return}const btn=e.target.closest('.suo-horizontal-trigger');if(btn){const group=btn.closest('.suo-horizontal-group');const open=!group.classList.contains('is-open');nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));group.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',String(open));}});
+nav.addEventListener('click',e=>{const link=e.target.closest('a[href^="#"]');if(link){e.preventDefault();const id=link.getAttribute('href').slice(1);const match=/^panel-([0-3])$/.exec(id);if(match){selectChapter(Number(match[1]));}else{go(id);}nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));return}const btn=e.target.closest('.suo-horizontal-trigger');if(btn){const group=btn.closest('.suo-horizontal-group');const open=!group.classList.contains('is-open');nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));group.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',String(open));}});
 document.addEventListener('click',e=>{if(!nav.contains(e.target)){nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'))}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'))}});
-window.switchTab=function(i){if(Number.isInteger(i)&&i>=0&&i<4)go('panel-'+i)};
-document.querySelectorAll('#chapterCarousel .tab-btn').forEach((btn,i)=>{if(i<4)btn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();go('panel-'+i)},true)});
-panels.forEach((p,i)=>{if(i<4){p.setAttribute('aria-hidden','false');p.classList.add('active')}});
+function selectChapter(i){
+ if(!Number.isInteger(i)||i<0||i>3)return;
+ panels.forEach((p,j)=>{const active=i===j;p.classList.toggle('suo-chapter-selected',active);p.classList.toggle('active',active);p.setAttribute('aria-hidden',String(!active));});
+ document.querySelectorAll('#chapterCarousel .tab-btn').forEach((btn,j)=>{btn.classList.toggle('active',i===j);btn.setAttribute('aria-selected',String(i===j))});
+ document.querySelectorAll('.tab-nav-btn').forEach((btn,j)=>btn.classList.toggle('active',i===j));
+ requestAnimationFrame(()=>{go('panel-'+i);window.dispatchEvent(new Event('resize'))});
+}
+window.switchTab=selectChapter;
+document.querySelectorAll('#chapterCarousel .tab-btn').forEach((btn,i)=>{if(i<4)btn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();selectChapter(i)},true)});
+panels.forEach((p,i)=>{p.classList.remove('suo-chapter-selected');p.classList.remove('active');p.setAttribute('aria-hidden','true')});
 })();
 </script>
 </body>
