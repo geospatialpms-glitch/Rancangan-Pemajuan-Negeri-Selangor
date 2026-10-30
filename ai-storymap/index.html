@@ -9216,6 +9216,20 @@ body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
 @keyframes suo-bab-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.main-section .content-panel.suo-chapter-selected{animation:none!important}}
 </style>
+<style id="suo-header-nav-active-20261030">
+/* Header navigation right alignment and selected-glass state */
+@media(min-width:1051px){
+.header .container.head{justify-content:flex-end!important;gap:clamp(12px,1.1vw,20px)!important}
+.header .brand-group{margin-right:auto!important;flex-shrink:1!important}
+#suo-horizontal-nav{margin:0!important;flex:0 0 auto!important;gap:clamp(5px,.65vw,12px)!important;justify-content:flex-end!important}
+.header .suo-find{margin-left:clamp(8px,1.2vw,20px)!important}
+}
+#suo-horizontal-nav .suo-horizontal-trigger{border-radius:999px!important;padding:11px 12px!important;transition:color .22s,background .22s,box-shadow .22s!important}
+#suo-horizontal-nav .suo-horizontal-trigger::after{display:none!important}
+#suo-horizontal-nav .suo-horizontal-trigger:hover,#suo-horizontal-nav .suo-horizontal-group:focus-within>.suo-horizontal-trigger,#suo-horizontal-nav .suo-horizontal-group.is-open>.suo-horizontal-trigger{color:#651b35!important;background:#ffe3aa!important;box-shadow:0 3px 14px #ffe0a746!important}
+#suo-horizontal-nav .suo-horizontal-group.is-open>.suo-horizontal-trigger{background:#f6d895!important}
+@media(min-width:1051px) and (max-width:1230px){#suo-horizontal-nav .suo-horizontal-trigger{padding:9px 8px!important;font-size:11px!important}#suo-horizontal-nav{gap:3px!important}.header .brand-text small{font-size:8px!important}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -13984,6 +13998,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dlg.hidden)close()
 (function(){
 'use strict';
 const nav=document.getElementById('suo-horizontal-nav');if(!nav)return;
+nav.querySelectorAll('.suo-horizontal-trigger').forEach(btn=>{btn.addEventListener('mouseenter',()=>{if(!nav.querySelector('.is-open'))btn.setAttribute('aria-expanded','false')})});
+
 const panels=[...document.querySelectorAll('.main-section .content-panel')];
 function go(id){const el=document.getElementById(id);if(!el)return;const top=el.getBoundingClientRect().top+window.scrollY-(document.querySelector('.header')?.getBoundingClientRect().height||90)-14;window.scrollTo({top:Math.max(0,top),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
 nav.addEventListener('click',e=>{const link=e.target.closest('a[href^="#"]');if(link){e.preventDefault();const id=link.getAttribute('href').slice(1);const match=/^panel-([0-3])$/.exec(id);if(match){selectChapter(Number(match[1]));}else{go(id);}nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));return}const btn=e.target.closest('.suo-horizontal-trigger');if(btn){const group=btn.closest('.suo-horizontal-group');const open=!group.classList.contains('is-open');nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));group.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',String(open));}});
