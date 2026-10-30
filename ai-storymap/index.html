@@ -9334,7 +9334,7 @@ box-shadow:0 18px 40px rgba(57,22,38,.23)!important;z-index:3000!important;
     <nav id="suo-horizontal-nav" aria-label="Navigasi portal">
  <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Menu Utama <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><span class="suo-dropdown-heading">MENU UTAMA</span><a href="#utama">Utama</a><a href="#suo-dashboard-overview">Statistik Utama</a><a href="#statistik-pembangunan">Peta Interaktif</a></div></div>
  <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Dokumentasi &amp; Bab <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown suo-chapters-nested"><span class="suo-dropdown-heading">DOKUMENTASI &amp; BAB</span><a href="#chapterCarousel">Senarai Bab Perancangan Negeri</a><div class="suo-chapter-group"><button type="button" class="suo-chapter-expand" data-chapter-index="0" aria-expanded="false"><span>01 · Rancangan Selangor</span><span aria-hidden="true" class="suo-chapter-caret">⌄</span></button><div class="suo-chapter-subtopics" hidden><button type="button" data-topic-chapter="0" data-topic-index="0"><span class="suo-topic-number">01</span>Pengenalan Negeri</button><button type="button" data-topic-chapter="0" data-topic-index="1"><span class="suo-topic-number">02</span>Profil &amp; Parameter Pentadbiran</button><button type="button" data-topic-chapter="0" data-topic-index="2"><span class="suo-topic-number">03</span>Kerangka Perancangan</button></div></div><div class="suo-chapter-group"><button type="button" class="suo-chapter-expand" data-chapter-index="1" aria-expanded="false"><span>02 · Arah Tuju &amp; Hierarki</span><span aria-hidden="true" class="suo-chapter-caret">⌄</span></button><div class="suo-chapter-subtopics" hidden><button type="button" data-topic-chapter="1" data-topic-index="0"><span class="suo-topic-number">01</span>Pengenalan &amp; Kerangka Perundangan</button><button type="button" data-topic-chapter="1" data-topic-index="1"><span class="suo-topic-number">02</span>Hierarki Perancangan</button><button type="button" data-topic-chapter="1" data-topic-index="2"><span class="suo-topic-number">03</span>Dokumen Rujukan Akta 172</button></div></div><div class="suo-chapter-group"><button type="button" class="suo-chapter-expand" data-chapter-index="2" aria-expanded="false"><span>03 · Rancangan Struktur Negeri (RSN)</span><span aria-hidden="true" class="suo-chapter-caret">⌄</span></button><div class="suo-chapter-subtopics" hidden><button type="button" data-topic-chapter="2" data-topic-index="0"><span class="suo-topic-number">01</span>Pengenalan &amp; Latar Belakang</button><button type="button" data-topic-chapter="2" data-topic-index="1"><span class="suo-topic-number">02</span>Hala Tuju Strategik dan Konsep Pembangunan</button><button type="button" data-topic-chapter="2" data-topic-index="2"><span class="suo-topic-number">03</span>Kerangka Strategik &amp; Objektif Perancangan</button><button type="button" data-topic-chapter="2" data-topic-index="3"><span class="suo-topic-number">04</span>Dasar-dasar RS Negeri Selangor 2035 (Pengubahan)</button><button type="button" data-topic-chapter="2" data-topic-index="4"><span class="suo-topic-number">05</span>Pelan Strategik Guna Tanah RS Negeri Selangor 2035 (Pengubahan)</button><button type="button" data-topic-chapter="2" data-topic-index="5"><span class="suo-topic-number">06</span>Dokumen Rancangan Struktur Negeri Selangor 2035 (Pengubahan)</button></div></div><div class="suo-chapter-group"><button type="button" class="suo-chapter-expand" data-chapter-index="3" aria-expanded="false"><span>04 · Rancangan Tempatan &amp; RKK</span><span aria-hidden="true" class="suo-chapter-caret">⌄</span></button><div class="suo-chapter-subtopics" hidden><button type="button" data-topic-chapter="3" data-topic-index="0"><span class="suo-topic-number">01</span>RT &amp; RKK</button><button type="button" data-topic-chapter="3" data-topic-index="1"><span class="suo-topic-number">02</span>Akses Direktori</button></div></div><div class="suo-chapter-group suo-chapter-coming-soon"><div class="suo-chapter-expand" aria-disabled="true"><span>05 · Sistem LPFNS <small class="suo-coming-label">AKAN DATANG</small></span><span aria-hidden="true" class="suo-chapter-caret">⌄</span></div></div></div></div>
- <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Direktori <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><span class="suo-dropdown-heading">DIREKTORI &amp; RUJUKAN</span><a href="#suo-document-centre">Pusat Dokumentasi <span class="suo-dropdown-hint">Papar dan muat turun dokumen</span></a><a href="#statistik-pembangunan">Data Peta GIS</a><a href="#pautan-pbt">Direktori PBT</a></div></div>
+ <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Direktori <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><span class="suo-dropdown-heading">DIREKTORI &amp; RUJUKAN</span><a href="#suo-document-centre">Pusat Dokumentasi <span class="suo-dropdown-hint">Papar dan muat turun dokumen</span></a><a href="#pautan-pbt">Direktori PBT</a></div></div>
 </nav><nav class="top-nav" aria-label="Navigasi utama"><button class="home-nav-btn" onclick="scrollToSuoTarget('utama')">Utama</button>
       <button type="button" class="section-nav-btn" data-section="suo-dashboard-overview" onclick="navigateSection('suo-dashboard-overview',this)">Statistik</button>
       <button class="section-nav-btn" data-section="statistik-pembangunan" onclick="navigateSection('statistik-pembangunan',this)">Peta Interaktif</button>
@@ -13218,7 +13218,7 @@ window.renderSuoPbtDocumentTable=function(type,code){
  const table=document.createElement('table'),caption=document.createElement('caption');caption.textContent='Senarai '+type.toUpperCase()+' Mengikut PBT · '+rows.length+' dokumen';table.append(caption);
  const thead=document.createElement('thead'),tr=document.createElement('tr');
  ['Bil.','Nama Dokumen','No. Warta / Status'].forEach(t=>{const th=document.createElement('th');th.scope='col';th.textContent=t;tr.append(th)});thead.append(tr);table.append(thead);
- const tbody=document.createElement('tbody');rows.forEach((record,i)=>{const tr=document.createElement('tr');[String(i+1),record[1],record[2]].forEach((t,col)=>{const td=document.createElement('td');td.textContent=t;if(type.toUpperCase()==='RKK'&&selected==='MPHS'&&col===1){const isGenting=/Genting Highlands/i.test(record[1]);const isKkb=/Kuala Kubu Bharu/i.test(record[1]);if(isGenting||isKkb){const a=document.createElement('a');a.className='rr04-rkk-specific-storymap';a.href=isGenting?'https://arcg.is/1O1KeP0':'https://storymaps.arcgis.com/stories/5ba0707ea7d448ca854f06872349e223';a.target='_blank';a.rel='noopener noreferrer';a.textContent=isGenting?'Terokai StoryMap Genting Highlands ↗':'Terokai StoryMap Kuala Kubu Bharu ↗';td.append(document.createElement('br'),a)}}tr.append(td)});tbody.append(tr)});table.append(tbody);host.append(table);
+ const tbody=document.createElement('tbody');rows.forEach((record,i)=>{const tr=document.createElement('tr');[String(i+1),record[1],record[2]].forEach((t,col)=>{const td=document.createElement('td');td.textContent=t;if(type.toUpperCase()==='RKK'&&selected==='MPHS'&&col===1){const isGenting=/Genting Highlands/i.test(record[1]);const isKkb=/Kuala Kubu Bharu/i.test(record[1]);if(isGenting||isKkb){const a=document.createElement('a');a.className='rr04-rkk-specific-storymap';a.href=isGenting?'#gh-rkk-story':'#kkb-rkk-story';a.removeAttribute('target');a.addEventListener('click',function(e){e.preventDefault();const trigger=document.querySelector(isGenting?'a.rr04-genting-storymap':'a.rr04-kkb-storymap');if(trigger)trigger.click()});a.target='_blank';a.rel='noopener noreferrer';a.textContent=isGenting?'Terokai StoryMap Genting Highlands ↗':'Terokai StoryMap Kuala Kubu Bharu ↗';td.append(document.createElement('br'),a)}}tr.append(td)});tbody.append(tr)});table.append(tbody);host.append(table);
 };
 })();
 </script>
@@ -13606,20 +13606,6 @@ window.renderSuoPbtDocumentTable=function(type,code){
      const head=document.createElement('strong');head.textContent=String(i+1).padStart(2,'0')+' · '+title;
      const description=document.createElement('p');description.textContent=documentOverview(title);
      entry.append(head,description);
-     if(p.code==='MPHS'){
-       const isGenting=/Genting Highlands/i.test(title);
-       const isKkb=/Kuala Kubu Bharu 2025/i.test(title);
-       if(isGenting||isKkb){
-         const link=document.createElement('a');
-         link.className='rr04-rkk-specific-storymap';
-         link.href=isGenting?'https://arcg.is/1O1KeP0':'https://storymaps.arcgis.com/stories/5ba0707ea7d448ca854f06872349e223';
-         link.target='_blank';
-         link.rel='noopener noreferrer';
-         link.textContent=isGenting?'Terokai StoryMap Genting Highlands ↗':'Terokai StoryMap Kuala Kubu Bharu ↗';
-         link.setAttribute('aria-label','Buka ArcGIS StoryMap '+(isGenting?'Genting Highlands':'Kuala Kubu Bharu'));
-         entry.appendChild(link);
-       }
-     }
      docList.appendChild(entry);
    });
    if(!p.docs.length){const note=document.createElement('p');note.textContent='Senarai dokumen RKK belum tersedia dalam direktori.';docList.appendChild(note);}
@@ -14365,6 +14351,18 @@ let cursor=0;setInterval(()=>{
 #kkb-rkk-story #kkb-native-5 .kkb-pillars>article:hover{box-shadow:0 25px 55px rgba(117,55,69,.25),0 0 28px rgba(251,174,118,.4)!important}
 #kkb-rkk-story #kkb-native-5 .kkb-pillars>article:focus-visible{outline:3px solid #ad6b40;outline-offset:5px}
 @media(max-width:820px){#kkb-rkk-story #kkb-native-5 .kkb-pillars>article{height:370px!important;min-height:370px!important}#kkb-rkk-story #kkb-native-5 .kkb-flip-face{padding:26px 20px!important}#kkb-rkk-story #kkb-native-5 .kkb-card-heading h3{font-size:clamp(21px,5vw,28px)!important}}
+</style>
+
+<style id="kkb-timeline-safe-layout-20261030">
+#kkb-rkk-story .kkb-history-grid{min-width:1320px!important;grid-template-columns:repeat(4,minmax(300px,1fr))!important;gap:24px!important}
+#kkb-rkk-story .kkb-history-event{height:850px!important;min-height:850px!important}
+#kkb-rkk-story .kkb-history-card{top:12px!important;bottom:auto!important;max-height:none!important;height:auto!important;padding:22px!important;overflow:visible!important}
+#kkb-rkk-story .kkb-history-lower .kkb-history-card{top:auto!important;bottom:12px!important}
+#kkb-rkk-story .kkb-history-year{top:50%!important;z-index:4!important}
+#kkb-rkk-story .kkb-history-card p{font-size:14px!important;line-height:1.6!important}
+#kkb-rkk-story .kkb-history-card h3{font-size:19px!important;line-height:1.35!important}
+@media(min-width:1450px){#kkb-rkk-story .kkb-history-grid{min-width:1320px!important;grid-template-columns:repeat(4,minmax(300px,1fr))!important}}
+@media(max-width:820px){#kkb-rkk-story .kkb-history-grid{min-width:1320px!important}}
 </style>
 </body>
 </html>
