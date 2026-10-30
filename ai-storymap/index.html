@@ -14536,5 +14536,29 @@ let cursor=0;setInterval(()=>{
 <footer class="mbpj-source">Sumber: ArcGIS StoryMaps RKK Seksyen 13 Petaling Jaya · PLANMalaysia Selangor. Imej asal dipautkan ke sumber ArcGIS.</footer>
 </div>
 <script id="mbpj13-story-controller-20261030">(function(){const modal=document.getElementById('mbpj13-story');if(!modal)return;let oldScroll=0,oldOverflow='';window.openMbpj13Story=function(){oldScroll=window.scrollY;oldOverflow=document.body.style.overflow;modal.hidden=false;document.body.style.overflow='hidden';modal.scrollTop=0;setActive()};function close(){modal.hidden=true;document.body.style.overflow=oldOverflow;window.scrollTo(0,oldScroll)}modal.querySelector('.mbpj-close').addEventListener('click',close);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});const links=[...modal.querySelectorAll('.mbpj-side a')],sections=[...modal.querySelectorAll('.mbpj-section')];function setActive(){const threshold=modal.getBoundingClientRect().top+160;let active=sections[0].id;sections.forEach(section=>{if(section.getBoundingClientRect().top<=threshold)active=section.id});links.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+active))}modal.addEventListener('scroll',setActive,{passive:true});links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const target=modal.querySelector(a.getAttribute('href'));if(target)target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}));const tabs=[...modal.querySelectorAll('.mbpj-zone-tabs button')],output=modal.querySelector('.mbpj-zone-selected');tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(t=>t.setAttribute('aria-pressed',String(t===b)));output.textContent=b.textContent}));})();</script>
+
+<style id="mbpj13-fit-background-justify-20261030">
+/* Only RKK Seksyen 13 Petaling Jaya: viewport fit, animated thematic backdrop and justified body copy. */
+#mbpj13-story{width:100%!important;max-width:100%!important;overflow-x:clip!important;box-sizing:border-box!important}
+#mbpj13-story,#mbpj13-story *{box-sizing:border-box}
+#mbpj13-story .mbpj-top,#mbpj13-story .mbpj-hero{width:100%!important;max-width:100%!important}
+#mbpj13-story .mbpj-layout{position:relative;isolation:isolate;width:100%!important;max-width:100%!important;margin:0!important;padding:clamp(14px,2.2vw,32px)!important;grid-template-columns:minmax(220px,265px) minmax(0,1fr)!important;gap:clamp(14px,1.7vw,26px)!important;background:linear-gradient(115deg,#eff8f5,#f5f9f4 56%,#eef7f5)!important}
+#mbpj13-story .mbpj-layout:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.65;background-image:radial-gradient(ellipse at 12% 22%,rgba(47,156,153,.18),transparent 38%),radial-gradient(ellipse at 88% 70%,rgba(219,177,113,.19),transparent 39%),repeating-radial-gradient(ellipse at 78% 42%,transparent 0 29px,rgba(46,127,132,.09) 30px,transparent 32px,transparent 47px),linear-gradient(90deg,rgba(42,135,136,.055) 1px,transparent 1px),linear-gradient(rgba(42,135,136,.055) 1px,transparent 1px);background-size:130% 130%,125% 125%,950px 650px,54px 54px,54px 54px;animation:mbpj13BackdropMotion 24s ease-in-out infinite alternate}
+@keyframes mbpj13BackdropMotion{from{background-position:0 0,100% 100%,0 0,0 0,0 0}to{background-position:90% 70%,0 15%,70px -45px,54px 28px,28px 54px}}
+#mbpj13-story .mbpj-side,#mbpj13-story .mbpj-main,#mbpj13-story .mbpj-section{min-width:0!important;max-width:100%!important}
+#mbpj13-story .mbpj-side{width:100%!important;padding:clamp(12px,1.4vw,19px)!important;overflow-wrap:break-word}
+#mbpj13-story .mbpj-side a{min-width:0!important;overflow-wrap:anywhere}
+#mbpj13-story .mbpj-main{width:100%!important}
+#mbpj13-story .mbpj-section{width:100%!important;padding:clamp(22px,3vw,46px)!important}
+#mbpj13-story .mbpj-cards,#mbpj13-story .mbpj-stats,#mbpj13-story .mbpj-concept,#mbpj13-story .mbpj-zone-tabs{width:100%!important;min-width:0!important}
+#mbpj13-story .mbpj-card,#mbpj13-story .mbpj-stat,#mbpj13-story .mbpj-concept article{min-width:0!important;overflow-wrap:break-word}
+#mbpj13-story .mbpj-section p,#mbpj13-story .mbpj-section li,#mbpj13-story .mbpj-card p,#mbpj13-story .mbpj-source{text-align:justify!important;text-justify:inter-word;hyphens:auto;overflow-wrap:break-word}
+#mbpj13-story .mbpj-section h2,#mbpj13-story .mbpj-section h3,#mbpj13-story .mbpj-overline,#mbpj13-story .mbpj-hero h1,#mbpj13-story .mbpj-hero p{text-align:left!important}
+#mbpj13-story .mbpj-section figure{width:100%!important;max-width:100%!important;overflow:hidden}
+#mbpj13-story .mbpj-section figure img{width:100%!important;height:auto!important;max-width:100%!important}
+@media(max-width:980px){#mbpj13-story .mbpj-layout{grid-template-columns:minmax(0,1fr)!important}#mbpj13-story .mbpj-side{position:relative!important;top:auto!important;display:flex!important;flex-wrap:wrap!important;gap:7px!important}#mbpj13-story .mbpj-side a{flex:1 1 170px!important;min-width:0!important}#mbpj13-story .mbpj-side>small,#mbpj13-story .mbpj-side>strong{display:none!important}#mbpj13-story .mbpj-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:620px){#mbpj13-story .mbpj-layout{padding:12px!important}#mbpj13-story .mbpj-cards,#mbpj13-story .mbpj-stats,#mbpj13-story .mbpj-concept,#mbpj13-story .mbpj-zone-tabs{grid-template-columns:1fr!important}#mbpj13-story .mbpj-section{padding:20px!important}#mbpj13-story .mbpj-side a{flex:1 1 135px!important}}
+@media(prefers-reduced-motion:reduce){#mbpj13-story .mbpj-layout:before{animation:none!important}}
+</style>
 </body>
 </html>
