@@ -14125,9 +14125,9 @@ function selectTopic(chapter,topic){
  }));
 }
 nav.addEventListener('click',e=>{
- const expand=e.target.closest('.suo-chapter-expand');
+ const expand=e.target.closest('button.suo-chapter-expand[data-chapter-index]');
  if(expand){e.preventDefault();const group=expand.closest('.suo-chapter-group');const opening=expand.getAttribute('aria-expanded')!=='true';
- nav.querySelectorAll('.suo-chapter-expand').forEach(b=>{b.setAttribute('aria-expanded','false');b.nextElementSibling.hidden=true});
+ nav.querySelectorAll('button.suo-chapter-expand[data-chapter-index]').forEach(b=>{b.setAttribute('aria-expanded','false');const sub=b.nextElementSibling;if(sub&&sub.classList.contains('suo-chapter-subtopics'))sub.hidden=true;});
  expand.setAttribute('aria-expanded',String(opening));expand.nextElementSibling.hidden=!opening;if(opening){const pane=expand.nextElementSibling;pane.classList.remove('suo-flyout-left');const bounds=group.getBoundingClientRect();const space=window.innerWidth-bounds.right;/* Keep right-side flyout as requested. */}return;}
  const item=e.target.closest('[data-topic-chapter][data-topic-index]');
  if(item){e.preventDefault();selectTopic(Number(item.dataset.topicChapter),Number(item.dataset.topicIndex));nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));}
