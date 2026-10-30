@@ -9160,6 +9160,29 @@ body.suo-spotlight-visible #suo-adaptive-spotlight{opacity:1}
 .hero-bg-video{object-fit:cover;object-position:center center;filter:contrast(1.04) saturate(1.055) brightness(1.01);image-rendering:auto}
 @media(max-width:767px){.hero-bg-video{object-position:center center;filter:contrast(1.03) saturate(1.04)}}
 </style>
+
+<style id="suo-horizontal-flow-20261030">
+/* Continuous scrolling and accessible glass navigation, without modifying chapter contents */
+html{scroll-behavior:smooth}
+body:not(.suo-drawer-mode) .suo-drawer-view{display:block!important}
+.main-section .content-panel{display:block!important;visibility:visible!important;opacity:1!important;height:auto!important;max-height:none!important;position:relative!important;transform:none!important;overflow:visible!important;scroll-margin-top:110px;margin-bottom:36px}
+#panel-4:empty{display:none!important}
+#utama,#suo-dashboard-overview,#statistik-pembangunan,#suo-document-centre,#pautan-pbt{scroll-margin-top:110px}
+#suo-drawer-hamburger,#suo-glass-drawer,#suo-glass-drawer-backdrop{display:none!important}
+.header .head{display:flex;flex-wrap:wrap;gap:8px 17px;justify-content:space-between;align-items:center}
+#suo-horizontal-nav{display:flex;align-items:center;gap:7px;margin-inline:auto;position:relative;z-index:150}
+#suo-horizontal-nav .suo-horizontal-group{position:relative}
+#suo-horizontal-nav .suo-horizontal-trigger{padding:11px 15px;border:1px solid #e2d4d7;border-radius:14px;background:#ffffffb3;color:#61253b;font-size:12px;font-weight:800;white-space:nowrap;transition:background .2s,border-color .2s,box-shadow .2s}
+#suo-horizontal-nav .suo-horizontal-trigger:hover,#suo-horizontal-nav .suo-horizontal-group:focus-within>.suo-horizontal-trigger{background:#fff;border-color:#ce9eb0;box-shadow:0 4px 15px #702b4522}
+#suo-horizontal-nav .suo-horizontal-dropdown{position:absolute;top:calc(100% + 7px);left:0;min-width:260px;padding:10px;display:flex;flex-direction:column;gap:3px;border:1px solid #ffffffcc;background:#ffffffdd;backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);box-shadow:0 18px 52px #2f213634;border-radius:17px;opacity:0;visibility:hidden;transform:translateY(8px);pointer-events:none;transition:opacity .2s,transform .2s,visibility .2s;z-index:999}
+#suo-horizontal-nav .suo-horizontal-group:hover>.suo-horizontal-dropdown,#suo-horizontal-nav .suo-horizontal-group:focus-within>.suo-horizontal-dropdown,#suo-horizontal-nav .suo-horizontal-group.is-open>.suo-horizontal-dropdown{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+#suo-horizontal-nav .suo-horizontal-dropdown a{color:#55213a;padding:12px 13px;border-radius:11px;font-weight:700;font-size:12px;line-height:1.4;text-decoration:none}
+#suo-horizontal-nav .suo-horizontal-dropdown a:hover,#suo-horizontal-nav .suo-horizontal-dropdown a:focus{background:#f7e8ec;color:#741b3d;outline-offset:1px}
+.header .top-nav{display:none!important}
+@media(max-width:1000px){#suo-horizontal-nav{order:3;width:100%;justify-content:center;overflow:visible;gap:4px}#suo-horizontal-nav .suo-horizontal-trigger{font-size:11px;padding:10px 11px}.header .head{padding-block:9px}}
+@media(max-width:520px){#suo-horizontal-nav{justify-content:space-between}#suo-horizontal-nav .suo-horizontal-trigger{font-size:10px;padding:9px 6px}#suo-horizontal-nav .suo-horizontal-dropdown{min-width:min(270px,90vw)}#suo-horizontal-nav .suo-horizontal-group:last-child .suo-horizontal-dropdown{left:auto;right:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}#suo-horizontal-nav *{transition:none!important}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -9169,7 +9192,7 @@ body.suo-spotlight-visible #suo-adaptive-spotlight{opacity:1}
 
 <header class="header">
   <div class="container head">
-    <button type="button" id="suo-drawer-hamburger" class="suo-drawer-hamburger" aria-label="Buka menu navigasi" aria-controls="suo-glass-drawer" aria-expanded="false"><span aria-hidden="true"><i></i><i></i><i></i></span></button>
+    
     <div class="brand-group">
       <div class="logo suo-logo"><img src="https://raw.githubusercontent.com/geospatialpms-glitch/Rancangan-Pemajuan-Negeri-Selangor/main/ai-storymap/SUO.jpeg" alt="Logo Selangor Urban Observatory (SUO)"></div>
       <div class="brand-text">
@@ -9177,7 +9200,11 @@ body.suo-spotlight-visible #suo-adaptive-spotlight{opacity:1}
         <small>PLANMALAYSIA SELANGOR · PORTAL INTERAKTIF</small>
       </div>
     </div>
-    <nav class="top-nav" aria-label="Navigasi utama"><button class="home-nav-btn" onclick="scrollToSuoTarget('utama')">Utama</button>
+    <nav id="suo-horizontal-nav" aria-label="Navigasi portal">
+ <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Menu Utama <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><a href="#utama">Utama</a><a href="#suo-dashboard-overview">Statistik</a><a href="#statistik-pembangunan">Peta Interaktif</a></div></div>
+ <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Dokumentasi &amp; Bab <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><a href="#panel-0">01 · Rancangan Selangor</a><a href="#panel-1">02 · Arah Tuju &amp; Hierarki</a><a href="#panel-2">03 · Rancangan Struktur Negeri (RSN)</a><a href="#panel-3">04 · Rancangan Tempatan &amp; RKK</a></div></div>
+ <div class="suo-horizontal-group"><button type="button" class="suo-horizontal-trigger" aria-expanded="false">Direktori <span aria-hidden="true">⌄</span></button><div class="suo-horizontal-dropdown"><a href="#suo-document-centre">Pusat Dokumentasi</a><a href="#statistik-pembangunan">Data Peta GIS</a><a href="#pautan-pbt">Direktori PBT</a></div></div>
+</nav><nav class="top-nav" aria-label="Navigasi utama"><button class="home-nav-btn" onclick="scrollToSuoTarget('utama')">Utama</button>
       <button type="button" class="section-nav-btn" data-section="suo-dashboard-overview" onclick="navigateSection('suo-dashboard-overview',this)">Statistik</button>
       <button class="section-nav-btn" data-section="statistik-pembangunan" onclick="navigateSection('statistik-pembangunan',this)">Peta Interaktif</button>
       <div class="suo-explore" id="suo-explore-dropdown">
@@ -13222,6 +13249,7 @@ window.renderSuoPbtDocumentTable=function(type,code){
 <script id="suo-glass-hamburger-drawer-20261022-js">
 (function(){
  'use strict';
+ return; // Superseded by continuous vertical story flow and horizontal header navigation.
  const body=document.body,header=document.querySelector('header.header'),
  toggle=document.getElementById('suo-drawer-hamburger'),
  drawer=document.getElementById('suo-glass-drawer'),
@@ -13919,5 +13947,19 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dlg.hidden)close()
 })();
 </script>
 
+<script id="suo-horizontal-flow-20261030-js">
+(function(){
+'use strict';
+const nav=document.getElementById('suo-horizontal-nav');if(!nav)return;
+const panels=[...document.querySelectorAll('.main-section .content-panel')];
+function go(id){const el=document.getElementById(id);if(!el)return;const top=el.getBoundingClientRect().top+window.scrollY-(document.querySelector('.header')?.getBoundingClientRect().height||90)-14;window.scrollTo({top:Math.max(0,top),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+nav.addEventListener('click',e=>{const link=e.target.closest('a[href^="#"]');if(link){e.preventDefault();go(link.getAttribute('href').slice(1));nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));return}const btn=e.target.closest('.suo-horizontal-trigger');if(btn){const group=btn.closest('.suo-horizontal-group');const open=!group.classList.contains('is-open');nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));group.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',String(open));}});
+document.addEventListener('click',e=>{if(!nav.contains(e.target)){nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'))}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.querySelectorAll('.is-open').forEach(g=>g.classList.remove('is-open'));nav.querySelectorAll('.suo-horizontal-trigger').forEach(b=>b.setAttribute('aria-expanded','false'))}});
+window.switchTab=function(i){if(Number.isInteger(i)&&i>=0&&i<4)go('panel-'+i)};
+document.querySelectorAll('#chapterCarousel .tab-btn').forEach((btn,i)=>{if(i<4)btn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();go('panel-'+i)},true)});
+panels.forEach((p,i)=>{if(i<4){p.setAttribute('aria-hidden','false');p.classList.add('active')}});
+})();
+</script>
 </body>
 </html>
