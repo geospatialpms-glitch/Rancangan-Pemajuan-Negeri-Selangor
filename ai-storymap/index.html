@@ -14831,6 +14831,32 @@ let cursor=0;setInterval(()=>{
 #rt11-modal .rtpiece h3,#rt11-modal .rtpiece h4{border-left:4px solid var(--rt-main);padding-left:13px}
 @media(max-width:720px){#rt11-modal .rtside{padding:16px}#rt11-modal .rtpiece ul,#rt11-modal .rtpiece ol{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .rtpiece,#rt11-modal .rtpiece li,#rt11-modal .rtchapter,#rt11-modal .rtpiece figure{transition:none!important;transform:none!important}}
+</style><style id="rt11-unique-chapter-designs-20261102">
+/* Consistent goal statement; differentiated presentation for other topics */
+#rt11-modal .rtchapter.rt-goal .rtpiece:has(blockquote){margin:28px auto 32px;width:100%;max-width:none}
+#rt11-modal .rtchapter.rt-goal .rtpiece blockquote{margin:0;min-height:160px;display:grid;place-items:center;text-align:center;border:2px solid color-mix(in srgb,var(--rt-main) 48%,#f8d49c);border-radius:20px;background:linear-gradient(115deg,color-mix(in srgb,var(--rt-main) 90%,#3b1739),color-mix(in srgb,var(--rt-main) 58%,#cd9467));color:#fff9ec;padding:clamp(24px,5vw,60px);font-family:Georgia,serif;font-size:clamp(21px,2.6vw,36px);line-height:1.4;font-weight:800;box-shadow:0 16px 32px #18324925}
+#rt11-modal .rtchapter.rt-goal .rtpiece li{background:#fff;border-top:3px solid var(--rt-main)}
+#rt11-modal .rtchapter.rt-pillars .rtpiece ul,#rt11-modal .rtchapter.rt-pillars .rtpiece ol{grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:17px}
+#rt11-modal .rtchapter.rt-pillars .rtpiece li{padding:58px 20px 24px;border-radius:22px;background:linear-gradient(150deg,var(--rt-soft),#fff);border:1px solid color-mix(in srgb,var(--rt-main) 25%,white);min-height:170px;box-shadow:0 12px 23px #132d4917}
+#rt11-modal .rtchapter.rt-pillars .rtpiece li:before{left:20px;top:16px;font-size:14px;padding:7px 9px}
+#rt11-modal .rtchapter.rt-pillars .rtpiece li:hover{transform:translateY(-7px) scale(1.015)}
+#rt11-modal .rtchapter.rt-concept .rtpiece ul,#rt11-modal .rtchapter.rt-concept .rtpiece ol{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#rt11-modal .rtchapter.rt-concept .rtpiece li{min-height:110px;background:linear-gradient(100deg,#fff 0%,var(--rt-soft) 100%);border-left:5px solid var(--rt-main);border-radius:14px;padding:23px 20px 23px 56px}
+#rt11-modal .rtchapter.rt-concept .rtpiece li:before{top:22px;left:14px}
+#rt11-modal .rtchapter.rt-concept .rtpiece li:hover{transform:translateX(5px)}
+#rt11-modal .rtside{border-radius:23px;background:#fffaf6f5;padding:23px 16px}
+#rt11-modal .rtside .rt-side-eyebrow{font-size:10px;letter-spacing:.11em;color:color-mix(in srgb,var(--rt-main) 70%,#bd865c);font-weight:900}
+#rt11-modal .rtside .rt-side-title{display:block;margin:11px 0 9px;color:var(--rt-main);font-size:20px;line-height:1.35;font-weight:900}
+#rt11-modal .rtside .rt-side-desc{margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid #e7d8cf;font-size:11px;line-height:1.65;color:#7f6970}
+#rt11-modal .rtside h3{font-size:11px;letter-spacing:.1em;border:0;padding:0;margin:0 0 11px;color:#a47666}
+#rt11-modal .rtside a{position:relative;display:grid;grid-template-columns:36px 1fr;align-items:center;gap:10px;border-radius:13px;padding:10px 11px}
+#rt11-modal .rtside a:before{content:attr(data-rt-icon);width:34px;height:34px;background:var(--rt-soft);border:1px solid color-mix(in srgb,var(--rt-main) 16%,white);font-size:17px;border-radius:11px}
+#rt11-modal .rtside a .rt-side-label{display:block;font-size:10px;opacity:.65;line-height:1.4}
+#rt11-modal .rtside a .rt-side-name{display:block;font-size:12px;line-height:1.4}
+#rt11-modal .rtside a:hover,#rt11-modal .rtside a.is-active{background:linear-gradient(110deg,var(--rt-main),color-mix(in srgb,var(--rt-main) 60%,#b57a64));color:#fff}
+#rt11-modal .rtside a:hover:before,#rt11-modal .rtside a.is-active:before{background:#fffaef;color:var(--rt-main)}
+@media(max-width:720px){#rt11-modal .rtchapter.rt-concept .rtpiece ul,#rt11-modal .rtchapter.rt-concept .rtpiece ol{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .rtchapter.rt-pillars .rtpiece li:hover,#rt11-modal .rtchapter.rt-concept .rtpiece li:hover{transform:none}}
 </style><style id="rt11-story-panel-v1">
 #rt11-modal[hidden]{display:none!important}
 #rt11-modal{position:fixed;inset:0;z-index:101500;overflow:auto;background:#f7f8fc;color:#263548;font-family:'Plus Jakarta Sans',Arial,sans-serif;--rt-main:#456f8f;--rt-soft:#e3eef6}
@@ -14874,7 +14900,7 @@ else if(node.type==='text'){if(d.type==='h2')return null;const tag=/^h[3456]$/.t
 else return null;return wrap};
 function close(){requestNo++;modal.hidden=true;document.body.style.overflow='';window.scrollTo(0,oldScroll)}
 document.getElementById('rt11-close').addEventListener('click',close);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});
-async function open(entry){oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);hero.style.backgroundImage='';label.textContent='RANCANGAN TEMPATAN · '+entry.code;hero.innerHTML='<div class="rt-hero-content"><small>PLANMalaysia SELANGOR · STORY MAP INTERAKTIF</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<h3>Direktori Bab</h3>';const ticket=++requestNo;
+async function open(entry){oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);hero.style.backgroundImage='';label.textContent='RANCANGAN TEMPATAN · '+entry.code;hero.innerHTML='<div class="rt-hero-content"><small>PLANMalaysia SELANGOR · STORY MAP INTERAKTIF</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<small class="rt-side-eyebrow">JELAJAH RANCANGAN TEMPATAN</small><strong class="rt-side-title">'+entry.code+'</strong><p class="rt-side-desc">Terokai kandungan Rancangan Tempatan melalui navigasi interaktif.</p><h3>SENARAI BAB</h3>';const ticket=++requestNo;
 try{const url='https://www.arcgis.com/sharing/rest/content/items/'+entry.id+'/data?f=json';const res=await fetch(url,{mode:'cors',credentials:'omit'});if(!res.ok)throw Error('HTTP '+res.status);const data=await res.json();if(data.error||!data.nodes)throw Error((data.error&&data.error.message)||'Data JSON tidak tersedia');if(ticket!==requestNo)return;const nodes=data.nodes,resources=data.resources||{},root=nodes[data.root],children=root&&root.children||[];const cover=children.map(k=>nodes[k]).find(n=>n&&n.type==='storycover');/* Cover ESRI sebenar: storycover.children -> image node -> resourceId, seperti RKK */
 let coverImage='';
 if(cover){
@@ -14889,7 +14915,7 @@ if(coverImage){hero.style.backgroundImage='linear-gradient(100deg,rgba(13,30,52,
 if(cover){hero.innerHTML='';const heroContent=document.createElement('div');heroContent.className='rt-hero-content';hero.appendChild(heroContent);let sm=document.createElement('small');sm.textContent='RANCANGAN TEMPATAN · '+entry.code;heroContent.appendChild(sm);let title=document.createElement('h1');title.textContent=strip(cover.data.title);heroContent.appendChild(title);let sub=document.createElement('p');sub.textContent=strip(cover.data.summary);heroContent.appendChild(sub)}
 body.innerHTML='';let section=null,i=0;const prefix='rt11-'+entry.code+'-';
 for(const key of children){const node=nodes[key];if(!node||node.type==='storycover'||node.type==='navigation'||node.type==='credits'||node.type==='attribution')continue;
-if(node.type==='text'&&node.data&&node.data.type==='h2'&&strip(node.data.text)){i++;section=document.createElement('section');section.className='rtchapter';section.id=prefix+i;let h=document.createElement('h2');h.textContent=strip(node.data.text);section.appendChild(h);body.appendChild(section);let a=document.createElement('a');a.href='#'+section.id;a.textContent=h.textContent;a.dataset.rtNumber=String(i).padStart(2,'0');a.addEventListener('click',e=>{e.preventDefault();section=document.getElementById(a.hash.slice(1));if(section)section.scrollIntoView({behavior:'smooth',block:'start'})});nav.appendChild(a);continue}
+if(node.type==='text'&&node.data&&node.data.type==='h2'&&strip(node.data.text)){i++;section=document.createElement('section');section.className='rtchapter';section.id=prefix+i;const category=strip(node.data.text).toLowerCase();if(/matlamat pembangunan/.test(category))section.classList.add('rt-goal');else if(/teras pembangunan/.test(category))section.classList.add('rt-pillars');else if(/konsep pembangunan/.test(category))section.classList.add('rt-concept');let h=document.createElement('h2');h.textContent=strip(node.data.text);section.appendChild(h);body.appendChild(section);let a=document.createElement('a');a.href='#'+section.id;a.dataset.rtNumber=String(i).padStart(2,'0');a.dataset.rtIcon=['⌂','▣','▤','◇','✦','◈','▦'][(i-1)%7];const labels=document.createElement('span');const k=document.createElement('small');k.className='rt-side-label';k.textContent='BAB '+String(i).padStart(2,'0');const n=document.createElement('strong');n.className='rt-side-name';n.textContent=h.textContent.replace(/^\\s*\\d+\\s*[.·:-]\\s*/,'');labels.append(k,n);a.appendChild(labels);a.addEventListener('click',e=>{e.preventDefault();section=document.getElementById(a.hash.slice(1));if(section)section.scrollIntoView({behavior:'smooth',block:'start'})});nav.appendChild(a);continue}
 if(!section){section=document.createElement('section');section.className='rtchapter';section.id=prefix+'intro';body.appendChild(section)}
 const el=piece(node,resources,entry.id);if(el)section.appendChild(el)}
 if(!body.children.length)throw Error('Tiada kandungan bab');}
