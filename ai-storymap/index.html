@@ -14681,6 +14681,69 @@ let cursor=0;setInterval(()=>{
 @media(max-width:1000px){#mpks-malawati-story .mks-cards{grid-template-columns:1fr}#mpks-malawati-story .mks-layout{grid-template-columns:1fr}#mpks-malawati-story .mks-side{position:relative;top:auto;max-height:none;display:flex;flex-wrap:wrap;gap:8px}#mpks-malawati-story .mks-side>small,#mpks-malawati-story .mks-side>strong{display:none}#mpks-malawati-story .mks-side a{flex:1 1 165px}}
 @media(max-width:650px){#mpks-malawati-story .mks-statrow{grid-template-columns:1fr}#mpks-malawati-story .mks-hero{padding:30px 15px}#mpks-malawati-story .mks-hero h1{font-size:clamp(34px,8vw,52px)}#mpks-malawati-story .mks-layout{padding:10px}#mpks-malawati-story .mks-theme summary{flex-wrap:wrap}#mpks-malawati-story .mks-theme-count{display:none}#mpks-malawati-story .mks-chapter{padding:22px}}
 @media(prefers-reduced-motion:reduce){#mpks-malawati-story .mks-hero:after,#mpks-malawati-story .mks-layout:before,#mpks-malawati-story .mks-goal:before,#mpks-malawati-story .mks-scroll{animation:none!important}}
+
+/* mks-malawati-interactive-cards-v2 — only RKK Bandar Warisan Alam Melawati */
+#mpks-malawati-story{
+ --mks-dark:#202f51;--mks-green:#415f84;--mks-gold:#c38a66;--mks-paper:#f7f8fc;
+ background:radial-gradient(ellipse at 85% 10%,#dce6f5 0%,transparent 40%),linear-gradient(155deg,#edf3fc,#faf7f3 58%,#e7edf8);
+ color:#41526f;
+}
+#mpks-malawati-story .mks-chapter{
+ background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(248,248,255,.96));
+ border-color:#d7e1ef;border-top-color:#c38a66;
+ box-shadow:0 14px 35px rgba(34,54,95,.08);
+}
+#mpks-malawati-story .mks-chapter h2{color:#273e67}
+#mpks-malawati-story .mks-kicker{color:#ad7158}
+#mpks-malawati-story .mks-cards{
+ position:relative;isolation:isolate;overflow:visible;align-items:stretch;
+ gap:20px;padding:13px 9px 20px;
+}
+/* Slow directional flow behind cards, not over text */
+#mpks-malawati-story .mks-cards::before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='90' viewBox='0 0 220 90'%3E%3Cpath d='M0 45 H196 m-17 -13 17 13 -17 13' fill='none' stroke='%235e85b4' stroke-opacity='.22' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' stroke-dasharray='8 12'/%3E%3C/svg%3E");
+ background-size:220px 90px;opacity:.75;
+ animation:mksArrowFlow 16s linear infinite;
+}
+#mpks-malawati-story .mks-cards::after{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse at 23% 35%,rgba(100,139,203,.14),transparent 48%),radial-gradient(ellipse at 80% 60%,rgba(199,132,104,.13),transparent 45%);
+ filter:blur(13px);animation:mksAmbientGlow 7s ease-in-out infinite alternate;
+}
+#mpks-malawati-story .mks-cards>.mks-card{
+ position:relative;z-index:1;min-width:0;
+ background:linear-gradient(135deg,#f6f8fe 0%,#edf3fd 52%,#fff3ed 100%);
+ border:1px solid #cddced;border-radius:21px;
+ box-shadow:0 9px 22px rgba(38,59,100,.09);
+ transform:scale(1);transform-origin:center center;
+ transition:transform .38s cubic-bezier(.2,.75,.25,1),filter .38s,opacity .38s,box-shadow .38s,border-color .38s,background .38s;
+ will-change:transform;
+}
+#mpks-malawati-story .mks-card small{color:#a96850}
+#mpks-malawati-story .mks-card h3{color:#29466f}
+@media(hover:hover) and (pointer:fine){
+ #mpks-malawati-story .mks-cards:has(>.mks-card:hover)>.mks-card:not(:hover){
+  transform:scale(.955);filter:saturate(.75);opacity:.78;
+ }
+ #mpks-malawati-story .mks-cards>.mks-card:hover{
+  z-index:3;transform:translateY(-5px) scale(1.045);
+  background:linear-gradient(135deg,#e8f1ff 0%,#f4f1fc 58%,#ffece1 100%);
+  border-color:#a3bfe1;
+  box-shadow:0 23px 45px rgba(35,69,120,.19),0 0 0 2px rgba(195,138,102,.18),0 0 28px rgba(89,132,200,.22);
+  opacity:1;filter:none;
+ }
+}
+@keyframes mksArrowFlow{from{background-position:0 0}to{background-position:220px 0}}
+@keyframes mksAmbientGlow{from{opacity:.5;transform:translateY(0)}to{opacity:1;transform:translateY(-6px)}}
+@media(max-width:900px){
+ #mpks-malawati-story .mks-cards{padding:9px 3px 15px;gap:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ #mpks-malawati-story .mks-cards::before,#mpks-malawati-story .mks-cards::after{animation:none!important}
+ #mpks-malawati-story .mks-cards>.mks-card{transition:none!important}
+}
+
 </style>
 <div id="mpks-malawati-story" role="dialog" aria-modal="true" aria-label="RKK Bandar Warisan Alam Melawati Kuala Selangor" hidden>
 <div class="mks-bar"><strong>RKK BANDAR WARISAN ALAM MELAWATI · MPKS</strong><button type="button" class="mks-close">✕ Kembali ke Portal</button></div>
