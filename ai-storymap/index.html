@@ -14787,6 +14787,23 @@ let cursor=0;setInterval(()=>{
 #rt11-modal .rtside a:hover{transform:translateX(4px)}
 @media(max-width:720px){#rt11-modal .rthero{height:calc(100dvh - 70px);min-height:360px;max-height:720px;padding:24px 17px}#rt11-modal .rthero h1{font-size:clamp(32px,8vw,56px)}#rt11-modal .rt-hero-content{text-align:center}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .rtside a{transition:none}}
+/* RT cover exactly one viewport including its fixed-height navigation bar */
+#rt11-modal{--rt-header-height:84px;scrollbar-gutter:stable}
+#rt11-modal .rtbar{height:var(--rt-header-height);min-height:var(--rt-header-height);padding-block:10px}
+#rt11-modal .rthero{height:calc(100vh - var(--rt-header-height));height:calc(100dvh - var(--rt-header-height));min-height:0;max-height:none;box-sizing:border-box;padding-block:clamp(20px,4vh,54px);overflow:hidden}
+#rt11-modal .rt-hero-content{max-height:100%;overflow:visible}
+#rt11-modal .rthero h1{font-size:clamp(30px,min(5.4vw,9vh),78px);line-height:1.05}
+@media(max-width:720px){
+ #rt11-modal{--rt-header-height:70px}
+ #rt11-modal .rtbar{padding:10px 12px}
+ #rt11-modal .rthero{height:calc(100dvh - var(--rt-header-height));min-height:0;max-height:none;padding:18px 16px}
+ #rt11-modal .rthero h1{font-size:clamp(27px,min(8vw,8vh),52px)}
+}
+@media(max-height:560px){
+ #rt11-modal .rthero{padding-block:12px}
+ #rt11-modal .rthero h1{font-size:clamp(24px,6vh,44px);margin:6px auto}
+ #rt11-modal .rthero p{font-size:14px}
+}
 </style><style id="rt11-story-panel-v1">
 #rt11-modal[hidden]{display:none!important}
 #rt11-modal{position:fixed;inset:0;z-index:101500;overflow:auto;background:#f7f8fc;color:#263548;font-family:'Plus Jakarta Sans',Arial,sans-serif;--rt-main:#456f8f;--rt-soft:#e3eef6}
