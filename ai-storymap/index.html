@@ -10456,6 +10456,7 @@ box-shadow:0 18px 40px rgba(57,22,38,.23)!important;z-index:3000!important;
     <h5 id="rr04-rt-portal-name">Majlis Bandaraya Shah Alam</h5>
     <span class="rr04-rt-portal-subtitle">PENGENALAN DOKUMENTASI RT</span>
     <p id="rr04-rt-portal-overview">Pilih nama PBT untuk meneroka ringkasan dokumen Rancangan Tempatan.</p>
+    <a id="rr04-rt-html-entry" class="rr04-rt-html-entry" href="https://storymaps.arcgis.com/stories/963aefc4aef1412194b09c2b5b244190" aria-label="Terokai Story Map RT versi HTML">✦ &nbsp;Terokai Story Map RT Interaktif <span aria-hidden="true">→</span></a>
     <div class="rr04-rt-portal-docs"><div class="rr04-rt-portal-docs-head"><strong>Nama Dokumen &amp; Gambaran Keseluruhan</strong><span id="rr04-rt-portal-doc-count"></span></div><div id="rr04-rt-portal-doc-list" class="rr04-rt-portal-doc-list"></div><div class="rr04-excel-table-wrap" id="rr04-rt-excel-table" aria-live="polite"></div></div>
     <div class="rr04-rt-portal-actions"><a class="rr04-rt-portal-cta" id="rr04-rt-portal-cta" target="_blank" rel="noopener noreferrer">Terokai Portal <span aria-hidden="true">↗</span></a><button type="button" id="rr04-rt-portal-map-button" class="rr04-rt-portal-map-button">⌖ &nbsp; Lihat Lokasi PBT di Peta</button></div>
    </div>
@@ -13285,6 +13286,7 @@ window.renderSuoPbtDocumentTable=function(type,code){
    name.textContent=p.name;
    code.textContent=p.code;
    overview.textContent='Dokumentasi perancangan tempatan bagi '+p.name+'. Paparan ini merangkumkan '+p.docs.length+' tajuk dokumen RT yang disenaraikan sebagai rujukan, termasuk penggantian atau pengubahan jika berkaitan.';
+   const htmlEntry=document.getElementById('rr04-rt-html-entry');if(htmlEntry){htmlEntry.hidden=p.code==='MBPJ'||!p.url;htmlEntry.href=p.url||'#';htmlEntry.textContent='✦  Terokai Story Map RT '+p.code+' (HTML)  →';htmlEntry.setAttribute('aria-label','Buka Story Map RT '+p.code+' versi HTML');}
    coverName.textContent=p.name;
    logo.replaceChildren();
    if(p.logo){
@@ -14772,6 +14774,7 @@ let cursor=0;setInterval(()=>{
 </main></div>
 <footer class="mks-footer">Sumber kandungan dan imej: ArcGIS StoryMaps RKK Bandar Warisan Alam Melawati · PLANMalaysia Selangor. Imej dipautkan daripada sumber ArcGIS.</footer></div>
 <script id="mpks-malawati-story-controller-20261101">(function(){const dlg=document.getElementById('mpks-malawati-story');if(!dlg)return;let oldOverflow='',lastScroll=0;const closeBtn=dlg.querySelector('.mks-close');window.openMpksMalawatiStory=function(){oldOverflow=document.body.style.overflow;lastScroll=window.scrollY;dlg.hidden=false;document.body.style.overflow='hidden';dlg.scrollTop=0;closeBtn.focus()};function close(){dlg.hidden=true;document.body.style.overflow=oldOverflow;window.scrollTo(0,lastScroll)}closeBtn.addEventListener('click',close);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dlg.hidden)close()});const links=[...dlg.querySelectorAll('.mks-side a')],sections=[...dlg.querySelectorAll('.mks-chapter')];dlg.addEventListener('scroll',()=>{let active=sections[0].id;sections.forEach(el=>{if(el.getBoundingClientRect().top<180)active=el.id});links.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+active))},{passive:true});links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const el=dlg.querySelector(a.getAttribute('href'));if(el)el.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'})}));const themes=[...dlg.querySelectorAll('.mks-theme')];themes.forEach(t=>t.addEventListener('toggle',()=>{if(t.open)themes.forEach(other=>{if(other!==t)other.open=false})}));})();</script>
+<style id="rt11-atlas-entry-v1">#rr04-rt-html-entry{display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;margin:18px 0 22px;padding:15px 20px;border-radius:14px;background:linear-gradient(110deg,#e6bd66,#ffdf94);color:#143b55;font-size:14px;font-weight:850;box-shadow:0 8px 23px #e6b75c48;text-decoration:none;transition:transform .25s,box-shadow .25s}#rr04-rt-html-entry:hover{transform:translateY(-3px);box-shadow:0 12px 28px #e6b75c70}#rr04-rt-html-entry[hidden]{display:none!important}</style>
 <style id="rt11-story-panel-v1">
 #rt11-modal[hidden]{display:none!important}
 #rt11-modal{position:fixed;inset:0;z-index:101500;overflow:auto;background:#f7f8fc;color:#263548;font-family:'Plus Jakarta Sans',Arial,sans-serif;--rt-main:#456f8f;--rt-soft:#e3eef6}
