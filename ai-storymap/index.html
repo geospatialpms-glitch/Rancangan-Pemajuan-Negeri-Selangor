@@ -17006,5 +17006,67 @@ function apply(){
 let scheduled=false;new MutationObserver(()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;apply()})}).observe(root,{childList:true,subtree:true});apply();
 })();
 </script>
+
+<style id="mpsp-amendment-timeline-grouped-20261102">
+#rt11-modal .rtchapter .mpsp-amendments-flow{position:relative;display:grid;gap:18px;list-style:none;margin:22px 0;padding:8px 0 8px 59px}
+#rt11-modal .rtchapter .mpsp-amendments-flow::before{content:"";position:absolute;left:20px;top:22px;bottom:22px;width:4px;border-radius:10px;background:linear-gradient(#b74b0e,#f3c357,#b74b0e)}
+#rt11-modal .mpsp-amendment-card{position:relative;min-width:0;border:1px solid #e9bc90;border-radius:22px;padding:24px;background:linear-gradient(135deg,#fffdf7,#fff2de);box-shadow:0 11px 28px #984b1619;transition:transform .3s,box-shadow .3s}
+#rt11-modal .mpsp-amendment-card::before{content:"";position:absolute;left:-51px;top:35px;width:18px;height:18px;border-radius:50%;background:#b74b0e;border:4px solid #fff;box-shadow:0 0 0 3px #e9b45e}
+#rt11-modal .mpsp-amendment-card:hover{transform:translateY(-5px);box-shadow:0 20px 38px #984b1630}
+#rt11-modal .mpsp-amendment-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+#rt11-modal .mpsp-amendment-count{display:grid;place-items:center;min-width:47px;height:47px;border-radius:14px;background:linear-gradient(135deg,#ab420d,#d58f22);color:#fff;font-weight:850}
+#rt11-modal .mpsp-amendment-name{font-weight:850;font-size:clamp(17px,2vw,22px);color:#8f3c0a;line-height:1.35}
+#rt11-modal .mpsp-amendment-status{display:inline-flex;border-radius:99px;padding:6px 11px;background:#fff0e9;color:#a33c20;border:1px solid #ebbb9d;font-size:12px;font-weight:800;margin:12px 0 0}
+#rt11-modal .mpsp-amendment-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:17px}
+#rt11-modal .mpsp-amendment-fact{padding:16px;border:1px solid #efd9ba;border-radius:15px;background:#fffdfa}
+#rt11-modal .mpsp-amendment-fact small{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;color:#ad6027;margin-bottom:7px}
+#rt11-modal .mpsp-amendment-fact strong{font-size:15px;line-height:1.5;color:#29384a;overflow-wrap:anywhere}
+#rt11-modal .mpsp-amendment-extra{font-size:14px;line-height:1.7;color:#435266;margin-top:14px}
+@media(max-width:650px){#rt11-modal .rtchapter .mpsp-amendments-flow{padding-left:44px}#rt11-modal .rtchapter .mpsp-amendments-flow::before{left:13px}#rt11-modal .mpsp-amendment-card::before{left:-43px}#rt11-modal .mpsp-amendment-facts{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .mpsp-amendment-card{transition:none}}
+</style>
+<script id="mpsp-amendment-timeline-grouping-20261102">
+(function(){
+'use strict';
+const root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');
+if(!root||!label)return;
+const tidy=s=>(s||'').replace(/\s+/g,' ').trim();
+function transform(){
+ if(!/\bMPSp\b/i.test(label.textContent))return;
+ const sections=[...root.querySelectorAll('.rtchapter')];
+ for(const sec of sections){
+  if(sec.querySelector('.mpsp-amendments-flow'))continue;
+  const heading=tidy(sec.querySelector(':scope > h2')?.textContent);
+  if(/matlamat|teras|latar belakang|pelan/i.test(heading))continue;
+  const nodes=[...sec.querySelectorAll('.rtpiece li,.rtpiece > div,.rtpiece > p')];
+  const groups=nodes.filter(el=>/pengubahan\s*[1-9]/i.test(tidy(el.textContent).slice(0,135))&&!el.closest('.rt-kkb-history,.rt-background-infographic'));
+  const list=[...sec.querySelectorAll('.rtpiece ul,.rtpiece ol')].find(el=>{
+   const children=[...el.children];return children.length>=2&&children.every(x=>/pengubahan\s*\d/i.test(tidy(x.textContent).slice(0,135)));
+  });
+  if(!list)continue;
+  const items=[...list.children];const flow=document.createElement('div');flow.className='mpsp-amendments-flow';flow.setAttribute('aria-label','Aliran siri pengubahan Rancangan Tempatan MPSp');
+  items.forEach((li,i)=>{
+   const text=tidy(li.textContent);
+   const name=(text.match(/pengubahan\s*\d+/i)||[])[0]||'Pengubahan '+(i+1);
+   const date=(text.match(/(?:tarikh\s*warta\s*:?\s*)?(\d{1,2}\s+(?:januari|februari|mac|april|mei|jun|julai|ogos|september|oktober|november|disember)\s+\d{4})/i)||[])[1]||'';
+   const gazette=(text.match(/(?:no\.?\s*warta\s*:?\s*)(?:no\.?\s*warta\s*)?([A-Za-z0-9\/-]+)/i)||[])[1]||'';
+   const card=document.createElement('article');card.className='mpsp-amendment-card';
+   const head=document.createElement('div');head.className='mpsp-amendment-top';
+   const number=document.createElement('span');number.className='mpsp-amendment-count';number.textContent=String(i+1).padStart(2,'0');
+   const title=document.createElement('strong');title.className='mpsp-amendment-name';title.textContent=name.replace(/\b\w/g,c=>c.toUpperCase());
+   head.append(number,title);card.append(head);
+   if(/dibatalkan/i.test(text)){const status=document.createElement('span');status.className='mpsp-amendment-status';status.textContent='Dibatalkan';card.append(status)}
+   const facts=document.createElement('div');facts.className='mpsp-amendment-facts';
+   [['Tarikh Warta',date],['No. Warta',gazette]].forEach(([k,v])=>{if(!v)return;const cell=document.createElement('div');cell.className='mpsp-amendment-fact';const small=document.createElement('small');small.textContent=k;const strong=document.createElement('strong');strong.textContent=v;cell.append(small,strong);facts.append(cell)});
+   if(facts.children.length)card.append(facts);
+   if(!facts.children.length){const extra=document.createElement('p');extra.className='mpsp-amendment-extra';extra.textContent=text;card.append(extra)}
+   flow.append(card);
+  });
+  list.replaceWith(flow);
+ }
+}
+let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;transform()})}).observe(root,{childList:true,subtree:true});transform();
+})();
+</script>
 </body>
 </html>
