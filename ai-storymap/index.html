@@ -15394,8 +15394,22 @@ document.addEventListener('click',function(e){const a=e.target.closest('a[href]'
 /* One reusable visual system for RT StoryMaps, inspired by KKB and Genting.
    Does not alter either source RKK or the MBSA-specific custom layouts. */
 #rt11-modal:not(.rt-mbsa){
-background-color:#f1f5f9!important;
-background-image:radial-gradient(ellipse at 8% 18%,color-mix(in srgb,var(--rt-soft) 96%,#a8d8ef),transparent 47%),radial-gradient(ellipse at 90% 70%,color-mix(in srgb,var(--rt-soft) 80%,#dce3f5),transparent 50%),repeating-radial-gradient(circle at 95% 5%,transparent 0 60px,#1b66820e 61px 62px,transparent 63px 120px)!important;
+background-color:#edf2f8!important;
+background-image:
+  radial-gradient(ellipse at 12% 18%,color-mix(in srgb,var(--rt-soft) 76%,#d4c1ef),transparent 50%),
+  radial-gradient(ellipse at 86% 78%,color-mix(in srgb,var(--rt-soft) 62%,#c0dce9),transparent 52%),
+  repeating-radial-gradient(circle at 95% 5%,transparent 0 58px,rgba(81,101,153,.15) 59px 61px,transparent 62px 120px)!important;
+background-size:125% 125%,130% 130%,1200px 1200px!important;
+background-position:0% 0%,100% 100%,95% 5%!important;
+animation:rt11-ambient-backdrop-drift 34s ease-in-out infinite alternate!important;
+}
+@keyframes rt11-ambient-backdrop-drift{
+  0%{background-position:0% 0%,100% 100%,95% 5%}
+  50%{background-position:16% 13%,84% 83%,90% 9%}
+  100%{background-position:26% 21%,72% 68%,84% 14%}
+}
+@media(prefers-reduced-motion:reduce){
+  #rt11-modal:not(.rt-mbsa){animation:none!important}
 }
 #rt11-modal:not(.rt-mbsa) .rtgrid{display:grid;grid-template-columns:minmax(205px,245px) minmax(0,1fr);gap:23px;width:min(1450px,calc(100% - 34px));margin:auto;align-items:start}
 #rt11-modal:not(.rt-mbsa) .rtside{position:sticky;top:94px;max-height:calc(100dvh - 110px);overflow:auto;border-radius:22px;padding:19px 15px;background:linear-gradient(150deg,#ffffffed,var(--rt-soft));backdrop-filter:blur(15px)}
