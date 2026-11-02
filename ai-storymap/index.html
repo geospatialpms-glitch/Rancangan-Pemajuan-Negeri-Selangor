@@ -15362,5 +15362,77 @@ background-image:radial-gradient(ellipse at 8% 18%,color-mix(in srgb,var(--rt-so
 @media(max-width:760px){#rt11-modal.rt-mbsa .mbsa-zone-cards{grid-template-columns:1fr!important}}
 @media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa .rt-zone-final{transition:none!important}}
 </style>
+
+<style id="rt-rkk-scroll-reveal-20261102">
+/* Shared scroll-triggered reveals: no external AOS dependency; preserve 3D card transforms. */
+@media (prefers-reduced-motion:no-preference){
+  #rt11-modal .suo-scroll-reveal,
+  #kkb-rkk-story .suo-scroll-reveal,
+  #gh-rkk-story .suo-scroll-reveal{
+    opacity:0;translate:0 22px;
+    transition:opacity .68s cubic-bezier(.2,.75,.25,1),translate .68s cubic-bezier(.2,.75,.25,1);
+    transition-delay:var(--suo-reveal-delay,0ms);
+    will-change:opacity,translate;
+  }
+  #rt11-modal .suo-scroll-reveal[data-suo-direction="left"],
+  #kkb-rkk-story .suo-scroll-reveal[data-suo-direction="left"],
+  #gh-rkk-story .suo-scroll-reveal[data-suo-direction="left"]{translate:-25px 0}
+  #rt11-modal .suo-scroll-reveal[data-suo-direction="right"],
+  #kkb-rkk-story .suo-scroll-reveal[data-suo-direction="right"],
+  #gh-rkk-story .suo-scroll-reveal[data-suo-direction="right"]{translate:25px 0}
+  #rt11-modal .suo-scroll-reveal.suo-revealed,
+  #kkb-rkk-story .suo-scroll-reveal.suo-revealed,
+  #gh-rkk-story .suo-scroll-reveal.suo-revealed{opacity:1;translate:0 0;will-change:auto}
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal .suo-scroll-reveal,#kkb-rkk-story .suo-scroll-reveal,#gh-rkk-story .suo-scroll-reveal{opacity:1!important;translate:none!important;transition:none!important}
+}
+</style>
+<script id="rt-rkk-scroll-reveal-20261102">
+(function(){
+ 'use strict';
+ const configs=[
+  {id:'rt11-modal',selector:'.rtchapter > h2, .rtchapter > .rtpiece, .rtchapter > .rt-mbsa-teras-grid, .rtchapter > .mbsa-zone-cards, .rtchapter > .mbsa-concept-tiles, .rtchapter > .rt-mbsa-principle-grid, .rtchapter .rt-shared-card-grid > li'},
+  {id:'kkb-rkk-story',selector:'.kkb-chapter > h2, .kkb-chapter > p, .kkb-chapter > blockquote, .kkb-chapter > figure, .kkb-chapter > .kkb-pillars, .kkb-pillars > article, .kkb-chapter > .kkb-figure'},
+  {id:'gh-rkk-story',selector:'.gh-rkk-section > h2, .gh-rkk-section > p, .gh-rkk-section > article, .gh-rkk-section > figure, .gh-rkk-section > div, .gh-rkk-content > section'}
+ ];
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const io=typeof IntersectionObserver==='function' && !reduce.matches?
+   new IntersectionObserver(entries=>{
+     entries.forEach(entry=>{
+       if(entry.isIntersecting){
+         entry.target.classList.add('suo-revealed');
+         io.unobserve(entry.target);
+       }
+     });
+   },{threshold:0.08,rootMargin:'0px 0px -30px 0px'}):null;
+ function scan(cfg){
+  const root=document.getElementById(cfg.id);
+  if(!root||root.hidden)return;
+  const elements=root.querySelectorAll(cfg.selector);
+  elements.forEach((el,i)=>{
+   if(el.classList.contains('suo-scroll-reveal')||el.closest('[hidden]'))return;
+   if(el.matches('button,a,nav,iframe')||el.closest('.rtbar,.kkb-topbar,.gh-rkk-topbar,.rtside,.kkb-sidebar,.gh-rkk-nav'))return;
+   el.dataset.suoDirection=i%3===1?'left':i%3===2?'right':'up';
+   el.style.setProperty('--suo-reveal-delay',String((i%4)*65)+'ms');
+   el.classList.add('suo-scroll-reveal');
+   if(io)io.observe(el);
+   else el.classList.add('suo-revealed');
+  });
+ }
+ const roots=configs.map(cfg=>({cfg,root:document.getElementById(cfg.id)})).filter(x=>x.root);
+ roots.forEach(({cfg,root})=>{
+   let pending=false;
+   const schedule=()=>{
+     if(pending)return;
+     pending=true;
+     requestAnimationFrame(()=>{pending=false;scan(cfg)});
+   };
+   const observer=new MutationObserver(schedule);
+   observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden']});
+   schedule();
+ });
+})();
+</script>
 </body>
 </html>
