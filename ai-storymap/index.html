@@ -15090,13 +15090,11 @@ if(entry.code==='MBSA'){
      card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
      grid.appendChild(card);
    });
-   /* Remove only the ArcGIS text block containing the four themes; retain intro and any unrelated content. */
+   /* The source has one TEMA per block in some ArcGIS versions.
+      Remove all four duplicate text blocks, even when delivered separately. */
    pillars.querySelectorAll('.rtpiece').forEach(piece=>{
-     const t=piece.textContent;
-     if(/TEMA\\s*1\\s*:/i.test(t)&&/TEMA\\s*4\\s*:/i.test(t)){
-       const raw=t.trim();
-       piece.remove();
-     }
+     const t=piece.textContent.trim();
+     if(/^TEMA\\s*0?[1-4]\\s*:/i.test(t) || (/TEMA\\s*1\\s*:/i.test(t)&&/TEMA\\s*4\\s*:/i.test(t)))piece.remove();
    });
    const intro=Array.from(pillars.querySelectorAll('.rtpiece')).find(el=>/Bagi mencapai matlamat MBSA/i.test(el.textContent));
    if(intro)intro.insertAdjacentElement('afterend',grid);
@@ -15182,6 +15180,20 @@ document.addEventListener('click',function(e){const a=e.target.closest('a[href]'
 @media(max-width:760px){#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid{grid-template-columns:1fr!important}#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid>.rt-mbsa-teras-item{height:310px!important;min-height:310px!important}}
 @media(hover:none){#rt11-modal.rt-mbsa .rt-mbsa-teras-item:hover .rt-mbsa-flip-inner{transform:none}#rt11-modal.rt-mbsa .rt-mbsa-teras-item.is-flipped .rt-mbsa-flip-inner{transform:rotateY(180deg)}}
 @media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa .rt-mbsa-flip-inner{transition:none}}
+</style>
+
+<style id="mbsa-kkb-structure-clean-20261102">
+/* Match the editorial full-width KKB structure: MBSA only. */
+#rt11-modal.rt-mbsa{background:#f7f9fa!important;background-image:radial-gradient(circle at 85% 10%,#e1f1f9 0,transparent 48%),radial-gradient(circle at 6% 55%,#e5eef8 0,transparent 52%),repeating-linear-gradient(135deg,transparent 0 82px,#14628a09 83px 84px)!important}
+#rt11-modal.rt-mbsa .rtgrid{display:block!important;width:min(1260px,calc(100% - 36px))!important;max-width:1260px!important;margin:0 auto!important;padding:22px 0 70px!important;grid-template-columns:none!important}
+#rt11-modal.rt-mbsa .rtgrid>.rtside{display:none!important}
+#rt11-modal.rt-mbsa #rt11-body{width:100%!important;max-width:none!important;min-width:0!important;margin:0!important}
+#rt11-modal.rt-mbsa #rt11-body>.rtchapter{width:100%!important;max-width:none!important;box-sizing:border-box}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars{background:transparent!important;box-shadow:none!important;border:0!important;padding:clamp(16px,3vw,28px)!important}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important;width:100%!important;max-width:none!important}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid>.rt-mbsa-teras-item{height:350px!important;min-height:350px!important;max-height:350px!important}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rtpiece:empty{display:none!important}
+@media(max-width:760px){#rt11-modal.rt-mbsa .rtgrid{width:calc(100% - 20px)!important;padding:12px 0 40px!important}#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid{grid-template-columns:1fr!important;gap:16px!important}}
 </style>
 </body>
 </html>
