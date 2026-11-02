@@ -15249,6 +15249,7 @@ if(entry.code!=='MBSA'){
    });
  });
 }
+try{
 /* Final RT layouts: run synchronously on freshly rendered ArcGIS content. */
 body.querySelectorAll('.rtchapter').forEach(ch=>{
  const h=(ch.querySelector('h2')?.textContent||'').toLowerCase();
@@ -15295,10 +15296,12 @@ body.querySelectorAll('.rtchapter').forEach(ch=>{
  const blocks=[...ch.children].filter(x=>x.classList?.contains('rtpiece')&&!x.querySelector('img,figure,video,ul,ol,blockquote,h3,h4,h5'));
  const paras=blocks.filter(x=>x.textContent.trim().length>30&&x.textContent.trim().length<1100);
  if(paras.length<3||paras.length>15)return;
- const first=paras[0];const parent=first.parentNode;const next=first.nextSibling;const list=document.createElement('ol');list.className='rt-background-infographic rt-background-from-prose';
+ const first=paras[0];const parent=first.parentNode;const list=document.createElement('ol');list.className='rt-background-infographic rt-background-from-prose';
+ if(parent)parent.insertBefore(list,first);
  paras.forEach((block,i)=>{const li=document.createElement('li');const n=document.createElement('span');n.className='rt-info-number';n.textContent=String(i+1).padStart(2,'0');li.appendChild(n);while(block.firstChild)li.appendChild(block.firstChild);list.appendChild(li);block.remove()});
- parent?.insertBefore(list,next);
+ 
 });
+}catch(rtTimelineError){console.warn('RT timeline styling skipped; original chapter content retained',rtTimelineError)}
 if(!body.children.length)throw Error('Tiada kandungan bab');}
 catch(err){if(ticket!==requestNo)return;body.innerHTML='';const box=document.createElement('section');box.className='rtchapter';const h=document.createElement('h2');h.textContent='Kandungan ESRI tidak dapat dimuatkan';const p=document.createElement('p');p.textContent='Akses JSON asal tidak tersedia pada pelayar ini. Buka StoryMap asal untuk membaca kandungan lengkap.';const a=document.createElement('a');a.href='https://storymaps.arcgis.com/stories/'+entry.id;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka StoryMap ESRI asal ↗';box.append(h,p,a);body.appendChild(box)}}
 document.addEventListener('click',function(e){const a=e.target.closest('a[href]');if(!a||modal.contains(a))return;let id=(a.href.match(/storymaps\.arcgis\.com\/stories\/([0-9a-f]{32})/i)||[])[1];if(!id){let code=(a.getAttribute('aria-label')||'').match(/RT (MBSA|MBSJ|MBDK|MPAJ|MPKj|MPS|MPSp|MPKL|MPKS|MPHS|MDSB)\b/i);if(code){const found=entries.find(row=>row[0].toLowerCase()===code[1].toLowerCase());if(found)id=found[1]}}const entry=id&&links.get(id);if(!entry)return;e.preventDefault();e.stopImmediatePropagation();open(entry)},true);
