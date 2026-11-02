@@ -16385,5 +16385,39 @@ let pending=false;function schedule(){if(pending)return;pending=true;requestAnim
 new MutationObserver(schedule).observe(body,{childList:true,subtree:true});schedule();
 })();
 </script>
-</body>
+<style id="rsn-functions-three-columns-and-rt-history-audit-20261102">
+/* RSN functions: 3 compact cards per row on desktop; last row centered. */
+#suo-rsn-2026-detail-module .suo-rsn-functions-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}
+#suo-rsn-2026-detail-module .suo-rsn-functions-grid>.suo-rsn-function-tile{min-height:235px!important;height:auto!important;padding:18px!important;box-sizing:border-box;box-shadow:0 9px 24px #79472c16!important}
+#suo-rsn-2026-detail-module .suo-rsn-functions-grid>.suo-rsn-function-tile:hover{transform:translateY(-4px);box-shadow:0 17px 34px #79472c2b!important}
+#suo-rsn-2026-detail-module .suo-rsn-functions-grid>.suo-rsn-function-tile:last-child:nth-child(3n+1){grid-column:2!important}
+#suo-rsn-2026-detail-module .suo-rsn-function-tile h6{font-size:clamp(14px,1.2vw,18px)!important;line-height:1.32!important}
+#suo-rsn-2026-detail-module .suo-rsn-function-tile p{font-size:13px!important;line-height:1.55!important}
+@media(max-width:920px){#suo-rsn-2026-detail-module .suo-rsn-functions-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}#suo-rsn-2026-detail-module .suo-rsn-functions-grid>.suo-rsn-function-tile:last-child:nth-child(3n+1){grid-column:auto!important}}
+@media(max-width:580px){#suo-rsn-2026-detail-module .suo-rsn-functions-grid{grid-template-columns:1fr!important}}
+/* RT historical introduction: avoid presenting a general planning explanation as "Sejarah". */
+#rt11-modal .rt-kkb-history .rt-kkb-title{overflow-wrap:anywhere}
+#rt11-modal .rt-kkb-history .rt-kkb-description{overflow-wrap:anywhere}
+</style>
+<script id="rt-history-label-audit-20261102">
+(function(){
+const body=document.getElementById('rt11-body');if(!body)return;
+function inspect(){
+body.querySelectorAll('.rtchapter').forEach(sec=>{
+if(!/latar belakang/i.test(sec.querySelector(':scope > h2')?.textContent||''))return;
+const cards=[...sec.querySelectorAll('.rt-kkb-history-card')];if(!cards.length)return;
+const combined=cards.map(x=>x.textContent).join(' ');
+if(!/rancangan tempatan|penggantian|pengubahan|tamat tempoh perancangan/i.test(combined))return;
+sec.querySelectorAll('.rt-kkb-history-head span:first-child').forEach(x=>x.textContent='LATAR BELAKANG PERANCANGAN');
+cards.forEach((card,i)=>{
+ const eyebrow=card.querySelector('.rt-kkb-eyebrow');if(eyebrow)eyebrow.textContent='PERKARA '+String(i+1).padStart(2,'0');
+ const badge=card.querySelector('.rt-kkb-year');
+ if(badge&&/^\d{4}$/.test(badge.textContent)&&!/(?:tahun|tempoh|\b\d{4}\b)/i.test(card.querySelector('.rt-kkb-title')?.textContent||''))badge.textContent=String(i+1).padStart(2,'0');
+});
+const period=sec.querySelector('.rt-kkb-history-head span:last-child');if(period)period.textContent='ASAS DAN JUSTIFIKASI';
+});
+}
+let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;inspect()})}).observe(body,{childList:true,subtree:true});inspect();
+})();
+</script></body>
 </html>
