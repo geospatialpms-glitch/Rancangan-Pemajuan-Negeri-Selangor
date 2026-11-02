@@ -15046,6 +15046,21 @@ if(entry.code==='MBSA'){
    button.append(front,back);button.addEventListener('click',()=>{const f=button.classList.toggle('is-flipped');button.setAttribute('aria-pressed',String(f))});
    li.replaceChildren(button)
  });
+ /* ESRI can deliver each Teras in a separate list: consolidate actual card nodes */
+ if(pillars){
+   const terasItems=Array.from(pillars.querySelectorAll('li:has(>.rt-teras-flip)'));
+   if(terasItems.length>1){
+     const grid=document.createElement('div');grid.className='rt-mbsa-teras-grid';
+     const firstList=terasItems[0].closest('ul,ol');
+     const firstPiece=firstList&&firstList.closest('.rtpiece');
+     terasItems.forEach(li=>{li.classList.add('rt-mbsa-teras-item');grid.appendChild(li)});
+     if(firstPiece)firstPiece.insertAdjacentElement('beforebegin',grid);
+     pillars.querySelectorAll('.rtpiece').forEach(piece=>{
+       const list=piece.querySelector('ul,ol');
+       if(list&&!list.querySelector('li')&&!piece.textContent.trim()&&!piece.querySelector('img,figure'))piece.remove();
+     });
+   }
+ }
 }
 if(!body.children.length)throw Error('Tiada kandungan bab');}
 catch(err){if(ticket!==requestNo)return;body.innerHTML='';const box=document.createElement('section');box.className='rtchapter';const h=document.createElement('h2');h.textContent='Kandungan ESRI tidak dapat dimuatkan';const p=document.createElement('p');p.textContent='Akses JSON asal tidak tersedia pada pelayar ini. Buka StoryMap asal untuk membaca kandungan lengkap.';const a=document.createElement('a');a.href='https://storymaps.arcgis.com/stories/'+entry.id;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka StoryMap ESRI asal ↗';box.append(h,p,a);body.appendChild(box)}}
@@ -15067,6 +15082,17 @@ document.addEventListener('click',function(e){const a=e.target.closest('a[href]'
 #rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li .rt-process-text{grid-column:2!important;grid-row:1!important;display:block!important;padding:16px 18px;border-bottom:1px solid #c5d9e6}
 #rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li:hover .rt-process-text{background:#fff9;border-radius:12px}
 @media(max-width:750px){#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rtpiece ul,#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rtpiece ol{grid-template-columns:1fr!important}}
+</style>
+<style id="rt-mbsa-teras-actual-grid-20261102">
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px!important;width:100%;margin:22px 0;align-items:stretch;list-style:none;padding:0}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid>.rt-mbsa-teras-item{display:block!important;width:100%!important;min-width:0!important;height:280px!important;min-height:280px!important;max-height:280px!important;margin:0!important;padding:0!important;list-style:none!important;border-radius:22px;background:linear-gradient(135deg,#a8dcf0,#b2c3e9 56%,#c8dcf2);border:1px solid #a6c7e1;box-shadow:0 12px 28px #204a6628;overflow:hidden;position:relative;transition:transform .3s,box-shadow .3s}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid>.rt-mbsa-teras-item:before{display:none!important}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid>.rt-mbsa-teras-item:hover{transform:translateY(-5px);box-shadow:0 20px 34px #204a6640}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid .rt-teras-flip{position:relative;display:block;width:100%;height:100%;min-height:0;border:0;padding:0;background:transparent;color:#244765;cursor:pointer}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid .rt-teras-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:15px;padding:22px;box-sizing:border-box;overflow-wrap:anywhere}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid .rt-teras-front strong{font-size:clamp(18px,2vw,28px);line-height:1.25;max-width:100%}
+@media(max-width:760px){#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid{grid-template-columns:1fr!important}}
+@media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid>.rt-mbsa-teras-item{transition:none}}
 </style>
 </body>
 </html>
