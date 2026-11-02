@@ -16658,5 +16658,100 @@ function apply(){
 let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;apply()})}).observe(root,{childList:true,subtree:true});apply();
 })();
 </script>
+
+<style id="mpks-nucleus-objective-motion-20261102">
+/* MPKS only: floating cards, ambient color, accessible highlighting */
+#rt11-modal .rtchapter .mpks-motion-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;padding:8px 0 18px!important;margin:12px 0!important;list-style:none!important;max-width:none!important}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card{
+  --mpks-card-tone:#d4af37;position:relative!important;isolation:isolate;display:flex!important;flex-direction:column;align-items:flex-start;justify-content:center;gap:9px;box-sizing:border-box;
+  width:100%!important;min-width:0!important;max-width:none!important;height:auto!important;min-height:155px!important;
+  padding:27px 24px 24px 74px!important;margin:0!important;grid-column:auto!important;
+  background:linear-gradient(140deg,#ffffff 0%,#fffaf0 75%,#fff3d9 100%)!important;
+  border:1px solid #e9d6a9!important;border-top:3px solid var(--mpks-card-tone)!important;border-radius:21px!important;
+  box-shadow:0 11px 24px #1f294017,0 3px 8px #1421370b!important;
+  color:#263449!important;font-size:15px;line-height:1.75!important;
+  transition:transform .42s cubic-bezier(.2,.8,.2,1),box-shadow .42s,border-color .35s,background .35s,opacity .55s!important;
+  overflow:visible!important;cursor:pointer;overflow-wrap:anywhere!important;text-indent:0!important;
+}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card:nth-child(4n+2){--mpks-card-tone:#71aa9f;background:linear-gradient(140deg,#fff,#f1fbf7,#e9f6ed)!important}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card:nth-child(4n+3){--mpks-card-tone:#89a8c8;background:linear-gradient(140deg,#fff,#f4f8ff,#eaf0fa)!important}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card:nth-child(4n+4){--mpks-card-tone:#c59ca9;background:linear-gradient(140deg,#fff,#fff5f7,#f8ecf0)!important}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card::before{
+  content:attr(data-mpks-num)!important;display:grid!important;place-items:center;position:absolute!important;
+  top:22px!important;left:22px!important;right:auto!important;bottom:auto!important;width:37px!important;height:37px!important;
+  padding:0!important;border:0!important;border-radius:12px!important;background:#202b42!important;color:#fff!important;
+  font:800 12px/1 Arial,sans-serif!important;box-shadow:0 5px 12px #202b4230!important;z-index:2!important;
+}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card::after{content:"";pointer-events:none;position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at var(--mpks-x,75%) var(--mpks-y,20%),color-mix(in srgb,var(--mpks-card-tone) 23%,transparent),transparent 52%);opacity:0;transition:opacity .4s;z-index:-1}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card:is(:hover,:focus-visible,.mpks-selected){
+  transform:translateY(-9px) scale(1.012)!important;border-color:var(--mpks-card-tone)!important;
+  box-shadow:0 23px 43px #16243c29,0 0 0 2px color-mix(in srgb,var(--mpks-card-tone) 37%,transparent)!important;
+}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card:is(:hover,:focus-visible,.mpks-selected)::after{opacity:1}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card:focus-visible{outline:3px solid #202b42;outline-offset:3px}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card :is(.rt-flow-index,.rt-v3-num,.rt-final-step,.rt-info-number){display:none!important}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card> :is(p,div,strong,span){margin:0!important;max-width:100%;line-height:1.7!important;color:#263449}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card strong{color:#202b42;font-weight:850}
+#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card::marker{content:""}
+@media(min-width:1100px){#rt11-modal .rtchapter .mpks-motion-list.mpks-objectives{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:760px){#rt11-modal .rtchapter .mpks-motion-list{grid-template-columns:minmax(0,1fr)!important;gap:13px!important}}
+@media(prefers-reduced-motion:no-preference){#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card.mpks-awaiting-reveal{opacity:0!important;transform:translateY(22px)!important}#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card.mpks-appeared{animation:mpks-rise-2026 .6s both;animation-delay:var(--mpks-delay,0ms)}@keyframes mpks-rise-2026{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .rtchapter .mpks-motion-list>.mpks-motion-card{transition:none!important;animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+<script id="mpks-nucleus-objective-motion-binding-20261102">
+(function(){
+'use strict';
+const root=document.getElementById('rt11-body'),modal=document.getElementById('rt11-modal'),label=document.getElementById('rt11-label');if(!root||!modal)return;
+const norm=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();
+let observer=null;
+if('IntersectionObserver' in window){
+ observer=new IntersectionObserver(entries=>{
+   entries.forEach(({target,isIntersecting})=>{if(!isIntersecting)return;target.classList.remove('mpks-awaiting-reveal');target.classList.add('mpks-appeared');observer.unobserve(target)});
+ },{root:modal,threshold:.08,rootMargin:'0px 0px 65px 0px'});
+}
+function enhance(){
+ if(!/\bMPKS\b/i.test(label?.textContent||''))return;
+ const chapters=[...root.querySelectorAll('.rtchapter')];
+ for(const ch of chapters){
+  const nodes=[...ch.querySelectorAll('h3,h4,h5,strong,p,div')].filter(el=>el.children.length<5);
+  const configs=[
+   {key:'mpks-nucleus',rx:/aspek asas pembentukan konsep nukleus/i,min:4,max:6},
+   {key:'mpks-objectives',rx:/7 objektif utama pembangunan/i,min:7,max:7}
+  ];
+  for(const cfg of configs){
+   const heading=nodes.find(el=>cfg.rx.test(norm(el))&&norm(el).length<160);
+   if(!heading)continue;
+   const near=heading.closest('.rtpiece')||heading;
+   const scope=near.parentElement||ch;
+   const lists=[...ch.querySelectorAll('ul,ol,.rt-history-real-flow,.rt-final-pillar-grid,.rt-shared-card-grid,.rt-final-history-flow')];
+   const afterHeading=lists.filter(x=>heading.compareDocumentPosition(x)&Node.DOCUMENT_POSITION_FOLLOWING);
+   const candidates=afterHeading.length?afterHeading:lists;
+   let list=candidates.find(el=>{
+     const kids=[...el.children].filter(c=>c.matches('li,article,.rt-shared-card'));
+     return kids.length>=cfg.min&&kids.length<=cfg.max&&kids.every(c=>norm(c).length>18);
+   });
+   if(!list||list.classList.contains('mpks-motion-list'))continue;
+   const cards=[...list.children].filter(c=>c.matches('li,article,.rt-shared-card'));
+   list.classList.add('mpks-motion-list',cfg.key);
+   cards.forEach((card,i)=>{
+     card.classList.add('mpks-motion-card');
+     card.dataset.mpksNum=String(i+1).padStart(2,'0');
+     card.style.setProperty('--mpks-delay',(i%4)*85+'ms');
+     card.setAttribute('tabindex','0');
+     card.setAttribute('role','button');
+     card.setAttribute('aria-pressed','false');
+     card.setAttribute('aria-label','Sorot '+norm(card).slice(0,150));
+     const toggle=()=>{const selected=card.classList.toggle('mpks-selected');card.setAttribute('aria-pressed',String(selected))};
+     card.addEventListener('click',e=>{if(e.target.closest('a,button'))return;toggle()});
+     card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
+     card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mpks-x',(100*(e.clientX-r.left)/r.width)+'%');card.style.setProperty('--mpks-y',(100*(e.clientY-r.top)/r.height)+'%')});
+     if(observer){card.classList.add('mpks-awaiting-reveal');observer.observe(card)}
+   });
+  }
+ }
+}
+let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;enhance()})}).observe(root,{childList:true,subtree:true});enhance();
+})();
+</script>
 </body>
 </html>
