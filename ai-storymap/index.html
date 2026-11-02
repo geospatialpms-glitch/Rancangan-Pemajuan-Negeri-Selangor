@@ -15695,5 +15695,71 @@ animation:rt11-ambient-backdrop-drift 34s ease-in-out infinite alternate!importa
  schedule();
 })();
 </script>
+<style id="rt-all-timeline-teras-motion-20261102">
+/* All RT: animated chronology flow and KKB-inspired development pillars; content unchanged. */
+#rt11-modal .rt-flow-timeline{list-style:none!important;counter-reset:rtflow;position:relative;margin:20px 0 25px!important;padding:2px 0 2px 40px!important}
+#rt11-modal .rt-flow-timeline::before{content:"";position:absolute;top:15px;bottom:17px;left:15px;width:3px;border-radius:8px;background:linear-gradient(180deg,var(--rt-main),var(--rt-accent2),var(--rt-main));background-size:100% 240%;animation:rt-flow-line-shift 9s ease-in-out infinite;box-shadow:0 0 15px color-mix(in srgb,var(--rt-main) 25%,transparent)}
+#rt11-modal .rt-flow-timeline>li{position:relative!important;display:block!important;list-style:none!important;margin:0 0 15px!important;padding:18px 20px!important;border-radius:20px!important;border:1px solid color-mix(in srgb,var(--rt-main) 24%,#e2e8f0)!important;background:linear-gradient(120deg,#ffffffed,color-mix(in srgb,var(--rt-soft) 66%,white))!important;box-shadow:0 10px 26px #24334c12!important;transform:translateY(0);transition:transform .34s ease,box-shadow .34s ease,border-color .34s ease!important}
+#rt11-modal .rt-flow-timeline>li::before{content:"";position:absolute;left:-32px;top:28px;width:13px;height:13px;border-radius:50%;background:var(--rt-main);border:3px solid #fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--rt-main) 15%,transparent),0 0 15px color-mix(in srgb,var(--rt-main) 40%,transparent);animation:rt-flow-dot-pulse 3.4s ease-in-out infinite}
+#rt11-modal .rt-flow-timeline>li::marker{content:""}
+#rt11-modal .rt-flow-timeline>li:hover,#rt11-modal .rt-flow-timeline>li:focus-within{transform:translateY(-5px)!important;border-color:var(--rt-main)!important;box-shadow:0 16px 34px color-mix(in srgb,var(--rt-main) 21%,transparent)!important}
+#rt11-modal .rt-flow-timeline>li strong{color:var(--rt-main);font-weight:800}
+#rt11-modal .rt-flow-index{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:29px;margin-right:10px;margin-bottom:5px;padding:0 6px;border-radius:8px;background:linear-gradient(125deg,var(--rt-main),color-mix(in srgb,var(--rt-accent2) 50%,var(--rt-main)));color:white;font-size:12px;font-weight:800;box-shadow:0 5px 15px color-mix(in srgb,var(--rt-main) 25%,transparent)}
+#rt11-modal .rt-unified-teras-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;list-style:none!important;padding:0!important;margin:22px 0!important}
+#rt11-modal .rt-unified-teras-grid>li{list-style:none!important;min-width:0!important;margin:0!important;padding:22px!important;position:relative!important;overflow:hidden!important;border-radius:22px!important;border:1px solid color-mix(in srgb,var(--rt-main) 23%,#dbe3ed)!important;background:linear-gradient(135deg,#ffffff,color-mix(in srgb,var(--rt-soft) 72%,white))!important;box-shadow:0 12px 28px #24334c13!important;transition:transform .36s ease,border-color .36s ease,box-shadow .36s ease!important}
+#rt11-modal .rt-unified-teras-grid>li::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 98% 3%,color-mix(in srgb,var(--rt-accent2) 25%,transparent),transparent 54%);pointer-events:none}
+#rt11-modal .rt-unified-teras-grid>li::after{content:"";position:absolute;top:-70%;left:-90%;width:55%;height:245%;background:linear-gradient(90deg,transparent,#ffffff7a,transparent);transform:rotate(22deg);transition:left .75s ease;pointer-events:none}
+#rt11-modal .rt-unified-teras-grid>li:hover{transform:translateY(-6px) scale(1.012)!important;border-color:var(--rt-main)!important;box-shadow:0 18px 38px color-mix(in srgb,var(--rt-main) 23%,transparent)!important}
+#rt11-modal .rt-unified-teras-grid>li:hover::after{left:150%}
+#rt11-modal .rt-unified-teras-grid>li strong{color:var(--rt-main);font-weight:800}
+#rt11-modal .rt-unified-teras-grid>li .rt-flow-index{display:flex;width:max-content;margin-bottom:15px}
+#rt11-modal .rt-motion-reveal{animation:rt-unified-card-enter .7s cubic-bezier(.2,.75,.2,1) both;animation-delay:var(--rt-motion-delay,0ms)}
+@keyframes rt-unified-card-enter{from{opacity:0;transform:translateY(19px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rt-flow-dot-pulse{50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--rt-main) 10%,transparent),0 0 22px color-mix(in srgb,var(--rt-main) 35%,transparent)}}
+@keyframes rt-flow-line-shift{50%{background-position:0% 100%}}
+@media(max-width:800px){#rt11-modal .rt-unified-teras-grid{grid-template-columns:1fr!important}#rt11-modal .rt-flow-timeline{padding-left:36px!important}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .rt-flow-timeline::before,#rt11-modal .rt-flow-timeline>li::before,#rt11-modal .rt-motion-reveal{animation:none!important}#rt11-modal .rt-unified-teras-grid>li,#rt11-modal .rt-flow-timeline>li{transition:none!important}}
+</style>
+<script id="rt-all-timeline-teras-motion-20261102">
+(function(){
+'use strict';
+const root=document.getElementById('rt11-body');if(!root)return;
+function norm(s){return (s||'').toLowerCase().replace(/\s+/g,' ').trim()}
+function activate(list,type){
+ if(list.dataset.rtMotionEnhanced)return;
+ const items=Array.from(list.children).filter(el=>el.tagName==='LI');
+ if(items.length<3||items.length>24)return;
+ list.dataset.rtMotionEnhanced=type;
+ list.classList.add(type==='teras'?'rt-unified-teras-grid':'rt-flow-timeline');
+ items.forEach((li,i)=>{
+   if(!li.querySelector('.rt-flow-index')){
+     const badge=document.createElement('span');badge.className='rt-flow-index';badge.textContent=String(i+1).padStart(2,'0');li.insertBefore(badge,li.firstChild);
+   }
+   li.style.setProperty('--rt-motion-delay',Math.min(i*75,525)+'ms');
+   li.classList.add('rt-motion-reveal');
+ });
+}
+function enhance(){
+ root.querySelectorAll('.rtchapter').forEach(ch=>{
+  const title=norm(ch.querySelector('h2')?.textContent);
+  const isTeras=/teras pembangunan|dimensi utama|teras utama|strategi pembangunan/.test(title)||ch.classList.contains('rt-pillars');
+  const isHistory=/sejarah|kronologi|latar belakang|perkembangan/.test(title);
+  ch.querySelectorAll('.rtpiece ul,.rtpiece ol').forEach(list=>{
+   if(list.dataset.rtMotionEnhanced||list.closest('.rt-mbsa-teras-grid,.rt-mbsa-principle-grid,.mbsa-concept-tiles,.rt-shared-card-grid'))return;
+   const lis=Array.from(list.children).filter(x=>x.tagName==='LI');
+   if(lis.length<3)return;
+   const combined=norm(lis.map(x=>x.textContent).join(' '));
+   const numericHistory=/zaman |era |kemerdekaan|pemodenan|pra kesultanan|pembentukan kesultanan|abad ke-/.test(combined);
+   if(isTeras&& !/rujukan|dokumen|sumber/.test(combined.slice(0,120)))activate(list,'teras');
+   else if((isHistory||numericHistory)&&!/senarai dokumen|rujukan|sumber data/.test(combined.slice(0,120)))activate(list,'timeline');
+  });
+ });
+}
+let queued=false;function schedule(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;enhance()})}
+new MutationObserver(schedule).observe(root,{childList:true,subtree:true});
+enhance();
+})();
+</script>
+
 </body>
 </html>
