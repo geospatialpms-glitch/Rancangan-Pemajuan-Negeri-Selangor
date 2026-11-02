@@ -16753,5 +16753,75 @@ function enhance(){
 let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;enhance()})}).observe(root,{childList:true,subtree:true});enhance();
 })();
 </script>
+
+<style id="mpks-nucleus-grid-dialog-v2">
+#rt11-modal .rtchapter .mpks-nucleus-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;list-style:none!important;padding:0!important;margin:22px 0!important}
+#rt11-modal .rtchapter .mpks-nucleus-grid>.mpks-nucleus-tile{display:flex!important;flex-direction:column!important;align-items:flex-start!important;min-width:0!important;width:100%!important;min-height:225px!important;height:auto!important;margin:0!important;padding:23px!important;grid-column:auto!important;position:relative!important;border:1px solid #d8c99f!important;border-radius:21px!important;background:linear-gradient(135deg,#fffdf9,#fff2d9)!important;box-shadow:0 12px 24px #18263a1c!important;cursor:pointer;transition:transform .3s,box-shadow .3s!important;overflow:hidden!important}
+#rt11-modal .rtchapter .mpks-nucleus-grid>.mpks-nucleus-tile:nth-child(3n+2){background:linear-gradient(135deg,#fff,#eef9f5)!important}
+#rt11-modal .rtchapter .mpks-nucleus-grid>.mpks-nucleus-tile:nth-child(3n+3){background:linear-gradient(135deg,#fff,#eef3ff)!important}
+#rt11-modal .rtchapter .mpks-nucleus-grid>.mpks-nucleus-tile::before,#rt11-modal .rtchapter .mpks-nucleus-grid>.mpks-nucleus-tile::after{display:none!important}
+#rt11-modal .mpks-nucleus-tile:hover,#rt11-modal .mpks-nucleus-tile:focus-visible{transform:translateY(-7px)!important;box-shadow:0 22px 40px #18263a30!important;outline:2px solid #d4af37}
+#rt11-modal .mpks-nucleus-icon{display:grid;place-items:center;width:47px;height:47px;border-radius:14px;background:#202b42;color:white;font-size:23px;margin-bottom:16px}
+#rt11-modal .mpks-nucleus-small{font-weight:800;letter-spacing:.12em;font-size:11px;color:#98732c;margin-bottom:9px}
+#rt11-modal .mpks-nucleus-title{font-size:clamp(15px,1.5vw,18px);line-height:1.4;font-weight:850;color:#202b42;margin-bottom:18px}
+#rt11-modal .mpks-nucleus-action{margin-top:auto!important;padding:10px 14px;border:1px solid #c19b4f;border-radius:99px;background:#fff9eb;color:#612139;font-size:12px;font-weight:800;cursor:pointer}
+#rt11-modal .mpks-nucleus-action:hover{background:#202b42;color:white}
+#mpks-nucleus-popup{position:fixed;inset:0;margin:auto;width:min(620px,calc(100vw - 30px));max-height:80vh;overflow:auto;border:1px solid #d4af37;border-radius:23px;padding:30px;background:#fffaf4;color:#263449;box-shadow:0 25px 75px #10182770}
+#mpks-nucleus-popup::backdrop{background:#18202eb8;backdrop-filter:blur(5px)}
+#mpks-nucleus-popup .mpks-pop-head{display:flex;justify-content:space-between;align-items:center;gap:14px}
+#mpks-nucleus-popup .mpks-pop-label{font-size:11px;letter-spacing:.12em;font-weight:850;color:#9b783b}
+#mpks-nucleus-popup .mpks-pop-x{border:0;border-radius:12px;background:#f3e8de;color:#612139;width:42px;height:42px;font-size:24px;cursor:pointer}
+#mpks-nucleus-popup h3{font-size:clamp(21px,2.7vw,30px);line-height:1.3;color:#202b42;margin:18px 0}
+#mpks-nucleus-popup p{font-size:16px;line-height:1.8;color:#475569}
+#mpks-nucleus-popup .mpks-pop-foot{display:flex;justify-content:flex-end;margin-top:24px}
+#mpks-nucleus-popup .mpks-pop-close{background:#202b42;border:0;border-radius:11px;padding:12px 23px;color:white;font-weight:800;cursor:pointer}
+@media(max-width:900px){#rt11-modal .rtchapter .mpks-nucleus-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:580px){#rt11-modal .rtchapter .mpks-nucleus-grid{grid-template-columns:1fr!important}#mpks-nucleus-popup{padding:20px}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .mpks-nucleus-tile{transition:none!important}}
+</style>
+<script id="mpks-nucleus-grid-dialog-handler-v2">
+(function(){
+'use strict';
+var root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');if(!root)return;
+var headings=['Hierarki Petempatan','Konurbasi Nasional','Rangkaian Pengangkutan Utama','Kawasan Keutamaan Pembangunan','Kawasan Berisiko Bencana & KSAS'];
+var symbols=['⌂','◎','↗','▦','♧'];
+var popup=document.getElementById('mpks-nucleus-popup');
+if(!popup){
+ popup=document.createElement('dialog');popup.id='mpks-nucleus-popup';
+ popup.innerHTML='<div class="mpks-pop-head"><span class="mpks-pop-label">KONSEP NUKLEUS · MPKS 2035</span><button type="button" class="mpks-pop-x" aria-label="Tutup">×</button></div><h3></h3><p></p><div class="mpks-pop-foot"><button type="button" class="mpks-pop-close">Tutup</button></div>';
+ document.body.appendChild(popup);
+ popup.querySelectorAll('.mpks-pop-x,.mpks-pop-close').forEach(function(b){b.addEventListener('click',function(){popup.close()})});
+ popup.addEventListener('click',function(e){if(e.target===popup)popup.close()});
+}
+function apply(){
+ if(!/MPKS/i.test(label?label.textContent:''))return;
+ var chapters=[].slice.call(root.querySelectorAll('.rtchapter'));
+ var ch=chapters.find(function(x){return /konsep pembangunan/i.test(x.querySelector(':scope > h2')?.textContent||'')&&/konsep nukleus/i.test(x.textContent)});
+ if(!ch)return;
+ var list=[].slice.call(ch.querySelectorAll('ul,ol,.mpks-motion-list,.rt-shared-card-grid')).find(function(el){
+ var a=[].slice.call(el.children);return a.length===5&&headings.every(function(t){return a.some(function(item){return (item.textContent||'').toLowerCase().includes(t.toLowerCase())})});
+ });
+ if(!list||list.classList.contains('mpks-nucleus-grid'))return;
+ var cards=[].slice.call(list.children);
+ var contents=cards.map(function(el){return (el.textContent||'').replace(/^\\s*\\d{1,2}\\s*/,'').replace(/\\s+/g,' ').trim()});
+ list.classList.remove('mpks-motion-list');list.classList.add('mpks-nucleus-grid');
+ cards.forEach(function(card,i){
+  var entire=contents[i];var pos=entire.toLowerCase().indexOf(headings[i].toLowerCase());
+  var description=pos>=0?entire.slice(pos+headings[i].length).replace(/^\\s*:\\s*/,'').trim():entire;
+  card.replaceChildren();card.className='mpks-nucleus-tile';card.setAttribute('role','button');card.setAttribute('tabindex','0');card.setAttribute('aria-label','Ketahui lanjut: '+headings[i]);
+  var icon=document.createElement('span');icon.className='mpks-nucleus-icon';icon.setAttribute('aria-hidden','true');icon.textContent=symbols[i];
+  var small=document.createElement('small');small.className='mpks-nucleus-small';small.textContent='ASPEK '+String(i+1).padStart(2,'0');
+  var title=document.createElement('strong');title.className='mpks-nucleus-title';title.textContent=headings[i];
+  var action=document.createElement('button');action.className='mpks-nucleus-action';action.type='button';action.textContent='Ketahui Lanjut ›';
+  card.append(icon,small,title,action);
+  function open(){popup.querySelector('h3').textContent=headings[i];popup.querySelector('p').textContent=description;popup.showModal()}
+  action.addEventListener('click',open);
+  card.addEventListener('click',function(e){if(!e.target.closest('button'))open()});
+  card.addEventListener('keydown',function(e){if(e.target===card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open()}});
+ });
+}
+var pending=false;new MutationObserver(function(){if(pending)return;pending=true;requestAnimationFrame(function(){pending=false;apply()})}).observe(root,{childList:true,subtree:true});apply();
+})();
+</script>
 </body>
 </html>
