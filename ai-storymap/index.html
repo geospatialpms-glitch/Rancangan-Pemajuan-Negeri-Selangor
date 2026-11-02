@@ -15091,36 +15091,40 @@ if(entry.code==='MBSA'){
      piece.appendChild(wrap);Array.from(piece.children).forEach(el=>{if(el!==wrap && el!==h)el.style.display='none'});
    }
  });
- /* Rebuild the 4 Zon section from ESRI text split across nodes. */
- const zoneHeading=Array.from(body.querySelectorAll('h3,h4,h5')).find(h=>/4\\s*Zon\\s*&\\s*Teras\\s*Utama\\s*Pembangunan/i.test(h.textContent));
- if(zoneHeading){
-   const zoneSection=zoneHeading.closest('.rtchapter');
-   const zonePieces=Array.from(zoneSection.querySelectorAll('.rtpiece'));
-   const headerPiece=zoneHeading.closest('.rtpiece');
-   const startIndex=zonePieces.indexOf(headerPiece);
-   const after=zonePieces.slice(startIndex+1);
-   const src=after.find(p=>/1\\.\\s*Kawasan Pembangunan Mampan/i.test(p.textContent));
-   if(src){
-     const normalized=src.textContent.replace(/\\s+/g,' ').trim();
-     const re=/(?:^|\\s)([1-4])\\.\\s*(Kawasan (?:Pembangunan Mampan|Tumpuan Ekonomi|Tumpuan Pembangunan Lot Kecil|KSAS\\s*\\(Kawasan Sensitif Alam Sekitar\\))):\\s*/gi;
-     const found=Array.from(normalized.matchAll(re));
-     if(found.length===4){
-       const wrap=document.createElement('div');wrap.className='mbsa-zone-cards';
-       found.forEach((m,i)=>{
-         const next=found[i+1];
-         const desc=normalized.slice(m.index+m[0].length,next?next.index:normalized.length).trim().replace(/\\s*\\.\\s*$/,'');
-         const tile=document.createElement('details');tile.className='mbsa-zone-card';
-         const sum=document.createElement('summary');
-         const num=document.createElement('span');num.className='mbsa-zone-num';num.textContent=String(i+1).padStart(2,'0');
-         const title=document.createElement('strong');title.textContent=m[2];
-         const hint=document.createElement('span');hint.className='mbsa-zone-arrow';hint.textContent='＋';
-         sum.append(num,title,hint);
-         const bodyText=document.createElement('p');bodyText.textContent=desc;
-         tile.append(sum,bodyText);wrap.appendChild(tile);
-       });
-       headerPiece.insertAdjacentElement('afterend',wrap);
-       src.remove();
-     }
+ /* MBSA: Replace the original inline 4-zone paragraph with a proper 2x2 grid.
+    The earlier script used double-escaped regexes, which never matched. */
+ const mbsaZonePieces=Array.from(body.querySelectorAll('.rtpiece'));
+ const zoneTitlePiece=mbsaZonePieces.find(p=>/4\s*Zon\s*&\s*Teras\s*Utama\s*Pembangunan/i.test(p.textContent||''));
+ const sourceZonePiece=mbsaZonePieces.find(p=>{
+   const t=(p.textContent||'').replace(/\s+/g,' ');
+   return /1\.\s*Kawasan\s+Pembangunan\s+Mampan/i.test(t) &&
+     /4\.\s*Kawasan\s+KSAS/i.test(t);
+ });
+ if(sourceZonePiece){
+   const normalized=(sourceZonePiece.textContent||'').replace(/\s+/g,' ').trim();
+   const pattern=/([1-4])\.\s*(Kawasan\s+(?:Pembangunan\s+Mampan|Tumpuan\s+Ekonomi|Tumpuan\s+Pembangunan\s+Lot\s+Kecil|KSAS\s*\(Kawasan\s+Sensitif\s+Alam\s+Sekitar\)))\s*:\s*/gi;
+   const matches=Array.from(normalized.matchAll(pattern));
+   if(matches.length===4){
+     const grid=document.createElement('div');grid.className='mbsa-zone-cards';grid.setAttribute('aria-label','Empat Zon dan Teras Utama Pembangunan');
+     const glyphs=['▦','⌖','▥','◈'];
+     matches.forEach((m,i)=>{
+       const next=matches[i+1];
+       const details=normalized.slice(m.index+m[0].length,next?next.index:normalized.length).trim().replace(/\s*\.\s*$/,'');
+       const card=document.createElement('article');card.className='mbsa-zone-card rt-zone-final';
+       const top=document.createElement('div');top.className='rt-zone-final-head';
+       const number=document.createElement('span');number.className='mbsa-zone-num';number.textContent=String(i+1).padStart(2,'0');
+       const icon=document.createElement('span');icon.className='rt-zone-final-icon';icon.textContent=glyphs[i];icon.setAttribute('aria-hidden','true');
+       top.append(number,icon);
+       const heading=document.createElement('h4');heading.textContent=m[2].replace(/\s+/g,' ');
+       const desc=document.createElement('p');desc.textContent=details;
+       card.append(top,heading,desc);grid.appendChild(card);
+     });
+     if(zoneTitlePiece&&zoneTitlePiece!==sourceZonePiece){
+       sourceZonePiece.replaceWith(grid);
+     }else if(zoneTitlePiece===sourceZonePiece){
+       const sectionTitle=document.createElement('h3');sectionTitle.textContent='4 Zon & Teras Utama Pembangunan';
+       sourceZonePiece.replaceWith(sectionTitle,grid);
+     }else sourceZonePiece.replaceWith(grid);
    }
  }
  const pillars=body.querySelector('.rtchapter.rt-pillars');
@@ -15345,6 +15349,18 @@ background-image:radial-gradient(ellipse at 8% 18%,color-mix(in srgb,var(--rt-so
 @media(max-width:950px){#rt11-modal:not(.rt-mbsa) .rtgrid{grid-template-columns:1fr}#rt11-modal:not(.rt-mbsa) .rtside{position:relative;top:0;max-height:none}}
 @media(max-width:700px){#rt11-modal:not(.rt-mbsa) .rt-shared-card-grid{grid-template-columns:1fr!important}#rt11-modal:not(.rt-mbsa) .rtgrid{width:calc(100% - 18px)}}
 @media(prefers-reduced-motion:reduce){#rt11-modal:not(.rt-mbsa) .rt-shared-card-grid>.rt-shared-card{transition:none}}
+</style>
+
+<style id="mbsa-zone-four-cards-final-20261102">
+#rt11-modal.rt-mbsa .mbsa-zone-cards{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;margin:24px 0 28px!important;width:100%!important}
+#rt11-modal.rt-mbsa .mbsa-zone-cards>.rt-zone-final{display:block!important;min-width:0!important;padding:25px!important;border-radius:21px!important;background:linear-gradient(135deg,#fff,#deeffa)!important;border:1px solid #a7cddd!important;box-shadow:0 12px 27px #1a4c701a!important;transition:transform .27s,box-shadow .27s,border-color .27s}
+#rt11-modal.rt-mbsa .mbsa-zone-cards>.rt-zone-final:hover{transform:translateY(-7px)!important;box-shadow:0 23px 42px #1a4c7035!important;border-color:#17658e!important}
+#rt11-modal.rt-mbsa .rt-zone-final-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:19px}
+#rt11-modal.rt-mbsa .rt-zone-final-icon{display:grid;place-items:center;width:45px;height:45px;border-radius:12px;background:#d2eaf8;color:#17658e;font-size:24px}
+#rt11-modal.rt-mbsa .rt-zone-final h4{font-size:18px;line-height:1.4;font-weight:800;color:#18597a;margin:0 0 12px}
+#rt11-modal.rt-mbsa .rt-zone-final p{font-size:15px;line-height:1.75;color:#324f64;margin:0!important;padding:0!important}
+@media(max-width:760px){#rt11-modal.rt-mbsa .mbsa-zone-cards{grid-template-columns:1fr!important}}
+@media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa .rt-zone-final{transition:none!important}}
 </style>
 </body>
 </html>
