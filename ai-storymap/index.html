@@ -15194,48 +15194,59 @@ if(entry.code!=='MBSA'){
  });
 }
 
-/* All RT: KKB-inspired, content-preserving cards for Teras Pembangunan. */
+/* RT Teras layout: collect individual ESRI items across separate text nodes. */
 if(entry.code!=='MBSA'){
- const escHeading=t=>/^\s*(?:teras|tema|strategi)\s*(?:ke[- ]?)?\d+/i.test(t);
  body.querySelectorAll('.rtchapter.rt-pillars').forEach(ch=>{
-   const candidate=[];
-   ch.querySelectorAll('.rtpiece').forEach(piece=>{
-     const list=piece.querySelector('ul,ol');
-     if(list&&list.children.length>=2){
-       Array.from(list.children).filter(li=>li.tagName==='LI').forEach(li=>candidate.push(li));
-     }
-   });
-   if(candidate.length>=2){
-     const grid=document.createElement('div');grid.className='rt-kkb-pillar-grid';
-     const first=candidate[0].closest('.rtpiece');
-     candidate.forEach((li,i)=>{
-       const card=document.createElement('article');card.className='rt-kkb-pillar-card';
-       card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-pressed','false');
-       const raw=(li.textContent||'').trim();
-       const segments=raw.split(/\s*:\s*/);
-       const heading=segments.length>1?segments.shift().trim():raw;
-       const details=segments.join(':').trim();
-       const inner=document.createElement('div');inner.className='rt-kkb-pillar-inner';
-       const front=document.createElement('div');front.className='rt-kkb-pillar-face rt-kkb-pillar-front';
-       const star=document.createElement('span');star.className='rt-kkb-pillar-star';star.textContent='✧';
-       const label=document.createElement('small');label.textContent='TERAS '+String(i+1).padStart(2,'0');
-       const h=document.createElement('h3');h.textContent=heading.replace(/^teras\s*\d+\s*[:.\-]?\s*/i,'')||heading;
-       const hint=document.createElement('span');hint.className='rt-kkb-pillar-hint';hint.textContent='HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA ↻';
-       front.append(star,label,h,hint);
-       const back=document.createElement('div');back.className='rt-kkb-pillar-face rt-kkb-pillar-back';
-       const b=document.createElement('small');b.textContent='TERAS '+String(i+1).padStart(2,'0');
-       const description=document.createElement('div');description.className='rt-kkb-pillar-description';
-       description.innerHTML=li.innerHTML;
-       back.append(b,description);
-       inner.append(front,back);card.appendChild(inner);
-       function flip(){const active=card.classList.toggle('is-flipped');card.setAttribute('aria-pressed',String(active))}
-       card.addEventListener('click',flip);
-       card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
-       grid.appendChild(card);li.remove();
+   const all=Array.from(ch.querySelectorAll('.rtpiece'));
+   const candidates=[];
+   all.forEach(piece=>{
+     piece.querySelectorAll('li').forEach(li=>{
+       if(!li.closest('.rt-kkb-pillar-grid')&&/^\s*(?:teras|tema)\s*(?:ke[- ]?)?\d+/i.test(li.textContent.trim()))
+         candidates.push({node:li,source:piece});
      });
-     if(first)first.insertAdjacentElement('beforebegin',grid);
-     ch.querySelectorAll('.rtpiece').forEach(p=>{const list=p.querySelector('ul,ol');if(list&&!list.querySelector('li')&&!p.textContent.trim())p.remove()});
+   });
+   if(candidates.length<2){
+     all.forEach(piece=>{
+       if(piece.querySelector('li'))return;
+       const text=(piece.textContent||'').trim();
+       if(/^\s*(?:teras|tema)\s*\d+\s*[:.\-]/i.test(text))candidates.push({node:piece,source:piece});
+     });
    }
+   if(candidates.length<2)return;
+   const grid=document.createElement('div');grid.className='rt-kkb-pillar-grid';
+   const first=candidates[0].source;
+   candidates.forEach(({node,source},i)=>{
+     const raw=(node.textContent||'').replace(/\s+/g,' ').trim();
+     const match=raw.match(/^\s*(?:teras|tema)\s*\d+\s*[:.\-]?\s*/i);
+     const without=raw.slice(match?match[0].length:0);
+     const split=without.match(/^(.+?)\s+[–—-]\s+(.+)$/);
+     const title=(split?split[1]:without).trim();
+     const card=document.createElement('article');card.className='rt-kkb-pillar-card';
+     const inner=document.createElement('div');inner.className='rt-kkb-pillar-inner';
+     const front=document.createElement('div');front.className='rt-kkb-pillar-face rt-kkb-pillar-front';
+     const star=document.createElement('span');star.className='rt-kkb-pillar-star';star.textContent='✧';
+     const tag=document.createElement('small');tag.textContent='TERAS '+String(i+1).padStart(2,'0');
+     const heading=document.createElement('h3');heading.textContent=title;
+     const hint=document.createElement('span');hint.className='rt-kkb-pillar-hint';hint.textContent='HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA ↻';
+     front.append(star,tag,heading,hint);
+     const back=document.createElement('div');back.className='rt-kkb-pillar-face rt-kkb-pillar-back';
+     const backTitle=document.createElement('small');backTitle.textContent='TERAS '+String(i+1).padStart(2,'0');
+     const description=document.createElement('div');description.className='rt-kkb-pillar-description';
+     description.textContent=split?split[2]:raw;
+     back.append(backTitle,description);inner.append(front,back);card.appendChild(inner);
+     card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-pressed','false');
+     const flip=()=>{const active=card.classList.toggle('is-flipped');card.setAttribute('aria-pressed',String(active))};
+     card.addEventListener('click',flip);
+     card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+     grid.appendChild(card);
+     node.remove();
+   });
+   first.insertAdjacentElement('beforebegin',grid);
+   all.forEach(piece=>{
+     const list=piece.querySelector('ul,ol');
+     if(list&&!list.querySelector('li'))list.remove();
+     if(!piece.textContent.trim()&&!piece.querySelector('img,figure,video'))piece.remove();
+   });
  });
 }
 if(!body.children.length)throw Error('Tiada kandungan bab');}
@@ -15542,6 +15553,25 @@ background-image:radial-gradient(ellipse at 8% 18%,color-mix(in srgb,var(--rt-so
 @media(max-width:930px){#rt11-modal .rtgrid{grid-template-columns:1fr!important}#rt11-modal .rtgrid>.rtside{position:relative!important;top:auto!important;max-height:none!important}}
 @media(max-width:700px){#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid{grid-template-columns:1fr}#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-card{height:300px}}
 @media(prefers-reduced-motion:reduce){#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-inner,#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-card{transition:none}}
+</style>
+
+<style id="rt-sidebar-teras-final-20261102">
+/* Desktop sidebar: compact without making chapter labels cramped */
+@media(min-width:931px){
+ #rt11-modal .rtgrid,
+ #rt11-modal.rt-mbsa .rtgrid,
+ #rt11-modal:not(.rt-mbsa) .rtgrid{grid-template-columns:250px minmax(0,1fr)!important;gap:20px!important}
+ #rt11-modal .rtgrid>.rtside{width:250px!important;max-width:250px!important;padding:16px 14px!important;max-height:calc(100dvh - 105px)!important}
+}
+#rt11-modal .rtside a{display:flex!important;align-items:center!important;gap:8px!important;padding:7px 9px!important;margin:2px 0!important;min-height:52px!important}
+#rt11-modal .rtside a:before{flex:0 0 28px!important;width:28px!important;height:28px!important}
+#rt11-modal .rtside a .rt-side-name{font-size:11px!important;line-height:1.35!important;overflow-wrap:normal!important;word-break:normal!important}
+#rt11-modal .rtside .rt-side-desc{margin:7px 0 10px!important}
+#rt11-modal .rtside h3{margin:10px 0!important;padding:5px 7px 9px!important}
+#rt11-modal:not(.rt-mbsa) .rtchapter.rt-pillars .rt-kkb-pillar-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;width:100%!important;list-style:none!important;padding:0!important;margin:24px 0!important}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-card{height:300px!important;min-height:300px!important;max-height:300px!important}
+@media(max-width:930px){#rt11-modal .rtgrid,#rt11-modal.rt-mbsa .rtgrid,#rt11-modal:not(.rt-mbsa) .rtgrid{grid-template-columns:1fr!important}#rt11-modal .rtgrid>.rtside{width:100%!important;max-width:none!important}}
+@media(max-width:700px){#rt11-modal:not(.rt-mbsa) .rtchapter.rt-pillars .rt-kkb-pillar-grid{grid-template-columns:1fr!important}}
 </style>
 </body>
 </html>
