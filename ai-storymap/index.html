@@ -15573,5 +15573,51 @@ background-image:radial-gradient(ellipse at 8% 18%,color-mix(in srgb,var(--rt-so
 @media(max-width:930px){#rt11-modal .rtgrid,#rt11-modal.rt-mbsa .rtgrid,#rt11-modal:not(.rt-mbsa) .rtgrid{grid-template-columns:1fr!important}#rt11-modal .rtgrid>.rtside{width:100%!important;max-width:none!important}}
 @media(max-width:700px){#rt11-modal:not(.rt-mbsa) .rtchapter.rt-pillars .rt-kkb-pillar-grid{grid-template-columns:1fr!important}}
 </style>
+
+<style id="rt-teras-card-typography-center-20261102">
+/* Keep all RT Teras card faces centered, sized to 300px cards and legible. */
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-card{
+ box-sizing:border-box!important;
+}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-face{
+ display:flex!important;flex-direction:column!important;
+ justify-content:center!important;align-items:center!important;
+ text-align:center!important;gap:12px!important;
+ padding:clamp(16px,2vw,26px)!important;
+ overflow-wrap:break-word!important;
+}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-front h3{
+ width:100%!important;max-width:100%!important;
+ font-family:Georgia,serif!important;font-size:clamp(17px,1.55vw,24px)!important;
+ line-height:1.32!important;letter-spacing:-.015em!important;
+ margin:0!important;text-align:center!important;
+}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-face small{
+ font-size:11px!important;text-align:center!important;
+}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-back{
+ justify-content:center!important;align-items:center!important;
+ text-align:center!important;overflow-y:auto!important;
+}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-description{
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+ font-size:clamp(13px,1.12vw,16px)!important;
+ line-height:1.55!important;font-weight:500!important;
+ text-align:center!important;width:100%!important;max-width:100%!important;
+ margin:0 auto!important;overflow-wrap:anywhere!important;
+}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-description *{
+ text-align:center!important;max-width:100%!important;
+}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-hint{
+ margin:2px auto 0!important;text-align:center!important;
+ font-size:9px!important;line-height:1.4!important;
+ max-width:100%!important;
+}
+@media(max-width:700px){
+ #rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-front h3{font-size:clamp(18px,4.5vw,23px)!important}
+ #rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-description{font-size:14px!important}
+}
+</style>
 </body>
 </html>
