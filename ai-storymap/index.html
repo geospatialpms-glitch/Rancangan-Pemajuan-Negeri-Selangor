@@ -16121,5 +16121,94 @@ run();
  run();
 })();
 </script>
+<style id="rt-mdsb-structure-pyramid-v2">
+#rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;align-items:stretch}
+#rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-card{height:auto!important;min-height:155px!important;max-height:none!important;display:flex;flex-direction:column;justify-content:flex-start}
+#rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-detail :is(ul,ol){list-style:none!important;padding:0!important;margin:0!important;display:block!important}
+#rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-detail li{height:auto!important;min-height:0!important;max-height:none!important;list-style:none!important;margin:0!important;padding:0!important;box-shadow:none!important;border:0!important;background:transparent!important;display:block!important}
+#rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-detail li::before,#rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-detail li::after{display:none!important}
+#rt11-modal .rt-mdsb-hierarchy{margin:22px auto 30px;max-width:850px;display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
+#rt11-modal .rt-mdsb-hierarchy>.rt-mdsb-level{box-sizing:border-box;position:relative;width:var(--pyramid-width);max-width:100%;min-height:102px;padding:17px 22px;background:linear-gradient(120deg,var(--tier-a),var(--tier-b));clip-path:polygon(var(--cut) 0%,calc(100% - var(--cut)) 0%,100% 100%,0 100%);color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;filter:drop-shadow(0 7px 12px #63274333);transition:transform .25s ease,filter .25s ease}
+#rt11-modal .rt-mdsb-hierarchy>.rt-mdsb-level:hover{transform:translateY(-3px) scale(1.018);filter:drop-shadow(0 10px 16px #63274360)}
+#rt11-modal .rt-mdsb-hierarchy .rt-mdsb-tier-badge{font-size:10px;letter-spacing:.13em;font-weight:850;color:#ffe0d3}
+#rt11-modal .rt-mdsb-hierarchy .rt-mdsb-tier-text{font-size:clamp(12px,1.25vw,16px);font-weight:650;line-height:1.4;max-width:90%}
+#rt11-modal .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(1){--pyramid-width:46%;--cut:39%;--tier-a:#842347;--tier-b:#b64667;min-height:125px;padding-top:45px}
+#rt11-modal .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(2){--pyramid-width:73%;--cut:17%;--tier-a:#a02b54;--tier-b:#d35479}
+#rt11-modal .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(3){--pyramid-width:100%;--cut:10%;--tier-a:#ba4a6d;--tier-b:#e1849b}
+#rt11-modal .rt-mdsb-hierarchy .rt-mdsb-tier-text{overflow-wrap:anywhere}
+@media(max-width:760px){#rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-grid{grid-template-columns:1fr!important}#rt11-modal .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(1){--pyramid-width:67%}#rt11-modal .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(2){--pyramid-width:83%}#rt11-modal .rt-mdsb-hierarchy .rt-mdsb-tier-text{font-size:12px}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .rt-mdsb-hierarchy>.rt-mdsb-level{transition:none}}
+</style>
+<script id="rt-mdsb-structure-pyramid-v2">
+(function(){
+'use strict';
+const body=document.getElementById('rt11-body');if(!body)return;
+function title(el){return (el?.textContent||'').replace(/\s+/g,' ').trim()}
+function buildMukim(sec){
+ if(sec.querySelector('.rt-mdsb-mukim-grid'))return;
+ const blocks=[...sec.children].filter(e=>e.classList.contains('rtpiece'));
+ const groups=[];let cur=null;
+ blocks.forEach(block=>{
+  const heading=block.querySelector('h3,h4,h5')||(!block.querySelector('ul,ol')&&/^(\d+\.\s*)?Mukim\s/i.test(title(block))?block:null);
+  const text=title(heading);
+  if(/^(\d+\s*[.:-]\s*)?Mukim\s+/i.test(text)){
+   cur={name:text.replace(/^\d+\s*[.:-]\s*/,''),blocks:[block]};groups.push(cur);
+  }else if(cur){cur.blocks.push(block)}
+ });
+ if(groups.length<2)return;
+ const grid=document.createElement('div');grid.className='rt-mdsb-mukim-grid';
+ groups.forEach((group,i)=>{
+  const card=document.createElement('article');card.className='rt-mdsb-mukim-card';
+  const head=document.createElement('div');head.className='rt-mdsb-mukim-heading';
+  const badge=document.createElement('span');badge.className='rt-mdsb-mukim-number';badge.textContent=String(i+1).padStart(2,'0');
+  const name=document.createElement('h3');name.className='rt-mdsb-mukim-name';name.textContent=group.name;
+  head.append(badge,name);const detail=document.createElement('div');detail.className='rt-mdsb-mukim-detail';
+  group.blocks.forEach((block,idx)=>{
+   const clone=block.cloneNode(true);
+   if(idx===0){
+    const h=clone.querySelector('h3,h4,h5');
+    if(h)h.remove();else if(!clone.querySelector('ul,ol'))return;
+   }
+   clone.querySelectorAll('.rt-v3-num,.rt-flow-index,.rt-final-step').forEach(n=>n.remove());
+   detail.append(...clone.childNodes);
+  });
+  card.append(head,detail);grid.append(card);
+ });
+ groups[0].blocks[0].before(grid);groups.forEach(g=>g.blocks.forEach(el=>el.remove()));
+ sec.classList.add('rt-mdsb-mukim-section');
+}
+function buildPyramid(sec){
+ if(sec.querySelector('.rt-mdsb-hierarchy'))return;
+ const pieces=[...sec.querySelectorAll(':scope > .rtpiece')];
+ let found=false;
+ for(const piece of pieces){
+  if(/hierarki\s+petempatan/i.test(title(piece)) && !piece.querySelector('ul,ol')){found=true;continue}
+  if(!found)continue;
+  if(/zonkasi\s+strategik|zonasi\s+strategik/i.test(title(piece).slice(0,70)))break;
+  const list=piece.querySelector('ul,ol');if(!list)continue;
+  const li=[...list.children].filter(x=>x.tagName==='LI');
+  if(li.length!==3)continue;
+  const pyramid=document.createElement('div');pyramid.className='rt-mdsb-hierarchy';
+  pyramid.setAttribute('role','group');pyramid.setAttribute('aria-label','Hierarki Petempatan tiga aras');
+  li.forEach((item,i)=>{
+    const level=document.createElement('div');level.className='rt-mdsb-level';
+    const tag=document.createElement('span');tag.className='rt-mdsb-tier-badge';tag.textContent='ARAS '+String(i+1).padStart(2,'0');
+    const desc=document.createElement('span');desc.className='rt-mdsb-tier-text';desc.textContent=title(item).replace(/^\d{1,2}\s*/,'');
+    level.append(tag,desc);pyramid.append(level);
+  });
+  list.replaceWith(pyramid);return;
+ }
+}
+function run(){
+ const sections=[...body.querySelectorAll('.rtchapter')];
+ const m=sections.find(sec=>/pelan mukim\s*(?:&|dan)\s*blok\s*mdsb/i.test(title(sec.querySelector(':scope > h2'))));
+ if(!m)return;
+ buildMukim(m);
+ sections.forEach(sec=>{if(/konsep pembangunan|hierarki petempatan/i.test(title(sec.querySelector(':scope > h2'))) || /hierarki petempatan/i.test(title(sec)))buildPyramid(sec)});
+}
+let queued=false;function schedule(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;try{run()}catch(e){console.warn('MDSB visual enhancement skipped:',e)}})}
+new MutationObserver(schedule).observe(body,{childList:true,subtree:true});schedule();
+})();
+</script>
 </body>
 </html>
