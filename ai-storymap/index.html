@@ -14992,6 +14992,12 @@ if(cover){
  if(resourceId)coverImage='https://www.arcgis.com/sharing/rest/content/items/'+entry.id+'/resources/'+encodeURIComponent(resourceId);
 }
 if(coverImage){hero.style.backgroundImage='linear-gradient(100deg,rgba(13,30,52,.65),rgba(13,30,52,.22)),url("'+coverImage+'")'}
+if(entry.code==='MBSJ'){
+ const imageUrl='Gemini_Generated_Image_n9oyk1n9oyk1n9oy.jfif';
+ hero.style.backgroundImage='linear-gradient(100deg,rgba(13,30,52,.48),rgba(13,30,52,.20)),url("'+imageUrl+'")';
+ hero.style.backgroundSize='cover';hero.style.backgroundPosition='center center';hero.style.backgroundRepeat='no-repeat';
+}
+
 if(cover){hero.innerHTML='';const heroContent=document.createElement('div');heroContent.className='rt-hero-content';hero.appendChild(heroContent);let sm=document.createElement('small');sm.textContent='RANCANGAN TEMPATAN · '+entry.code;heroContent.appendChild(sm);let title=document.createElement('h1');title.textContent=strip(cover.data.title);heroContent.appendChild(title);let sub=document.createElement('p');sub.textContent=strip(cover.data.summary);heroContent.appendChild(sub)}
 body.innerHTML='';let section=null,i=0;const prefix='rt11-'+entry.code+'-';
 for(const key of children){const node=nodes[key];if(!node||node.type==='storycover'||node.type==='navigation'||node.type==='credits'||node.type==='attribution')continue;
