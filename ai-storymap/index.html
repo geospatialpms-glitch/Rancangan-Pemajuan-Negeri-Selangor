@@ -14999,6 +14999,12 @@ if(node.type==='text'&&node.data&&node.data.type==='h2'&&strip(node.data.text)){
 if(!section){section=document.createElement('section');section.className='rtchapter';section.id=prefix+'intro';body.appendChild(section)}
 const el=piece(node,resources,entry.id);if(el)section.appendChild(el)}
 if(entry.code==='MBSA'){
+ /* Identify Multi-Nuclei list from heading context and its own text, regardless of markup nesting */
+ const conceptArea=body.querySelector('.rtchapter.rt-concept');
+ if(conceptArea){let active=false;for(const block of conceptArea.querySelectorAll('.rtpiece')){
+   const h=block.querySelector('h3,h4,h5');if(h)active=/impak pelaksanaan konsep multi.?nuclei/i.test(h.textContent);
+   if(active&&block.querySelector('li')){block.classList.add('rt-mbsa-timeline');block.querySelectorAll('li').forEach(li=>{if(!li.querySelector('.rt-process-text')){const span=document.createElement('span');span.className='rt-process-text';while(li.firstChild)span.appendChild(li.firstChild);li.appendChild(span)}});active=false}
+ }}
  let context='';
  body.querySelectorAll('.rtchapter').forEach(ch=>{
   ch.querySelectorAll('.rtpiece').forEach(piece=>{
@@ -15045,5 +15051,22 @@ if(!body.children.length)throw Error('Tiada kandungan bab');}
 catch(err){if(ticket!==requestNo)return;body.innerHTML='';const box=document.createElement('section');box.className='rtchapter';const h=document.createElement('h2');h.textContent='Kandungan ESRI tidak dapat dimuatkan';const p=document.createElement('p');p.textContent='Akses JSON asal tidak tersedia pada pelayar ini. Buka StoryMap asal untuk membaca kandungan lengkap.';const a=document.createElement('a');a.href='https://storymaps.arcgis.com/stories/'+entry.id;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka StoryMap ESRI asal ↗';box.append(h,p,a);body.appendChild(box)}}
 document.addEventListener('click',function(e){const a=e.target.closest('a[href]');if(!a||modal.contains(a))return;let id=(a.href.match(/storymaps\.arcgis\.com\/stories\/([0-9a-f]{32})/i)||[])[1];if(!id){let code=(a.getAttribute('aria-label')||'').match(/RT (MBSA|MBSJ|MBDK|MPAJ|MPKj|MPS|MPSp|MPKL|MPKS|MPHS|MDSB)\b/i);if(code){const found=entries.find(row=>row[0].toLowerCase()===code[1].toLowerCase());if(found)id=found[1]}}const entry=id&&links.get(id);if(!entry)return;e.preventDefault();e.stopImmediatePropagation();open(entry)},true);
 })();</script>
+<style id="mbsa-final-layout-fix-20261102">
+/* Loaded last to override generic RT chapter rules. Only MBSA. */
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rtpiece ul,
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rtpiece ol{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;width:100%!important;max-width:none!important;margin:20px 0!important;padding:0!important;align-items:stretch}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rtpiece li{width:100%!important;min-width:0!important;height:260px!important;min-height:260px!important;max-height:260px!important;margin:0!important;padding:0!important;display:block!important;box-sizing:border-box!important}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rtpiece li .rt-teras-flip{height:100%!important;min-height:0!important;width:100%!important}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rtpiece .rt-teras-face{height:100%;box-sizing:border-box}
+#rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline ul,
+#rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline ol{display:flex!important;flex-direction:column!important;gap:0!important;border:0!important;padding:0!important;margin:14px 0!important;list-style:none!important;counter-reset:rtitem}
+#rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li{counter-increment:rtitem;display:grid!important;grid-template-columns:62px minmax(0,1fr)!important;align-items:center!important;min-height:90px!important;width:100%!important;margin:0!important;padding:12px 0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;transform:none;position:relative;overflow:visible}
+#rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li:before{content:counter(rtitem,decimal-leading-zero)!important;position:relative!important;left:auto!important;top:auto!important;grid-column:1!important;grid-row:1!important;display:grid!important;place-items:center!important;width:52px!important;height:52px!important;padding:0!important;background:var(--rt-main)!important;color:#fff!important;border:4px solid white!important;border-radius:50%!important;box-shadow:0 5px 15px #143d602d!important;font-weight:900}
+#rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li:after{content:"";position:absolute;left:26px;top:64px;bottom:-27px;width:2px;background:linear-gradient(var(--rt-main),#a8cfdf);opacity:.48}
+#rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li:last-child:after{display:none}
+#rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li .rt-process-text{grid-column:2!important;grid-row:1!important;display:block!important;padding:16px 18px;border-bottom:1px solid #c5d9e6}
+#rt11-modal.rt-mbsa .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li:hover .rt-process-text{background:#fff9;border-radius:12px}
+@media(max-width:750px){#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rtpiece ul,#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rtpiece ol{grid-template-columns:1fr!important}}
+</style>
 </body>
 </html>
