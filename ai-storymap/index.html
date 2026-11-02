@@ -15091,6 +15091,38 @@ if(entry.code==='MBSA'){
      piece.appendChild(wrap);Array.from(piece.children).forEach(el=>{if(el!==wrap && el!==h)el.style.display='none'});
    }
  });
+ /* Rebuild the 4 Zon section from ESRI text split across nodes. */
+ const zoneHeading=Array.from(body.querySelectorAll('h3,h4,h5')).find(h=>/4\\s*Zon\\s*&\\s*Teras\\s*Utama\\s*Pembangunan/i.test(h.textContent));
+ if(zoneHeading){
+   const zoneSection=zoneHeading.closest('.rtchapter');
+   const zonePieces=Array.from(zoneSection.querySelectorAll('.rtpiece'));
+   const headerPiece=zoneHeading.closest('.rtpiece');
+   const startIndex=zonePieces.indexOf(headerPiece);
+   const after=zonePieces.slice(startIndex+1);
+   const src=after.find(p=>/1\\.\\s*Kawasan Pembangunan Mampan/i.test(p.textContent));
+   if(src){
+     const normalized=src.textContent.replace(/\\s+/g,' ').trim();
+     const re=/(?:^|\\s)([1-4])\\.\\s*(Kawasan (?:Pembangunan Mampan|Tumpuan Ekonomi|Tumpuan Pembangunan Lot Kecil|KSAS\\s*\\(Kawasan Sensitif Alam Sekitar\\))):\\s*/gi;
+     const found=Array.from(normalized.matchAll(re));
+     if(found.length===4){
+       const wrap=document.createElement('div');wrap.className='mbsa-zone-cards';
+       found.forEach((m,i)=>{
+         const next=found[i+1];
+         const desc=normalized.slice(m.index+m[0].length,next?next.index:normalized.length).trim().replace(/\\s*\\.\\s*$/,'');
+         const tile=document.createElement('details');tile.className='mbsa-zone-card';
+         const sum=document.createElement('summary');
+         const num=document.createElement('span');num.className='mbsa-zone-num';num.textContent=String(i+1).padStart(2,'0');
+         const title=document.createElement('strong');title.textContent=m[2];
+         const hint=document.createElement('span');hint.className='mbsa-zone-arrow';hint.textContent='＋';
+         sum.append(num,title,hint);
+         const bodyText=document.createElement('p');bodyText.textContent=desc;
+         tile.append(sum,bodyText);wrap.appendChild(tile);
+       });
+       headerPiece.insertAdjacentElement('afterend',wrap);
+       src.remove();
+     }
+   }
+ }
  const pillars=body.querySelector('.rtchapter.rt-pillars');
  if(pillars){
    /* MBSA: the four themes are one ArcGIS text node; split them before making cards. */
@@ -15238,6 +15270,26 @@ document.addEventListener('click',function(e){const a=e.target.closest('a[href]'
 #rt11-modal.rt-mbsa .mbsa-concept-tile p,#rt11-modal.rt-mbsa .mbsa-zone-tile p{margin:12px 0 0;font-size:15px}
 #rt11-modal.rt-mbsa .rtgrid{background:linear-gradient(135deg,#f7fbff,#eaf5fc 55%,#f7fafc)!important;border-radius:24px}
 @media(max-width:760px){#rt11-modal.rt-mbsa .mbsa-concept-tiles,#rt11-modal.rt-mbsa .mbsa-zone-grid,#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid{grid-template-columns:1fr!important}}
+</style>
+
+<style id="mbsa-sidebar-zones-background-20261102">
+/* Definitive overrides of the previous MBSA-only sidebar removal */
+#rt11-modal.rt-mbsa .rtgrid{display:grid!important;grid-template-columns:minmax(215px,270px) minmax(0,1fr)!important;gap:24px!important;width:min(1440px,calc(100% - 32px))!important;max-width:1440px!important;padding:28px 0 80px!important;margin:auto!important;background:transparent!important}
+#rt11-modal.rt-mbsa .rtgrid>.rtside{display:block!important;position:sticky!important;top:100px!important;align-self:start!important;max-height:calc(100dvh - 115px);overflow-y:auto;border-radius:24px;background:linear-gradient(160deg,#ffffffed,#e4f4fced)!important;box-shadow:0 16px 45px #16466b20;border:1px solid #bcd9ea;padding:24px 18px}
+#rt11-modal.rt-mbsa #rt11-body{min-width:0!important;background:linear-gradient(145deg,#f5fbffef,#e6f3fbed 55%,#f6faffef)!important;border:1px solid #d4e7f3;border-radius:26px;padding:clamp(12px,2vw,28px)!important;box-shadow:0 16px 48px #20536e15}
+#rt11-modal.rt-mbsa{background-color:#dfedf7!important;background-image:radial-gradient(ellipse at 10% 20%,#c2e1f2 0,transparent 45%),radial-gradient(ellipse at 90% 68%,#c9d5f1 0,transparent 46%),repeating-radial-gradient(circle at 90% 15%,transparent 0 55px,#2d779013 56px 57px,transparent 58px 110px)!important;background-attachment:local!important}
+#rt11-modal.rt-mbsa .mbsa-zone-cards{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0 30px}
+#rt11-modal.rt-mbsa .mbsa-zone-card{min-width:0;overflow:hidden;border:1px solid #a7cade;border-radius:20px;background:linear-gradient(130deg,#fff,#d8eefb);box-shadow:0 9px 25px #19496719;transition:transform .25s,box-shadow .25s}
+#rt11-modal.rt-mbsa .mbsa-zone-card:hover{transform:translateY(-5px);box-shadow:0 17px 35px #19496730}
+#rt11-modal.rt-mbsa .mbsa-zone-card summary{display:flex;align-items:center;gap:13px;padding:24px 18px;list-style:none;cursor:pointer;min-height:115px}
+#rt11-modal.rt-mbsa .mbsa-zone-card summary::-webkit-details-marker{display:none}
+#rt11-modal.rt-mbsa .mbsa-zone-num{flex:none;display:grid;place-items:center;background:#17658e;color:white;border-radius:12px;width:42px;height:42px;font-weight:800}
+#rt11-modal.rt-mbsa .mbsa-zone-card strong{flex:1;color:#205572;line-height:1.45;font-size:16px}
+#rt11-modal.rt-mbsa .mbsa-zone-arrow{font-size:24px;color:#17658e;transition:transform .2s}
+#rt11-modal.rt-mbsa .mbsa-zone-card[open] .mbsa-zone-arrow{transform:rotate(45deg)}
+#rt11-modal.rt-mbsa .mbsa-zone-card p{padding:0 22px 24px;margin:0;color:#355368;line-height:1.7}
+@media(max-width:900px){#rt11-modal.rt-mbsa .rtgrid{grid-template-columns:1fr!important}#rt11-modal.rt-mbsa .rtgrid>.rtside{position:relative!important;top:auto!important;max-height:none!important}}
+@media(max-width:650px){#rt11-modal.rt-mbsa .mbsa-zone-cards{grid-template-columns:1fr!important}}
 </style>
 </body>
 </html>
