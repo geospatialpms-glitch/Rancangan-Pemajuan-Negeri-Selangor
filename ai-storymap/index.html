@@ -16535,5 +16535,82 @@ function repair(){
 let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;repair()})}).observe(root,{childList:true,subtree:true});repair();
 })();
 </script>
+
+<style id="rt-zone-text-and-justification-modal-fix-20261102">
+/* Actual numbered zone cards: reserve a dedicated upper row for the badge. */
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-grid>.rt-live-zone-card{
+ display:block!important;position:relative!important;padding:80px 20px 23px!important;
+ min-height:185px!important;line-height:1.5!important;text-indent:0!important;
+}
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-grid>.rt-live-zone-card::before{
+ position:absolute!important;top:20px!important;left:20px!important;
+ margin:0!important;display:grid!important;z-index:2!important;
+}
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-card> :first-child{margin-top:0!important}
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-card :is(strong,p,span){line-height:1.55!important;text-indent:0!important}
+#rt11-modal .rtchapter.rt-live-justification .rt-justification-open{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;border:0;border-radius:14px;padding:12px 14px;background:transparent;color:inherit;text-align:left;cursor:pointer;font:inherit;font-weight:800}
+#rt11-modal .rtchapter.rt-live-justification .rt-justification-open::after{content:"Lihat Huraian  ↗";flex:none;color:var(--rt-main);font-size:12px;font-weight:800}
+#rt11-modal .rtchapter.rt-live-justification .rt-justification-open:hover{background:color-mix(in srgb,var(--rt-soft) 65%,white)}
+#rt11-modal .rtchapter.rt-live-justification .rt-justification-open:focus-visible{outline:3px solid var(--rt-main);outline-offset:3px}
+#rt11-modal .rtchapter.rt-live-justification .rt-justification-hidden{display:none!important}
+#rt-justification-dialog{position:fixed;inset:0;margin:auto;width:min(680px,calc(100vw - 30px));max-height:min(82vh,760px);overflow:auto;border:1px solid #c9a253;border-radius:24px;background:#fffaf3;color:#392b31;padding:30px;box-shadow:0 24px 70px #250f2140}
+#rt-justification-dialog::backdrop{background:#20161ab8;backdrop-filter:blur(5px)}
+#rt-justification-dialog .rt-jd-top{display:flex;align-items:center;justify-content:space-between;gap:18px}
+#rt-justification-dialog .rt-jd-label{font-size:11px;letter-spacing:.12em;color:#956c43;font-weight:800}
+#rt-justification-dialog .rt-jd-close{width:42px;height:42px;flex:none;border:0;border-radius:12px;background:#f4e7dc;color:#612139;font-size:24px;cursor:pointer}
+#rt-justification-dialog h3{font-size:clamp(20px,3vw,28px);line-height:1.3;color:#612139;margin:19px 0 16px}
+#rt-justification-dialog .rt-jd-content{font-size:15px;line-height:1.75;color:#344157}
+#rt-justification-dialog .rt-jd-content :is(ul,ol){list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;padding:0;margin:12px 0}
+#rt-justification-dialog .rt-jd-content li{padding:16px;border-radius:15px;border:1px solid #e7ddd0;background:linear-gradient(135deg,#fff,#faf7e8);min-width:0}
+#rt-justification-dialog .rt-jd-content li::before{display:none!important}
+#rt-justification-dialog .rt-jd-footer{display:flex;justify-content:flex-end;margin-top:22px}
+#rt-justification-dialog .rt-jd-done{border:0;border-radius:12px;background:#612139;color:white;font-weight:800;padding:11px 24px;cursor:pointer}
+@media(max-width:560px){#rt-justification-dialog{padding:19px}#rt11-modal .rtchapter.rt-live-justification .rt-justification-open{flex-wrap:wrap}}
+</style>
+<script id="rt-justification-dialog-binding-20261102">
+(function(){
+'use strict';
+const root=document.getElementById('rt11-body');if(!root)return;
+let dialog=document.getElementById('rt-justification-dialog');
+if(!dialog){
+ dialog=document.createElement('dialog');dialog.id='rt-justification-dialog';
+ dialog.innerHTML='<div class="rt-jd-top"><span class="rt-jd-label">JUSTIFIKASI GUNA TANAH</span><button type="button" class="rt-jd-close" aria-label="Tutup dialog">×</button></div><h3 id="rt-jd-title"></h3><div class="rt-jd-content"></div><div class="rt-jd-footer"><button type="button" class="rt-jd-done">Tutup</button></div>';
+ document.body.appendChild(dialog);
+ dialog.querySelectorAll('.rt-jd-close,.rt-jd-done').forEach(b=>b.addEventListener('click',()=>dialog.close()));
+ dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+}
+const normalize=s=>(s||'').replace(/\s+/g,' ').trim();
+function enhance(){
+ for(const ch of root.querySelectorAll('.rtchapter')){
+   const h=normalize(ch.querySelector(':scope > h2')?.textContent);
+   const isRelevant=/justifikasi|perubahan utama guna tanah/i.test(h)||/justifikasi\s*&\s*perubahan utama guna tanah/i.test(normalize(ch));
+   if(!isRelevant)continue;
+   ch.classList.add('rt-live-justification');
+   const li=[...ch.querySelectorAll('.rtpiece li')].filter(x=>/pengurangan keluasan kawasan lapang|pengurangan keluasan badan air|pertambahan keluasan hutan/i.test(normalize(x.firstChild?.textContent||x.textContent).slice(0,160))&&!x.closest('.rt-justification-hidden'));
+   for(const item of li){
+     if(item.dataset.justificationReady)return;
+     const nested=[...item.children].filter(x=>x.matches('ul,ol,.rtpiece'));
+     const text=normalize([...item.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join(' '));
+     const title=text||normalize(item.textContent).slice(0,95).replace(/:\s*$/,'');
+     if(!nested.length)continue;
+     const button=document.createElement('button');button.type='button';button.className='rt-justification-open';
+     const label=document.createElement('span');label.textContent=title;button.appendChild(label);
+     const content=document.createElement('div');content.className='rt-justification-hidden';
+     nested.forEach(n=>content.appendChild(n));
+     item.replaceChildren(button,content);
+     item.dataset.justificationReady='1';
+     button.addEventListener('click',()=>{
+       dialog.querySelector('#rt-jd-title').textContent=title.replace(/:\s*$/,'');
+       const area=dialog.querySelector('.rt-jd-content');area.replaceChildren();
+       const clone=content.cloneNode(true);clone.classList.remove('rt-justification-hidden');
+       clone.removeAttribute('style');area.append(...clone.childNodes);
+       if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');
+     });
+   }
+ }
+}
+let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;enhance()})}).observe(root,{childList:true,subtree:true});enhance();
+})();
+</script>
 </body>
 </html>
