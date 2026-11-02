@@ -15061,53 +15061,46 @@ if(entry.code==='MBSA'){
  }
  const pillars=body.querySelector('.rtchapter.rt-pillars');
  if(pillars){
-   /* Preserve every original ESRI content node; build cards from list items
-      AND standalone paragraphs/heading blocks, instead of assuming one list. */
-   const pieces=Array.from(pillars.children).filter(el=>el.classList.contains('rtpiece'));
+   /* MBSA: the four themes are one ArcGIS text node; split them before making cards. */
+   const names=[
+     'Pertumbuhan Ekonomi dan Pembangunan Sumber Manusia yang Maju dan Berdaya Tahan',
+     'Pembangunan Guna Tanah dan Fizikal yang Seimbang dan Lestari',
+     'Peningkatan Kualiti Hidup Masyarakat',
+     'Urus Tadbir yang Cekap dan Berdaya Laksana'
+   ];
    const grid=document.createElement('div');grid.className='rt-mbsa-teras-grid';
-   const itemNodes=[];
-   pieces.forEach(piece=>{
-     const list=piece.querySelector('ul,ol');
-     if(list){
-       Array.from(list.children).filter(el=>el.tagName==='LI').forEach(li=>itemNodes.push({node:li,source:piece,kind:'list'}));
-     }else if(piece.textContent.trim()){
-       itemNodes.push({node:piece,source:piece,kind:'block'});
+   names.forEach((title,i)=>{
+     const card=document.createElement('article');card.className='rt-mbsa-teras-item';
+     const inner=document.createElement('div');inner.className='rt-mbsa-flip-inner';
+     const front=document.createElement('div');front.className='rt-mbsa-flip-face rt-mbsa-flip-front';
+     const star=document.createElement('span');star.className='rt-mbsa-flip-star';star.textContent='✧';
+     const number=document.createElement('small');number.textContent='TEMA '+String(i+1).padStart(2,'0');
+     const h=document.createElement('h3');h.textContent=title;
+     const hint=document.createElement('span');hint.className='rt-mbsa-flip-hint';hint.textContent='●  HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA  ↻';
+     front.append(star,number,h,hint);
+     const back=document.createElement('div');back.className='rt-mbsa-flip-face rt-mbsa-flip-back';
+     const bnum=document.createElement('small');bnum.textContent='TEMA '+String(i+1).padStart(2,'0');
+     const desc=document.createElement('p');desc.textContent=title;
+     const returnHint=document.createElement('span');returnHint.className='rt-mbsa-flip-hint';returnHint.textContent='↶ KLIK UNTUK KEMBALI';
+     back.append(bnum,desc,returnHint);
+     inner.append(front,back);card.appendChild(inner);
+     card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label','Tema '+(i+1)+': '+title);
+     const flip=()=>{card.classList.toggle('is-flipped');card.setAttribute('aria-pressed',String(card.classList.contains('is-flipped')))};
+     card.setAttribute('aria-pressed','false');card.addEventListener('click',flip);
+     card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+     grid.appendChild(card);
+   });
+   /* Remove only the ArcGIS text block containing the four themes; retain intro and any unrelated content. */
+   pillars.querySelectorAll('.rtpiece').forEach(piece=>{
+     const t=piece.textContent;
+     if(/TEMA\\s*1\\s*:/i.test(t)&&/TEMA\\s*4\\s*:/i.test(t)){
+       const raw=t.trim();
+       piece.remove();
      }
    });
-   /* The first content block is the introductory sentence, not one of four themes. */
-   const introduction=itemNodes.findIndex(x=>x.kind==='block'&&/bagi mencapai matlamat|strategi pelaksanaan difokuskan|tema pembangunan utama/i.test(x.node.textContent));
-   if(introduction>=0)itemNodes.splice(introduction,1);
-   const thematic=itemNodes.filter(x=>/tema\s*0?[1-4]|teras\s*0?[1-4]|pembangunan|bandar|ekonomi|alam sekitar|sosial|fizikal|komuniti|infrastruktur/i.test(x.node.textContent));
-   const selected=(thematic.length>=4?thematic:itemNodes).slice(0,4);
-   selected.forEach((item,i)=>{
-     const raw=item.node.textContent.trim();
-     if(!raw)return;
-     const originalHTML=item.node.innerHTML;
-     const first=raw.split(/\n|[.:](?=\s)/)[0].trim();
-     const title=first.length>105?first.slice(0,102)+'…':first;
-     const card=document.createElement('article');card.className='rt-mbsa-teras-item';
-     const button=document.createElement('button');button.type='button';button.className='rt-teras-flip';
-     button.setAttribute('aria-label','Tema '+(i+1)+': klik untuk melihat huraian');
-     button.setAttribute('aria-pressed','false');
-     const front=document.createElement('span');front.className='rt-teras-face rt-teras-front';
-     const eyebrow=document.createElement('small');eyebrow.textContent='✧  TEMA '+String(i+1).padStart(2,'0');
-     const heading=document.createElement('strong');heading.textContent=title;
-     const hint=document.createElement('em');hint.textContent='HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA';
-     front.append(eyebrow,heading,hint);
-     const back=document.createElement('span');back.className='rt-teras-face rt-teras-back';
-     back.innerHTML=originalHTML;
-     button.append(front,back);
-     button.addEventListener('click',()=>{const flipped=button.classList.toggle('is-flipped');button.setAttribute('aria-pressed',String(flipped))});
-     card.appendChild(button);grid.appendChild(card);
-     /* Do not discard original source: retain accessible fallback for all text
-        outside the selected card, and remove only the exact converted item. */
-     if(item.kind==='list')item.node.remove();else item.node.remove();
-   });
-   if(grid.children.length){
-     const first=pillars.querySelector('.rtpiece');
-     if(first)first.insertAdjacentElement('beforebegin',grid);else pillars.appendChild(grid);
-   }
-   /* Retain any content beyond the first four themes; never silently truncate. */
+   const intro=Array.from(pillars.querySelectorAll('.rtpiece')).find(el=>/Bagi mencapai matlamat MBSA/i.test(el.textContent));
+   if(intro)intro.insertAdjacentElement('afterend',grid);
+   else pillars.appendChild(grid);
  }
 
 }
@@ -15170,6 +15163,25 @@ document.addEventListener('click',function(e){const a=e.target.closest('a[href]'
 #rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid .rt-teras-front strong{font-size:clamp(17px,1.9vw,26px)!important;overflow-wrap:anywhere}
 #rt11-modal.rt-mbsa .rtchapter.rt-concept .rt-mbsa-principle-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 @media(max-width:750px){#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid,#rt11-modal.rt-mbsa .rtchapter.rt-concept .rt-mbsa-principle-grid{grid-template-columns:1fr!important}}
+</style>
+
+<style id="mbsa-kkb-matched-four-cards-20261102">
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important;align-items:stretch;width:100%;margin:24px 0}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid>.rt-mbsa-teras-item{position:relative;display:block!important;box-sizing:border-box;width:100%!important;height:355px!important;min-height:355px!important;max-height:none!important;min-width:0!important;perspective:1100px;border-radius:25px!important;border:1px solid #a9c6df!important;background:linear-gradient(125deg,#a7dff0,#b6bfea 55%,#c4e2f4)!important;box-shadow:0 14px 30px #24496626!important;overflow:hidden;cursor:pointer;transition:transform .35s,box-shadow .35s}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid>.rt-mbsa-teras-item:hover{transform:translateY(-7px);box-shadow:0 22px 44px #2449663c!important}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.2,.7,.2,1)}
+#rt11-modal.rt-mbsa .rt-mbsa-teras-item.is-flipped .rt-mbsa-flip-inner,#rt11-modal.rt-mbsa .rt-mbsa-teras-item:hover .rt-mbsa-flip-inner{transform:rotateY(180deg)}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;color:#284966}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-front{gap:14px}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-star{font-size:34px;color:#fff1af;line-height:1}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-face small{font-size:12px!important;letter-spacing:.15em;font-weight:800;color:#355a79}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-front h3{font:800 clamp(21px,2.05vw,33px)/1.28 Georgia,serif!important;margin:0!important;color:#294c68!important;max-width:96%}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-hint{display:inline-block;margin-top:10px;padding:12px 17px;border-radius:50px;background:#fff5cf;color:#365b76;font:800 10px/1.5 Arial,sans-serif;letter-spacing:.02em}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-back{transform:rotateY(180deg);gap:18px;background:linear-gradient(130deg,#e5f4fd,#cbdff4)}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-back p{font:700 clamp(18px,1.65vw,25px)/1.5 Georgia,serif;margin:0;color:#294c68}
+@media(max-width:760px){#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid{grid-template-columns:1fr!important}#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid>.rt-mbsa-teras-item{height:310px!important;min-height:310px!important}}
+@media(hover:none){#rt11-modal.rt-mbsa .rt-mbsa-teras-item:hover .rt-mbsa-flip-inner{transform:none}#rt11-modal.rt-mbsa .rt-mbsa-teras-item.is-flipped .rt-mbsa-flip-inner{transform:rotateY(180deg)}}
+@media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa .rt-mbsa-flip-inner{transition:none}}
 </style>
 </body>
 </html>
