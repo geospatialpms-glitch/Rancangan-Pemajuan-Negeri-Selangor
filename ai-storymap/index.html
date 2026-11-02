@@ -16612,5 +16612,51 @@ function enhance(){
 let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;enhance()})}).observe(root,{childList:true,subtree:true});enhance();
 })();
 </script>
+
+<style id="mpks-latar-statcards-20261102">
+#rt11-modal .rtchapter .mpks-latar-stat-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0 14px!important;padding:0!important}
+#rt11-modal .mpks-latar-stat{position:relative;isolation:isolate;min-width:0;text-align:center;padding:24px 15px 22px;border:1px solid #e5cf94;border-radius:21px;background:linear-gradient(145deg,#fffdf6,#f7edd1);box-shadow:0 12px 28px #202b4215;transition:transform .3s ease,box-shadow .3s ease;overflow:hidden}
+#rt11-modal .mpks-latar-stat::after{content:"";position:absolute;right:-30px;top:-55px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#d4af372a,transparent 70%);pointer-events:none}
+#rt11-modal .mpks-latar-stat:hover{transform:translateY(-6px);box-shadow:0 19px 35px #202b4228}
+#rt11-modal .mpks-latar-stat strong{display:block;font-size:clamp(42px,5vw,67px);font-weight:850;line-height:1.05;color:#202b42;margin-bottom:10px;letter-spacing:-2px}
+#rt11-modal .mpks-latar-stat span{display:block;font-size:clamp(13px,1.35vw,17px);font-weight:800;line-height:1.4;color:#404b57}
+#rt11-modal .mpks-latar-stat small{display:block;margin-top:7px;color:#66717b;font-size:12px}
+#rt11-modal .mpks-latar-context{font-size:14px;line-height:1.65;color:#4a5568;margin:8px 0 0!important}
+@media(max-width:640px){#rt11-modal .rtchapter .mpks-latar-stat-grid{grid-template-columns:1fr!important;gap:10px}#rt11-modal .mpks-latar-stat{padding:17px 12px}#rt11-modal .mpks-latar-stat strong{font-size:40px}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .mpks-latar-stat{transition:none}}
+</style>
+<script id="mpks-latar-statcards-binding-20261102">
+(function(){
+'use strict';
+const modal=document.getElementById('rt11-modal'),root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');if(!root||!modal)return;
+function apply(){
+ if(!/MPKS\b/i.test(label?.textContent||''))return;
+ for(const ch of root.querySelectorAll('.rtchapter')){
+  if(!/latar belakang/i.test(ch.querySelector(':scope > h2')?.textContent||''))continue;
+  if(ch.querySelector('.mpks-latar-stat-grid'))continue;
+  const paragraphs=[...ch.querySelectorAll('.rtpiece p,.rtpiece div,.rtpiece')];
+  const source=paragraphs.find(el=>{
+   const t=(el.textContent||'').replace(/\s+/g,' ');
+   return /Majlis Perbandaran Kuala Selangor/i.test(t)&&/5\s+buah\s+Rancangan Pemajuan/i.test(t)&&/3\s+Rancangan Tempatan/i.test(t)&&/2\s+Rancangan Kawasan Khas/i.test(t)
+  });
+  if(!source)continue;
+  const original=source.textContent||'';
+  const wrap=document.createElement('div');wrap.className='mpks-latar-stat-grid';wrap.setAttribute('aria-label','Statistik rancangan pemajuan MPKS');
+  [['5','Jumlah Rancangan Pemajuan','RT dan RKK'],['3','Rancangan Tempatan','RT'],['2','Rancangan Kawasan Khas','RKK']].forEach(([number,title,subtitle])=>{
+   const card=document.createElement('article');card.className='mpks-latar-stat';
+   const val=document.createElement('strong');val.textContent=number;
+   const heading=document.createElement('span');heading.textContent=title;
+   const detail=document.createElement('small');detail.textContent=subtitle;
+   card.append(val,heading,detail);wrap.append(card);
+  });
+  const context=document.createElement('p');context.className='mpks-latar-context';context.textContent='Majlis Perbandaran Kuala Selangor (MPKS) telah menyediakan rancangan pemajuan tersebut sejak tahun 2015.';
+  const container=source.closest('.rtpiece')||source;
+  container.replaceChildren(wrap,context);
+  container.dataset.mpksOriginalText=original;
+ }
+}
+let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;apply()})}).observe(root,{childList:true,subtree:true});apply();
+})();
+</script>
 </body>
 </html>
