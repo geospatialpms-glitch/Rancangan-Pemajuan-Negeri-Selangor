@@ -15619,5 +15619,67 @@ background-image:radial-gradient(ellipse at 8% 18%,color-mix(in srgb,var(--rt-so
  #rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid .rt-kkb-pillar-description{font-size:14px!important}
 }
 </style>
+
+<style id="rt-sidebar-persistent-current-chapter-20261102">
+#rt11-modal .rtside a.is-active,
+#rt11-modal .rtside a[aria-current="location"]{
+ background:linear-gradient(110deg,var(--rt-main),color-mix(in srgb,var(--rt-accent2,var(--rt-main)) 65%,var(--rt-main)))!important;
+ color:#fff!important;
+ box-shadow:0 9px 22px #2039522a!important;
+}
+#rt11-modal .rtside a.is-active .rt-side-name,
+#rt11-modal .rtside a.is-active .rt-side-label,
+#rt11-modal .rtside a[aria-current="location"] .rt-side-name,
+#rt11-modal .rtside a[aria-current="location"] .rt-side-label{color:#fff!important}
+#rt11-modal .rtside a.is-active:before,#rt11-modal .rtside a[aria-current="location"]:before{background:#fff!important;color:var(--rt-main)!important}
+</style>
+<script id="rt-sidebar-scrollspy-persistent-20261102">
+(function(){
+ const modal=document.getElementById('rt11-modal');
+ const nav=document.getElementById('rt11-nav');
+ const body=document.getElementById('rt11-body');
+ if(!modal||!nav||!body)return;
+ let scheduled=false;
+ function update(){
+   scheduled=false;
+   if(modal.hidden)return;
+   const links=Array.from(nav.querySelectorAll('a[href^="#"]'));
+   const entries=links.map(a=>({a,section:document.getElementById(a.hash.slice(1))})).filter(v=>v.section&&body.contains(v.section));
+   if(!entries.length)return;
+   const threshold=modal.getBoundingClientRect().top+Math.min(210,window.innerHeight*.32);
+   let current=entries[0];
+   entries.forEach(item=>{
+     if(item.section.getBoundingClientRect().top<=threshold)current=item;
+   });
+   entries.forEach(({a})=>{
+     const active=a===current.a;
+     a.classList.toggle('is-active',active);
+     if(active)a.setAttribute('aria-current','location');
+     else a.removeAttribute('aria-current');
+   });
+ }
+ function schedule(){
+   if(scheduled)return;
+   scheduled=true;
+   requestAnimationFrame(update);
+ }
+ modal.addEventListener('scroll',schedule,{passive:true});
+ window.addEventListener('resize',schedule,{passive:true});
+ nav.addEventListener('click',event=>{
+   const a=event.target.closest('a[href^="#"]');
+   if(!a)return;
+   nav.querySelectorAll('a[href^="#"]').forEach(link=>{
+     link.classList.toggle('is-active',link===a);
+     if(link===a)link.setAttribute('aria-current','location');
+     else link.removeAttribute('aria-current');
+   });
+   requestAnimationFrame(schedule);
+ });
+ new MutationObserver(schedule).observe(nav,{childList:true,subtree:true});
+ new MutationObserver(schedule).observe(body,{childList:true});
+ new MutationObserver(schedule).observe(modal,{attributes:true,attributeFilter:['hidden']});
+ schedule();
+})();
+</script>
 </body>
 </html>
