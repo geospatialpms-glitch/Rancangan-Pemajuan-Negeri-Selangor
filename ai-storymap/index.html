@@ -15249,6 +15249,30 @@ if(entry.code!=='MBSA'){
    });
  });
 }
+/* Final RT layouts: run synchronously on freshly rendered ArcGIS content. */
+body.querySelectorAll('.rtchapter').forEach(ch=>{
+ const h=(ch.querySelector('h2')?.textContent||'').toLowerCase();
+ const isPillar=ch.classList.contains('rt-pillars')||/teras pembangunan|dimensi utama|strategi pembangunan/.test(h);
+ const isHistory=/sejarah|latar belakang|kronologi|perkembangan|asal usul/.test(h);
+ ch.querySelectorAll('.rtpiece ul,.rtpiece ol').forEach(list=>{
+  const items=Array.from(list.children).filter(el=>el.tagName==='LI');
+  if(items.length<3||items.length>25||list.closest('.rt-kkb-pillar-grid,.rt-mbsa-teras-grid'))return;
+  const joined=items.map(x=>x.textContent||'').join(' ').toLowerCase();
+  const history=isHistory||/zaman pra|zaman british|kesultanan|pemodenan|kemerdekaan|perbandaran abad/.test(joined);
+  const kind=isPillar?'pillars':history?'timeline':null;
+  if(!kind)return;
+  list.classList.remove('rt-shared-card-grid','rt-flow-timeline','rt-v3-timeline','rt-v3-teras','rt-unified-teras-grid');
+  list.classList.add(kind==='pillars'?'rt-final-pillar-grid':'rt-final-history-flow');
+  list.dataset.rtV3=kind;
+  list.dataset.rtMotionEnhanced=kind;
+  items.forEach((li,i)=>{
+   li.classList.remove('rt-shared-card','rt-motion-reveal','rt-animate-in');
+   li.querySelectorAll(':scope > .rt-flow-index,:scope > .rt-v3-num,:scope > .rt-final-step').forEach(x=>x.remove());
+   const num=document.createElement('span');num.className='rt-final-step';num.textContent=String(i+1).padStart(2,'0');
+   li.insertBefore(num,li.firstChild);
+  });
+ });
+});
 if(!body.children.length)throw Error('Tiada kandungan bab');}
 catch(err){if(ticket!==requestNo)return;body.innerHTML='';const box=document.createElement('section');box.className='rtchapter';const h=document.createElement('h2');h.textContent='Kandungan ESRI tidak dapat dimuatkan';const p=document.createElement('p');p.textContent='Akses JSON asal tidak tersedia pada pelayar ini. Buka StoryMap asal untuk membaca kandungan lengkap.';const a=document.createElement('a');a.href='https://storymaps.arcgis.com/stories/'+entry.id;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka StoryMap ESRI asal ↗';box.append(h,p,a);body.appendChild(box)}}
 document.addEventListener('click',function(e){const a=e.target.closest('a[href]');if(!a||modal.contains(a))return;let id=(a.href.match(/storymaps\.arcgis\.com\/stories\/([0-9a-f]{32})/i)||[])[1];if(!id){let code=(a.getAttribute('aria-label')||'').match(/RT (MBSA|MBSJ|MBDK|MPAJ|MPKj|MPS|MPSp|MPKL|MPKS|MPHS|MDSB)\b/i);if(code){const found=entries.find(row=>row[0].toLowerCase()===code[1].toLowerCase());if(found)id=found[1]}}const entry=id&&links.get(id);if(!entry)return;e.preventDefault();e.stopImmediatePropagation();open(entry)},true);
@@ -15837,6 +15861,32 @@ enhance();
 @keyframes rt-flow-gradient-2026{50%{background-position:100% 0%}}
 @keyframes rt-card-wash-2026{from{background-position:0% 30%}to{background-position:100% 65%}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .rtchapter::before,#rt11-modal .rtchapter h2::after,#rt11-modal .rtside::before,#rt11-modal .rt-v3-timeline>li,#rt11-modal .rt-v3-teras>li{animation:none!important}}
+</style>
+<style id="rt-definitive-structural-timeline-20261102">
+/* Explicit, strong override for the content generated from all RT ArcGIS StoryMaps. */
+#rt11-modal .rtchapter .rtpiece :is(ul,ol).rt-final-history-flow{list-style:none!important;display:grid!important;grid-template-columns:minmax(0,1fr) 66px minmax(0,1fr)!important;gap:17px 0!important;padding:14px 0 24px!important;margin:24px 0!important;position:relative!important;background:none!important;counter-reset:none!important}
+#rt11-modal .rtchapter .rtpiece .rt-final-history-flow::before{content:"";position:absolute;z-index:0;left:calc(50% - 5px);top:0;bottom:0;width:10px;border-radius:16px;background:linear-gradient(180deg,var(--rt-main),var(--rt-accent2),var(--rt-main),var(--rt-accent2));background-size:100% 260%;box-shadow:0 0 0 5px color-mix(in srgb,var(--rt-main) 8%,transparent),0 0 20px color-mix(in srgb,var(--rt-main) 20%,transparent);animation:rt-final-flow-shift 9s linear infinite}
+#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li{position:relative!important;display:block!important;grid-column:1!important;box-sizing:border-box!important;list-style:none!important;width:100%!important;min-width:0!important;max-width:none!important;height:auto!important;min-height:120px!important;max-height:none!important;margin:0!important;padding:20px!important;border:1px solid color-mix(in srgb,var(--rt-main) 30%,white)!important;border-radius:22px!important;background:linear-gradient(130deg,#fff,color-mix(in srgb,var(--rt-soft) 76%,white))!important;box-shadow:0 14px 28px #273b5520!important;transition:transform .3s ease,box-shadow .3s ease!important}
+#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li:nth-child(even){grid-column:3!important}
+#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li::before{content:"";position:absolute;left:calc(100% + 17px);top:30px;width:22px;height:22px;border-radius:50%;background:var(--rt-main);border:5px solid white;box-shadow:0 0 0 5px color-mix(in srgb,var(--rt-main) 20%,transparent),0 0 18px var(--rt-main);z-index:2;animation:rt-final-dot-glow 3s ease-in-out infinite}
+#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li:nth-child(even)::before{left:auto;right:calc(100% + 17px)}
+#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li::after{content:"";position:absolute;top:44px;left:100%;width:17px;height:2px;background:var(--rt-main)}
+#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li:nth-child(even)::after{left:auto;right:100%}
+#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li:hover{transform:translateY(-5px)!important;box-shadow:0 20px 40px color-mix(in srgb,var(--rt-main) 26%,transparent)!important}
+#rt11-modal .rtchapter .rtpiece :is(ul,ol).rt-final-pillar-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px!important;list-style:none!important;padding:0!important;margin:24px 0!important;background:transparent!important}
+#rt11-modal .rtchapter .rtpiece .rt-final-pillar-grid>li{display:flex!important;flex-direction:column!important;gap:14px!important;position:relative!important;box-sizing:border-box!important;list-style:none!important;margin:0!important;padding:25px!important;width:100%!important;height:auto!important;min-height:215px!important;max-height:none!important;overflow:hidden!important;border:1px solid color-mix(in srgb,var(--rt-main) 28%,white)!important;border-radius:24px!important;background:linear-gradient(140deg,#fff,color-mix(in srgb,var(--rt-soft) 76%,white))!important;box-shadow:0 14px 30px #273b551a!important;transition:transform .35s ease,box-shadow .35s ease!important}
+#rt11-modal .rtchapter .rtpiece .rt-final-pillar-grid>li::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 93% 8%,color-mix(in srgb,var(--rt-accent2) 24%,transparent),transparent 54%);pointer-events:none}
+#rt11-modal .rtchapter .rtpiece .rt-final-pillar-grid>li:hover{transform:translateY(-7px)!important;box-shadow:0 20px 45px color-mix(in srgb,var(--rt-main) 24%,transparent)!important}
+#rt11-modal .rtchapter .rtpiece :is(.rt-final-history-flow,.rt-final-pillar-grid)>li::marker{content:""!important}
+#rt11-modal .rtchapter .rtpiece .rt-final-step{display:inline-flex!important;align-items:center;justify-content:center;align-self:flex-start;flex:none;width:40px;height:34px;border-radius:10px;background:linear-gradient(125deg,var(--rt-main),var(--rt-accent2));color:#fff!important;font-size:13px;font-weight:850;line-height:1;box-shadow:0 7px 17px color-mix(in srgb,var(--rt-main) 22%,transparent)}
+#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li .rt-final-step{margin:0 9px 6px 0;vertical-align:middle}
+#rt11-modal .rtchapter .rtpiece :is(.rt-final-history-flow,.rt-final-pillar-grid)>li strong{color:var(--rt-main)!important}
+#rt11-modal .rtchapter:has(.rt-final-history-flow){background-image:radial-gradient(circle at 12% 20%,color-mix(in srgb,var(--rt-accent2) 18%,transparent),transparent 50%),linear-gradient(145deg,#fff,color-mix(in srgb,var(--rt-soft) 85%,white))!important}
+#rt11-modal .rtchapter:has(.rt-final-pillar-grid){background-image:radial-gradient(circle at 89% 18%,color-mix(in srgb,var(--rt-main) 13%,transparent),transparent 55%),linear-gradient(140deg,#fff,color-mix(in srgb,var(--rt-soft) 80%,white))!important}
+@keyframes rt-final-flow-shift{to{background-position:0 100%}}
+@keyframes rt-final-dot-glow{50%{box-shadow:0 0 0 9px color-mix(in srgb,var(--rt-main) 12%,transparent),0 0 24px var(--rt-main)}}
+@media(max-width:900px){#rt11-modal .rtchapter .rtpiece :is(ul,ol).rt-final-history-flow{grid-template-columns:42px minmax(0,1fr)!important}#rt11-modal .rtchapter .rtpiece .rt-final-history-flow::before{left:14px!important}#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li,#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li:nth-child(even){grid-column:2!important}#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li::before,#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li:nth-child(even)::before{left:-44px!important;right:auto!important}#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li::after,#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li:nth-child(even)::after{left:-12px!important;right:auto!important}#rt11-modal .rtchapter .rtpiece :is(ul,ol).rt-final-pillar-grid{grid-template-columns:1fr!important}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .rtchapter .rtpiece .rt-final-history-flow::before,#rt11-modal .rtchapter .rtpiece .rt-final-history-flow>li::before{animation:none!important}}
 </style>
 </body>
 </html>
