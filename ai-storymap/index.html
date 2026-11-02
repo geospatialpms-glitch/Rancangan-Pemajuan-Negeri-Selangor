@@ -16586,9 +16586,9 @@ function enhance(){
    const isRelevant=/justifikasi|perubahan utama guna tanah/i.test(h)||/justifikasi\s*&\s*perubahan utama guna tanah/i.test(normalize(ch));
    if(!isRelevant)continue;
    ch.classList.add('rt-live-justification');
-   const li=[...ch.querySelectorAll('.rtpiece li')].filter(x=>/pengurangan keluasan kawasan lapang|pengurangan keluasan badan air|pertambahan keluasan hutan/i.test(normalize(x.firstChild?.textContent||x.textContent).slice(0,160))&&!x.closest('.rt-justification-hidden'));
+   const li=[...ch.querySelectorAll('.rtpiece li')].filter(x=>/pengurangan keluasan kawasan lapang|pengurangan keluasan badan air|pertambahan keluasan hutan/i.test(normalize(x.textContent).slice(0,180))&&!x.closest('.rt-justification-hidden'));
    for(const item of li){
-     if(item.dataset.justificationReady)return;
+     if(item.dataset.justificationReady)continue;
      const nested=[...item.children].filter(x=>x.matches('ul,ol,.rtpiece'));
      const text=normalize([...item.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join(' '));
      const title=text||normalize(item.textContent).slice(0,95).replace(/:\s*$/,'');
