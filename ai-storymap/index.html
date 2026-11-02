@@ -16474,5 +16474,66 @@ chapters.forEach(ch=>{
 let busy=false;new MutationObserver(()=>{if(busy)return;busy=true;requestAnimationFrame(()=>{busy=false;update()})}).observe(body,{childList:true,subtree:true});update();
 })();
 </script>
+
+<style id="rt-live-layout-repair-20261102">
+/* Applied to the actual generated RT chapter elements, not just the original lists. */
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important;gap:15px!important;width:100%!important;max-width:none!important;list-style:none!important;margin:20px 0!important;padding:0!important}
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-grid>.rt-live-zone-card{display:flex!important;flex-direction:column!important;justify-content:flex-start!important;min-width:0!important;width:100%!important;max-width:none!important;min-height:172px!important;height:auto!important;grid-column:auto!important;margin:0!important;padding:22px 18px!important;position:relative!important;border:1px solid color-mix(in srgb,var(--rt-main) 32%,#e9e1d6)!important;border-top:4px solid var(--rt-main)!important;border-radius:18px!important;background:linear-gradient(140deg,#fff,#fbfaef)!important;box-shadow:0 9px 25px #423c2818!important;transition:transform .3s ease,box-shadow .3s ease!important;overflow-wrap:anywhere!important;white-space:normal!important}
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-card::before{content:attr(data-rt-zone-number);display:grid;place-items:center;flex:none;width:36px;height:36px;margin-bottom:12px;border-radius:11px;background:var(--rt-main);color:white;font-size:12px;font-weight:800}
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-card::after{display:none!important}
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-card:hover{transform:translateY(-6px)!important;box-shadow:0 17px 34px color-mix(in srgb,var(--rt-main) 20%,transparent)!important}
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-card :is(.rt-flow-index,.rt-v3-num,.rt-final-step,.rt-info-number){display:none!important}
+#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-card :is(p,strong,span){max-width:100%;overflow-wrap:anywhere}
+#rt11-modal .rtchapter.rt-live-justification .rtpiece>ul,#rt11-modal .rtchapter.rt-live-justification .rtpiece>ol{list-style:none!important;padding-left:0!important}
+#rt11-modal .rtchapter.rt-live-justification .rtpiece>ul>li,#rt11-modal .rtchapter.rt-live-justification .rtpiece>ol>li{border-radius:18px!important;border:1px solid #e2dfd4!important;padding:20px!important;margin:0 0 12px!important;background:linear-gradient(130deg,#fff,#fbfaef)!important}
+#rt11-modal .rtchapter.rt-live-justification .rtpiece>ul>li::marker,#rt11-modal .rtchapter.rt-live-justification .rtpiece>ol>li::marker{content:""}
+#suo-rsn-2026-function-dialog [role="dialog"],#suo-rsn-2026-function-dialog .suo-rsn-dialog-panel{border-radius:24px!important;box-shadow:0 26px 75px #310f253f!important}
+#suo-rsn-2026-function-dialog h2{line-height:1.25!important}
+@media(max-width:900px){#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:600px){#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-grid{grid-template-columns:minmax(0,1fr)!important}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-card{transition:none!important}}
+</style>
+<script id="rt-live-layout-repair-20261102">
+(function(){
+'use strict';
+const root=document.getElementById('rt11-body');if(!root)return;
+const norm=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();
+const zoneNames=[/zon\s+tumpuan/i,/zon\s+pengekalan/i,/zon\s+kawalan/i];
+function isZone(e){return zoneNames.some(x=>x.test(norm(e)))}
+function repair(){
+ for(const sec of root.querySelectorAll('.rtchapter')){
+  const heading=norm(sec.querySelector(':scope > h2')).toLowerCase();
+  if(/konsep pembangunan/i.test(heading)){
+   const candidates=[...sec.querySelectorAll('ul,ol,.rt-shared-card-grid,.rt-final-pillar-grid,.rtpiece,div')];
+   for(const parent of candidates){
+    const kids=[...parent.children].filter(x=>x.matches('li,article,div')&&isZone(x));
+    if(kids.length!==3||!zoneNames.every(rx=>kids.some(k=>rx.test(norm(k)))))continue;
+    if(kids.some(k=>k.classList.contains('rt-live-zone-grid')))continue;
+    parent.classList.add('rt-live-zone-grid');
+    kids.forEach((k,i)=>{k.classList.add('rt-live-zone-card');k.dataset.rtZoneNumber=String(i+1).padStart(2,'0')});
+    sec.classList.add('rt-live-three-zone');
+    break;
+   }
+  }
+  if(/justifikasi|perubahan utama guna tanah/i.test(heading))sec.classList.add('rt-live-justification');
+  if(/latar belakang/i.test(heading)){
+   const isHulu=/hulu selangor|penggantian|tamat tempoh perancangan/i.test(norm(sec));
+   if(isHulu){
+    sec.querySelectorAll('.rt-kkb-title').forEach(n=>{
+      const original=norm(n);
+      if(/rancangan tempatan daerah hulu selangor 2035/i.test(original)&&/menggantikan/i.test(original)&&(/term\b/i.test(original)||original.length>115)){
+        n.textContent='RT Daerah Hulu Selangor 2035 menggantikan RT Daerah Hulu Selangor 2020';
+      }
+    });
+    sec.querySelectorAll('.rt-kkb-history-head span:last-child').forEach(n=>{
+      if(/2035\s*[—–-]\s*2020/.test(norm(n)))n.textContent='2020 → 2035';
+    });
+   }
+  }
+ }
+}
+let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;repair()})}).observe(root,{childList:true,subtree:true});repair();
+})();
+</script>
 </body>
 </html>
