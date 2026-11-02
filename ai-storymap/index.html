@@ -15059,6 +15059,38 @@ if(entry.code==='MBSA'){
    }
   });
  }
+ /* MBSA Multi-Nuclei: convert original Pengertian/Fungsi bullets into two clean tiles. */
+ const concepts=body.querySelector('.rtchapter.rt-concept');
+ if(concepts){
+   const lines=[];
+   concepts.querySelectorAll('.rtpiece li').forEach(li=>{
+     const v=(li.textContent||'').replace(/^\\s*\\d+[.):-]?\\s*/,'').trim();
+     const match=v.match(/(Pengertian|Fungsi)\\s*:/i);
+     if(match && match.index<12)lines.push({li,type:match[1],text:v.slice(match.index+match[0].length).trim()});
+   });
+   if(lines.length>=2){
+     const container=document.createElement('div');container.className='mbsa-concept-tiles';
+     lines.slice(0,2).forEach((line,i)=>{
+       const tile=document.createElement('article');tile.className='mbsa-concept-tile';
+       const heading=document.createElement('h3');heading.textContent=String(i+1).padStart(2,'0')+' · '+line.type;
+       const p=document.createElement('p');p.textContent=line.text;
+       tile.append(heading,p);container.appendChild(tile);line.li.remove();
+     });
+     concepts.insertBefore(container,concepts.querySelector('.rtpiece')||null);
+   }
+ }
+ /* Zone definitions are often delivered as one paragraph: preserve exact source text. */
+ body.querySelectorAll('.rtpiece').forEach(piece=>{
+   if(!/4 Zon\s*&\s*Teras Utama Pembangunan/i.test(piece.textContent||''))return;
+   const h=Array.from(piece.querySelectorAll('h3,h4,h5')).find(el=>/4 Zon/i.test(el.textContent));
+   const raw=(piece.textContent||'').replace(/4 Zon\s*&\s*Teras Utama Pembangunan/i,'').trim();
+   const parts=raw.split(/(?=\\b[1-4]\\.\\s*(?:Kawasan|Zon))/i).map(s=>s.trim()).filter(s=>/^\\d[.]\\s*/.test(s));
+   if(parts.length===4){
+     const wrap=document.createElement('div');wrap.className='mbsa-zone-grid';
+     parts.forEach((s,i)=>{const tile=document.createElement('article');tile.className='mbsa-zone-tile';const b=document.createElement('strong');b.textContent='ZON '+String(i+1).padStart(2,'0');const p=document.createElement('p');p.textContent=s.replace(/^\\d+[.]\\s*/,'');tile.append(b,p);wrap.appendChild(tile)});
+     piece.appendChild(wrap);Array.from(piece.children).forEach(el=>{if(el!==wrap && el!==h)el.style.display='none'});
+   }
+ });
  const pillars=body.querySelector('.rtchapter.rt-pillars');
  if(pillars){
    /* MBSA: the four themes are one ArcGIS text node; split them before making cards. */
@@ -15090,11 +15122,10 @@ if(entry.code==='MBSA'){
      card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
      grid.appendChild(card);
    });
-   /* The source has one TEMA per block in some ArcGIS versions.
-      Remove all four duplicate text blocks, even when delivered separately. */
+   /* Remove ESRI duplicate theme entries regardless of nested markup or list formatting. */
    pillars.querySelectorAll('.rtpiece').forEach(piece=>{
-     const t=piece.textContent.trim();
-     if(/^TEMA\\s*0?[1-4]\\s*:/i.test(t) || (/TEMA\\s*1\\s*:/i.test(t)&&/TEMA\\s*4\\s*:/i.test(t)))piece.remove();
+     const t=(piece.textContent||'').trim();
+     if(/TEMA\s*0?[1-4]\s*:/i.test(t) && !/Bagi mencapai matlamat MBSA/i.test(t))piece.remove();
    });
    const intro=Array.from(pillars.querySelectorAll('.rtpiece')).find(el=>/Bagi mencapai matlamat MBSA/i.test(el.textContent));
    if(intro)intro.insertAdjacentElement('afterend',grid);
@@ -15194,6 +15225,19 @@ document.addEventListener('click',function(e){const a=e.target.closest('a[href]'
 #rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid>.rt-mbsa-teras-item{height:350px!important;min-height:350px!important;max-height:350px!important}
 #rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rtpiece:empty{display:none!important}
 @media(max-width:760px){#rt11-modal.rt-mbsa .rtgrid{width:calc(100% - 20px)!important;padding:12px 0 40px!important}#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid{grid-template-columns:1fr!important;gap:16px!important}}
+</style>
+
+<style id="mbsa-layout-hardfix-20261102">
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important}
+#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid>.rt-mbsa-teras-item{display:block!important;position:relative!important;width:100%!important;height:350px!important;min-height:350px!important;max-height:350px!important;overflow:hidden!important}
+#rt11-modal.rt-mbsa .rt-mbsa-flip-inner{height:100%!important;position:relative!important}
+#rt11-modal.rt-mbsa .mbsa-concept-tiles,#rt11-modal.rt-mbsa .mbsa-zone-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px;margin:24px 0}
+#rt11-modal.rt-mbsa .mbsa-concept-tile,#rt11-modal.rt-mbsa .mbsa-zone-tile{padding:28px;border:1px solid #9bc3dc;border-radius:21px;background:linear-gradient(135deg,#ebf8ff,#c7e7f7);box-shadow:0 12px 30px #2457791c;line-height:1.65;transition:transform .25s,box-shadow .25s}
+#rt11-modal.rt-mbsa .mbsa-concept-tile:hover,#rt11-modal.rt-mbsa .mbsa-zone-tile:hover{transform:translateY(-5px);box-shadow:0 18px 36px #24577930}
+#rt11-modal.rt-mbsa .mbsa-concept-tile h3,#rt11-modal.rt-mbsa .mbsa-zone-tile strong{color:#17658e;font-size:17px}
+#rt11-modal.rt-mbsa .mbsa-concept-tile p,#rt11-modal.rt-mbsa .mbsa-zone-tile p{margin:12px 0 0;font-size:15px}
+#rt11-modal.rt-mbsa .rtgrid{background:linear-gradient(135deg,#f7fbff,#eaf5fc 55%,#f7fafc)!important;border-radius:24px}
+@media(max-width:760px){#rt11-modal.rt-mbsa .mbsa-concept-tiles,#rt11-modal.rt-mbsa .mbsa-zone-grid,#rt11-modal.rt-mbsa .rtchapter.rt-pillars>.rt-mbsa-teras-grid{grid-template-columns:1fr!important}}
 </style>
 </body>
 </html>
