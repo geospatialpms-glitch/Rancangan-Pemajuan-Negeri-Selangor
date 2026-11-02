@@ -16419,5 +16419,60 @@ const period=sec.querySelector('.rt-kkb-history-head span:last-child');if(period
 }
 let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;inspect()})}).observe(body,{childList:true,subtree:true});inspect();
 })();
-</script></body>
+</script>
+<style id="rt-huluselangor-layout-refinement-20261102">
+/* Scoped to RT popup only; decorative changes never alter other chapters. */
+#rt11-modal .rtchapter.rt-three-zone-layout .rt-three-zone-cards{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;list-style:none!important;padding:0!important;margin:20px 0!important}
+#rt11-modal .rtchapter.rt-three-zone-layout .rt-three-zone-cards>li{position:relative;display:flex!important;flex-direction:column;justify-content:center;min-width:0!important;width:100%!important;min-height:175px!important;margin:0!important;padding:24px 19px 23px!important;border:1px solid color-mix(in srgb,var(--rt-main) 25%,#e8e0cf)!important;border-top:4px solid var(--rt-main)!important;border-radius:20px!important;background:linear-gradient(140deg,#fffefb,color-mix(in srgb,var(--rt-soft) 65%,#fff))!important;box-shadow:0 9px 22px #352c1812!important;transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease!important;overflow-wrap:anywhere!important}
+#rt11-modal .rtchapter.rt-three-zone-layout .rt-three-zone-cards>li::before{content:attr(data-zone-index);display:grid;place-items:center;width:38px;height:38px;margin-bottom:15px;border-radius:12px;background:var(--rt-main);color:#fff;font-size:13px;font-weight:850}
+#rt11-modal .rtchapter.rt-three-zone-layout .rt-three-zone-cards>li:hover{transform:translateY(-5px)!important;box-shadow:0 16px 30px color-mix(in srgb,var(--rt-main) 18%,transparent)!important;border-color:var(--rt-main)!important}
+#rt11-modal .rtchapter.rt-three-zone-layout .rt-three-zone-cards>li::marker{content:""}
+#rt11-modal .rtchapter.rt-refined-justification .rtpiece ul>li{border-radius:17px!important}
+#rt11-modal .rtchapter.rt-refined-justification .rtpiece ul>li>ul,#rt11-modal .rtchapter.rt-refined-justification .rtpiece ul>li>ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;list-style:none;padding:12px 0 0;margin:0}
+#rt11-modal .rtchapter.rt-refined-justification .rtpiece ul>li>ul>li,#rt11-modal .rtchapter.rt-refined-justification .rtpiece ul>li>ol>li{min-width:0;padding:16px!important;margin:0!important;border:1px solid #e9e1d7;border-radius:15px;background:linear-gradient(130deg,#fff,#fbf9ee)}
+#rt11-modal .rtchapter .rt-kkb-history .rt-kkb-title{overflow-wrap:break-word;word-break:normal}
+#rt11-modal .rtchapter .rt-kkb-history .rt-kkb-description{line-height:1.68}
+@media(max-width:850px){#rt11-modal .rtchapter.rt-three-zone-layout .rt-three-zone-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:580px){#rt11-modal .rtchapter.rt-three-zone-layout .rt-three-zone-cards{grid-template-columns:1fr!important}#rt11-modal .rtchapter.rt-refined-justification .rtpiece ul>li>ul,#rt11-modal .rtchapter.rt-refined-justification .rtpiece ul>li>ol{grid-template-columns:1fr!important}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .rtchapter.rt-three-zone-layout .rt-three-zone-cards>li{transition:none!important}}
+</style>
+<script id="rt-huluselangor-content-refinement-20261102">
+(function(){
+'use strict';
+const body=document.getElementById('rt11-body');if(!body)return;
+const tidy=s=>(s||'').replace(/\s+/g,' ').trim();
+function update(){
+const chapters=[...body.querySelectorAll('.rtchapter')];
+chapters.forEach(ch=>{
+ const heading=tidy(ch.querySelector(':scope > h2')?.textContent).toLowerCase();
+ if(/konsep pembangunan/.test(heading)){
+  const piece=[...ch.querySelectorAll('.rtpiece')].find(p=>/3\s+zon\s+utama|zon tumpuan\s*&?\s*potensi|zon kawalan\s*&?\s*pemuliharaan/i.test(tidy(p.textContent)));
+  if(piece){
+   const lists=[...piece.querySelectorAll('ul,ol')].filter(l=>l.children.length===3);
+   lists.forEach(list=>{
+    if(![...list.children].every(li=>li.tagName==='LI'))return;
+    list.classList.add('rt-three-zone-cards');
+    [...list.children].forEach((li,i)=>{li.dataset.zoneIndex=String(i+1).padStart(2,'0')});
+    ch.classList.add('rt-three-zone-layout');
+   });
+  }
+ }
+ if(/justifikasi|perubahan utama guna tanah/.test(heading))ch.classList.add('rt-refined-justification');
+ if(/latar belakang/.test(heading)){
+  ch.querySelectorAll('.rt-kkb-title').forEach(node=>{
+   const t=tidy(node.textContent);
+   if(/Rancangan Tempatan Daerah Hulu Selangor 2035/i.test(t)&&/\bterm\b/i.test(t)){
+    node.textContent='Rancangan Tempatan Daerah Hulu Selangor 2035 disediakan bagi menggantikan Rancangan Tempatan Daerah Hulu Selangor 2020';
+   }
+  });
+  ch.querySelectorAll('.rt-kkb-history-head span:last-child').forEach(n=>{
+   if(/2035\s*[—–-]\s*2020/.test(n.textContent))n.textContent='2020 → 2035';
+  });
+ }
+});
+}
+let busy=false;new MutationObserver(()=>{if(busy)return;busy=true;requestAnimationFrame(()=>{busy=false;update()})}).observe(body,{childList:true,subtree:true});update();
+})();
+</script>
+</body>
 </html>
