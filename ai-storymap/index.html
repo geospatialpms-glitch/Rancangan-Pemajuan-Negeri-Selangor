@@ -15193,6 +15193,51 @@ if(entry.code!=='MBSA'){
    });
  });
 }
+
+/* All RT: KKB-inspired, content-preserving cards for Teras Pembangunan. */
+if(entry.code!=='MBSA'){
+ const escHeading=t=>/^\s*(?:teras|tema|strategi)\s*(?:ke[- ]?)?\d+/i.test(t);
+ body.querySelectorAll('.rtchapter.rt-pillars').forEach(ch=>{
+   const candidate=[];
+   ch.querySelectorAll('.rtpiece').forEach(piece=>{
+     const list=piece.querySelector('ul,ol');
+     if(list&&list.children.length>=2){
+       Array.from(list.children).filter(li=>li.tagName==='LI').forEach(li=>candidate.push(li));
+     }
+   });
+   if(candidate.length>=2){
+     const grid=document.createElement('div');grid.className='rt-kkb-pillar-grid';
+     const first=candidate[0].closest('.rtpiece');
+     candidate.forEach((li,i)=>{
+       const card=document.createElement('article');card.className='rt-kkb-pillar-card';
+       card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-pressed','false');
+       const raw=(li.textContent||'').trim();
+       const segments=raw.split(/\s*:\s*/);
+       const heading=segments.length>1?segments.shift().trim():raw;
+       const details=segments.join(':').trim();
+       const inner=document.createElement('div');inner.className='rt-kkb-pillar-inner';
+       const front=document.createElement('div');front.className='rt-kkb-pillar-face rt-kkb-pillar-front';
+       const star=document.createElement('span');star.className='rt-kkb-pillar-star';star.textContent='✧';
+       const label=document.createElement('small');label.textContent='TERAS '+String(i+1).padStart(2,'0');
+       const h=document.createElement('h3');h.textContent=heading.replace(/^teras\s*\d+\s*[:.\-]?\s*/i,'')||heading;
+       const hint=document.createElement('span');hint.className='rt-kkb-pillar-hint';hint.textContent='HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA ↻';
+       front.append(star,label,h,hint);
+       const back=document.createElement('div');back.className='rt-kkb-pillar-face rt-kkb-pillar-back';
+       const b=document.createElement('small');b.textContent='TERAS '+String(i+1).padStart(2,'0');
+       const description=document.createElement('div');description.className='rt-kkb-pillar-description';
+       description.innerHTML=li.innerHTML;
+       back.append(b,description);
+       inner.append(front,back);card.appendChild(inner);
+       function flip(){const active=card.classList.toggle('is-flipped');card.setAttribute('aria-pressed',String(active))}
+       card.addEventListener('click',flip);
+       card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+       grid.appendChild(card);li.remove();
+     });
+     if(first)first.insertAdjacentElement('beforebegin',grid);
+     ch.querySelectorAll('.rtpiece').forEach(p=>{const list=p.querySelector('ul,ol');if(list&&!list.querySelector('li')&&!p.textContent.trim())p.remove()});
+   }
+ });
+}
 if(!body.children.length)throw Error('Tiada kandungan bab');}
 catch(err){if(ticket!==requestNo)return;body.innerHTML='';const box=document.createElement('section');box.className='rtchapter';const h=document.createElement('h2');h.textContent='Kandungan ESRI tidak dapat dimuatkan';const p=document.createElement('p');p.textContent='Akses JSON asal tidak tersedia pada pelayar ini. Buka StoryMap asal untuk membaca kandungan lengkap.';const a=document.createElement('a');a.href='https://storymaps.arcgis.com/stories/'+entry.id;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka StoryMap ESRI asal ↗';box.append(h,p,a);body.appendChild(box)}}
 document.addEventListener('click',function(e){const a=e.target.closest('a[href]');if(!a||modal.contains(a))return;let id=(a.href.match(/storymaps\.arcgis\.com\/stories\/([0-9a-f]{32})/i)||[])[1];if(!id){let code=(a.getAttribute('aria-label')||'').match(/RT (MBSA|MBSJ|MBDK|MPAJ|MPKj|MPS|MPSp|MPKL|MPKS|MPHS|MDSB)\b/i);if(code){const found=entries.find(row=>row[0].toLowerCase()===code[1].toLowerCase());if(found)id=found[1]}}const entry=id&&links.get(id);if(!entry)return;e.preventDefault();e.stopImmediatePropagation();open(entry)},true);
@@ -15470,6 +15515,33 @@ background-image:radial-gradient(ellipse at 8% 18%,color-mix(in srgb,var(--rt-so
 #rt11-modal .rtpiece li{background:linear-gradient(140deg,#fff,color-mix(in srgb,var(--rt-soft) 82%,white))!important}
 #rt11-modal .rtside a:hover,#rt11-modal .rtside a.is-active{background:linear-gradient(110deg,var(--rt-main),color-mix(in srgb,var(--rt-accent2) 65%,var(--rt-main)))!important}
 #rt11-modal .rt-shared-card-grid>.rt-shared-card{background:linear-gradient(130deg,var(--rt-soft),color-mix(in srgb,var(--rt-accent2) 26%,white))!important}
+</style>
+
+<style id="rt-all-sidebar-and-teras-kkb-20261102">
+/* Consistent balanced navigation size for the whole RT family. */
+#rt11-modal .rtgrid{grid-template-columns:minmax(205px,235px) minmax(0,1fr)!important;gap:20px!important;align-items:start}
+#rt11-modal .rtgrid>.rtside{box-sizing:border-box!important;width:100%!important;min-width:0!important;padding:18px 14px!important;border-radius:20px!important;max-height:calc(100dvh - 106px)!important;overflow-y:auto!important}
+#rt11-modal .rtside a{padding:9px 10px!important;margin:3px 0!important;gap:9px!important;border-radius:12px!important}
+#rt11-modal .rtside a .rt-side-name{font-size:11.5px!important;line-height:1.4!important}
+#rt11-modal .rtside .rt-side-title{font-size:21px!important}
+#rt11-modal .rtside .rt-side-desc{font-size:11.5px!important;line-height:1.5!important}
+#rt11-modal .rtside h3{font-size:12px!important;margin:12px 0!important}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:22px 0 30px}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-card{height:335px;min-width:0;border-radius:23px;border:1px solid color-mix(in srgb,var(--rt-main) 35%,white);background:linear-gradient(130deg,color-mix(in srgb,var(--rt-soft) 84%,white),color-mix(in srgb,var(--rt-accent2) 23%,white));box-shadow:0 13px 30px #24415a25;perspective:1000px;cursor:pointer;overflow:hidden;transition:transform .3s,box-shadow .3s}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-card:hover{transform:translateY(-7px);box-shadow:0 22px 45px #24415a38}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-inner{height:100%;position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-card.is-flipped .rt-kkb-pillar-inner{transform:rotateY(180deg)}
+@media(hover:hover){#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-card:hover .rt-kkb-pillar-inner{transform:rotateY(180deg)}}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-face{position:absolute;inset:0;box-sizing:border-box;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:27px;text-align:center;color:var(--rt-main)}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-front h3{font:800 clamp(20px,1.85vw,29px)/1.3 Georgia,serif!important;color:var(--rt-main)!important;margin:0}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-star{font-size:29px;color:var(--rt-accent2)}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-face small{font-size:11px;font-weight:800;letter-spacing:.16em}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-hint{padding:10px 13px;border-radius:999px;background:#fff8e5;color:#45536d;font-size:10px;font-weight:800}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-back{transform:rotateY(180deg);background:linear-gradient(140deg,#fff,var(--rt-soft));overflow:auto;justify-content:flex-start}
+#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-description{font-size:15px;line-height:1.65;text-align:left;overflow-wrap:anywhere}
+@media(max-width:930px){#rt11-modal .rtgrid{grid-template-columns:1fr!important}#rt11-modal .rtgrid>.rtside{position:relative!important;top:auto!important;max-height:none!important}}
+@media(max-width:700px){#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-grid{grid-template-columns:1fr}#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-card{height:300px}}
+@media(prefers-reduced-motion:reduce){#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-inner,#rt11-modal:not(.rt-mbsa) .rt-kkb-pillar-card{transition:none}}
 </style>
 </body>
 </html>
