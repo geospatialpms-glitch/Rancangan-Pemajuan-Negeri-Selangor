@@ -16210,5 +16210,104 @@ let queued=false;function schedule(){if(queued)return;queued=true;requestAnimati
 new MutationObserver(schedule).observe(body,{childList:true,subtree:true});schedule();
 })();
 </script>
+<style id="mdsb-final-corrections-20261102">
+/* MDSB only; unified pink palette and compact BP cards. */
+#rt11-modal.rt-mdsb-view{--mdsb-pink:#b52a59;--mdsb-pale:#fff1f5}
+#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-section .rt-mdsb-mukim-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-card{min-height:0!important;max-height:none!important;overflow:hidden!important;background:linear-gradient(145deg,#fff,#fff0f5)!important;border:1px solid #eab9ca!important;box-shadow:0 10px 28px #9e28591c!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-detail{overflow:hidden!important;max-width:100%!important;min-width:0!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-detail :is(div,p,span,li,ul,ol){box-sizing:border-box!important;max-width:100%!important;min-width:0!important;overflow-wrap:anywhere!important;white-space:normal!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-detail :is(img,iframe,svg){max-width:100%!important;height:auto!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-detail .rtpiece:has(> :is(figure,img)),#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-detail :is(figure,img){display:none!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-detail .rtpiece{height:auto!important;min-height:0!important;max-height:none!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-detail .rtpiece *{font-size:inherit!important;font-family:inherit!important;line-height:1.6!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-detail .rtpiece :is(h2,h3,h4,h5){font-size:15px!important;color:#9e2a52!important;margin:5px 0!important}
+#rt11-modal.rt-mdsb-view .rtchapter.rt-pillars .rt-kkb-pillar-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important}
+#rt11-modal.rt-mdsb-view .rtchapter.rt-pillars .rt-kkb-pillar-grid>.rt-kkb-pillar-card:last-child:nth-child(odd){grid-column:1/-1!important;justify-self:center!important;width:calc(50% - 9px)!important}
+#rt11-modal.rt-mdsb-view .rtchapter.rt-pillars .rt-kkb-pillar-card{min-height:300px!important;height:300px!important;max-height:300px!important}
+#rt11-modal.rt-mdsb-view .rtchapter.rt-pillars .rt-kkb-pillar-face{padding:16px!important}
+#rt11-modal.rt-mdsb-view .rtchapter.rt-pillars .rt-kkb-pillar-face h3{font-size:clamp(17px,1.7vw,24px)!important;line-height:1.28!important;overflow-wrap:anywhere!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-hierarchy{max-width:900px!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-hierarchy>.rt-mdsb-level{clip-path:none!important;border-radius:16px!important;min-height:91px!important;padding:12px 20px!important;box-shadow:0 10px 26px #92254a26!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(1){width:52%!important;min-height:115px!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(2){width:76%!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(3){width:100%!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-hierarchy .rt-mdsb-tier-text{font-size:clamp(12px,1.4vw,17px)!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-secondary-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;list-style:none!important;padding:0!important;margin:14px 0!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-secondary-grid>li{width:100%!important;max-width:none!important;height:auto!important;min-height:118px!important;max-height:none!important;margin:0!important;padding:16px!important;border-radius:17px!important;border:1px solid #ebc7d3!important;background:linear-gradient(135deg,#fff,#ffeff5)!important;box-shadow:0 8px 19px #832a4a12!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-secondary-grid>li::before,#rt11-modal.rt-mdsb-view .rt-mdsb-secondary-grid>li::after{display:none!important}
+#rt11-modal.rt-mdsb-view .rt-mdsb-secondary-grid>li:hover{transform:translateY(-3px)!important;box-shadow:0 14px 28px #9b34542c!important}
+@media(max-width:800px){#rt11-modal.rt-mdsb-view .rt-mdsb-mukim-section .rt-mdsb-mukim-grid,#rt11-modal.rt-mdsb-view .rt-mdsb-secondary-grid{grid-template-columns:1fr!important}#rt11-modal.rt-mdsb-view .rtchapter.rt-pillars .rt-kkb-pillar-grid{grid-template-columns:1fr!important}#rt11-modal.rt-mdsb-view .rtchapter.rt-pillars .rt-kkb-pillar-grid>.rt-kkb-pillar-card:last-child:nth-child(odd){width:100%!important}#rt11-modal.rt-mdsb-view .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(1){width:76%!important}#rt11-modal.rt-mdsb-view .rt-mdsb-hierarchy>.rt-mdsb-level:nth-child(2){width:88%!important}}
+</style>
+<script id="mdsb-final-corrections-20261102">
+(function(){
+'use strict';
+const body=document.getElementById('rt11-body'),modal=document.getElementById('rt11-modal');if(!body||!modal)return;
+const txt=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();
+function enhance(){
+ const chapters=[...body.querySelectorAll('.rtchapter')];
+ const isMDSB=chapters.some(ch=>/pelan mukim\s*(?:&|dan)\s*blok\s*mdsb/i.test(txt(ch.querySelector(':scope > h2'))));
+ modal.classList.toggle('rt-mdsb-view',isMDSB);
+ if(!isMDSB)return;
+ const mukim=chapters.find(ch=>/pelan mukim\s*(?:&|dan)\s*blok/i.test(txt(ch.querySelector(':scope > h2'))));
+ if(mukim&& !mukim.querySelector('.rt-mdsb-mukim-grid')){
+   const pieces=[...mukim.querySelectorAll(':scope > .rtpiece')], groups=[];let current=null;
+   pieces.forEach(piece=>{
+     const h=piece.querySelector('h3,h4,h5');
+     if(h&&/^\s*\d*\s*[.:-]?\s*Mukim\s+/i.test(txt(h))){current={name:txt(h).replace(/^\s*\d+\s*[.:-]\s*/,''),elements:[piece]};groups.push(current)}
+     else if(current && !piece.querySelector('figure,img,iframe') && !/Blok Perancangan\s*$/i.test(txt(piece))){current.elements.push(piece)}
+   });
+   if(groups.length>=2){
+     const grid=document.createElement('div');grid.className='rt-mdsb-mukim-grid';
+     groups.forEach((group,i)=>{
+       const card=document.createElement('article');card.className='rt-mdsb-mukim-card';
+       const head=document.createElement('div');head.className='rt-mdsb-mukim-heading';
+       const badge=document.createElement('span');badge.className='rt-mdsb-mukim-number';badge.textContent=String(i+1).padStart(2,'0');
+       const title=document.createElement('h3');title.className='rt-mdsb-mukim-name';title.textContent=group.name;
+       const detail=document.createElement('div');detail.className='rt-mdsb-mukim-detail';
+       group.elements.forEach((p,j)=>{const clone=p.cloneNode(true);if(j===0)clone.querySelector('h3,h4,h5')?.remove();clone.querySelectorAll('figure,img,iframe,.rt-v3-num,.rt-flow-index,.rt-final-step').forEach(el=>el.remove());detail.append(...clone.childNodes)});
+       head.append(badge,title);card.append(head,detail);grid.append(card);
+     });
+     groups[0].elements[0].before(grid);groups.forEach(g=>g.elements.forEach(el=>el.remove()));mukim.classList.add('rt-mdsb-mukim-section');
+   }
+ }
+ // Use original source grouping: history heading and its list must precede the image.
+ for(const ch of chapters){
+   const parts=[...ch.children].filter(el=>el.classList?.contains('rtpiece'));
+   const titlePiece=parts.find(p=>/sejarah pengasasan\s*&\s*pentadbiran daerah/i.test(txt(p.querySelector('h3,h4,h5'))));
+   const imagePiece=parts.find(p=>p.querySelector('figure,img')&&/Gambaran Sejarah Sabak Bernam/i.test(txt(p)));
+   if(titlePiece&&imagePiece){
+     let current=titlePiece,following=current.nextElementSibling;
+     while(following&&following!==imagePiece&&following.classList?.contains('rtpiece')&&!following.querySelector('h3,h4,h5,figure,img')){current=following;following=current.nextElementSibling}
+     if(imagePiece.compareDocumentPosition(titlePiece)&Node.DOCUMENT_POSITION_FOLLOWING){current.after(imagePiece)}
+   }
+   // Hierarki Petempatan: three source rows, no invented data, and retain Zonasi Strategik.
+   const subheads=[...ch.querySelectorAll('.rtpiece h3,.rtpiece h4,.rtpiece h5')];
+   const h=subheads.find(el=>/hierarki petempatan/i.test(txt(el)));
+   if(h&&!ch.querySelector('.rt-mdsb-hierarchy')){
+     const piece=h.closest('.rtpiece');let next=piece?.nextElementSibling;
+     while(next&&next.classList?.contains('rtpiece')&&!next.querySelector('ul,ol'))next=next.nextElementSibling;
+     const list=next?.querySelector('ul,ol')||piece?.querySelector('ul,ol');
+     const lis=list?[...list.children].filter(el=>el.tagName==='LI'):[];
+     if(lis.length===3){
+       const pyramid=document.createElement('div');pyramid.className='rt-mdsb-hierarchy';
+       lis.forEach((li,i)=>{const tier=document.createElement('div');tier.className='rt-mdsb-level';const n=document.createElement('small');n.className='rt-mdsb-tier-badge';n.textContent='ARAS '+String(i+1).padStart(2,'0');const t=document.createElement('span');t.className='rt-mdsb-tier-text';t.textContent=txt(li).replace(/^\d{1,2}\s*/, '');tier.append(n,t);pyramid.append(tier)});
+       list.replaceWith(pyramid);
+     }
+   }
+   // All remaining compact lists within MDSB get harmonized 2-column tiles, except chronology.
+   ch.querySelectorAll('.rtpiece ul,.rtpiece ol').forEach(ul=>{
+     if(ul.closest('.rt-mdsb-mukim-detail,.rt-kkb-history,.rt-mdsb-hierarchy')||ul.classList.contains('rt-background-infographic')||ul.classList.contains('rt-shared-card-grid')&&ul.children.length<2)return;
+     const items=[...ul.children].filter(el=>el.tagName==='LI');
+     if(items.length>=3&&items.length<=8 && !/latar belakang|sejarah|kronologi/i.test(txt(ch.querySelector(':scope > h2')))){
+       ul.classList.add('rt-mdsb-secondary-grid');ul.classList.remove('rt-shared-card-grid','rt-final-history-flow','rt-v3-timeline');
+     }
+   });
+ }
+}
+let tick=false;function schedule(){if(tick)return;tick=true;requestAnimationFrame(()=>{tick=false;try{enhance()}catch(e){console.warn('MDSB corrections:',e)}})}
+new MutationObserver(schedule).observe(body,{childList:true,subtree:true});schedule();
+})();
+</script>
 </body>
 </html>
