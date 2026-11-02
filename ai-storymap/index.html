@@ -15985,5 +15985,79 @@ let queued=false;function schedule(){if(queued)return;queued=true;requestAnimati
 new MutationObserver(schedule).observe(body,{childList:true,subtree:true});rebuild();
 })();
 </script>
+<style id="rt-kkb-history-accordion-all-20261102">
+/* One consistent KKB-inspired, accessible history accordion for all RT Latar Belakang sections. */
+#rt11-modal .rtchapter .rt-kkb-history{position:relative;display:flex!important;flex-direction:column!important;gap:13px!important;max-width:1100px;margin:24px auto!important;padding:10px 0 10px 53px!important;background:transparent!important;list-style:none!important}
+#rt11-modal .rtchapter .rt-kkb-history::before{content:"";position:absolute;left:19px;top:16px;bottom:16px;width:4px;border-radius:99px;background:linear-gradient(180deg,var(--rt-main),var(--rt-accent2),var(--rt-main));background-size:100% 250%;animation:rt-kkb-history-flow 12s linear infinite;box-shadow:0 0 14px color-mix(in srgb,var(--rt-main) 25%,transparent)}
+#rt11-modal .rtchapter .rt-kkb-history-head{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:1100px;margin:15px auto 0;padding-left:53px;font-size:11px;letter-spacing:.12em;font-weight:850;color:var(--rt-main)}
+#rt11-modal .rtchapter .rt-kkb-history>details.rt-kkb-history-card{position:relative;display:block!important;grid-column:auto!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;margin:0!important;padding:0!important;border-radius:22px!important;border:1px solid color-mix(in srgb,var(--rt-main) 24%,#e6d8ca)!important;background:linear-gradient(115deg,#fffaf8,color-mix(in srgb,var(--rt-soft) 52%,#fff8f2))!important;box-shadow:0 12px 26px #32425714!important;list-style:none!important;transition:transform .27s,box-shadow .27s,border-color .27s!important;overflow:visible!important}
+#rt11-modal .rtchapter .rt-kkb-history>details.rt-kkb-history-card::before{content:"✦";position:absolute;left:-43px;top:30px;width:27px;height:27px;display:grid;place-items:center;box-sizing:border-box;border:3px solid white;border-radius:50%;background:var(--rt-main);color:#fff;font-size:14px;box-shadow:0 0 0 2px color-mix(in srgb,var(--rt-accent2) 72%,white),0 5px 13px #0002;animation:rt-kkb-node 4s ease-in-out infinite;z-index:1}
+#rt11-modal .rtchapter .rt-kkb-history>details.rt-kkb-history-card::after{display:none!important}
+#rt11-modal .rtchapter .rt-kkb-history>details.rt-kkb-history-card:hover,#rt11-modal .rtchapter .rt-kkb-history>details.rt-kkb-history-card[open]{transform:translateY(-2px)!important;border-color:color-mix(in srgb,var(--rt-main) 60%,white)!important;box-shadow:0 15px 31px color-mix(in srgb,var(--rt-main) 17%,transparent)!important}
+#rt11-modal .rtchapter .rt-kkb-history summary{display:flex;align-items:center;gap:15px;min-height:88px;padding:18px 21px;cursor:pointer;list-style:none!important}
+#rt11-modal .rtchapter .rt-kkb-history summary::-webkit-details-marker{display:none}
+#rt11-modal .rtchapter .rt-kkb-history .rt-kkb-year{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:86px;max-width:150px;min-height:47px;border-radius:15px;padding:8px 13px;box-sizing:border-box;background:linear-gradient(115deg,var(--rt-main),color-mix(in srgb,var(--rt-main) 60%,var(--rt-accent2)));color:white;font-size:clamp(14px,1.5vw,21px);font-weight:850;box-shadow:0 5px 15px color-mix(in srgb,var(--rt-main) 15%,transparent)}
+#rt11-modal .rtchapter .rt-kkb-history .rt-kkb-title-wrap{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+#rt11-modal .rtchapter .rt-kkb-history .rt-kkb-eyebrow{font-size:10px;letter-spacing:.11em;font-weight:850;color:color-mix(in srgb,var(--rt-main) 70%,#9c7651)}
+#rt11-modal .rtchapter .rt-kkb-history .rt-kkb-title{font-size:clamp(15px,1.8vw,23px);font-weight:800;line-height:1.35;color:var(--rt-main)}
+#rt11-modal .rtchapter .rt-kkb-history .rt-kkb-toggle{width:39px;height:39px;display:grid;place-items:center;flex:none;border-radius:50%;background:color-mix(in srgb,var(--rt-main) 8%,white);color:var(--rt-main);font-size:24px;font-weight:500;transition:transform .2s,background .2s}
+#rt11-modal .rtchapter .rt-kkb-history details[open] .rt-kkb-toggle{transform:rotate(45deg);background:color-mix(in srgb,var(--rt-accent2) 45%,white)}
+#rt11-modal .rtchapter .rt-kkb-description{padding:0 26px 25px clamp(24px,12%,154px);color:#53666c;font-size:clamp(14px,1.2vw,17px);line-height:1.8;overflow-wrap:anywhere}
+#rt11-modal .rtchapter .rt-kkb-description p{margin:0 0 9px}
+#rt11-modal .rtchapter .rt-kkb-description :last-child{margin-bottom:0}
+@keyframes rt-kkb-history-flow{to{background-position:0% 100%}}
+@keyframes rt-kkb-node{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--rt-main) 12%,transparent),0 5px 16px color-mix(in srgb,var(--rt-main) 22%,transparent)}}
+@media(max-width:650px){#rt11-modal .rtchapter .rt-kkb-history{padding-left:37px!important}#rt11-modal .rtchapter .rt-kkb-history::before{left:11px}#rt11-modal .rtchapter .rt-kkb-history>details.rt-kkb-history-card::before{left:-37px;width:23px;height:23px}#rt11-modal .rtchapter .rt-kkb-history-head{padding-left:37px}#rt11-modal .rtchapter .rt-kkb-history summary{gap:9px;padding:13px 12px;min-height:73px}#rt11-modal .rtchapter .rt-kkb-history .rt-kkb-year{min-width:62px;min-height:38px;padding:7px;font-size:13px}#rt11-modal .rtchapter .rt-kkb-history .rt-kkb-toggle{width:30px;height:30px;font-size:18px}#rt11-modal .rtchapter .rt-kkb-description{padding:0 15px 17px}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .rtchapter .rt-kkb-history::before,#rt11-modal .rtchapter .rt-kkb-history>details::before{animation:none!important}}
+</style>
+<script id="rt-kkb-history-accordion-all-20261102">
+(function(){
+'use strict';
+const root=document.getElementById('rt11-body');if(!root)return;
+function getYear(t){const m=t.match(/\b(?:1[5-9]\d{2}|20\d{2})(?:\s*[–-]\s*(?:1[5-9]\d{2}|20\d{2}|an|kini))?\b/i);return m?m[0].replace(/\s+/g,''):'—'}
+function convert(section){
+ const heading=section.querySelector(':scope > h2');
+ if(!heading||!/latar belakang|sejarah|kronologi|asal usul/i.test(heading.textContent))return;
+ if(section.querySelector('.rt-kkb-history'))return;
+ const source=[...section.querySelectorAll('.rt-history-real-flow,.rt-background-infographic,.rt-final-history-flow,.rt-v3-timeline,.rtpiece ul,.rtpiece ol')].find(x=>x.querySelectorAll(':scope > li,:scope > article').length>=2);
+ if(!source)return;
+ const entries=[...source.children].filter(x=>x.matches('li,article'));
+ if(entries.length<2||entries.length>35)return;
+ const flow=document.createElement('div');flow.className='rt-kkb-history';
+ const label=document.createElement('div');label.className='rt-kkb-history-head';
+ const left=document.createElement('span');left.textContent='ALIRAN SEJARAH BANDAR';
+ const right=document.createElement('span');const years=entries.map(e=>getYear(e.textContent)).filter(y=>y!=='—');right.textContent=years.length?years[0]+' — '+years[years.length-1]:'KRONOLOGI PEMBANGUNAN';
+ label.append(left,right);
+ entries.forEach((item,i)=>{
+  const card=document.createElement('details');card.className='rt-kkb-history-card';
+  const summary=document.createElement('summary');
+  const txt=(item.textContent||'').replace(/^\s*\d{1,2}\s*/,'').trim();
+  const yr=getYear(txt);
+  let title=txt,description='';
+  const colon=txt.indexOf(':');
+  if(colon>0&&colon<180){title=txt.slice(0,colon).trim();description=txt.slice(colon+1).trim()}
+  else {const parts=txt.match(/^(.{12,100}?[.!?])\s+(.+)$/s);if(parts){title=parts[1];description=parts[2]}}
+  title=title.replace(/^\s*\d{1,2}\s*/,'').trim();
+  if(title.length>125){description=title.slice(125)+' '+description;title=title.slice(0,125)}
+  const year=document.createElement('span');year.className='rt-kkb-year';year.textContent=yr==='—'?String(i+1).padStart(2,'0'):yr;
+  const titleWrap=document.createElement('span');titleWrap.className='rt-kkb-title-wrap';
+  const eyebrow=document.createElement('small');eyebrow.className='rt-kkb-eyebrow';eyebrow.textContent='SEJARAH '+String(i+1).padStart(2,'0');
+  const name=document.createElement('strong');name.className='rt-kkb-title';name.textContent=title;
+  const toggle=document.createElement('span');toggle.className='rt-kkb-toggle';toggle.setAttribute('aria-hidden','true');toggle.textContent='+';
+  titleWrap.append(eyebrow,name);summary.append(year,titleWrap,toggle);
+  const detail=document.createElement('div');detail.className='rt-kkb-description';
+  // Preserve all original wording in the expanded detail, even when titles are summarized.
+  const p=document.createElement('p');p.textContent=txt;detail.appendChild(p);
+  card.append(summary,detail);flow.appendChild(card);
+ });
+ source.before(label,flow);source.remove();
+}
+let scheduled=false;
+function run(){scheduled=false;root.querySelectorAll('.rtchapter').forEach(convert)}
+function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(run)}
+new MutationObserver(schedule).observe(root,{childList:true,subtree:true});
+run();
+})();
+</script>
 </body>
 </html>
