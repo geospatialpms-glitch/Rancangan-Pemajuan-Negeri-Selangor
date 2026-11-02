@@ -14999,6 +14999,32 @@ if(node.type==='text'&&node.data&&node.data.type==='h2'&&strip(node.data.text)){
 if(!section){section=document.createElement('section');section.className='rtchapter';section.id=prefix+'intro';body.appendChild(section)}
 const el=piece(node,resources,entry.id);if(el)section.appendChild(el)}
 if(entry.code==='MBSA'){
+ /* KKB-inspired accordion for Pengertian and Fungsi Multi-Nuclei only */
+ const conceptRoot=body.querySelector('.rtchapter.rt-concept');
+ if(conceptRoot){
+  const group=document.createElement('div');group.className='rt-mbsa-principle-grid';
+  let first=null;const toRemove=[];
+  conceptRoot.querySelectorAll('.rtpiece').forEach(block=>{
+   const list=block.querySelector('ul,ol');if(!list)return;
+   const matches=[...list.children].filter(li=>/^(pengertian|fungsi)\s*:/i.test(li.textContent.trim()));
+   if(!matches.length)return;
+   if(!first)first=block;
+   matches.forEach((li,i)=>{
+     const value=li.innerHTML;const plain=li.textContent.trim();const type=/^pengertian\s*:/i.test(plain)?'Pengertian':'Fungsi';
+     const card=document.createElement('details');card.className='rt-mbsa-principle-card';
+     const summary=document.createElement('summary');
+     const sym=document.createElement('span');sym.className='rt-mbsa-principle-icon';sym.textContent=type==='Pengertian'?'✧':'↗';
+     const head=document.createElement('span');head.className='rt-mbsa-principle-heading';const sm=document.createElement('small');sm.textContent='KONSEP '+(type==='Pengertian'?'01':'02');const strong=document.createElement('strong');strong.textContent=type;head.append(sm,strong);
+     const chevron=document.createElement('span');chevron.className='rt-mbsa-chevron';chevron.textContent='⌄';
+     summary.append(sym,head,chevron);
+     const detail=document.createElement('div');detail.className='rt-mbsa-principle-detail';detail.innerHTML=value;
+     card.append(summary,detail);group.appendChild(card);
+     li.remove();
+   });
+   if(!list.children.length&&block.textContent.trim()==='')toRemove.push(block);
+  });
+  if(first&&group.children.length){first.insertAdjacentElement('beforebegin',group);toRemove.forEach(el=>el.remove())}
+ }
  /* Identify Multi-Nuclei list from heading context and its own text, regardless of markup nesting */
  const conceptArea=body.querySelector('.rtchapter.rt-concept');
  if(conceptArea){let active=false;for(const block of conceptArea.querySelectorAll('.rtpiece')){
@@ -15093,6 +15119,24 @@ document.addEventListener('click',function(e){const a=e.target.closest('a[href]'
 #rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid .rt-teras-front strong{font-size:clamp(18px,2vw,28px);line-height:1.25;max-width:100%}
 @media(max-width:760px){#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid{grid-template-columns:1fr!important}}
 @media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa .rtchapter.rt-pillars .rt-mbsa-teras-grid>.rt-mbsa-teras-item{transition:none}}
+</style>
+<style id="rt-mbsa-principle-accordion-20261102">
+#rt11-modal.rt-mbsa .rt-mbsa-principle-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:23px 0 30px;align-items:start}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-card{min-width:0;border:1px solid #c7d5e6;border-radius:18px;background:linear-gradient(130deg,#ffffffed,#f2f6f9);box-shadow:0 7px 20px #21445c13;overflow:hidden;transition:border-color .25s,box-shadow .25s,transform .25s}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-card:hover{transform:translateY(-3px);border-color:#6b9abc;box-shadow:0 13px 28px #21445c26}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-card[open]{border-color:#4789b1}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-card summary{list-style:none;display:flex;align-items:center;gap:13px;padding:20px;cursor:pointer}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-card summary::-webkit-details-marker{display:none}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-icon{display:grid;place-items:center;flex:0 0 45px;height:45px;border-radius:13px;background:linear-gradient(125deg,#1e6a92,#6598ba);color:white;font-size:23px}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-heading{display:flex;flex:1;flex-direction:column;gap:4px}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-heading small{font-size:10px;color:#b07a53;font-weight:800;letter-spacing:.12em}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-heading strong{font-size:17px;color:#245b7e}
+#rt11-modal.rt-mbsa .rt-mbsa-chevron{color:#a26f55;font-size:22px;transition:transform .25s}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-card[open] .rt-mbsa-chevron{transform:rotate(180deg)}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-detail{padding:0 22px 22px 78px;color:#42566a;line-height:1.8;font-size:15px}
+#rt11-modal.rt-mbsa .rt-mbsa-principle-detail p{margin:0}
+@media(max-width:750px){#rt11-modal.rt-mbsa .rt-mbsa-principle-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa .rt-mbsa-principle-card,#rt11-modal.rt-mbsa .rt-mbsa-chevron{transition:none}}
 </style>
 </body>
 </html>
