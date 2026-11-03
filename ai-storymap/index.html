@@ -17068,5 +17068,79 @@ function transform(){
 let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;transform()})}).observe(root,{childList:true,subtree:true});transform();
 })();
 </script>
+
+<style id="mpks-nucleus-visual-refresh-20261103">
+#rt11-modal .rtchapter .mpks-nucleus-showcase{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;margin:22px 0 30px!important;max-width:none!important;isolation:isolate}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card{--accent:#d4af37;display:flex;flex-direction:column;position:relative;isolation:isolate;min-width:0;min-height:238px;box-sizing:border-box;padding:24px;border:1px solid color-mix(in srgb,var(--accent) 45%,#e7ebee);border-radius:22px;background:linear-gradient(135deg,#fff 8%,#fff7df 100%);box-shadow:0 10px 27px #17253b1c;transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease;overflow:hidden;cursor:pointer}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card:nth-child(5n+2){--accent:#42a4a1;background:linear-gradient(135deg,#fff,#e8faf6)}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card:nth-child(5n+3){--accent:#6c88c8;background:linear-gradient(135deg,#fff,#eef3ff)}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card:nth-child(5n+4){--accent:#c480a1;background:linear-gradient(135deg,#fff,#fdf0f7)}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card:nth-child(5n+5){--accent:#a68b3d;background:linear-gradient(135deg,#fff,#faf5e7)}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card:nth-child(4){grid-column:1 / span 1}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card::after{content:"";position:absolute;top:-70px;right:-60px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 25%,transparent),transparent 70%);pointer-events:none;z-index:-1;transition:transform .45s ease}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card:is(:hover,:focus-visible){transform:translateY(-7px);border-color:var(--accent);box-shadow:0 19px 40px #17253b30;outline:none}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card:is(:hover,:focus-visible)::after{transform:translate(-18px,18px) scale(1.2)}
+#rt11-modal .mpks-nucleus-showcase .mpks-nucleus-showcase-card:focus-visible{outline:3px solid #202b42;outline-offset:3px}
+#rt11-modal .mpks-showcase-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:15px;background:#202b42;color:white;margin-bottom:13px;font-size:23px}
+#rt11-modal .mpks-showcase-kicker{font:800 11px/1.5 Arial,sans-serif;letter-spacing:.13em;color:#806527;margin-bottom:8px}
+#rt11-modal .mpks-showcase-title{font-size:clamp(15px,1.4vw,19px);line-height:1.38;font-weight:850;color:#202b42;margin:0 0 12px}
+#rt11-modal .mpks-showcase-summary{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;line-height:1.65;color:#526175;margin:0 0 20px}
+#rt11-modal .mpks-showcase-action{align-self:flex-start;margin-top:auto;border:1px solid color-mix(in srgb,var(--accent) 80%,#202b42);border-radius:50px;padding:9px 13px;color:#202b42;background:#ffffffcc;font:800 12px/1.3 Arial,sans-serif;cursor:pointer}
+#rt11-modal .mpks-showcase-action:hover{background:#202b42;color:white}
+#mpks-nucleus-showcase-dialog{position:fixed;inset:0;margin:auto;width:min(620px,calc(100vw - 32px));max-height:80vh;overflow:auto;border:1px solid #d4af37;border-radius:24px;background:#fffaf1;color:#29354a;padding:29px;box-shadow:0 27px 80px #11182866}
+#mpks-nucleus-showcase-dialog::backdrop{background:#162033b8;backdrop-filter:blur(6px)}
+#mpks-nucleus-showcase-dialog .mpks-showcase-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+#mpks-nucleus-showcase-dialog .mpks-showcase-dialog-label{font:800 11px Arial,sans-serif;letter-spacing:.13em;color:#947034}
+#mpks-nucleus-showcase-dialog .mpks-showcase-dialog-x{border:0;border-radius:12px;background:#f1e6d4;color:#202b42;width:42px;height:42px;font-size:24px;cursor:pointer}
+#mpks-nucleus-showcase-dialog h3{font-size:clamp(21px,3vw,30px);color:#202b42;line-height:1.35;margin:20px 0 16px}
+#mpks-nucleus-showcase-dialog p{font-size:16px;line-height:1.8;color:#415067}
+#mpks-nucleus-showcase-dialog .mpks-showcase-dialog-footer{display:flex;justify-content:flex-end;margin-top:24px}
+#mpks-nucleus-showcase-dialog .mpks-showcase-dialog-close{border:0;border-radius:12px;background:#202b42;color:white;padding:12px 25px;font-weight:800;cursor:pointer}
+@media(max-width:930px){#rt11-modal .rtchapter .mpks-nucleus-showcase{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:570px){#rt11-modal .rtchapter .mpks-nucleus-showcase{grid-template-columns:1fr!important}#mpks-nucleus-showcase-dialog{padding:20px}}
+@media(prefers-reduced-motion:no-preference){#rt11-modal .mpks-nucleus-showcase-card{animation:mpks-nucleus-arrive .55s both;animation-delay:var(--delay)}@keyframes mpks-nucleus-arrive{from{opacity:0;translate:0 20px}to{opacity:1;translate:0 0}}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .mpks-nucleus-showcase-card{animation:none;transition:none;transform:none!important}}
+</style>
+<script id="mpks-nucleus-visual-refresh-handler-20261103">
+(function(){
+'use strict';
+const root=document.getElementById('rt11-body'), label=document.getElementById('rt11-label');if(!root||!label)return;
+const titles=['Hierarki Petempatan','Konurbasi Nasional','Rangkaian Pengangkutan Utama','Kawasan Keutamaan Pembangunan','Kawasan Berisiko Bencana & KSAS'];
+const icons=['⌂','◎','↗','▦','♧'];
+const text=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();
+let dialog=document.getElementById('mpks-nucleus-showcase-dialog');
+if(!dialog){dialog=document.createElement('dialog');dialog.id='mpks-nucleus-showcase-dialog';dialog.innerHTML='<div class="mpks-showcase-dialog-head"><span class="mpks-showcase-dialog-label">KONSEP NUKLEUS · MPKS 2035</span><button type="button" class="mpks-showcase-dialog-x" aria-label="Tutup">×</button></div><h3></h3><p></p><div class="mpks-showcase-dialog-footer"><button type="button" class="mpks-showcase-dialog-close">Tutup</button></div>';document.body.appendChild(dialog);dialog.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>dialog.close()));dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()})}
+function refresh(){
+ if(!/\bMPKS\b/i.test(label.textContent))return;
+ const section=[...root.querySelectorAll('.rtchapter')].find(ch=>/konsep pembangunan/i.test(ch.querySelector(':scope > h2')?.textContent||'')&&/konsep nukleus/i.test(text(ch)));if(!section||section.querySelector('.mpks-nucleus-showcase'))return;
+ const lists=[...section.querySelectorAll('ul,ol')];
+ let original=lists.find(list=>{const els=[...list.children];return els.length===5&&titles.every(t=>els.some(el=>text(el).toLowerCase().includes(t.toLowerCase())))});
+ if(!original){
+   const candidates=[...section.querySelectorAll('.rtpiece,.rt-shared-card-grid,.rt-final-pillar-grid,.rt-history-real-flow')];
+   original=candidates.find(el=>{const els=[...el.children];return els.length===5&&titles.every(t=>els.some(c=>text(c).toLowerCase().includes(t.toLowerCase())))});
+ }
+ if(!original)return;
+ const entries=[...original.children];
+ const grid=document.createElement('div');grid.className='mpks-nucleus-showcase';grid.setAttribute('aria-label','Lima aspek asas Konsep Nukleus');
+ titles.forEach((title,i)=>{
+  const source=entries.find(el=>text(el).toLowerCase().includes(title.toLowerCase()));
+  const full=text(source).replace(/^\d{1,2}\s*/,'');
+  const at=full.toLowerCase().indexOf(title.toLowerCase());
+  const desc=(at>=0?full.slice(at+title.length):full).replace(/^\s*:\s*/,'').trim()||full;
+  const card=document.createElement('article');card.className='mpks-nucleus-showcase-card';card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label','Ketahui lanjut '+title);card.style.setProperty('--delay',i*65+'ms');
+  const ico=document.createElement('span');ico.className='mpks-showcase-icon';ico.textContent=icons[i];ico.setAttribute('aria-hidden','true');
+  const number=document.createElement('small');number.className='mpks-showcase-kicker';number.textContent='ASPEK '+String(i+1).padStart(2,'0');
+  const head=document.createElement('strong');head.className='mpks-showcase-title';head.textContent=title;
+  const brief=document.createElement('p');brief.className='mpks-showcase-summary';brief.textContent=desc;
+  const button=document.createElement('button');button.type='button';button.className='mpks-showcase-action';button.textContent='Ketahui Lanjut ›';
+  const open=()=>{dialog.querySelector('h3').textContent=title;dialog.querySelector('p').textContent=desc;if(!dialog.open)dialog.showModal()};
+  button.addEventListener('click',open);card.addEventListener('click',e=>{if(!e.target.closest('button'))open()});card.addEventListener('keydown',e=>{if(e.target===card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open()}});
+  card.append(ico,number,head,brief,button);grid.append(card);
+ });
+ original.replaceWith(grid);
+}
+let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;refresh()})}).observe(root,{childList:true,subtree:true});refresh();
+})();
+</script>
 </body>
 </html>
