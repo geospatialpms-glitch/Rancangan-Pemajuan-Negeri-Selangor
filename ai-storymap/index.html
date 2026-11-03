@@ -17142,5 +17142,84 @@ function refresh(){
 let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;refresh()})}).observe(root,{childList:true,subtree:true});refresh();
 })();
 </script>
+
+<style id="mpsp-pengubahan-one-card-final-20261103">
+#rt11-modal .mpsp-pengubahan-unified{position:relative;display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:18px!important;max-width:none!important;padding:10px 0 10px 60px!important;margin:16px 0 28px!important;list-style:none!important}
+#rt11-modal .mpsp-pengubahan-unified::before{content:"";position:absolute;top:24px;bottom:24px;left:20px;width:4px;border-radius:10px;background:linear-gradient(180deg,#b44a0c,#ebaa36,#b44a0c)}
+#rt11-modal .mpsp-pengubahan-unified>.mpsp-pengubahan-entry{position:relative!important;display:block!important;width:100%!important;min-width:0!important;min-height:0!important;max-width:none!important;height:auto!important;grid-column:auto!important;margin:0!important;padding:23px!important;box-sizing:border-box!important;border:1px solid #ecc69a!important;border-radius:22px!important;background:linear-gradient(125deg,#fffdf9,#fff3e1)!important;box-shadow:0 11px 25px #9d52191d!important;transition:transform .32s,box-shadow .32s!important}
+#rt11-modal .mpsp-pengubahan-entry::before{content:"";position:absolute;left:-51px;top:28px;width:18px;height:18px;border-radius:50%;background:#b44a0c;border:4px solid white;box-shadow:0 0 0 3px #e7af61}
+#rt11-modal .mpsp-pengubahan-entry:hover{transform:translateY(-4px)!important;box-shadow:0 18px 35px #9d52192a!important}
+#rt11-modal .mpsp-pengubahan-entry>.mpsp-pe-head{display:flex;align-items:center;flex-wrap:wrap;gap:13px;margin:0 0 14px}
+#rt11-modal .mpsp-pe-no{display:grid;place-items:center;flex:none;width:45px;height:45px;border-radius:13px;background:linear-gradient(135deg,#a9470c,#d38920);color:#fff;font-weight:850;font-size:17px}
+#rt11-modal .mpsp-pe-title{font-size:clamp(17px,1.8vw,22px);line-height:1.4;color:#913e0e;font-weight:850;min-width:0}
+#rt11-modal .mpsp-pe-status{display:inline-flex;padding:6px 12px;border:1px solid #e6b69c;border-radius:99px;background:#fff1ea;color:#a44420;font-weight:800;font-size:12px}
+#rt11-modal .mpsp-pe-description{margin:9px 0 15px;font-size:14px;line-height:1.65;color:#455365}
+#rt11-modal .mpsp-pe-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+#rt11-modal .mpsp-pe-detail{min-width:0;padding:17px 19px;border-radius:15px;border:1px solid #efd8b6;background:#fffdfa}
+#rt11-modal .mpsp-pe-detail small{display:block;font-size:11px;font-weight:850;color:#a65316;letter-spacing:.09em;margin-bottom:8px}
+#rt11-modal .mpsp-pe-detail strong{display:block;font-size:clamp(15px,1.5vw,18px);line-height:1.5;color:#273449;overflow-wrap:anywhere}
+#rt11-modal .mpsp-pe-source{margin-top:11px;color:#647084;font-size:13px;line-height:1.6}
+@media(max-width:650px){#rt11-modal .mpsp-pengubahan-unified{padding-left:44px!important}#rt11-modal .mpsp-pengubahan-unified::before{left:13px}#rt11-modal .mpsp-pengubahan-entry::before{left:-43px}#rt11-modal .mpsp-pe-details{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .mpsp-pengubahan-entry{transition:none!important}}
+</style>
+<script id="mpsp-pengubahan-one-card-final-handler-20261103">
+(function(){
+'use strict';
+const root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');
+if(!root||!label)return;
+const compact=v=>(v||'').replace(/\s+/g,' ').trim();
+const directText=el=>{const clone=el.cloneNode(true);clone.querySelectorAll('ul,ol,.rt-kkb-history,.rt-history-real-flow,.rt-background-infographic,.rt-final-history-flow').forEach(x=>x.remove());return compact(clone.textContent)};
+function rebuild(){
+ if(!/\bMPSp\b/i.test(label.textContent))return;
+ for(const section of root.querySelectorAll('.rtchapter')){
+  const h=compact(section.querySelector(':scope > h2')?.textContent);
+  if(!/latar belakang/i.test(h))continue;
+  if(section.querySelector('.mpsp-pengubahan-unified'))continue;
+  const all=[...section.querySelectorAll('ul,ol')];
+  const list=all.find(x=>{
+   if(x.closest('.mpsp-pengubahan-unified'))return false;
+   const direct=[...x.children].filter(e=>e.matches('li'));
+   return direct.length>=2 && direct.every(e=>/pengubahan\s*\d+/i.test(directText(e).slice(0,240))) &&
+     /tarikh\s*warta|no\.?\s*warta/i.test(compact(x.textContent));
+  });
+  if(!list)continue;
+  const items=[...list.children].filter(e=>e.matches('li'));
+  const flow=document.createElement('div');flow.className='mpsp-pengubahan-unified';flow.setAttribute('aria-label','Siri Pengubahan RT MPSp — satu kad bagi setiap pengubahan');
+  items.forEach((item,i)=>{
+   const text=compact(item.textContent);
+   const lead=directText(item);
+   const n=(lead.match(/pengubahan\s*(\d+)/i)||text.match(/pengubahan\s*(\d+)/i)||[])[1]||String(i+1);
+   const date=(text.match(/(?:tarikh\s*warta\s*:\s*)?(\d{1,2}\s+(?:Januari|Februari|Mac|April|Mei|Jun|Julai|Ogos|September|Oktober|November|Disember)\s+\d{4})/i)||[])[1]||'';
+   const rawGazette=(text.match(/(?:No\.?\s*Warta\s*:?\s*)+(?:No\.?\s*Warta\s*:?\s*)?([A-Za-z0-9\/-]+)/i)||[])[1]||'';
+   const gazette=/^No$/i.test(rawGazette)?'':rawGazette;
+   const card=document.createElement('article');card.className='mpsp-pengubahan-entry';
+   const head=document.createElement('div');head.className='mpsp-pe-head';
+   const badge=document.createElement('span');badge.className='mpsp-pe-no';badge.textContent=String(n).padStart(2,'0');
+   const title=document.createElement('strong');title.className='mpsp-pe-title';title.textContent='Pengubahan '+n;
+   head.append(badge,title);card.append(head);
+   if(/\bdibatalkan\b/i.test(lead)){const status=document.createElement('span');status.className='mpsp-pe-status';status.textContent='Dibatalkan';card.append(status)}
+   const description=lead.replace(/^\s*\d{1,2}\s*/,'').replace(/^pengubahan\s*\d+\s*:?\s*/i,'').trim();
+   if(description){const p=document.createElement('p');p.className='mpsp-pe-description';p.textContent=description;card.append(p)}
+   const facts=document.createElement('div');facts.className='mpsp-pe-details';
+   [['Tarikh Warta',date],['No. Warta',gazette]].forEach(([key,value])=>{
+    if(!value)return;
+    const box=document.createElement('div');box.className='mpsp-pe-detail';
+    const small=document.createElement('small');small.textContent=key;
+    const big=document.createElement('strong');big.textContent=value;
+    box.append(small,big);facts.append(box);
+   });
+   if(facts.childElementCount)card.append(facts);
+   if(!date||!gazette){
+    const note=document.createElement('p');note.className='mpsp-pe-source';
+    note.textContent='Maklumat pewartaan asal: '+text;card.append(note);
+   }
+   flow.append(card);
+  });
+  list.replaceWith(flow);
+ }
+}
+let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;rebuild()})}).observe(root,{childList:true,subtree:true});rebuild();
+})();
+</script>
 </body>
 </html>
