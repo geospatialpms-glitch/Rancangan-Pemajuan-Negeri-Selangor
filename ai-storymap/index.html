@@ -16779,50 +16779,7 @@ let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;reque
 @media(max-width:580px){#rt11-modal .rtchapter .mpks-nucleus-grid{grid-template-columns:1fr!important}#mpks-nucleus-popup{padding:20px}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .mpks-nucleus-tile{transition:none!important}}
 </style>
-<script id="mpks-nucleus-grid-dialog-handler-v2">
-(function(){
-'use strict';
-var root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');if(!root)return;
-var headings=['Hierarki Petempatan','Konurbasi Nasional','Rangkaian Pengangkutan Utama','Kawasan Keutamaan Pembangunan','Kawasan Berisiko Bencana & KSAS'];
-var symbols=['⌂','◎','↗','▦','♧'];
-var popup=document.getElementById('mpks-nucleus-popup');
-if(!popup){
- popup=document.createElement('dialog');popup.id='mpks-nucleus-popup';
- popup.innerHTML='<div class="mpks-pop-head"><span class="mpks-pop-label">KONSEP NUKLEUS · MPKS 2035</span><button type="button" class="mpks-pop-x" aria-label="Tutup">×</button></div><h3></h3><p></p><div class="mpks-pop-foot"><button type="button" class="mpks-pop-close">Tutup</button></div>';
- document.body.appendChild(popup);
- popup.querySelectorAll('.mpks-pop-x,.mpks-pop-close').forEach(function(b){b.addEventListener('click',function(){popup.close()})});
- popup.addEventListener('click',function(e){if(e.target===popup)popup.close()});
-}
-function apply(){
- if(!/MPKS/i.test(label?label.textContent:''))return;
- var chapters=[].slice.call(root.querySelectorAll('.rtchapter'));
- var ch=chapters.find(function(x){return /konsep pembangunan/i.test(x.querySelector(':scope > h2')?.textContent||'')&&/konsep nukleus/i.test(x.textContent)});
- if(!ch)return;
- var list=[].slice.call(ch.querySelectorAll('ul,ol,.mpks-motion-list,.rt-shared-card-grid')).find(function(el){
- var a=[].slice.call(el.children);return a.length===5&&headings.every(function(t){return a.some(function(item){return (item.textContent||'').toLowerCase().includes(t.toLowerCase())})});
- });
- if(!list||list.classList.contains('mpks-nucleus-grid'))return;
- var cards=[].slice.call(list.children);
- var contents=cards.map(function(el){return (el.textContent||'').replace(/^\\s*\\d{1,2}\\s*/,'').replace(/\\s+/g,' ').trim()});
- list.classList.remove('mpks-motion-list');list.classList.add('mpks-nucleus-grid');
- cards.forEach(function(card,i){
-  var entire=contents[i];var pos=entire.toLowerCase().indexOf(headings[i].toLowerCase());
-  var description=pos>=0?entire.slice(pos+headings[i].length).replace(/^\\s*:\\s*/,'').trim():entire;
-  card.replaceChildren();card.className='mpks-nucleus-tile';card.setAttribute('role','button');card.setAttribute('tabindex','0');card.setAttribute('aria-label','Ketahui lanjut: '+headings[i]);
-  var icon=document.createElement('span');icon.className='mpks-nucleus-icon';icon.setAttribute('aria-hidden','true');icon.textContent=symbols[i];
-  var small=document.createElement('small');small.className='mpks-nucleus-small';small.textContent='ASPEK '+String(i+1).padStart(2,'0');
-  var title=document.createElement('strong');title.className='mpks-nucleus-title';title.textContent=headings[i];
-  var action=document.createElement('button');action.className='mpks-nucleus-action';action.type='button';action.textContent='Ketahui Lanjut ›';
-  card.append(icon,small,title,action);
-  function open(){popup.querySelector('h3').textContent=headings[i];popup.querySelector('p').textContent=description;popup.showModal()}
-  action.addEventListener('click',open);
-  card.addEventListener('click',function(e){if(!e.target.closest('button'))open()});
-  card.addEventListener('keydown',function(e){if(e.target===card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open()}});
- });
-}
-var pending=false;new MutationObserver(function(){if(pending)return;pending=true;requestAnimationFrame(function(){pending=false;apply()})}).observe(root,{childList:true,subtree:true});apply();
-})();
-</script>
+
 
 <style id="mpks-nucleus-robust-hotfix-20261102">
 #rt11-modal .rtchapter .mpks-nucleus-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;list-style:none!important;margin:20px 0!important;padding:0!important}
@@ -16836,46 +16793,7 @@ var pending=false;new MutationObserver(function(){if(pending)return;pending=true
 @media(max-width:850px){#rt11-modal .rtchapter .mpks-nucleus-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:560px){#rt11-modal .rtchapter .mpks-nucleus-grid{grid-template-columns:1fr!important}}
 </style>
-<script id="mpks-nucleus-robust-dom-hotfix-20261102">
-(function(){
-'use strict';
-const root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');if(!root)return;
-const names=['Hierarki Petempatan','Konurbasi Nasional','Rangkaian Pengangkutan Utama','Kawasan Keutamaan Pembangunan','Kawasan Berisiko Bencana & KSAS'];
-const icons=['⌂','◎','↗','▦','♧'];
-const tidy=x=>(x||'').replace(/\s+/g,' ').trim();
-let dialog=document.getElementById('mpks-nucleus-popup');
-if(!dialog){dialog=document.createElement('dialog');dialog.id='mpks-nucleus-popup';dialog.innerHTML='<div class="mpks-pop-head"><span class="mpks-pop-label">KONSEP NUKLEUS · MPKS 2035</span><button type="button" class="mpks-pop-x" aria-label="Tutup">×</button></div><h3></h3><p></p><div class="mpks-pop-foot"><button type="button" class="mpks-pop-close">Tutup</button></div>';document.body.appendChild(dialog);dialog.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>dialog.close()));dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()})}
-function render(){
- if(!/MPKS/i.test(label?.textContent||''))return;
- const ch=[...root.querySelectorAll('.rtchapter')].find(x=>/konsep pembangunan/i.test(x.querySelector(':scope > h2')?.textContent||'')&&/konsep nukleus/i.test(x.textContent));if(!ch||ch.querySelector('.mpks-nucleus-grid'))return;
- // Locate the five original entries regardless of intervening timeline/card transformations.
- let list=[...ch.querySelectorAll('ul,ol,.rtpiece,.rt-shared-card-grid,.rt-history-real-flow,.rt-final-pillar-grid')].find(el=>{
-  const items=[...el.children].filter(c=>c.nodeType===1);
-  return items.length===5&&names.every(n=>items.some(e=>tidy(e.textContent).toLowerCase().includes(n.toLowerCase())));
- });
- if(!list)return;
- const originals=[...list.children];
- const source=names.map(n=>originals.find(x=>tidy(x.textContent).toLowerCase().includes(n.toLowerCase())));
- if(source.some(x=>!x))return;
- const grid=document.createElement('div');grid.className='mpks-nucleus-grid';grid.setAttribute('aria-label','Lima aspek konsep nukleus MPKS');
- source.forEach((original,i)=>{
-  const full=tidy(original.textContent).replace(/^\d{1,2}\s*/,'');
-  const at=full.toLowerCase().indexOf(names[i].toLowerCase());
-  const desc=at<0?full:full.slice(at+names[i].length).replace(/^\s*:\s*/,'').trim();
-  const tile=document.createElement('article');tile.className='mpks-nucleus-tile';tile.tabIndex=0;tile.setAttribute('role','button');tile.setAttribute('aria-label','Ketahui lanjut '+names[i]);
-  const icon=document.createElement('span');icon.className='mpks-nucleus-icon';icon.textContent=icons[i];icon.setAttribute('aria-hidden','true');
-  const small=document.createElement('small');small.className='mpks-nucleus-small';small.textContent='ASPEK '+String(i+1).padStart(2,'0');
-  const title=document.createElement('strong');title.className='mpks-nucleus-title';title.textContent=names[i];
-  const btn=document.createElement('button');btn.type='button';btn.className='mpks-nucleus-action';btn.textContent='Ketahui Lanjut ›';
-  function open(){dialog.querySelector('h3').textContent=names[i];dialog.querySelector('p').textContent=desc||full;if(!dialog.open)dialog.showModal()}
-  btn.addEventListener('click',open);tile.addEventListener('click',e=>{if(!e.target.closest('button'))open()});tile.addEventListener('keydown',e=>{if(e.target===tile&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open()}});
-  tile.append(icon,small,title,btn);grid.append(tile);
- });
- list.replaceWith(grid);
-}
-let scheduled=false;new MutationObserver(()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;render()})}).observe(root,{childList:true,subtree:true});render();
-})();
-</script>
+
 
 <style id="mpkl-rkkl-bento-design-20261102">
 #rt11-modal .rtchapter .mpkl-rkkl-bento{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;list-style:none!important;margin:24px 0!important;padding:0!important;max-width:none!important}
@@ -16904,46 +16822,7 @@ let scheduled=false;new MutationObserver(()=>{if(scheduled)return;scheduled=true
 @media(prefers-reduced-motion:no-preference){#rt11-modal .mpkl-rkkl-card{animation:mpkl-rkkl-enter .65s both;animation-delay:var(--card-delay,0ms)}@keyframes mpkl-rkkl-enter{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .mpkl-rkkl-card{animation:none!important;transition:none!important}}
 </style>
-<script id="mpkl-rkkl-bento-handler-20261102">
-(function(){
-'use strict';
-const root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');if(!root)return;
-const titles=['PANDUAN MPKL','KAWALAN PEMBANGUNAN','MEMELIHARA ALAM SEKITAR','MENINGKATKAN KUALITI HIDUP','KEUTAMAAN PELAKSANAAN','MENGGALAKKAN PELABURAN'];
-const symbols=['▤','▦','♧','♡','◷','↗'];
-const tidy=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();
-let dialog=document.getElementById('mpkl-rkkl-detail-dialog');
-if(!dialog){dialog=document.createElement('dialog');dialog.id='mpkl-rkkl-detail-dialog';dialog.innerHTML='<div class="mpkl-dialog-top"><span>KEPENTINGAN RKKL 2030</span><button type="button" class="mpkl-dialog-x" aria-label="Tutup">×</button></div><h3></h3><p></p><div class="mpkl-dialog-footer"><button type="button" class="mpkl-dialog-close">Tutup</button></div>';document.body.appendChild(dialog);dialog.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>dialog.close()));dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()})}
-function apply(){
- if(!/MPKL/.test(label?.textContent||''))return;
- const chapters=[...root.querySelectorAll('.rtchapter')];
- for(const ch of chapters){
-  if(ch.querySelector('.mpkl-rkkl-bento'))continue;
-  const lists=[...ch.querySelectorAll('ul,ol,.rt-shared-card-grid,.rt-final-pillar-grid,.rt-history-real-flow,.rtpiece')];
-  const source=lists.find(el=>{const children=[...el.children];return children.length===6&&titles.every(t=>children.some(c=>tidy(c).toUpperCase().includes(t)))});
-  if(!source)continue;
-  const originals=[...source.children];
-  const grid=document.createElement('div');grid.className='mpkl-rkkl-bento';grid.setAttribute('aria-label','Enam kepentingan RKKL 2030');
-  titles.forEach((title,i)=>{
-   const original=originals.find(e=>tidy(e).toUpperCase().includes(title));
-   const full=tidy(original).replace(/^\d{1,2}\s*/,'');
-   const at=full.toUpperCase().indexOf(title);
-   const desc=at>=0?full.slice(at+title.length).replace(/^\s*:\s*/,'').trim():full;
-   const card=document.createElement('article');card.className='mpkl-rkkl-card';card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label','Ketahui lanjut '+title);card.style.setProperty('--card-delay',i*75+'ms');
-   const icon=document.createElement('span');icon.className='mpkl-rkkl-icon';icon.textContent=symbols[i];icon.setAttribute('aria-hidden','true');
-   const idx=document.createElement('small');idx.className='mpkl-rkkl-index';idx.textContent='KEPENTINGAN '+String(i+1).padStart(2,'0');
-   const heading=document.createElement('strong');heading.className='mpkl-rkkl-heading';heading.textContent=title;
-   const snippet=document.createElement('p');snippet.className='mpkl-rkkl-snippet';snippet.textContent=desc;
-   const btn=document.createElement('button');btn.type='button';btn.className='mpkl-rkkl-more';btn.textContent='Lihat Peranan ›';
-   function open(){dialog.querySelector('h3').textContent=title;dialog.querySelector('p').textContent=desc||full;if(!dialog.open)dialog.showModal()}
-   btn.addEventListener('click',open);card.addEventListener('click',e=>{if(!e.target.closest('button'))open()});card.addEventListener('keydown',e=>{if(e.target===card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open()}});
-   card.append(icon,idx,heading,snippet,btn);grid.append(card);
-  });
-  source.replaceWith(grid);
- }
-}
-let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;apply()})}).observe(root,{childList:true,subtree:true});apply();
-})();
-</script>
+
 
 <style id="suo-six-rt-diverse-20261102">
 /* Six distinct, scoped visual languages. Never targets goals, pillars, background or plan chapters. */
@@ -16974,38 +16853,7 @@ let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestA
 @media(prefers-reduced-motion:no-preference){#rt11-modal .rtchapter.suo-diverse-section .suo-diverse-item{animation:suo-diverse-enter .62s both;animation-delay:var(--suo-delay,0ms)}@keyframes suo-diverse-enter{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .rtchapter.suo-diverse-section .suo-diverse-item{animation:none!important;transition:none!important;transform:none!important}}
 </style>
-<script id="suo-six-rt-diverse-binding-20261102">
-(function(){
-'use strict';
-const root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');if(!root||!label)return;
-const styles={MPKS:'mpks',MPKL:'mpkl',MPSp:'mpsp',MPS:'mps',MPKj:'mpkj',MPAJ:'mpaj'};
-const protectedHead=/matlamat|teras|latar belakang|pelan|peta cadangan|guna tanah|kronologi|sejarah/i;
-const t=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();
-function apply(){
- const code=(label.textContent.match(/(?:MPKS|MPKL|MPSp|MPKj|MPAJ|MPS)\b/i)||[])[0];if(!code)return;
- const style=styles[code]||styles[Object.keys(styles).find(k=>k.toLowerCase()===code.toLowerCase())];if(!style)return;
- root.querySelectorAll('.rtchapter').forEach(section=>{
-  const heading=t(section.querySelector(':scope > h2'));if(!heading||protectedHead.test(heading))return;
-  if(section.classList.contains('rt-goal')||section.classList.contains('rt-pillars'))return;
-  const lists=[...section.querySelectorAll('.rtpiece > ul,.rtpiece > ol,.rtpiece > div > ul,.rtpiece > div > ol')];
-  for(const list of lists){
-    if(list.classList.contains('suo-diverse-list')||list.closest('.suo-diverse-list'))continue;
-    const children=[...list.children];if(children.length<3||children.length>12||!children.every(c=>c.tagName==='LI'))continue;
-    if(list.querySelector('img,figure,iframe,table,video,svg,details,button'))continue;
-    if(children.some(c=>t(c).length<18))continue;
-    section.classList.add('suo-diverse-section','suo-style-'+style);
-    list.classList.add('suo-diverse-list');
-    children.forEach((item,i)=>{
-      item.classList.add('suo-diverse-item');
-      item.dataset.suoNumber=String(i+1).padStart(2,'0');
-      item.style.setProperty('--suo-delay',Math.min(i,6)*65+'ms');
-    });
-  }
- });
-}
-let scheduled=false;new MutationObserver(()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;apply()})}).observe(root,{childList:true,subtree:true});apply();
-})();
-</script>
+
 
 <style id="mpsp-amendment-timeline-grouped-20261102">
 #rt11-modal .rtchapter .mpsp-amendments-flow{position:relative;display:grid;gap:18px;list-style:none;margin:22px 0;padding:8px 0 8px 59px}
@@ -17025,49 +16873,7 @@ let scheduled=false;new MutationObserver(()=>{if(scheduled)return;scheduled=true
 @media(max-width:650px){#rt11-modal .rtchapter .mpsp-amendments-flow{padding-left:44px}#rt11-modal .rtchapter .mpsp-amendments-flow::before{left:13px}#rt11-modal .mpsp-amendment-card::before{left:-43px}#rt11-modal .mpsp-amendment-facts{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .mpsp-amendment-card{transition:none}}
 </style>
-<script id="mpsp-amendment-timeline-grouping-20261102">
-(function(){
-'use strict';
-const root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');
-if(!root||!label)return;
-const tidy=s=>(s||'').replace(/\s+/g,' ').trim();
-function transform(){
- if(!/\bMPSp\b/i.test(label.textContent))return;
- const sections=[...root.querySelectorAll('.rtchapter')];
- for(const sec of sections){
-  if(sec.querySelector('.mpsp-amendments-flow'))continue;
-  const heading=tidy(sec.querySelector(':scope > h2')?.textContent);
-  if(/matlamat|teras|latar belakang|pelan/i.test(heading))continue;
-  const nodes=[...sec.querySelectorAll('.rtpiece li,.rtpiece > div,.rtpiece > p')];
-  const groups=nodes.filter(el=>/pengubahan\s*[1-9]/i.test(tidy(el.textContent).slice(0,135))&&!el.closest('.rt-kkb-history,.rt-background-infographic'));
-  const list=[...sec.querySelectorAll('.rtpiece ul,.rtpiece ol')].find(el=>{
-   const children=[...el.children];return children.length>=2&&children.every(x=>/pengubahan\s*\d/i.test(tidy(x.textContent).slice(0,135)));
-  });
-  if(!list)continue;
-  const items=[...list.children];const flow=document.createElement('div');flow.className='mpsp-amendments-flow';flow.setAttribute('aria-label','Aliran siri pengubahan Rancangan Tempatan MPSp');
-  items.forEach((li,i)=>{
-   const text=tidy(li.textContent);
-   const name=(text.match(/pengubahan\s*\d+/i)||[])[0]||'Pengubahan '+(i+1);
-   const date=(text.match(/(?:tarikh\s*warta\s*:?\s*)?(\d{1,2}\s+(?:januari|februari|mac|april|mei|jun|julai|ogos|september|oktober|november|disember)\s+\d{4})/i)||[])[1]||'';
-   const gazette=(text.match(/(?:no\.?\s*warta\s*:?\s*)(?:no\.?\s*warta\s*)?([A-Za-z0-9\/-]+)/i)||[])[1]||'';
-   const card=document.createElement('article');card.className='mpsp-amendment-card';
-   const head=document.createElement('div');head.className='mpsp-amendment-top';
-   const number=document.createElement('span');number.className='mpsp-amendment-count';number.textContent=String(i+1).padStart(2,'0');
-   const title=document.createElement('strong');title.className='mpsp-amendment-name';title.textContent=name.replace(/\b\w/g,c=>c.toUpperCase());
-   head.append(number,title);card.append(head);
-   if(/dibatalkan/i.test(text)){const status=document.createElement('span');status.className='mpsp-amendment-status';status.textContent='Dibatalkan';card.append(status)}
-   const facts=document.createElement('div');facts.className='mpsp-amendment-facts';
-   [['Tarikh Warta',date],['No. Warta',gazette]].forEach(([k,v])=>{if(!v)return;const cell=document.createElement('div');cell.className='mpsp-amendment-fact';const small=document.createElement('small');small.textContent=k;const strong=document.createElement('strong');strong.textContent=v;cell.append(small,strong);facts.append(cell)});
-   if(facts.children.length)card.append(facts);
-   if(!facts.children.length){const extra=document.createElement('p');extra.className='mpsp-amendment-extra';extra.textContent=text;card.append(extra)}
-   flow.append(card);
-  });
-  list.replaceWith(flow);
- }
-}
-let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;transform()})}).observe(root,{childList:true,subtree:true});transform();
-})();
-</script>
+
 
 <style id="mpks-nucleus-visual-refresh-20261103">
 #rt11-modal .rtchapter .mpks-nucleus-showcase{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;margin:22px 0 30px!important;max-width:none!important;isolation:isolate}
@@ -17101,47 +16907,7 @@ let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;reque
 @media(prefers-reduced-motion:no-preference){#rt11-modal .mpks-nucleus-showcase-card{animation:mpks-nucleus-arrive .55s both;animation-delay:var(--delay)}@keyframes mpks-nucleus-arrive{from{opacity:0;translate:0 20px}to{opacity:1;translate:0 0}}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .mpks-nucleus-showcase-card{animation:none;transition:none;transform:none!important}}
 </style>
-<script id="mpks-nucleus-visual-refresh-handler-20261103">
-(function(){
-'use strict';
-const root=document.getElementById('rt11-body'), label=document.getElementById('rt11-label');if(!root||!label)return;
-const titles=['Hierarki Petempatan','Konurbasi Nasional','Rangkaian Pengangkutan Utama','Kawasan Keutamaan Pembangunan','Kawasan Berisiko Bencana & KSAS'];
-const icons=['⌂','◎','↗','▦','♧'];
-const text=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();
-let dialog=document.getElementById('mpks-nucleus-showcase-dialog');
-if(!dialog){dialog=document.createElement('dialog');dialog.id='mpks-nucleus-showcase-dialog';dialog.innerHTML='<div class="mpks-showcase-dialog-head"><span class="mpks-showcase-dialog-label">KONSEP NUKLEUS · MPKS 2035</span><button type="button" class="mpks-showcase-dialog-x" aria-label="Tutup">×</button></div><h3></h3><p></p><div class="mpks-showcase-dialog-footer"><button type="button" class="mpks-showcase-dialog-close">Tutup</button></div>';document.body.appendChild(dialog);dialog.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>dialog.close()));dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()})}
-function refresh(){
- if(!/\bMPKS\b/i.test(label.textContent))return;
- const section=[...root.querySelectorAll('.rtchapter')].find(ch=>/konsep pembangunan/i.test(ch.querySelector(':scope > h2')?.textContent||'')&&/konsep nukleus/i.test(text(ch)));if(!section||section.querySelector('.mpks-nucleus-showcase'))return;
- const lists=[...section.querySelectorAll('ul,ol')];
- let original=lists.find(list=>{const els=[...list.children];return els.length===5&&titles.every(t=>els.some(el=>text(el).toLowerCase().includes(t.toLowerCase())))});
- if(!original){
-   const candidates=[...section.querySelectorAll('.rtpiece,.rt-shared-card-grid,.rt-final-pillar-grid,.rt-history-real-flow')];
-   original=candidates.find(el=>{const els=[...el.children];return els.length===5&&titles.every(t=>els.some(c=>text(c).toLowerCase().includes(t.toLowerCase())))});
- }
- if(!original)return;
- const entries=[...original.children];
- const grid=document.createElement('div');grid.className='mpks-nucleus-showcase';grid.setAttribute('aria-label','Lima aspek asas Konsep Nukleus');
- titles.forEach((title,i)=>{
-  const source=entries.find(el=>text(el).toLowerCase().includes(title.toLowerCase()));
-  const full=text(source).replace(/^\d{1,2}\s*/,'');
-  const at=full.toLowerCase().indexOf(title.toLowerCase());
-  const desc=(at>=0?full.slice(at+title.length):full).replace(/^\s*:\s*/,'').trim()||full;
-  const card=document.createElement('article');card.className='mpks-nucleus-showcase-card';card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label','Ketahui lanjut '+title);card.style.setProperty('--delay',i*65+'ms');
-  const ico=document.createElement('span');ico.className='mpks-showcase-icon';ico.textContent=icons[i];ico.setAttribute('aria-hidden','true');
-  const number=document.createElement('small');number.className='mpks-showcase-kicker';number.textContent='ASPEK '+String(i+1).padStart(2,'0');
-  const head=document.createElement('strong');head.className='mpks-showcase-title';head.textContent=title;
-  const brief=document.createElement('p');brief.className='mpks-showcase-summary';brief.textContent=desc;
-  const button=document.createElement('button');button.type='button';button.className='mpks-showcase-action';button.textContent='Ketahui Lanjut ›';
-  const open=()=>{dialog.querySelector('h3').textContent=title;dialog.querySelector('p').textContent=desc;if(!dialog.open)dialog.showModal()};
-  button.addEventListener('click',open);card.addEventListener('click',e=>{if(!e.target.closest('button'))open()});card.addEventListener('keydown',e=>{if(e.target===card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open()}});
-  card.append(ico,number,head,brief,button);grid.append(card);
- });
- original.replaceWith(grid);
-}
-let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;refresh()})}).observe(root,{childList:true,subtree:true});refresh();
-})();
-</script>
+
 
 <style id="mpsp-pengubahan-one-card-final-20261103">
 #rt11-modal .mpsp-pengubahan-unified{position:relative;display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:18px!important;max-width:none!important;padding:10px 0 10px 60px!important;margin:16px 0 28px!important;list-style:none!important}
@@ -17162,63 +16928,181 @@ let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestA
 @media(max-width:650px){#rt11-modal .mpsp-pengubahan-unified{padding-left:44px!important}#rt11-modal .mpsp-pengubahan-unified::before{left:13px}#rt11-modal .mpsp-pengubahan-entry::before{left:-43px}#rt11-modal .mpsp-pe-details{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .mpsp-pengubahan-entry{transition:none!important}}
 </style>
-<script id="mpsp-pengubahan-one-card-final-handler-20261103">
+
+
+<style id="suo-rt-corrected-render-v3">
+/* Stable after-render replacements, scoped by active RT and chapter. */
+#rt11-modal .suo-real-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;margin:22px 0 30px!important;padding:0!important;list-style:none!important}
+#rt11-modal .suo-real-grid>.suo-real-card{min-width:0!important;width:100%!important;height:auto!important;max-height:none!important;min-height:218px!important;grid-column:auto!important;position:relative!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;margin:0!important;padding:23px!important;box-sizing:border-box!important;border:1px solid #e1d0a0!important;border-radius:21px!important;background:linear-gradient(142deg,#fff,#fff5dd)!important;box-shadow:0 11px 27px #1723381a!important;transition:transform .3s,box-shadow .3s!important;cursor:pointer;overflow:hidden!important}
+#rt11-modal .suo-real-grid>.suo-real-card::before,#rt11-modal .suo-real-grid>.suo-real-card::after{display:none!important}
+#rt11-modal .suo-real-grid>.suo-real-card:nth-child(3n+2){background:linear-gradient(142deg,#fff,#e9f8f3)!important}
+#rt11-modal .suo-real-grid>.suo-real-card:nth-child(3n+3){background:linear-gradient(142deg,#fff,#edf3ff)!important}
+#rt11-modal .suo-real-grid>.suo-real-card:hover{transform:translateY(-7px)!important;box-shadow:0 23px 38px #17233830!important;border-color:#bc923e!important}
+#rt11-modal .suo-real-card .suo-real-icon{display:grid;place-items:center;flex:none;width:47px;height:47px;border-radius:13px;background:#202b42;color:white;font-size:22px;margin:0 0 15px}
+#rt11-modal .suo-real-card .suo-real-label{font-size:11px;font-weight:850;letter-spacing:.11em;color:#9c7532;margin-bottom:8px}
+#rt11-modal .suo-real-card .suo-real-title{font-size:clamp(15px,1.5vw,19px);line-height:1.4;color:#202b42;font-weight:850;margin:0 0 12px}
+#rt11-modal .suo-real-card .suo-real-brief{font-size:13px;line-height:1.65;color:#546175;margin:0 0 18px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+#rt11-modal .suo-real-card .suo-real-button{margin-top:auto;border:1px solid #be993e;background:#fffaf1;border-radius:99px;padding:10px 13px;color:#202b42;font-size:12px;font-weight:800;cursor:pointer}
+#suo-real-modal{position:fixed;inset:0;margin:auto;width:min(620px,calc(100vw - 30px));max-height:80vh;overflow:auto;background:#fffbf4;border:1px solid #d1ae55;border-radius:24px;padding:28px;color:#273449;box-shadow:0 30px 80px #171a2670}
+#suo-real-modal::backdrop{background:#172033ad;backdrop-filter:blur(6px)}
+#suo-real-modal header{display:flex;justify-content:space-between;align-items:center;gap:10px}
+#suo-real-modal header small{color:#9a7634;letter-spacing:.12em;font-weight:850}
+#suo-real-modal button{cursor:pointer}
+#suo-real-modal .suo-real-close{border:0;border-radius:12px;background:#f3e9d8;padding:8px 15px;color:#202b42;font-weight:800}
+#suo-real-modal h3{color:#202b42;font-size:clamp(21px,3vw,29px);margin:18px 0}
+#suo-real-modal p{font-size:16px;line-height:1.8;color:#45546b}
+#rt11-modal .suo-mpsp-flow{position:relative;display:grid!important;grid-template-columns:1fr!important;gap:16px!important;margin:19px 0 24px!important;padding:6px 0 6px 54px!important;list-style:none!important}
+#rt11-modal .suo-mpsp-flow::before{content:"";position:absolute;left:18px;top:20px;bottom:20px;width:4px;background:linear-gradient(#af480c,#e5a53a,#af480c);border-radius:10px}
+#rt11-modal .suo-mpsp-flow>.suo-mpsp-card{display:block!important;position:relative!important;min-width:0!important;width:100%!important;max-width:none!important;height:auto!important;min-height:0!important;grid-column:auto!important;box-sizing:border-box!important;padding:23px!important;margin:0!important;border:1px solid #edc39d!important;border-radius:21px!important;background:linear-gradient(140deg,#fff,#fff1db)!important;box-shadow:0 12px 28px #863e181a!important;transition:transform .3s,box-shadow .3s!important;overflow:visible!important}
+#rt11-modal .suo-mpsp-card::before{content:"";position:absolute;top:30px;left:-47px;width:16px;height:16px;background:#ae490e;border:4px solid white;border-radius:50%;box-shadow:0 0 0 3px #e5ab57}
+#rt11-modal .suo-mpsp-card::after{display:none!important}
+#rt11-modal .suo-mpsp-card:hover{transform:translateY(-4px)!important;box-shadow:0 20px 36px #863e1830!important}
+#rt11-modal .suo-mpsp-head{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-bottom:12px}
+#rt11-modal .suo-mpsp-number{display:grid;place-items:center;flex:none;width:43px;height:43px;border-radius:12px;background:#ad4b0d;color:white;font-weight:850}
+#rt11-modal .suo-mpsp-title{font-weight:850;font-size:20px;color:#963e0a}
+#rt11-modal .suo-mpsp-status{border-radius:99px;padding:6px 11px;background:#ffe8dd;color:#9b3b1a;font-size:12px;font-weight:800}
+#rt11-modal .suo-mpsp-desc{color:#435168;font-size:14px;line-height:1.6}
+#rt11-modal .suo-mpsp-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:13px}
+#rt11-modal .suo-mpsp-fact{padding:15px;border-radius:14px;background:#fffdfa;border:1px solid #ecd3ac}
+#rt11-modal .suo-mpsp-fact small{display:block;color:#a95b1d;font-size:11px;font-weight:800;margin-bottom:7px}
+#rt11-modal .suo-mpsp-fact strong{color:#293548;font-size:16px;overflow-wrap:anywhere}
+#rt11-modal .suo-mpsp-note{font-size:13px;color:#526175;line-height:1.7;margin-top:12px}
+#rt11-modal .suo-varied-layout{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:15px!important;list-style:none!important;padding:0!important;margin:18px 0!important}
+#rt11-modal .suo-varied-layout>.suo-varied-card{box-sizing:border-box!important;display:block!important;min-width:0!important;width:100%!important;height:auto!important;grid-column:auto!important;margin:0!important;padding:22px!important;border-radius:19px!important;border:1px solid color-mix(in srgb,var(--rt-main) 28%,#e4e3db)!important;background:linear-gradient(130deg,#fff,var(--rt-soft))!important;box-shadow:0 9px 23px #1b27321b!important;transition:transform .3s,box-shadow .3s!important}
+#rt11-modal .suo-varied-layout>.suo-varied-card::before{content:attr(data-step);display:inline-grid;place-items:center;width:34px;height:34px;margin:0 12px 10px 0;border-radius:10px;background:var(--rt-main);color:#fff;font-size:12px;font-weight:800;position:static!important;vertical-align:middle}
+#rt11-modal .suo-varied-layout>.suo-varied-card::after{display:none!important}
+#rt11-modal .suo-varied-card:hover{transform:translateY(-6px)!important;box-shadow:0 20px 38px #2435482e!important}
+#rt11-modal.suo-active-MPKL .suo-varied-layout>.suo-varied-card:nth-child(4n+1){background:linear-gradient(135deg,#fff,#ffebf5)!important}
+#rt11-modal.suo-active-MPSp .suo-varied-layout>.suo-varied-card{border-left:5px solid #c67e23!important}
+#rt11-modal.suo-active-MPS .suo-varied-layout>.suo-varied-card{border-radius:30px 12px 30px 12px!important}
+#rt11-modal.suo-active-MPKj .suo-varied-layout{grid-template-columns:1fr!important;border-left:4px solid var(--rt-main)!important;padding-left:20px!important}
+#rt11-modal.suo-active-MPAJ .suo-varied-layout{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+@media(max-width:900px){#rt11-modal .suo-real-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}#rt11-modal.suo-active-MPAJ .suo-varied-layout{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:650px){#rt11-modal .suo-real-grid,#rt11-modal .suo-varied-layout,#rt11-modal.suo-active-MPAJ .suo-varied-layout{grid-template-columns:1fr!important}#rt11-modal .suo-mpsp-facts{grid-template-columns:1fr}#rt11-modal .suo-mpsp-flow{padding-left:43px!important}#rt11-modal .suo-mpsp-flow::before{left:12px}#rt11-modal .suo-mpsp-card::before{left:-40px}}
+@media(prefers-reduced-motion:reduce){#rt11-modal :is(.suo-real-card,.suo-mpsp-card,.suo-varied-card){transition:none!important;transform:none!important}}
+</style>
+<script id="suo-rt-corrected-render-v3">
 (function(){
 'use strict';
-const root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label');
-if(!root||!label)return;
-const compact=v=>(v||'').replace(/\s+/g,' ').trim();
-const directText=el=>{const clone=el.cloneNode(true);clone.querySelectorAll('ul,ol,.rt-kkb-history,.rt-history-real-flow,.rt-background-infographic,.rt-final-history-flow').forEach(x=>x.remove());return compact(clone.textContent)};
-function rebuild(){
- if(!/\bMPSp\b/i.test(label.textContent))return;
- for(const section of root.querySelectorAll('.rtchapter')){
-  const h=compact(section.querySelector(':scope > h2')?.textContent);
-  if(!/latar belakang/i.test(h))continue;
-  if(section.querySelector('.mpsp-pengubahan-unified'))continue;
-  const all=[...section.querySelectorAll('ul,ol')];
-  const list=all.find(x=>{
-   if(x.closest('.mpsp-pengubahan-unified'))return false;
-   const direct=[...x.children].filter(e=>e.matches('li'));
-   return direct.length>=2 && direct.every(e=>/pengubahan\s*\d+/i.test(directText(e).slice(0,240))) &&
-     /tarikh\s*warta|no\.?\s*warta/i.test(compact(x.textContent));
+const root=document.getElementById('rt11-body'),label=document.getElementById('rt11-label'),modal=document.getElementById('rt11-modal');
+if(!root||!label||!modal)return;
+const codes=['MPKS','MPKL','MPSp','MPS','MPKj','MPAJ'];
+const names=['Hierarki Petempatan','Konurbasi Nasional','Rangkaian Pengangkutan Utama','Kawasan Keutamaan Pembangunan','Kawasan Berisiko Bencana & KSAS'];
+const icons=['⌂','◎','↗','▦','♧'];
+const norm=e=>(typeof e==='string'?e:e?.textContent||'').replace(/\s+/g,' ').trim();
+let dialog=document.getElementById('suo-real-modal');
+if(!dialog){
+ dialog=document.createElement('dialog');dialog.id='suo-real-modal';
+ dialog.innerHTML='<header><small>MAKLUMAT RANCANGAN TEMPATAN</small><button class="suo-real-close" type="button">Tutup ×</button></header><h3></h3><p></p>';
+ document.body.append(dialog);dialog.querySelector('button').addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+}
+function current(){const str=label.textContent||'';return codes.find(c=>new RegExp('(?:^|[^A-Za-z])'+c+'(?:$|[^A-Za-z])','i').test(str))||''}
+function topText(el){
+ const clone=el.cloneNode(true);
+ clone.querySelectorAll('ul,ol,.rt-kkb-history,.rt-history-real-flow,.rt-background-infographic,.rt-final-history-flow,.rt-v3-timeline').forEach(n=>n.remove());
+ return norm(clone);
+}
+function extractDetail(el,term){
+ const full=norm(el);
+ const p=full.toLowerCase().indexOf(term.toLowerCase());
+ return (p>=0?full.slice(p+term.length):full).replace(/^\s*:\s*/,'').replace(/^\s*\d{1,2}\s*/,'').trim()||full;
+}
+function convertMPKS(ch){
+ if(!/konsep pembangunan/i.test(norm(ch.querySelector(':scope > h2')))||!/konsep nukleus/i.test(norm(ch)))return;
+ if(ch.querySelector('.suo-real-grid'))return;
+ // The source is five LI entries (with possibly added timeline wrappers).
+ let candidates=[...ch.querySelectorAll('ul,ol,.rtpiece,.rt-final-pillar-grid,.rt-history-real-flow,.rt-shared-card-grid')];
+ const parent=candidates.find(el=>{
+  const direct=[...el.children].filter(c=>c.nodeType===1);
+  return direct.length===5&&names.every(n=>direct.some(d=>norm(d).toLowerCase().includes(n.toLowerCase())));
+ });
+ if(!parent)return;
+ const list=[...parent.children],grid=document.createElement('div');grid.className='suo-real-grid';
+ names.forEach((name,i)=>{
+  const source=list.find(el=>norm(el).toLowerCase().includes(name.toLowerCase()));
+  const description=extractDetail(source,name);
+  const card=document.createElement('article');card.className='suo-real-card';card.tabIndex=0;card.setAttribute('role','button');
+  const ico=document.createElement('span');ico.className='suo-real-icon';ico.textContent=icons[i];ico.setAttribute('aria-hidden','true');
+  const count=document.createElement('small');count.className='suo-real-label';count.textContent='ASPEK '+String(i+1).padStart(2,'0');
+  const title=document.createElement('strong');title.className='suo-real-title';title.textContent=name;
+  const brief=document.createElement('p');brief.className='suo-real-brief';brief.textContent=description;
+  const button=document.createElement('button');button.type='button';button.className='suo-real-button';button.textContent='Ketahui Lanjut ›';
+  const open=()=>{dialog.querySelector('h3').textContent=name;dialog.querySelector('p').textContent=description;if(!dialog.open)dialog.showModal()};
+  card.addEventListener('click',e=>{if(e.target.closest('button'))return;open()});card.addEventListener('keydown',e=>{if(e.target===card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open()}});button.addEventListener('click',open);
+  card.append(ico,count,title,brief,button);grid.append(card);
+ });
+ parent.replaceWith(grid);
+}
+function convertMPSp(ch){
+ if(!/latar belakang/i.test(norm(ch.querySelector(':scope > h2'))))return;
+ if(ch.querySelector('.suo-mpsp-flow'))return;
+ const li=[...ch.querySelectorAll('li')].filter(el=>/pengubahan\s*\d+/i.test(topText(el).slice(0,240)));
+ if(li.length<2)return;
+ // Take a common direct parent of the amendment entries, even if accordion histories were inserted inside each LI.
+ const byParent=new Map();
+ li.forEach(el=>{const p=el.parentElement;if(!byParent.has(p))byParent.set(p,[]);byParent.get(p).push(el)});
+ const entry=[...byParent.entries()].find(([p,arr])=>arr.length>=2&&arr.length===([...p.children].filter(c=>c.matches('li')).length));
+ if(!entry)return;
+ const [parent,items]=entry;
+ const flow=document.createElement('div');flow.className='suo-mpsp-flow';flow.setAttribute('aria-label','Siri Pengubahan Rancangan Tempatan MPSp');
+ items.forEach((item,i)=>{
+  const line=topText(item), full=norm(item);
+  const num=(line.match(/pengubahan\s*(\d+)/i)||full.match(/pengubahan\s*(\d+)/i)||[])[1]||String(i+1);
+  const date=(full.match(/(\d{1,2}\s+(?:Januari|Februari|Mac|April|Mei|Jun|Julai|Ogos|September|Oktober|November|Disember)\s+\d{4})/i)||[])[1]||'';
+  const gazette=(full.match(/No\.?\s*Warta\s*:?\s*(?:No\.?\s*Warta\s*:?\s*)?(\d+[A-Za-z0-9\/-]*)/i)||[])[1]||'';
+  const card=document.createElement('article');card.className='suo-mpsp-card';
+  const head=document.createElement('div');head.className='suo-mpsp-head';
+  const number=document.createElement('span');number.className='suo-mpsp-number';number.textContent=String(num).padStart(2,'0');
+  const title=document.createElement('strong');title.className='suo-mpsp-title';title.textContent='Pengubahan '+num;head.append(number,title);
+  if(/dibatalkan/i.test(line)){const badge=document.createElement('span');badge.className='suo-mpsp-status';badge.textContent='Dibatalkan';head.append(badge)}
+  card.append(head);
+  const description=line.replace(/^\s*\d{1,2}\s*/,'').replace(/^pengubahan\s*\d+\s*:?\s*/i,'').trim();
+  if(description){const p=document.createElement('p');p.className='suo-mpsp-desc';p.textContent=description;card.append(p)}
+  const facts=document.createElement('div');facts.className='suo-mpsp-facts';
+  [['Tarikh Warta',date],['No. Warta',gazette]].forEach(([key,val])=>{
+   if(!val)return;
+   const cell=document.createElement('div');cell.className='suo-mpsp-fact';
+   const small=document.createElement('small');small.textContent=key;
+   const strong=document.createElement('strong');strong.textContent=val;
+   cell.append(small,strong);facts.append(cell);
   });
-  if(!list)continue;
-  const items=[...list.children].filter(e=>e.matches('li'));
-  const flow=document.createElement('div');flow.className='mpsp-pengubahan-unified';flow.setAttribute('aria-label','Siri Pengubahan RT MPSp — satu kad bagi setiap pengubahan');
-  items.forEach((item,i)=>{
-   const text=compact(item.textContent);
-   const lead=directText(item);
-   const n=(lead.match(/pengubahan\s*(\d+)/i)||text.match(/pengubahan\s*(\d+)/i)||[])[1]||String(i+1);
-   const date=(text.match(/(?:tarikh\s*warta\s*:\s*)?(\d{1,2}\s+(?:Januari|Februari|Mac|April|Mei|Jun|Julai|Ogos|September|Oktober|November|Disember)\s+\d{4})/i)||[])[1]||'';
-   const rawGazette=(text.match(/(?:No\.?\s*Warta\s*:?\s*)+(?:No\.?\s*Warta\s*:?\s*)?([A-Za-z0-9\/-]+)/i)||[])[1]||'';
-   const gazette=/^No$/i.test(rawGazette)?'':rawGazette;
-   const card=document.createElement('article');card.className='mpsp-pengubahan-entry';
-   const head=document.createElement('div');head.className='mpsp-pe-head';
-   const badge=document.createElement('span');badge.className='mpsp-pe-no';badge.textContent=String(n).padStart(2,'0');
-   const title=document.createElement('strong');title.className='mpsp-pe-title';title.textContent='Pengubahan '+n;
-   head.append(badge,title);card.append(head);
-   if(/\bdibatalkan\b/i.test(lead)){const status=document.createElement('span');status.className='mpsp-pe-status';status.textContent='Dibatalkan';card.append(status)}
-   const description=lead.replace(/^\s*\d{1,2}\s*/,'').replace(/^pengubahan\s*\d+\s*:?\s*/i,'').trim();
-   if(description){const p=document.createElement('p');p.className='mpsp-pe-description';p.textContent=description;card.append(p)}
-   const facts=document.createElement('div');facts.className='mpsp-pe-details';
-   [['Tarikh Warta',date],['No. Warta',gazette]].forEach(([key,value])=>{
-    if(!value)return;
-    const box=document.createElement('div');box.className='mpsp-pe-detail';
-    const small=document.createElement('small');small.textContent=key;
-    const big=document.createElement('strong');big.textContent=value;
-    box.append(small,big);facts.append(box);
-   });
-   if(facts.childElementCount)card.append(facts);
-   if(!date||!gazette){
-    const note=document.createElement('p');note.className='mpsp-pe-source';
-    note.textContent='Maklumat pewartaan asal: '+text;card.append(note);
-   }
-   flow.append(card);
-  });
-  list.replaceWith(flow);
+  if(facts.childElementCount)card.append(facts);
+  if(!date||!gazette){const note=document.createElement('p');note.className='suo-mpsp-note';note.textContent='Butiran pewartaan daripada sumber: '+full;card.append(note)}
+  flow.append(card);
+ });
+ parent.replaceWith(flow);
+}
+function diverse(ch,code){
+ const h=norm(ch.querySelector(':scope > h2'));
+ if(/matlamat|teras|latar belakang|pelan|peta|sejarah|kronologi/i.test(h))return;
+ if(code==='MPKS'&&/konsep pembangunan/i.test(h))return;
+ const lists=[...ch.querySelectorAll('.rtpiece ul,.rtpiece ol')];
+ for(const list of lists){
+  if(list.closest('.suo-real-grid,.suo-mpsp-flow,.suo-varied-layout')||list.classList.contains('suo-varied-layout'))continue;
+  const children=[...list.children].filter(x=>x.tagName==='LI');
+  if(children.length<3||children.length>12||children.length!==list.children.length)continue;
+  if(list.querySelector('img,figure,table,iframe,video,details'))continue;
+  list.classList.add('suo-varied-layout');
+  children.forEach((child,i)=>{child.classList.add('suo-varied-card');child.dataset.step=String(i+1).padStart(2,'0')});
  }
 }
-let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;rebuild()})}).observe(root,{childList:true,subtree:true});rebuild();
+function apply(){
+ const code=current();
+ for(const c of codes)modal.classList.toggle('suo-active-'+c,code===c);
+ if(!code)return;
+ for(const ch of root.querySelectorAll('.rtchapter')){
+  try{
+   if(code==='MPKS')convertMPKS(ch);
+   if(code==='MPSp')convertMPSp(ch);
+   diverse(ch,code);
+  }catch(error){console.warn('RT enhancement',code,error)}
+ }
+}
+let busy=false;
+new MutationObserver(()=>{if(busy)return;busy=true;requestAnimationFrame(()=>{busy=false;apply()})}).observe(root,{childList:true,subtree:true});
+new MutationObserver(apply).observe(label,{childList:true,subtree:true,characterData:true});
+apply();
 })();
 </script>
 </body>
