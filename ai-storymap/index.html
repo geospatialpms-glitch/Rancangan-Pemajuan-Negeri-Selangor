@@ -9319,6 +9319,29 @@ box-shadow:0 18px 40px rgba(57,22,38,.23)!important;z-index:3000!important;
 #rt11-modal .rtbar #rt11-label{margin-right:12px}
 @media(max-width:640px){#rt11-modal .rtbar #rt-live-build-badge{font-size:9px;padding:4px 7px;margin-right:4px}}
 </style>
+
+<style id="suo-portal-footer-harmony-20261104">
+/* Scoped footer redesign: all existing page sections remain untouched */
+footer.footer.suo-portal-footer{position:relative!important;isolation:isolate;overflow:hidden!important;display:block!important;background:linear-gradient(118deg,#430014 0%,#61051f 48%,#4c051c 100%)!important;border-top:2px solid #d8ae69!important;color:#fff8ed!important;padding:0!important;box-shadow:0 -9px 30px rgba(40,0,17,.12)!important;text-align:left!important}
+footer.suo-portal-footer::before{content:"";pointer-events:none;position:absolute;inset:0;z-index:-1;opacity:.45;background:radial-gradient(ellipse at 92% 18%,rgba(229,174,102,.22),transparent 37%),repeating-radial-gradient(ellipse at 95% 105%,transparent 0 23px,rgba(240,198,123,.09) 24px 25px,transparent 26px 49px)}
+footer.suo-portal-footer::after{content:"";pointer-events:none;position:absolute;width:220px;height:220px;border:1px solid rgba(222,184,119,.16);border-radius:50%;right:-70px;bottom:-150px;box-shadow:0 0 0 40px rgba(222,184,119,.025),0 0 0 100px rgba(222,184,119,.018)}
+footer.suo-portal-footer .suo-footer-inner{max-width:1320px;margin:auto;padding:34px clamp(22px,5vw,70px) 28px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,.85fr);align-items:center;gap:clamp(26px,5vw,72px)}
+footer.suo-portal-footer .suo-footer-identity{border-left:3px solid #d7ab61;padding-left:22px;min-width:0}
+footer.suo-portal-footer .suo-footer-kicker{display:inline-flex;align-items:center;gap:10px;color:#eac78b!important;font-size:10px;font-weight:800;letter-spacing:.17em}
+footer.suo-portal-footer .suo-footer-star{font-size:18px;color:#efc983}
+footer.suo-portal-footer h2{font-family:Arial,sans-serif;font-size:clamp(20px,2vw,29px)!important;line-height:1.2!important;letter-spacing:-.025em;color:#fffaf2!important;margin:9px 0 10px!important;font-weight:800!important}
+footer.suo-portal-footer h2 em{font-style:normal;color:#f1ca86}
+footer.suo-portal-footer p{color:#e8ced5!important;line-height:1.75!important;font-size:clamp(12px,1vw,14px)!important;max-width:640px;margin:0!important}
+footer.suo-portal-footer .suo-footer-nav{min-width:0}
+footer.suo-portal-footer .suo-footer-nav-title{display:block;color:#f1d39e;font-size:11px;font-weight:800;letter-spacing:.14em;margin-bottom:13px}
+footer.suo-portal-footer .suo-footer-links{display:flex;flex-wrap:wrap;gap:9px}
+footer.suo-portal-footer .suo-footer-links a{display:inline-flex;align-items:center;gap:13px;color:#fff7ea!important;text-decoration:none!important;border:1px solid rgba(240,202,143,.38);border-radius:999px;padding:9px 14px;background:rgba(255,255,255,.055);font-size:12px;font-weight:700;transition:background .25s,border-color .25s,transform .25s}
+footer.suo-portal-footer .suo-footer-links a:hover,footer.suo-portal-footer .suo-footer-links a:focus-visible{background:rgba(240,202,143,.19);border-color:#e4b975;transform:translateY(-2px)}
+footer.suo-portal-footer .suo-footer-links a span{color:#edc37e}
+footer.suo-portal-footer .suo-footer-bottom{position:relative;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding:14px clamp(22px,5vw,70px);border-top:1px solid rgba(232,189,121,.23);max-width:1320px;margin:0 auto;color:#d9bfc5;font-size:11px;letter-spacing:.025em}
+@media(max-width:760px){footer.suo-portal-footer .suo-footer-inner{grid-template-columns:1fr;padding:28px 22px 23px;gap:25px}footer.suo-portal-footer .suo-footer-bottom{padding:14px 22px;flex-direction:column;align-items:flex-start}footer.suo-portal-footer .suo-footer-identity{padding-left:16px}footer.suo-portal-footer .suo-footer-links a{font-size:11px}}
+@media(prefers-reduced-motion:reduce){footer.suo-portal-footer .suo-footer-links a{transition:none!important}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -10777,10 +10800,23 @@ box-shadow:0 18px 40px rgba(57,22,38,.23)!important;z-index:3000!important;
 </div></div></section>
 
 
-<footer class="footer">
-  <div class="container">
-    RANCANGAN PEMAJUAN NEGERI SELANGOR · Portal Interaktif Rasmi · PLANMalaysia Selangor
+<footer class="footer suo-portal-footer" aria-label="Footer Portal Rancangan Pemajuan Selangor">
+  <div class="suo-footer-inner">
+    <div class="suo-footer-identity">
+      <span class="suo-footer-kicker"><span class="suo-footer-star" aria-hidden="true">✦</span> PORTAL PERANCANGAN NEGERI</span>
+      <h2>Rancangan Pemajuan <em>Negeri Selangor</em></h2>
+      <p>Pusat rujukan interaktif bagi maklumat rancangan pemajuan, perancangan spatial dan pembangunan mampan Negeri Selangor.</p>
+    </div>
+    <nav class="suo-footer-nav" aria-label="Navigasi pantas footer">
+      <span class="suo-footer-nav-title">TEROKAI PORTAL</span>
+      <div class="suo-footer-links">
+        <a href="#utama" onclick="scrollToSuoTarget('utama');return false">Utama <span aria-hidden="true">↗</span></a>
+        <a href="#pautan-pbt" onclick="scrollToSuoTarget('pautan-pbt');return false">Direktori PBT <span aria-hidden="true">↗</span></a>
+        <a href="#statistik-pembangunan" onclick="scrollToSuoTarget('statistik-pembangunan');return false">Statistik <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
   </div>
+  <div class="suo-footer-bottom"><span>© <span id="suo-footer-year">2026</span> PLANMalaysia Selangor</span><span>Portal Interaktif Rancangan Pemajuan Negeri Selangor</span></div>
 </footer>
 
 <!-- Pustaka Leaflet JS untuk inisialisasi peta GIS -->
