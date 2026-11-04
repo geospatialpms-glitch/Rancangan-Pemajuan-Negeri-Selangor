@@ -9339,6 +9339,31 @@ footer.suo-portal-footer .suo-footer-end{width:100%;max-width:none;box-sizing:bo
 @media(max-width:850px){footer.suo-portal-footer .suo-footer-shell{gap:20px;padding:24px 100px 19px 24px}footer.suo-portal-footer .suo-footer-agency small{display:none}footer.suo-portal-footer .suo-footer-end{padding:11px 100px 12px 24px}}
 @media(max-width:600px){footer.suo-portal-footer .suo-footer-shell{align-items:flex-start;flex-direction:column;gap:16px;padding:23px 96px 18px 18px}footer.suo-portal-footer .suo-footer-brand{gap:11px}footer.suo-portal-footer .suo-footer-mark{width:40px;height:40px;border-radius:10px}footer.suo-portal-footer .suo-footer-mark svg{width:23px;height:23px}footer.suo-portal-footer .suo-footer-brand strong{font-size:12px}footer.suo-portal-footer .suo-footer-brand div>span{font-size:11px}footer.suo-portal-footer .suo-footer-agency{text-align:left}footer.suo-portal-footer .suo-footer-end{padding:10px 96px 13px 18px;display:block}footer.suo-portal-footer .suo-footer-end span{display:block;margin-bottom:4px}}
 </style>
+<style id="suo-footer-geospatial-effects-20261104">
+/* SUO-inspired ambient layer, isolated to main footer */
+footer.footer.suo-portal-footer{isolation:isolate!important;background:linear-gradient(112deg,#510018 0%,#660c2b 48%,#500019 100%)!important}
+footer.suo-portal-footer .suo-footer-ambient{position:absolute;z-index:-1;inset:0;pointer-events:none;overflow:hidden}
+footer.suo-portal-footer .suo-footer-ambient::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 23% 12%,rgba(239,193,118,.12),transparent 36%),radial-gradient(ellipse at 75% 95%,rgba(237,168,101,.075),transparent 42%);animation:suoFooterBreathe 12s ease-in-out infinite alternate}
+footer.suo-portal-footer .suo-footer-network{position:absolute;inset:-6% -3% auto auto;width:min(68%,960px);height:125%;color:rgba(238,196,125,.18);opacity:.55;transform:translateX(0);animation:suoFooterDrift 24s ease-in-out infinite alternate}
+footer.suo-portal-footer .suo-footer-network circle{animation:suoFooterDot 4s ease-in-out infinite alternate;transform-origin:center}
+footer.suo-portal-footer .suo-footer-network circle:nth-child(2n){animation-delay:-2s}
+footer.suo-portal-footer .suo-footer-light{position:absolute;width:190px;height:110px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,194,113,.14),transparent 68%);filter:blur(13px);animation:suoFooterFloat 10s ease-in-out infinite alternate}
+footer.suo-portal-footer .suo-footer-light-a{top:-48px;left:17%}
+footer.suo-portal-footer .suo-footer-light-b{bottom:-73px;right:11%;animation-delay:-5s}
+footer.suo-portal-footer .suo-footer-shell,footer.suo-portal-footer .suo-footer-rule,footer.suo-portal-footer .suo-footer-end{position:relative;z-index:1}
+footer.suo-portal-footer .suo-footer-mark{border-color:rgba(246,209,135,.72);background:linear-gradient(145deg,rgba(255,220,159,.14),rgba(255,255,255,.015));box-shadow:0 0 19px rgba(233,185,109,.09),inset 0 0 15px rgba(244,193,120,.055);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+footer.suo-portal-footer .suo-footer-brand:hover .suo-footer-mark{transform:translateY(-2px) rotate(-5deg);box-shadow:0 0 22px rgba(234,185,109,.28);border-color:#f6cd8b}
+footer.suo-portal-footer .suo-footer-brand strong{transition:text-shadow .35s ease;color:#fff9f0!important}
+footer.suo-portal-footer .suo-footer-brand:hover strong{text-shadow:0 0 15px rgba(251,207,136,.35)}
+footer.suo-portal-footer .suo-footer-agency>span{color:#f0c884!important}
+footer.suo-portal-footer .suo-footer-rule{background:linear-gradient(90deg,transparent,rgba(229,187,119,.38) 15%,rgba(255,221,166,.7) 48%,rgba(229,187,119,.38) 85%,transparent)!important}
+@keyframes suoFooterBreathe{from{opacity:.55;transform:scale(1)}to{opacity:1;transform:scale(1.08)}}
+@keyframes suoFooterDrift{from{transform:translateX(0)}to{transform:translateX(-18px)}}
+@keyframes suoFooterDot{from{opacity:.4}to{opacity:1}}
+@keyframes suoFooterFloat{from{transform:translate(0,0);opacity:.55}to{transform:translate(30px,-10px);opacity:.95}}
+@media(max-width:650px){footer.suo-portal-footer .suo-footer-network{width:110%;opacity:.28}footer.suo-portal-footer .suo-footer-light{opacity:.45}}
+@media(prefers-reduced-motion:reduce){footer.suo-portal-footer .suo-footer-ambient *,footer.suo-portal-footer .suo-footer-ambient::before{animation:none!important}footer.suo-portal-footer .suo-footer-mark,footer.suo-portal-footer .suo-footer-brand strong{transition:none!important}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -10798,6 +10823,18 @@ footer.suo-portal-footer .suo-footer-end{width:100%;max-width:none;box-sizing:bo
 
 
 <footer class="footer suo-portal-footer" aria-label="Footer Portal Rancangan Pemajuan Negeri Selangor">
+  <div class="suo-footer-ambient" aria-hidden="true">
+    <svg class="suo-footer-network" viewBox="0 0 900 170" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M0 112 120 51 238 93 343 25 470 88 574 42 688 91 812 33 900 75"/>
+        <path d="M0 44 120 51 196 10 343 25 392 143 574 42 635 158 812 33 900 142"/>
+        <path d="m120 51 118 42 154 50 78-55 165 70 53-67 212 51"/>
+      </g>
+      <g fill="currentColor"><circle cx="120" cy="51" r="3"/><circle cx="238" cy="93" r="2.5"/><circle cx="343" cy="25" r="3"/><circle cx="470" cy="88" r="3"/><circle cx="574" cy="42" r="2.5"/><circle cx="688" cy="91" r="3"/><circle cx="812" cy="33" r="2.5"/></g>
+    </svg>
+    <span class="suo-footer-light suo-footer-light-a"></span>
+    <span class="suo-footer-light suo-footer-light-b"></span>
+  </div>
   <div class="suo-footer-shell">
     <div class="suo-footer-brand">
       <span class="suo-footer-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 24V10l11-6 11 6v14l-11 5-11-5Z"/><path d="m5 10 11 6 11-6M16 16v13M11 19l5-3 5 3"/></svg></span>
