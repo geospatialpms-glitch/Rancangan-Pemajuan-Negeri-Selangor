@@ -17184,5 +17184,31 @@ apply();
 })();
 </script>
 <script id="suo-footer-home-visibility-20261105">(function(){const footer=document.querySelector('footer.suo-portal-footer');if(!footer||!('IntersectionObserver' in window))return;new IntersectionObserver(e=>document.body.classList.toggle('suo-footer-in-view',e[0].isIntersecting),{threshold:.08}).observe(footer);})();</script>
+<style id="suo-stats-maroon-gold-palette-20261105">
+/* Change five SUO statistics card colours ONLY. Preserve grid, typography, icons, actions and motion. */
+#suo-dashboard-overview .suo-dash-grid > .suo-dash-card{
+ background:
+  radial-gradient(ellipse at 86% 15%,rgba(247,191,111,.27) 0%,rgba(218,152,87,.08) 33%,transparent 60%),
+  linear-gradient(136deg,#85243d 0%,#67162d 47%,#400d22 100%)!important;
+ border-color:rgba(232,183,112,.66)!important;
+}
+#suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(1){
+ background:
+  radial-gradient(ellipse at 89% 21%,rgba(246,189,108,.27),transparent 52%),
+  linear-gradient(148deg,#8e2944 0%,#68182f 49%,#420c23 100%)!important;
+}
+#suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(2),
+#suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(5){
+ background:
+  radial-gradient(ellipse at 82% 16%,rgba(241,183,95,.24),transparent 54%),
+  linear-gradient(130deg,#7f203a 0%,#57142a 58%,#3a0c21 100%)!important;
+}
+#suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(3),
+#suo-dashboard-overview .suo-dash-grid > .suo-dash-card:nth-child(4){
+ background:
+  radial-gradient(ellipse at 85% 18%,rgba(252,203,126,.23),transparent 55%),
+  linear-gradient(132deg,#872940 0%,#611629 54%,#3d0e21 100%)!important;
+}
+</style>
 </body>
 </html>
