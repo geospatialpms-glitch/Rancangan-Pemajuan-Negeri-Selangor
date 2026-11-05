@@ -9358,6 +9358,40 @@ body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!importa
 @media(max-width:600px){footer.suo-portal-footer .suo-footer-main{display:flex;flex-direction:column;align-items:stretch;gap:16px;padding:20px 17px!important}footer.suo-portal-footer .suo-footer-branding{gap:12px}footer.suo-portal-footer .suo-footer-emblem{flex-basis:68px;width:68px;max-width:68px;padding:5px;border-radius:9px}footer.suo-portal-footer .suo-footer-emblem img{height:61px}footer.suo-portal-footer .suo-footer-name{padding-left:13px}footer.suo-portal-footer .suo-footer-name h2{font-size:16px!important}footer.suo-portal-footer .suo-footer-name strong{font-size:10px!important}footer.suo-portal-footer .suo-footer-name span{font-size:9px!important;letter-spacing:.07em}footer.suo-portal-footer .suo-footer-agency-block{padding-left:13px}footer.suo-portal-footer .suo-footer-agency-block p{font-size:11px!important}footer.suo-portal-footer .suo-footer-action{padding:13px 0 0}footer.suo-portal-footer .suo-footer-home{min-width:155px}footer.suo-portal-footer .suo-footer-legal{font-size:10px!important}}
 @media(prefers-reduced-motion:reduce){footer.suo-portal-footer .suo-footer-network,footer.suo-portal-footer .suo-footer-network-dots circle{animation:none!important}footer.suo-portal-footer .suo-footer-home{transition:none!important}}
 
+/* Footer-only ambient geospatial motion — preserve foreground and layout. */
+footer.suo-portal-footer .suo-footer-network{
+  opacity:.34!important;
+  animation:suoFooterAmbientFloat 16s ease-in-out infinite alternate!important;
+  will-change:transform;
+}
+footer.suo-portal-footer .suo-footer-network-lines{
+  animation:suoFooterNetworkBreath 7s ease-in-out infinite alternate;
+}
+footer.suo-portal-footer .suo-footer-network-dots circle{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:suoFooterNodePulse 4.6s ease-in-out infinite!important;
+}
+footer.suo-portal-footer .suo-footer-network-dots circle:nth-child(3n){animation-delay:-1.4s!important}
+footer.suo-portal-footer .suo-footer-network-dots circle:nth-child(3n + 1){animation-delay:-2.8s!important}
+footer.suo-portal-footer .suo-footer-network-trails{
+  fill:none;stroke:#f5c979;stroke-width:1.6;stroke-linecap:round;
+  stroke-dasharray:3 140;opacity:.8;pointer-events:none;
+  filter:drop-shadow(0 0 3px rgba(255,213,125,.65));
+}
+footer.suo-portal-footer .suo-footer-network-trails path:nth-child(1){animation:suoFooterFlow 12s linear infinite}
+footer.suo-portal-footer .suo-footer-network-trails path:nth-child(2){animation:suoFooterFlow 17s linear -6s infinite reverse}
+footer.suo-portal-footer .suo-footer-network-trails path:nth-child(3){animation:suoFooterFlow 14s linear -4s infinite}
+@keyframes suoFooterAmbientFloat{0%{transform:translate3d(-15px,4px,0) scale(1.025)}50%{transform:translate3d(3px,-4px,0) scale(1.04)}100%{transform:translate3d(15px,4px,0) scale(1.025)}}
+@keyframes suoFooterNetworkBreath{0%{opacity:.58}100%{opacity:1}}
+@keyframes suoFooterNodePulse{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.55)}}
+@keyframes suoFooterFlow{from{stroke-dashoffset:0}to{stroke-dashoffset:-572}}
+@media(prefers-reduced-motion:reduce){
+ footer.suo-portal-footer .suo-footer-network,
+ footer.suo-portal-footer .suo-footer-network-lines,
+ footer.suo-portal-footer .suo-footer-network-dots circle,
+ footer.suo-portal-footer .suo-footer-network-trails path{animation:none!important;will-change:auto!important}
+}
 /* Specific two-line footer heading requested 2026-11-05 */
 footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(15px,1.45vw,23px)!important;line-height:1.17!important;letter-spacing:0!important;white-space:nowrap}
 @media(max-width:600px){footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(12px,3.5vw,17px)!important;white-space:nowrap}}
@@ -10844,6 +10878,11 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
   </g>
   <g class="suo-footer-network-dots" fill="currentColor">
    <circle cx="65" cy="27" r="3"/><circle cx="138" cy="100" r="2"/><circle cx="205" cy="42" r="2.5"/><circle cx="286" cy="113" r="2"/><circle cx="349" cy="24" r="3"/><circle cx="419" cy="82" r="2"/><circle cx="503" cy="16" r="3"/><circle cx="589" cy="102" r="2.5"/><circle cx="673" cy="32" r="2"/><circle cx="751" cy="111" r="3"/><circle cx="838" cy="16" r="2.5"/><circle cx="927" cy="86" r="2"/><circle cx="1012" cy="20" r="3"/><circle cx="1092" cy="100" r="2.5"/><circle cx="126" cy="200" r="2"/><circle cx="384" cy="196" r="2"/><circle cx="702" cy="208" r="2"/><circle cx="1030" cy="218" r="2.5"/>
+  </g>
+  <g class="suo-footer-network-trails" aria-hidden="true">
+    <path d="M0 90 65 27 138 100 205 42 286 113 349 24 419 82 503 16 589 102 673 32 751 111 838 16 927 86 1012 20 1092 100 1200 33"/>
+    <path d="M0 173 65 27 126 200 205 42 235 221 349 24 384 196 503 16 530 215 673 32 702 208 838 16 870 205 1012 20 1030 218 1200 33"/>
+    <path d="M0 173 138 100 286 113 384 196 589 102 702 208 927 86 1030 218 1200 136"/>
   </g>
 </svg>
   <div class="suo-footer-main">
