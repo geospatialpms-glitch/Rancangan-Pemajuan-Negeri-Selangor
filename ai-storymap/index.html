@@ -17490,50 +17490,148 @@ apply();
 }
 @media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-goals-grid > li{transition:none!important}}
 </style>
+<style id="suo-mbsa-editorial-final-20261106">
+/* Independent MBSA editorial layout; selectors scoped to the MBSA modal only. */
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-editorial{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:16px!important;width:100%!important;margin:20px 0 30px!important;
+ padding:0!important;list-style:none!important;box-sizing:border-box!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-editorial .suo-mbsa-editorial-item{
+ box-sizing:border-box!important;position:relative!important;min-width:0!important;
+ min-height:215px!important;padding:80px 21px 25px!important;
+ display:flex!important;align-items:flex-start!important;justify-content:flex-end!important;
+ flex-direction:column!important;line-height:1.6!important;color:#23445f!important;
+ border:1px solid #c5deee!important;border-top:4px solid #164b81!important;
+ border-radius:18px!important;background:linear-gradient(150deg,#fff,#e5f1ff)!important;
+ box-shadow:0 13px 30px rgba(23,72,116,.14)!important;
+ transition:transform .3s ease,box-shadow .3s ease!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-goals-grid .suo-mbsa-editorial-item::before{
+ content:attr(data-number)!important;position:absolute!important;top:14px!important;left:20px!important;
+ font:800 55px/1 Arial,sans-serif!important;color:#1b5487!important;opacity:.68!important;
+ background:none!important;border:0!important;padding:0!important;box-shadow:none!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-goals-grid .suo-mbsa-editorial-item:nth-child(2){
+ border-top-color:#20a1b5!important;background:linear-gradient(145deg,#fff,#e2f7f8)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-goals-grid .suo-mbsa-editorial-item:nth-child(3){
+ border-top-color:#6574b9!important;background:linear-gradient(145deg,#fff,#e9edff)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-goals-grid .suo-mbsa-editorial-item:hover{
+ transform:translateY(-5px)!important;box-shadow:0 20px 40px rgba(23,72,116,.21)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-vision-stack{
+ grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:17px 25px!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-vision-stack .suo-mbsa-editorial-item{
+ min-height:0!important;padding:21px 22px!important;display:block!important;
+ border:0!important;border-left:4px solid #348db4!important;border-radius:0 12px 12px 0!important;
+ background:linear-gradient(90deg,#dbedf9,#f8fcff)!important;box-shadow:none!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-vision-stack .suo-mbsa-editorial-item:first-child{
+ grid-column:1/-1!important;padding:32px 34px!important;color:#fff!important;
+ background:linear-gradient(120deg,#173d76,#2e83b3)!important;
+ border:1px solid #2b6b9e!important;border-left:6px solid #78d4e2!important;
+ border-radius:17px!important;box-shadow:0 16px 30px rgba(14,61,116,.2)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-vision-stack .suo-mbsa-editorial-item:first-child *{color:inherit!important}
+#rt11-modal.rt-mbsa #rt11-body .suo-mbsa-vision-stack .suo-mbsa-editorial-item:nth-child(3){
+ border-left-color:#7c83bc!important;background:linear-gradient(90deg,#ebe9fc,#fbfbff)!important;
+}
+@media(max-width:960px){
+ #rt11-modal.rt-mbsa #rt11-body .suo-mbsa-goals-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:640px){
+ #rt11-modal.rt-mbsa #rt11-body .suo-mbsa-editorial{grid-template-columns:1fr!important}
+ #rt11-modal.rt-mbsa #rt11-body .suo-mbsa-goals-grid .suo-mbsa-editorial-item{min-height:175px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbsa #rt11-body .suo-mbsa-editorial-item{transition:none!important}
+}
+</style>
 <script id="suo-mbsa-goal-editorial-apply-20261106">
 (function(){
- 'use strict';
- const modal=document.getElementById('rt11-modal');
- const body=document.getElementById('rt11-body');
- if(!modal||!body)return;
- const normalize=s=>(s||'').replace(/\s+/g,' ').trim().toUpperCase();
- function classify(list){
-  const items=[...list.children].filter(el=>el.tagName==='LI');
-  if(items.length!==3)return '';
-  const labels=items.map(li=>normalize(li.textContent).replace(/^\s*0?[1-3]\s*[.):-]?\s*/,''));
-  const goals=labels[0].startsWith('PINTAR')&&labels[1].startsWith('BERDAYA HUNI')&&labels[2].startsWith('BERDAYA TAHAN');
-  const vision=labels[0].startsWith('VISI')&&labels[1].startsWith('MISI')&&labels[2].startsWith('WAWASAN');
-  return goals?'suo-mbsa-goals-grid':vision?'suo-mbsa-vision-stack':'';
+'use strict';
+const modal=document.getElementById('rt11-modal');
+const body=document.getElementById('rt11-body');
+if(!modal||!body)return;
+const norm=v=>String(v||'').replace(/\s+/g,' ').replace(/^\s*(?:0?[1-3][.):-]?\s*)/,'').trim().toUpperCase();
+const types=[
+  {key:'goals',names:['PINTAR','BERDAYA HUNI','BERDAYA TAHAN'],cls:'suo-mbsa-goals-grid'},
+  {key:'vision',names:['VISI','MISI','WAWASAN'],cls:'suo-mbsa-vision-stack'}
+];
+function apply(){
+ if(modal.hidden||!modal.classList.contains('rt-mbsa'))return;
+ const chapter=[...body.querySelectorAll('.rtchapter')].find(ch=>
+    ch.classList.contains('rt-goal')||/MATLAMAT PEMBANGUNAN/i.test(ch.querySelector('h2')?.textContent||''));
+ if(!chapter)return;
+ for(const type of types){
+   if(chapter.querySelector('.'+type.cls))continue;
+   // ArcGIS can render separate text nodes, one list per block, or one complete list.
+   const groups=[...chapter.querySelectorAll('.rtpiece')];
+   const sections=[];
+   let active=false;
+   for(const block of groups){
+     const heading=block.querySelector('h3,h4,h5,h6');
+     if(heading){
+       const h=norm(heading.textContent);
+       if(type.key==='goals' && /TAFSIRAN\s+MATLAMAT/.test(h))active=true;
+       else if(type.key==='vision' && /VISI\s*,?\s*MISI/.test(h))active=true;
+       else if(active)active=false;
+     }
+     if(!active)continue;
+     for(const list of block.querySelectorAll('ul,ol')){
+       for(const li of [...list.children].filter(el=>el.tagName==='LI')){
+          const t=norm(li.textContent);
+          const idx=type.names.findIndex(name=>t.startsWith(name+':')||t.startsWith(name+' ')||t===name);
+          if(idx>=0)sections.push({li,list,block,idx});
+       }
+     }
+   }
+   // Fallback: identify by list text when headings are stored in non-semantic wrappers.
+   if(new Set(sections.map(x=>x.idx)).size!==3){
+     sections.length=0;
+     chapter.querySelectorAll('.rtpiece ul > li,.rtpiece ol > li').forEach(li=>{
+       const t=norm(li.textContent);
+       const idx=type.names.findIndex(name=>t.startsWith(name+':')||t.startsWith(name+' ')||t===name);
+       if(idx>=0)sections.push({li,list:li.parentElement,block:li.closest('.rtpiece'),idx});
+     });
+   }
+   const picked=type.names.map((_,i)=>sections.find(x=>x.idx===i));
+   if(picked.some(x=>!x)||new Set(picked.map(x=>x.li)).size!==3)continue;
+   const first=picked[0], otherLists=new Set(picked.map(x=>x.list));
+   // Use an independent grid container so that old generic <ul> CSS cannot override it.
+   const layout=document.createElement('div');
+   layout.className='suo-mbsa-editorial '+type.cls;
+   layout.setAttribute('role','list');
+   type.names.forEach((name,i)=>{
+     const el=document.createElement('article');
+     el.className='suo-mbsa-editorial-item';
+     el.setAttribute('role','listitem');
+     el.dataset.number=String(i+1).padStart(2,'0');
+     el.append(...[...picked[i].li.childNodes]);
+     layout.append(el);
+   });
+   first.block.insertAdjacentElement('beforebegin',layout);
+   // Remove only empty list shells; retain headings and unrelated content.
+   otherLists.forEach(list=>{
+     if(!list.querySelector('li'))list.remove();
+   });
+   picked.forEach(({block})=>{
+      if(block && !block.querySelector('h3,h4,h5,h6,ul,ol,figure,p,blockquote') && !block.textContent.trim())block.remove();
+   });
  }
- function apply(){
-  if(modal.hidden||!modal.classList.contains('rt-mbsa'))return;
-  const root=body.querySelector('.rtchapter.rt-goal');
-  if(!root)return;
-  root.querySelectorAll('ul,ol').forEach(list=>{
-    const cls=classify(list);
-    if(!cls)return;
-    list.classList.add(cls);
-    // Other generic timeline/grid transformations must not override this MBSA design.
-    list.classList.remove('rt-v3-timeline','rt-v3-teras','rt-flow-timeline','rt-unified-teras-grid','rt-teras-grid','rt-final-timeline','rt-shared-card-grid');
-    const piece=list.closest('.rtpiece');
-    if(piece)piece.classList.add(cls+'-piece');
-    list.querySelectorAll(':scope > li').forEach((li,i)=>{
-      li.classList.remove('rt-motion-reveal','rt-animate-in');
-      li.style.removeProperty('--rt-motion-delay');
-      if(cls==='suo-mbsa-goals-grid')li.style.setProperty('--mbsa-item-num',String(i+1).padStart(2,'0'));
-    });
-  });
- }
- let pending=false;
- function schedule(){
-  if(pending)return;
-  pending=true;
-  requestAnimationFrame(()=>{pending=false;apply()});
- }
- new MutationObserver(schedule).observe(body,{childList:true,subtree:true});
- new MutationObserver(schedule).observe(modal,{attributes:true,attributeFilter:['class','hidden']});
- document.addEventListener('click',e=>{if(e.target.closest('#rt11-nav'))schedule()});
- schedule();
+}
+let queued=false;
+function schedule(){
+ if(queued)return;
+ queued=true;
+ requestAnimationFrame(()=>{queued=false;apply()});
+}
+new MutationObserver(schedule).observe(body,{subtree:true,childList:true});
+new MutationObserver(schedule).observe(modal,{attributes:true,attributeFilter:['class','hidden']});
+schedule();
 })();
 </script>
 </body>
