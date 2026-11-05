@@ -1,0 +1,39 @@
+name: Refresh Story Map GA4 visitor counts
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ga4-storymap-stats
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.GA4_PROPERTY_ID != '' && secrets.GA4_SERVICE_ACCOUNT_JSON != '' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Query GA4 Data API
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+        run: node scripts/update-ga-visitors.mjs
+      - name: Commit visitor summary when changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ai-storymap/visitor-stats.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update GA4 Story Map visitor summary"
+            git push
+          fi
