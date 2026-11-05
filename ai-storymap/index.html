@@ -9323,81 +9323,55 @@ box-shadow:0 18px 40px rgba(57,22,38,.23)!important;z-index:3000!important;
 
 
 <style id="suo-footer-reference-redesign-20261105">
-/* Footer only — SUO reference layout */
-footer.footer.suo-portal-footer{position:relative!important;isolation:isolate;overflow:hidden!important;padding:0!important;margin:0!important;display:block!important;text-align:left!important;color:#fff5ee!important;background:linear-gradient(118deg,#57091e 0%,#6e142a 52%,#4e071b 100%)!important;border-top:4px solid #d9aa64!important;box-shadow:none!important}
-footer.suo-portal-footer::before,footer.suo-portal-footer::after{content:none!important;display:none!important}
-footer.suo-portal-footer .suo-footer-waves{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 8% 85%,rgba(232,96,72,.17),transparent 38%),radial-gradient(ellipse at 87% 87%,rgba(239,121,89,.17),transparent 37%),repeating-radial-gradient(ellipse at 106% 190%,transparent 0 35px,rgba(255,189,111,.045) 37px 38px,transparent 40px 78px);animation:suoFooterGlowPulse 12s ease-in-out infinite alternate}
-footer.suo-portal-footer .suo-footer-main{width:100%;max-width:1680px;margin:0 auto;box-sizing:border-box;padding:34px clamp(100px,8vw,145px) 30px clamp(20px,3vw,54px);display:grid;grid-template-columns:minmax(0,1.55fr) minmax(230px,1fr) minmax(200px,.62fr);gap:clamp(20px,3vw,46px);align-items:center}
-footer.suo-portal-footer .suo-footer-branding{display:flex;align-items:center;gap:clamp(12px,2vw,26px);min-width:0}
-footer.suo-portal-footer .suo-footer-emblem{width:clamp(90px,11vw,150px);flex-shrink:0;filter:drop-shadow(0 8px 14px rgba(255,127,74,.17));animation:suoFooterEmblemFloat 7s ease-in-out infinite alternate}
+/* Single source of truth: footer mockup layout. No styles outside the footer changed. */
+footer.footer.suo-portal-footer{
+  --ft-gold:#efbc72;--ft-cream:#fff2e9;
+  position:relative!important;isolation:isolate;display:block!important;overflow:hidden!important;
+  width:100%!important;margin:0!important;padding:0!important;
+  text-align:left!important;color:var(--ft-cream)!important;
+  background:radial-gradient(ellipse at 48% 64%,rgba(152,44,61,.45),transparent 67%),
+  linear-gradient(105deg,#681126 0%,#791a2e 46%,#570d22 100%)!important;
+  border-top:9px solid #d9aa61!important;box-shadow:none!important;
+}
+footer.suo-portal-footer::before,footer.suo-portal-footer::after{display:none!important;content:none!important}
+footer.suo-portal-footer .suo-footer-waves{z-index:-1;position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at -4% 104%,rgba(255,110,66,.27),transparent 29%),
+  radial-gradient(ellipse at 107% 103%,rgba(248,91,61,.29),transparent 31%)}
+footer.suo-portal-footer .suo-footer-waves::before,
+footer.suo-portal-footer .suo-footer-waves::after{content:"";position:absolute;bottom:47px;width:46%;height:90px;border-top:1px solid rgba(255,174,88,.75);background:linear-gradient(180deg,rgba(246,125,75,.23),rgba(180,49,62,.03));filter:drop-shadow(0 -3px 5px rgba(255,149,73,.2))}
+footer.suo-portal-footer .suo-footer-waves::before{left:-7%;clip-path:polygon(0 0,15% 38%,33% 73%,53% 92%,76% 97%,100% 100%,100% 100%,0 100%)}
+footer.suo-portal-footer .suo-footer-waves::after{right:-8%;clip-path:polygon(0 100%,20% 99%,40% 85%,59% 53%,79% 21%,100% 0,100% 100%);background:linear-gradient(180deg,rgba(246,103,78,.24),rgba(180,49,62,.04))}
+footer.suo-portal-footer .suo-footer-main{
+  position:relative;z-index:1;width:100%;max-width:1800px;box-sizing:border-box;margin:auto;
+  display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr) minmax(0,.77fr);
+  align-items:center;column-gap:clamp(20px,2vw,36px);
+  min-height:450px;padding:54px clamp(24px,2vw,40px) 56px!important;
+}
+footer.suo-portal-footer .suo-footer-branding{display:flex;align-items:center;gap:clamp(13px,1.3vw,23px);min-width:0}
+footer.suo-portal-footer .suo-footer-emblem{flex:0 0 clamp(170px,15.5vw,255px);max-width:32%;filter:drop-shadow(0 9px 13px rgba(255,107,61,.19));animation:suoFooterIllustration 9s ease-in-out infinite alternate}
 footer.suo-portal-footer .suo-footer-emblem svg{display:block;width:100%;height:auto}
-footer.suo-portal-footer .suo-footer-name{border-left:1px solid rgba(248,201,133,.65);padding-left:clamp(12px,1.8vw,24px);min-width:0}
-footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(16px,1.65vw,26px)!important;line-height:1.16!important;margin:0 0 12px!important;font-family:Arial,sans-serif;font-weight:900!important;letter-spacing:.015em;color:#f2c47f!important}
-footer.suo-portal-footer .suo-footer-name strong{display:block;font-size:clamp(10px,.95vw,14px);font-weight:800;letter-spacing:.035em;color:white!important;white-space:normal}
-footer.suo-portal-footer .suo-footer-name span{display:block;font-size:clamp(9px,.78vw,11px);letter-spacing:.22em;margin-top:6px;color:#eac8cb!important}
-footer.suo-portal-footer .suo-footer-agency-block{min-width:0;border-left:1px solid rgba(248,201,133,.4);padding-left:clamp(17px,2.3vw,32px)}
-footer.suo-portal-footer .suo-footer-eyebrow{display:block;color:#e8b776!important;font-size:11px;letter-spacing:.1em;margin-bottom:9px}
-footer.suo-portal-footer .suo-footer-agency-block>strong{display:block;font-size:clamp(15px,1.4vw,22px);font-weight:800;line-height:1.3;color:#fff!important}
-footer.suo-portal-footer .suo-footer-agency-block p{font-size:clamp(12px,1vw,15px)!important;line-height:1.45!important;margin:6px 0 14px!important;color:#f9e9e9!important}
-footer.suo-portal-footer .suo-footer-values{font-size:clamp(11px,.95vw,14px);line-height:1.55;font-weight:700;color:#efc17a;padding-top:9px;border-top:1px solid rgba(235,186,118,.32)}
-footer.suo-portal-footer .suo-footer-values b{color:#fff1cf;padding:0 3px}
-footer.suo-portal-footer .suo-footer-action{text-align:center;min-width:0;border-left:1px solid rgba(248,201,133,.4);padding-left:clamp(13px,2vw,27px)}
-footer.suo-portal-footer .suo-footer-home{border:1.5px solid #edbe75;border-radius:999px;background:rgba(82,3,24,.52);padding:12px 21px;color:#f2cb8d;font-weight:850;font-family:Arial,sans-serif;letter-spacing:.065em;font-size:clamp(11px,.95vw,14px);white-space:nowrap;cursor:pointer;box-shadow:inset 0 1px 5px rgba(244,190,114,.08);transition:background .3s,box-shadow .3s,transform .3s}
-footer.suo-portal-footer .suo-footer-home span{font-size:15px;margin-left:8px}
-footer.suo-portal-footer .suo-footer-home:hover,footer.suo-portal-footer .suo-footer-home:focus-visible{background:rgba(224,155,93,.18);box-shadow:0 0 22px rgba(239,181,109,.25);transform:translateY(-2px)}
-footer.suo-portal-footer .suo-footer-action p{font-size:clamp(11px,.95vw,14px)!important;line-height:1.55!important;color:#fff3ed!important;margin:13px 0 0!important;text-align:center!important}
-footer.suo-portal-footer .suo-footer-legal{position:relative;text-align:center;padding:13px 15px 15px!important;background:rgba(46,2,16,.23);border-top:1px solid rgba(231,183,120,.23);color:#f5dee0!important;font-size:12px;letter-spacing:.01em}
-footer.suo-portal-footer .suo-footer-legal span{color:#f0c37d;margin:0 8px}
-body.suo-footer-in-view #backToTop{opacity:0!important;pointer-events:none!important;visibility:hidden!important}
-@keyframes suoFooterGlowPulse{from{opacity:.7}to{opacity:1}}
-@keyframes suoFooterEmblemFloat{from{transform:translateY(2px)}to{transform:translateY(-3px)}}
-@media(max-width:1050px){footer.suo-portal-footer .suo-footer-main{grid-template-columns:minmax(0,1.4fr) minmax(200px,1fr);padding:28px 85px 25px 24px;gap:22px}footer.suo-portal-footer .suo-footer-action{grid-column:1/-1;border-left:0;border-top:1px solid rgba(248,201,133,.22);padding:17px 0 0;display:flex;align-items:center;justify-content:center;gap:22px}footer.suo-portal-footer .suo-footer-action p{margin:0!important;text-align:left!important}}
-@media(max-width:680px){footer.suo-portal-footer .suo-footer-main{display:flex;flex-direction:column;align-items:stretch;gap:21px;padding:24px 18px 24px}footer.suo-portal-footer .suo-footer-emblem{width:94px}footer.suo-portal-footer .suo-footer-name h2{font-size:17px!important}footer.suo-portal-footer .suo-footer-agency-block{padding-left:16px}footer.suo-portal-footer .suo-footer-action{justify-content:space-between;padding:17px 0 0;gap:12px}footer.suo-portal-footer .suo-footer-home{padding:11px 13px;font-size:11px}footer.suo-portal-footer .suo-footer-action p{font-size:11px!important}footer.suo-portal-footer .suo-footer-legal{font-size:10px}}
-@media(prefers-reduced-motion:reduce){footer.suo-portal-footer .suo-footer-waves,footer.suo-portal-footer .suo-footer-emblem{animation:none!important}footer.suo-portal-footer .suo-footer-home{transition:none!important}}
-
-/* Final reference refinement — maintains footer-only scope */
-footer.footer.suo-portal-footer{background:radial-gradient(ellipse at 50% 95%,rgba(161,46,64,.35),transparent 66%),linear-gradient(112deg,#621025,#771629 48%,#51091f 100%)!important;border-top:7px solid #d8a75b!important}
-footer.suo-portal-footer .suo-footer-waves{background:radial-gradient(ellipse at 12% 105%,rgba(255,99,58,.22),transparent 37%),radial-gradient(ellipse at 95% 98%,rgba(251,113,71,.23),transparent 39%),repeating-radial-gradient(ellipse at 110% 215%,transparent 0 43px,rgba(255,189,111,.055) 44px 45px,transparent 46px 88px)!important}
-footer.suo-portal-footer .suo-footer-main{max-width:1740px;grid-template-columns:minmax(0,1.55fr) minmax(0,.93fr) minmax(0,.68fr);gap:clamp(20px,2.5vw,44px);padding:clamp(35px,4.5vw,72px) clamp(23px,2.5vw,48px) clamp(34px,4vw,58px)!important;min-height:285px}
-footer.suo-portal-footer .suo-footer-branding{gap:clamp(9px,1.1vw,18px)}
-footer.suo-portal-footer .suo-footer-emblem{width:clamp(105px,14vw,225px);max-width:30%;filter:drop-shadow(0 10px 13px rgba(255,112,58,.23))}
-footer.suo-portal-footer .suo-footer-name{padding-left:clamp(13px,1.8vw,29px);border-left:2px solid rgba(244,197,115,.75)}
-footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(19px,2.35vw,39px)!important;line-height:1.08!important;margin-bottom:clamp(13px,1.6vw,25px)!important;letter-spacing:.005em;color:#f2c279!important}
-footer.suo-portal-footer .suo-footer-name strong{font-size:clamp(11px,1.2vw,20px);letter-spacing:0;font-weight:850;white-space:nowrap}
-footer.suo-portal-footer .suo-footer-name span{font-size:clamp(9px,1.05vw,16px);letter-spacing:.19em;margin-top:8px;white-space:nowrap}
-footer.suo-portal-footer .suo-footer-agency-block{padding-left:clamp(16px,2.2vw,36px);border-left:2px solid rgba(239,196,131,.72)}
-footer.suo-portal-footer .suo-footer-eyebrow{font-size:clamp(12px,1.25vw,19px);letter-spacing:.025em;margin-bottom:14px}
-footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:clamp(19px,1.8vw,30px);white-space:nowrap}
-footer.suo-portal-footer .suo-footer-agency-block p{font-size:clamp(14px,1.4vw,22px)!important;line-height:1.22!important;margin:11px 0 16px!important}
-footer.suo-portal-footer .suo-footer-values{font-size:clamp(12px,1.18vw,18px);padding-top:16px}
-footer.suo-portal-footer .suo-footer-action{border-left:2px solid rgba(239,196,131,.72);padding-left:clamp(16px,2vw,33px)}
-footer.suo-portal-footer .suo-footer-home{width:100%;max-width:310px;padding:15px 18px;border:2px solid #edbe75;box-shadow:0 0 0 1px rgba(250,189,97,.1),inset 0 0 9px rgba(250,189,97,.05);font-size:clamp(14px,1.35vw,22px);letter-spacing:.012em;color:#f2bd70}
-footer.suo-portal-footer .suo-footer-action p{font-size:clamp(13px,1.18vw,19px)!important;line-height:1.35!important;margin-top:24px!important}
-footer.suo-portal-footer .suo-footer-legal{font-size:clamp(12px,1.15vw,18px);padding:20px 16px 22px!important}
-@media(max-width:1150px){footer.suo-portal-footer .suo-footer-main{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);min-height:0;padding:30px 28px!important}footer.suo-portal-footer .suo-footer-emblem{width:115px}footer.suo-portal-footer .suo-footer-name h2{font-size:23px!important}footer.suo-portal-footer .suo-footer-name strong{font-size:11px}footer.suo-portal-footer .suo-footer-name span{font-size:9px}footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:18px;white-space:normal}footer.suo-portal-footer .suo-footer-agency-block p{font-size:13px!important}footer.suo-portal-footer .suo-footer-action{grid-column:1/-1;border-left:0;border-top:1px solid rgba(248,201,133,.35);padding:18px 0 0;display:flex;align-items:center;justify-content:center;gap:24px}footer.suo-portal-footer .suo-footer-home{max-width:245px;font-size:14px}footer.suo-portal-footer .suo-footer-action p{margin:0!important;text-align:left!important;font-size:13px!important}}
-@media(max-width:680px){footer.suo-portal-footer .suo-footer-main{display:flex;flex-direction:column;align-items:stretch;gap:23px;padding:26px 17px!important}footer.suo-portal-footer .suo-footer-emblem{width:93px;max-width:30%}footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(15px,4vw,21px)!important;margin-bottom:12px!important}footer.suo-portal-footer .suo-footer-name strong{font-size:clamp(9px,2.5vw,12px);white-space:normal}footer.suo-portal-footer .suo-footer-name span{font-size:clamp(8px,2vw,10px);white-space:normal}footer.suo-portal-footer .suo-footer-agency-block{padding-left:17px}footer.suo-portal-footer .suo-footer-eyebrow{font-size:12px}footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:18px}footer.suo-portal-footer .suo-footer-agency-block p{font-size:13px!important}footer.suo-portal-footer .suo-footer-values{font-size:12px;padding-top:12px}footer.suo-portal-footer .suo-footer-action{gap:10px;justify-content:space-between}footer.suo-portal-footer .suo-footer-home{font-size:11px;padding:12px 13px;width:auto;min-width:150px}footer.suo-portal-footer .suo-footer-action p{font-size:11px!important}footer.suo-portal-footer .suo-footer-legal{font-size:10px;padding:14px 9px 16px!important}}
-
-/* Approved mockup visual fidelity adjustments, footer only */
-footer.footer.suo-portal-footer{background:linear-gradient(112deg,#611025 0%,#791a30 49%,#520c22 100%)!important}
-footer.suo-portal-footer .suo-footer-main{max-width:1740px!important;grid-template-columns:minmax(0,1.62fr) minmax(0,.90fr) minmax(0,.67fr)!important;gap:clamp(20px,2vw,37px)!important;min-height:370px!important;padding:55px clamp(26px,2.6vw,48px) 53px!important}
-footer.suo-portal-footer .suo-footer-branding{gap:clamp(8px,1.2vw,17px)}
-footer.suo-portal-footer .suo-footer-emblem{width:clamp(160px,16vw,265px)!important;max-width:32%!important}
-footer.suo-portal-footer .suo-footer-name{padding-left:clamp(17px,1.7vw,31px)!important}
-footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(29px,2.65vw,46px)!important;letter-spacing:-.025em!important;line-height:1.08!important;margin:0 0 19px!important}
-footer.suo-portal-footer .suo-footer-name strong{font-size:clamp(13px,1.33vw,22px)!important;letter-spacing:0!important}
-footer.suo-portal-footer .suo-footer-name span{font-size:clamp(10px,1vw,17px)!important;letter-spacing:.2em!important}
-footer.suo-portal-footer .suo-footer-agency-block{padding-left:clamp(18px,2.1vw,37px)!important}
-footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:clamp(21px,1.85vw,31px)!important;letter-spacing:-.015em}
-footer.suo-portal-footer .suo-footer-agency-block p{font-size:clamp(17px,1.65vw,27px)!important;line-height:1.19!important}
-footer.suo-portal-footer .suo-footer-eyebrow{font-size:clamp(14px,1.36vw,21px)!important;font-weight:500}
-footer.suo-portal-footer .suo-footer-values{font-size:clamp(14px,1.27vw,20px)!important;color:#f5bf71!important}
-footer.suo-portal-footer .suo-footer-action{padding-left:clamp(18px,2.1vw,36px)!important}
-footer.suo-portal-footer .suo-footer-home{font-size:clamp(17px,1.45vw,24px)!important;font-weight:700!important;letter-spacing:.02em!important;border:3px solid #f1c478!important;padding:17px 15px!important;box-shadow:0 0 16px rgba(255,183,91,.10)!important}
-footer.suo-portal-footer .suo-footer-action p{font-size:clamp(16px,1.31vw,21px)!important;line-height:1.4!important}
-footer.suo-portal-footer .suo-footer-waves{background:radial-gradient(ellipse at 11% 105%,rgba(248,92,53,.19),transparent 34%),radial-gradient(ellipse at 95% 98%,rgba(245,91,59,.2),transparent 37%),repeating-radial-gradient(ellipse at -14% -170%,transparent 0 65px,rgba(252,181,106,.03) 66px 67px,transparent 69px 134px)!important}
-footer.suo-portal-footer .suo-footer-legal{font-size:clamp(14px,1.34vw,21px)!important;padding:20px 16px 24px!important}
-@media(max-width:1150px){footer.suo-portal-footer .suo-footer-main{min-height:0!important;grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr)!important;padding:32px 25px!important}footer.suo-portal-footer .suo-footer-emblem{width:115px!important}footer.suo-portal-footer .suo-footer-name h2{font-size:25px!important}footer.suo-portal-footer .suo-footer-name strong{font-size:11px!important}footer.suo-portal-footer .suo-footer-name span{font-size:9px!important}footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:18px!important}footer.suo-portal-footer .suo-footer-agency-block p{font-size:14px!important}footer.suo-portal-footer .suo-footer-eyebrow{font-size:12px!important}footer.suo-portal-footer .suo-footer-values{font-size:12px!important}footer.suo-portal-footer .suo-footer-home{font-size:14px!important;border-width:2px!important;padding:12px 17px!important}footer.suo-portal-footer .suo-footer-action p{font-size:13px!important}footer.suo-portal-footer .suo-footer-legal{font-size:12px!important}}
-@media(max-width:680px){footer.suo-portal-footer .suo-footer-main{display:flex!important;flex-direction:column!important;padding:25px 17px!important}footer.suo-portal-footer .suo-footer-emblem{width:97px!important;max-width:30%!important}footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(17px,4.2vw,22px)!important}footer.suo-portal-footer .suo-footer-name strong{font-size:clamp(9px,2.4vw,12px)!important}footer.suo-portal-footer .suo-footer-name span{font-size:9px!important}footer.suo-portal-footer .suo-footer-agency-block p{font-size:13px!important}footer.suo-portal-footer .suo-footer-action{padding-left:0!important}footer.suo-portal-footer .suo-footer-home{font-size:11px!important;padding:12px!important}footer.suo-portal-footer .suo-footer-action p{font-size:11px!important}footer.suo-portal-footer .suo-footer-legal{font-size:10px!important}}
+footer.suo-portal-footer .suo-footer-name{min-width:0;border-left:2px solid rgba(240,193,117,.82);padding-left:clamp(17px,1.7vw,28px)}
+footer.suo-portal-footer .suo-footer-name h2{font-family:Arial,sans-serif;font-size:clamp(27px,2.55vw,45px)!important;font-weight:900!important;line-height:1.08!important;letter-spacing:-.025em!important;color:#f1bf75!important;margin:0 0 24px!important}
+footer.suo-portal-footer .suo-footer-name strong{display:block;font-size:clamp(13px,1.36vw,22px)!important;line-height:1.4;color:#fff!important;font-weight:800;white-space:nowrap;letter-spacing:-.01em}
+footer.suo-portal-footer .suo-footer-name span{display:block;font-size:clamp(10px,1.06vw,17px)!important;letter-spacing:.19em!important;line-height:1.5;margin-top:6px;color:#f5dfe1!important;white-space:nowrap}
+footer.suo-portal-footer .suo-footer-agency-block{min-width:0;border-left:2px solid rgba(240,193,117,.74);padding-left:clamp(18px,2.3vw,38px)}
+footer.suo-portal-footer .suo-footer-eyebrow{display:block;color:#edbf77!important;font-weight:500;font-size:clamp(14px,1.32vw,21px)!important;line-height:1.35;margin:0 0 20px!important;letter-spacing:0}
+footer.suo-portal-footer .suo-footer-agency-block>strong{display:block;font-size:clamp(20px,1.9vw,31px)!important;line-height:1.23;color:#fff!important;white-space:normal;font-weight:800;letter-spacing:-.02em}
+footer.suo-portal-footer .suo-footer-agency-block p{color:#fff0eb!important;margin:12px 0 20px!important;font-size:clamp(17px,1.6vw,26px)!important;line-height:1.2!important;font-weight:400}
+footer.suo-portal-footer .suo-footer-values{border-top:1px solid rgba(246,184,113,.4);padding:18px 0 0;font-size:clamp(13px,1.28vw,21px)!important;color:#f2be75!important;font-weight:700;line-height:1.45;white-space:normal}
+footer.suo-portal-footer .suo-footer-values b{color:#f4ca8d;padding:0 4px}
+footer.suo-portal-footer .suo-footer-action{min-width:0;border-left:2px solid rgba(240,193,117,.74);padding-left:clamp(20px,2.35vw,39px);text-align:center}
+footer.suo-portal-footer .suo-footer-home{position:relative;display:block;width:100%;padding:18px 12px;border:3px solid #f1c47a;border-radius:999px;background:rgba(82,7,31,.4);color:#f0bc76!important;cursor:pointer;font:800 clamp(15px,1.38vw,23px)/1.2 Arial,sans-serif;letter-spacing:.012em;white-space:nowrap;transition:box-shadow .3s ease,background .3s ease,transform .3s ease}
+footer.suo-portal-footer .suo-footer-home::after{content:"";position:absolute;top:-3px;right:10%;height:3px;width:28%;border-radius:100%;background:#ffe5a2;box-shadow:0 0 12px 3px rgba(255,197,112,.66);opacity:.85}
+footer.suo-portal-footer .suo-footer-home:hover,footer.suo-portal-footer .suo-footer-home:focus-visible{transform:translateY(-2px);background:rgba(233,165,94,.15);box-shadow:0 0 25px rgba(255,188,112,.23)}
+footer.suo-portal-footer .suo-footer-action p{font-size:clamp(14px,1.3vw,21px)!important;color:white!important;line-height:1.4!important;margin:22px 0 0!important;text-align:center!important}
+footer.suo-portal-footer .suo-footer-legal{position:relative;z-index:1;min-height:85px;box-sizing:border-box;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:0 5px;background:rgba(66,5,26,.22);border-top:1px solid rgba(242,199,144,.36);padding:18px 15px!important;text-align:center;color:#fff0ed!important;font-size:clamp(14px,1.33vw,22px)!important;line-height:1.6;letter-spacing:0}
+footer.suo-portal-footer .suo-footer-legal span{color:#e8b975;margin:0 4px}
+body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+@keyframes suoFooterIllustration{from{transform:translateY(2px)}to{transform:translateY(-3px)}}
+@media(max-width:1240px){footer.suo-portal-footer .suo-footer-main{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);min-height:0;gap:28px;padding:36px 26px!important}footer.suo-portal-footer .suo-footer-emblem{flex-basis:135px;max-width:30%}footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(22px,2.4vw,32px)!important}footer.suo-portal-footer .suo-footer-name strong{font-size:clamp(11px,1.3vw,16px)!important}footer.suo-portal-footer .suo-footer-name span{font-size:clamp(9px,1vw,13px)!important}footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:21px!important}footer.suo-portal-footer .suo-footer-eyebrow{font-size:15px!important}footer.suo-portal-footer .suo-footer-agency-block p{font-size:16px!important}footer.suo-portal-footer .suo-footer-values{font-size:13px!important}footer.suo-portal-footer .suo-footer-action{grid-column:1/-1;border-left:0;border-top:1px solid rgba(240,193,117,.4);padding:20px 0 0;display:flex;justify-content:center;align-items:center;gap:26px}footer.suo-portal-footer .suo-footer-home{max-width:265px;font-size:16px!important;padding:13px 18px}footer.suo-portal-footer .suo-footer-action p{font-size:14px!important;margin:0!important;text-align:left!important}footer.suo-portal-footer .suo-footer-legal{min-height:64px;font-size:14px!important}}
+@media(max-width:690px){footer.suo-portal-footer .suo-footer-main{display:flex;flex-direction:column;align-items:stretch;gap:25px;padding:27px 19px!important}footer.suo-portal-footer .suo-footer-branding{gap:12px}footer.suo-portal-footer .suo-footer-emblem{flex-basis:88px;max-width:27%}footer.suo-portal-footer .suo-footer-name{padding-left:13px}footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(16px,4.2vw,22px)!important;margin-bottom:11px!important}footer.suo-portal-footer .suo-footer-name strong{font-size:clamp(9px,2.5vw,12px)!important;white-space:normal}footer.suo-portal-footer .suo-footer-name span{font-size:clamp(8px,2vw,10px)!important;letter-spacing:.08em!important;white-space:normal}footer.suo-portal-footer .suo-footer-agency-block{padding-left:17px}footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:19px!important}footer.suo-portal-footer .suo-footer-agency-block p{font-size:14px!important}footer.suo-portal-footer .suo-footer-action{gap:12px;justify-content:space-between}footer.suo-portal-footer .suo-footer-home{min-width:145px;width:auto;font-size:11px!important;padding:12px 13px;border-width:2px}footer.suo-portal-footer .suo-footer-action p{font-size:11px!important}footer.suo-portal-footer .suo-footer-legal{font-size:11px!important;min-height:62px}}
+@media(prefers-reduced-motion:reduce){footer.suo-portal-footer .suo-footer-emblem{animation:none!important}footer.suo-portal-footer .suo-footer-home{transition:none!important}}
 </style>
 </head>
 <body>
