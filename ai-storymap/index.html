@@ -17250,7 +17250,7 @@ apply();
  const root=document.getElementById('suo-footer-visitor-daily');if(!root)return;
  const num=document.getElementById('suo-visitor-today-number'),bars=document.getElementById('suo-visitor-bars'),status=document.getElementById('suo-visitor-status');
  const timezone='Asia/Kuala_Lumpur';
- function fmt(d){return new Intl.DateTimeFormat('en-CA',{timeZone:timezone,year:'numeric',month:'2-digit',day:'2-digit'}).format(d)}
+ function fmt(d){const p=new Intl.DateTimeFormat('en-GB',{timeZone:timezone,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(d);const q=Object.fromEntries(p.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));return q.year+'-'+q.month+'-'+q.day}
  function dates(){const today=fmt(new Date());const [yy,mm,dd]=today.split('-').map(Number);const out=[];for(let i=6;i>=0;i--){const d=new Date(Date.UTC(yy,mm-1,dd-i,12));out.push(fmt(d))}return out}
  const days=dates(), dayfmt=new Intl.DateTimeFormat('ms-MY',{weekday:'short',timeZone:'UTC'});
  function label(x){const [y,m,d]=x.split('-').map(Number);return dayfmt.format(new Date(Date.UTC(y,m-1,d,12)))}
