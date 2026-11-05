@@ -10866,7 +10866,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
       <button type="button" class="suo-footer-home" onclick="scrollToSuoTarget('utama')" aria-label="Kembali ke Halaman Utama">HALAMAN UTAMA</button>
     </div>
   </div>
-  <section class="suo-footer-visitor-daily" id="suo-footer-visitor-daily" aria-label="Bilangan pengunjung Story Map" data-goatcounter-site="">
+  <section class="suo-footer-visitor-daily" id="suo-footer-visitor-daily" aria-label="Bilangan pengunjung Story Map" data-counter-api="">
     <div class="suo-visitor-pill"><span>Tarikh hari ini</span><strong id="suo-visitor-date">—</strong></div>
     <div class="suo-visitor-pill"><span>Pengunjung hari ini</span><strong id="suo-visitor-today-number" title="Memerlukan sambungan analitik">—</strong></div>
     <div class="suo-visitor-pill"><span>Pengunjung sepanjang masa</span><strong id="suo-visitor-total-number" title="Memerlukan sambungan analitik">—</strong></div>
@@ -17229,37 +17229,52 @@ apply();
 }
 </style>
 <script id="suo-visitor-daily-20261105">
-/* Shared, genuine pageview counts; configure data-goatcounter-site to activate.
-   Never present local estimates or invented visit totals as global figures. */
+/* A shared counter needs a deployed backend endpoint. Set data-counter-api
+   on the footer section to the Cloudflare Worker URL to enable live values.
+   One POST /visit records a page opening; GET /stats is read-only. */
 (function(){
  const root=document.getElementById('suo-footer-visitor-daily');if(!root)return;
  const dateEl=document.getElementById('suo-visitor-date');
  const todayEl=document.getElementById('suo-visitor-today-number');
  const totalEl=document.getElementById('suo-visitor-total-number');
  const tz='Asia/Kuala_Lumpur';
- function isoDate(){const parts=new Intl.DateTimeFormat('en-GB',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const p=Object.fromEntries(parts.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));return p.year+'-'+p.month+'-'+p.day;}
- function showDate(){dateEl.textContent=new Intl.DateTimeFormat('ms-MY',{day:'2-digit',month:'short',year:'numeric',timeZone:tz}).format(new Date());}
+ const dateFmt=new Intl.DateTimeFormat('ms-MY',{day:'2-digit',month:'short',year:'numeric',timeZone:tz});
+ function malaysiaDate(){return new Intl.DateTimeFormat('en-CA',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:tz}).format(new Date());}
+ function showDate(){dateEl.textContent=dateFmt.format(new Date());}
  showDate();
- const site=(root.dataset.goatcounterSite||'').trim().toLowerCase();
- if(!/^[a-z0-9][a-z0-9-]{1,61}$/.test(site)){dateEl.title='Tarikh Malaysia';return;}
- const script=document.createElement('script');script.async=true;script.src='https://gc.zgo.at/count.js';script.setAttribute('data-goatcounter','https://'+site+'.goatcounter.com/count');document.head.appendChild(script);
- const origin='https://'+site+'.goatcounter.com/counter/'+encodeURIComponent(location.pathname)+'.json';
- async function count(query){const res=await fetch(origin+query,{mode:'cors',credentials:'omit',cache:'no-store'});if(!res.ok)throw Error('analytics '+res.status);const data=await res.json();const raw=data.count;const n=typeof raw==='number'?raw:Number(String(raw||'').replace(/[^0-9]/g,''));if(!Number.isFinite(n)||n<0)throw Error('missing analytics');return n;}
- let activeDate='',busy=false;
- async function refresh(){
-  if(busy||document.hidden)return;
-  busy=true;showDate();
-  const day=isoDate();
-  if(activeDate!==day){todayEl.textContent='—';activeDate=day;}
-  try{
-   const results=await Promise.allSettled([count('?start='+day+'&end='+day),count('')]);
-   if(day===isoDate()&&results[0].status==='fulfilled'){todayEl.textContent=results[0].value.toLocaleString('ms-MY');todayEl.title='Jumlah lawatan '+day;}
-   if(results[1].status==='fulfilled'){totalEl.textContent=results[1].value.toLocaleString('ms-MY');totalEl.title='Jumlah lawatan sepanjang masa';}
-  }finally{busy=false;}
+ const endpoint=(root.dataset.counterApi||'').trim().replace(/\/$/,'');
+ if(!/^https:\/\/[a-z0-9.-]+(?:\:[0-9]+)?$/i.test(endpoint)){
+   todayEl.title=totalEl.title='Kaunter menunggu sambungan pelayan rekod lawatan';
+   return;
  }
- script.addEventListener('load',()=>setTimeout(refresh,1500));
- script.addEventListener('error',()=>{todayEl.title=totalEl.title='Sambungan analitik tidak tersedia';});
- setInterval(()=>{showDate();refresh();},60000);
+ function render(data){
+   if(!data||!Number.isSafeInteger(data.today)||!Number.isSafeInteger(data.total))return;
+   if(data.date!==malaysiaDate())return;
+   todayEl.textContent=data.today.toLocaleString('ms-MY');
+   totalEl.textContent=data.total.toLocaleString('ms-MY');
+   todayEl.title='Jumlah lawatan '+data.date;
+   totalEl.title='Jumlah lawatan sepanjang masa';
+ }
+ async function requestStats(path,options){
+   const response=await fetch(endpoint+path,{mode:'cors',cache:'no-store',...options});
+   if(!response.ok)throw Error('Counter endpoint '+response.status);
+   render(await response.json());
+ }
+ // Record exactly once per page load, never on polling/visibility changes.
+ requestStats('/visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:'/Rancangan-Pemajuan-Negeri-Selangor/ai-storymap/'})}).catch(()=>{
+   todayEl.title=totalEl.title='Kaunter gagal dihubungi';
+ });
+ let shownDay=malaysiaDate(),busy=false;
+ async function refresh(){
+   showDate();
+   const day=malaysiaDate();
+   if(day!==shownDay){shownDay=day;todayEl.textContent='—';}
+   if(document.hidden||busy)return;
+   busy=true;
+   try{await requestStats('/stats');}catch(e){/* Preserve last verified numbers. */}
+   finally{busy=false;}
+ }
+ setInterval(refresh,60000);
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 })();
 </script>
