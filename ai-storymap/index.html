@@ -17425,37 +17425,114 @@ apply();
  #rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li{transition:none!important}
 }
 </style>
+<style id="suo-mbsa-verified-layout-20261106">
+/* High-specificity MBSA overrides, including legacy generic LI and timeline rules. */
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece :is(ul,ol).suo-mbsa-goals-grid{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:16px!important;list-style:none!important;margin:18px 0 30px!important;
+ padding:0!important;border:0!important;max-width:none!important;width:100%!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-goals-grid > li{
+ display:flex!important;flex-direction:column!important;justify-content:flex-end!important;
+ position:relative!important;min-width:0!important;min-height:240px!important;
+ margin:0!important;padding:85px 20px 24px!important;
+ background:linear-gradient(145deg,#fff,#e5f2ff)!important;
+ border:1px solid #bed8ec!important;border-top:4px solid #1e5489!important;
+ border-radius:19px!important;box-shadow:0 12px 30px #224a7820!important;
+ list-style:none!important;transition:transform .3s ease,box-shadow .3s ease!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-goals-grid > li:nth-child(2){border-top-color:#319bb6!important;background:linear-gradient(140deg,#fff,#e4f8fa)!important}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-goals-grid > li:nth-child(3){border-top-color:#6d77bb!important;background:linear-gradient(140deg,#fff,#eef0ff)!important}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-goals-grid > li::before{
+ content:var(--mbsa-item-num)!important;display:block!important;position:absolute!important;
+ top:14px!important;left:20px!important;right:auto!important;
+ width:auto!important;height:auto!important;padding:0!important;
+ background:transparent!important;border:0!important;border-radius:0!important;
+ color:#265987!important;font:800 54px/1 Arial,sans-serif!important;
+ box-shadow:none!important;opacity:.75!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-goals-grid > li:hover{
+ transform:translateY(-6px)!important;box-shadow:0 18px 40px #224a7833!important
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece :is(ul,ol).suo-mbsa-vision-stack{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:17px 24px!important;margin:17px 0 28px!important;padding:0!important;
+ list-style:none!important;border:0!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-vision-stack > li{
+ position:relative!important;display:block!important;min-height:0!important;
+ margin:0!important;box-shadow:none!important;list-style:none!important;
+ border-radius:0!important;transform:none!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-vision-stack > li::before,
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-vision-stack > li::after{content:none!important;display:none!important}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-vision-stack > li:first-child{
+ grid-column:1/-1!important;padding:34px 35px!important;
+ background:linear-gradient(125deg,#143d76,#287faf)!important;color:#fff!important;
+ border:1px solid #1d578b!important;border-left:6px solid #6dd5e9!important;
+ border-radius:17px!important;box-shadow:0 16px 36px #13487540!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-vision-stack > li:first-child *{color:inherit!important}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-vision-stack > li:nth-child(n+2){
+ padding:21px 19px 21px 25px!important;
+ border:0!important;border-left:4px solid #3284a9!important;
+ border-radius:0 10px 10px 0!important;
+ background:linear-gradient(90deg,#e3f3fbcc,#ffffff55)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-vision-stack > li:nth-child(3){border-left-color:#7a85c8!important;background:linear-gradient(90deg,#eeeeffcc,#ffffff55)!important}
+@media(max-width:950px){
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece :is(ul,ol).suo-mbsa-goals-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:640px){
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece :is(ul,ol).suo-mbsa-goals-grid,
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece :is(ul,ol).suo-mbsa-vision-stack{grid-template-columns:1fr!important}
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-goals-grid > li{min-height:185px!important}
+}
+@media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece .suo-mbsa-goals-grid > li{transition:none!important}}
+</style>
 <script id="suo-mbsa-goal-editorial-apply-20261106">
 (function(){
  'use strict';
  const modal=document.getElementById('rt11-modal');
  const body=document.getElementById('rt11-body');
  if(!modal||!body)return;
- function normalize(s){return(s||'').replace(/\s+/g,' ').trim().toLowerCase()}
+ const normalize=s=>(s||'').replace(/\s+/g,' ').trim().toUpperCase();
+ function classify(list){
+  const items=[...list.children].filter(el=>el.tagName==='LI');
+  if(items.length!==3)return '';
+  const labels=items.map(li=>normalize(li.textContent).replace(/^\s*0?[1-3]\s*[.):-]?\s*/,''));
+  const goals=labels[0].startsWith('PINTAR')&&labels[1].startsWith('BERDAYA HUNI')&&labels[2].startsWith('BERDAYA TAHAN');
+  const vision=labels[0].startsWith('VISI')&&labels[1].startsWith('MISI')&&labels[2].startsWith('WAWASAN');
+  return goals?'suo-mbsa-goals-grid':vision?'suo-mbsa-vision-stack':'';
+ }
  function apply(){
-  if(!modal.classList.contains('rt-mbsa'))return;
-  const chapter=body.querySelector('.rtchapter.rt-goal');
-  if(!chapter)return;
-  const elements=[...chapter.querySelectorAll('h3,h4,h5,ul,ol')];
-  const headings=elements.filter(el=>/^H[345]$/.test(el.tagName));
-  function matchAfter(re,cls){
-    const heading=headings.find(el=>re.test(normalize(el.textContent)));
-    if(!heading)return;
-    const pos=elements.indexOf(heading);
-    const list=elements.slice(pos+1).find(el=>/^H[345]$/.test(el.tagName)||/^(UL|OL)$/.test(el.tagName));
-    if(!list||!/^(UL|OL)$/.test(list.tagName)||list.children.length!==3)return;
+  if(modal.hidden||!modal.classList.contains('rt-mbsa'))return;
+  const root=body.querySelector('.rtchapter.rt-goal');
+  if(!root)return;
+  root.querySelectorAll('ul,ol').forEach(list=>{
+    const cls=classify(list);
+    if(!cls)return;
     list.classList.add(cls);
-    const parent=list.closest('.rtpiece');
-    if(parent)parent.classList.add(cls+'-piece');
-  }
-  matchAfter(/tafsiran\s+matlamat/, 'suo-mbsa-goals-grid');
-  matchAfter(/visi\s*,?\s*misi/, 'suo-mbsa-vision-stack');
+    // Other generic timeline/grid transformations must not override this MBSA design.
+    list.classList.remove('rt-v3-timeline','rt-v3-teras','rt-flow-timeline','rt-unified-teras-grid','rt-teras-grid','rt-final-timeline','rt-shared-card-grid');
+    const piece=list.closest('.rtpiece');
+    if(piece)piece.classList.add(cls+'-piece');
+    list.querySelectorAll(':scope > li').forEach((li,i)=>{
+      li.classList.remove('rt-motion-reveal','rt-animate-in');
+      li.style.removeProperty('--rt-motion-delay');
+      if(cls==='suo-mbsa-goals-grid')li.style.setProperty('--mbsa-item-num',String(i+1).padStart(2,'0'));
+    });
+  });
  }
  let pending=false;
- function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;apply()})}
- const watcher=new MutationObserver(schedule);
- watcher.observe(body,{childList:true,subtree:true});
- watcher.observe(modal,{attributes:true,attributeFilter:['class','hidden']});
+ function schedule(){
+  if(pending)return;
+  pending=true;
+  requestAnimationFrame(()=>{pending=false;apply()});
+ }
+ new MutationObserver(schedule).observe(body,{childList:true,subtree:true});
+ new MutationObserver(schedule).observe(modal,{attributes:true,attributeFilter:['class','hidden']});
+ document.addEventListener('click',e=>{if(e.target.closest('#rt11-nav'))schedule()});
  schedule();
 })();
 </script>
