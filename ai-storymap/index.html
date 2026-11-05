@@ -17431,7 +17431,7 @@ apply();
  const modal=document.getElementById('rt11-modal');
  const body=document.getElementById('rt11-body');
  if(!modal||!body)return;
- function normalize(s){return(s||'').replace(/\\s+/g,' ').trim().toLowerCase()}
+ function normalize(s){return(s||'').replace(/\s+/g,' ').trim().toLowerCase()}
  function apply(){
   if(!modal.classList.contains('rt-mbsa'))return;
   const chapter=body.querySelector('.rtchapter.rt-goal');
@@ -17448,8 +17448,8 @@ apply();
     const parent=list.closest('.rtpiece');
     if(parent)parent.classList.add(cls+'-piece');
   }
-  matchAfter(/tafsiran\\s+matlamat/, 'suo-mbsa-goals-grid');
-  matchAfter(/visi\\s*,?\\s*misi/, 'suo-mbsa-vision-stack');
+  matchAfter(/tafsiran\s+matlamat/, 'suo-mbsa-goals-grid');
+  matchAfter(/visi\s*,?\s*misi/, 'suo-mbsa-vision-stack');
  }
  let pending=false;
  function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;apply()})}
