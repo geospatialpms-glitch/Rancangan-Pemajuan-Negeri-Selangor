@@ -16,22 +16,25 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     env:
-      GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+      GA4_PROPERTY_ID: "559302911"
       GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
     steps:
+      - name: Explain missing GA4 authorization
+        if: env.GA4_SERVICE_ACCOUNT_JSON == ''
+        run: echo "::notice::GA4 property 559302911 has been configured. Connect a Google service account with Analytics Viewer access and add GA4_SERVICE_ACCOUNT_JSON to repository secrets to enable visitor counts."
       - name: Checkout repository
-        if: env.GA4_PROPERTY_ID != '' && env.GA4_SERVICE_ACCOUNT_JSON != ''
+        if: env.GA4_SERVICE_ACCOUNT_JSON != ''
         uses: actions/checkout@v4
       - name: Set up Node.js
-        if: env.GA4_PROPERTY_ID != '' && env.GA4_SERVICE_ACCOUNT_JSON != ''
+        if: env.GA4_SERVICE_ACCOUNT_JSON != ''
         uses: actions/setup-node@v4
         with:
           node-version: '22'
       - name: Query GA4 Data API
-        if: env.GA4_PROPERTY_ID != '' && env.GA4_SERVICE_ACCOUNT_JSON != ''
+        if: env.GA4_SERVICE_ACCOUNT_JSON != ''
         run: node scripts/update-ga-visitors.mjs
       - name: Commit visitor summary when changed
-        if: env.GA4_PROPERTY_ID != '' && env.GA4_SERVICE_ACCOUNT_JSON != ''
+        if: env.GA4_SERVICE_ACCOUNT_JSON != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
