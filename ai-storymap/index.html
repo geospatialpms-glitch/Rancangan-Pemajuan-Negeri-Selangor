@@ -9325,35 +9325,38 @@ box-shadow:0 18px 40px rgba(57,22,38,.23)!important;z-index:3000!important;
 
 
 <style id="suo-footer-final-reference-20261105">
-/* Footer compact — SUO logo from repository; isolated layout, no changes to other sections. */
-footer.footer.suo-portal-footer{position:relative!important;isolation:isolate;overflow:hidden!important;display:block!important;width:100%!important;margin:0!important;padding:0!important;background:linear-gradient(105deg,#54071c 0%,#671126 52%,#51071d 100%)!important;border:0!important;border-top:3px solid #d8aa64!important;color:#fff5e9!important;text-align:left!important;box-shadow:none!important}
-footer.footer.suo-portal-footer::before,footer.footer.suo-portal-footer::after{display:none!important;content:none!important}
-footer.suo-portal-footer .suo-footer-waves{position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse at 17% 93%,rgba(236,130,91,.13),transparent 40%),radial-gradient(ellipse at 89% 16%,rgba(238,177,99,.10),transparent 39%)}
-footer.suo-portal-footer .suo-footer-main{position:relative;z-index:1;box-sizing:border-box;width:100%;max-width:1600px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,.7fr);align-items:center;column-gap:clamp(20px,2.8vw,46px);min-height:0!important;padding:27px clamp(22px,3.5vw,58px) 24px!important}
-footer.suo-portal-footer .suo-footer-branding{display:flex;align-items:center;gap:clamp(13px,1.5vw,22px);min-width:0}
-footer.suo-portal-footer .suo-footer-emblem{flex:0 0 92px;width:92px;max-width:none;display:flex;align-items:center;justify-content:center;padding:7px;background:#fff8ef;border:1px solid rgba(239,186,119,.74);border-radius:13px;box-shadow:0 4px 16px rgba(35,0,12,.14);animation:none!important;filter:none!important}
-footer.suo-portal-footer .suo-footer-emblem img{display:block;width:100%;height:80px;object-fit:contain;border-radius:7px}
-footer.suo-portal-footer .suo-footer-name{min-width:0;padding-left:18px;border-left:2px solid #dcb16e}
-footer.suo-portal-footer .suo-footer-name h2{font:800 clamp(16px,1.35vw,23px)/1.15 Arial,sans-serif!important;letter-spacing:.005em!important;color:#f1bf7d!important;margin:0 0 9px!important}
-footer.suo-portal-footer .suo-footer-name strong{display:block;font:800 clamp(10px,.84vw,13px)/1.35 Arial,sans-serif!important;color:#fffaf3!important;letter-spacing:.02em;white-space:normal}
-footer.suo-portal-footer .suo-footer-name span{display:block;font:500 clamp(9px,.72vw,11px)/1.35 Arial,sans-serif!important;letter-spacing:.14em;color:#eacbd0!important;margin-top:4px;white-space:normal}
-footer.suo-portal-footer .suo-footer-agency-block{min-width:0;padding-left:22px;border-left:1px solid rgba(231,185,116,.6)}
-footer.suo-portal-footer .suo-footer-eyebrow{display:block;font:700 10px/1.35 Arial,sans-serif!important;letter-spacing:.12em;color:#e9bb79!important;margin:0 0 6px!important}
-footer.suo-portal-footer .suo-footer-agency-block>strong{display:block;font:800 clamp(13px,1.13vw,17px)/1.3 Arial,sans-serif!important;color:#fffaf3!important}
-footer.suo-portal-footer .suo-footer-agency-block p{font:400 clamp(11px,.83vw,13px)/1.4 Arial,sans-serif!important;color:#f1dfe0!important;margin:4px 0 8px!important}
-footer.suo-portal-footer .suo-footer-values{border-top:1px solid rgba(220,174,105,.32);padding-top:7px;color:#eec17e!important;font:700 clamp(10px,.82vw,12px)/1.4 Arial,sans-serif!important;letter-spacing:0;white-space:normal}
-footer.suo-portal-footer .suo-footer-values b{color:#f2cf98;padding:0 2px}
-footer.suo-portal-footer .suo-footer-action{min-width:0;padding-left:20px;border-left:1px solid rgba(231,185,116,.6);text-align:center}
-footer.suo-portal-footer .suo-footer-home{position:relative;display:block;width:100%;min-height:42px;padding:11px 14px!important;border:1.5px solid #e9b879!important;border-radius:999px;background:rgba(91,7,32,.45);color:#f2c684!important;font:800 clamp(10px,.92vw,14px)/1.2 Arial,sans-serif!important;letter-spacing:.025em;white-space:nowrap;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+/* Footer only: compact SUO layout with subtle geospatial network */
+footer.footer.suo-portal-footer{position:relative!important;isolation:isolate;display:block!important;overflow:hidden!important;width:100%!important;margin:0!important;padding:0!important;color:#fff8f0!important;background:linear-gradient(112deg,#4e071d 0%,#641129 48%,#4e081d 100%)!important;border:0!important;border-top:2px solid #d7a967!important;box-shadow:none!important;text-align:left!important}
+footer.suo-portal-footer::before,footer.suo-portal-footer::after{content:none!important;display:none!important}
+footer.suo-portal-footer .suo-footer-waves{position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse at 10% 10%,rgba(51,103,168,.16),transparent 45%),radial-gradient(ellipse at 87% 83%,rgba(92,160,220,.12),transparent 46%)}
+footer.suo-portal-footer .suo-footer-network{position:absolute;pointer-events:none;z-index:0;inset:0;width:100%;height:100%;color:#86b5ed;opacity:.24;filter:drop-shadow(0 0 4px rgba(82,169,252,.17));animation:suoFooterNetDrift 24s ease-in-out infinite alternate}
+footer.suo-portal-footer .suo-footer-network-dots{filter:drop-shadow(0 0 3px rgba(151,208,255,.8))}
+footer.suo-portal-footer .suo-footer-network-dots circle:nth-child(3n){animation:suoFooterNetTwinkle 6s ease-in-out infinite alternate}
+footer.suo-portal-footer .suo-footer-network-dots circle:nth-child(3n + 1){animation:suoFooterNetTwinkle 8s ease-in-out -3s infinite alternate}
+footer.suo-portal-footer .suo-footer-main{position:relative;z-index:1;box-sizing:border-box;width:100%;max-width:1580px;margin:0 auto;padding:23px clamp(22px,4vw,64px) 22px!important;min-height:0!important;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.92fr) minmax(190px,.66fr);align-items:center;gap:clamp(20px,3vw,46px)}
+footer.suo-portal-footer .suo-footer-branding{display:flex;align-items:center;min-width:0;gap:19px}
+footer.suo-portal-footer .suo-footer-emblem{flex:0 0 83px;width:83px;max-width:83px;padding:6px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:#fff8ef;border:1px solid rgba(230,183,117,.7);box-shadow:0 5px 15px rgba(34,0,14,.17);filter:none!important;animation:none!important}
+footer.suo-portal-footer .suo-footer-emblem img{display:block;width:100%;height:74px;object-fit:contain;border-radius:7px}
+footer.suo-portal-footer .suo-footer-name{min-width:0;padding-left:19px;border-left:2px solid rgba(230,184,113,.85)}
+footer.suo-portal-footer .suo-footer-name h2{font:800 clamp(16px,1.4vw,22px)/1.12 Arial,sans-serif!important;color:#f3c687!important;letter-spacing:.01em!important;margin:0 0 9px!important}
+footer.suo-portal-footer .suo-footer-name strong{display:block;font:800 clamp(11px,.93vw,14px)/1.3 Arial,sans-serif!important;color:#fffaf4!important;letter-spacing:.015em;white-space:normal}
+footer.suo-portal-footer .suo-footer-name span{display:block;margin-top:4px;font:600 clamp(9px,.73vw,11px)/1.3 Arial,sans-serif!important;letter-spacing:.12em;color:#edd0d5!important;white-space:normal}
+footer.suo-portal-footer .suo-footer-agency-block{min-width:0;border-left:1px solid rgba(230,184,113,.6);padding-left:clamp(18px,2.3vw,34px)}
+footer.suo-portal-footer .suo-footer-eyebrow{display:block;color:#e8ba7d!important;font:800 10px/1.3 Arial,sans-serif!important;letter-spacing:.13em;margin:0 0 9px!important}
+footer.suo-portal-footer .suo-footer-agency-block>strong{display:block;color:#fff9f3!important;font:800 clamp(14px,1.12vw,18px)/1.3 Arial,sans-serif!important}
+footer.suo-portal-footer .suo-footer-agency-block p{color:#f0dde0!important;font:400 clamp(11px,.84vw,14px)/1.45 Arial,sans-serif!important;margin:5px 0 0!important}
+footer.suo-portal-footer .suo-footer-action{min-width:0;display:flex;align-items:center;justify-content:center;padding-left:clamp(16px,2vw,29px);border-left:1px solid rgba(230,184,113,.6);text-align:center}
+footer.suo-portal-footer .suo-footer-home{display:block;width:100%;max-width:258px;min-height:45px;padding:11px 15px!important;background:rgba(86,11,36,.68);border:1.5px solid #e5b779!important;border-radius:999px;color:#f3c684!important;white-space:nowrap;cursor:pointer;font:800 clamp(11px,.94vw,14px)/1.2 Arial,sans-serif!important;letter-spacing:.03em;transition:transform .26s,box-shadow .26s,background .26s}
 footer.suo-portal-footer .suo-footer-home::after{display:none!important}
-footer.suo-portal-footer .suo-footer-home:hover,footer.suo-portal-footer .suo-footer-home:focus-visible{transform:translateY(-2px);background:rgba(226,170,99,.15);box-shadow:0 0 15px rgba(237,174,102,.22)}
-footer.suo-portal-footer .suo-footer-action p{font:400 clamp(10px,.77vw,12px)/1.45 Arial,sans-serif!important;margin:9px 0 0!important;color:#f2dce0!important;text-align:center!important}
-footer.suo-portal-footer .suo-footer-legal{min-height:0!important;padding:10px 16px!important;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0 3px;border-top:1px solid rgba(228,185,124,.25);background:rgba(38,0,15,.18);color:#ead0d5!important;font:400 11px/1.5 Arial,sans-serif!important;text-align:center}
-footer.suo-portal-footer .suo-footer-legal span{color:#dcae74;margin:0 5px}
+footer.suo-portal-footer .suo-footer-home:hover,footer.suo-portal-footer .suo-footer-home:focus-visible{transform:translateY(-2px);background:rgba(201,136,84,.19);box-shadow:0 0 17px rgba(240,180,102,.23)}
+footer.suo-portal-footer .suo-footer-legal{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 3px;min-height:0!important;padding:10px 16px!important;background:rgba(41,0,17,.20);border-top:1px solid rgba(229,177,109,.25);color:#ecd6da!important;font:400 11px/1.5 Arial,sans-serif!important;text-align:center}
+footer.suo-portal-footer .suo-footer-legal span{margin:0 5px;color:#d7aa72}
 body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
-@media(max-width:960px){footer.suo-portal-footer .suo-footer-main{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;padding:22px 24px!important}footer.suo-portal-footer .suo-footer-action{grid-column:1/-1;border-left:0;border-top:1px solid rgba(231,185,116,.28);padding:13px 0 0;display:flex;justify-content:center;align-items:center;gap:18px}footer.suo-portal-footer .suo-footer-home{width:auto;min-width:170px}footer.suo-portal-footer .suo-footer-action p{margin:0!important;text-align:left!important}}
-@media(max-width:600px){footer.suo-portal-footer .suo-footer-main{display:flex;flex-direction:column;align-items:stretch;gap:17px;padding:20px 17px!important}footer.suo-portal-footer .suo-footer-emblem{width:70px;flex-basis:70px;padding:5px;border-radius:10px}footer.suo-portal-footer .suo-footer-emblem img{height:62px}footer.suo-portal-footer .suo-footer-name{padding-left:12px}footer.suo-portal-footer .suo-footer-name h2{font-size:16px!important}footer.suo-portal-footer .suo-footer-name strong{font-size:10px!important}footer.suo-portal-footer .suo-footer-name span{font-size:9px!important;letter-spacing:.06em}footer.suo-portal-footer .suo-footer-agency-block{padding-left:13px}footer.suo-portal-footer .suo-footer-agency-block p{font-size:11px!important}footer.suo-portal-footer .suo-footer-action{gap:12px;justify-content:space-between}footer.suo-portal-footer .suo-footer-home{min-width:130px;padding:10px!important;font-size:10px!important}footer.suo-portal-footer .suo-footer-action p{font-size:10px!important}footer.suo-portal-footer .suo-footer-legal{font-size:10px!important}}
-@media(prefers-reduced-motion:reduce){footer.suo-portal-footer .suo-footer-home{transition:none!important}}
+@keyframes suoFooterNetDrift{from{transform:translateX(-10px)}to{transform:translateX(10px)}}
+@keyframes suoFooterNetTwinkle{from{opacity:.32}to{opacity:1}}
+@media(max-width:920px){footer.suo-portal-footer .suo-footer-main{grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr);gap:17px;padding:20px 22px!important}footer.suo-portal-footer .suo-footer-action{grid-column:1/-1;border-left:0;border-top:1px solid rgba(230,184,113,.27);padding:13px 0 0}footer.suo-portal-footer .suo-footer-home{max-width:220px}footer.suo-portal-footer .suo-footer-network{opacity:.18}}
+@media(max-width:600px){footer.suo-portal-footer .suo-footer-main{display:flex;flex-direction:column;align-items:stretch;gap:16px;padding:20px 17px!important}footer.suo-portal-footer .suo-footer-branding{gap:12px}footer.suo-portal-footer .suo-footer-emblem{flex-basis:68px;width:68px;max-width:68px;padding:5px;border-radius:9px}footer.suo-portal-footer .suo-footer-emblem img{height:61px}footer.suo-portal-footer .suo-footer-name{padding-left:13px}footer.suo-portal-footer .suo-footer-name h2{font-size:16px!important}footer.suo-portal-footer .suo-footer-name strong{font-size:10px!important}footer.suo-portal-footer .suo-footer-name span{font-size:9px!important;letter-spacing:.07em}footer.suo-portal-footer .suo-footer-agency-block{padding-left:13px}footer.suo-portal-footer .suo-footer-agency-block p{font-size:11px!important}footer.suo-portal-footer .suo-footer-action{padding:13px 0 0}footer.suo-portal-footer .suo-footer-home{min-width:155px}footer.suo-portal-footer .suo-footer-legal{font-size:10px!important}}
+@media(prefers-reduced-motion:reduce){footer.suo-portal-footer .suo-footer-network,footer.suo-portal-footer .suo-footer-network-dots circle{animation:none!important}footer.suo-portal-footer .suo-footer-home{transition:none!important}}
 </style>
 </head>
 <body>
@@ -10813,8 +10816,19 @@ body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!importa
 </div></div></section>
 
 
-<footer class="footer suo-portal-footer" data-suo-footer-version="2026-11-05-compact-suo" aria-label="Footer Rancangan Pemajuan Negeri Selangor">
+<footer class="footer suo-portal-footer" data-suo-footer-version="2026-11-05-network-harmony" aria-label="Footer Rancangan Pemajuan Negeri Selangor">
   <div class="suo-footer-waves" aria-hidden="true"></div>
+  <svg class="suo-footer-network" aria-hidden="true" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMid slice">
+  <g class="suo-footer-network-lines" fill="none" stroke="currentColor" stroke-width=".75">
+   <path d="M0 90 65 27 138 100 205 42 286 113 349 24 419 82 503 16 589 102 673 32 751 111 838 16 927 86 1012 20 1092 100 1200 33"/>
+   <path d="M0 173 65 27 126 200 205 42 235 221 349 24 384 196 503 16 530 215 673 32 702 208 838 16 870 205 1012 20 1030 218 1200 33"/>
+   <path d="m0 90 126 110 160-87 98 83 205-94 113 106 225-122 103 132 170-185M65 27 138 100 235 221 419 82 530 215 751 111 870 205 1092 100"/>
+   <path d="M0 173 138 100 286 113 384 196 589 102 702 208 927 86 1030 218 1200 136"/>
+  </g>
+  <g class="suo-footer-network-dots" fill="currentColor">
+   <circle cx="65" cy="27" r="3"/><circle cx="138" cy="100" r="2"/><circle cx="205" cy="42" r="2.5"/><circle cx="286" cy="113" r="2"/><circle cx="349" cy="24" r="3"/><circle cx="419" cy="82" r="2"/><circle cx="503" cy="16" r="3"/><circle cx="589" cy="102" r="2.5"/><circle cx="673" cy="32" r="2"/><circle cx="751" cy="111" r="3"/><circle cx="838" cy="16" r="2.5"/><circle cx="927" cy="86" r="2"/><circle cx="1012" cy="20" r="3"/><circle cx="1092" cy="100" r="2.5"/><circle cx="126" cy="200" r="2"/><circle cx="384" cy="196" r="2"/><circle cx="702" cy="208" r="2"/><circle cx="1030" cy="218" r="2.5"/>
+  </g>
+</svg>
   <div class="suo-footer-main">
     <div class="suo-footer-branding">
       <div class="suo-footer-emblem" aria-hidden="true">
@@ -10830,11 +10844,9 @@ body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!importa
       <span class="suo-footer-eyebrow">DISEDIAKAN OLEH</span>
       <strong>PLANMalaysia Selangor</strong>
       <p>Jabatan Perancangan<br>Bandar dan Desa Negeri<br>Selangor</p>
-      <div class="suo-footer-values">Perancangan <b>·</b> Pembangunan <b>·</b> Kemampanan</div>
     </div>
     <div class="suo-footer-action">
       <button type="button" class="suo-footer-home" onclick="scrollToSuoTarget('utama')" aria-label="Kembali ke Halaman Utama">HALAMAN UTAMA</button>
-      <p>Perancangan Berinformasi,<br>Pembangunan Mampan</p>
     </div>
   </div>
   <div class="suo-footer-legal">© 2026 PLANMalaysia Selangor <span>·</span> Hak Cipta Terpelihara <span>·</span> Dasar Privasi</div>
