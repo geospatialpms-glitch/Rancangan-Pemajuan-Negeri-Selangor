@@ -9373,6 +9373,34 @@ body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!importa
 @media(max-width:690px){footer.suo-portal-footer .suo-footer-main{display:flex;flex-direction:column;align-items:stretch;gap:25px;padding:27px 19px!important}footer.suo-portal-footer .suo-footer-branding{gap:12px}footer.suo-portal-footer .suo-footer-emblem{flex-basis:88px;max-width:27%}footer.suo-portal-footer .suo-footer-name{padding-left:13px}footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(16px,4.2vw,22px)!important;margin-bottom:11px!important}footer.suo-portal-footer .suo-footer-name strong{font-size:clamp(9px,2.5vw,12px)!important;white-space:normal}footer.suo-portal-footer .suo-footer-name span{font-size:clamp(8px,2vw,10px)!important;letter-spacing:.08em!important;white-space:normal}footer.suo-portal-footer .suo-footer-agency-block{padding-left:17px}footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:19px!important}footer.suo-portal-footer .suo-footer-agency-block p{font-size:14px!important}footer.suo-portal-footer .suo-footer-action{gap:12px;justify-content:space-between}footer.suo-portal-footer .suo-footer-home{min-width:145px;width:auto;font-size:11px!important;padding:12px 13px;border-width:2px}footer.suo-portal-footer .suo-footer-action p{font-size:11px!important}footer.suo-portal-footer .suo-footer-legal{font-size:11px!important;min-height:62px}}
 @media(prefers-reduced-motion:reduce){footer.suo-portal-footer .suo-footer-emblem{animation:none!important}footer.suo-portal-footer .suo-footer-home{transition:none!important}}
 </style>
+<style id="suo-footer-layout-fix-20261105">
+/* Reference-aligned footer. Override older sitewide .footer typography and grid rules. */
+footer.footer.suo-portal-footer .suo-footer-main{
+  grid-template-columns:minmax(0,48%) minmax(0,28%) minmax(0,24%)!important;
+  max-width:none!important;
+  padding:52px clamp(20px,2.4vw,42px) 54px!important;
+  gap:0!important;min-height:440px!important;align-items:center!important;
+}
+footer.footer.suo-portal-footer .suo-footer-branding{min-width:0;gap:14px!important}
+footer.footer.suo-portal-footer .suo-footer-emblem{width:min(29%,240px)!important;max-width:240px!important;flex:0 0 min(29%,240px)!important}
+footer.footer.suo-portal-footer .suo-footer-name{border-left:2px solid #e7b876!important;padding-left:24px!important}
+footer.footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(25px,2.7vw,47px)!important;letter-spacing:-.015em!important;line-height:1.09!important;margin-bottom:21px!important}
+footer.footer.suo-portal-footer .suo-footer-name strong{font-size:clamp(13px,1.35vw,22px)!important}
+footer.footer.suo-portal-footer .suo-footer-name span{font-size:clamp(10px,1vw,16px)!important}
+footer.footer.suo-portal-footer .suo-footer-agency-block{border-left:2px solid #e7b876!important;padding-left:34px!important}
+footer.footer.suo-portal-footer .suo-footer-eyebrow{font-size:clamp(13px,1.3vw,21px)!important;margin-bottom:20px!important}
+footer.footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:clamp(20px,1.85vw,31px)!important;letter-spacing:-.025em!important}
+footer.footer.suo-portal-footer .suo-footer-agency-block p{font-size:clamp(15px,1.53vw,25px)!important;line-height:1.19!important;margin:12px 0 20px!important}
+footer.footer.suo-portal-footer .suo-footer-values{font-size:clamp(12px,1.2vw,19px)!important;white-space:nowrap!important;letter-spacing:-.035em!important;padding-top:16px!important}
+footer.footer.suo-portal-footer .suo-footer-action{border-left:2px solid #e7b876!important;padding-left:34px!important}
+footer.footer.suo-portal-footer .suo-footer-home{font-size:clamp(14px,1.33vw,22px)!important;min-height:69px!important;border:3px solid #f0bd75!important}
+footer.footer.suo-portal-footer .suo-footer-action p{font-size:clamp(13px,1.27vw,21px)!important;margin-top:25px!important}
+footer.footer.suo-portal-footer .suo-footer-legal{font-size:clamp(13px,1.3vw,21px)!important}
+footer.footer.suo-portal-footer .suo-footer-waves::before{height:135px!important;left:-5%!important;bottom:42px!important;width:48%!important}
+footer.footer.suo-portal-footer .suo-footer-waves::after{height:135px!important;right:-5%!important;bottom:42px!important;width:48%!important}
+@media(max-width:1200px){footer.footer.suo-portal-footer .suo-footer-main{grid-template-columns:1.25fr 1fr!important;min-height:auto!important;gap:23px!important;padding:30px 24px!important}footer.footer.suo-portal-footer .suo-footer-emblem{flex-basis:110px!important;width:110px!important}footer.footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(20px,2.3vw,29px)!important}footer.footer.suo-portal-footer .suo-footer-name strong{font-size:11px!important}footer.footer.suo-portal-footer .suo-footer-name span{font-size:9px!important}footer.footer.suo-portal-footer .suo-footer-agency-block{padding-left:20px!important}footer.footer.suo-portal-footer .suo-footer-agency-block>strong{font-size:18px!important}footer.footer.suo-portal-footer .suo-footer-agency-block p{font-size:14px!important}footer.footer.suo-portal-footer .suo-footer-values{white-space:normal!important;font-size:12px!important}footer.footer.suo-portal-footer .suo-footer-action{grid-column:1/-1;border-left:0!important;border-top:1px solid #ad6d6e;padding:15px 0 0!important;display:flex;justify-content:center;gap:24px}footer.footer.suo-portal-footer .suo-footer-home{min-height:50px!important;max-width:245px;font-size:14px!important}footer.footer.suo-portal-footer .suo-footer-action p{margin:0!important;font-size:13px!important;text-align:left!important}}
+@media(max-width:680px){footer.footer.suo-portal-footer .suo-footer-main{display:flex!important;flex-direction:column!important;align-items:stretch!important;padding:25px 17px!important;gap:23px!important}footer.footer.suo-portal-footer .suo-footer-emblem{width:88px!important;flex-basis:88px!important}footer.footer.suo-portal-footer .suo-footer-name{padding-left:13px!important}footer.footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(16px,4.2vw,22px)!important}footer.footer.suo-portal-footer .suo-footer-name strong{font-size:clamp(9px,2.4vw,12px)!important}footer.footer.suo-portal-footer .suo-footer-agency-block p{font-size:14px!important}footer.footer.suo-portal-footer .suo-footer-action{justify-content:space-between;gap:10px}footer.footer.suo-portal-footer .suo-footer-home{min-height:45px!important;font-size:11px!important;padding:10px!important}footer.footer.suo-portal-footer .suo-footer-action p{font-size:11px!important}footer.footer.suo-portal-footer .suo-footer-legal{font-size:11px!important}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -10860,7 +10888,7 @@ body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!importa
     <div class="suo-footer-agency-block">
       <span class="suo-footer-eyebrow">DISEDIAKAN OLEH</span>
       <strong>PLANMalaysia Selangor</strong>
-      <p>Jabatan Perancangan Bandar dan Desa<br>Negeri Selangor</p>
+      <p>Jabatan Perancangan<br>Bandar dan Desa Negeri<br>Selangor</p>
       <div class="suo-footer-values">Perancangan <b>·</b> Pembangunan <b>·</b> Kemampanan</div>
     </div>
     <div class="suo-footer-action">
