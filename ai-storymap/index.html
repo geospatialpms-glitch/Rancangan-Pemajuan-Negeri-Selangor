@@ -17305,5 +17305,159 @@ apply();
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 })();
 </script>
+<style id="suo-mbsa-goal-editorial-refresh-20261106">
+/* Only MBSA | Goal chapter: horizontal three-part interpretation and editorial hierarchy. */
+#rt11-modal.rt-mbsa .rtchapter.rt-goal ul.suo-mbsa-goals-grid,
+#rt11-modal.rt-mbsa .rtchapter.rt-goal ol.suo-mbsa-goals-grid{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:clamp(12px,1.35vw,20px)!important;list-style:none!important;
+ padding:0!important;margin:18px 0 30px!important;border:0!important;
+ counter-reset:mbsa-goal!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid>li{
+ position:relative!important;min-width:0!important;min-height:245px!important;
+ display:flex!important;align-items:flex-start!important;flex-direction:column!important;
+ justify-content:flex-end!important;gap:12px!important;box-sizing:border-box!important;
+ margin:0!important;padding:78px 23px 24px!important;
+ list-style:none!important;border:1px solid rgba(35,88,142,.20)!important;
+ border-top:3px solid #235b93!important;border-left:1px solid rgba(35,88,142,.20)!important;
+ border-radius:20px!important;color:#263e58!important;
+ background:linear-gradient(150deg,rgba(255,255,255,.97),rgba(224,240,255,.86))!important;
+ box-shadow:0 14px 33px rgba(24,67,114,.09)!important;
+ transition:transform .32s ease,box-shadow .32s ease,background .32s ease!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid>li:nth-child(2){
+ border-top-color:#308baa!important;
+ background:linear-gradient(145deg,#f9ffff,#e1f3f9)!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid>li:nth-child(3){
+ border-top-color:#507aa9!important;
+ background:linear-gradient(145deg,#fffefd,#e8edfc)!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid>li::before{
+ content:counter(mbsa-goal,decimal-leading-zero)!important;
+ counter-increment:mbsa-goal!important;
+ position:absolute!important;top:14px!important;left:20px!important;right:auto!important;
+ width:auto!important;height:auto!important;border:0!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;
+ color:rgba(23,67,118,.65)!important;font:800 clamp(40px,4.2vw,62px)/1 Arial,sans-serif!important;
+ letter-spacing:-.075em!important;padding:0!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid>li::after{
+ content:"";position:absolute;top:30px;right:21px;width:42px;height:42px;border-radius:50%;
+ border:1px solid rgba(27,94,145,.16);background:radial-gradient(circle,#8cc3e6 2px,transparent 3px),
+ radial-gradient(circle at center,rgba(122,187,234,.1),transparent 70%);pointer-events:none;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid>li:hover{
+ transform:translateY(-7px)!important;box-shadow:0 24px 45px rgba(24,67,114,.18)!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal ul.suo-mbsa-vision-stack,
+#rt11-modal.rt-mbsa .rtchapter.rt-goal ol.suo-mbsa-vision-stack{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:15px 25px!important;padding:0!important;margin:18px 0 27px!important;
+ list-style:none!important;border:0!important;counter-reset:none!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li{
+ position:relative!important;list-style:none!important;min-width:0!important;min-height:0!important;
+ margin:0!important;transform:none!important;box-shadow:none!important;
+ font-size:clamp(14px,1.1vw,16px)!important;line-height:1.75!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li::before,
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li::after{display:none!important;content:none!important}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li:first-child{
+ grid-column:1/-1!important;padding:33px clamp(24px,3vw,38px)!important;
+ color:#f8fcff!important;border:1px solid #1c5c91!important;border-left:6px solid #75d7e9!important;
+ border-radius:19px!important;
+ background:linear-gradient(120deg,#143f74,#2577a6 66%,#3792b5)!important;
+ box-shadow:0 17px 35px rgba(20,64,116,.2)!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li:first-child *{color:inherit!important}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li:nth-child(n+2){
+ display:block!important;padding:19px 16px 18px 23px!important;
+ border:0!important;border-left:4px solid #3384a7!important;border-radius:0 13px 13px 0!important;
+ background:linear-gradient(90deg,rgba(223,240,249,.9),rgba(255,255,255,.30))!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li:nth-child(3){
+ border-left-color:#6984c4!important;background:linear-gradient(90deg,rgba(235,232,253,.85),rgba(255,255,255,.3))!important;
+}
+#rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li:nth-child(n+2):hover{
+ transform:translateX(4px)!important;background-color:rgba(255,255,255,.8)!important;
+}
+/* Blue geospatial ambience in the MBSA Story Map only, stronger than the old pale background. */
+#rt11-modal.rt-mbsa{
+ background-color:#e8f4fb!important;
+ background-image:radial-gradient(ellipse at 13% 27%,rgba(108,183,231,.30),transparent 47%),
+ radial-gradient(ellipse at 86% 68%,rgba(87,153,216,.24),transparent 48%),
+ linear-gradient(140deg,#e4f2fb 0%,#f5fbff 56%,#dceef9 100%)!important;
+}
+#rt11-modal.rt-mbsa .rtgrid{position:relative!important;isolation:isolate!important}
+#rt11-modal.rt-mbsa .rtgrid::before{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background-image:repeating-linear-gradient(29deg,transparent 0 115px,rgba(36,122,182,.115) 116px,transparent 118px),
+ repeating-linear-gradient(151deg,transparent 0 148px,rgba(55,125,186,.10) 149px,transparent 151px),
+ radial-gradient(circle at 15% 21%,rgba(21,119,190,.32) 0 3px,transparent 4px),
+ radial-gradient(circle at 70% 54%,rgba(21,119,190,.25) 0 3px,transparent 4px);
+ background-size:1100px 760px,1100px 760px,360px 310px,420px 330px;
+ animation:suoMbsaAmbientMove 24s ease-in-out infinite alternate;
+ opacity:.80;
+}
+#rt11-modal.rt-mbsa .rtgrid::after{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background:radial-gradient(circle at 15% 20%,rgba(124,215,255,.32),transparent 28%),
+ radial-gradient(circle at 84% 64%,rgba(113,186,243,.29),transparent 32%);
+ background-size:130% 125%;animation:suoMbsaAmbientGlow 18s ease-in-out infinite alternate;
+}
+#rt11-modal.rt-mbsa .rtgrid>.rtside,
+#rt11-modal.rt-mbsa .rtgrid>#rt11-body{position:relative;z-index:1}
+@keyframes suoMbsaAmbientMove{0%{background-position:0 0,0 0,0 0,0 0}100%{background-position:60px 38px,-54px 45px,40px -35px,-35px 28px}}
+@keyframes suoMbsaAmbientGlow{0%{opacity:.48;background-position:0% 40%}100%{opacity:.9;background-position:100% 60%}}
+@media(max-width:950px){
+ #rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:650px){
+ #rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid,
+ #rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack{grid-template-columns:1fr!important}
+ #rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid>li{min-height:180px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbsa .rtgrid::before,#rt11-modal.rt-mbsa .rtgrid::after{animation:none!important}
+ #rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-goals-grid>li,
+ #rt11-modal.rt-mbsa .rtchapter.rt-goal .suo-mbsa-vision-stack>li{transition:none!important}
+}
+</style>
+<script id="suo-mbsa-goal-editorial-apply-20261106">
+(function(){
+ 'use strict';
+ const modal=document.getElementById('rt11-modal');
+ const body=document.getElementById('rt11-body');
+ if(!modal||!body)return;
+ function normalize(s){return(s||'').replace(/\\s+/g,' ').trim().toLowerCase()}
+ function apply(){
+  if(!modal.classList.contains('rt-mbsa'))return;
+  const chapter=body.querySelector('.rtchapter.rt-goal');
+  if(!chapter)return;
+  const elements=[...chapter.querySelectorAll('h3,h4,h5,ul,ol')];
+  const headings=elements.filter(el=>/^H[345]$/.test(el.tagName));
+  function matchAfter(re,cls){
+    const heading=headings.find(el=>re.test(normalize(el.textContent)));
+    if(!heading)return;
+    const pos=elements.indexOf(heading);
+    const list=elements.slice(pos+1).find(el=>/^H[345]$/.test(el.tagName)||/^(UL|OL)$/.test(el.tagName));
+    if(!list||!/^(UL|OL)$/.test(list.tagName)||list.children.length!==3)return;
+    list.classList.add(cls);
+    const parent=list.closest('.rtpiece');
+    if(parent)parent.classList.add(cls+'-piece');
+  }
+  matchAfter(/tafsiran\\s+matlamat/, 'suo-mbsa-goals-grid');
+  matchAfter(/visi\\s*,?\\s*misi/, 'suo-mbsa-vision-stack');
+ }
+ let pending=false;
+ function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;apply()})}
+ const watcher=new MutationObserver(schedule);
+ watcher.observe(body,{childList:true,subtree:true});
+ watcher.observe(modal,{attributes:true,attributeFilter:['class','hidden']});
+ schedule();
+})();
+</script>
 </body>
 </html>
