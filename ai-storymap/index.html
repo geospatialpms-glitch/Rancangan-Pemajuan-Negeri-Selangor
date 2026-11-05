@@ -9357,6 +9357,10 @@ body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!importa
 @media(max-width:920px){footer.suo-portal-footer .suo-footer-main{grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr);gap:17px;padding:20px 22px!important}footer.suo-portal-footer .suo-footer-action{grid-column:1/-1;border-left:0;border-top:1px solid rgba(230,184,113,.27);padding:13px 0 0}footer.suo-portal-footer .suo-footer-home{max-width:220px}footer.suo-portal-footer .suo-footer-network{opacity:.18}}
 @media(max-width:600px){footer.suo-portal-footer .suo-footer-main{display:flex;flex-direction:column;align-items:stretch;gap:16px;padding:20px 17px!important}footer.suo-portal-footer .suo-footer-branding{gap:12px}footer.suo-portal-footer .suo-footer-emblem{flex-basis:68px;width:68px;max-width:68px;padding:5px;border-radius:9px}footer.suo-portal-footer .suo-footer-emblem img{height:61px}footer.suo-portal-footer .suo-footer-name{padding-left:13px}footer.suo-portal-footer .suo-footer-name h2{font-size:16px!important}footer.suo-portal-footer .suo-footer-name strong{font-size:10px!important}footer.suo-portal-footer .suo-footer-name span{font-size:9px!important;letter-spacing:.07em}footer.suo-portal-footer .suo-footer-agency-block{padding-left:13px}footer.suo-portal-footer .suo-footer-agency-block p{font-size:11px!important}footer.suo-portal-footer .suo-footer-action{padding:13px 0 0}footer.suo-portal-footer .suo-footer-home{min-width:155px}footer.suo-portal-footer .suo-footer-legal{font-size:10px!important}}
 @media(prefers-reduced-motion:reduce){footer.suo-portal-footer .suo-footer-network,footer.suo-portal-footer .suo-footer-network-dots circle{animation:none!important}footer.suo-portal-footer .suo-footer-home{transition:none!important}}
+
+/* Specific two-line footer heading requested 2026-11-05 */
+footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(15px,1.45vw,23px)!important;line-height:1.17!important;letter-spacing:0!important;white-space:nowrap}
+@media(max-width:600px){footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(12px,3.5vw,17px)!important;white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -10835,7 +10839,7 @@ body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!importa
         <img src="SUO.jpeg" alt="Logo Selangor Urban Observatory" loading="lazy" decoding="async">
       </div>
       <div class="suo-footer-name">
-        <h2>RANCANGAN<br>PEMAJUAN<br>NEGERI SELANGOR</h2>
+        <h2>RANCANGAN PEMAJUAN<br>NEGERI SELANGOR</h2>
         <strong>SELANGOR URBAN OBSERVATORY</strong>
         <span>PLATFORM KECERDASAN BANDAR</span>
       </div>
