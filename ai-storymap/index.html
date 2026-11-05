@@ -9362,6 +9362,29 @@ body.suo-footer-in-view #backToTop{opacity:0!important;visibility:hidden!importa
 footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(15px,1.45vw,23px)!important;line-height:1.17!important;letter-spacing:0!important;white-space:nowrap}
 @media(max-width:600px){footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(12px,3.5vw,17px)!important;white-space:nowrap}}
 </style>
+<style id="suo-footer-visitor-daily-20261105">
+/* Scope confined to the footer's agency and daily analytics panel. */
+footer.suo-portal-footer .suo-footer-agency-heading{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+footer.suo-portal-footer .suo-footer-agency-heading::before{content:"";display:block;width:34px;height:2px;margin-bottom:5px;background:linear-gradient(90deg,#ffd79b,#b77c4d);box-shadow:0 0 10px rgba(247,194,115,.24)}
+footer.suo-portal-footer .suo-footer-agency-heading .suo-footer-eyebrow{margin:0!important;letter-spacing:.14em!important}
+footer.suo-portal-footer .suo-footer-agency-heading strong{display:block;color:#fff9ef;font-weight:800;font-size:clamp(14px,1.15vw,18px);line-height:1.35}
+footer.suo-portal-footer .suo-footer-agency-block p{margin-top:7px!important;line-height:1.48!important}
+footer.suo-portal-footer .suo-footer-visitor-daily{position:relative;z-index:1;display:grid;grid-template-columns:minmax(200px,1.25fr) 90px minmax(260px,1fr);align-items:center;gap:clamp(15px,2.8vw,40px);max-width:1480px;margin:0 auto;padding:17px clamp(22px,4vw,60px);border-top:1px solid rgba(231,185,122,.3);color:#fef4e9;font-family:Arial,sans-serif}
+footer.suo-portal-footer .suo-visitor-intro{display:flex;align-items:center;gap:12px;min-width:0}
+footer.suo-portal-footer .suo-visitor-symbol{flex:none;display:grid;place-items:center;width:36px;height:36px;border:1px solid rgba(231,185,122,.46);border-radius:12px;color:#f1c17e;background:rgba(255,217,145,.065);font-size:18px}
+footer.suo-portal-footer .suo-visitor-intro strong{display:block;color:#fff3e6;font-size:12px;line-height:1.4;font-weight:800}
+footer.suo-portal-footer .suo-visitor-intro span:last-child{display:block;font-size:10px;color:#e0bcc5;margin-top:3px}
+footer.suo-portal-footer .suo-visitor-today{display:flex;flex-direction:column;gap:3px;align-items:flex-start;justify-content:center}
+footer.suo-portal-footer .suo-visitor-today small,footer.suo-portal-footer .suo-visitor-week small{font-size:9px;font-weight:800;letter-spacing:.11em;color:#e6c28d}
+footer.suo-portal-footer .suo-visitor-today strong{font-size:24px;font-weight:800;line-height:1.15;color:#fff6e8}
+footer.suo-portal-footer .suo-visitor-week{display:flex;flex-direction:column;gap:7px}
+footer.suo-portal-footer .suo-visitor-bars{display:flex;align-items:end;gap:7px;height:36px;min-width:0}
+footer.suo-portal-footer .suo-visitor-bar{display:flex;flex:1;max-width:33px;flex-direction:column;justify-content:flex-end;gap:3px;align-items:center;height:100%}
+footer.suo-portal-footer .suo-visitor-bar i{display:block;width:100%;min-height:3px;max-height:25px;height:3px;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#eec48a,#aa6b5c);opacity:.45;transition:height .4s}
+footer.suo-portal-footer .suo-visitor-bar span{font-size:9px;color:#e8c8c9;line-height:1.2}
+footer.suo-portal-footer .suo-visitor-status{grid-column:1/-1;font-size:10px!important;color:#e1b7bd!important;margin:0!important;line-height:1.4!important;text-align:left!important}
+@media(max-width:760px){footer.suo-portal-footer .suo-footer-visitor-daily{grid-template-columns:1fr 85px;gap:14px;padding:15px 20px}footer.suo-portal-footer .suo-visitor-week{grid-column:1/-1}footer.suo-portal-footer .suo-visitor-bars{height:36px}}
+</style>
 </head>
 <body>
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -10845,14 +10868,23 @@ footer.suo-portal-footer .suo-footer-name h2{font-size:clamp(15px,1.45vw,23px)!i
       </div>
     </div>
     <div class="suo-footer-agency-block">
-      <span class="suo-footer-eyebrow">DISEDIAKAN OLEH</span>
-      <strong>PLANMalaysia Selangor</strong>
-      <p>Jabatan Perancangan<br>Bandar dan Desa Negeri<br>Selangor</p>
+      <div class="suo-footer-agency-heading"><span class="suo-footer-eyebrow">DISEDIAKAN OLEH</span>
+      <strong>PLANMalaysia Selangor</strong></div>
+      <p>Jabatan Perancangan Bandar dan Desa<br>Negeri Selangor</p>
     </div>
     <div class="suo-footer-action">
       <button type="button" class="suo-footer-home" onclick="scrollToSuoTarget('utama')" aria-label="Kembali ke Halaman Utama">HALAMAN UTAMA</button>
     </div>
   </div>
+  <section class="suo-footer-visitor-daily" id="suo-footer-visitor-daily" aria-label="Statistik pengunjung harian Story Map" data-goatcounter-site="">
+  <div class="suo-visitor-intro">
+    <span class="suo-visitor-symbol" aria-hidden="true">◉</span>
+    <div><strong>Statistik Pengunjung Story Map</strong><span>Rekod lawatan harian · Waktu Malaysia</span></div>
+  </div>
+  <div class="suo-visitor-today" aria-live="polite"><small>HARI INI</small><strong id="suo-visitor-today-number">—</strong></div>
+  <div class="suo-visitor-week"><small>7 HARI TERKINI</small><div class="suo-visitor-bars" id="suo-visitor-bars" aria-label="Bilangan pelawat mengikut hari"></div></div>
+  <p class="suo-visitor-status" id="suo-visitor-status">Statistik belum diaktifkan · Sambungan analitik diperlukan</p>
+</section>
   <div class="suo-footer-legal">© 2026 PLANMalaysia Selangor <span>·</span> Hak Cipta Terpelihara <span>·</span> Dasar Privasi</div>
 </footer>
 
@@ -17210,5 +17242,31 @@ apply();
   linear-gradient(132deg,#872940 0%,#611629 54%,#3d0e21 100%)!important;
 }
 </style>
+<script id="suo-visitor-daily-20261105">
+/* Real daily visitor numbers require a GoatCounter site created by the portal owner.
+   Leave the public UI in "not connected" state until a valid site is configured.
+   Never simulate counts from browser storage, reloads or random values. */
+(function(){
+ const root=document.getElementById('suo-footer-visitor-daily');if(!root)return;
+ const num=document.getElementById('suo-visitor-today-number'),bars=document.getElementById('suo-visitor-bars'),status=document.getElementById('suo-visitor-status');
+ const timezone='Asia/Kuala_Lumpur';
+ function fmt(d){return new Intl.DateTimeFormat('en-CA',{timeZone:timezone,year:'numeric',month:'2-digit',day:'2-digit'}).format(d)}
+ function dates(){const today=fmt(new Date());const [yy,mm,dd]=today.split('-').map(Number);const out=[];for(let i=6;i>=0;i--){const d=new Date(Date.UTC(yy,mm-1,dd-i,12));out.push(fmt(d))}return out}
+ const days=dates(), dayfmt=new Intl.DateTimeFormat('ms-MY',{weekday:'short',timeZone:'UTC'});
+ function label(x){const [y,m,d]=x.split('-').map(Number);return dayfmt.format(new Date(Date.UTC(y,m-1,d,12)))}
+ function draw(values){bars.textContent='';const max=Math.max(1,...values.filter(Number.isFinite));days.forEach((d,i)=>{const el=document.createElement('div');el.className='suo-visitor-bar';const column=document.createElement('i'),cap=document.createElement('span');cap.textContent=label(d);el.title=values[i]==null?d+' · Tiada data':d+' · '+values[i]+' lawatan';column.style.height=values[i]==null?'3px':Math.max(3,Math.round((values[i]/max)*25))+'px';column.style.opacity=values[i]==null?'.35':'1';el.append(column,cap);bars.appendChild(el)})}
+ draw(Array(7).fill(null));
+ const site=(root.dataset.goatcounterSite||'').trim().toLowerCase();
+ if(!/^[a-z0-9][a-z0-9-]{1,61}$/.test(site))return;
+ const script=document.createElement('script');script.async=true;script.src='https://gc.zgo.at/count.js';script.setAttribute('data-goatcounter','https://'+site+'.goatcounter.com/count');document.head.appendChild(script);
+ const path=encodeURIComponent(location.pathname),origin='https://'+site+'.goatcounter.com/counter/'+path+'.json';
+ async function get(day){const url=origin+'?start='+day+'&end='+day;const res=await fetch(url,{mode:'cors',credentials:'omit'});if(!res.ok)throw new Error('http '+res.status);const data=await res.json();const n=Number(String(data.count||'').replace(/[^0-9]/g,''));if(!Number.isFinite(n))throw new Error('bad data');return n}
+ Promise.allSettled(days.map(get)).then(results=>{
+ const values=results.map(r=>r.status==='fulfilled'?r.value:null);if(values.every(v=>v==null)){status.textContent='Statistik belum tersedia · Semak tetapan perkongsian GoatCounter';return}
+ draw(values);const last=values[6];num.textContent=last==null?'—':last.toLocaleString('ms-MY');
+ status.textContent='Lawatan sebenar mengikut hari · Data mungkin dilewatkan oleh penyedia analitik';
+ });
+})();
+</script>
 </body>
 </html>
