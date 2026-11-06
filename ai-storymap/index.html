@@ -14320,7 +14320,7 @@ window.renderSuoPbtDocumentTable=function(type,code){
    name.textContent=p.name;
    code.textContent=p.code;
    overview.textContent='Dokumentasi perancangan tempatan bagi '+p.name+'. Paparan ini merangkumkan '+p.docs.length+' tajuk dokumen RT yang disenaraikan sebagai rujukan, termasuk penggantian atau pengubahan jika berkaitan.';
-   const htmlEntry=document.getElementById('rr04-rt-html-entry');if(htmlEntry){htmlEntry.hidden=p.code==='MBPJ'||!p.url;htmlEntry.href=p.url||'#';htmlEntry.textContent='✦  Terokai Story Map RT '+p.code+'  →';htmlEntry.setAttribute('aria-label','Buka Story Map RT '+p.code);}
+   const htmlEntry=document.getElementById('rr04-rt-html-entry');if(htmlEntry){htmlEntry.hidden=false;htmlEntry.href='./rt/'+encodeURIComponent(p.code)+'.html';htmlEntry.textContent='✦  Terokai Story Map RT '+p.code+'  →';htmlEntry.setAttribute('aria-label','Buka Story Map RT '+p.code);}
    coverName.textContent=p.name;
    logo.replaceChildren();
    if(p.logo){
@@ -16037,7 +16037,7 @@ let cursor=0;setInterval(()=>{
 @media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-loaded-card{transition:none!important}}
 </style>
 <script id="rt11-loader-v1">(function(){
-const entries=[["MBSA","963aefc4aef1412194b09c2b5b244190","#143D76","#E8F2FF"],["MBSJ","23792197bfb3429bb7e8dc6296c55945","#7421A3","#FBE4FA"],["MBDK","29b2c1dff6484f23984ac4542aff277e","#9C3526","#FFF0DB"],["MPAJ","d3c3fde91bde47798fd9feb7a3e5e2ea","#0F7770","#E1FAF3"],["MPKj","cf8af08ffcd24e3caf9f27a0c172798d","#126D99","#E5F6FF"],["MPS","f6c8ab85efb7496ebf65f6500a2caf6e","#24663B","#EDF4DF"],["MPSp","d984e03b560848a8be7502dcb7d94b27","#A4500E","#FFF1D6"],["MPKL","9d6bd51d479f41ca922fa421d0fe3866","#A23E75","#FFF0F5"],["MPKS","7cb301ce29d04362b8a370b7bcde2865","#202B42","#FFF3D3"],["MPHS","47771ec2bfde490bb53a600051505e61","#615629","#F6F4D7"],["MDSB","3068380b311f4af29df314a4beb5b925","#AE294D","#FFE6EB"]];
+const entries=[["MBSA","963aefc4aef1412194b09c2b5b244190","#143D76","#E8F2FF"],["MBPJ","013241b0812846b59d1cc8f0b4b53c0","#6950A0","#EEE9FA"],["MBSJ","23792197bfb3429bb7e8dc6296c55945","#7421A3","#FBE4FA"],["MBDK","29b2c1dff6484f23984ac4542aff277e","#9C3526","#FFF0DB"],["MPAJ","d3c3fde91bde47798fd9feb7a3e5e2ea","#0F7770","#E1FAF3"],["MPKj","cf8af08ffcd24e3caf9f27a0c172798d","#126D99","#E5F6FF"],["MPS","f6c8ab85efb7496ebf65f6500a2caf6e","#24663B","#EDF4DF"],["MPSp","d984e03b560848a8be7502dcb7d94b27","#A4500E","#FFF1D6"],["MPKL","9d6bd51d479f41ca922fa421d0fe3866","#A23E75","#FFF0F5"],["MPKS","7cb301ce29d04362b8a370b7bcde2865","#202B42","#FFF3D3"],["MPHS","47771ec2bfde490bb53a600051505e61","#615629","#F6F4D7"],["MDSB","3068380b311f4af29df314a4beb5b925","#AE294D","#FFE6EB"]];
 const links=new Map(entries.map(([code,id,dark,soft])=>[id,{code,id,dark,soft}]));
 const modal=document.getElementById('rt11-modal'),body=document.getElementById('rt11-body'),nav=document.getElementById('rt11-nav'),hero=document.getElementById('rt11-hero'),label=document.getElementById('rt11-label');
 let oldScroll=0,requestNo=0;
@@ -16409,7 +16409,21 @@ if(entry.code==='MBSA'){
 }
 if(!body.children.length)throw Error('Tiada kandungan bab');}
 catch(err){if(ticket!==requestNo)return;body.innerHTML='';const box=document.createElement('section');box.className='rtchapter';const h=document.createElement('h2');h.textContent='Kandungan ESRI tidak dapat dimuatkan';const p=document.createElement('p');p.textContent='Akses JSON asal tidak tersedia pada pelayar ini. Buka StoryMap asal untuk membaca kandungan lengkap.';const a=document.createElement('a');a.href='https://storymaps.arcgis.com/stories/'+entry.id;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka StoryMap ESRI asal ↗';box.append(h,p,a);body.appendChild(box)}}
-document.addEventListener('click',function(e){const a=e.target.closest('a[href]');if(!a||modal.contains(a))return;let id=(a.href.match(/storymaps\.arcgis\.com\/stories\/([0-9a-f]{32})/i)||[])[1];if(!id){let code=(a.getAttribute('aria-label')||'').match(/RT (MBSA|MBSJ|MBDK|MPAJ|MPKj|MPS|MPSp|MPKL|MPKS|MPHS|MDSB)\b/i);if(code){const found=entries.find(row=>row[0].toLowerCase()===code[1].toLowerCase());if(found)id=found[1]}}const entry=id&&links.get(id);if(!entry)return;e.preventDefault();e.stopImmediatePropagation();open(entry)},true);
+/* Standalone RT pages: open existing Story Map contents when loaded inside a dedicated RT iframe. */
+(function(){
+ const code=new URLSearchParams(window.location.search).get('rt_page');
+ if(!code)return;
+ const entry=entries.find(row=>row[0].toLowerCase()===code.toLowerCase());
+ if(!entry)return;
+ document.body.classList.remove('suo-intro-active');
+ document.documentElement.style.overflow='hidden';
+ document.getElementById('rt11-close').addEventListener('click',function(e){
+   e.preventDefault();e.stopImmediatePropagation();
+   window.top.location.href=new URL('./index.html#panel-3',window.location.href).href;
+ },true);
+ open({code:entry[0],id:entry[1],dark:entry[2],soft:entry[3]});
+})();
+document.addEventListener('click',function(e){const a=e.target.closest('a[href]');if(!a||modal.contains(a))return;let id=(a.href.match(/storymaps\.arcgis\.com\/stories\/([0-9a-f]{32})/i)||[])[1];if(!id){let code=(a.getAttribute('aria-label')||'').match(/RT (MBSA|MBPJ|MBSJ|MBDK|MPAJ|MPKj|MPS|MPSp|MPKL|MPKS|MPHS|MDSB)\b/i);if(code){const found=entries.find(row=>row[0].toLowerCase()===code[1].toLowerCase());if(found)id=found[1]}}const entry=id&&links.get(id);if(!entry)return;e.preventDefault();e.stopImmediatePropagation();window.location.href='./rt/'+encodeURIComponent(entry.code)+'.html'},true);
 })();</script>
 <style id="mbsa-final-layout-fix-20261102">
 /* Loaded last to override generic RT chapter rules. Only MBSA. */
