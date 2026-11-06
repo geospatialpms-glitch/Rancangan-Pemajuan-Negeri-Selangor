@@ -17567,7 +17567,7 @@ function apply(){
     ch.classList.contains('rt-goal')||/MATLAMAT PEMBANGUNAN/i.test(ch.querySelector('h2')?.textContent||''));
  if(!chapter)return;
  for(const type of types){
-   if(chapter.querySelector('.'+type.cls))continue;
+   if(chapter.querySelector('.suo-mbsa-editorial.'+type.cls))continue;
    // ArcGIS can render separate text nodes, one list per block, or one complete list.
    const groups=[...chapter.querySelectorAll('.rtpiece')];
    const sections=[];
@@ -17614,7 +17614,7 @@ function apply(){
      picked[i].li.remove();
      layout.append(el);
    });
-   first.block.insertAdjacentElement('beforebegin',layout);
+   first.list.insertAdjacentElement('beforebegin',layout);
    // Remove only empty list shells; retain headings and unrelated content.
    otherLists.forEach(list=>{
      if(!list.querySelector('li'))list.remove();
