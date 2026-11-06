@@ -196,6 +196,101 @@ frame.addEventListener('load',()=>{
  setTimeout(reconcile,600);setTimeout(reconcile,1600);
 })();
 
+
+/* Susun atur papan nota ala Padlet: hanya blok maklumat teks, bukan blok pelan. */
+(function(){
+ const d=frame.contentDocument;
+ if(!d)return;
+ const style=d.createElement('style');
+ style.id='rt-page-MBSA-padlet-notes';
+ style.textContent=`
+ #rt11-body .mbsa-padlet-board{
+   --mbsa-note-blue:#184b86;--mbsa-note-line:#bbd8f4;
+   position:relative!important;display:grid!important;
+   grid-template-columns:repeat(2,minmax(0,1fr))!important;
+   gap:14px!important;align-items:stretch!important;
+   padding:26px!important;border:1px solid #c7def3!important;
+   border-top:4px solid #20518c!important;border-radius:23px!important;
+   background:linear-gradient(135deg,#f2f9ff,#e7f3ff 63%,#edf7ff)!important;
+   box-shadow:0 12px 26px rgba(27,83,143,.09)!important;
+   isolation:isolate;
+ }
+ #rt11-body .mbsa-padlet-board::before{
+   content:"";position:absolute;inset:0;pointer-events:none;
+   border-radius:inherit;opacity:.25;
+   background-image:radial-gradient(#7daedb 1px,transparent 1px);
+   background-size:19px 19px;mask-image:linear-gradient(to bottom,transparent 5%,black 100%);
+ }
+ #rt11-body .mbsa-padlet-board>h1,
+ #rt11-body .mbsa-padlet-board>h2,
+ #rt11-body .mbsa-padlet-board>h3,
+ #rt11-body .mbsa-padlet-board>h4,
+ #rt11-body .mbsa-padlet-board>.mbsa-padlet-heading{
+   grid-column:1/-1!important;position:relative;z-index:1;
+   color:#173e71!important;margin:0 0 4px!important;
+ }
+ #rt11-body .mbsa-padlet-board>.mbsa-padlet-note{
+   position:relative;z-index:1;min-width:0;margin:0!important;
+   padding:21px 20px 20px 22px!important;
+   background:#fff!important;color:#38516e!important;
+   border:1px solid var(--mbsa-note-line)!important;
+   border-radius:15px!important;
+   box-shadow:0 5px 13px rgba(28,88,151,.07)!important;
+   font-size:14px;line-height:1.8;
+   text-align:justify!important;text-align-last:left;
+   transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+ }
+ #rt11-body .mbsa-padlet-board>.mbsa-padlet-note::before{
+   content:"";position:absolute;left:0;top:16px;bottom:16px;
+   width:4px;border-radius:0 4px 4px 0;
+   background:linear-gradient(#3579be,#8bc8ec);
+ }
+ #rt11-body .mbsa-padlet-board>.mbsa-padlet-note:nth-of-type(3n+1){background:#fafdff!important}
+ #rt11-body .mbsa-padlet-board>.mbsa-padlet-note:nth-of-type(3n+2){background:#f2f8ff!important}
+ #rt11-body .mbsa-padlet-board>.mbsa-padlet-note:hover{
+   transform:translateY(-4px);border-color:#75afe4!important;
+   box-shadow:0 13px 25px rgba(28,88,151,.15)!important;
+ }
+ #rt11-body .mbsa-padlet-board.mbsa-padlet-single{grid-template-columns:1fr!important}
+ @media(max-width:750px){
+   #rt11-body .mbsa-padlet-board{grid-template-columns:1fr!important;padding:19px!important}
+   #rt11-body .mbsa-padlet-board>.mbsa-padlet-note{padding:17px 16px 17px 20px!important}
+ }
+ @media(prefers-reduced-motion:reduce){#rt11-body .mbsa-padlet-board>.mbsa-padlet-note{transition:none}}
+ `;
+ d.head.appendChild(style);
+ const root=d.getElementById('rt11-body');
+ if(!root)return;
+ function excluded(el){
+   if(el.closest('.mbsa-feature-section,.mbsa-padlet-board'))return true;
+   if(el.querySelector('img,picture,figure,video,canvas,svg,iframe,object,embed,[class*="map"],[class*="Map"],[class*="pelan"],[class*="Pelan"]'))return true;
+   const labels=Array.from(el.querySelectorAll('h1,h2,h3,h4,h5')).map(n=>n.textContent||'').join(' ');
+   if(/pelan (strategik|cadangan|guna tanah)|peta cadangan|rajah /i.test(labels))return true;
+   return false;
+ }
+ function enhance(){
+   const sections=Array.from(root.querySelectorAll('.rtchapter,section,article'));
+   for(const section of sections){
+     if(excluded(section))continue;
+     const notes=Array.from(section.children).filter(el=>el.matches('p,blockquote')&&el.textContent.trim().length>35);
+     const headings=Array.from(section.children).filter(el=>el.matches('h1,h2,h3,h4'));
+     if(!headings.length||!notes.length||notes.length>8)continue;
+     if(section.querySelector('section,article,.rtchapter'))continue;
+     section.classList.add('mbsa-padlet-board');
+     section.classList.toggle('mbsa-padlet-single',notes.length===1);
+     notes.forEach(el=>el.classList.add('mbsa-padlet-note'));
+   }
+ }
+ enhance();
+ let queued=false;
+ const watcher=new MutationObserver(()=>{
+   if(queued)return;queued=true;
+   frame.contentWindow.requestAnimationFrame(()=>{queued=false;enhance()});
+ });
+ watcher.observe(root,{childList:true,subtree:true});
+ setTimeout(enhance,800);setTimeout(enhance,1800);
+})();
+
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
