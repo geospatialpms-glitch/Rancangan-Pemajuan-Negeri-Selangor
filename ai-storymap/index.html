@@ -9456,6 +9456,58 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
   width:clamp(108px,29vw,156px)!important;height:clamp(108px,29vw,156px)!important;max-width:44%!important;
  }
 }
+
+/* 2026-11-06: fit cards 04 / 05 in their actual bento columns without cropping. */
+#suo-dashboard-overview .suo-dash-card:nth-child(4) .suo-dash-card-visual,
+#suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-card-visual{
+  min-width:0!important;
+  max-width:100%!important;
+  gap:clamp(6px,1.4cqw,14px)!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+  overflow:visible!important;
+}
+#suo-dashboard-overview .suo-dash-card:nth-child(4) .suo-dash-card-visual .suo-dash-illustration{
+  width:clamp(104px,24cqw,155px)!important;
+  height:clamp(104px,24cqw,155px)!important;
+  max-width:37%!important;
+  max-height:100%!important;
+  min-width:0!important;
+  margin-right:8px!important;
+  flex-shrink:1!important;
+  background-size:contain!important;
+  background-position:center!important;
+}
+#suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-card-visual .suo-dash-illustration{
+  width:clamp(90px,25cqw,128px)!important;
+  height:clamp(90px,25cqw,128px)!important;
+  max-width:35%!important;
+  max-height:100%!important;
+  min-width:0!important;
+  margin-right:5px!important;
+  flex-shrink:1!important;
+  background-size:contain!important;
+  background-position:center!important;
+}
+#suo-dashboard-overview .suo-dash-card:nth-child(4) .suo-dash-illustration,
+#suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-illustration{
+  -webkit-mask-image:radial-gradient(ellipse closest-side,#000 43%,rgba(0,0,0,.95) 59%,rgba(0,0,0,.58) 77%,transparent 100%)!important;
+  mask-image:radial-gradient(ellipse closest-side,#000 43%,rgba(0,0,0,.95) 59%,rgba(0,0,0,.58) 77%,transparent 100%)!important;
+}
+@media(max-width:1100px){
+  #suo-dashboard-overview .suo-dash-card:nth-child(4) .suo-dash-card-visual .suo-dash-illustration{
+    width:clamp(92px,23vw,140px)!important;height:clamp(92px,23vw,140px)!important;max-width:37%!important;
+  }
+  #suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-card-visual .suo-dash-illustration{
+    width:clamp(86px,21vw,120px)!important;height:clamp(86px,21vw,120px)!important;max-width:35%!important;
+  }
+}
+@media(max-width:700px){
+  #suo-dashboard-overview .suo-dash-card:nth-child(4) .suo-dash-card-visual .suo-dash-illustration,
+  #suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-card-visual .suo-dash-illustration{
+    width:clamp(86px,25vw,115px)!important;height:clamp(86px,25vw,115px)!important;max-width:35%!important;margin-right:3px!important;
+  }
+}
 </style>
 </head>
 <body>
