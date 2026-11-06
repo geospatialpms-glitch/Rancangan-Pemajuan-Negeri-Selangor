@@ -9428,6 +9428,47 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 #suo-dashboard-overview .suo-dash-card:nth-child(5) .suo-dash-illustration{background-position:100% 50%!important}
 #suo-dashboard-overview .suo-dash-card-visual .suo-dash-illustration svg{display:none!important}
 @media(max-width:700px){#suo-dashboard-overview .suo-dash-card-visual .suo-dash-illustration{width:98px!important;height:98px!important}}
+
+/* SUO 2026-11-06: clearer, larger maroon-gold isometric visual treatment.
+   Preserve existing five-card bento layout, counters, interactions and navigation. */
+#suo-dashboard-overview .suo-dash-card-visual .suo-dash-illustration{
+  width:clamp(128px,12vw,190px)!important;
+  height:clamp(128px,12vw,190px)!important;
+  flex:0 1 auto!important;
+  max-width:47%!important;
+  max-height:100%!important;
+  border-radius:50%;
+  background-color:transparent!important;
+  background-size:500% 100%!important;
+  background-repeat:no-repeat!important;
+  -webkit-mask-image:radial-gradient(ellipse 52% 52% at center,#000 56%,rgba(0,0,0,.92) 69%,transparent 91%)!important;
+  mask-image:radial-gradient(ellipse 52% 52% at center,#000 56%,rgba(0,0,0,.92) 69%,transparent 91%)!important;
+  filter:saturate(1.03) contrast(1.035) drop-shadow(0 9px 12px rgba(34,8,19,.12))!important;
+  image-rendering:auto!important;
+  transform:translateZ(0);
+}
+#suo-dashboard-overview .suo-dash-card-visual .suo-dash-illustration::before{
+  background:radial-gradient(circle,rgba(202,122,82,.10),transparent 74%)!important;
+  filter:blur(10px)!important;
+}
+#suo-dashboard-overview .suo-dash-card:nth-child(1) .suo-dash-card-visual .suo-dash-illustration{
+  width:clamp(164px,16vw,254px)!important;
+  height:clamp(164px,16vw,254px)!important;
+  max-width:49%!important;
+}
+#suo-dashboard-overview .suo-dash-card:nth-child(4) .suo-dash-card-visual .suo-dash-illustration{
+  width:clamp(144px,13vw,215px)!important;
+  height:clamp(144px,13vw,215px)!important;
+}
+@media(max-width:1100px){
+  #suo-dashboard-overview .suo-dash-card-visual .suo-dash-illustration{width:clamp(118px,26vw,168px)!important;height:clamp(118px,26vw,168px)!important;max-width:45%!important}
+  #suo-dashboard-overview .suo-dash-card:nth-child(1) .suo-dash-card-visual .suo-dash-illustration{width:clamp(136px,30vw,194px)!important;height:clamp(136px,30vw,194px)!important;max-width:48%!important}
+}
+@media(max-width:700px){
+  #suo-dashboard-overview .suo-dash-card-visual .suo-dash-illustration,
+  #suo-dashboard-overview .suo-dash-card:nth-child(1) .suo-dash-card-visual .suo-dash-illustration,
+  #suo-dashboard-overview .suo-dash-card:nth-child(4) .suo-dash-card-visual .suo-dash-illustration{width:clamp(110px,28vw,158px)!important;height:clamp(110px,28vw,158px)!important;max-width:44%!important}
+}
 </style>
 </head>
 <body>
