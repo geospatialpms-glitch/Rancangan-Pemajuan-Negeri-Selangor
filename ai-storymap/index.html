@@ -10106,63 +10106,41 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 </style>
 
 <style id="suo-intro-heading-harmonized-20261106">
-/* Single responsive scale replaces conflicting intro headline overrides. */
+/* Exactly two centered introductory heading lines, without inherited split-word rules. */
 #suo-map-intro #suo-map-intro-title.suo-intro-welcome-title{
  display:flex!important;flex-direction:column!important;align-items:center!important;
- gap:0!important;max-width:min(1200px,96%)!important;width:100%!important;
- margin:0 auto clamp(6px,.8svh,11px)!important;
- line-height:normal!important;overflow:visible!important;text-align:center!important;
+ justify-content:center!important;gap:clamp(3px,.65svh,9px)!important;
+ width:100%!important;max-width:min(1450px,98%)!important;
+ margin:0 auto clamp(8px,1svh,14px)!important;
+ text-align:center!important;line-height:normal!important;overflow:visible!important;
 }
 #suo-map-intro #suo-map-intro-title .suo-intro-welcome-kicker{
- font-size:clamp(40px,3.65vw,48px)!important;
- line-height:1.18!important;margin:0 0 clamp(5px,.7svh,9px)!important;
- letter-spacing:.012em!important;text-align:center!important;
+ display:block!important;width:100%!important;
+ font-family:Georgia,'Times New Roman',serif!important;font-style:italic!important;
+ font-weight:600!important;font-size:clamp(28px,3.3vw,45px)!important;
+ line-height:1.23!important;letter-spacing:-.012em!important;
+ color:#fff1de!important;margin:0!important;padding:.04em .03em .08em!important;
+ white-space:normal!important;text-align:center!important;
 }
-#suo-map-intro #suo-map-intro-title .suo-intro-welcome-main{
- box-sizing:border-box!important;
- font-size:clamp(36px,min(4.65vw,6.5svh),66px)!important;
- line-height:1.14!important;letter-spacing:-.025em!important;
- padding:.065em .045em .1em!important;margin:0!important;
- overflow:visible!important;
-}
-#suo-map-intro #suo-map-intro-title .suo-intro-welcome-first{
- display:flex!important;flex-wrap:nowrap!important;align-items:baseline!important;
- justify-content:center!important;gap:.17em!important;white-space:nowrap!important;
- max-width:100%!important;
-}
-#suo-map-intro #suo-map-intro-title .suo-intro-storymap{
- font-size:1.06em!important;font-weight:700!important;white-space:nowrap!important;
-}
-#suo-map-intro #suo-map-intro-title .suo-intro-rest{
- font-size:.94em!important;font-weight:700!important;white-space:nowrap!important;
-}
-#suo-map-intro #suo-map-intro-title .suo-intro-welcome-last{
- font-size:clamp(35px,min(4.5vw,6.3svh),64px)!important;
- margin-top:-.1em!important;
+#suo-map-intro #suo-map-intro-title .suo-intro-welcome-main.suo-intro-welcome-last{
+ display:block!important;box-sizing:border-box!important;width:100%!important;
+ font-family:Georgia,'Times New Roman',serif!important;font-style:italic!important;
+ font-weight:700!important;font-size:clamp(35px,min(4.45vw,6.25svh),65px)!important;
+ line-height:1.18!important;letter-spacing:-.03em!important;
+ padding:.055em .04em .11em!important;margin:0!important;overflow:visible!important;
+ white-space:normal!important;text-wrap:balance!important;text-align:center!important;
 }
 @media(max-width:700px){
- #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main{
-  font-size:clamp(23px,5.4vw,39px)!important;line-height:1.17!important;
-  padding:.075em .025em .1em!important;
- }
- #suo-map-intro #suo-map-intro-title .suo-intro-welcome-first{
-  flex-wrap:wrap!important;white-space:normal!important;gap:0 .16em!important;
- }
- #suo-map-intro #suo-map-intro-title .suo-intro-welcome-last{
-  font-size:clamp(23px,5.25vw,38px)!important;margin-top:-.06em!important;
- }
  #suo-map-intro #suo-map-intro-title .suo-intro-welcome-kicker{
-  font-size:clamp(27px,6.3vw,34px)!important;
+  font-size:clamp(19px,5.2vw,29px)!important;line-height:1.23!important;
+ }
+ #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main.suo-intro-welcome-last{
+  font-size:clamp(25px,6.4vw,39px)!important;line-height:1.18!important;
  }
 }
 @media(max-height:610px) and (min-width:701px){
- #suo-map-intro #suo-map-intro-title .suo-intro-welcome-kicker{font-size:38px!important;}
- #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main{
-  font-size:clamp(30px,5.5svh,49px)!important;
- }
- #suo-map-intro #suo-map-intro-title .suo-intro-welcome-last{
-  font-size:clamp(29px,5.3svh,47px)!important;
- }
+ #suo-map-intro #suo-map-intro-title .suo-intro-welcome-kicker{font-size:clamp(26px,4.8svh,36px)!important}
+ #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main.suo-intro-welcome-last{font-size:clamp(31px,5.9svh,48px)!important}
 }
 </style>
 </head>
@@ -10179,7 +10157,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
       <img class="suo-intro-suo" src="./SUO.jpeg" alt="Selangor Urban Observatory (SUO)" loading="eager" decoding="async">
     </div>
     <span class="suo-map-intro-eyebrow">SEL​ANGOR URBAN OBSERVATORY · ATLAS DIGITAL</span>
-    <h2 id="suo-map-intro-title" class="suo-intro-welcome-title"><span class="suo-intro-welcome-kicker">Selamat Datang ke</span><span class="suo-intro-welcome-main suo-intro-welcome-first"><span class="suo-intro-storymap">Story Map</span><span class="suo-intro-rest">Rancangan Pemajuan</span></span><span class="suo-intro-welcome-main suo-intro-welcome-last">Negeri Selangor</span></h2>
+    <h2 id="suo-map-intro-title" class="suo-intro-welcome-title"><span class="suo-intro-welcome-kicker">Selamat Datang ke Story Map</span><span class="suo-intro-welcome-main suo-intro-welcome-last">Rancangan Pemajuan Negeri Selangor</span></h2>
     <p class="suo-map-intro-sub">INTEGRASI MAKLUMAT GEOSPATIAL &amp; PERANCANGAN</p>
     <div class="suo-map-intro-divider" aria-hidden="true"></div>
     <p class="suo-map-intro-description">Story Map Rancangan Pemajuan Negeri Selangor menghimpunkan maklumat perancangan fizikal negeri dalam satu platform digital yang interaktif. Terokai Rancangan Struktur Negeri (RSN), Rancangan Tempatan (RT) dan Rancangan Kawasan Khas (RKK), serta hubung kaitnya dengan sembilan daerah pentadbiran dan 12 Pihak Berkuasa Tempatan (PBT). Melalui visualisasi peta, pelan strategik dan dokumen perancangan, platform ini memudahkan pemahaman tentang dasar, strategi dan hala tuju pembangunan ke arah Selangor yang mampan, berdaya huni dan berdaya tahan.</p>
