@@ -52,6 +52,27 @@ button{cursor:pointer;font:inherit}
 @media(max-width:768px){
   .content-panel{padding:25px}
 }
+
+/* SUO 2026-11-06 — cinematic map introduction before the existing Leaflet map */
+#suo-map-intro{position:relative;isolation:isolate;overflow:hidden;min-height:min(88svh,790px);background:linear-gradient(120deg,#3e0b1d,#761d31 57%,#4a1229);color:#fff8eb;display:flex;align-items:stretch;scroll-margin-top:80px}
+#suo-map-intro .suo-map-intro-photo{position:absolute;inset:0 0 37%;background:url('./Header-Peta%20Interaktif%20Pentadbiran%20Negeri%20Selangor.jpg') center 48%/cover no-repeat;z-index:-3;filter:saturate(.88) contrast(1.05)}
+#suo-map-intro .suo-map-intro-overlay{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(38,8,19,.11) 0%,rgba(57,10,27,.42) 37%,rgba(83,15,37,.98) 67%,#400c22 100%)}
+#suo-map-intro .suo-map-intro-arc{position:absolute;pointer-events:none;left:-8%;right:-8%;top:42%;height:20%;z-index:-1;background:linear-gradient(176deg,rgba(253,217,144,.23),rgba(147,35,65,.68) 48%,rgba(94,15,43,.92));border-top:3px solid rgba(248,209,131,.58);border-radius:55% 45% 0 0/45% 35% 0 0;transform:rotate(-1deg)}
+#suo-map-intro .suo-map-intro-inner{width:min(1120px,calc(100% - 44px));margin:auto;padding:clamp(115px,16svh,180px) 0 80px;position:relative;text-align:center}
+#suo-map-intro .suo-map-intro-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border:1px solid rgba(255,225,164,.65);border-radius:40px;background:rgba(55,10,28,.6);backdrop-filter:blur(12px);font-weight:800;font-size:11px;letter-spacing:.16em;color:#ffe7b5;text-transform:uppercase}
+#suo-map-intro h2{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-size:clamp(36px,6.2vw,83px);font-weight:900;letter-spacing:-.055em;line-height:1.06;color:#fffaf2;margin:25px auto 14px;max-width:1050px;text-shadow:0 4px 26px rgba(26,3,13,.55)}
+#suo-map-intro h2 em{font-style:normal;color:#f6d18a}
+#suo-map-intro .suo-map-intro-sub{font-size:clamp(13px,1.5vw,19px);font-weight:800;letter-spacing:.18em;color:#f0cd94;text-transform:uppercase;margin:0 auto 24px;text-shadow:0 3px 8px #280717}
+#suo-map-intro .suo-map-intro-divider{width:120px;height:3px;background:linear-gradient(90deg,transparent,#f6d690,transparent);margin:0 auto 24px}
+#suo-map-intro .suo-map-intro-description{max-width:920px;margin:0 auto 27px;color:#fff4e7;font-size:clamp(14px,1.3vw,17px);line-height:1.85;font-weight:500;text-shadow:0 1px 8px rgba(35,8,17,.25)}
+#suo-map-intro .suo-map-intro-figures{display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin:0 auto 30px}
+#suo-map-intro .suo-map-intro-figures span{padding:9px 17px;border:1px solid rgba(255,220,152,.34);border-radius:100px;background:rgba(255,255,255,.065);color:#ffe4b0;font-size:12px;font-weight:750}
+#suo-map-intro .suo-map-intro-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:250px;padding:16px 28px;border-radius:14px;background:linear-gradient(135deg,#edc16f,#fff1c2 54%,#e2ab58);box-shadow:0 12px 35px rgba(18,3,11,.26),inset 0 1px 0 rgba(255,255,255,.66);font-size:15px;font-weight:900;color:#551429;transition:transform .25s ease,box-shadow .25s ease}
+#suo-map-intro .suo-map-intro-button:hover,#suo-map-intro .suo-map-intro-button:focus-visible{transform:translateY(-4px);box-shadow:0 17px 38px rgba(18,3,11,.38);outline:2px solid #ffe0aa;outline-offset:3px}
+#suo-map-intro .suo-map-intro-lines{position:absolute;inset:auto -15% -70px;opacity:.22;height:190px;pointer-events:none;background:repeating-radial-gradient(ellipse at 50% 110%,transparent 0 11px,rgba(255,235,186,.8) 12px 13px,transparent 14px 23px)}
+#statistik-pembangunan{scroll-margin-top:90px}
+@media(max-width:700px){#suo-map-intro{min-height:80svh}#suo-map-intro .suo-map-intro-photo{bottom:44%;background-position:53% center}#suo-map-intro .suo-map-intro-inner{padding:115px 0 64px}#suo-map-intro h2{font-size:clamp(34px,8vw,52px)}#suo-map-intro .suo-map-intro-arc{top:35%;height:18%}#suo-map-intro .suo-map-intro-description{font-size:14px;line-height:1.75}#suo-map-intro .suo-map-intro-sub{letter-spacing:.1em}#suo-map-intro .suo-map-intro-button{width:min(100%,340px)}}
+@media(prefers-reduced-motion:reduce){#suo-map-intro .suo-map-intro-button{transition:none!important}}
 </style>
 <style>
 .hero{isolation:isolate;background:#55182c;overflow:hidden}
@@ -9573,7 +9594,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 <div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
 
 <section class="hero" id="utama"><div class="suo-hero-particles" aria-hidden="true"></div><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./MAIN%20VIDEO%20RS.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
-<div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="document.getElementById('selangorLeafletMap').closest('.development-overview').scrollIntoView({behavior:'smooth',block:'start'})">TEROKAI PETA INTERAKTIF SELANGOR ↗</button></div></div>
+<div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="document.getElementById('suo-map-intro').scrollIntoView({behavior:'smooth',block:'start'})">TEROKAI PETA INTERAKTIF SELANGOR ↗</button></div></div>
 </div></section>
 
 <!-- Logo SUO tunggal fixed di tengah skrin -->
@@ -9624,6 +9645,20 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
   
   </div>
  </div>
+</section>
+
+<!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
+<section id="suo-map-intro" aria-labelledby="suo-map-intro-title">
+  <div class="suo-map-intro-photo" aria-hidden="true"></div><div class="suo-map-intro-overlay" aria-hidden="true"></div><div class="suo-map-intro-arc" aria-hidden="true"></div><div class="suo-map-intro-lines" aria-hidden="true"></div>
+  <div class="suo-map-intro-inner">
+    <span class="suo-map-intro-eyebrow">SEL​ANGOR URBAN OBSERVATORY · ATLAS DIGITAL</span>
+    <h2 id="suo-map-intro-title">Terokai Selangor<br><em>Melalui Peta Interaktif</em></h2>
+    <p class="suo-map-intro-sub">INTEGRASI MAKLUMAT GEOSPATIAL &amp; PERANCANGAN</p>
+    <div class="suo-map-intro-divider" aria-hidden="true"></div>
+    <p class="suo-map-intro-description">Platform pemetaan interaktif ini memudahkan penerokaan maklumat pentadbiran dan rancangan pemajuan Negeri Selangor melalui visualisasi geospatial. Kenal pasti sembilan daerah pentadbiran, terokai dua belas Pihak Berkuasa Tempatan (PBT), dan akses maklumat dokumen Rancangan Tempatan serta Rancangan Kawasan Khas secara lebih tersusun dan mudah difahami.</p>
+    <div class="suo-map-intro-figures" aria-label="Kandungan peta"><span>9 Daerah Pentadbiran</span><span>12 Pihak Berkuasa Tempatan</span><span>Dokumen RT &amp; RKK</span></div>
+    <a class="suo-map-intro-button" href="#statistik-pembangunan" aria-label="Mulakan eksplorasi peta interaktif Selangor">⌖ &nbsp; Mulakan Eksplorasi <span aria-hidden="true">↗</span></a>
+  </div>
 </section>
 
 <section class="development-overview" id="statistik-pembangunan" aria-label="Peta Interaktif Pentadbiran Negeri Selangor">
