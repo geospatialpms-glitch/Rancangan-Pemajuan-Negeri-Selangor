@@ -9659,6 +9659,56 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 @media(max-height:700px) and (min-width:701px){#suo-map-intro .suo-atlas-feature-visual{height:58px!important;margin-bottom:4px!important}#suo-map-intro .suo-atlas-feature-visual img{width:78px!important;height:58px!important}}
 @media(prefers-reduced-motion:reduce){#suo-map-intro .suo-atlas-feature-visual img{transition:none!important;transform:none!important}}
 </style>
+
+<style id="suo-intro-one-screen-balanced-20261106">
+/* Desktop: balanced 100vh atlas cover with larger 3D statistics cards; other pages untouched. */
+#suo-map-intro{height:100svh!important;min-height:0!important;max-height:100svh!important;overflow:hidden!important;display:grid!important;place-items:center!important}
+#suo-map-intro .suo-map-intro-inner{box-sizing:border-box!important;width:min(1120px,calc(100% - 52px))!important;height:100%!important;min-height:0!important;margin:0 auto!important;padding:clamp(18px,3.4svh,34px) 0!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:0!important}
+#suo-map-intro .suo-map-intro-eyebrow{flex-shrink:0!important;margin:0 auto clamp(10px,1.65svh,17px)!important}
+#suo-map-intro h2{font-size:clamp(43px,min(5.3vw,8svh),81px)!important;line-height:1.065!important;margin:0 auto clamp(7px,1.3svh,13px)!important;max-width:1050px!important;flex-shrink:0!important}
+#suo-map-intro .suo-map-intro-sub{font-size:clamp(11px,1.18vw,16px)!important;margin:0 auto clamp(7px,1.15svh,13px)!important;flex-shrink:0!important}
+#suo-map-intro .suo-map-intro-divider{width:98px!important;margin:0 auto clamp(10px,1.45svh,16px)!important;flex-shrink:0!important}
+#suo-map-intro .suo-map-intro-description{max-width:840px!important;font-size:clamp(13px,1.12vw,16px)!important;line-height:1.62!important;margin:0 auto clamp(14px,2.2svh,23px)!important;flex-shrink:0!important}
+#suo-map-intro .suo-atlas-feature-grid{width:min(940px,100%)!important;max-width:940px!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(12px,1.55vw,18px)!important;margin:0 auto clamp(13px,2.1svh,23px)!important;flex-shrink:0!important;align-items:stretch!important}
+#suo-map-intro .suo-atlas-feature-card{min-height:clamp(177px,25svh,242px)!important;box-sizing:border-box!important;padding:clamp(12px,1.7svh,18px) clamp(12px,1.4vw,18px)!important;border-radius:17px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;background:linear-gradient(148deg,rgba(248,207,152,.22),rgba(133,35,63,.28) 42%,rgba(48,8,28,.72))!important}
+#suo-map-intro .suo-atlas-feature-visual{width:100%!important;height:clamp(84px,14svh,144px)!important;margin:0 auto clamp(4px,.6svh,9px)!important;flex-shrink:1!important;min-height:0!important;display:grid!important;place-items:center!important}
+#suo-map-intro .suo-atlas-feature-visual img{width:clamp(112px,12vw,170px)!important;height:100%!important;max-width:95%!important;object-fit:contain!important;object-position:center!important}
+#suo-map-intro .suo-atlas-feature-heading{gap:7px!important;margin:0 auto 6px!important;flex-shrink:0!important;line-height:1.16!important}
+#suo-map-intro .suo-atlas-feature-heading strong{font-size:clamp(24px,2.4vw,31px)!important}
+#suo-map-intro .suo-atlas-feature-heading span{font-size:clamp(11px,1.06vw,14px)!important;line-height:1.25!important}
+#suo-map-intro .suo-atlas-feature-card p{max-width:245px!important;font-size:clamp(10px,.93vw,12px)!important;line-height:1.45!important;margin:0!important}
+#suo-map-intro .suo-map-intro-button{min-width:235px!important;padding:14px 28px!important;flex-shrink:0!important;margin:0 auto!important}
+#suo-map-intro .suo-map-intro-arc{bottom:-27%!important;top:auto!important}
+@media(min-width:701px) and (max-height:770px){
+ #suo-map-intro .suo-map-intro-inner{padding:12px 0!important}
+ #suo-map-intro h2{font-size:clamp(34px,7.4svh,64px)!important}
+ #suo-map-intro .suo-atlas-feature-card{min-height:clamp(150px,24svh,185px)!important;padding:9px 12px!important}
+ #suo-map-intro .suo-atlas-feature-visual{height:clamp(66px,11.5svh,94px)!important}
+ #suo-map-intro .suo-atlas-feature-visual img{width:clamp(88px,10vw,126px)!important}
+ #suo-map-intro .suo-map-intro-description{line-height:1.4!important;margin-bottom:11px!important}
+ #suo-map-intro .suo-atlas-feature-grid{margin-bottom:10px!important}
+ #suo-map-intro .suo-map-intro-eyebrow{margin-bottom:9px!important}
+ #suo-map-intro .suo-map-intro-sub{margin-bottom:7px!important}
+ #suo-map-intro .suo-map-intro-divider{margin-bottom:9px!important}
+}
+@media(max-width:700px){
+ #suo-map-intro{height:100svh!important;max-height:none!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important}
+ #suo-map-intro .suo-map-intro-inner{width:calc(100% - 26px)!important;height:auto!important;min-height:100svh!important;padding:clamp(26px,4svh,42px) 0!important}
+ #suo-map-intro h2{font-size:clamp(32px,8.5vw,51px)!important;margin-bottom:9px!important}
+ #suo-map-intro .suo-map-intro-description{font-size:clamp(11px,2.9vw,13px)!important;line-height:1.5!important;margin-bottom:15px!important}
+ #suo-map-intro .suo-atlas-feature-grid{width:100%!important;gap:7px!important;margin-bottom:17px!important}
+ #suo-map-intro .suo-atlas-feature-card{min-height:clamp(160px,23svh,205px)!important;padding:10px 5px!important;border-radius:12px!important}
+ #suo-map-intro .suo-atlas-feature-visual{height:clamp(65px,10svh,90px)!important;margin-bottom:3px!important}
+ #suo-map-intro .suo-atlas-feature-visual img{width:clamp(70px,22vw,100px)!important;height:100%!important}
+ #suo-map-intro .suo-atlas-feature-heading{display:block!important;margin-bottom:5px!important}
+ #suo-map-intro .suo-atlas-feature-heading strong{display:block!important;font-size:22px!important}
+ #suo-map-intro .suo-atlas-feature-heading span{display:block!important;font-size:10px!important}
+ #suo-map-intro .suo-atlas-feature-card p{font-size:9px!important;line-height:1.35!important}
+ #suo-map-intro .suo-map-intro-button{padding:13px 22px!important}
+}
+@media(max-width:370px){#suo-map-intro .suo-atlas-feature-card p{font-size:8.4px!important}#suo-map-intro .suo-atlas-feature-heading span{font-size:9px!important}}
+@media(max-height:580px){#suo-map-intro{height:100svh!important;max-height:none!important;overflow-y:auto!important}#suo-map-intro .suo-map-intro-inner{height:auto!important;min-height:100svh!important;justify-content:center!important}}
+</style>
 </head>
 <body class="suo-intro-active">
 <!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
