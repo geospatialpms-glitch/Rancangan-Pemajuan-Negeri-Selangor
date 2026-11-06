@@ -197,66 +197,88 @@ frame.addEventListener('load',()=>{
 })();
 
 
-/* Susun atur papan nota ala Padlet: hanya blok maklumat teks, bukan blok pelan. */
+/* Padlet v3: robust styling for the actual text-only blocks of each chapter. */
 (function(){
- const d=frame.contentDocument;
- if(!d)return;
- const style=d.createElement('style');
- style.id='rt-page-MBSA-padlet-notes';
- style.textContent=`
- #rt11-body .mbsa-padlet-text-group{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;padding:19px!important;margin:18px 0!important;border-radius:19px!important;border:1px solid #c4dcf2!important;background:linear-gradient(120deg,#edf7ff,#dfefff)!important;box-shadow:0 9px 21px rgba(25,76,137,.07)!important}
- #rt11-body .mbsa-padlet-text-group.mbsa-padlet-one{grid-template-columns:1fr!important}
- #rt11-body .mbsa-padlet-text-group>.mbsa-padlet-note{position:relative!important;min-width:0!important;margin:0!important;padding:20px 20px 20px 23px!important;border:1px solid #bed8ee!important;border-radius:15px!important;background:#fff!important;color:#385473!important;text-align:justify!important;line-height:1.8!important;box-shadow:0 5px 14px rgba(26,87,155,.06)!important;transition:transform .25s ease,box-shadow .25s ease}
- #rt11-body .mbsa-padlet-text-group>.mbsa-padlet-note::before{content:"";position:absolute;top:15px;bottom:15px;left:0;width:4px;background:linear-gradient(#235c9c,#83c8ee);border-radius:0 5px 5px 0}
- #rt11-body .mbsa-padlet-text-group>.mbsa-padlet-note:nth-child(even){background:#f9fcff!important}
- #rt11-body .mbsa-padlet-text-group>.mbsa-padlet-note:hover{transform:translateY(-4px);box-shadow:0 13px 25px rgba(26,87,155,.14)!important}
- @media(max-width:760px){#rt11-body .mbsa-padlet-text-group{grid-template-columns:1fr!important;padding:12px!important}}
- @media(prefers-reduced-motion:reduce){#rt11-body .mbsa-padlet-text-group>.mbsa-padlet-note{transition:none}}
- `;
- d.head.appendChild(style);
+ const d=frame.contentDocument;if(!d)return;
+ const id='rt-mbsa-padlet-v3';
+ if(!d.getElementById(id)){
+  const st=d.createElement('style');st.id=id;
+  st.textContent=`
+  #rt11-body .mbsa-padlet-v3{
+   display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+   gap:15px!important;padding:18px!important;margin:18px 0!important;
+   background:linear-gradient(130deg,#eaf6ff,#ddecff)!important;
+   border:1px solid #bcdbf3!important;border-radius:18px!important;
+   box-shadow:0 8px 22px rgba(26,74,132,.08)!important
+  }
+  #rt11-body .mbsa-padlet-v3.mbsa-padlet-one{grid-template-columns:1fr!important}
+  #rt11-body .mbsa-padlet-v3>.mbsa-padlet-note{
+    display:block!important;position:relative!important;min-width:0!important;
+    padding:21px 20px 21px 24px!important;margin:0!important;
+    border:1px solid #bad5ef!important;border-radius:14px!important;
+    background:#fff!important;color:#2c4564!important;
+    box-shadow:0 6px 15px rgba(31,88,155,.08)!important;
+    text-align:justify!important;line-height:1.8!important;
+    transition:transform .25s ease,box-shadow .25s ease!important
+  }
+  #rt11-body .mbsa-padlet-v3>.mbsa-padlet-note:nth-child(even){background:#f7fbff!important}
+  #rt11-body .mbsa-padlet-v3>.mbsa-padlet-note::before{
+    content:"";position:absolute;left:0;top:15px;bottom:15px;width:4px;
+    background:linear-gradient(#15548f,#6cc2f0);border-radius:0 5px 5px 0
+  }
+  #rt11-body .mbsa-padlet-v3>.mbsa-padlet-note:hover{
+    transform:translateY(-5px)!important;
+    box-shadow:0 15px 25px rgba(31,88,155,.16)!important
+  }
+  @media(max-width:780px){#rt11-body .mbsa-padlet-v3{grid-template-columns:1fr!important;padding:12px!important}}
+  @media(prefers-reduced-motion:reduce){#rt11-body .mbsa-padlet-v3>.mbsa-padlet-note{transition:none!important}}
+  `;
+  d.head.appendChild(st);
+ }
  const root=d.getElementById('rt11-body');
  if(!root)return;
-
- function enhance(){
-  const headingRx=/pelan mukim|pelan blok|pelan strategik|pelan cadangan|peta cadangan|peta guna tanah|rajah|visualisasi peta/i;
-  const media='img,picture,figure,video,canvas,iframe,object,embed';
-  const paragraphs=Array.from(root.querySelectorAll('p')).filter(p=>{
-    if(p.classList.contains('mbsa-padlet-note')||p.closest('.mbsa-feature-section,.mbsa-padlet-text-group,nav,aside,header,footer'))return false;
-    if((p.textContent||'').trim().length<70||p.querySelector(media))return false;
-    const parent=p.parentElement;
-    if(!parent||parent.querySelector(media))return false;
-    if(p.closest('[class*="map"],[class*="Map"],[class*="pelan"],[class*="Pelan"]'))return false;
-    const container=p.closest('section,article,.rtchapter')||parent;
-    const headings=[...container.querySelectorAll('h1,h2,h3,h4,h5')].slice(0,4).map(e=>e.textContent).join(' ');
-    return !headingRx.test(headings);
-  });
-  const parents=new Map();
-  for(const p of paragraphs){const parent=p.parentElement;if(!parents.has(parent))parents.set(parent,[]);parents.get(parent).push(p)}
-  for(const [parent,items] of parents){
-    let run=[];
-    function flush(){
-      if(!run.length)return;
-      const board=root.ownerDocument.createElement('div');
-      board.className='mbsa-padlet-text-group'+(run.length===1?' mbsa-padlet-one':'');
-      run[0].before(board);
-      run.forEach(p=>{p.classList.add('mbsa-padlet-note');board.appendChild(p)});
-      run=[];
-    }
-    for(const p of items){if(run.length&&run[run.length-1].nextElementSibling!==p)flush();run.push(p)}
-    flush();
+ const media='img,picture,figure,canvas,svg,iframe,object,embed,video';
+ const plans=/pelan mukim|pelan blok|peta|pelan strategik|pelan cadangan|rajah|ilustrasi|guna tanah/i;
+ function eligible(el){
+  if(el.closest('.mbsa-feature-section,.mbsa-padlet-v3,nav,header,footer,aside'))return false;
+  const txt=(el.innerText||el.textContent||'').trim();
+  if(txt.length<65||el.querySelector(media))return false;
+  const tag=el.tagName.toLowerCase();
+  if(tag!=='p'&&tag!=='li')return false;
+  // Exclude map/plan subtopics, even if their body text contains no image.
+  const section=el.closest('section,article,.rtchapter');
+  if(section){
+   const headings=[...section.querySelectorAll('h1,h2,h3,h4,h5,h6')].slice(0,4).map(x=>x.textContent).join(' ');
+   if(plans.test(headings)||section.querySelector(media))return false;
+  }
+  const previousHeading=(()=>{let n=el;for(let i=0;i<12&&n;i++){let sib=n.previousElementSibling;while(sib){if(/^H[1-6]$/.test(sib.tagName))return sib.textContent;sib=sib.previousElementSibling}n=n.parentElement;if(n===root)break}return ''})();
+  if(plans.test(previousHeading))return false;
+  return true;
+ }
+ function apply(){
+  const paragraphs=[...root.querySelectorAll('p,li')].filter(eligible);
+  const byParent=new Map();
+  for(const p of paragraphs){if(!byParent.has(p.parentElement))byParent.set(p.parentElement,[]);byParent.get(p.parentElement).push(p)}
+  for(const list of byParent.values()){
+   let run=[];
+   const flush=()=>{
+    if(!run.length)return;
+    const board=d.createElement('div');board.className='mbsa-padlet-v3'+(run.length===1?' mbsa-padlet-one':'');
+    run[0].before(board);
+    run.forEach(node=>{node.classList.add('mbsa-padlet-note');board.appendChild(node)});
+    run=[];
+   };
+   for(const node of list){if(run.length&&run[run.length-1].nextElementSibling!==node)flush();run.push(node)}flush();
   }
  }
-
- enhance();
- let queued=false;
- const watcher=new MutationObserver(()=>{
-   if(queued)return;queued=true;
-   frame.contentWindow.requestAnimationFrame(()=>{queued=false;enhance()});
+ apply();
+ let pending=false;const obs=new MutationObserver(()=>{
+  if(pending)return;pending=true;
+  frame.contentWindow.requestAnimationFrame(()=>{pending=false;apply()});
  });
- watcher.observe(root,{childList:true,subtree:true});
- setTimeout(enhance,800);setTimeout(enhance,1800);
+ obs.observe(root,{childList:true,subtree:true});
+ setTimeout(apply,800);setTimeout(apply,2000);
 })();
-
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
