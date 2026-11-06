@@ -37,6 +37,40 @@ frame.addEventListener('load',()=>{
   style.id='rt-page-MBSA-overrides';
   style.textContent='/* Styles applied after RT source content loads */';
   doc.head.appendChild(style);
+  /* RT MBSA only: justify all long-form body text while preserving headings and controls. */
+  const justifyStyle=doc.createElement('style');
+  justifyStyle.id='rt-page-MBSA-justify';
+  justifyStyle.textContent=`
+    #rt11-body p,
+    #rt11-body li,
+    #rt11-body blockquote,
+    #rt11-body dd,
+    #rt11-body td,
+    #rt11-body .mbsa-feature-card p,
+    #rt11-body .mbsa-feature-desc,
+    #rt11-modal .rtchapter p,
+    #rt11-modal .rtchapter li,
+    #rt11-modal .rtchapter blockquote{
+      text-align:justify!important;
+      text-align-last:left;
+      text-justify:inter-word;
+      overflow-wrap:break-word;
+      hyphens:auto;
+    }
+    #rt11-body h1,#rt11-body h2,#rt11-body h3,#rt11-body h4,
+    #rt11-body h5,#rt11-body h6,
+    #rt11-body button,#rt11-body nav,
+    #rt11-body .mbsa-feature-title,#rt11-body .mbsa-feature-kicker{
+      text-align:revert;
+    }
+    @media(max-width:480px){
+      #rt11-body p,#rt11-body li,#rt11-body dd,
+      #rt11-modal .rtchapter p,#rt11-modal .rtchapter li{
+        hyphens:auto;
+      }
+    }
+  `;
+  doc.head.appendChild(justifyStyle);
 
 /* Bina semula susun atur daripada teks RT MBSA yang sudah wujud, tanpa menukar maklumat asal. */
 (function(){
