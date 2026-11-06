@@ -53,6 +53,14 @@ button{cursor:pointer;font:inherit}
   .content-panel{padding:25px}
 }
 
+/* SUO entry gateway: one full-screen welcome screen, then original homepage. */
+html:has(body.suo-intro-active){overflow:hidden!important;scroll-behavior:auto!important}
+body.suo-intro-active{overflow:hidden!important;height:100svh!important}
+body.suo-intro-active #suo-map-intro{position:fixed!important;inset:0!important;z-index:2147483000!important;display:flex!important;min-height:100svh!important;height:100svh!important;overflow-y:auto!important;overscroll-behavior:contain!important;scroll-margin-top:0!important}
+body:not(.suo-intro-active) #suo-map-intro{display:none!important}
+#suo-map-intro .suo-map-intro-inner{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:65px 0 55px!important}
+#suo-map-intro .suo-map-intro-button{border:0;cursor:pointer}
+@media(max-width:700px){#suo-map-intro .suo-map-intro-inner{padding:65px 0 45px!important}}
 /* SUO 2026-11-06 — cinematic map introduction before the existing Leaflet map */
 #suo-map-intro{position:relative;isolation:isolate;overflow:hidden;min-height:min(88svh,790px);background:linear-gradient(120deg,#3e0b1d,#761d31 57%,#4a1229);color:#fff8eb;display:flex;align-items:stretch;scroll-margin-top:80px}
 #suo-map-intro .suo-map-intro-photo{position:absolute;inset:0 0 37%;background:url('./Header-Peta%20Interaktif%20Pentadbiran%20Negeri%20Selangor.jpg') center 48%/cover no-repeat;z-index:-3;filter:saturate(.88) contrast(1.05)}
@@ -9534,7 +9542,22 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 }
 </style>
 </head>
-<body>
+<body class="suo-intro-active">
+<!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
+<section id="suo-map-intro" aria-labelledby="suo-map-intro-title">
+  <div class="suo-map-intro-photo" aria-hidden="true"></div><div class="suo-map-intro-overlay" aria-hidden="true"></div><div class="suo-map-intro-arc" aria-hidden="true"></div><div class="suo-map-intro-lines" aria-hidden="true"></div>
+  <div class="suo-map-intro-inner">
+    <span class="suo-map-intro-eyebrow">SEL​ANGOR URBAN OBSERVATORY · ATLAS DIGITAL</span>
+    <h2 id="suo-map-intro-title">Terokai Selangor<br><em>Melalui Peta Interaktif</em></h2>
+    <p class="suo-map-intro-sub">INTEGRASI MAKLUMAT GEOSPATIAL &amp; PERANCANGAN</p>
+    <div class="suo-map-intro-divider" aria-hidden="true"></div>
+    <p class="suo-map-intro-description">Platform pemetaan interaktif ini memudahkan penerokaan maklumat pentadbiran dan rancangan pemajuan Negeri Selangor melalui visualisasi geospatial. Kenal pasti sembilan daerah pentadbiran, terokai dua belas Pihak Berkuasa Tempatan (PBT), dan akses maklumat dokumen Rancangan Tempatan serta Rancangan Kawasan Khas secara lebih tersusun dan mudah difahami.</p>
+    <div class="suo-map-intro-figures" aria-label="Kandungan peta"><span>9 Daerah Pentadbiran</span><span>12 Pihak Berkuasa Tempatan</span><span>Dokumen RT &amp; RKK</span></div>
+    <button type="button" class="suo-map-intro-button" id="suo-enter-storymap" aria-label="Mulakan eksplorasi peta interaktif Selangor">⌖ &nbsp; Mulakan Eksplorasi <span aria-hidden="true">↗</span></button>
+  </div>
+</section>
+
+
 <div id="suo-read-progress" role="progressbar" aria-label="Kemajuan pembacaan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
 
@@ -9594,7 +9617,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 <div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
 
 <section class="hero" id="utama"><div class="suo-hero-particles" aria-hidden="true"></div><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./MAIN%20VIDEO%20RS.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
-<div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="document.getElementById('suo-map-intro').scrollIntoView({behavior:'smooth',block:'start'})">TEROKAI PETA INTERAKTIF SELANGOR ↗</button></div></div>
+<div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="document.getElementById('statistik-pembangunan').scrollIntoView({behavior:'smooth',block:'start'})">TEROKAI PETA INTERAKTIF SELANGOR ↗</button></div></div>
 </div></section>
 
 <!-- Logo SUO tunggal fixed di tengah skrin -->
@@ -9645,20 +9668,6 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
   
   </div>
  </div>
-</section>
-
-<!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
-<section id="suo-map-intro" aria-labelledby="suo-map-intro-title">
-  <div class="suo-map-intro-photo" aria-hidden="true"></div><div class="suo-map-intro-overlay" aria-hidden="true"></div><div class="suo-map-intro-arc" aria-hidden="true"></div><div class="suo-map-intro-lines" aria-hidden="true"></div>
-  <div class="suo-map-intro-inner">
-    <span class="suo-map-intro-eyebrow">SEL​ANGOR URBAN OBSERVATORY · ATLAS DIGITAL</span>
-    <h2 id="suo-map-intro-title">Terokai Selangor<br><em>Melalui Peta Interaktif</em></h2>
-    <p class="suo-map-intro-sub">INTEGRASI MAKLUMAT GEOSPATIAL &amp; PERANCANGAN</p>
-    <div class="suo-map-intro-divider" aria-hidden="true"></div>
-    <p class="suo-map-intro-description">Platform pemetaan interaktif ini memudahkan penerokaan maklumat pentadbiran dan rancangan pemajuan Negeri Selangor melalui visualisasi geospatial. Kenal pasti sembilan daerah pentadbiran, terokai dua belas Pihak Berkuasa Tempatan (PBT), dan akses maklumat dokumen Rancangan Tempatan serta Rancangan Kawasan Khas secara lebih tersusun dan mudah difahami.</p>
-    <div class="suo-map-intro-figures" aria-label="Kandungan peta"><span>9 Daerah Pentadbiran</span><span>12 Pihak Berkuasa Tempatan</span><span>Dokumen RT &amp; RKK</span></div>
-    <a class="suo-map-intro-button" href="#statistik-pembangunan" aria-label="Mulakan eksplorasi peta interaktif Selangor">⌖ &nbsp; Mulakan Eksplorasi <span aria-hidden="true">↗</span></a>
-  </div>
 </section>
 
 <section class="development-overview" id="statistik-pembangunan" aria-label="Peta Interaktif Pentadbiran Negeri Selangor">
@@ -17785,6 +17794,22 @@ schedule();
   });
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setMasks,{once:true});else setMasks();
+})();
+</script>
+<script id="suo-entry-gateway-control">
+(function(){
+  const enter=document.getElementById('suo-enter-storymap');
+  const splash=document.getElementById('suo-map-intro');
+  if(!enter||!splash)return;
+  enter.addEventListener('click',function(){
+    document.body.classList.remove('suo-intro-active');
+    splash.setAttribute('aria-hidden','true');
+    if(location.hash){history.replaceState(null,'',location.pathname+location.search);}
+    window.scrollTo({top:0,left:0,behavior:'instant'});
+    const heroVideo=document.querySelector('.hero-bg-video');
+    if(heroVideo && heroVideo.paused){const play=heroVideo.play();if(play&&play.catch)play.catch(function(){});}
+  });
+  window.addEventListener('load',function(){if(document.body.classList.contains('suo-intro-active'))window.scrollTo(0,0);},{once:true});
 })();
 </script>
 </body>
