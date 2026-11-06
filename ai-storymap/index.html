@@ -17964,6 +17964,110 @@ new MutationObserver(trigger).observe(modal,{attributes:true,attributeFilter:['c
 trigger();
 })();
 </script>
+
+<style id="suo-mbsa-rt04-direct-fix">
+/* Actual dynamically rendered RT MBSA / Bab 04 only, not directory overview. */
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece.mbsa-goal-live ul,
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece.mbsa-goal-live ol,
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal ul.mbsa-goal-live{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:16px!important;margin:18px 0 32px!important;padding:0!important;
+ list-style:none!important;width:100%!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-goal-live>li{
+ display:flex!important;flex-direction:column!important;justify-content:flex-end!important;
+ position:relative!important;min-height:225px!important;
+ padding:78px 22px 25px!important;margin:0!important;border-radius:18px!important;
+ border:1px solid #cadaea!important;border-top:4px solid var(--mbsa-accent,#194b83)!important;
+ background:linear-gradient(145deg,#fff 4%,var(--mbsa-bg,#e7f2ff))!important;
+ color:#294861!important;box-shadow:0 12px 24px rgba(25,72,110,.09)!important;
+ list-style:none!important;transition:transform .25s,box-shadow .25s!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-goal-live>li:nth-child(1){--mbsa-accent:#1b528b;--mbsa-bg:#e9f2ff}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-goal-live>li:nth-child(2){--mbsa-accent:#178c97;--mbsa-bg:#e6f7f5}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-goal-live>li:nth-child(3){--mbsa-accent:#7772b1;--mbsa-bg:#f0edff}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-goal-live>li::before{
+ content:attr(data-mbsa-no)!important;position:absolute!important;top:15px!important;left:21px!important;
+ font:900 54px/1 'Plus Jakarta Sans',Arial,sans-serif!important;
+ color:var(--mbsa-accent)!important;opacity:.85!important;
+ background:none!important;border:0!important;box-shadow:none!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-goal-live>li:hover{
+ transform:translateY(-5px)!important;box-shadow:0 18px 35px rgba(25,72,110,.17)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-live{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:15px!important;margin:18px 0 32px!important;padding:0!important;
+ list-style:none!important;width:100%!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-live>li{
+ box-sizing:border-box!important;display:block!important;position:relative!important;
+ min-height:140px!important;padding:27px 29px!important;margin:0!important;
+ border:1px solid #cfe1ee!important;border-left:5px solid #3988af!important;
+ border-radius:15px!important;background:linear-gradient(120deg,#e3f1fa,#f8fcff)!important;
+ color:#234660!important;box-shadow:0 9px 21px rgba(20,55,99,.07)!important;
+ list-style:none!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-live>li:first-child{
+ grid-column:1/-1!important;background:linear-gradient(115deg,#163b70,#2c7aa5)!important;
+ color:#fff!important;border:1px solid #3e779d!important;border-left:6px solid #9bdeee!important;
+ min-height:160px!important;box-shadow:0 15px 30px rgba(21,57,95,.20)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-live>li:first-child *{color:#fff!important}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-live>li:last-child{
+ background:linear-gradient(120deg,#efedfd,#fbfbff)!important;border-left-color:#8981bd!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal :is(.mbsa-goal-live,.mbsa-vision-live)>li :is(b,strong){
+ font-weight:900!important;font-size:15px!important;
+}
+@media(max-width:940px){#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-goal-live{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:640px){
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal :is(.mbsa-goal-live,.mbsa-vision-live){grid-template-columns:1fr!important}
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-goal-live>li{min-height:175px!important}
+}
+</style>
+
+<script id="suo-mbsa-rt04-render-fix">
+(function(){
+'use strict';
+const modal=document.getElementById('rt11-modal'),root=document.getElementById('rt11-body');
+if(!modal||!root)return;
+const normal=s=>String(s||'').replace(/\s+/g,' ').trim().replace(/^\d{1,2}\s*[.):\-]?\s*/,'').toUpperCase();
+const sets=[{cls:'mbsa-goal-live',names:['PINTAR','BERDAYA HUNI','BERDAYA TAHAN']},
+ {cls:'mbsa-vision-live',names:['VISI','MISI','WAWASAN']}];
+function run(){
+ if(modal.hidden||!modal.classList.contains('rt-mbsa'))return;
+ const chapter=[...root.querySelectorAll('.rtchapter')].find(c=>c.classList.contains('rt-goal')||/MATLAMAT PEMBANGUNAN/i.test(c.querySelector('h2')?.textContent||''));
+ if(!chapter)return;
+ for(const cfg of sets){
+  if(chapter.querySelector('.'+cfg.cls))continue;
+  const available=[...chapter.querySelectorAll('li')].filter(el=>!el.closest('.suo-mbsa-editorial,.mbsa-goal-live,.mbsa-vision-live'));
+  const picked=cfg.names.map(n=>available.find(li=>{
+   const t=normal(li.textContent);return t===n||t.startsWith(n+':')||t.startsWith(n+' ');
+  }));
+  if(picked.some(x=>!x)||new Set(picked).size!==3)continue;
+  const groups=new Set(picked.map(el=>el.closest('ul,ol')));
+  if(groups.size===1){
+   const list=picked[0].closest('ul,ol');
+   if(list.children.length===3){
+    list.classList.add(cfg.cls);
+    picked.forEach((el,i)=>el.setAttribute('data-mbsa-no',String(i+1).padStart(2,'0')));
+    continue;
+   }
+  }
+  const list=document.createElement('ul');list.className=cfg.cls;list.setAttribute('aria-label',cfg.names.join(', '));
+  picked[0].closest('ul,ol')?.before(list);
+  picked.forEach((li,i)=>{li.dataset.mbsaNo=String(i+1).padStart(2,'0');list.appendChild(li)});
+  groups.forEach(el=>{if(el&&!el.querySelector('li'))el.remove()});
+ }
+}
+let queued=false;
+function schedule(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;run()})}
+new MutationObserver(schedule).observe(root,{subtree:true,childList:true});
+new MutationObserver(schedule).observe(modal,{attributes:true,attributeFilter:['hidden','class']});
+schedule();
+})();
+</script>
 <script id="suo-stat-precise-cutout">
 /* Clean artwork silhouettes preserve HD images; no maroon image background is drawn. */
 (function(){
