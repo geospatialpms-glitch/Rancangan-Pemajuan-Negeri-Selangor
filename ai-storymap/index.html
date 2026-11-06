@@ -10183,21 +10183,23 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
  #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main.suo-intro-welcome-last{font-size:clamp(31px,5.9svh,48px)!important}
 }
 </style>
-<style id="suo-intro-remove-baked-diagonal-20261106">
-/* Remove the triangle embedded in the intro photo: clean, maroon atlas background. */
-#suo-map-intro{
- background:radial-gradient(ellipse at 85% 12%,rgba(170,94,79,.20),transparent 42%),
- radial-gradient(ellipse at 13% 75%,rgba(123,31,62,.36),transparent 51%),
- linear-gradient(125deg,#310719 0%,#56152d 54%,#330919 100%)!important;
+<style id="suo-intro-fix-button-light-and-restore-map-20261106">
+/* The diagonal white beam was a button shine escaping overflow:visible.
+   Remove only that pseudo element; retain the heartbeat animation and original map. */
+#suo-map-intro #suo-enter-storymap::before{
+ content:none!important;display:none!important;visibility:hidden!important;
+ animation:none!important;
 }
 #suo-map-intro .suo-map-intro-photo{
- background-image:none!important;
+ background-image:url('./Header-Peta%20Interaktif%20Pentadbiran%20Negeri%20Selangor.jpg')!important;
  background-color:transparent!important;
- animation:none!important;
- transform:none!important;
- filter:none!important;
+ filter:saturate(1.05) contrast(1.08)!important;
+ transform:scale(1.045);
+ animation:suoAtlasDrift 28s ease-in-out infinite alternate!important;
 }
-#suo-map-intro .suo-map-intro-arc{display:none!important}
+@media(prefers-reduced-motion:reduce){
+ #suo-map-intro .suo-map-intro-photo{animation:none!important;transform:none!important}
+}
 </style>
 <style id="suo-intro-remove-diagonal-light-20261106">
 /* Remove unwanted diagonal luminous decorative arc from opening screen only. */
