@@ -43,7 +43,7 @@ frame.addEventListener('load',()=>{
  const doc=frame.contentDocument;if(!doc)return;
  const style=doc.getElementById('rt-page-MBSA-overrides');
  if(style)style.textContent="\n/* Penampilan khusus dua seksyen RT MBSA; tidak mengubah seksyen RT lain. */\n#rt11-body .mbsa-feature-section{background:linear-gradient(120deg,#fff8f6,#f9e9ed);border:1px solid #eccbd2;border-radius:22px;padding:26px 25px;margin:24px 0;box-shadow:0 12px 30px rgba(101,34,56,.045);font-family:Arial,sans-serif}\n#rt11-body .mbsa-feature-kicker{display:block;text-align:center;color:#ad6e81;letter-spacing:.16em;font-weight:800;font-size:10px;margin-bottom:12px}\n#rt11-body .mbsa-feature-title{font:700 clamp(22px,2.7vw,30px)/1.18 Georgia,serif!important;text-align:center;color:#702840!important;margin:0 0 9px!important}\n#rt11-body .mbsa-feature-desc{text-align:center;color:#806f77;font-size:13px;line-height:1.6;margin:0 auto 21px;max-width:720px}\n#rt11-body .mbsa-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}\n#rt11-body .mbsa-feature-card{position:relative;min-width:0;padding:20px 17px 22px;background:#fffdfb;border:1px solid #eecbd3;border-radius:16px;box-shadow:0 9px 18px rgba(112,40,64,.055);transition:transform .25s ease,box-shadow .25s ease}\n#rt11-body .mbsa-feature-card:hover{transform:translateY(-4px);box-shadow:0 15px 24px rgba(112,40,64,.14)}\n#rt11-body .mbsa-feature-num{position:absolute;right:15px;top:14px;color:#a45269;background:#f8d4dd;font:800 12px Arial,sans-serif}\n#rt11-body .mbsa-feature-symbol{display:grid;place-items:center;width:40px;height:40px;background:#f8bfc8;color:#752b44;border-radius:12px;font-size:20px;margin-bottom:15px}\n#rt11-body .mbsa-feature-card h4{font:700 18px/1.3 Georgia,serif!important;color:#702840!important;margin:0 0 13px!important}\n#rt11-body .mbsa-feature-card p{font:400 13px/1.65 Arial,sans-serif;color:#6c6369;margin:0}\n@media(max-width:750px){#rt11-body .mbsa-feature-grid{grid-template-columns:1fr}#rt11-body .mbsa-feature-section{padding:20px 16px}}\n@media(prefers-reduced-motion:reduce){#rt11-body .mbsa-feature-card{transition:none}}\n";
- const clean=s=>(s||'').replace(/\\s+/g,' ').trim();
+ const clean=s=>(s||'').replace(/\s+/g,' ').trim();
  const specs=[
   {heading:'Tafsiran Matlamat RT',kicker:'01 · TAFSIRAN MATLAMAT RT',subtitle:'Tiga asas utama yang membentuk hala tuju pembangunan Rancangan Tempatan.',names:['PINTAR','BERDAYA HUNI','BERDAYA TAHAN'],symbols:['✦','⌂','◈']},
   {heading:'Visi, Misi & Wawasan MBSA',kicker:'02 · HALA TUJU MBSA',subtitle:'Aspirasi, komitmen dan wawasan bandar raya Shah Alam.',names:['VISI','MISI','WAWASAN'],symbols:['◇','✧','✺']}
@@ -54,8 +54,7 @@ frame.addEventListener('load',()=>{
    .sort((a,b)=>a.querySelectorAll('*').length-b.querySelectorAll('*').length)[0];
  }
  function getEntry(root,name){
-  const rx=new RegExp('^'+name.replace(/[.*+?^$()|[\]{}]/g,'\\  doc.head.appendChild(style);
-')+'\\s*[:：\\-]','i');
+  const rx=new RegExp('^'+name+'\\s*[:：-]','i');
   let matches=[...root.querySelectorAll('li,p,div,article')]
    .filter(e=>!e.closest('.mbsa-feature-section')&&rx.test(clean(e.textContent))&&clean(e.textContent).length<650);
   matches.sort((a,b)=>a.querySelectorAll('*').length-b.querySelectorAll('*').length);
