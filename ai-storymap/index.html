@@ -10333,7 +10333,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 <div class="suo-side-bottom"><span class="suo-side-indicator"></span><span class="suo-side-bottom-text">PORTAL INTERAKTIF SELANGOR</span></div>
 </aside>
 
-<div class="selangor-ticker" role="region" aria-label="Pengumuman Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">PENGUMUMAN <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦</span></div></div></div>
+<div class="selangor-ticker" role="region" aria-label="Selamat Datang ke Story Map Rancangan Pemajuan Negeri Selangor"><div class="ticker-label">SELAMAT DATANG <span>✦</span></div><div class="ticker-window"><div class="ticker-track"><span>✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · SELANGOR URBAN OBSERVATORY ✦</span><span aria-hidden="true">✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · SELANGOR URBAN OBSERVATORY ✦</span></div></div></div>
 
 <section class="hero" id="utama"><div class="suo-hero-particles" aria-hidden="true"></div><video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./MAIN%20VIDEO%20RS.mp4" type="video/mp4"></video><div class="hero-tint" aria-hidden="true"></div>
 <div class="container hero-layout"><div class="hero-copy"><div class="hero-actions"><button class="hero-cta primary-cta" onclick="document.querySelector('.main-section').scrollIntoView({behavior:'smooth'})">Terokai 5 Bab ↗</button><button class="hero-cta secondary-cta" onclick="document.getElementById('statistik-pembangunan').scrollIntoView({behavior:'smooth',block:'start'})">TEROKAI PETA INTERAKTIF SELANGOR ↗</button></div></div>
@@ -12070,7 +12070,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
  ['.section-nav-btn[data-section="suo-dashboard-overview"]','Statistik','Statistics'],
  ['.section-nav-btn[data-section="statistik-pembangunan"]','Peta Interaktif','Interactive Map'],
  ['.section-nav-btn[data-section="pautan-pbt"]','Direktori PBT','PBT Directory'],
- ['.ticker-label','PENGUMUMAN ✦','ANNOUNCEMENT ✦'],
+ ['.ticker-label','SELAMAT DATANG ✦','WELCOME ✦'],
  ['.primary-cta','Terokai 5 Bab ↗','Explore 5 Chapters ↗'],
  ['.secondary-cta','TEROKAI PETA INTERAKTIF SELANGOR ↗','EXPLORE THE SELANGOR INTERACTIVE MAP ↗'],
  ['.stat-intro .section-eyebrow','Rancangan Pemajuan Selangor','Selangor Development Plans'],
@@ -12086,13 +12086,13 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
  ['.pbt-heading p','Kenali 12 Pihak Berkuasa Tempatan di Negeri Selangor dan akses portal rasmi bagi mendapatkan maklumat perancangan, perkhidmatan serta urusan setempat.','Discover Selangor’s 12 local authorities and visit their official websites for planning information, services and local enquiries.'],
  ['.pbt-chapter-btn','Lihat Bab RT & RKK →','View Local & Special Area Plans →']
  ];
- const tickerBM='✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · PEMBANGUNAN SPATIAL MAMPAN ✦';
- const tickerEN='✦ SELANGOR DEVELOPMENT PLANS · PLANMALAYSIA SELANGOR · SUSTAINABLE SPATIAL DEVELOPMENT ✦';
+ const tickerBM='✦ RANCANGAN PEMAJUAN NEGERI SELANGOR · PLANMALAYSIA SELANGOR · SELANGOR URBAN OBSERVATORY ✦';
+ const tickerEN='✦ SELANGOR DEVELOPMENT PLANS · PLANMALAYSIA SELANGOR · SELANGOR URBAN OBSERVATORY ✦';
  window.setLang=function(lang){
   const english=lang==='en';document.documentElement.lang=english?'en':'ms';
   translations.forEach(function(item){
    const el=document.querySelector(item[0]);if(!el)return;
-   if(item[0]==='.ticker-label'){el.innerHTML=english?'ANNOUNCEMENT <span>✦</span>':'PENGUMUMAN <span>✦</span>';}
+   if(item[0]==='.ticker-label'){el.innerHTML=english?'WELCOME <span>✦</span>':'SELAMAT DATANG <span>✦</span>';}
    else el.textContent=english?item[2]:item[1];
   });
   document.querySelectorAll('.ticker-track span').forEach(function(el){el.textContent=english?tickerEN:tickerBM;});
