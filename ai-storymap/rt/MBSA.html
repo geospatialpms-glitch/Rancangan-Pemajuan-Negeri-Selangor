@@ -98,6 +98,70 @@ frame.addEventListener('load',()=>{
  setTimeout(update,350);setTimeout(update,1500);
 })();
 
+
+/* MBSA hero/sidebar fixes & restrained animated blue ambiance */
+(function(){
+ const inner=frame.contentDocument;
+ if(!inner)return;
+ const polish=inner.createElement('style');
+ polish.id='mbsa-hero-navigation-polish';
+ polish.textContent=`
+ /* Only MBSA special page; do not impact other RT documents */
+ .mbsa-polished-hero{background-repeat:no-repeat!important;background-size:cover!important;background-position:center center!important}
+ .mbsa-polished-hero img.mbsa-hero-image{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
+ .mbsa-polished-sidebar{box-sizing:border-box!important;max-width:min(100%,340px)!important;overflow-x:hidden!important}
+ .mbsa-polished-sidebar *{box-sizing:border-box}
+ .mbsa-polished-sidebar a,.mbsa-polished-sidebar button{max-width:100%;min-width:0;overflow-wrap:break-word}
+ .mbsa-ambient{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;opacity:.55}
+ .mbsa-ambient::before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 25% 30%,rgba(84,173,232,.24),transparent 29%),radial-gradient(circle at 78% 67%,rgba(34,111,182,.18),transparent 32%);animation:mbsaAmbient 24s ease-in-out infinite alternate}
+ .mbsa-ambient::after{content:"";position:absolute;inset:0;background-image:linear-gradient(120deg,rgba(64,149,217,.12) 1px,transparent 1px),linear-gradient(30deg,rgba(64,149,217,.1) 1px,transparent 1px);background-size:150px 150px;mask-image:linear-gradient(to bottom,transparent,black 25%,black 80%,transparent);animation:mbsaLines 32s linear infinite}
+ @keyframes mbsaAmbient{to{transform:translate3d(5%,-5%,0) scale(1.12)}}
+ @keyframes mbsaLines{to{background-position:180px -120px,-160px 130px}}
+ @media(prefers-reduced-motion:reduce){.mbsa-ambient::before,.mbsa-ambient::after{animation:none}}
+ `;
+ inner.head.appendChild(polish);
+ function reconcile(){
+   const win=frame.contentWindow;if(!win)return;
+   const viewport=win.innerWidth||inner.documentElement.clientWidth;
+   const nodes=[...inner.querySelectorAll('section,header,div,figure')];
+   for(const el of nodes){
+     if(el.closest('.mbsa-feature-section'))continue;
+     const rect=el.getBoundingClientRect();
+     if(rect.width<viewport*.65||rect.height<320||rect.height>1600)continue;
+     const bg=win.getComputedStyle(el).backgroundImage;
+     if(bg&&bg!=='none'&&/url\(/i.test(bg)){
+       el.classList.add('mbsa-polished-hero');
+       const images=el.querySelectorAll('img');
+       if(images.length===1)images[0].classList.add('mbsa-hero-image');
+     }
+   }
+   const headings=[...inner.querySelectorAll('h1,h2,h3,h4,strong,b,div,span')]
+     .filter(el=>el.children.length===0&&el.textContent.trim().toUpperCase()==='SENARAI BAB');
+   for(const heading of headings){
+     const sidebar=heading.closest('aside,nav')||heading.parentElement?.parentElement;
+     if(sidebar)sidebar.classList.add('mbsa-polished-sidebar');
+   }
+   const modal=inner.getElementById('rt11-modal');
+   if(modal&&!modal.querySelector('.mbsa-ambient')){
+     const ambient=inner.createElement('div');ambient.className='mbsa-ambient';
+     ambient.setAttribute('aria-hidden','true');
+     modal.prepend(ambient);
+     if(win.getComputedStyle(modal).position==='static')modal.style.position='relative';
+   }
+ }
+ reconcile();
+ let requested=false;
+ const obs=new MutationObserver(()=>{
+   if(requested)return;
+   requested=true;
+   win.requestAnimationFrame(()=>{requested=false;reconcile()});
+ });
+ const win=frame.contentWindow;
+ obs.observe(inner.body,{childList:true,subtree:true});
+ win.addEventListener('resize',reconcile);
+ setTimeout(reconcile,600);setTimeout(reconcile,1600);
+})();
+
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
