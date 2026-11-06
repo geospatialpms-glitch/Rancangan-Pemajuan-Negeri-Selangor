@@ -10088,6 +10088,48 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
  #suo-map-intro .suo-intro-official-logos{gap:clamp(5px,1.4vw,10px)!important}
 }
 </style>
+
+<style id="suo-intro-heading-proportion-fix-20261106">
+/* Larger Story Map lead, compact rest, safe glyph spacing; scoped to the introduction. */
+#suo-map-intro #suo-map-intro-title.suo-intro-welcome-title{
+ max-width:min(1320px,96vw)!important;
+ overflow:visible!important;
+ gap:0!important;
+ line-height:normal!important;
+}
+#suo-map-intro .suo-intro-welcome-main{
+ font-size:clamp(32px,min(4.5vw,5.8svh),65px)!important;
+ line-height:1.18!important;
+ padding:.065em .08em .11em!important;
+ letter-spacing:-.025em!important;
+ overflow:visible!important;
+}
+#suo-map-intro .suo-intro-welcome-first{
+ display:flex!important;flex-wrap:nowrap!important;
+ align-items:baseline!important;justify-content:center!important;
+ gap:.23em!important;white-space:nowrap!important;
+ max-width:100%!important;
+}
+#suo-map-intro .suo-intro-storymap{
+ font-size:1.13em!important;font-weight:700!important;
+ white-space:nowrap!important;
+}
+#suo-map-intro .suo-intro-rest{
+ font-size:.82em!important;font-weight:700!important;
+ white-space:nowrap!important;
+}
+#suo-map-intro .suo-intro-welcome-last{font-size:.91em!important;margin-top:-.05em!important}
+@media(max-width:700px){
+ #suo-map-intro .suo-intro-welcome-main{font-size:clamp(22px,5.2vw,38px)!important;line-height:1.21!important;padding:.07em .04em .1em!important}
+ #suo-map-intro .suo-intro-welcome-first{gap:.14em!important;flex-wrap:wrap!important;white-space:normal!important}
+ #suo-map-intro .suo-intro-storymap{font-size:1.14em!important}
+ #suo-map-intro .suo-intro-rest{font-size:.78em!important}
+ #suo-map-intro .suo-intro-welcome-last{font-size:.94em!important}
+}
+@media(max-height:610px) and (min-width:701px){
+ #suo-map-intro .suo-intro-welcome-main{font-size:clamp(27px,5.1svh,45px)!important;line-height:1.15!important;padding:.04em .06em!important}
+}
+</style>
 </head>
 <body class="suo-intro-active">
 <!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
@@ -10102,7 +10144,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
       <img class="suo-intro-suo" src="./SUO.jpeg" alt="Selangor Urban Observatory (SUO)" loading="eager" decoding="async">
     </div>
     <span class="suo-map-intro-eyebrow">SEL​ANGOR URBAN OBSERVATORY · ATLAS DIGITAL</span>
-    <h2 id="suo-map-intro-title" class="suo-intro-welcome-title"><span class="suo-intro-welcome-kicker">Selamat Datang ke</span><span class="suo-intro-welcome-main">Story Map Rancangan Pemajuan</span><span class="suo-intro-welcome-main suo-intro-welcome-last">Negeri Selangor</span></h2>
+    <h2 id="suo-map-intro-title" class="suo-intro-welcome-title"><span class="suo-intro-welcome-kicker">Selamat Datang ke</span><span class="suo-intro-welcome-main suo-intro-welcome-first"><span class="suo-intro-storymap">Story Map</span><span class="suo-intro-rest">Rancangan Pemajuan</span></span><span class="suo-intro-welcome-main suo-intro-welcome-last">Negeri Selangor</span></h2>
     <p class="suo-map-intro-sub">INTEGRASI MAKLUMAT GEOSPATIAL &amp; PERANCANGAN</p>
     <div class="suo-map-intro-divider" aria-hidden="true"></div>
     <p class="suo-map-intro-description">Story Map Rancangan Pemajuan Negeri Selangor menghimpunkan maklumat perancangan fizikal negeri dalam satu platform digital yang interaktif. Terokai Rancangan Struktur Negeri (RSN), Rancangan Tempatan (RT) dan Rancangan Kawasan Khas (RKK), serta hubung kaitnya dengan sembilan daerah pentadbiran dan 12 Pihak Berkuasa Tempatan (PBT). Melalui visualisasi peta, pelan strategik dan dokumen perancangan, platform ini memudahkan pemahaman tentang dasar, strategi dan hala tuju pembangunan ke arah Selangor yang mampan, berdaya huni dan berdaya tahan.</p>
