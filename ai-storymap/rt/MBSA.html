@@ -240,7 +240,11 @@ frame.addEventListener('load',()=>{
  const media='img,picture,figure,canvas,svg,iframe,object,embed,video';
  const plans=/pelan mukim|pelan blok|peta|pelan strategik|pelan cadangan|rajah|ilustrasi|guna tanah/i;
  function eligible(el){
-  if(el.closest('.mbsa-feature-section,.mbsa-padlet-v3,nav,header,footer,aside'))return false;
+  if(el.closest('.mbsa-feature-section,.mbsa-feature-card,.mbsa-flip-tidy,.mbsa-padlet-v3,nav,header,footer,aside'))return false;
+  const flipTitles=/kawasan pembangunan mampan|kawasan tumpuan ekonomi|kawasan tumpuan pembangunan lot kecil|kawasan ksas/i;
+  let a=el.parentElement;for(let depth=0;a&&depth<5;depth++,a=a.parentElement){
+   if(a.matches('article,li,[class*="flip"],[class*="card"]')&&flipTitles.test((a.textContent||'').slice(0,180)))return false;
+  }
   const txt=(el.innerText||el.textContent||'').trim();
   if(txt.length<65||el.querySelector(media))return false;
   const tag=el.tagName.toLowerCase();
@@ -279,6 +283,80 @@ frame.addEventListener('load',()=>{
  obs.observe(root,{childList:true,subtree:true});
  setTimeout(apply,800);setTimeout(apply,2000);
 })();
+
+/* Polish typography only: narrative justify, feature cards left, flip cards centered. */
+(function(){
+ const d=frame.contentDocument;if(!d)return;
+ const css=d.createElement('style');css.id='mbsa-alignment-card-polish';
+ css.textContent=`
+ #rt11-body .mbsa-feature-card p,
+ #rt11-body .mbsa-feature-card p *,
+ #rt11-body .mbsa-feature-card .mbsa-padlet-note{
+   text-align:left!important;text-align-last:left!important;letter-spacing:normal!important;
+   word-spacing:normal!important;hyphens:none!important;line-height:1.7!important
+ }
+ #rt11-body .mbsa-feature-card{padding:22px 20px 24px!important}
+ #rt11-body .mbsa-feature-card h4{letter-spacing:0!important}
+ #rt11-body .mbsa-flip-tidy{overflow:hidden!important;border-radius:20px!important}
+ #rt11-body .mbsa-flip-tidy .mbsa-flip-center,
+ #rt11-body .mbsa-flip-tidy .mbsa-flip-center *{
+   text-align:center!important;text-align-last:center!important;
+   word-spacing:normal!important;letter-spacing:normal!important;
+   hyphens:none!important;overflow-wrap:break-word!important
+ }
+ #rt11-body .mbsa-flip-tidy .mbsa-flip-center{
+   display:flex!important;flex-direction:column!important;justify-content:center!important;
+   align-items:center!important;min-height:90px!important;padding:20px!important;
+   border-radius:14px!important;background:#e7f4ff!important;
+   border:1px solid #c2def5!important;color:#294d73!important;
+   box-shadow:none!important;line-height:1.65!important
+ }
+ #rt11-body .mbsa-flip-tidy .mbsa-flip-center .mbsa-padlet-v3,
+ #rt11-body .mbsa-flip-tidy .mbsa-flip-center .mbsa-padlet-note{
+   display:block!important;width:100%!important;margin:0!important;padding:0!important;
+   border:0!important;border-radius:0!important;background:transparent!important;
+   box-shadow:none!important;transform:none!important;min-height:0!important
+ }
+ #rt11-body .mbsa-flip-tidy .mbsa-flip-center .mbsa-padlet-note::before{content:none!important}
+ #rt11-body .mbsa-flip-tidy .mbsa-flip-center p{
+   margin:0!important;padding:0!important;max-width:100%!important;font-size:14px!important
+ }
+ #rt11-body .mbsa-flip-tidy:hover{box-shadow:0 14px 30px rgba(24,82,143,.14)!important}
+ @media(max-width:680px){#rt11-body .mbsa-flip-tidy .mbsa-flip-center{padding:15px!important}}
+ `;
+ d.head.appendChild(css);
+ const root=d.getElementById('rt11-body');if(!root)return;
+ const labels=/^(?:kawasan pembangunan mampan|kawasan tumpuan ekonomi|kawasan tumpuan pembangunan lot kecil|kawasan ksas(?:\s*\(.*\))?)$/i;
+ const norm=s=>(s||'').replace(/\s+/g,' ').trim();
+ function enhance(){
+  const heads=[...root.querySelectorAll('h2,h3,h4,h5,strong')].filter(h=>labels.test(norm(h.textContent)));
+  for(const head of heads){
+   let card=head.closest('article,li,[class*="flip"],[class*="card"]');
+   if(!card||card===root||card.querySelectorAll('h2,h3,h4,h5').length>3)continue;
+   card.classList.add('mbsa-flip-tidy');
+   const ps=[...card.querySelectorAll('p')].filter(p=>norm(p.textContent).length>45);
+   for(const p of ps){
+    let outer=p;
+    const board=p.closest('.mbsa-padlet-v3');
+    if(board&&card.contains(board)){
+      if(board.querySelectorAll('p,li').length===1){board.replaceWith(p)}
+      else{board.parentNode.insertBefore(p,board);if(!board.children.length)board.remove()}
+    }
+    const container=p.parentElement;
+    if(container&&!container.classList.contains('mbsa-flip-center')&&!container.contains(head)){
+     container.classList.add('mbsa-flip-center');
+    }else{
+     p.classList.add('mbsa-flip-center');
+    }
+   }
+  }
+ }
+ enhance();
+ let busy=false;const obs=new MutationObserver(()=>{if(busy)return;busy=true;frame.contentWindow.requestAnimationFrame(()=>{busy=false;enhance()})});
+ obs.observe(root,{childList:true,subtree:true});
+ setTimeout(enhance,900);
+})();
+
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
