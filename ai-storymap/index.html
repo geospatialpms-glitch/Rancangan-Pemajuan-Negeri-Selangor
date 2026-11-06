@@ -10026,6 +10026,68 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
  #suo-map-intro .suo-intro-welcome-kicker{font-size:17px!important}
 }
 </style>
+
+<style id="suo-jpbd-typographic-20261106">
+/* Intro official identity: JPBD wordmark only, no duplicate Selangor coat of arms. */
+#suo-map-intro .suo-intro-jpbd-wrap.suo-intro-jpbd-text{
+ box-sizing:border-box!important;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:2px!important;
+ height:auto!important;min-height:0!important;
+ width:clamp(285px,33vw,475px)!important;
+ max-width:100%!important;
+ padding:2px 0!important;
+ background:none!important;border:0!important;
+ box-shadow:none!important;border-radius:0!important;
+ text-align:center!important;
+ color:#fff5e4!important;
+}
+#suo-map-intro .suo-intro-jpbd-dept{
+ display:block!important;font-family:Arial,sans-serif!important;
+ font-size:clamp(10px,1.12vw,15px)!important;
+ line-height:1.19!important;letter-spacing:.015em!important;
+ color:#fff2dc!important;font-weight:800!important;
+ text-shadow:0 2px 7px rgba(27,2,14,.5)!important;
+}
+#suo-map-intro .suo-intro-jpbd-name{
+ display:block!important;font-family:Arial,sans-serif!important;
+ font-size:clamp(13px,1.5vw,20px)!important;
+ font-weight:750!important;line-height:1.12!important;
+ color:#f9e9d5!important;text-shadow:0 2px 8px rgba(31,4,14,.55)!important;
+}
+#suo-map-intro .suo-intro-jpbd-name b{
+ color:#67cb70!important;font-weight:900!important;
+}
+#suo-map-intro .suo-intro-jpbd-tagline,
+#suo-map-intro .suo-intro-jpbd-english{
+ display:block!important;font-family:Arial,sans-serif!important;
+ font-size:clamp(9px,.88vw,12px)!important;
+ line-height:1.12!important;font-weight:650!important;
+ color:#ffe2b2!important;
+ text-shadow:0 1px 5px rgba(24,3,12,.6)!important;
+}
+#suo-map-intro .suo-intro-jpbd-english{font-style:italic!important;font-weight:500!important}
+#suo-map-intro .suo-intro-official-logos{
+ width:min(950px,100%)!important;
+ gap:clamp(13px,1.8vw,28px)!important;
+}
+@media(min-width:701px) and (max-height:850px){
+ #suo-map-intro .suo-intro-jpbd-wrap.suo-intro-jpbd-text{width:clamp(280px,32vw,440px)!important}
+ #suo-map-intro .suo-intro-jpbd-dept{font-size:clamp(10px,1vw,13px)!important}
+ #suo-map-intro .suo-intro-jpbd-name{font-size:clamp(13px,1.28vw,17px)!important}
+ #suo-map-intro .suo-intro-jpbd-tagline,#suo-map-intro .suo-intro-jpbd-english{font-size:10px!important}
+}
+@media(max-width:700px){
+ #suo-map-intro .suo-intro-jpbd-wrap.suo-intro-jpbd-text{width:min(57vw,305px)!important;gap:1px!important;padding:0!important}
+ #suo-map-intro .suo-intro-jpbd-dept{font-size:clamp(7px,1.65vw,11px)!important;line-height:1.12!important}
+ #suo-map-intro .suo-intro-jpbd-name{font-size:clamp(9px,2.2vw,14px)!important}
+ #suo-map-intro .suo-intro-jpbd-tagline,#suo-map-intro .suo-intro-jpbd-english{font-size:clamp(7px,1.6vw,9px)!important}
+ #suo-map-intro .suo-intro-official-logos{gap:clamp(5px,1.4vw,10px)!important}
+}
+</style>
 </head>
 <body class="suo-intro-active">
 <!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
@@ -10035,7 +10097,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
     <div class="suo-intro-official-logos" aria-label="Identiti rasmi Kerajaan Negeri Selangor, PLANMalaysia Selangor dan Selangor Urban Observatory">
       <img class="suo-intro-crest" src="https://www.selangor.gov.my/selangor/resources/GAMBAR%20MAKLUMAT%20AM//Jata_Negeri_Selangor_2025.png" alt="Jata Negeri Selangor" loading="eager" decoding="async">
       <span class="suo-intro-logo-divider" aria-hidden="true"></span>
-      <span class="suo-intro-jpbd-wrap"><img class="suo-intro-jpbd" src="https://www.jpbdselangor.gov.my/images/logo/logodashboard-hitam.png" alt="Jabatan Perancangan Bandar dan Desa Negeri Selangor (PLANMalaysia Selangor)" loading="eager" decoding="async"></span>
+      <span class="suo-intro-jpbd-wrap suo-intro-jpbd-text" role="group" aria-label="Jabatan Perancangan Bandar dan Desa Negeri Selangor, PLANMalaysia Selangor"><strong class="suo-intro-jpbd-dept">JABATAN PERANCANGAN BANDAR DAN DESA NEGERI SELANGOR</strong><span class="suo-intro-jpbd-name">(<b>PLAN</b>Malaysia Selangor)</span><span class="suo-intro-jpbd-tagline">Perancangan Melangkaui Kelaziman</span><span class="suo-intro-jpbd-english">Planning : Beyond Conventional</span></span>
       <span class="suo-intro-logo-divider" aria-hidden="true"></span>
       <img class="suo-intro-suo" src="./SUO.jpeg" alt="Selangor Urban Observatory (SUO)" loading="eager" decoding="async">
     </div>
