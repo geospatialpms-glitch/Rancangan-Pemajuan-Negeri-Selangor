@@ -9419,9 +9419,12 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
  max-width:45%!important;max-height:100%!important;
  background-color:transparent!important;background-repeat:no-repeat!important;
  background-position:center center!important;background-size:contain!important;
+ background-blend-mode:normal!important;
  border-radius:0!important;
- -webkit-mask-image:radial-gradient(ellipse 72% 72% at 50% 52%,#000 54%,rgba(0,0,0,.95) 68%,transparent 89%)!important;
- mask-image:radial-gradient(ellipse 72% 72% at 50% 52%,#000 54%,rgba(0,0,0,.95) 68%,transparent 89%)!important;
+ -webkit-mask-image:radial-gradient(ellipse closest-side at 50% 50%,#000 37%,rgba(0,0,0,.98) 54%,rgba(0,0,0,.68) 73%,transparent 100%)!important;
+ mask-image:radial-gradient(ellipse closest-side at 50% 50%,#000 37%,rgba(0,0,0,.98) 54%,rgba(0,0,0,.68) 73%,transparent 100%)!important;
+ /* Lighten removes dark maroon pixels against each tile's gradient while preserving gold detail. */
+ mix-blend-mode:lighten!important;
  filter:saturate(1.035) contrast(1.02) drop-shadow(0 6px 8px rgba(19,5,11,.12))!important;
  image-rendering:auto!important;transform-origin:50% 70%;
  pointer-events:none;
