@@ -9809,6 +9809,32 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
  }
 }
 </style>
+
+<style id="suo-intro-button-pulse-20261106">
+/* Subtle premium gold heartbeat: opening screen CTA only. Preserve existing hover and click. */
+#suo-map-intro #suo-enter-storymap{
+ transform-origin:center center!important;
+ animation:suoIntroPulseArrival 1s .62s both,suoIntroGoldPulse 2.9s 1.7s ease-in-out infinite!important;
+ will-change:box-shadow,filter;
+}
+@keyframes suoIntroPulseArrival{
+ from{opacity:0;transform:translateY(18px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@keyframes suoIntroGoldPulse{
+ 0%,100%{box-shadow:0 10px 28px rgba(25,3,15,.34),0 0 0 0 rgba(255,214,130,.29);filter:brightness(1)}
+ 50%{box-shadow:0 12px 33px rgba(25,3,15,.4),0 0 0 9px rgba(255,214,130,0),0 0 25px rgba(255,208,112,.34);filter:brightness(1.075)}
+}
+#suo-map-intro #suo-enter-storymap:hover,
+#suo-map-intro #suo-enter-storymap:focus-visible{
+ animation-play-state:paused!important;
+ transform:translateY(-4px) scale(1.04)!important;
+ box-shadow:0 17px 42px rgba(24,3,16,.43),0 0 30px rgba(255,217,145,.48)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #suo-map-intro #suo-enter-storymap{animation:none!important;will-change:auto!important}
+}
+</style>
 </head>
 <body class="suo-intro-active">
 <!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
