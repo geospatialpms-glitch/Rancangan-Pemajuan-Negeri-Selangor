@@ -10183,6 +10183,38 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
  #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main.suo-intro-welcome-last{font-size:clamp(31px,5.9svh,48px)!important}
 }
 </style>
+<style id="suo-intro-heading-gold-flow-20261106">
+/* Kilauan tipografi emas beralun; terhad kepada tajuk skrin pengenalan. */
+#suo-map-intro #suo-map-intro-title .suo-intro-welcome-kicker,
+#suo-map-intro #suo-map-intro-title .suo-intro-welcome-main.suo-intro-welcome-last{
+ color:#f3dfaf!important;
+ background-image:linear-gradient(105deg,#ddbd83 0%,#f8e9c3 18%,#c99e60 31%,#fff7de 43%,#f6d996 50%,#fff9e8 55%,#caa067 69%,#f3dbaa 82%,#ddbd83 100%)!important;
+ background-size:250% 100%!important;
+ background-position:100% 50%;
+ -webkit-background-clip:text!important;
+ background-clip:text!important;
+ -webkit-text-fill-color:transparent!important;
+ animation:suoIntroGoldSweep 9s linear infinite!important;
+ will-change:background-position;
+}
+#suo-map-intro #suo-map-intro-title .suo-intro-welcome-kicker{
+ filter:drop-shadow(0 2px 9px rgba(255,223,162,.16));
+ animation-duration:12s!important;
+}
+#suo-map-intro #suo-map-intro-title .suo-intro-welcome-main.suo-intro-welcome-last{
+ filter:drop-shadow(0 3px 13px rgba(245,190,103,.23));
+}
+@keyframes suoIntroGoldSweep{
+ 0%{background-position:100% 50%}
+ 100%{background-position:-100% 50%}
+}
+@media(prefers-reduced-motion:reduce){
+ #suo-map-intro #suo-map-intro-title .suo-intro-welcome-kicker,
+ #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main.suo-intro-welcome-last{
+  animation:none!important;background-position:50% 50%!important;will-change:auto;
+ }
+}
+</style>
 </head>
 <body class="suo-intro-active">
 <!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
