@@ -10089,66 +10089,8 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 }
 </style>
 
-<style id="suo-intro-heading-proportion-fix-20261106">
-/* Larger Story Map lead, compact rest, safe glyph spacing; scoped to the introduction. */
-#suo-map-intro #suo-map-intro-title.suo-intro-welcome-title{
- max-width:min(1320px,96vw)!important;
- overflow:visible!important;
- gap:0!important;
- line-height:normal!important;
-}
-#suo-map-intro .suo-intro-welcome-main{
- font-size:clamp(32px,min(4.5vw,5.8svh),65px)!important;
- line-height:1.18!important;
- padding:.065em .08em .11em!important;
- letter-spacing:-.025em!important;
- overflow:visible!important;
-}
-#suo-map-intro .suo-intro-welcome-first{
- display:flex!important;flex-wrap:nowrap!important;
- align-items:baseline!important;justify-content:center!important;
- gap:.23em!important;white-space:nowrap!important;
- max-width:100%!important;
-}
-#suo-map-intro .suo-intro-storymap{
- font-size:1.13em!important;font-weight:700!important;
- white-space:nowrap!important;
-}
-#suo-map-intro .suo-intro-rest{
- font-size:.82em!important;font-weight:700!important;
- white-space:nowrap!important;
-}
-#suo-map-intro .suo-intro-welcome-last{font-size:.91em!important;margin-top:-.05em!important}
-@media(max-width:700px){
- #suo-map-intro .suo-intro-welcome-main{font-size:clamp(22px,5.2vw,38px)!important;line-height:1.21!important;padding:.07em .04em .1em!important}
- #suo-map-intro .suo-intro-welcome-first{gap:.14em!important;flex-wrap:wrap!important;white-space:normal!important}
- #suo-map-intro .suo-intro-storymap{font-size:1.14em!important}
- #suo-map-intro .suo-intro-rest{font-size:.78em!important}
- #suo-map-intro .suo-intro-welcome-last{font-size:.94em!important}
-}
-@media(max-height:610px) and (min-width:701px){
- #suo-map-intro .suo-intro-welcome-main{font-size:clamp(27px,5.1svh,45px)!important;line-height:1.15!important;padding:.04em .06em!important}
-}
-</style>
-<style id="suo-intro-final-title-scale-20261106">
-/* Intro typography: modestly smaller welcome kicker, slightly larger gold title. */
-#suo-map-intro .suo-intro-welcome-kicker{
- font-size:clamp(16px,min(1.95vw,2.5svh),25px)!important;
- line-height:1.2!important;
- margin-bottom:clamp(2px,.32svh,4px)!important;
-}
-#suo-map-intro .suo-intro-welcome-main{
- font-size:clamp(33px,min(4.8vw,6.25svh),69px)!important;
- line-height:1.17!important;
-}
-@media(max-width:700px){
- #suo-map-intro .suo-intro-welcome-kicker{font-size:clamp(15px,3.8vw,20px)!important}
- #suo-map-intro .suo-intro-welcome-main{font-size:clamp(22px,5.45vw,40px)!important}
-}
-@media(max-height:610px) and (min-width:701px){
- #suo-map-intro .suo-intro-welcome-main{font-size:clamp(27px,5.35svh,47px)!important}
-}
-</style>
+
+
 <style id="suo-intro-feature-cards-compact-20261106">
 /* Reduce only the three feature cards on the introduction, preserving the artwork and layout. */
 @media(min-width:701px){
@@ -10162,28 +10104,62 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
  #suo-map-intro .suo-atlas-feature-card p{font-size:clamp(10px,.85vw,11px)!important;line-height:1.4!important}
 }
 </style>
-<style id="suo-intro-title-enlarge-20261106">
-/* Make the gold two-line headline more prominent while retaining safe descenders. */
-@media(min-width:701px){
- #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main{
-  font-size:clamp(38px,min(5.55vw,7.2svh),81px)!important;
-  line-height:1.20!important;
-  padding:.08em .10em .13em!important;
- }
- #suo-map-intro #suo-map-intro-title .suo-intro-welcome-first{
-  max-width:100%!important;
- }
+
+<style id="suo-intro-heading-harmonized-20261106">
+/* Single responsive scale replaces conflicting intro headline overrides. */
+#suo-map-intro #suo-map-intro-title.suo-intro-welcome-title{
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ gap:0!important;max-width:min(1200px,96%)!important;width:100%!important;
+ margin:0 auto clamp(6px,.8svh,11px)!important;
+ line-height:normal!important;overflow:visible!important;text-align:center!important;
+}
+#suo-map-intro #suo-map-intro-title .suo-intro-welcome-kicker{
+ font-size:clamp(17px,min(2vw,2.7svh),25px)!important;
+ line-height:1.25!important;margin:0 0 4px!important;
+}
+#suo-map-intro #suo-map-intro-title .suo-intro-welcome-main{
+ box-sizing:border-box!important;
+ font-size:clamp(36px,min(4.65vw,6.5svh),66px)!important;
+ line-height:1.14!important;letter-spacing:-.025em!important;
+ padding:.065em .045em .1em!important;margin:0!important;
+ overflow:visible!important;
+}
+#suo-map-intro #suo-map-intro-title .suo-intro-welcome-first{
+ display:flex!important;flex-wrap:nowrap!important;align-items:baseline!important;
+ justify-content:center!important;gap:.17em!important;white-space:nowrap!important;
+ max-width:100%!important;
+}
+#suo-map-intro #suo-map-intro-title .suo-intro-storymap{
+ font-size:1.06em!important;font-weight:700!important;white-space:nowrap!important;
+}
+#suo-map-intro #suo-map-intro-title .suo-intro-rest{
+ font-size:.94em!important;font-weight:700!important;white-space:nowrap!important;
+}
+#suo-map-intro #suo-map-intro-title .suo-intro-welcome-last{
+ font-size:clamp(35px,min(4.5vw,6.3svh),64px)!important;
+ margin-top:-.1em!important;
 }
 @media(max-width:700px){
  #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main{
-  font-size:clamp(24px,6.15vw,46px)!important;
-  line-height:1.22!important;
-  padding:.08em .04em .11em!important;
+  font-size:clamp(23px,5.4vw,39px)!important;line-height:1.17!important;
+  padding:.075em .025em .1em!important;
+ }
+ #suo-map-intro #suo-map-intro-title .suo-intro-welcome-first{
+  flex-wrap:wrap!important;white-space:normal!important;gap:0 .16em!important;
+ }
+ #suo-map-intro #suo-map-intro-title .suo-intro-welcome-last{
+  font-size:clamp(23px,5.25vw,38px)!important;margin-top:-.06em!important;
+ }
+ #suo-map-intro #suo-map-intro-title .suo-intro-welcome-kicker{
+  font-size:clamp(16px,3.8vw,21px)!important;
  }
 }
 @media(max-height:610px) and (min-width:701px){
  #suo-map-intro #suo-map-intro-title .suo-intro-welcome-main{
-  font-size:clamp(31px,6svh,54px)!important;
+  font-size:clamp(30px,5.5svh,49px)!important;
+ }
+ #suo-map-intro #suo-map-intro-title .suo-intro-welcome-last{
+  font-size:clamp(29px,5.3svh,47px)!important;
  }
 }
 </style>
