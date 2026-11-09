@@ -524,6 +524,85 @@ frame.addEventListener('load',()=>{
  setTimeout(enhance,700);setTimeout(enhance,1700);
 })();
 
+
+/* Definitive MBSA chapter typography, applied directly to the content loaded inside iframe. */
+(function(){
+ const d=frame.contentDocument;const w=frame.contentWindow;
+ if(!d||!w)return;
+ const root=d.getElementById('rt11-body');if(!root)return;
+ const id='mbsa-chapter-reading-scale-v2';
+ const old=d.getElementById(id);if(old)old.remove();
+ const sty=d.createElement('style');sty.id=id;
+ sty.textContent=`
+ #rt11-body .mbsa-chapter-large-heading{
+   font-family:Arial,sans-serif!important;
+   font-size:clamp(42px,4.2vw,70px)!important;
+   font-weight:800!important;line-height:1.13!important;
+   letter-spacing:-.025em!important;text-align:left!important;
+   text-transform:none!important;color:#19457e!important;
+   margin-bottom:28px!important
+ }
+ #rt11-body .mbsa-chapter-large-copy{
+   font-family:Arial,sans-serif!important;
+   font-size:clamp(22px,1.75vw,26px)!important;
+   line-height:1.85!important;
+   font-weight:400!important;letter-spacing:normal!important;
+   word-spacing:normal!important;
+   text-align:justify!important;text-align-last:left!important;
+   max-width:none!important
+ }
+ @media(max-width:750px){
+   #rt11-body .mbsa-chapter-large-heading{font-size:clamp(34px,7vw,48px)!important}
+   #rt11-body .mbsa-chapter-large-copy{font-size:18px!important;line-height:1.75!important}
+ }
+ `;
+ d.head.appendChild(sty);
+ const norm=s=>(s||'').replace(/\s+/g,' ').trim();
+ const planRx=/pelan mukim|pelan blok|peta|rajah|imej pelan|pelan guna tanah|pelan strategik/i;
+ function apply(){
+   const heads=[...root.querySelectorAll('h1,h2,h3,h4,h5')].filter(h=>/^\d{1,2}\s*[.]\s*(PENGENALAN|LATAR BELAKANG|PELAN MUKIM|MATLAMAT|TERAS|KONSEP)/i.test(norm(h.textContent)));
+   heads.forEach(h=>{
+     h.classList.add('mbsa-chapter-large-heading');
+     h.style.setProperty('font-size','clamp(42px,4.2vw,70px)','important');
+     const container=h.closest('section,article,.rtchapter')||h.parentElement;
+     if(!container)return;
+     if(planRx.test(norm(h.textContent)))return;
+     const copy=[...container.querySelectorAll('p')].filter(p=>{
+       const txt=norm(p.textContent);
+       if(txt.length<90)return false;
+       if(p.closest('.mbsa-feature-card,.mbsa-feature-section,.mbsa-flip-tidy,.mbsa-theme-face-polish,.mbsa-padlet-v3,aside,nav'))return false;
+       if(p.querySelector('img,picture,figure,svg,iframe'))return false;
+       return true;
+     });
+     copy.forEach(p=>{
+       p.classList.add('mbsa-chapter-large-copy');
+       p.style.setProperty('font-size','clamp(22px,1.75vw,26px)','important');
+       p.style.setProperty('line-height','1.85','important');
+       p.style.setProperty('text-align','justify','important');
+     });
+   });
+   /* Fallback: chapter introductions sometimes render as prose divs, not p elements. */
+   const starts=/^(Penyediaan Draf Rancangan Tempatan Majlis Bandaraya Shah Alam|DRT MBSA 2035 akan menggantikan|Shah Alam merupakan Pusat Pentadbiran Utama|Secara pentadbiran, Shah Alam telah dinaik taraf)/i;
+   for(const el of root.querySelectorAll('p,div')){
+     if(el.classList.contains('mbsa-chapter-large-copy'))continue;
+     const txt=norm(el.textContent);
+     if(!starts.test(txt)||txt.length>1000||el.querySelector('p,div,section,article,figure,img'))continue;
+     el.classList.add('mbsa-chapter-large-copy');
+     el.style.setProperty('font-size','clamp(22px,1.75vw,26px)','important');
+     el.style.setProperty('line-height','1.85','important');
+     el.style.setProperty('text-align','justify','important');
+   }
+ }
+ apply();
+ let scheduled=false;
+ const observer=new MutationObserver(()=>{
+   if(scheduled)return;scheduled=true;
+   w.requestAnimationFrame(()=>{scheduled=false;apply()});
+ });
+ observer.observe(root,{childList:true,subtree:true});
+ setTimeout(apply,650);setTimeout(apply,1800);
+})();
+
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
