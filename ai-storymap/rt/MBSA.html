@@ -473,8 +473,8 @@ frame.addEventListener('load',()=>{
  `;
  d.head.appendChild(sty);
  const root=d.getElementById('rt11-body');if(!root)return;
- const norm=s=>(s||'').replace(/\\s+/g,' ').trim();
- const goal=/BANDARAYA\\s+PINTAR[,\\s]+BERDAYA\\s+HUNI\\s+dan\\s+BERDAYA\\s+TAHAN/i;
+ const norm=s=>(s||'').replace(/\s+/g,' ').trim();
+ const goal=/BANDARAYA\s+PINTAR[,\s]+BERDAYA\s+HUNI\s+dan\s+BERDAYA\s+TAHAN/i;
  const theme=/^(?:Pertumbuhan Ekonomi dan Pembangunan Sumber Manusia|Pembangunan Guna Tanah dan Fizikal|Peningkatan Kualiti Hidup Masyarakat|Urus Tadbir yang Cekap)/i;
  function enhance(){
   const goalLeaf=[...root.querySelectorAll('h1,h2,h3,h4,h5,p,blockquote,strong,div')]
