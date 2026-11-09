@@ -357,6 +357,50 @@ frame.addEventListener('load',()=>{
  setTimeout(enhance,900);
 })();
 
+
+/* MBSA reading scale: match RKK Bandar Warisan Alam Melawati body-text proportions. */
+(function(){
+ const d=frame.contentDocument;if(!d)return;
+ const old=d.getElementById('mbsa-rkk-readable-type');
+ if(old)old.remove();
+ const s=d.createElement('style');s.id='mbsa-rkk-readable-type';
+ s.textContent=`
+  /* Full-width narrative and long-form chapter paragraphs */
+  #rt11-body .rtchapter p:not(.mbsa-feature-desc):not(.mbsa-feature-card p),
+  #rt11-body .rtchapter li:not(.mbsa-feature-card li),
+  #rt11-body .rtchapter blockquote,
+  #rt11-body .mbsa-padlet-v3 > .mbsa-padlet-note{
+    font-size:clamp(17px,1.22vw,21px)!important;
+    line-height:1.85!important;
+    letter-spacing:0!important;
+    word-spacing:normal!important;
+  }
+  /* Compact informational cards need legible text without overspilling */
+  #rt11-body .mbsa-feature-card p,
+  #rt11-body .mbsa-feature-desc,
+  #rt11-body .mbsa-flip-tidy .mbsa-flip-center p{
+    font-size:clamp(16px,1.07vw,19px)!important;
+    line-height:1.72!important;
+    letter-spacing:0!important;
+    word-spacing:normal!important;
+  }
+  /* Keep original alignment preferences: feature left, flip center, narratives justify */
+  #rt11-body .mbsa-feature-card p{text-align:left!important;text-align-last:left!important}
+  #rt11-body .mbsa-flip-tidy .mbsa-flip-center p{text-align:center!important;text-align-last:center!important}
+  @media(max-width:700px){
+    #rt11-body .rtchapter p:not(.mbsa-feature-desc):not(.mbsa-feature-card p),
+    #rt11-body .rtchapter li:not(.mbsa-feature-card li),
+    #rt11-body .mbsa-padlet-v3 > .mbsa-padlet-note{
+      font-size:16px!important;line-height:1.75!important;
+    }
+    #rt11-body .mbsa-feature-card p,
+    #rt11-body .mbsa-feature-desc,
+    #rt11-body .mbsa-flip-tidy .mbsa-flip-center p{font-size:16px!important}
+  }
+ `;
+ d.head.appendChild(s);
+})();
+
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
