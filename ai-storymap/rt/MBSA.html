@@ -401,6 +401,129 @@ frame.addEventListener('load',()=>{
  d.head.appendChild(s);
 })();
 
+
+/* MBSA goal banner & theme flip-card typography: scoped to specific matching content. */
+(function(){
+ const d=frame.contentDocument;if(!d)return;
+ const sty=d.createElement('style');sty.id='mbsa-goal-and-theme-polish';
+ sty.textContent=`
+  #rt11-body .mbsa-goal-quote{
+   position:relative!important;overflow:hidden!important;
+   display:flex!important;flex-direction:column!important;
+   justify-content:center!important;align-items:center!important;
+   min-height:280px!important;padding:clamp(35px,5vw,78px) clamp(23px,6vw,90px)!important;
+   border-radius:24px!important;border:1px solid rgba(184,213,241,.65)!important;
+   background:linear-gradient(118deg,#163a70 0%,#24568c 55%,#4987b7 100%)!important;
+   box-shadow:0 15px 34px rgba(25,73,124,.15)!important;
+  }
+  #rt11-body .mbsa-goal-quote::before{
+   content:"“";position:absolute;left:28px;top:0;
+   color:rgba(206,236,255,.22);font:130px/1 Georgia,serif;
+   pointer-events:none
+  }
+  #rt11-body .mbsa-goal-quote .mbsa-goal-statement{
+   position:relative!important;z-index:1;
+   display:block!important;width:100%!important;
+   margin:0!important;padding:0!important;border:0!important;
+   color:#fff9eb!important;background:none!important;box-shadow:none!important;
+   font:700 clamp(26px,3.1vw,48px)/1.3 Georgia,serif!important;
+   text-align:center!important;text-align-last:center!important;
+   letter-spacing:.01em!important;word-spacing:normal!important;
+   text-wrap:balance!important
+  }
+  #rt11-body .mbsa-goal-quote .mbsa-goal-caption{
+   position:relative;z-index:1;color:#cbeaff!important;
+   font:600 14px/1.5 Arial,sans-serif!important;
+   text-align:center!important;margin:24px 0 0!important
+  }
+  #rt11-body .mbsa-theme-face-polish{
+    box-sizing:border-box!important;min-width:0!important;
+    padding:clamp(20px,2.4vw,34px)!important;
+    text-align:center!important;word-spacing:normal!important;
+    letter-spacing:normal!important;overflow-wrap:normal!important;
+    background-image:linear-gradient(135deg,#e9f7ff,#c6dcf4)!important
+  }
+  #rt11-body .mbsa-theme-face-polish .mbsa-theme-title{
+   max-width:95%!important;margin-left:auto!important;margin-right:auto!important;
+   text-align:center!important;text-align-last:center!important;
+   word-spacing:normal!important;letter-spacing:normal!important;
+   font:700 clamp(23px,2.35vw,35px)/1.28 Georgia,serif!important;
+   color:#21496d!important;text-wrap:balance!important;
+  }
+  #rt11-body .mbsa-theme-face-polish .mbsa-theme-action{
+    display:inline-flex!important;justify-content:center!important;
+    align-items:center!important;max-width:95%!important;
+    padding:12px 20px!important;
+    text-align:center!important;white-space:normal!important;
+    line-height:1.35!important;letter-spacing:normal!important;
+    border-radius:100px!important
+  }
+  #rt11-body .mbsa-theme-face-polish p,
+  #rt11-body .mbsa-theme-face-polish .mbsa-theme-copy{
+   max-width:90%!important;margin-left:auto!important;margin-right:auto!important;
+   text-align:center!important;text-align-last:center!important;
+   word-spacing:normal!important;letter-spacing:normal!important;
+   font-size:clamp(16px,1.17vw,19px)!important;line-height:1.65!important
+  }
+  @media(max-width:700px){
+   #rt11-body .mbsa-goal-quote{min-height:220px!important;padding:28px 20px!important}
+   #rt11-body .mbsa-goal-quote .mbsa-goal-statement{font-size:clamp(23px,6vw,34px)!important}
+   #rt11-body .mbsa-theme-face-polish .mbsa-theme-title{font-size:clamp(23px,5vw,30px)!important}
+  }
+ `;
+ d.head.appendChild(sty);
+ const root=d.getElementById('rt11-body');if(!root)return;
+ const norm=s=>(s||'').replace(/\\s+/g,' ').trim();
+ const goal=/BANDARAYA\\s+PINTAR[,\\s]+BERDAYA\\s+HUNI\\s+dan\\s+BERDAYA\\s+TAHAN/i;
+ const theme=/^(?:Pertumbuhan Ekonomi dan Pembangunan Sumber Manusia|Pembangunan Guna Tanah dan Fizikal|Peningkatan Kualiti Hidup Masyarakat|Urus Tadbir yang Cekap)/i;
+ function enhance(){
+  const goalLeaf=[...root.querySelectorAll('h1,h2,h3,h4,h5,p,blockquote,strong,div')]
+   .filter(e=>goal.test(norm(e.textContent))&&norm(e.textContent).length<230)
+   .sort((a,b)=>a.querySelectorAll('*').length-b.querySelectorAll('*').length)[0];
+  if(goalLeaf&&!goalLeaf.closest('.mbsa-goal-quote')){
+   let card=goalLeaf.closest('blockquote,section,article,[class*="goal"],[class*="matlamat"],[class*="quote"]');
+   if(!card||card===root)card=goalLeaf.parentElement;
+   if(card&&card!==root&&card.getBoundingClientRect().width>350){
+    card.classList.add('mbsa-goal-quote');
+    goalLeaf.classList.add('mbsa-goal-statement');
+    if(!card.querySelector('.mbsa-goal-caption')){
+     const caption=d.createElement('p');caption.className='mbsa-goal-caption';
+     caption.textContent='Matlamat Rancangan Tempatan Majlis Bandaraya Shah Alam';
+     card.appendChild(caption);
+    }
+   }
+  }
+  const titles=[...root.querySelectorAll('h2,h3,h4,h5,strong,p,div')].filter(e=>theme.test(norm(e.textContent))&&norm(e.textContent).length<160);
+  for(const title of titles){
+   if(title.querySelectorAll('*').length>3)continue;
+   const face=title.closest('[class*="face"],[class*="front"],[class*="back"],article,[class*="card"]');
+   if(!face||face===root)continue;
+   face.classList.add('mbsa-theme-face-polish');
+   title.classList.add('mbsa-theme-title');
+   for(const action of face.querySelectorAll('button,a,[role="button"]')){
+    if(/HALAKAN TETIKUS|KLIK UNTUK KEMBALI/i.test(norm(action.textContent)))action.classList.add('mbsa-theme-action');
+   }
+  }
+  for(const btn of root.querySelectorAll('button,a,[role="button"]')){
+   if(!/KLIK UNTUK KEMBALI/i.test(norm(btn.textContent)))continue;
+   const face=btn.closest('[class*="face"],[class*="back"],article,[class*="card"]')||btn.parentElement;
+   if(!face||face===root)continue;
+   face.classList.add('mbsa-theme-face-polish');
+   btn.classList.add('mbsa-theme-action');
+   for(const el of face.querySelectorAll('h2,h3,h4,p')){
+    if(el===btn||el.closest('button,a'))continue;
+    if(theme.test(norm(el.textContent)))el.classList.add('mbsa-theme-title');
+    else if(norm(el.textContent).length>30)el.classList.add('mbsa-theme-copy');
+   }
+  }
+ }
+ enhance();
+ let busy=false;
+ const obs=new MutationObserver(()=>{if(busy)return;busy=true;frame.contentWindow.requestAnimationFrame(()=>{busy=false;enhance()})});
+ obs.observe(root,{childList:true,subtree:true});
+ setTimeout(enhance,700);setTimeout(enhance,1700);
+})();
+
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
