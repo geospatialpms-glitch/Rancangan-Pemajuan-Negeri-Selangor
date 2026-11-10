@@ -13,6 +13,122 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f4f5f8}
 </style>
 </head>
 <body data-rt-page="MPS">
-<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Selayang" src="../index.html?rt_page=MPS&amp;v=20261110-mps-fix-4067d28" loading="eager"></iframe>
+<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Selayang" src="../index.html?rt_page=MPS&amp;v=20261110-mps-direct-iframe" loading="eager"></iframe>
+<script id="mps-direct-iframe-fix-20261110">
+
+(function(){
+'use strict';
+const frame=document.getElementById('rt-story-frame');
+if(!frame)return;
+const normalize=s=>String(s||'').replace(/\s+/g,' ').trim();
+const make=(doc,tag,cls,txt)=>{const node=doc.createElement(tag);node.className=cls;if(txt!==undefined)node.textContent=txt;return node;};
+const conceptNames=[
+ 'Konsep Jaringan Sistem Pengangkutan',
+ 'Konsep Hierarki Perbandaran',
+ 'Konsep Pembangunan Koridor',
+ 'Konsep Kluster Pembangunan'
+];
+const pillarNames=['Teras Satu','Teras Dua','Teras Tiga','Teras Empat','Teras Lima','Teras Enam'];
+const separate=(raw,name)=>{
+ const normalized=normalize(raw).replace(/^\d{1,2}\s+/,'');
+ const index=normalized.toLowerCase().indexOf(name.toLowerCase());
+ if(index>=0){
+  const rest=normalized.slice(index+name.length).replace(/^[\s:–—-]+/,'').trim();
+  return [name,rest];
+ }
+ const dash=normalized.search(/\s[–—-]\s/);
+ if(dash>0)return [normalized.slice(0,dash),normalized.slice(dash+3)];
+ return [normalized,''];
+};
+const findSection=(body,re)=>[...body.querySelectorAll('.rtchapter')].find(section=>re.test(normalize(section.querySelector(':scope > h2')?.textContent||'')));
+const getRows=(section,names)=>{
+ const matching=[];
+ for(const list of section.querySelectorAll('.rtpiece ul,.rtpiece ol')){
+  const rows=[...list.children].filter(x=>x.tagName==='LI');
+  for(const row of rows) {
+   const text=normalize(row.textContent);
+   const index=names.findIndex(name=>text.toLowerCase().includes(name.toLowerCase()));
+   if(index>=0&&!matching.some(x=>x.index===index))matching.push({index,row,list,text});
+  }
+ }
+ return matching.sort((a,b)=>a.index-b.index);
+};
+function renderConcept(doc,section){
+ if(!section||section.querySelector('.mps-direct-flip-grid'))return;
+ const rows=getRows(section,conceptNames);
+ if(rows.length!==4)return;
+ const grid=make(doc,'div','mps-direct-flip-grid');grid.setAttribute('aria-label','Empat Konsep Pembangunan');
+ for(const {index,row,text} of rows){
+  const name=conceptNames[index],description=separate(text,name)[1],num=String(index+1).padStart(2,'0');
+  const card=make(doc,'article','mps-direct-flip-card');
+  card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-pressed','false');
+  card.setAttribute('aria-label','Konsep '+num+': '+name+'. Klik untuk huraian');
+  const inner=make(doc,'div','mps-direct-flip-inner');
+  function face(back){
+   const face=make(doc,'div','mps-direct-flip-face mps-direct-flip-'+(back?'back':'front'));
+   face.append(make(doc,'span','mps-direct-flip-orb','✧'),
+     make(doc,'span','mps-direct-flip-kicker',back?'KONSEP '+num+' · HURAIAN':'KONSEP '+num),
+     make(doc,'div',back?'mps-direct-flip-description':'mps-direct-flip-title',back?(description||name):name),
+     make(doc,'span','mps-direct-flip-hint',back?'KLIK UNTUK KEMBALI ↻':'HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA ↻'));
+   return face;
+  }
+  inner.append(face(false),face(true));card.append(inner);
+  const flip=v=>{card.classList.toggle('is-flipped',v);card.setAttribute('aria-pressed',String(v))};
+  card.addEventListener('mouseenter',()=>flip(true));card.addEventListener('mouseleave',()=>flip(false));
+  card.addEventListener('click',()=>flip(!card.classList.contains('is-flipped')));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip(!card.classList.contains('is-flipped'))}if(e.key==='Escape')flip(false)});
+  grid.append(card);
+ }
+ const first=rows[0].list;first.parentNode.insertBefore(grid,first);
+ for(const {row} of rows)row.remove();
+ for(const list of new Set(rows.map(x=>x.list)))if(!list.querySelector('li'))list.remove();
+}
+function renderPillars(doc,section){
+ if(!section||section.querySelector('.mps-direct-pillar-grid'))return;
+ const rows=getRows(section,pillarNames);
+ if(rows.length!==6)return;
+ const grid=make(doc,'div','mps-direct-pillar-grid');grid.setAttribute('aria-label','Enam Teras Pembangunan MPS');
+ for(const {index,row,text} of rows){
+  const num=String(index+1).padStart(2,'0'),label=pillarNames[index],split=separate(text,label);
+  const title=split[1]||split[0];
+  const card=make(doc,'article','mps-direct-pillar-card');
+  const top=make(doc,'div','mps-direct-pillar-top');
+  top.append(make(doc,'span','mps-direct-pillar-number',num),make(doc,'span','mps-direct-pillar-orb','✧'));
+  card.append(top,make(doc,'span','mps-direct-pillar-label','TERAS '+num),make(doc,'h3','mps-direct-pillar-title',title));
+  grid.append(card);
+ }
+ const first=rows[0].list;first.parentNode.insertBefore(grid,first);
+ for(const {row} of rows)row.remove();
+ for(const list of new Set(rows.map(x=>x.list)))if(!list.querySelector('li'))list.remove();
+}
+function init(){
+ let doc;
+ try{doc=frame.contentDocument;if(!doc)return;}catch(err){return;}
+ if(doc.getElementById('mps-direct-iframe-style'))return;
+ const style=doc.createElement('style');style.id='mps-direct-iframe-style';
+ style.textContent=FRAME_STYLE;
+ doc.head.append(style);
+ const body=doc.getElementById('rt11-body');if(!body)return;
+ let scheduled=false;
+ function apply(){
+  scheduled=false;
+  try{
+   renderConcept(doc,findSection(body,/konsep pembangunan/i));
+   renderPillars(doc,findSection(body,/teras pembangunan/i));
+  }catch(err){console.warn('RT MPS enhancement could not be applied',err);}
+ }
+ const obs=new doc.defaultView.MutationObserver(()=>{
+  if(scheduled)return;scheduled=true;
+  doc.defaultView.requestAnimationFrame(apply);
+ });
+ obs.observe(body,{childList:true,subtree:true});
+ apply();
+}
+const FRAME_STYLE="\n/* Scoped to MPS's same-origin Story Map iframe — independent of generic list styles. */\n#rt11-modal #rt11-body .mps-direct-flip-grid,#rt11-modal #rt11-body .mps-direct-pillar-grid{\ndisplay:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important;\nwidth:100%!important;max-width:none!important;list-style:none!important;padding:0!important;margin:24px 0!important}\n#rt11-modal #rt11-body .mps-direct-flip-card{\nposition:relative!important;display:block!important;min-width:0!important;min-height:325px!important;height:325px!important;\npadding:0!important;margin:0!important;cursor:pointer!important;border-radius:26px!important;\nborder:1px solid #e8b6b0!important;background:linear-gradient(140deg,#ffb8c5,#ffcab2)!important;\nperspective:1200px!important;box-shadow:0 15px 36px #713d4d29!important;animation:mpsDirectFloat 6s ease-in-out infinite!important}\n#rt11-modal #rt11-body .mps-direct-flip-card:nth-child(even){animation-delay:-3s!important}\n#rt11-modal #rt11-body .mps-direct-flip-card:hover,#rt11-modal #rt11-body .mps-direct-flip-card:focus-visible{\nanimation-play-state:paused!important;box-shadow:0 23px 42px #713d4d40,0 0 25px #ffcfac80!important;outline:2px solid #dfa75e!important}\n#rt11-modal #rt11-body .mps-direct-flip-card::before,#rt11-modal #rt11-body .mps-direct-flip-card::after{display:none!important;content:none!important}\n#rt11-modal #rt11-body .mps-direct-flip-inner{position:relative!important;display:block!important;width:100%!important;height:100%!important;transform-style:preserve-3d!important;transition:transform .8s cubic-bezier(.2,.7,.2,1)!important}\n#rt11-modal #rt11-body .mps-direct-flip-card.is-flipped .mps-direct-flip-inner{transform:rotateY(180deg)!important}\n#rt11-modal #rt11-body .mps-direct-flip-face{\nposition:absolute!important;inset:0!important;display:flex!important;flex-direction:column!important;\nalign-items:center!important;justify-content:center!important;gap:16px!important;\npadding:clamp(22px,3vw,37px)!important;text-align:center!important;border-radius:25px!important;\nbackface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;overflow:auto!important}\n#rt11-modal #rt11-body .mps-direct-flip-front{background:radial-gradient(circle at 15% 18%,#ffffff44 0 2px,transparent 3px) 0 0/105px 105px,linear-gradient(135deg,#ffb5c6,#ffc5ab)!important}\n#rt11-modal #rt11-body .mps-direct-flip-back{transform:rotateY(180deg)!important;background:radial-gradient(circle at 15% 18%,#e09b9440 0 2px,transparent 3px) 0 0/105px 105px,linear-gradient(135deg,#f9e7dd,#ffdac3)!important}\n#rt11-modal #rt11-body .mps-direct-flip-orb{font:30px/1 Georgia,serif!important;color:#fff2a6!important}\n#rt11-modal #rt11-body .mps-direct-flip-kicker{font:850 11px/1.35 Arial,sans-serif!important;color:#89465a!important;letter-spacing:.13em!important}\n#rt11-modal #rt11-body .mps-direct-flip-title{font:800 clamp(20px,2.2vw,29px)/1.3 Georgia,serif!important;color:#743f50!important;text-wrap:balance}\n#rt11-modal #rt11-body .mps-direct-flip-description{font:500 clamp(15px,1.35vw,19px)/1.65 'Plus Jakarta Sans',Arial,sans-serif!important;color:#674e57!important}\n#rt11-modal #rt11-body .mps-direct-flip-hint{font:800 10px/1.4 Arial,sans-serif!important;letter-spacing:.025em!important;\ncolor:#74465a!important;background:linear-gradient(110deg,#fff9de,#f4d898)!important;border:2px solid #fff8e7!important;\nborder-radius:99px!important;padding:10px 14px!important}\n#rt11-modal #rt11-body .mps-direct-pillar-card{position:relative!important;display:flex!important;flex-direction:column!important;min-width:0!important;min-height:190px!important;height:auto!important;\npadding:26px 25px!important;margin:0!important;gap:10px!important;justify-content:center!important;border:1px solid #bcdbc2!important;\nborder-radius:23px!important;background:linear-gradient(130deg,#fffef9,#e6f4e2 72%,#fff0e6)!important;\nbox-shadow:0 13px 29px #22573c1d!important;transition:transform .3s,box-shadow .3s!important;overflow:hidden!important}\n#rt11-modal #rt11-body .mps-direct-pillar-card::before{content:\"\"!important;position:absolute!important;display:block!important;left:0!important;top:0!important;bottom:0!important;width:5px!important;height:auto!important;background:linear-gradient(#216b43,#d1ae73,#216b43)!important;inset:auto auto 0 0!important}\n#rt11-modal #rt11-body .mps-direct-pillar-card:hover{transform:translateY(-5px)!important;box-shadow:0 20px 40px #22573c33!important}\n#rt11-modal #rt11-body .mps-direct-pillar-top{display:flex!important;align-items:center!important;justify-content:space-between!important;margin:0 0 12px!important}\n#rt11-modal #rt11-body .mps-direct-pillar-number{display:grid!important;place-items:center!important;width:44px!important;height:44px!important;\nborder-radius:12px!important;background:linear-gradient(135deg,#176440,#608e68)!important;color:white!important;font:900 16px/1 Arial,sans-serif!important}\n#rt11-modal #rt11-body .mps-direct-pillar-orb{font:28px/1 Georgia,serif!important;color:#e3a36e!important}\n#rt11-modal #rt11-body .mps-direct-pillar-label{color:#43815c!important;font:800 10px/1.3 Arial,sans-serif!important;letter-spacing:.13em!important}\n#rt11-modal #rt11-body .mps-direct-pillar-title{margin:0!important;color:#23633f!important;font:800 clamp(20px,1.9vw,27px)/1.32 Georgia,serif!important;text-wrap:balance}\n#rt11-modal #rt11-body .mps-direct-pillar-text{margin:0!important;color:#50675a!important;font:500 14px/1.6 'Plus Jakarta Sans',Arial,sans-serif!important}\n@keyframes mpsDirectFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}\n@media(max-width:780px){#rt11-modal #rt11-body .mps-direct-flip-grid,#rt11-modal #rt11-body .mps-direct-pillar-grid{grid-template-columns:1fr!important;gap:15px!important}\n#rt11-modal #rt11-body .mps-direct-flip-card{height:310px!important;min-height:310px!important}}\n@media(prefers-reduced-motion:reduce){#rt11-modal #rt11-body .mps-direct-flip-card{animation:none!important}\n#rt11-modal #rt11-body .mps-direct-flip-inner{transition:none!important}}\n";
+frame.addEventListener('load',init);
+if(frame.contentDocument?.readyState==='complete')init();
+})();
+
+</script>
 </body>
 </html>
