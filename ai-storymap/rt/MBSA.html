@@ -641,6 +641,119 @@ frame.addEventListener('load',()=>{
  setTimeout(apply,700);setTimeout(apply,1700);
 })();
 
+
+/* Consistent MBSA chapter reading scale, goal typography, and visible animated scenery. */
+(function(){
+ const d=frame.contentDocument,w=frame.contentWindow;
+ if(!d||!w)return;
+ const css=d.createElement('style');css.id='mbsa-consistency-final-v1';
+ css.textContent=`
+  /* Across the numbered chapter headings, including chapter 03 with its plan */
+  #rt11-body .mbsa-chapter-large-heading{
+    font-family:Arial,sans-serif!important;
+    font-size:clamp(38px,3.25vw,54px)!important;
+    line-height:1.16!important;font-weight:800!important;
+    letter-spacing:-.018em!important;
+  }
+  #rt11-body .mbsa-chapter-large-copy{
+    font-family:Arial,sans-serif!important;
+    font-size:clamp(19px,1.45vw,23px)!important;
+    line-height:1.75!important;word-spacing:normal!important;
+    letter-spacing:normal!important;text-align:justify!important;
+    text-align-last:left!important;
+  }
+  /* Make the original goal as legible and prominent as the RKK reference */
+  #rt11-body .mbsa-goal-quote{
+    min-height:310px!important;padding:45px clamp(30px,6vw,90px)!important;
+    border:2px solid rgba(185,215,245,.52)!important;
+  }
+  #rt11-body .mbsa-goal-quote .mbsa-goal-statement{
+    font-family:Georgia,serif!important;
+    font-size:clamp(34px,3.4vw,53px)!important;
+    line-height:1.33!important;font-weight:700!important;
+    letter-spacing:0!important;word-spacing:normal!important;
+    text-align:center!important;text-align-last:center!important;
+    text-wrap:balance!important;
+  }
+  #rt11-body .mbsa-goal-quote .mbsa-goal-caption{
+    margin-top:24px!important;
+    font-size:clamp(15px,1.1vw,18px)!important;
+    line-height:1.5!important;
+  }
+  /* The backdrop is a separate ambient layer, behind every chapter */
+  #rt11-modal .mbsa-dynamic-backdrop{
+    position:fixed!important;inset:0!important;
+    overflow:hidden!important;pointer-events:none!important;
+    z-index:0!important;opacity:.68!important;
+  }
+  #rt11-modal .mbsa-dynamic-backdrop::before{
+    content:"";position:absolute;inset:-35%;
+    background:radial-gradient(circle at 20% 30%,rgba(50,166,241,.36),transparent 27%),
+      radial-gradient(circle at 80% 62%,rgba(60,108,222,.28),transparent 27%),
+      radial-gradient(circle at 55% 90%,rgba(30,142,207,.22),transparent 30%);
+    animation:mbsaCloudDrift 13s ease-in-out infinite alternate;
+  }
+  #rt11-modal .mbsa-dynamic-backdrop::after{
+    content:"";position:absolute;inset:-25%;
+    background-image:linear-gradient(30deg,rgba(29,120,192,.19) 1px,transparent 1px),
+    linear-gradient(150deg,rgba(34,127,206,.18) 1px,transparent 1px);
+    background-size:180px 180px;
+    animation:mbsaGridDrift 20s linear infinite;
+  }
+  @keyframes mbsaCloudDrift{0%{transform:translate3d(-5%,-3%,0) scale(1)}100%{transform:translate3d(8%,6%,0) scale(1.12)}}
+  @keyframes mbsaGridDrift{0%{background-position:0 0,0 0}100%{background-position:180px 120px,-180px 150px}}
+  #rt11-modal .mbsa-dynamic-backdrop ~ *:not(.mbsa-ambient){
+    position:relative;z-index:1;
+  }
+  @media(max-width:700px){
+    #rt11-body .mbsa-chapter-large-heading{font-size:clamp(32px,6.2vw,44px)!important}
+    #rt11-body .mbsa-chapter-large-copy{font-size:17px!important;line-height:1.7!important}
+    #rt11-body .mbsa-goal-quote .mbsa-goal-statement{font-size:clamp(27px,6.2vw,39px)!important}
+    #rt11-body .mbsa-goal-quote{min-height:240px!important;padding:30px 20px!important}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #rt11-modal .mbsa-dynamic-backdrop::before,#rt11-modal .mbsa-dynamic-backdrop::after{animation:none!important}
+  }
+ `;
+ d.head.appendChild(css);
+ const root=d.getElementById('rt11-body');
+ if(!root)return;
+ const normalize=s=>(s||'').replace(/\s+/g,' ').trim();
+ const chapterHeading=/^\d{1,2}\s*[.]\s*(PENGENALAN|LATAR BELAKANG|PELAN MUKIM|MATLAMAT|TERAS|KONSEP)/i;
+ function apply(){
+  const modal=d.getElementById('rt11-modal');
+  if(modal&&!modal.querySelector('.mbsa-dynamic-backdrop')){
+   const layer=d.createElement('div');layer.className='mbsa-dynamic-backdrop';layer.setAttribute('aria-hidden','true');
+   modal.prepend(layer);
+  }
+  for(const h of root.querySelectorAll('h1,h2,h3,h4')){
+   if(!chapterHeading.test(normalize(h.textContent)))continue;
+   h.classList.add('mbsa-chapter-large-heading');
+   h.style.setProperty('font-size','clamp(38px,3.25vw,54px)','important');
+   const container=h.closest('section,article,.rtchapter')||h.parentElement;
+   if(!container)continue;
+   const isPlan=/pelan mukim|pelan blok|peta|rajah/i.test(normalize(h.textContent));
+   if(isPlan)continue;
+   for(const p of container.querySelectorAll('p')){
+    if(normalize(p.textContent).length<80||p.closest('.mbsa-feature-section,.mbsa-flip-back-uniform,.mbsa-theme-face-polish'))continue;
+    p.classList.add('mbsa-chapter-large-copy');
+    p.style.setProperty('font-size','clamp(19px,1.45vw,23px)','important');
+    p.style.setProperty('line-height','1.75','important');
+   }
+  }
+  const banner=root.querySelector('.mbsa-goal-quote');
+  if(banner){
+   const statement=banner.querySelector('.mbsa-goal-statement');
+   if(statement)statement.style.setProperty('font-size','clamp(34px,3.4vw,53px)','important');
+  }
+ }
+ apply();
+ let queued=false;
+ const obs=new MutationObserver(()=>{if(queued)return;queued=true;w.requestAnimationFrame(()=>{queued=false;apply()})});
+ obs.observe(root,{childList:true,subtree:true});
+ setTimeout(apply,500);setTimeout(apply,1500);
+})();
+
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
