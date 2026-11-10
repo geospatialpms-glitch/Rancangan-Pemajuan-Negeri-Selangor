@@ -16000,7 +16000,7 @@ let cursor=0;setInterval(()=>{
 @media(max-width:800px){#rt11-modal .rtgrid{grid-template-columns:1fr}#rt11-modal .rtside{position:relative;top:auto;max-height:none}#rt11-modal .rtbar{padding:12px 15px}}
 @media(prefers-reduced-motion:no-preference){#rt11-modal .rtchapter{animation:rtEnter .5s ease both}@keyframes rtEnter{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}}
 </style>
-<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 03.11.2026 · B2</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
+<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B3</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
 <style id="mbsa-loaded-actual-chapter-css-20261106">
 /* Specific to the RT MBSA Story Map loaded from ArcGIS (not the directory preview). */
 #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-loaded-layout{display:grid!important;gap:16px!important;margin:20px 0 34px!important;width:100%!important;padding:0!important;box-sizing:border-box!important}
@@ -18880,5 +18880,60 @@ schedule();
   window.addEventListener('load',function(){if(document.body.classList.contains('suo-intro-active'))window.scrollTo(0,0);},{once:true});
 })();
 </script>
+
+<style id="mbsa-live-source-sync-20261110">
+/* MBSA live-source corrections 2026-11-10: render in the actual Story Map, not only the wrapper. */
+#rt11-modal.rt-mbsa #rt11-body > .rtchapter > h2 {
+ font-family:Arial,sans-serif!important;font-size:clamp(38px,3.3vw,54px)!important;
+ font-weight:800!important;line-height:1.17!important;letter-spacing:-.018em!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter > .rtpiece:not(:has(img,figure,picture,iframe,svg,video)) > div:not(:has(h3,h4,h5,h6,ul,ol,article,button)),
+#rt11-modal.rt-mbsa #rt11-body .rtchapter > .rtpiece:not(:has(img,figure,picture,iframe,svg,video)) > p {
+ font-family:Arial,sans-serif!important;font-size:clamp(19px,1.43vw,23px)!important;
+ line-height:1.74!important;letter-spacing:normal!important;word-spacing:normal!important;
+ text-align:justify!important;text-align-last:left!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter > .rtpiece:not(:has(img,figure,picture,iframe,svg,video)) > div:not(:has(h3,h4,h5,h6,ul,ol,article,button)) p{
+ font-size:inherit!important;line-height:inherit!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece:has(blockquote) blockquote {
+ font:700 clamp(34px,3.5vw,53px)/1.33 Georgia,serif!important;
+ text-align:center!important;text-align-last:center!important;word-spacing:normal!important;
+ letter-spacing:normal!important;min-height:275px!important;
+ padding:44px clamp(24px,5vw,75px)!important;text-wrap:balance!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-pillars .rt-mbsa-flip-back{
+ display:flex!important;flex-direction:column!important;justify-content:center!important;
+ align-items:center!important;gap:22px!important;padding:24px!important;
+ text-align:center!important;background:linear-gradient(140deg,#e5f4ff,#c9e2f8)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-pillars .rt-mbsa-flip-back p{
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ padding:0!important;margin:0 auto!important;max-width:94%!important;
+ font:700 clamp(22px,2.05vw,32px)/1.35 Georgia,serif!important;
+ text-align:center!important;text-align-last:center!important;
+ word-spacing:normal!important;letter-spacing:normal!important;text-wrap:balance!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-pillars .rt-mbsa-flip-back .rt-mbsa-flip-hint{
+ margin:0!important;
+}
+#rt11-modal.rt-mbsa{
+ background-image:radial-gradient(ellipse at 15% 25%,rgba(92,185,241,.27),transparent 48%),radial-gradient(ellipse at 78% 78%,rgba(75,123,216,.20),transparent 44%),linear-gradient(30deg,rgba(31,103,171,.12) 1px,transparent 1px),linear-gradient(150deg,rgba(31,103,171,.11) 1px,transparent 1px)!important;
+ background-size:130% 130%,140% 140%,175px 175px,175px 175px!important;
+ animation:mbsa-live-background-drift 18s linear infinite!important;
+}
+@keyframes mbsa-live-background-drift{
+ 0%{background-position:0 0,100% 100%,0 0,0 0}
+ 50%{background-position:8% 4%,93% 95%,85px 55px,-85px 50px}
+ 100%{background-position:0 0,100% 100%,175px 110px,-175px 100px}
+}
+@media(max-width:720px){
+ #rt11-modal.rt-mbsa #rt11-body>.rtchapter>h2{font-size:clamp(31px,6vw,43px)!important}
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>div:not(:has(h3,h4,h5,h6,ul,ol,article,button)),
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>p{font-size:17px!important}
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece:has(blockquote) blockquote{font-size:clamp(27px,6vw,39px)!important;min-height:220px!important}
+}
+@media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa{animation:none!important}}
+</style>
 </body>
 </html>
