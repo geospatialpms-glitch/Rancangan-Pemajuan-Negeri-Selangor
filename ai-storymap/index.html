@@ -21099,5 +21099,101 @@ schedule();
  #rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor{transition:none}
 }
 </style>
+
+<!-- mpaj-kkb-flip-motion-patch-20261110c: targeted RT MPAJ changes, other RT / RKK pages unchanged -->
+<style id="mpaj-kkb-flip-motion-patch-20261110c">
+/* Hide the legacy planning-history accordion requested for removal, MPAJ only. */
+#rt11-modal.rt-mpaj #rt11-body .rt-kkb-history-head,
+#rt11-modal.rt-mpaj #rt11-body .rt-kkb-history{display:none!important}
+/* Moving colour, light and contours visible behind the cards while scrolling. */
+#rt11-modal.rt-mpaj{position:fixed!important;isolation:isolate;
+background-image:radial-gradient(ellipse at 5% 10%,rgba(37,197,180,.42),transparent 44%),radial-gradient(ellipse at 92% 73%,rgba(252,173,127,.38),transparent 45%),repeating-radial-gradient(circle at 70% 14%,transparent 0 68px,rgba(15,119,112,.14) 69px 71px,transparent 72px 137px),linear-gradient(125deg,#e8faf4,#d9f1ed 53%,#fff1e8)!important;
+background-size:155% 155%,165% 165%,900px 900px,100% 100%!important;
+animation:mpajNewLiveBackground 13s ease-in-out infinite alternate!important}
+@keyframes mpajNewLiveBackground{0%{background-position:0% 5%,100% 85%,0 0,center}100%{background-position:92% 78%,5% 10%,265px 170px,center}}
+#rt11-modal.rt-mpaj .rtgrid::before{animation:mpajMapContours 12s linear infinite!important;opacity:.85!important}
+#rt11-modal.rt-mpaj .rtgrid>#rt11-body>.rtchapter{background:linear-gradient(125deg,rgba(255,255,255,.94),rgba(245,255,251,.90))!important;backdrop-filter:blur(4px)}
+/* KKB-inspired paired flip cards for MPAJ pillars, preserving source titles and descriptions. */
+#rt11-modal.rt-mpaj .rtchapter.rt-pillars .rtpiece :is(ul,ol):has(>li.mpaj-kkb-flip-card){
+display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important;
+list-style:none!important;margin:24px 0!important;padding:0!important;counter-reset:none!important}
+#rt11-modal.rt-mpaj .rtchapter.rt-pillars .rtpiece li.mpaj-kkb-flip-card{
+display:block!important;position:relative!important;min-height:325px!important;height:325px!important;padding:0!important;margin:0!important;
+border:1px solid rgba(19,116,109,.25)!important;border-radius:26px!important;
+background:linear-gradient(132deg,#d9f5ed,#fff0e5)!important;box-shadow:0 13px 30px rgba(25,95,85,.14)!important;
+perspective:1100px!important;transform:none!important;overflow:visible!important;list-style:none!important;
+animation:mpajKkbCardFloat 6.5s ease-in-out infinite!important;transition:box-shadow .3s!important;cursor:pointer}
+#rt11-modal.rt-mpaj .rtchapter.rt-pillars .rtpiece li.mpaj-kkb-flip-card:nth-child(even){animation-delay:-3.2s!important}
+#rt11-modal.rt-mpaj .rtchapter.rt-pillars .rtpiece li.mpaj-kkb-flip-card::before,
+#rt11-modal.rt-mpaj .rtchapter.rt-pillars .rtpiece li.mpaj-kkb-flip-card::after{content:none!important;display:none!important}
+#rt11-modal.rt-mpaj .rtchapter.rt-pillars .rtpiece li.mpaj-kkb-flip-card:hover,
+#rt11-modal.rt-mpaj .rtchapter.rt-pillars .rtpiece li.mpaj-kkb-flip-card:focus-visible{animation-play-state:paused!important;box-shadow:0 22px 45px rgba(14,100,89,.24),0 0 24px rgba(255,170,120,.26)!important}
+@keyframes mpajKkbCardFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}
+#rt11-modal.rt-mpaj .mpaj-kkb-flip-inner{display:block!important;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.2,.7,.2,1)}
+#rt11-modal.rt-mpaj .mpaj-kkb-flip-card.is-flipped .mpaj-kkb-flip-inner{transform:rotateY(180deg)}
+#rt11-modal.rt-mpaj .mpaj-kkb-flip-face{position:absolute!important;inset:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:15px!important;padding:clamp(22px,3vw,36px)!important;text-align:center!important;
+backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;overflow:auto}
+#rt11-modal.rt-mpaj .mpaj-kkb-flip-front{background:linear-gradient(132deg,rgba(217,248,239,.94),rgba(255,234,218,.95));border-radius:25px}
+#rt11-modal.rt-mpaj .mpaj-kkb-flip-back{transform:rotateY(180deg);background:linear-gradient(140deg,#fbe9dd,#dff9f0);border-radius:25px}
+#rt11-modal.rt-mpaj .mpaj-kkb-orb{font-size:30px;color:#f5a577;line-height:1;animation:mpajOrbPulse 3s ease-in-out infinite}
+@keyframes mpajOrbPulse{50%{transform:scale(1.22) rotate(25deg);opacity:.65}}
+#rt11-modal.rt-mpaj .mpaj-kkb-kicker{color:#0e7169;font:850 11px/1.4 Arial,sans-serif!important;letter-spacing:.16em}
+#rt11-modal.rt-mpaj .mpaj-kkb-title{font:750 clamp(21px,2vw,29px)/1.35 Georgia,serif!important;color:#116e67!important;overflow-wrap:anywhere}
+#rt11-modal.rt-mpaj .mpaj-kkb-description{font:500 clamp(15px,1.4vw,19px)/1.7 'Plus Jakarta Sans',Arial,sans-serif!important;color:#42635c!important}
+#rt11-modal.rt-mpaj .mpaj-kkb-hint{border:1px solid rgba(237,169,109,.35);padding:10px 15px;border-radius:28px;background:#fff8e5;color:#596475;font:750 10px/1.5 Arial,sans-serif!important;letter-spacing:.025em}
+@media(max-width:720px){#rt11-modal.rt-mpaj .rtchapter.rt-pillars .rtpiece :is(ul,ol):has(>li.mpaj-kkb-flip-card){grid-template-columns:1fr!important}
+#rt11-modal.rt-mpaj .rtchapter.rt-pillars .rtpiece li.mpaj-kkb-flip-card{height:300px!important;min-height:300px!important}}
+@media(prefers-reduced-motion:reduce){#rt11-modal.rt-mpaj,#rt11-modal.rt-mpaj .rtgrid::before,
+#rt11-modal.rt-mpaj .mpaj-kkb-flip-card,#rt11-modal.rt-mpaj .mpaj-kkb-orb{animation:none!important}
+#rt11-modal.rt-mpaj .mpaj-kkb-flip-inner{transition:none!important}}
+</style>
+<script id="mpaj-kkb-flip-motion-patch-20261110c-controller">
+(function(){
+'use strict';
+const modal=document.getElementById('rt11-modal'),body=document.getElementById('rt11-body');
+if(!modal||!body)return;
+function apply(){
+if(!modal.classList.contains('rt-mpaj'))return;
+/* Remove only the three-item duplicated legacy timeline; retain audited factor cards and chapter. */
+body.querySelectorAll('.rtchapter').forEach(section=>{
+if(!/latar belakang/i.test(section.querySelector(':scope > h2')?.textContent||''))return;
+section.querySelectorAll('.rt-kkb-history-head,.rt-kkb-history').forEach(el=>el.remove());
+});
+body.querySelectorAll('.rtchapter.rt-pillars .rtpiece ul>li,.rtchapter.rt-pillars .rtpiece ol>li').forEach((card,i)=>{
+if(card.classList.contains('mpaj-kkb-flip-card')||card.querySelector('ul,ol'))return;
+const raw=card.textContent.replace(/\\s+/g,' ').trim();
+if(!raw)return;
+const heading=card.querySelector('h3,h4,h5,strong,b');
+let title=heading?heading.textContent.trim():raw;
+title=title.replace(/^\\s*(?:teras\\s*)?0?[1-9]\\s*[:.·-]?\\s*/i,'').trim()||raw;
+let detail=raw;
+if(heading){const tail=raw.slice(raw.indexOf(heading.textContent.trim())+heading.textContent.trim().length).trim();if(tail)detail=tail}
+else if(raw.length>110){const dot=raw.indexOf('. ');if(dot>12&&dot<115){title=raw.slice(0,dot+1);detail=raw.slice(dot+2)}}
+const no=String(i+1).padStart(2,'0');
+card.classList.add('mpaj-kkb-flip-card');
+card.setAttribute('tabindex','0');card.setAttribute('role','button');card.setAttribute('aria-pressed','false');
+card.setAttribute('aria-label','Teras '+no+': '+title+'. Klik untuk teroka atau kembali');
+card.replaceChildren();
+const inner=document.createElement('div');inner.className='mpaj-kkb-flip-inner';
+function face(name,kicker,content,hint){
+const el=document.createElement('div');el.className='mpaj-kkb-flip-face mpaj-kkb-flip-'+name;
+const orb=document.createElement('span');orb.className='mpaj-kkb-orb';orb.setAttribute('aria-hidden','true');orb.textContent='✧';
+const label=document.createElement('span');label.className='mpaj-kkb-kicker';label.textContent=kicker;
+const copy=document.createElement('div');copy.className=name==='front'?'mpaj-kkb-title':'mpaj-kkb-description';copy.textContent=content;
+const hintEl=document.createElement('span');hintEl.className='mpaj-kkb-hint';hintEl.textContent=hint;
+el.append(orb,label,copy,hintEl);return el;
+}
+inner.append(face('front','TERAS '+no,title,'HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA ↻'),face('back','TERAS '+no+' · HURAIAN STRATEGI',detail,'KLIK UNTUK KEMBALI ↻'));card.append(inner);
+function flip(v){card.classList.toggle('is-flipped',v);card.setAttribute('aria-pressed',String(v))}
+card.addEventListener('mouseenter',()=>flip(true));card.addEventListener('mouseleave',()=>flip(false));
+card.addEventListener('click',()=>flip(!card.classList.contains('is-flipped')));
+card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip(!card.classList.contains('is-flipped'))}if(e.key==='Escape')flip(false)});
+});
+}
+let queued=false;
+new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;apply()})}).observe(body,{childList:true,subtree:true});
+apply();
+})();
+</script>
 </body>
 </html>
