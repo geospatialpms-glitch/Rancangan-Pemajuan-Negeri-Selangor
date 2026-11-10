@@ -16049,7 +16049,7 @@ else if(node.type==='text'){if(d.type==='h2')return null;const tag=/^h[3456]$/.t
 else return null;return wrap};
 function close(){requestNo++;modal.hidden=true;document.body.style.overflow='';window.scrollTo(0,oldScroll)}
 document.getElementById('rt11-close').addEventListener('click',close);document.getElementById('rt11-home').addEventListener('click',()=>{if(modal.classList.contains('rt-mbsa'))modal.scrollTo({top:0,behavior:'smooth'});});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});
-async function open(entry){modal.classList.toggle('rt-mbsa',entry.code==='MBSA');oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);const rtPalette={"MBSA":"#65C9F1","MBSJ":"#F17BB7","MBDK":"#F7B14E","MPAJ":"#FFB59F","MPKj":"#62D6E8","MPS":"#D7B77B","MPSp":"#F6CA46","MPKL":"#82D4B8","MPKS":"#D4AF37","MPHS":"#9ECF4F","MDSB":"#F6A086","MBPJ":"#9B8EE6"};modal.style.setProperty('--rt-accent2',rtPalette[entry.code]||entry.dark);hero.style.backgroundImage='';label.textContent=entry.code==='MBSA'?'RANCANGAN TEMPATAN · MBSA':'RANCANGAN TEMPATAN · '+entry.code;document.getElementById('rt11-home').hidden=entry.code!=='MBSA';hero.innerHTML='<div class="rt-hero-content"><small>'+(entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':'PLANMalaysia SELANGOR · STORY MAP INTERAKTIF')+'</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<small class="rt-side-eyebrow">JELAJAH RANCANGAN TEMPATAN</small><strong class="rt-side-title">'+entry.code+'</strong><p class="rt-side-desc">Terokai kandungan Rancangan Tempatan melalui navigasi interaktif.</p><h3>SENARAI BAB</h3>';const ticket=++requestNo;
+async function open(entry){modal.classList.toggle('rt-mbsa',entry.code==='MBSA');modal.classList.toggle('rt-mbsj',entry.code==='MBSJ');oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);const rtPalette={"MBSA":"#65C9F1","MBSJ":"#F17BB7","MBDK":"#F7B14E","MPAJ":"#FFB59F","MPKj":"#62D6E8","MPS":"#D7B77B","MPSp":"#F6CA46","MPKL":"#82D4B8","MPKS":"#D4AF37","MPHS":"#9ECF4F","MDSB":"#F6A086","MBPJ":"#9B8EE6"};modal.style.setProperty('--rt-accent2',rtPalette[entry.code]||entry.dark);hero.style.backgroundImage='';label.textContent=entry.code==='MBSA'?'RANCANGAN TEMPATAN · MBSA':'RANCANGAN TEMPATAN · '+entry.code;document.getElementById('rt11-home').hidden=entry.code!=='MBSA';hero.innerHTML='<div class="rt-hero-content"><small>'+(entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':'PLANMalaysia SELANGOR · STORY MAP INTERAKTIF')+'</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<small class="rt-side-eyebrow">JELAJAH RANCANGAN TEMPATAN</small><strong class="rt-side-title">'+entry.code+'</strong><p class="rt-side-desc">Terokai kandungan Rancangan Tempatan melalui navigasi interaktif.</p><h3>SENARAI BAB</h3>';const ticket=++requestNo;
 try{const url='https://www.arcgis.com/sharing/rest/content/items/'+entry.id+'/data?f=json';const res=await fetch(url,{mode:'cors',credentials:'omit'});if(!res.ok)throw Error('HTTP '+res.status);const data=await res.json();if(data.error||!data.nodes)throw Error((data.error&&data.error.message)||'Data JSON tidak tersedia');if(ticket!==requestNo)return;const nodes=data.nodes,resources=data.resources||{},root=nodes[data.root],children=root&&root.children||[];const cover=children.map(k=>nodes[k]).find(n=>n&&n.type==='storycover');/* Cover ESRI sebenar: storycover.children -> image node -> resourceId, seperti RKK */
 let coverImage='';
 if(cover){
@@ -19603,6 +19603,102 @@ schedule();
  #rt11-modal.rt-mbsa .rtbar{gap:8px!important}
  #rt11-modal.rt-mbsa .rtbar #rt11-label{flex-basis:100%!important;font-size:14px!important}
  #rt11-modal.rt-mbsa .rtbar #rt11-home{margin-left:0!important;padding:8px 12px!important;font-size:12px!important}
+}
+</style>
+
+<style id="rt-mbsj-mbsa-parity-20261110">
+/* MBSJ only: MBSA-scale editorial type, matching 2-column flip hierarchy and subtle geospatial motion. */
+#rt11-modal.rt-mbsj {
+ background-color:#f8f0fb!important;
+ background-image:
+  radial-gradient(ellipse at 15% 12%,rgba(241,149,219,.28),transparent 48%),
+  radial-gradient(ellipse at 82% 65%,rgba(159,156,244,.24),transparent 48%),
+  repeating-radial-gradient(circle at 94% 8%,transparent 0 61px,rgba(143,63,175,.09) 62px 64px,transparent 65px 125px),
+  linear-gradient(115deg,#faf1ff,#edf2ff 55%,#fceafa)!important;
+ background-size:125% 125%,130% 130%,920px 920px,100% 100%!important;
+ animation:rtMbsjBackdropDrift 24s ease-in-out infinite alternate!important;
+}
+@keyframes rtMbsjBackdropDrift{
+ 0%{background-position:0% 0%,100% 100%,0 0,center}
+ 100%{background-position:45% 35%,30% 18%,170px 115px,center}
+}
+#rt11-modal.rt-mbsj .rtgrid{isolation:isolate;position:relative!important}
+#rt11-modal.rt-mbsj .rtgrid:before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:
+  radial-gradient(circle at 13% 18%,rgba(181,73,209,.18) 0 3px,transparent 4px),
+  radial-gradient(circle at 78% 58%,rgba(132,89,209,.14) 0 2px,transparent 3px),
+  linear-gradient(30deg,transparent 49.8%,rgba(166,98,203,.085) 50%,transparent 50.2%);
+ background-size:240px 240px,310px 310px,190px 190px;
+ animation:rtMbsjNetworkFlow 19s linear infinite!important;
+}
+@keyframes rtMbsjNetworkFlow{from{background-position:0 0,0 0,0 0}to{background-position:240px -240px,-310px 310px,190px 190px}}
+#rt11-modal.rt-mbsj #rt11-body>.rtchapter>h2{
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+ font-size:clamp(39px,3.05vw,58px)!important;line-height:1.18!important;
+ font-weight:800!important;letter-spacing:-.025em!important;word-spacing:normal!important;text-align:left!important;
+}
+#rt11-modal.rt-mbsj #rt11-body>.rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>div:not(:has(h3,h4,h5,h6,ul,ol,article,blockquote)),
+#rt11-modal.rt-mbsj #rt11-body>.rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>p{
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+ font-size:clamp(19px,1.32vw,23px)!important;line-height:1.72!important;
+ font-weight:400!important;letter-spacing:normal!important;word-spacing:normal!important;
+ text-align:justify!important;text-align-last:left!important;
+}
+#rt11-modal.rt-mbsj #rt11-body .rtchapter>.rtpiece :is(h3,h4){
+ font-family:'Plus Jakarta Sans',Arial,sans-serif;line-height:1.32;
+}
+#rt11-modal.rt-mbsj #rt11-body .rtchapter{border-top-width:4px!important;border-radius:28px!important;padding:clamp(28px,3.5vw,58px)!important;box-shadow:0 15px 40px rgba(78,35,105,.09)!important}
+#rt11-modal.rt-mbsj #rt11-body .rtchapter.rt-pillars .rt-kkb-pillar-grid{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important;margin:28px 0!important;
+}
+#rt11-modal.rt-mbsj #rt11-body .rtchapter.rt-pillars .rt-kkb-pillar-card{
+ display:block!important;box-sizing:border-box!important;width:100%!important;height:350px!important;min-height:350px!important;max-height:350px!important;
+ border-radius:27px!important;border:1px solid #d9a8df!important;
+ background:linear-gradient(135deg,#fce3f3 0%,#e4d6fa 55%,#f6daf2 100%)!important;
+ box-shadow:0 14px 35px rgba(111,45,129,.15)!important;transition:transform .35s,box-shadow .35s,border-color .35s!important;
+}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-card:hover,
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-card:focus-visible{
+ transform:translateY(-6px)!important;box-shadow:0 22px 45px rgba(112,36,145,.24)!important;border-color:#ba7fd0!important;
+}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-inner{height:100%!important}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-face{
+ border-radius:25px!important;padding:clamp(24px,3vw,42px)!important;gap:17px!important;
+ display:flex!important;justify-content:center!important;align-items:center!important;text-align:center!important;
+}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-front{
+ background:radial-gradient(circle at 35% 12%,rgba(255,255,255,.65),transparent 65%)!important;
+}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-front h3{
+ font-family:Georgia,serif!important;font-size:clamp(23px,2.3vw,36px)!important;
+ line-height:1.27!important;font-weight:800!important;text-wrap:balance!important;
+ color:#67248c!important;
+}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-star{font-size:34px!important;color:#d251b1!important}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-face small{
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;font-weight:800!important;
+ font-size:13px!important;letter-spacing:.15em!important;color:#76349b!important;
+}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-hint{
+ background:#fff7dc!important;color:#624273!important;font-size:11px!important;
+ line-height:1.45!important;padding:11px 17px!important;border-radius:999px!important;
+}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-back{background:linear-gradient(135deg,#fff7ff,#eddaf9)!important}
+#rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-description{
+ color:#54316b!important;font:500 clamp(15px,1.2vw,18px)/1.68 'Plus Jakarta Sans',Arial,sans-serif!important;
+ text-align:center!important;overflow-wrap:anywhere!important;
+}
+@media(max-width:760px){
+ #rt11-modal.rt-mbsj #rt11-body>.rtchapter>h2{font-size:clamp(31px,6vw,43px)!important}
+ #rt11-modal.rt-mbsj #rt11-body>.rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>p,
+ #rt11-modal.rt-mbsj #rt11-body>.rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>div:not(:has(h3,h4,h5,h6,ul,ol,article,blockquote)){font-size:17px!important}
+ #rt11-modal.rt-mbsj #rt11-body .rtchapter.rt-pillars .rt-kkb-pillar-grid{grid-template-columns:1fr!important;gap:17px!important}
+ #rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-front h3{font-size:clamp(23px,5vw,31px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbsj,#rt11-modal.rt-mbsj .rtgrid:before{animation:none!important}
+ #rt11-modal.rt-mbsj #rt11-body .rt-kkb-pillar-card{transition:none!important}
 }
 </style>
 </body>
