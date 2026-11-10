@@ -21161,11 +21161,11 @@ section.querySelectorAll('.rt-kkb-history-head,.rt-kkb-history').forEach(el=>el.
 });
 body.querySelectorAll('.rtchapter.rt-pillars .rtpiece ul>li,.rtchapter.rt-pillars .rtpiece ol>li').forEach((card,i)=>{
 if(card.classList.contains('mpaj-kkb-flip-card')||card.querySelector('ul,ol'))return;
-const raw=card.textContent.replace(/\\s+/g,' ').trim();
+const raw=card.textContent.replace(/\s+/g,' ').trim();
 if(!raw)return;
 const heading=card.querySelector('h3,h4,h5,strong,b');
 let title=heading?heading.textContent.trim():raw;
-title=title.replace(/^\\s*(?:teras\\s*)?0?[1-9]\\s*[:.·-]?\\s*/i,'').trim()||raw;
+title=title.replace(/^\s*(?:teras\s*)?0?[1-9]\s*[:.·-]?\s*/i,'').trim()||raw;
 let detail=raw;
 if(heading){const tail=raw.slice(raw.indexOf(heading.textContent.trim())+heading.textContent.trim().length).trim();if(tail)detail=tail}
 else if(raw.length>110){const dot=raw.indexOf('. ');if(dot>12&&dot<115){title=raw.slice(0,dot+1);detail=raw.slice(dot+2)}}
