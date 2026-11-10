@@ -6,39 +6,13 @@
 <meta name="theme-color" content="#701c35">
 <title>Story Map RT MPHS | Rancangan Pemajuan Negeri Selangor</title>
 <style>
-:root{font-family:Arial,sans-serif;color:#fff7ec;background:#3e0d23}
-*{box-sizing:border-box}html,body{height:100%;margin:0;overflow:hidden}
-.rt-toolbar{height:50px;display:flex;align-items:center;gap:14px;justify-content:space-between;padding:6px 16px;background:linear-gradient(95deg,#500b24,#882e46);border-bottom:2px solid #e1b96c}
-.rt-toolbar b{font-size:13px;letter-spacing:.02em}.rt-toolbar a{color:#fff4d6;font-size:12px;text-decoration:none;white-space:nowrap}.rt-toolbar a:hover{text-decoration:underline}
-.rt-toolbar nav{display:flex;align-items:center;gap:16px}
-#rt-story-frame{display:block;width:100%;height:calc(100dvh - 50px);border:0;background:#fff9f4}
-@media(max-width:650px){.rt-toolbar{padding:6px 9px;gap:7px}.rt-toolbar b{font-size:11px}.rt-toolbar nav{gap:8px}.rt-toolbar nav a{font-size:10px}}
+/* Shared navigation and scroll CTA are rendered within index.html's RT header. */
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f4f5f8}
+#rt-story-frame{display:block;width:100%;height:100dvh;border:0;background:#f4f5f8}
 </style>
 </head>
 <body data-rt-page="MPHS">
-<header class="rt-toolbar">
-<b>RANCANGAN TEMPATAN · MPHS</b>
-<nav aria-label="Navigasi halaman RT">
-<a href="./MPKS.html" title="RT sebelumnya">‹ Sebelum</a>
-<a href="../index.html#panel-3">Portal Utama</a>
-<a href="./MDSB.html" title="RT seterusnya">Seterusnya ›</a>
-</nav>
-</header>
-<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Hulu Selangor" src="../index.html?rt_page=MPHS" loading="eager"></iframe>
-<script>
-/* Halaman khusus MPHS: letakkan penyesuaian gaya untuk RT ini di bawah.
-   Kandungan asas masih dibaca daripada portal utama agar maklumat asal terpelihara. */
-const frame=document.getElementById('rt-story-frame');
-frame.addEventListener('load',()=>{
- try{
-  const doc=frame.contentDocument;
-  if(!doc)return;
-  const style=doc.createElement('style');
-  style.id='rt-page-MPHS-overrides';
-  style.textContent='/* Custom CSS for RT MPHS only */';
-  doc.head.appendChild(style);
- }catch(err){console.warn('RT page styling is unavailable',err)}
-});
-</script>
+<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Hulu Selangor" src="../index.html?rt_page=MPHS&amp;v=20261110-unified-nav" loading="eager"></iframe>
 </body>
 </html>
