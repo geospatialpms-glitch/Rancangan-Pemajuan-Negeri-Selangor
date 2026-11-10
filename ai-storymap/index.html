@@ -20002,6 +20002,42 @@ schedule();
 @media(prefers-reduced-motion:reduce){
  #rt11-modal.rt-unified-header .rthero .mbsa-hero-explore{animation:none!important}
 }
+
+/* Keep the remaining nine RTs at the MBSA reading scale without changing original wording. */
+#rt11-modal.rt-unified-header:not(.rt-mbsa):not(.rt-mbsj):not(.rt-mbdk) #rt11-body>.rtchapter>h2{
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+ font-weight:800!important;font-size:clamp(35px,2.8vw,54px)!important;line-height:1.18!important;
+ letter-spacing:-.02em!important;text-align:left!important;
+}
+#rt11-modal.rt-unified-header:not(.rt-mbsa):not(.rt-mbsj):not(.rt-mbdk)
+ #rt11-body>.rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>p{
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+ font-size:clamp(18px,1.28vw,22px)!important;line-height:1.7!important;
+ word-spacing:normal!important;text-align:justify!important;text-align-last:left!important;
+}
+/* Restrained animated backdrop for the other RTs; individual RT palette remains intact. */
+#rt11-modal.rt-unified-header:not(.rt-mbsa):not(.rt-mbsj):not(.rt-mbdk){
+ background-image:
+ radial-gradient(ellipse at 15% 18%,color-mix(in srgb,var(--rt-accent2,var(--rt-main)) 24%,transparent),transparent 45%),
+ radial-gradient(ellipse at 82% 72%,color-mix(in srgb,var(--rt-main) 17%,transparent),transparent 52%),
+ repeating-radial-gradient(circle at 92% 12%,transparent 0 72px,color-mix(in srgb,var(--rt-main) 8%,transparent) 73px 74px,transparent 75px 145px),
+ linear-gradient(120deg,#f8fafd,var(--rt-soft) 60%,#faf8fc)!important;
+ background-size:130% 130%,130% 130%,1000px 1000px,100% 100%!important;
+ animation:rtUnifiedBackdrop 22s ease-in-out infinite alternate!important;
+}
+@keyframes rtUnifiedBackdrop{
+ from{background-position:0% 0%,100% 100%,0 0,center}
+ to{background-position:66% 35%,25% 15%,180px 135px,center}
+}
+@media(max-width:720px){
+ #rt11-modal.rt-unified-header:not(.rt-mbsa):not(.rt-mbsj):not(.rt-mbdk) #rt11-body>.rtchapter>h2{
+ font-size:clamp(30px,6vw,42px)!important}
+ #rt11-modal.rt-unified-header:not(.rt-mbsa):not(.rt-mbsj):not(.rt-mbdk)
+ #rt11-body>.rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>p{font-size:17px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-unified-header:not(.rt-mbsa):not(.rt-mbsj):not(.rt-mbdk){animation:none!important}
+}
 </style>
 </body>
 </html>
