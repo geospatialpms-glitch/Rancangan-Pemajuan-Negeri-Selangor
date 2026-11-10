@@ -16441,6 +16441,29 @@ if(entry.code==='MBSA'){
   }
  }
 }
+/* MBDK override at the end of the ArcGIS renderer: the older infographic transform has already run. */
+if(entry.code==='MBDK'){
+ const tests=/pra kesultanan|pembentukan kesultanan|zaman british|kemerdekaan|era kontena/i;
+ const chapters=[...body.querySelectorAll('.rtchapter')];
+ chapters.forEach(ch=>{
+  const lists=[...ch.querySelectorAll('ul,ol')];
+  lists.forEach(list=>{
+   const nodes=[...list.children].filter(n=>n.tagName==='LI');
+   if(nodes.length<4||nodes.length>14)return;
+   const matches=nodes.filter(n=>tests.test(n.textContent||''));
+   if(matches.length<3)return;
+   list.classList.remove('rt-background-infographic','rt-final-history-flow','rt-v3-timeline','rt-flow-timeline','rt-shared-card-grid');
+   list.classList.add('mbdk-zigzag-flow','mbdk-actual-history');
+   list.dataset.rtV3='mbdk-zigzag';
+   list.dataset.rtMotionEnhanced='mbdk-zigzag';
+   nodes.forEach((li)=>{
+    li.querySelectorAll(':scope > .rt-info-number,:scope > .rt-final-step,:scope > .rt-flow-index,:scope > .rt-v3-num').forEach(n=>n.remove());
+    li.classList.remove('rt-motion-reveal','rt-animate-in','mbdk-history-entry');
+   });
+   ch.classList.add('mbdk-history-zigzag-chapter');
+  });
+ });
+}
 if(!body.children.length)throw Error('Tiada kandungan bab');}
 catch(err){if(ticket!==requestNo)return;body.innerHTML='';const box=document.createElement('section');box.className='rtchapter';const h=document.createElement('h2');h.textContent='Kandungan ESRI tidak dapat dimuatkan';const p=document.createElement('p');p.textContent='Akses JSON asal tidak tersedia pada pelayar ini. Buka StoryMap asal untuk membaca kandungan lengkap.';const a=document.createElement('a');a.href='https://storymaps.arcgis.com/stories/'+entry.id;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka StoryMap ESRI asal ↗';box.append(h,p,a);body.appendChild(box)}}
 /* Standalone RT pages: open existing Story Map contents when loaded inside a dedicated RT iframe. */
@@ -20771,6 +20794,91 @@ window.mbdkZigzagTimeline=schedule;
 schedule();
 })();
 </script>
+
+
+<style id="mbdk-force-replace-old-infographic-20261110">
+/* Specificity and source order intentionally beat the legacy RT background infographic. */
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece ul.mbdk-actual-history,
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece ol.mbdk-actual-history{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:26px 0!important;padding:25px 0!important;margin:28px 0!important;
+ position:relative!important;counter-reset:mbdk-era!important;
+ list-style:none!important;width:100%!important;max-width:100%!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li{
+ display:block!important;counter-increment:mbdk-era!important;
+ grid-column:1!important;position:relative!important;margin:0 43px 0 0!important;
+ width:auto!important;max-width:none!important;min-height:140px!important;
+ padding:25px!important;list-style:none!important;
+ border:1px solid #ddbaa5!important;border-radius:20px!important;
+ background:linear-gradient(120deg,#fffefa,#fff0df)!important;
+ box-shadow:0 10px 25px rgba(80,36,26,.1)!important;
+ text-align:left!important;text-align-last:left!important;word-spacing:normal!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li:nth-child(even){
+ grid-column:2!important;margin:0 0 0 43px!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li::marker{
+ content:""!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li .rt-info-number,
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li .rt-final-step{
+ display:none!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history::before{
+ content:""!important;display:block!important;position:absolute!important;
+ left:calc(50% - 5px)!important;top:8px!important;bottom:8px!important;
+ width:10px!important;height:auto!important;border-radius:7px!important;
+ background:linear-gradient(#da9c62,#9e4635,#e6ba79,#a84b36)!important;
+ box-shadow:0 0 0 4px #c58d6844!important;animation:none!important;z-index:0!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li::before{
+ content:counter(mbdk-era,decimal-leading-zero)!important;
+ position:absolute!important;inset:auto!important;
+ top:calc(50% - 23px)!important;right:-67px!important;
+ width:46px!important;height:46px!important;padding:0!important;
+ display:grid!important;place-items:center!important;border-radius:50%!important;
+ background:#a74732!important;color:#fff!important;border:4px solid #ffe9d2!important;
+ box-shadow:0 0 0 5px #c37d5455!important;z-index:5!important;
+ font:800 13px Arial,sans-serif!important;animation:mbdkZigzagNode 3.7s ease-in-out infinite!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li:nth-child(even)::before{
+ left:-67px!important;right:auto!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li::after{
+ content:""!important;position:absolute!important;top:50%!important;right:-43px!important;
+ left:auto!important;width:43px!important;height:3px!important;display:block!important;
+ background:#bf7550!important;transform:translateY(-50%)!important;z-index:2!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li:nth-child(even)::after{
+ left:-43px!important;right:auto!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li :is(p,div,span){
+ text-align:left!important;text-align-last:left!important;word-spacing:normal!important;
+ font-size:clamp(16px,1.16vw,20px)!important;line-height:1.68!important;
+}
+@media(max-width:780px){
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-actual-history{
+  display:flex!important;flex-direction:column!important;gap:15px!important;padding:20px 0 20px 61px!important;
+ }
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history::before{left:18px!important;width:7px!important}
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li,
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li:nth-child(even){
+  margin:0!important;width:100%!important;min-height:0!important;padding:20px!important;
+ }
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li::before,
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li:nth-child(even)::before{
+  left:-63px!important;right:auto!important;top:20px!important;
+ }
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li::after,
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li:nth-child(even)::after{
+  left:-43px!important;right:auto!important;top:43px!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece .mbdk-actual-history>li::before{animation:none!important}
+}
+</style>
 
 </body>
 </html>
