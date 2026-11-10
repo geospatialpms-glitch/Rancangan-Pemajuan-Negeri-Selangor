@@ -16000,7 +16000,7 @@ let cursor=0;setInterval(()=>{
 @media(max-width:800px){#rt11-modal .rtgrid{grid-template-columns:1fr}#rt11-modal .rtside{position:relative;top:auto;max-height:none}#rt11-modal .rtbar{padding:12px 15px}}
 @media(prefers-reduced-motion:no-preference){#rt11-modal .rtchapter{animation:rtEnter .5s ease both}@keyframes rtEnter{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}}
 </style>
-<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B9</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
+<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><button type="button" id="rt11-home" title="Kembali ke halaman utama RT MBSA" aria-label="Halaman Utama RT MBSA" hidden>⌂ Halaman Utama</button><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
 <style id="mbsa-loaded-actual-chapter-css-20261106">
 /* Specific to the RT MBSA Story Map loaded from ArcGIS (not the directory preview). */
 #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-loaded-layout{display:grid!important;gap:16px!important;margin:20px 0 34px!important;width:100%!important;padding:0!important;box-sizing:border-box!important}
@@ -16048,8 +16048,8 @@ if(node.type==='image'){const r=resources[d.image];if(!r)return null;const filen
 else if(node.type==='text'){if(d.type==='h2')return null;const tag=/^h[3456]$/.test(d.type)?d.type:'div';let el=document.createElement(tag);if(d.type==='quote'){el=document.createElement('blockquote');el.innerHTML=clean(d.text||'')}else el.innerHTML=clean(d.text||'');wrap.appendChild(el)}
 else return null;return wrap};
 function close(){requestNo++;modal.hidden=true;document.body.style.overflow='';window.scrollTo(0,oldScroll)}
-document.getElementById('rt11-close').addEventListener('click',close);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});
-async function open(entry){modal.classList.toggle('rt-mbsa',entry.code==='MBSA');oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);const rtPalette={"MBSA":"#65C9F1","MBSJ":"#F17BB7","MBDK":"#F7B14E","MPAJ":"#FFB59F","MPKj":"#62D6E8","MPS":"#D7B77B","MPSp":"#F6CA46","MPKL":"#82D4B8","MPKS":"#D4AF37","MPHS":"#9ECF4F","MDSB":"#F6A086","MBPJ":"#9B8EE6"};modal.style.setProperty('--rt-accent2',rtPalette[entry.code]||entry.dark);hero.style.backgroundImage='';label.textContent='RANCANGAN TEMPATAN · '+entry.code;hero.innerHTML='<div class="rt-hero-content"><small>PLANMalaysia SELANGOR · STORY MAP INTERAKTIF</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<small class="rt-side-eyebrow">JELAJAH RANCANGAN TEMPATAN</small><strong class="rt-side-title">'+entry.code+'</strong><p class="rt-side-desc">Terokai kandungan Rancangan Tempatan melalui navigasi interaktif.</p><h3>SENARAI BAB</h3>';const ticket=++requestNo;
+document.getElementById('rt11-close').addEventListener('click',close);document.getElementById('rt11-home').addEventListener('click',()=>{if(modal.classList.contains('rt-mbsa'))modal.scrollTo({top:0,behavior:'smooth'});});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});
+async function open(entry){modal.classList.toggle('rt-mbsa',entry.code==='MBSA');oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);const rtPalette={"MBSA":"#65C9F1","MBSJ":"#F17BB7","MBDK":"#F7B14E","MPAJ":"#FFB59F","MPKj":"#62D6E8","MPS":"#D7B77B","MPSp":"#F6CA46","MPKL":"#82D4B8","MPKS":"#D4AF37","MPHS":"#9ECF4F","MDSB":"#F6A086","MBPJ":"#9B8EE6"};modal.style.setProperty('--rt-accent2',rtPalette[entry.code]||entry.dark);hero.style.backgroundImage='';label.textContent=entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':'RANCANGAN TEMPATAN · '+entry.code;document.getElementById('rt11-home').hidden=entry.code!=='MBSA';hero.innerHTML='<div class="rt-hero-content"><small>'+(entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':'PLANMalaysia SELANGOR · STORY MAP INTERAKTIF')+'</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<small class="rt-side-eyebrow">JELAJAH RANCANGAN TEMPATAN</small><strong class="rt-side-title">'+entry.code+'</strong><p class="rt-side-desc">Terokai kandungan Rancangan Tempatan melalui navigasi interaktif.</p><h3>SENARAI BAB</h3>';const ticket=++requestNo;
 try{const url='https://www.arcgis.com/sharing/rest/content/items/'+entry.id+'/data?f=json';const res=await fetch(url,{mode:'cors',credentials:'omit'});if(!res.ok)throw Error('HTTP '+res.status);const data=await res.json();if(data.error||!data.nodes)throw Error((data.error&&data.error.message)||'Data JSON tidak tersedia');if(ticket!==requestNo)return;const nodes=data.nodes,resources=data.resources||{},root=nodes[data.root],children=root&&root.children||[];const cover=children.map(k=>nodes[k]).find(n=>n&&n.type==='storycover');/* Cover ESRI sebenar: storycover.children -> image node -> resourceId, seperti RKK */
 let coverImage='';
 if(cover){
@@ -16067,7 +16067,7 @@ if(entry.code==='MBSJ'){
  hero.style.backgroundSize='cover';hero.style.backgroundPosition='center center';hero.style.backgroundRepeat='no-repeat';
 }
 
-if(cover){hero.innerHTML='';const heroContent=document.createElement('div');heroContent.className='rt-hero-content';hero.appendChild(heroContent);let sm=document.createElement('small');sm.textContent='RANCANGAN TEMPATAN · '+entry.code;heroContent.appendChild(sm);let title=document.createElement('h1');title.textContent=strip(cover.data.title);heroContent.appendChild(title);let sub=document.createElement('p');sub.textContent=strip(cover.data.summary);heroContent.appendChild(sub)}
+if(cover){hero.innerHTML='';const heroContent=document.createElement('div');heroContent.className='rt-hero-content';hero.appendChild(heroContent);let sm=document.createElement('small');sm.textContent=entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':'RANCANGAN TEMPATAN · '+entry.code;heroContent.appendChild(sm);let title=document.createElement('h1');title.textContent=strip(cover.data.title);heroContent.appendChild(title);let sub=document.createElement('p');sub.textContent=strip(cover.data.summary);heroContent.appendChild(sub)}
 body.innerHTML='';let section=null,i=0;const prefix='rt11-'+entry.code+'-';
 for(const key of children){const node=nodes[key];if(!node||node.type==='storycover'||node.type==='navigation'||node.type==='credits'||node.type==='attribution')continue;
 if(node.type==='text'&&node.data&&node.data.type==='h2'&&strip(node.data.text)){i++;section=document.createElement('section');section.className='rtchapter';section.id=prefix+i;const category=strip(node.data.text).toLowerCase();if(/matlamat pembangunan/.test(category))section.classList.add('rt-goal');else if(/teras pembangunan/.test(category))section.classList.add('rt-pillars');else if(/konsep pembangunan/.test(category))section.classList.add('rt-concept');let h=document.createElement('h2');h.textContent=strip(node.data.text);section.appendChild(h);body.appendChild(section);let a=document.createElement('a');a.href='#'+section.id;a.dataset.rtNumber=String(i).padStart(2,'0');a.dataset.rtIcon=['⌂','▣','▤','◇','✦','◈','▦'][(i-1)%7];const labels=document.createElement('span');const k=document.createElement('small');k.className='rt-side-label';k.textContent='BAB '+String(i).padStart(2,'0');const n=document.createElement('strong');n.className='rt-side-name';n.textContent=h.textContent.replace(/^\\s*\\d+\\s*[.·:-]\\s*/,'');labels.append(k,n);a.appendChild(labels);a.addEventListener('click',e=>{e.preventDefault();section=document.getElementById(a.hash.slice(1));if(section)section.scrollIntoView({behavior:'smooth',block:'start'})});nav.appendChild(a);continue}
@@ -19554,5 +19554,28 @@ schedule();
  schedule();
 })();
 </script>
+
+<style id="mbsa-header-home-b10">
+/* Header MBSA — action near return-to-portal, no version badge. */
+#rt11-modal.rt-mbsa .rtbar{display:flex!important;align-items:center!important;gap:12px!important;flex-wrap:wrap}
+#rt11-modal.rt-mbsa .rtbar #rt11-label{font-size:clamp(14px,1.15vw,19px)!important;letter-spacing:.005em!important;min-width:0!important}
+#rt11-modal .rtbar #rt11-home[hidden]{display:none!important}
+#rt11-modal.rt-mbsa .rtbar #rt11-home{
+ margin-left:auto!important;display:inline-flex!important;gap:7px;align-items:center;
+ justify-content:center;padding:10px 18px!important;background:linear-gradient(120deg,#e3f3ff,#fff)!important;
+ border:1px solid #b1d6f2!important;border-radius:40px!important;color:#143f74!important;
+ font:700 14px/1.35 Arial,sans-serif!important;cursor:pointer!important;
+ box-shadow:0 5px 13px rgba(4,44,91,.12);
+ transition:transform .2s ease,box-shadow .2s ease!important
+}
+#rt11-modal.rt-mbsa .rtbar #rt11-home:hover{transform:translateY(-2px)!important;box-shadow:0 9px 18px rgba(4,44,91,.22)!important}
+#rt11-modal.rt-mbsa .rtbar #rt11-close{margin-left:0!important}
+#rt11-modal.rt-mbsa .rthero .rt-hero-content small{letter-spacing:.1em!important;text-transform:uppercase!important}
+@media(max-width:700px){
+ #rt11-modal.rt-mbsa .rtbar{gap:8px!important}
+ #rt11-modal.rt-mbsa .rtbar #rt11-label{flex-basis:100%!important;font-size:14px!important}
+ #rt11-modal.rt-mbsa .rtbar #rt11-home{margin-left:0!important;padding:8px 12px!important;font-size:12px!important}
+}
+</style>
 </body>
 </html>
