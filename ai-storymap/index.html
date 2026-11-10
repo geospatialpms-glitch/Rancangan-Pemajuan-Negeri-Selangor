@@ -16072,7 +16072,7 @@ function setUnifiedNav(code){
  home.setAttribute('aria-label','Halaman Utama RT '+code);
  modal.classList.add('rt-unified-header');
 }
-async function open(entry){modal.classList.toggle('rt-mbsa',entry.code==='MBSA');modal.classList.toggle('rt-mbsj',entry.code==='MBSJ');modal.classList.toggle('rt-mbdk',entry.code==='MBDK');oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;setUnifiedNav(entry.code);modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);const rtPalette={"MBSA":"#65C9F1","MBSJ":"#F17BB7","MBDK":"#F7B14E","MPAJ":"#FFB59F","MPKj":"#62D6E8","MPS":"#D7B77B","MPSp":"#F6CA46","MPKL":"#82D4B8","MPKS":"#D4AF37","MPHS":"#9ECF4F","MDSB":"#F6A086","MBPJ":"#9B8EE6"};modal.style.setProperty('--rt-accent2',rtPalette[entry.code]||entry.dark);hero.style.backgroundImage='';label.textContent='RANCANGAN TEMPATAN · '+entry.code;document.getElementById('rt11-home').hidden=false;hero.innerHTML='<div class="rt-hero-content"><small>'+(entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':entry.code==='MBSJ'?'PLANMALAYSIA SELANGOR · Majlis Perbandaran Subang Jaya':entry.code==='MBDK'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Diraja Klang':'PLANMalaysia SELANGOR · STORY MAP INTERAKTIF')+'</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<small class="rt-side-eyebrow">JELAJAH RANCANGAN TEMPATAN</small><strong class="rt-side-title">'+entry.code+'</strong><p class="rt-side-desc">Terokai kandungan Rancangan Tempatan melalui navigasi interaktif.</p><h3>SENARAI BAB</h3>';const ticket=++requestNo;
+async function open(entry){modal.classList.toggle('rt-mbsa',entry.code==='MBSA');modal.classList.toggle('rt-mbsj',entry.code==='MBSJ');modal.classList.toggle('rt-mbdk',entry.code==='MBDK');modal.classList.toggle('rt-mpaj',entry.code==='MPAJ');oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;setUnifiedNav(entry.code);modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);const rtPalette={"MBSA":"#65C9F1","MBSJ":"#F17BB7","MBDK":"#F7B14E","MPAJ":"#FFB59F","MPKj":"#62D6E8","MPS":"#D7B77B","MPSp":"#F6CA46","MPKL":"#82D4B8","MPKS":"#D4AF37","MPHS":"#9ECF4F","MDSB":"#F6A086","MBPJ":"#9B8EE6"};modal.style.setProperty('--rt-accent2',rtPalette[entry.code]||entry.dark);hero.style.backgroundImage='';label.textContent=entry.code==='MPAJ'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Diraja Klang':'RANCANGAN TEMPATAN · '+entry.code;document.getElementById('rt11-home').hidden=false;hero.innerHTML='<div class="rt-hero-content"><small>'+(entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':entry.code==='MBSJ'?'PLANMALAYSIA SELANGOR · Majlis Perbandaran Subang Jaya':entry.code==='MBDK'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Diraja Klang':entry.code==='MPAJ'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Diraja Klang':'PLANMalaysia SELANGOR · STORY MAP INTERAKTIF')+'</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<small class="rt-side-eyebrow">JELAJAH RANCANGAN TEMPATAN</small><strong class="rt-side-title">'+entry.code+'</strong><p class="rt-side-desc">Terokai kandungan Rancangan Tempatan melalui navigasi interaktif.</p><h3>SENARAI BAB</h3>';const ticket=++requestNo;
 try{const url='https://www.arcgis.com/sharing/rest/content/items/'+entry.id+'/data?f=json';const res=await fetch(url,{mode:'cors',credentials:'omit'});if(!res.ok)throw Error('HTTP '+res.status);const data=await res.json();if(data.error||!data.nodes)throw Error((data.error&&data.error.message)||'Data JSON tidak tersedia');if(ticket!==requestNo)return;const nodes=data.nodes,resources=data.resources||{},root=nodes[data.root],children=root&&root.children||[];const cover=children.map(k=>nodes[k]).find(n=>n&&n.type==='storycover');/* Cover ESRI sebenar: storycover.children -> image node -> resourceId, seperti RKK */
 let coverImage='';
 if(cover){
@@ -20880,5 +20880,118 @@ schedule();
 }
 </style>
 
+
+<style id="mpaj-layout-repair-motion-20261110">
+/* MPAJ only: correct the broken narrow / overlapping chapter columns. */
+#rt11-modal.rt-mpaj{
+ --rt-main:#126b65!important;--rt-soft:#e3f5ed!important;--rt-accent2:#f5ad83!important;
+ background-color:#e4f5f1!important;
+ background-image:
+  radial-gradient(circle at 16% 21%,rgba(95,205,185,.29),transparent 39%),
+  radial-gradient(circle at 81% 67%,rgba(108,193,202,.25),transparent 43%),
+  repeating-radial-gradient(circle at 84% 12%,transparent 0 82px,rgba(24,127,117,.095) 83px 85px,transparent 86px 166px),
+  linear-gradient(130deg,#f4fcfa,#d9f0ed 56%,#eaf8f5)!important;
+ background-size:150% 150%,145% 145%,1100px 1100px,100% 100%!important;
+ background-repeat:no-repeat,no-repeat,repeat,no-repeat!important;
+ animation:mpajBackgroundFloat 19s ease-in-out infinite alternate!important;
+}
+@keyframes mpajBackgroundFloat{
+ 0%{background-position:0% 0%,100% 85%,0 0,center}
+ 100%{background-position:82% 58%,19% 7%,240px 165px,center}
+}
+#rt11-modal.rt-mpaj .rtgrid{
+ display:grid!important;grid-template-columns:minmax(240px,300px) minmax(0,1fr)!important;
+ gap:clamp(18px,2.4vw,36px)!important;
+ align-items:start!important;width:min(100%,1580px)!important;max-width:1580px!important;
+ padding:clamp(20px,3vw,42px)!important;margin:0 auto!important;
+ box-sizing:border-box!important;min-width:0!important;
+}
+#rt11-modal.rt-mpaj .rtgrid>.rtside{
+ grid-column:1!important;grid-row:1!important;
+ position:sticky!important;top:calc(var(--rt-header-height,92px) + 15px)!important;
+ width:100%!important;min-width:0!important;max-width:none!important;
+ max-height:calc(100dvh - var(--rt-header-height,92px) - 32px)!important;
+ overflow-y:auto!important;overflow-x:hidden!important;
+ padding:24px 18px!important;border-radius:24px!important;
+ background:linear-gradient(150deg,#fffaf7f5,#e3fbf4ef)!important;
+ box-shadow:0 16px 40px rgba(28,87,80,.12)!important;
+}
+#rt11-modal.rt-mpaj .rtgrid>#rt11-body{
+ grid-column:2!important;grid-row:1!important;
+ min-width:0!important;width:100%!important;max-width:none!important;
+ margin:0!important;padding:0!important;overflow:visible!important;
+ display:block!important;position:relative!important;z-index:1!important;
+}
+#rt11-modal.rt-mpaj #rt11-body>.rtchapter{
+ width:100%!important;min-width:0!important;max-width:none!important;
+ margin:0 0 28px!important;box-sizing:border-box!important;
+ padding:clamp(23px,3vw,48px)!important;border-radius:24px!important;
+ background:linear-gradient(125deg,rgba(255,255,255,.98),rgba(246,254,251,.94))!important;
+ border:1px solid rgba(32,134,122,.15)!important;
+ box-shadow:0 14px 38px rgba(34,89,84,.09)!important;
+ overflow-wrap:break-word!important;
+}
+#rt11-modal.rt-mpaj #rt11-body>.rtchapter :is(.rtpiece,figure,blockquote){
+ max-width:100%!important;min-width:0!important;
+}
+#rt11-modal.rt-mpaj .rtgrid>.rtside .rt-side-title{
+ overflow-wrap:normal!important;word-break:normal!important;
+ letter-spacing:normal!important;writing-mode:horizontal-tb!important;
+}
+#rt11-modal.rt-mpaj .rtgrid>.rtside :is(a,strong,small,span){
+ word-break:normal!important;overflow-wrap:break-word!important;
+ writing-mode:horizontal-tb!important;
+}
+#rt11-modal.rt-mpaj .rthero{
+ background-size:cover!important;background-position:center!important;
+ background-repeat:no-repeat!important;overflow:hidden!important;
+}
+#rt11-modal.rt-mpaj .rthero .rt-hero-content{
+ position:relative!important;z-index:2!important;
+ max-width:1050px!important;width:min(94%,1050px)!important;
+ text-align:center!important;margin:0 auto!important;
+}
+#rt11-modal.rt-mpaj .rthero .rt-hero-content :is(h1,p,small){
+ max-width:100%!important;text-wrap:balance!important;letter-spacing:normal!important;
+}
+#rt11-modal.rt-mpaj .rthero::after{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+ background:
+  radial-gradient(ellipse at 25% 30%,rgba(114,230,213,.26),transparent 43%),
+  radial-gradient(ellipse at 80% 67%,rgba(252,197,136,.18),transparent 44%);
+ background-size:145% 145%;animation:mpajHeroLight 11s ease-in-out infinite alternate!important;
+}
+@keyframes mpajHeroLight{from{background-position:0% 10%;opacity:.5}to{background-position:90% 75%;opacity:1}}
+#rt11-modal.rt-mpaj .rtgrid::before{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+ background:
+  repeating-radial-gradient(circle at 88% 12%,transparent 0 100px,rgba(21,127,115,.08) 101px 103px,transparent 104px 200px),
+  radial-gradient(circle at 28% 68%,rgba(80,182,167,.11),transparent 44%);
+ background-size:1100px 1100px,150% 150%;
+ animation:mpajMapContours 18s linear infinite!important;
+}
+@keyframes mpajMapContours{
+ from{background-position:0 0,0% 0%}
+ to{background-position:190px 140px,85% 40%}
+}
+#rt11-modal.rt-mpaj .rtgrid>.rtside{z-index:3!important}
+@media(max-width:950px){
+ #rt11-modal.rt-mpaj .rtgrid{
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:18px!important;padding:18px!important;
+ }
+ #rt11-modal.rt-mpaj .rtgrid>.rtside{
+  grid-column:1!important;grid-row:1!important;position:relative!important;
+  top:auto!important;max-height:300px!important;
+ }
+ #rt11-modal.rt-mpaj .rtgrid>#rt11-body{
+  grid-column:1!important;grid-row:2!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mpaj,#rt11-modal.rt-mpaj .rtgrid::before,
+ #rt11-modal.rt-mpaj .rthero::after{animation:none!important}
+}
+</style>
 </body>
 </html>
