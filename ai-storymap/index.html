@@ -16096,6 +16096,7 @@ for(const key of children){const node=nodes[key];if(!node||node.type==='storycov
 if(node.type==='text'&&node.data&&node.data.type==='h2'&&strip(node.data.text)){i++;section=document.createElement('section');section.className='rtchapter';section.id=prefix+i;const category=strip(node.data.text).toLowerCase();if(/matlamat pembangunan/.test(category))section.classList.add('rt-goal');else if(/teras pembangunan/.test(category))section.classList.add('rt-pillars');else if(/konsep pembangunan/.test(category))section.classList.add('rt-concept');let h=document.createElement('h2');h.textContent=strip(node.data.text);section.appendChild(h);body.appendChild(section);let a=document.createElement('a');a.href='#'+section.id;a.dataset.rtNumber=String(i).padStart(2,'0');a.dataset.rtIcon=['⌂','▣','▤','◇','✦','◈','▦'][(i-1)%7];const labels=document.createElement('span');const k=document.createElement('small');k.className='rt-side-label';k.textContent='BAB '+String(i).padStart(2,'0');const n=document.createElement('strong');n.className='rt-side-name';n.textContent=h.textContent.replace(/^\\s*\\d+\\s*[.·:-]\\s*/,'');labels.append(k,n);a.appendChild(labels);a.addEventListener('click',e=>{e.preventDefault();section=document.getElementById(a.hash.slice(1));if(section)section.scrollIntoView({behavior:'smooth',block:'start'})});nav.appendChild(a);continue}
 if(!section){section=document.createElement('section');section.className='rtchapter';section.id=prefix+'intro';body.appendChild(section)}
 const el=piece(node,resources,entry.id);if(el)section.appendChild(el)}
+if(entry.code==='MBDK') requestAnimationFrame(()=>window.mbdkEnhanceDynamicRT?.());
 if(entry.code==='MBSA'){
  /* KKB-inspired accordion for Pengertian and Fungsi Multi-Nuclei only */
  const conceptRoot=body.querySelector('.rtchapter.rt-concept');
@@ -20134,62 +20135,167 @@ schedule();
 </style>
 <script id="mbdk-timeline-goal-behaviour-20261110">
 (function(){
- const modal=document.getElementById('rt11-modal');
- const body=document.getElementById('rt11-body');
- if(!modal||!body)return;
- let scheduled=false;
- const lineProgress=()=>{
-  if(modal.hidden||!modal.classList.contains('rt-mbdk'))return;
-  body.querySelectorAll('.mbdk-history-flow').forEach(list=>{
-   const bounds=list.getBoundingClientRect();
-   const viewport=modal.getBoundingClientRect();
-   const progress=Math.min(100,Math.max(0,(viewport.bottom-bounds.top)/(bounds.height+viewport.height*.12)*100));
-   list.style.setProperty('--mbdk-progress',progress+'%');
-   list.querySelectorAll(':scope > li').forEach(li=>{
-    if(li.getBoundingClientRect().top<viewport.bottom-55)li.classList.add('mbdk-visible');
-   });
+'use strict';
+const modal=document.getElementById('rt11-modal'), root=document.getElementById('rt11-body');
+if(!modal||!root)return;
+const clean=s=>(s||'').replace(/\s+/g,' ').trim();
+const words={
+ history:/zaman pra kesultanan|zaman pembentukan kesultanan|zaman british|kemerdekaan\s*&|pemodenan\s*&|era kontena/i,
+ goal:/pertumbuhan ekonomi mampan|kompak,\s*inklusif|bandar rendah karbon|bandar warisan,\s*kebudayaan|pelancongan/i
+};
+const isMBDK=()=>!modal.hidden&&modal.classList.contains('rt-mbdk');
+let requested=false;
+function emphasize(element){
+ if(element.dataset.mbdkEmphasis==='1')return;
+ element.dataset.mbdkEmphasis='1';
+ /* Keep the original complete wording. Add strong only to existing text, never replace it. */
+ const walker=document.createTreeWalker(element,NodeFilter.SHOW_TEXT);
+ let node;
+ while(node=walker.nextNode()){
+  if(!node.textContent.trim() || node.parentElement.closest('strong,b,script,style'))continue;
+  const match=node.textContent.match(/^(\s*[^:]{8,120}:)/);
+  if(!match)continue;
+  const bold=document.createElement('strong');
+  bold.className='mbdk-highlight-lead';
+  bold.textContent=match[1].trim();
+  node.textContent=node.textContent.slice(match[1].length);
+  node.parentNode.insertBefore(bold,node);
+  break;
+ }
+}
+function decorate(){
+ requested=false;
+ if(!isMBDK())return;
+ const chapters=[...root.querySelectorAll('.rtchapter')];
+ chapters.forEach(chapter=>{
+  const goal=chapter.classList.contains('rt-goal')||/matlamat pembangunan/i.test(chapter.querySelector('h2')?.textContent||'');
+  if(goal)chapter.classList.add('mbdk-goal-chapter');
+  const lists=[...chapter.querySelectorAll('ol,ul')];
+  lists.forEach(list=>{
+   const entries=[...list.children].filter(el=>el.matches('li'));
+   if(!entries.length)return;
+   const historyCount=entries.filter(el=>words.history.test(clean(el.textContent))).length;
+   const goalCount=entries.filter(el=>words.goal.test(clean(el.textContent))).length;
+   if(historyCount>=2 || (historyCount>=1&&/sejarah|kronologi|latar belakang/i.test(chapter.textContent))){
+    list.classList.add('mbdk-history-flow','mbdk-history-track');
+    entries.forEach(el=>{el.classList.add('mbdk-history-entry');emphasize(el)});
+   }else if((goal||goalCount>=2)&&goalCount>=1){
+    list.classList.add('mbdk-goal-list');
+    entries.forEach(el=>{el.classList.add('mbdk-goal-entry');emphasize(el)});
+   }
   });
- };
- const enhance=()=>{
-  scheduled=false;
-  if(modal.hidden||!modal.classList.contains('rt-mbdk'))return;
-  const chapters=[...body.querySelectorAll('.rtchapter')];
-  chapters.forEach(chapter=>{
-   chapter.querySelectorAll('ol:not(.mbdk-history-flow):not(.mbdk-goal-list),ul:not(.mbdk-history-flow):not(.mbdk-goal-list)').forEach(list=>{
-    const items=[...list.children].filter(el=>el.tagName==='LI');
-    if(items.length<3)return;
-    const text=items.map(el=>el.textContent).join(' ').toLowerCase();
-    const history=/zaman (pra|pembentukan|british)|kesultanan melayu|era kontena/.test(text) &&
-      /british|kemerdekaan|kontena/.test(text);
-    const goal=chapter.classList.contains('rt-goal') &&
-      /ekonomi|inklusif|karbon|warisan|pelancongan/.test(text);
-    if(history){list.classList.add('mbdk-history-flow')}
-    if(goal){list.classList.add('mbdk-goal-list')}
-    if(history||goal){
-     items.forEach(li=>{
-      /* Preserve all source wording; emphasize only an existing lead-in phrase. */
-      if(li.querySelector('strong,b'))return;
-      const leaf=[...li.childNodes].find(n=>n.nodeType===3&&n.textContent.trim().length>10);
-      if(!leaf)return;
-      const match=leaf.textContent.match(/^([\s\u00a0]*[^:]{7,110}:)/);
-      if(!match)return;
-      const b=document.createElement('strong');b.textContent=match[1].trim();
-      leaf.textContent=leaf.textContent.slice(match[1].length);
-      li.insertBefore(b,leaf);
-     });
-    }
-   });
+  /* ArcGIS sometimes represents every bullet as a separate paragraph rather than UL/OL. */
+  let foundHistory=0,foundGoal=0;
+  [...chapter.querySelectorAll('.rtpiece')].forEach(piece=>{
+   if(piece.closest('.mbdk-history-flow,.mbdk-goal-list'))return;
+   const blocks=[...piece.querySelectorAll('p,div,blockquote')].filter(el=>
+     !el.querySelector('p,div,blockquote,li,figure,table') && clean(el.textContent).length>=24
+   );
+   const sample=clean(piece.textContent);
+   const single=blocks.length===1?blocks[0]:null;
+   if(words.history.test(sample) && sample.length<950 && !piece.querySelector('img,figure')){
+    piece.classList.add('mbdk-history-piece','mbdk-history-entry');
+    foundHistory++;if(single)emphasize(single);
+   }else if(goal&&words.goal.test(sample)&&sample.length<950&&!piece.querySelector('img,figure,blockquote')){
+    piece.classList.add('mbdk-goal-piece','mbdk-goal-entry');
+    foundGoal++;if(single)emphasize(single);
+   }
   });
-  lineProgress();
- };
- const schedule=()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(enhance)};
- const observer=new MutationObserver(schedule);
- observer.observe(body,{childList:true,subtree:false});
- modal.addEventListener('scroll',lineProgress,{passive:true});
- window.addEventListener('resize',lineProgress,{passive:true});
- schedule();
+  /* Under a single ArcGIS text piece, paragraphs may hold all entries. */
+  chapter.querySelectorAll('.rtpiece:not(.mbdk-history-piece):not(.mbdk-goal-piece)').forEach(piece=>{
+   if(piece.querySelector('.mbdk-history-flow,.mbdk-goal-list'))return;
+   const paragraphs=[...piece.querySelectorAll('p')].filter(p=>!p.querySelector('li,p'));
+   const hitsHistory=paragraphs.filter(p=>words.history.test(clean(p.textContent)));
+   const hitsGoal=paragraphs.filter(p=>words.goal.test(clean(p.textContent)));
+   if(hitsHistory.length>=2)hitsHistory.forEach(p=>{p.classList.add('mbdk-history-paragraph','mbdk-history-entry');emphasize(p)});
+   if(goal&&hitsGoal.length>=2)hitsGoal.forEach(p=>{p.classList.add('mbdk-goal-paragraph','mbdk-goal-entry');emphasize(p)});
+  });
+  if(foundHistory>=2)chapter.classList.add('mbdk-history-chapter');
+  if(foundGoal>=2)chapter.classList.add('mbdk-goal-chapter');
+ });
+ updateProgress();
+}
+function updateProgress(){
+ if(!isMBDK())return;
+ root.querySelectorAll('.mbdk-history-flow').forEach(flow=>{
+  const box=flow.getBoundingClientRect(),view=modal.getBoundingClientRect();
+  flow.style.setProperty('--mbdk-progress',Math.max(0,Math.min(100,(view.bottom-box.top)/Math.max(1,box.height)*100))+'%');
+ });
+ root.querySelectorAll('.mbdk-history-entry,.mbdk-goal-entry').forEach(el=>{
+  const b=el.getBoundingClientRect(),v=modal.getBoundingClientRect();
+  if(b.top<v.bottom-20)el.classList.add('mbdk-visible');
+ });
+}
+function schedule(){if(requested)return;requested=true;requestAnimationFrame(decorate)}
+new MutationObserver(mutations=>{
+ if(mutations.some(m=>m.addedNodes.length && [...m.addedNodes].some(n=>n.nodeType===1&&n.matches?.('.rtchapter,.rtpiece'))))schedule();
+}).observe(root,{childList:true,subtree:true});
+modal.addEventListener('scroll',updateProgress,{passive:true});
+window.addEventListener('resize',updateProgress,{passive:true});
+window.mbdkEnhanceDynamicRT=schedule;
+schedule();
 })();
 </script>
+
+
+<style id="mbdk-timeline-goal-strong-fix-20261110">
+/* Dynamic ArcGIS text is not guaranteed to be UL / OL; handle either structure. */
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-piece,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-paragraph,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-entry:not(li),
+#rt11-modal.rt-mbdk #rt11-body .mbdk-goal-piece,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-goal-paragraph {
+ display:block!important;position:relative!important;max-width:none!important;
+ border-radius:20px!important;border:1px solid rgba(160,66,45,.24)!important;
+ background:linear-gradient(115deg,#fffefa,#fff1e5)!important;
+ padding:clamp(22px,2.4vw,31px)!important;
+ margin:16px 0!important;
+ box-shadow:0 9px 24px rgba(119,62,39,.09)!important;
+ line-height:1.7!important;text-align:left!important;word-spacing:normal!important;
+ transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-piece,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-paragraph{
+ border-left:5px solid #a54b37!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-entry:hover,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-goal-entry:hover{
+ transform:translateY(-4px)!important;border-color:#d29a5c!important;
+ box-shadow:0 17px 34px rgba(119,62,39,.16)!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-piece .mbdk-highlight-lead,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-goal-piece .mbdk-highlight-lead,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-entry .mbdk-highlight-lead,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-goal-entry .mbdk-highlight-lead{
+ color:#8c382b!important;font-weight:900!important;
+ background:linear-gradient(transparent 65%,rgba(235,187,96,.31) 65%);
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-flow>li,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-goal-list>li{
+ opacity:1!important;transform:none!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-flow>li.mbdk-visible{
+ animation:mbdkFlowArrival .65s cubic-bezier(.2,.8,.2,1) both!important;
+}
+@keyframes mbdkFlowArrival{from{opacity:.65;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-goal-chapter .mbdk-goal-entry{
+ border-top:4px solid #c58a51!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-goal-chapter .mbdk-goal-entry p,
+#rt11-modal.rt-mbdk #rt11-body .mbdk-history-entry p{
+ font-size:clamp(17px,1.28vw,21px)!important;line-height:1.7!important;
+ letter-spacing:normal!important;word-spacing:normal!important;text-align:left!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-goal-chapter>.rtpiece:has(blockquote) blockquote{
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;font-weight:800!important;
+ font-size:clamp(23px,2.05vw,34px)!important;line-height:1.52!important;
+ letter-spacing:-.015em!important;word-spacing:normal!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbdk #rt11-body .mbdk-history-entry,
+ #rt11-modal.rt-mbdk #rt11-body .mbdk-goal-entry{animation:none!important;transition:none!important}
+}
+</style>
 
 </body>
 </html>
