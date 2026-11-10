@@ -16049,7 +16049,7 @@ else if(node.type==='text'){if(d.type==='h2')return null;const tag=/^h[3456]$/.t
 else return null;return wrap};
 function close(){requestNo++;modal.hidden=true;document.body.style.overflow='';window.scrollTo(0,oldScroll)}
 document.getElementById('rt11-close').addEventListener('click',close);document.getElementById('rt11-home').addEventListener('click',()=>{if(modal.classList.contains('rt-mbsa')||modal.classList.contains('rt-mbsj'))modal.scrollTo({top:0,behavior:'smooth'});});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});
-async function open(entry){modal.classList.toggle('rt-mbsa',entry.code==='MBSA');modal.classList.toggle('rt-mbsj',entry.code==='MBSJ');oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);const rtPalette={"MBSA":"#65C9F1","MBSJ":"#F17BB7","MBDK":"#F7B14E","MPAJ":"#FFB59F","MPKj":"#62D6E8","MPS":"#D7B77B","MPSp":"#F6CA46","MPKL":"#82D4B8","MPKS":"#D4AF37","MPHS":"#9ECF4F","MDSB":"#F6A086","MBPJ":"#9B8EE6"};modal.style.setProperty('--rt-accent2',rtPalette[entry.code]||entry.dark);hero.style.backgroundImage='';label.textContent='RANCANGAN TEMPATAN · '+entry.code;document.getElementById('rt11-home').hidden=entry.code!=='MBSA'&&entry.code!=='MBSJ';hero.innerHTML='<div class="rt-hero-content"><small>'+(entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':entry.code==='MBSJ'?'PLANMALAYSIA SELANGOR · Majlis Perbandaran Subang Jaya':'PLANMalaysia SELANGOR · STORY MAP INTERAKTIF')+'</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<small class="rt-side-eyebrow">JELAJAH RANCANGAN TEMPATAN</small><strong class="rt-side-title">'+entry.code+'</strong><p class="rt-side-desc">Terokai kandungan Rancangan Tempatan melalui navigasi interaktif.</p><h3>SENARAI BAB</h3>';const ticket=++requestNo;
+async function open(entry){modal.classList.toggle('rt-mbsa',entry.code==='MBSA');modal.classList.toggle('rt-mbsj',entry.code==='MBSJ');modal.classList.toggle('rt-mbdk',entry.code==='MBDK');oldScroll=window.scrollY;document.body.style.overflow='hidden';modal.hidden=false;modal.scrollTop=0;modal.style.setProperty('--rt-main',entry.dark);modal.style.setProperty('--rt-soft',entry.soft);const rtPalette={"MBSA":"#65C9F1","MBSJ":"#F17BB7","MBDK":"#F7B14E","MPAJ":"#FFB59F","MPKj":"#62D6E8","MPS":"#D7B77B","MPSp":"#F6CA46","MPKL":"#82D4B8","MPKS":"#D4AF37","MPHS":"#9ECF4F","MDSB":"#F6A086","MBPJ":"#9B8EE6"};modal.style.setProperty('--rt-accent2',rtPalette[entry.code]||entry.dark);hero.style.backgroundImage='';label.textContent='RANCANGAN TEMPATAN · '+entry.code;document.getElementById('rt11-home').hidden=entry.code!=='MBSA'&&entry.code!=='MBSJ'&&entry.code!=='MBDK';hero.innerHTML='<div class="rt-hero-content"><small>'+(entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':entry.code==='MBSJ'?'PLANMALAYSIA SELANGOR · Majlis Perbandaran Subang Jaya':entry.code==='MBDK'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Diraja Klang':'PLANMalaysia SELANGOR · STORY MAP INTERAKTIF')+'</small><h1>Rancangan Tempatan '+entry.code+'</h1></div>';body.innerHTML='<p class="rtstatus">Memuatkan kandungan dan rajah asal ArcGIS StoryMaps…</p>';nav.innerHTML='<small class="rt-side-eyebrow">JELAJAH RANCANGAN TEMPATAN</small><strong class="rt-side-title">'+entry.code+'</strong><p class="rt-side-desc">Terokai kandungan Rancangan Tempatan melalui navigasi interaktif.</p><h3>SENARAI BAB</h3>';const ticket=++requestNo;
 try{const url='https://www.arcgis.com/sharing/rest/content/items/'+entry.id+'/data?f=json';const res=await fetch(url,{mode:'cors',credentials:'omit'});if(!res.ok)throw Error('HTTP '+res.status);const data=await res.json();if(data.error||!data.nodes)throw Error((data.error&&data.error.message)||'Data JSON tidak tersedia');if(ticket!==requestNo)return;const nodes=data.nodes,resources=data.resources||{},root=nodes[data.root],children=root&&root.children||[];const cover=children.map(k=>nodes[k]).find(n=>n&&n.type==='storycover');/* Cover ESRI sebenar: storycover.children -> image node -> resourceId, seperti RKK */
 let coverImage='';
 if(cover){
@@ -16067,7 +16067,7 @@ if(entry.code==='MBSJ'){
  hero.style.backgroundSize='cover';hero.style.backgroundPosition='center center';hero.style.backgroundRepeat='no-repeat';
 }
 
-if(cover){hero.innerHTML='';const heroContent=document.createElement('div');heroContent.className='rt-hero-content';hero.appendChild(heroContent);let sm=document.createElement('small');sm.textContent=entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':entry.code==='MBSJ'?'PLANMALAYSIA SELANGOR · Majlis Perbandaran Subang Jaya':'RANCANGAN TEMPATAN · '+entry.code;heroContent.appendChild(sm);let title=document.createElement('h1');title.textContent=strip(cover.data.title);heroContent.appendChild(title);let sub=document.createElement('p');sub.textContent=strip(cover.data.summary);heroContent.appendChild(sub)}
+if(cover){hero.innerHTML='';const heroContent=document.createElement('div');heroContent.className='rt-hero-content';hero.appendChild(heroContent);let sm=document.createElement('small');sm.textContent=entry.code==='MBSA'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Shah Alam':entry.code==='MBSJ'?'PLANMALAYSIA SELANGOR · Majlis Perbandaran Subang Jaya':entry.code==='MBDK'?'PLANMALAYSIA SELANGOR · Majlis Bandaraya Diraja Klang':'RANCANGAN TEMPATAN · '+entry.code;heroContent.appendChild(sm);let title=document.createElement('h1');title.textContent=strip(cover.data.title);heroContent.appendChild(title);let sub=document.createElement('p');sub.textContent=strip(cover.data.summary);heroContent.appendChild(sub)}
 body.innerHTML='';let section=null,i=0;const prefix='rt11-'+entry.code+'-';
 for(const key of children){const node=nodes[key];if(!node||node.type==='storycover'||node.type==='navigation'||node.type==='credits'||node.type==='attribution')continue;
 if(node.type==='text'&&node.data&&node.data.type==='h2'&&strip(node.data.text)){i++;section=document.createElement('section');section.className='rtchapter';section.id=prefix+i;const category=strip(node.data.text).toLowerCase();if(/matlamat pembangunan/.test(category))section.classList.add('rt-goal');else if(/teras pembangunan/.test(category))section.classList.add('rt-pillars');else if(/konsep pembangunan/.test(category))section.classList.add('rt-concept');let h=document.createElement('h2');h.textContent=strip(node.data.text);section.appendChild(h);body.appendChild(section);let a=document.createElement('a');a.href='#'+section.id;a.dataset.rtNumber=String(i).padStart(2,'0');a.dataset.rtIcon=['⌂','▣','▤','◇','✦','◈','▦'][(i-1)%7];const labels=document.createElement('span');const k=document.createElement('small');k.className='rt-side-label';k.textContent='BAB '+String(i).padStart(2,'0');const n=document.createElement('strong');n.className='rt-side-name';n.textContent=h.textContent.replace(/^\\s*\\d+\\s*[.·:-]\\s*/,'');labels.append(k,n);a.appendChild(labels);a.addEventListener('click',e=>{e.preventDefault();section=document.getElementById(a.hash.slice(1));if(section)section.scrollIntoView({behavior:'smooth',block:'start'})});nav.appendChild(a);continue}
@@ -19801,6 +19801,84 @@ schedule();
 @media(max-width:480px){
  #rt11-modal.rt-mbsa .rtbar>.rt-mbsa-top-links{gap:10px!important}
  #rt11-modal.rt-mbsa .rtbar>.rt-mbsa-top-links a{font-size:11px!important}
+}
+</style>
+
+<style id="rt-mbdk-harmony-motion-20261110">
+/* MBDK-only: MBSA reading scale, readable goal, gold/copper moving geographic backdrop. */
+#rt11-modal.rt-mbdk{
+ background:#f9f0eb!important;
+ background-image:
+ radial-gradient(ellipse at 17% 12%,rgba(249,163,95,.33),transparent 45%),
+ radial-gradient(ellipse at 82% 74%,rgba(230,120,91,.24),transparent 47%),
+ repeating-radial-gradient(circle at 91% 15%,transparent 0 62px,rgba(173,78,45,.15) 63px 65px,transparent 66px 128px),
+ linear-gradient(130deg,#fff5eb,#f7e5dc 52%,#f5e9ef)!important;
+ background-size:140% 140%,140% 140%,950px 950px,100% 100%!important;
+ animation:mbdkSceneryDrift 15s ease-in-out infinite alternate!important;
+}
+@keyframes mbdkSceneryDrift{0%{background-position:0% 0%,100% 100%,0 0,center}100%{background-position:75% 40%,17% 25%,280px 175px,center}}
+#rt11-modal.rt-mbdk .rtgrid{position:relative!important;isolation:isolate!important}
+#rt11-modal.rt-mbdk .rtgrid:before{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+ background-image:radial-gradient(circle,rgba(178,64,35,.28) 0 3px,transparent 4px),
+ linear-gradient(37deg,transparent 49.65%,rgba(177,78,44,.17) 49.9%,rgba(177,78,44,.17) 50.1%,transparent 50.35%);
+ background-size:250px 250px,220px 220px;
+ animation:mbdkLinesFlow 14s linear infinite!important;
+}
+@keyframes mbdkLinesFlow{from{background-position:0 0,0 0}to{background-position:250px -250px,-220px 220px}}
+#rt11-modal.rt-mbdk #rt11-body>.rtchapter>h2{
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;font-size:clamp(39px,3.05vw,58px)!important;
+ font-weight:800!important;line-height:1.18!important;letter-spacing:-.025em!important;text-align:left!important;
+}
+#rt11-modal.rt-mbdk #rt11-body>.rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>p,
+#rt11-modal.rt-mbdk #rt11-body>.rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>div:not(:has(h3,h4,h5,h6,ul,ol,article,blockquote)){
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;font-size:clamp(19px,1.32vw,23px)!important;
+ line-height:1.72!important;letter-spacing:normal!important;word-spacing:normal!important;
+ text-align:justify!important;text-align-last:left!important;
+}
+#rt11-modal.rt-mbdk #rt11-body>.rtchapter{padding:clamp(27px,3.5vw,58px)!important;border-radius:25px!important}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal .rtpiece:has(blockquote){width:100%!important;max-width:none!important;margin:25px auto 35px!important}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal .rtpiece blockquote{
+ display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+ width:100%!important;min-height:260px!important;margin:0!important;
+ padding:clamp(32px,4.8vw,70px)!important;border:2px solid #e6ad81!important;border-radius:23px!important;
+ background:linear-gradient(125deg,#933a2e,#b6583d 53%,#9b4733)!important;color:#fff9ef!important;
+ font-family:Georgia,serif!important;font-size:clamp(26px,2.65vw,43px)!important;font-weight:700!important;
+ line-height:1.38!important;letter-spacing:normal!important;word-spacing:normal!important;
+ text-align:center!important;text-align-last:center!important;text-wrap:balance!important;
+ box-shadow:0 18px 40px rgba(126,55,33,.16)!important;overflow-wrap:break-word!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal .rtpiece blockquote :is(p,div,span,strong,b){
+ font:inherit!important;line-height:inherit!important;letter-spacing:normal!important;
+ text-align:center!important;text-align-last:center!important;word-spacing:normal!important;
+}
+#rt11-modal.rt-mbdk .rthero{position:relative!important;isolation:isolate!important}
+#rt11-modal.rt-mbdk .rthero:after{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background:radial-gradient(ellipse at 20% 30%,rgba(255,185,105,.21),transparent 40%),
+ radial-gradient(ellipse at 80% 70%,rgba(255,132,119,.15),transparent 43%);
+ background-size:145% 145%;animation:mbdkHeroGlow 9s ease-in-out infinite alternate!important;
+}
+@keyframes mbdkHeroGlow{from{background-position:0 0;opacity:.4}to{background-position:95% 90%;opacity:1}}
+#rt11-modal.rt-mbdk .rthero .rt-hero-content{position:relative!important;z-index:2!important}
+#rt11-modal.rt-mbdk .rthero .mbsa-hero-explore{
+ position:absolute!important;bottom:clamp(18px,4vh,45px)!important;left:50%!important;z-index:9!important;
+ transform:translateX(-50%)!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ border:1px solid rgba(255,255,255,.65)!important;border-radius:100px!important;
+ padding:13px 24px!important;background:rgba(37,57,78,.79)!important;color:#fff!important;
+ backdrop-filter:blur(10px);font:800 12px/1.4 Arial,sans-serif!important;letter-spacing:.12em!important;
+ cursor:pointer!important;animation:mbdkCtaPulse 2.9s ease-in-out infinite!important;
+}
+@keyframes mbdkCtaPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,208,148,.5),0 9px 25px rgba(0,0,0,.25)}50%{box-shadow:0 0 0 13px rgba(255,208,148,0),0 9px 25px rgba(0,0,0,.25)}}
+#rt11-modal.rt-mbdk .rthero .mbsa-hero-explore:hover{background:rgba(126,63,52,.95)!important}
+@media(max-width:720px){
+ #rt11-modal.rt-mbdk #rt11-body>.rtchapter>h2{font-size:clamp(31px,6vw,43px)!important}
+ #rt11-modal.rt-mbdk #rt11-body>.rtchapter>.rtpiece:not(:has(img,figure,picture,iframe,svg,video))>p{font-size:17px!important}
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal .rtpiece blockquote{font-size:clamp(22px,5.2vw,33px)!important;padding:30px 19px!important;min-height:210px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbdk,#rt11-modal.rt-mbdk .rtgrid:before,
+ #rt11-modal.rt-mbdk .rthero:after,#rt11-modal.rt-mbdk .mbsa-hero-explore{animation:none!important}
 }
 </style>
 </body>
