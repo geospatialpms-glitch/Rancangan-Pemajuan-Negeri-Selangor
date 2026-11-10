@@ -23,57 +23,7 @@ frame.addEventListener('load',()=>{
  try{
   const doc=frame.contentDocument;
   if(!doc)return;
-  /* Match RT MBSJ's unified header without affecting MBSA chapters. */
-  (function(){
-   const win=frame.contentWindow;
-   const style=doc.createElement('style');
-   style.id='rt-mbsa-header-navigation-unified-20261110';
-   style.textContent=`
-   #rt11-modal.rt-mbsa>.rtbar{display:flex!important;align-items:center!important;gap:clamp(7px,1.2vw,16px)!important;flex-wrap:wrap!important;min-height:90px!important;height:auto!important;padding:14px clamp(14px,3vw,44px)!important;position:sticky!important;top:0!important;z-index:100!important}
-   #rt11-modal.rt-mbsa>.rtbar #rt11-label{flex:1 1 270px!important;min-width:0!important;margin-right:0!important;letter-spacing:.005em!important}
-   #rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links{display:flex!important;align-items:center!important;gap:clamp(7px,1.25vw,17px)!important;margin-left:auto!important;flex-wrap:wrap!important}
-   #rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links a{font:700 clamp(11px,.85vw,14px)/1.4 Arial,sans-serif!important;color:#fff8ed!important;text-decoration:none!important;white-space:nowrap!important;padding:7px 4px!important}
-   #rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links a:hover{text-decoration:underline!important;color:#e6f7ff!important}
-   #rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links a:focus-visible{outline:2px solid #e6f7ff!important;outline-offset:4px!important;border-radius:6px!important}
-   #rt11-modal.rt-mbsa>.rtbar #rt11-home{display:inline-flex!important;visibility:visible!important;margin-left:0!important;white-space:nowrap!important}
-   #rt11-modal.rt-mbsa>.rtbar #rt11-close{margin-left:0!important;white-space:nowrap!important}
-   #rt11-modal.rt-mbsa{--rt-header-height:90px!important}
-   #rt11-modal.rt-mbsa .rthero{height:calc(100dvh - var(--rt-header-height))!important;min-height:420px!important}
-   @media(max-width:950px){#rt11-modal.rt-mbsa>.rtbar #rt11-label{flex-basis:100%!important}#rt11-modal.rt-mbsa{--rt-header-height:138px!important}}
-   @media(max-width:580px){#rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links{order:3!important;width:100%!important;justify-content:center!important}#rt11-modal.rt-mbsa>.rtbar #rt11-home{margin-left:auto!important}#rt11-modal.rt-mbsa{--rt-header-height:178px!important}#rt11-modal.rt-mbsa .rthero{min-height:360px!important}}
-   `;
-   doc.head.appendChild(style);
-   const modal=doc.getElementById('rt11-modal');
-   if(!modal)return;
-   const toolbar=modal.querySelector('.rtbar');
-   if(!toolbar)return;
-   function ensure(){
-    if(!modal.classList.contains('rt-mbsa'))return;
-    const home=doc.getElementById('rt11-home');
-    if(home){
-     home.hidden=false;home.removeAttribute('hidden');
-     home.setAttribute('aria-label','Halaman Utama RT MBSA');
-     home.onclick=function(e){e.preventDefault();e.stopImmediatePropagation();modal.scrollTo({top:0,behavior:'smooth'});};
-    }
-    if(!toolbar.querySelector('.rt-mbsa-top-links')){
-     const nav=doc.createElement('nav');nav.className='rt-mbsa-top-links';
-     nav.setAttribute('aria-label','Navigasi Rancangan Tempatan MBSA');
-     const items=[
-      ['‹ Sebelum',new URL('./MDSB.html',window.location.href).href],
-      ['Portal Utama',new URL('../index.html#panel-3',window.location.href).href],
-      ['Seterusnya ›',new URL('./MBPJ.html',window.location.href).href]
-     ];
-     for(const [label,url] of items){
-      const link=doc.createElement('a');link.href=url;link.textContent=label;link.target='_top';nav.appendChild(link);
-     }
-     toolbar.insertBefore(nav,home||doc.getElementById('rt11-close'));
-    }
-   }
-   ensure();
-   let scheduled=false;
-   new win.MutationObserver(()=>{if(scheduled)return;scheduled=true;win.requestAnimationFrame(()=>{scheduled=false;ensure()})}).observe(modal,{attributes:true,attributeFilter:['class','hidden']});
-  })();
-
+  /* Shared RT navigation is now rendered natively by index.html. */
   const style=doc.createElement('style');
   style.id='rt-page-MBSA-overrides';
   style.textContent='/* Styles applied after RT source content loads */';
