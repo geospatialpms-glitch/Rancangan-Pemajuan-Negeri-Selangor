@@ -6,25 +6,15 @@
 <meta name="theme-color" content="#701c35">
 <title>Story Map RT MBSA | Rancangan Pemajuan Negeri Selangor</title>
 <style>
-:root{font-family:Arial,sans-serif;color:#fff7ec;background:#3e0d23}
-*{box-sizing:border-box}html,body{height:100%;margin:0;overflow:hidden}
-.rt-toolbar{height:50px;display:flex;align-items:center;gap:14px;justify-content:space-between;padding:6px 16px;background:linear-gradient(95deg,#500b24,#882e46);border-bottom:2px solid #e1b96c}
-.rt-toolbar b{font-size:13px;letter-spacing:.02em}.rt-toolbar a{color:#fff4d6;font-size:12px;text-decoration:none;white-space:nowrap}.rt-toolbar a:hover{text-decoration:underline}
-.rt-toolbar nav{display:flex;align-items:center;gap:16px}
-#rt-story-frame{display:block;width:100%;height:calc(100dvh - 50px);border:0;background:#fff9f4}
-@media(max-width:650px){.rt-toolbar{padding:6px 9px;gap:7px}.rt-toolbar b{font-size:11px}.rt-toolbar nav{gap:8px}.rt-toolbar nav a{font-size:10px}}
+/* Single, full-screen RT MBSA view: navigation belongs in the blue header. */
+*{box-sizing:border-box}
+html,body{height:100%;width:100%;margin:0;overflow:hidden;background:#edf5fc}
+#rt-story-frame{display:block;width:100%;height:100dvh;border:0;background:#edf5fc}
 </style>
 </head>
 <body data-rt-page="MBSA">
-<header class="rt-toolbar">
-<b>RANCANGAN TEMPATAN · MBSA</b>
-<nav aria-label="Navigasi halaman RT">
-<a href="./MDSB.html" title="RT sebelumnya">‹ Sebelum</a>
-<a href="../index.html#panel-3">Portal Utama</a>
-<a href="./MBPJ.html" title="RT seterusnya">Seterusnya ›</a>
-</nav>
-</header>
-<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Shah Alam" src="../index.html?rt_page=MBSA" loading="eager"></iframe>
+<!-- Navigation links now appear inside the blue MBSA header. -->
+<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Shah Alam" src="../index.html?rt_page=MBSA&amp;v=20261110-mbsa-nav-v1" loading="eager"></iframe>
 <script>
 /* Halaman khusus MBSA: letakkan penyesuaian gaya untuk RT ini di bawah.
    Kandungan asas masih dibaca daripada portal utama agar maklumat asal terpelihara. */
@@ -33,6 +23,57 @@ frame.addEventListener('load',()=>{
  try{
   const doc=frame.contentDocument;
   if(!doc)return;
+  /* Match RT MBSJ's unified header without affecting MBSA chapters. */
+  (function(){
+   const win=frame.contentWindow;
+   const style=doc.createElement('style');
+   style.id='rt-mbsa-header-navigation-unified-20261110';
+   style.textContent=`
+   #rt11-modal.rt-mbsa>.rtbar{display:flex!important;align-items:center!important;gap:clamp(7px,1.2vw,16px)!important;flex-wrap:wrap!important;min-height:90px!important;height:auto!important;padding:14px clamp(14px,3vw,44px)!important;position:sticky!important;top:0!important;z-index:100!important}
+   #rt11-modal.rt-mbsa>.rtbar #rt11-label{flex:1 1 270px!important;min-width:0!important;margin-right:0!important;letter-spacing:.005em!important}
+   #rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links{display:flex!important;align-items:center!important;gap:clamp(7px,1.25vw,17px)!important;margin-left:auto!important;flex-wrap:wrap!important}
+   #rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links a{font:700 clamp(11px,.85vw,14px)/1.4 Arial,sans-serif!important;color:#fff8ed!important;text-decoration:none!important;white-space:nowrap!important;padding:7px 4px!important}
+   #rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links a:hover{text-decoration:underline!important;color:#e6f7ff!important}
+   #rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links a:focus-visible{outline:2px solid #e6f7ff!important;outline-offset:4px!important;border-radius:6px!important}
+   #rt11-modal.rt-mbsa>.rtbar #rt11-home{display:inline-flex!important;visibility:visible!important;margin-left:0!important;white-space:nowrap!important}
+   #rt11-modal.rt-mbsa>.rtbar #rt11-close{margin-left:0!important;white-space:nowrap!important}
+   #rt11-modal.rt-mbsa{--rt-header-height:90px!important}
+   #rt11-modal.rt-mbsa .rthero{height:calc(100dvh - var(--rt-header-height))!important;min-height:420px!important}
+   @media(max-width:950px){#rt11-modal.rt-mbsa>.rtbar #rt11-label{flex-basis:100%!important}#rt11-modal.rt-mbsa{--rt-header-height:138px!important}}
+   @media(max-width:580px){#rt11-modal.rt-mbsa>.rtbar .rt-mbsa-top-links{order:3!important;width:100%!important;justify-content:center!important}#rt11-modal.rt-mbsa>.rtbar #rt11-home{margin-left:auto!important}#rt11-modal.rt-mbsa{--rt-header-height:178px!important}#rt11-modal.rt-mbsa .rthero{min-height:360px!important}}
+   `;
+   doc.head.appendChild(style);
+   const modal=doc.getElementById('rt11-modal');
+   if(!modal)return;
+   const toolbar=modal.querySelector('.rtbar');
+   if(!toolbar)return;
+   function ensure(){
+    if(!modal.classList.contains('rt-mbsa'))return;
+    const home=doc.getElementById('rt11-home');
+    if(home){
+     home.hidden=false;home.removeAttribute('hidden');
+     home.setAttribute('aria-label','Halaman Utama RT MBSA');
+     home.onclick=function(e){e.preventDefault();e.stopImmediatePropagation();modal.scrollTo({top:0,behavior:'smooth'});};
+    }
+    if(!toolbar.querySelector('.rt-mbsa-top-links')){
+     const nav=doc.createElement('nav');nav.className='rt-mbsa-top-links';
+     nav.setAttribute('aria-label','Navigasi Rancangan Tempatan MBSA');
+     const items=[
+      ['‹ Sebelum',new URL('./MDSB.html',window.location.href).href],
+      ['Portal Utama',new URL('../index.html#panel-3',window.location.href).href],
+      ['Seterusnya ›',new URL('./MBPJ.html',window.location.href).href]
+     ];
+     for(const [label,url] of items){
+      const link=doc.createElement('a');link.href=url;link.textContent=label;link.target='_top';nav.appendChild(link);
+     }
+     toolbar.insertBefore(nav,home||doc.getElementById('rt11-close'));
+    }
+   }
+   ensure();
+   let scheduled=false;
+   new win.MutationObserver(()=>{if(scheduled)return;scheduled=true;win.requestAnimationFrame(()=>{scheduled=false;ensure()})}).observe(modal,{attributes:true,attributeFilter:['class','hidden']});
+  })();
+
   const style=doc.createElement('style');
   style.id='rt-page-MBSA-overrides';
   style.textContent='/* Styles applied after RT source content loads */';
