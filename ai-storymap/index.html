@@ -21544,5 +21544,96 @@ concepts(concept);pillars(teras);
 };
 })();
 </script>
+
+<!-- mps-renderer-reliable-concept-teras-20261110 -->
+<script id="mps-renderer-reliable-concept-teras-20261110">
+(function(){
+'use strict';
+const root=document.getElementById('rt11-modal');
+const body=document.getElementById('rt11-body');
+if(!root||!body)return;
+const norm=s=>String(s||'').replace(/\s+/g,' ').trim();
+function tag(name,cls,txt){const n=document.createElement(name);n.className=cls;if(txt!==undefined)n.textContent=txt;return n;}
+function extract(section,mode){
+ const selectors='ul,ol';
+ const groups=[...section.querySelectorAll(selectors)].filter(list=>!list.closest('.mps-kkb-concept-grid,.mps-kkb-teras-grid'));
+ const kind=mode==='concept'?/konsep\s+(jaringan|hierarki|pembangunan\s+koridor|kluster)/i:/teras\s+(satu|dua|tiga|empat|lima|enam|1|2|3|4|5|6)/i;
+ const minimum=mode==='concept'?4:6;
+ const candidate=groups.map(list=>({list,rows:[...list.children].filter(n=>n.tagName==='LI')}))
+ .find(g=>g.rows.length>=minimum&&g.rows.filter(li=>kind.test(norm(li.textContent))).length>=Math.min(3,minimum-1));
+ if(candidate)return candidate;
+ // Legacy RT renderer can have distributed text nodes rather than one list.
+ return null;
+}
+function parts(raw,mode){
+ let value=norm(raw).replace(/^\d{1,2}\s+/,'');
+ value=value.replace(/^(?:(?:TERAS|KONSEP)\s+0?\d+)\s*[:.·-]?\s*/i,'');
+ const match=mode==='concept'?value.match(/^(.+?)\s*[–—]\s*(.+)$/):value.match(/^([^:]{3,55}):\s*(.+)$/);
+ if(match)return [norm(match[1]),norm(match[2])];
+ if(mode==='concept'){const m=value.match(/^(Konsep\s+(?:Jaringan Sistem Pengangkutan|Hierarki Perbandaran|Pembangunan Koridor|Kluster Pembangunan))\s*[-:–—]?\s*(.*)$/i);
+ if(m)return [norm(m[1]),norm(m[2])];}
+ if(mode==='teras'){const m=value.match(/^(Teras\s+(?:Satu|Dua|Tiga|Empat|Lima|Enam))\s*:?\s*(.*)$/i);
+ if(m)return [norm(m[2])||norm(m[1]),''];}
+ return [value,''];
+}
+function convertConcept(ch){
+ if(ch.querySelector('.mps-kkb-concept-grid'))return;
+ const picked=extract(ch,'concept');if(!picked)return;
+ const rows=picked.rows.slice(0,4);const grid=tag('div','mps-kkb-concept-grid');
+ grid.setAttribute('aria-label','Empat Konsep Pembangunan MPS');
+ rows.forEach((li,i)=>{
+  const [title,detail]=parts(li.textContent,'concept');
+  const no=String(i+1).padStart(2,'0');
+  const card=tag('article','mps-kkb-concept-card');card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-pressed','false');
+  card.setAttribute('aria-label','Konsep '+no+'. '+title+'. Klik untuk huraian');
+  const inner=tag('div','mps-kkb-concept-inner');
+  function face(back){
+   const el=tag('div','mps-kkb-concept-face mps-kkb-concept-'+(back?'back':'front'));
+   el.append(tag('span','mps-kkb-concept-orb','✧'),tag('span','mps-kkb-concept-kicker','KONSEP '+no+(back?' · HURAIAN':''))
+    ,tag('div',back?'mps-kkb-concept-description':'mps-kkb-concept-title',back?(detail||title):title),
+     tag('span','mps-kkb-concept-hint',back?'KLIK UNTUK KEMBALI ↻':'HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA ↻'));
+   return el;
+  }
+  inner.append(face(false),face(true));card.append(inner);
+  const flip=(x)=>{card.classList.toggle('is-flipped',x);card.setAttribute('aria-pressed',String(x))};
+  card.addEventListener('mouseenter',()=>flip(true));
+  card.addEventListener('mouseleave',()=>flip(false));
+  card.addEventListener('click',()=>flip(!card.classList.contains('is-flipped')));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip(!card.classList.contains('is-flipped'))}if(e.key==='Escape')flip(false)});
+  grid.append(card);
+ });
+ picked.list.replaceWith(grid);
+}
+function convertTeras(ch){
+ if(ch.querySelector('.mps-kkb-teras-grid'))return;
+ const picked=extract(ch,'teras');
+ if(!picked)return;
+ const rows=picked.rows.slice(0,6),grid=tag('div','mps-kkb-teras-grid');
+ grid.setAttribute('aria-label','Enam Teras Pembangunan MPS');
+ rows.forEach((li,i)=>{
+  const [head,desc]=parts(li.textContent,'teras'),no=String(i+1).padStart(2,'0');
+  const card=tag('article','mps-kkb-teras-card');
+  const top=tag('div','mps-kkb-teras-top');
+  top.append(tag('span','mps-kkb-teras-number',no),tag('span','mps-kkb-teras-orb','✧'));
+  card.append(top,tag('div','mps-kkb-teras-kicker','TERAS '+no),tag('h3','mps-kkb-teras-heading',head));
+  if(desc)card.append(tag('p','mps-kkb-teras-description',desc));
+  grid.append(card);
+ });
+ picked.list.replaceWith(grid);
+}
+function apply(){
+ if(!root.classList.contains('rt-standard-layout')||!root.querySelector('.rtbar #rt11-label')?.textContent.includes('MPS'))return;
+ const sections=[...body.querySelectorAll('.rtchapter')];
+ const concept=sections.find(x=>x.classList.contains('rt-concept')||/\bkonsep pembangunan\b/i.test(x.querySelector(':scope > h2')?.textContent||''));
+ const pillar=sections.find(x=>x.classList.contains('rt-pillars')||/\bteras pembangunan\b/i.test(x.querySelector(':scope > h2')?.textContent||''));
+ if(concept)convertConcept(concept);if(pillar)convertTeras(pillar);
+}
+window.mpsKkbCardUpgrade=()=>apply();
+let queued=false;
+const observer=new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;apply()})});
+observer.observe(body,{childList:true,subtree:true});
+apply();
+})();
+</script>
 </body>
 </html>
