@@ -155,7 +155,7 @@ function attach(){
    const score=terms.filter(t=>text.some(x=>x.includes(t))).length;
    if(score<3)return;
    list.classList.add('mbdk-direct-flow');
-   list.classList.remove('rt-background-infographic','rt-final-history-flow','rt-flow-timeline','rt-v3-timeline');
+   list.classList.remove('rt-background-infographic','rt-final-history-flow','rt-flow-timeline','rt-v3-timeline','mbdk-zigzag-flow','mbdk-actual-history','mbdk-history-flow','mbdk-timeline-actual','rt-history-real-flow');
    list.dataset.rtMotionEnhanced='mbdk-direct-flow';
    list.dataset.rtV3='mbdk-direct-flow';
    rows.forEach(row=>row.querySelectorAll(':scope > .rt-info-number,:scope > .rt-final-step,:scope > .rt-flow-index,:scope > .rt-v3-num').forEach(n=>n.remove()));
