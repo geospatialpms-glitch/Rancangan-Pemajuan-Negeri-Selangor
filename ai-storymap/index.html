@@ -21722,8 +21722,9 @@ grid.append(createConcept(idx,name,rest));
 const original=found[0].node.closest('ul,ol');
 if(!original)return;
 original.parentElement.insertBefore(grid,original);
+const oldLists=new Set(found.map(f=>f.node.closest('ul,ol')).filter(Boolean));
 for(const {node} of found)node.remove();
-for(const list of new Set(found.map(f=>f.node.closest('ul,ol')).filter(Boolean)))if(!list.querySelector('li'))list.remove();
+for(const list of oldLists)if(!list.querySelector('li'))list.remove();
 }
 function transformTeras(){
 const ch=chapter(/teras pembangunan/i);if(!ch||ch.querySelector('.mps-final-teras'))return;
