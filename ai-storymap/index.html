@@ -16000,7 +16000,7 @@ let cursor=0;setInterval(()=>{
 @media(max-width:800px){#rt11-modal .rtgrid{grid-template-columns:1fr}#rt11-modal .rtside{position:relative;top:auto;max-height:none}#rt11-modal .rtbar{padding:12px 15px}}
 @media(prefers-reduced-motion:no-preference){#rt11-modal .rtchapter{animation:rtEnter .5s ease both}@keyframes rtEnter{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}}
 </style>
-<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B6</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
+<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B7</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
 <style id="mbsa-loaded-actual-chapter-css-20261106">
 /* Specific to the RT MBSA Story Map loaded from ArcGIS (not the directory preview). */
 #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-loaded-layout{display:grid!important;gap:16px!important;margin:20px 0 34px!important;width:100%!important;padding:0!important;box-sizing:border-box!important}
@@ -18978,9 +18978,10 @@ schedule();
  text-wrap:balance!important;
  box-shadow:0 20px 40px rgba(13,59,108,.19)!important;
 }
+/* Do not inherit quote headline typography into the matlamat caption. */
 #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece blockquote :is(p,div,strong,span){
- font:inherit!important;text-align:center!important;text-align-last:center!important;
- color:inherit!important;word-spacing:normal!important;letter-spacing:normal!important;
+ text-align:center!important;text-align-last:center!important;
+ word-spacing:normal!important;letter-spacing:normal!important;
 }
 #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-pillars>.rt-mbsa-teras-grid{
  gap:24px!important;
@@ -19102,8 +19103,8 @@ schedule();
  from{opacity:.45;transform:translate3d(-5%,2%,0) scale(.95)}
  to{opacity:1;transform:translate3d(5%,-3%,0) scale(1.12)}
 }
-#rt11-modal.rt-mbsa .rtgrid>.rtside,
 #rt11-modal.rt-mbsa .rtgrid>#rt11-body{position:relative!important;z-index:1!important}
+#rt11-modal.rt-mbsa .rtgrid>.rtside{z-index:3!important}
 #rt11-modal.rt-mbsa .rthero{position:relative!important}
 #rt11-modal.rt-mbsa .rthero .mbsa-hero-explore{
  position:absolute!important;bottom:clamp(18px,4vh,40px)!important;left:50%!important;
@@ -19266,5 +19267,110 @@ schedule();
 }
 
 </style>
+
+<style id="mbsa-b7-sticky-flip-quote">
+/* B7: definitive MBSA-only caption, readable flip back, and sticky sidebar */
+#rt11-modal.rt-mbsa .rtgrid{
+ display:grid!important;grid-template-columns:minmax(225px,270px) minmax(0,1fr)!important;
+ align-items:start!important;overflow:visible!important;
+}
+#rt11-modal.rt-mbsa .rtgrid>.rtside{
+ display:block!important;position:sticky!important;top:calc(var(--rt-header-height,84px) + 14px)!important;
+ align-self:start!important;z-index:5!important;
+ max-height:calc(100dvh - var(--rt-header-height,84px) - 25px)!important;
+ overflow-y:auto!important;overscroll-behavior:contain;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece blockquote{
+ gap:20px!important;min-height:280px!important;
+ padding:40px clamp(25px,5vw,75px)!important;
+ font:700 clamp(31px,3vw,47px)/1.32 Georgia,serif!important;
+ text-align:center!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece blockquote .mbsa-quote-heading-b7{
+ display:block!important;font:700 clamp(31px,3vw,47px)/1.32 Georgia,serif!important;
+ color:#fff6df!important;max-width:100%!important;
+ text-align:center!important;text-align-last:center!important;
+ word-spacing:normal!important;letter-spacing:normal!important;
+ margin:0!important;padding:0!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece blockquote .mbsa-quote-caption-b7,
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece blockquote .mbsa-quote-caption-b7 *{
+ display:block!important;font:500 15px/1.5 Arial,sans-serif!important;
+ color:#d4eaff!important;text-align:center!important;text-align-last:center!important;
+ word-spacing:normal!important;letter-spacing:normal!important;
+ margin:0!important;padding:0!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-grid>.rt-mbsa-teras-item{
+ height:390px!important;min-height:390px!important;max-height:390px!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-face{
+ padding:28px 27px!important;gap:11px!important;justify-content:center!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-back{
+ gap:12px!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-back .mbsa-theme-back-description{
+ flex:0 1 auto!important;min-height:0!important;
+ width:100%!important;max-width:100%!important;
+ font:400 clamp(15px,1.15vw,17px)/1.5 Arial,sans-serif!important;
+ font-size:clamp(15px,1.15vw,17px)!important;
+ line-height:1.5!important;font-weight:400!important;
+ color:#2a4965!important;letter-spacing:0!important;word-spacing:normal!important;
+ text-align:center!important;text-align-last:center!important;
+ margin:0 auto!important;padding:0!important;
+ overflow-wrap:break-word!important;hyphens:none!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-back .mbsa-theme-back-kicker{
+ flex:none!important;font:800 11px/1.35 Arial,sans-serif!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-back .rt-mbsa-flip-hint{
+ flex:none!important;margin:4px auto 0!important;padding:10px 16px!important;
+ font:800 10px/1.35 Arial,sans-serif!important;
+}
+@media(max-width:930px){
+ #rt11-modal.rt-mbsa .rtgrid{grid-template-columns:minmax(195px,225px) minmax(0,1fr)!important;gap:16px!important}
+ #rt11-modal.rt-mbsa .rtgrid>.rtside{position:sticky!important;top:calc(var(--rt-header-height,84px) + 10px)!important}
+}
+@media(max-width:680px){
+ #rt11-modal.rt-mbsa .rtgrid{grid-template-columns:1fr!important}
+ #rt11-modal.rt-mbsa .rtgrid>.rtside{
+  position:sticky!important;top:var(--rt-header-height,70px)!important;
+  max-height:35dvh!important;overflow-y:auto!important;
+  padding:12px 15px!important;z-index:5!important;
+ }
+ #rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-grid>.rt-mbsa-teras-item{height:390px!important}
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .rtpiece blockquote .mbsa-quote-heading-b7{font-size:clamp(27px,6vw,38px)!important}
+}
+</style>
+<script id="mbsa-b7-sticky-flip-quote-js">
+(function(){
+ const modal=document.getElementById('rt11-modal');
+ const root=document.getElementById('rt11-body');
+ if(!modal||!root)return;
+ const captionRx=/Matlamat Rancangan Tempatan Majlis Bandaraya Shah Alam/i;
+ function apply(){
+  if(!modal.classList.contains('rt-mbsa'))return;
+  for(const quote of root.querySelectorAll('.rtchapter.rt-goal .rtpiece blockquote')){
+   const leaves=[...quote.querySelectorAll('p,div,span,small,cite,strong,em')]
+     .filter(el=>captionRx.test((el.textContent||'').trim())&&el.children.length===0);
+   const caption=leaves[0]||[...quote.children].find(el=>captionRx.test(el.textContent)&&el.textContent.length<150);
+   if(caption)caption.classList.add('mbsa-quote-caption-b7');
+   for(const child of quote.children){
+    if(child===caption||child.contains(caption))continue;
+    if(!captionRx.test(child.textContent)||child.textContent.length>150)child.classList.add('mbsa-quote-heading-b7');
+   }
+  }
+  // Remove any oversized inline typography on the four strategic explanations.
+  for(const p of root.querySelectorAll('.rt-mbsa-flip-back .mbsa-theme-back-description')){
+   p.style.removeProperty('font-size');
+   p.style.removeProperty('font');
+   p.style.removeProperty('line-height');
+  }
+ }
+ apply();
+ const observer=new MutationObserver(()=>{if(modal.classList.contains('rt-mbsa'))requestAnimationFrame(apply)});
+ observer.observe(root,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
