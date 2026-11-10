@@ -16098,6 +16098,7 @@ if(!section){section=document.createElement('section');section.className='rtchap
 const el=piece(node,resources,entry.id);if(el)section.appendChild(el)}
 if(entry.code==='MBDK') requestAnimationFrame(()=>window.mbdkEnhanceDynamicRT?.());
 if(entry.code==='MBDK') requestAnimationFrame(()=>window.mbdkFinalTimelineRender?.());
+if(entry.code==='MBDK') requestAnimationFrame(()=>window.mbdkZigzagTimeline?.());
 if(entry.code==='MBSA'){
  /* KKB-inspired accordion for Pengertian and Fungsi Multi-Nuclei only */
  const conceptRoot=body.querySelector('.rtchapter.rt-concept');
@@ -20607,6 +20608,166 @@ new MutationObserver(records=>{
 modal.addEventListener('scroll',progress,{passive:true});
 window.addEventListener('resize',progress,{passive:true});
 window.mbdkFinalTimelineRender=schedule;
+schedule();
+})();
+</script>
+
+
+<!-- MBDK history: actual centerline zigzag timeline, intentionally overrides previous list styling -->
+<style id="mbdk-zigzag-timeline-final-20261110">
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow{
+ --mbdk-fill:0%;box-sizing:border-box!important;position:relative!important;
+ display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+ gap:clamp(15px,2.3vw,30px) 0!important;width:100%!important;max-width:none!important;
+ margin:32px auto 45px!important;padding:22px 0!important;
+ counter-reset:mbdk-era!important;list-style:none!important;
+ background:transparent!important;overflow:visible!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow::before{
+ content:""!important;position:absolute!important;top:4px!important;bottom:4px!important;
+ left:calc(50% - 5px)!important;width:10px!important;height:auto!important;
+ border-radius:10px!important;border:0!important;
+ background:linear-gradient(180deg,#e8ab62 0%,#9c3b2d 25%,#d9a96b 50%,#9c3b2d 75%,#e8ab62 100%)!important;
+ background-size:100% 100%!important;box-shadow:0 0 0 5px rgba(183,102,55,.12)!important;
+ transform:none!important;animation:none!important;z-index:0!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow::after{
+ content:""!important;position:absolute!important;top:4px!important;bottom:auto!important;
+ left:calc(50% - 5px)!important;width:10px!important;
+ height:var(--mbdk-fill)!important;max-height:calc(100% - 8px)!important;
+ border-radius:10px!important;background:linear-gradient(#fbd07a,#f6ddad)!important;
+ opacity:.75!important;box-shadow:0 0 14px rgba(246,184,94,.6)!important;z-index:1!important;
+ transform:none!important;transition:height .15s linear!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li{
+ counter-increment:mbdk-era!important;
+ display:block!important;position:relative!important;min-width:0!important;width:auto!important;
+ max-width:none!important;height:auto!important;min-height:125px!important;max-height:none!important;
+ padding:clamp(19px,2vw,27px)!important;margin:0 42px 0 0!important;
+ border-radius:20px!important;border:1px solid #e6c5af!important;border-top:4px solid #b66443!important;
+ background:linear-gradient(135deg,#fffdf9,#fff0df)!important;
+ box-shadow:0 12px 30px rgba(115,51,31,.1)!important;
+ font:500 clamp(16px,1.16vw,20px)/1.7 'Plus Jakarta Sans',Arial,sans-serif!important;
+ color:#263749!important;letter-spacing:normal!important;word-spacing:normal!important;
+ text-align:left!important;text-align-last:left!important;list-style:none!important;
+ opacity:1!important;transform:none!important;translate:0 0!important;
+ transition:translate .3s ease,box-shadow .3s ease,border-color .3s ease!important;
+ grid-column:1!important;z-index:2!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li:nth-child(even){
+ grid-column:2!important;margin:0 0 0 42px!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li::before{
+ content:counter(mbdk-era,decimal-leading-zero)!important;
+ position:absolute!important;inset:auto!important;top:calc(50% - 24px)!important;
+ right:-69px!important;left:auto!important;display:grid!important;place-items:center!important;
+ width:48px!important;height:48px!important;box-sizing:border-box!important;padding:0!important;
+ border:5px solid #fff1df!important;border-radius:50%!important;background:#a53f30!important;
+ color:#fff!important;font:800 13px/1 Arial,sans-serif!important;
+ box-shadow:0 0 0 5px rgba(159,68,48,.18),0 5px 20px rgba(108,48,29,.15)!important;
+ animation:mbdkZigzagNode 3.7s ease-in-out infinite!important;z-index:5!important;
+ transform:none!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li:nth-child(even)::before{
+ left:-69px!important;right:auto!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li::after{
+ content:""!important;position:absolute!important;top:50%!important;
+ left:auto!important;right:-43px!important;width:43px!important;height:3px!important;
+ border:0!important;background:#c78055!important;opacity:.8!important;
+ transform:translateY(-50%)!important;display:block!important;z-index:1!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li:nth-child(even)::after{
+ left:-43px!important;right:auto!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li:is(:hover,:focus-within){
+ translate:0 -5px!important;border-color:#a95335!important;
+ box-shadow:0 20px 38px rgba(115,51,31,.18)!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li :is(b,strong){
+ font-weight:850!important;color:#90392b!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li :is(p,span,div){
+ font:inherit!important;line-height:inherit!important;letter-spacing:normal!important;
+ word-spacing:normal!important;text-align:left!important;text-align-last:left!important;
+}
+@keyframes mbdkZigzagNode{
+ 0%,100%{box-shadow:0 0 0 5px rgba(159,68,48,.18),0 5px 20px rgba(108,48,29,.15)}
+ 50%{box-shadow:0 0 0 10px rgba(212,145,85,.06),0 5px 25px rgba(108,48,29,.2)}
+}
+@media(max-width:820px){
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow{
+  display:flex!important;flex-direction:column!important;gap:17px!important;
+  padding:16px 0 16px 61px!important;margin:20px 0 30px!important;
+ }
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow::before,
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow::after{
+  left:19px!important;width:7px!important;
+ }
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li,
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li:nth-child(even){
+  width:100%!important;margin:0!important;min-height:0!important;padding:19px!important;
+ }
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li::before,
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li:nth-child(even)::before{
+  left:-62px!important;right:auto!important;top:22px!important;width:45px!important;height:45px!important;
+ }
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li::after,
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li:nth-child(even)::after{
+  left:-40px!important;right:auto!important;top:44px!important;width:40px!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li::before{
+  animation:none!important;
+ }
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter .rtpiece :is(ul,ol).mbdk-zigzag-flow>li{
+  transition:none!important;
+ }
+}
+</style>
+<script id="mbdk-zigzag-controller-20261110">
+(function(){
+const modal=document.getElementById('rt11-modal'),root=document.getElementById('rt11-body');
+if(!modal||!root)return;
+let busy=false,pending=false;
+function decorate(){
+ if(busy||modal.hidden||!modal.classList.contains('rt-mbdk'))return;
+ busy=true;
+ try{
+ root.querySelectorAll('.rtchapter .rtpiece ul,.rtchapter .rtpiece ol').forEach(list=>{
+  const li=[...list.children].filter(e=>e.tagName==='LI');
+  if(li.length<4||li.length>15)return;
+  const normalized=li.map(e=>e.textContent.toLowerCase().replace(/\s+/g,' '));
+  const markers=['pra kesultanan','pembentukan kesultanan','zaman british','kemerdekaan','era kontena'];
+  const hits=markers.filter(needle=>normalized.some(text=>text.includes(needle))).length;
+  if(hits<3)return;
+  list.classList.add('mbdk-zigzag-flow');
+  /* Remove obsolete timeline-specific classes; keep original content intact. */
+  li.forEach(el=>el.classList.remove('mbdk-history-entry'));
+ });
+ }finally{busy=false}
+ progress();
+}
+function progress(){
+ if(modal.hidden||!modal.classList.contains('rt-mbdk'))return;
+ root.querySelectorAll('.mbdk-zigzag-flow').forEach(list=>{
+  const b=list.getBoundingClientRect(),v=modal.getBoundingClientRect();
+  const fill=Math.max(0,Math.min(b.height-8,v.bottom-b.top-25));
+  list.style.setProperty('--mbdk-fill',fill+'px');
+ });
+}
+function schedule(){
+ if(pending)return;pending=true;
+ requestAnimationFrame(()=>{pending=false;decorate()});
+}
+new MutationObserver(records=>{
+ if(busy)return;
+ if(records.some(r=>[...r.addedNodes].some(n=>n.nodeType===1&&n.matches?.('.rtchapter,.rtpiece,ul,ol'))))schedule();
+}).observe(root,{childList:true,subtree:true});
+modal.addEventListener('scroll',progress,{passive:true});
+window.addEventListener('resize',progress,{passive:true});
+window.mbdkZigzagTimeline=schedule;
 schedule();
 })();
 </script>
