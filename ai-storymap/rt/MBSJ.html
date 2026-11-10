@@ -6,88 +6,13 @@
 <meta name="theme-color" content="#701c35">
 <title>Story Map RT MBSJ | Rancangan Pemajuan Negeri Selangor</title>
 <style>
-/* Dedicated MBSJ route: outer page only hosts the Story Map; no maroon toolbar. */
+/* Shared navigation and scroll CTA are rendered within index.html's RT header. */
 *{box-sizing:border-box}
-html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f4edfb}
-#rt-story-frame{display:block;width:100%;height:100dvh;border:0;background:#f4edfb}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f4f5f8}
+#rt-story-frame{display:block;width:100%;height:100dvh;border:0;background:#f4f5f8}
 </style>
 </head>
 <body data-rt-page="MBSJ">
-<!-- Navigation moved into the purple RT MBSJ header inside the iframe. -->
-<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Subang Jaya" src="../index.html?rt_page=MBSJ&amp;v=20261110-mbsj-header-v2" loading="eager"></iframe>
-<script>
-/* MBSJ standalone wrapper: use one header (inside the same-origin RT iframe). */
-const frame=document.getElementById('rt-story-frame');
-frame.addEventListener('load',()=>{
- try{
-  const doc=frame.contentDocument;
-  const win=frame.contentWindow;
-  if(!doc||!win)return;
-  const css=doc.createElement('style');
-  css.id='rt-mbsj-one-header-fix-20261110';
-  css.textContent=`
-  #rt11-modal.rt-mbsj{--rt-header-height:90px!important}
-  #rt11-modal.rt-mbsj>.rtbar{display:flex!important;align-items:center!important;gap:12px!important;flex-wrap:wrap!important;min-height:90px!important;height:auto!important;padding:14px clamp(14px,3vw,44px)!important;position:sticky!important;top:0!important;z-index:100!important}
-  #rt11-modal.rt-mbsj>.rtbar #rt11-label{font-size:clamp(14px,1.05vw,19px)!important;flex:1 1 320px!important;margin-right:0!important}
-  #rt11-modal.rt-mbsj>.rtbar .rt-mbsj-top-links{display:flex!important;align-items:center!important;gap:clamp(7px,1.25vw,17px)!important;margin-left:auto!important;flex-wrap:wrap!important}
-  #rt11-modal.rt-mbsj>.rtbar .rt-mbsj-top-links a{font:700 clamp(11px,.85vw,14px)/1.4 Arial,sans-serif!important;color:#fff8ed!important;text-decoration:none!important;white-space:nowrap!important;padding:7px 4px!important}
-  #rt11-modal.rt-mbsj>.rtbar .rt-mbsj-top-links a:hover{text-decoration:underline!important;color:#ffdda8!important}
-  #rt11-modal.rt-mbsj>.rtbar .rt-mbsj-top-links a:focus-visible{outline:2px solid #ffe5b8!important;outline-offset:4px!important;border-radius:6px!important}
-  #rt11-modal.rt-mbsj>.rtbar #rt11-home{display:inline-flex!important;visibility:visible!important;opacity:1!important;margin-left:0!important}
-  #rt11-modal.rt-mbsj>.rtbar #rt11-close{margin-left:0!important;white-space:nowrap!important}
-  #rt11-modal.rt-mbsj .rthero{height:calc(100dvh - var(--rt-header-height))!important;min-height:420px!important}
-  #rt11-modal.rt-mbsj .rthero .mbsa-hero-explore{display:inline-flex!important;visibility:visible!important;opacity:1!important;position:absolute!important;left:50%!important;bottom:clamp(23px,4vh,50px)!important;transform:translateX(-50%)!important;z-index:50!important;pointer-events:auto!important}
-  @media(max-width:900px){#rt11-modal.rt-mbsj>.rtbar{gap:8px!important}#rt11-modal.rt-mbsj>.rtbar #rt11-label{flex-basis:100%!important}#rt11-modal.rt-mbsj{--rt-header-height:134px!important}}
-  @media(max-width:580px){#rt11-modal.rt-mbsj>.rtbar .rt-mbsj-top-links{order:3!important;width:100%!important;justify-content:center!important}#rt11-modal.rt-mbsj>.rtbar #rt11-home{margin-left:auto!important}#rt11-modal.rt-mbsj{--rt-header-height:174px!important}#rt11-modal.rt-mbsj .rthero{min-height:360px!important}}
-  `;
-  doc.head.appendChild(css);
-  const modal=doc.getElementById('rt11-modal');
-  const hero=doc.getElementById('rt11-hero');
-  const grid=modal&&modal.querySelector('.rtgrid');
-  const toolbar=modal&&modal.querySelector('.rtbar');
-  if(!modal||!hero||!grid||!toolbar)return;
-  function ensure(){
-   if(!modal.classList.contains('rt-mbsj'))return;
-   const home=doc.getElementById('rt11-home');
-   if(home){
-    home.hidden=false;
-    home.removeAttribute('hidden');
-    home.setAttribute('aria-label','Halaman Utama RT MBSJ');
-    home.onclick=function(e){e.preventDefault();e.stopImmediatePropagation();modal.scrollTo({top:0,behavior:'smooth'});};
-   }
-   let links=toolbar.querySelector('.rt-mbsj-top-links');
-   if(!links){
-    links=doc.createElement('nav');
-    links.className='rt-mbsj-top-links';
-    links.setAttribute('aria-label','Navigasi Rancangan Tempatan MBSJ');
-    const items=[
-     ['‹ Sebelum',new URL('./MBPJ.html',window.location.href).href],
-     ['Portal Utama',new URL('../index.html#panel-3',window.location.href).href],
-     ['Seterusnya ›',new URL('./MBDK.html',window.location.href).href]
-    ];
-    for(const [label,url] of items){
-     const a=doc.createElement('a');a.textContent=label;a.href=url;a.target='_top';links.appendChild(a);
-    }
-    toolbar.insertBefore(links,home||doc.getElementById('rt11-close'));
-   }
-   let cta=hero.querySelector('.mbsa-hero-explore');
-   if(!cta){
-    cta=doc.createElement('button');
-    cta.className='mbsa-hero-explore';
-    cta.type='button';
-    cta.textContent='SKROL UNTUK TEROKAI ↓';
-    cta.setAttribute('aria-label','Skrol ke bab pertama RT MBSJ');
-    cta.addEventListener('click',()=>grid.scrollIntoView({behavior:'smooth',block:'start'}));
-    hero.appendChild(cta);
-   }
-  }
-  let pending=false;
-  function schedule(){if(pending)return;pending=true;win.requestAnimationFrame(()=>{pending=false;ensure()})}
-  new win.MutationObserver(schedule).observe(hero,{childList:true});
-  new win.MutationObserver(schedule).observe(modal,{attributes:true,attributeFilter:['class','hidden']});
-  ensure();
- }catch(err){console.warn('RT MBSJ header synchronization failed',err)}
-});
-</script>
+<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Subang Jaya" src="../index.html?rt_page=MBSJ&amp;v=20261110-unified-nav" loading="eager"></iframe>
 </body>
 </html>
