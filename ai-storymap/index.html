@@ -19177,9 +19177,9 @@ schedule();
  cta.setAttribute('aria-label','Skrol ke kandungan Rancangan Tempatan MBSA');
  cta.addEventListener('click',()=>grid.scrollIntoView({behavior:'smooth',block:'start'}));
  function sync(){
-  const mbsa=(modal.classList.contains('rt-mbsa')||modal.classList.contains('rt-mbsj'))&&!modal.hidden;
+  const mbsa=(modal.classList.contains('rt-mbsa')||modal.classList.contains('rt-mbsj')||modal.classList.contains('rt-mbdk'))&&!modal.hidden;
   scene.hidden=!mbsa;
-  cta.setAttribute('aria-label',modal.classList.contains('rt-mbsj')?'Skrol ke kandungan Rancangan Tempatan MBSJ':'Skrol ke kandungan Rancangan Tempatan MBSA');
+  cta.setAttribute('aria-label',modal.classList.contains('rt-mbdk')?'Skrol ke kandungan Rancangan Tempatan MBDK':modal.classList.contains('rt-mbsj')?'Skrol ke kandungan Rancangan Tempatan MBSJ':'Skrol ke kandungan Rancangan Tempatan MBSA');
   if(mbsa&&!hero.contains(cta))hero.appendChild(cta);
   if(!mbsa&&cta.isConnected)cta.remove();
  }
@@ -19880,6 +19880,34 @@ schedule();
  #rt11-modal.rt-mbdk,#rt11-modal.rt-mbdk .rtgrid:before,
  #rt11-modal.rt-mbdk .rthero:after,#rt11-modal.rt-mbdk .mbsa-hero-explore{animation:none!important}
 }
+</style>
+
+<style id="rt-mbdk-geospatial-scene-20261110">
+#rt11-modal.rt-mbdk .rtgrid>.mbsa-motion-scene{
+ display:block!important;position:absolute!important;inset:0!important;z-index:0!important;
+ overflow:hidden!important;pointer-events:none!important;
+}
+#rt11-modal.rt-mbdk .rtgrid>.mbsa-motion-scene[hidden]{display:none!important}
+#rt11-modal.rt-mbdk .rtgrid>.mbsa-motion-scene:before{
+ content:"";position:absolute;inset:-22%;pointer-events:none;
+ background-image:radial-gradient(circle at 20% 25%,rgba(188,70,38,.48) 0 4px,transparent 5px),
+ linear-gradient(30deg,transparent 49.7%,rgba(180,83,48,.22) 49.95%,rgba(180,83,48,.22) 50.05%,transparent 50.3%);
+ background-size:245px 245px,190px 190px;
+ animation:mbdkSceneLines 11s linear infinite!important;
+}
+#rt11-modal.rt-mbdk .rtgrid>.mbsa-motion-scene:after{
+ content:"";position:absolute;inset:-25%;pointer-events:none;
+ background:radial-gradient(circle at 18% 30%,rgba(255,190,110,.33),transparent 38%),
+ radial-gradient(circle at 80% 72%,rgba(213,99,88,.29),transparent 42%);
+ animation:mbdkSceneGlow 8s ease-in-out infinite alternate!important;
+}
+@keyframes mbdkSceneLines{from{transform:translate3d(-5%,-3%,0)}to{transform:translate3d(6%,5%,0)}}
+@keyframes mbdkSceneGlow{from{opacity:.45;transform:translate3d(-5%,3%,0) scale(.96)}to{opacity:1;transform:translate3d(5%,-4%,0) scale(1.12)}}
+#rt11-modal.rt-mbdk .rtgrid>#rt11-body{position:relative!important;z-index:1!important}
+#rt11-modal.rt-mbdk .rtgrid>.rtside{z-index:3!important}
+@media(prefers-reduced-motion:reduce){
+#rt11-modal.rt-mbdk .rtgrid>.mbsa-motion-scene:before,
+#rt11-modal.rt-mbdk .rtgrid>.mbsa-motion-scene:after{animation:none!important}}
 </style>
 </body>
 </html>
