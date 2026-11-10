@@ -16000,7 +16000,7 @@ let cursor=0;setInterval(()=>{
 @media(max-width:800px){#rt11-modal .rtgrid{grid-template-columns:1fr}#rt11-modal .rtside{position:relative;top:auto;max-height:none}#rt11-modal .rtbar{padding:12px 15px}}
 @media(prefers-reduced-motion:no-preference){#rt11-modal .rtchapter{animation:rtEnter .5s ease both}@keyframes rtEnter{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}}
 </style>
-<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B4</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
+<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B5</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
 <style id="mbsa-loaded-actual-chapter-css-20261106">
 /* Specific to the RT MBSA Story Map loaded from ArcGIS (not the directory preview). */
 #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-loaded-layout{display:grid!important;gap:16px!important;margin:20px 0 34px!important;width:100%!important;padding:0!important;box-sizing:border-box!important}
@@ -19057,6 +19057,140 @@ schedule();
  align();
 })();
 
+</script>
+
+<style id="mbsa-b5-motion-timeline-cta">
+/* MBSA B5: vivid but readable motion, timeline cards, and Genting-style hero CTA */
+#rt11-modal.rt-mbsa .rtgrid{position:relative!important;isolation:isolate!important}
+#rt11-modal.rt-mbsa .rtgrid>.mbsa-motion-scene{
+ position:absolute!important;inset:0!important;z-index:0!important;
+ overflow:hidden!important;pointer-events:none!important;
+ opacity:1!important;border-radius:0!important
+}
+#rt11-modal.rt-mbsa .rtgrid>.mbsa-motion-scene::before{
+ content:"";position:absolute;inset:-22%;pointer-events:none;
+ background-image:
+ radial-gradient(circle at 12% 17%,rgba(45,154,236,.4) 0 4px,transparent 5px),
+ radial-gradient(circle at 65% 70%,rgba(42,116,200,.32) 0 3px,transparent 5px),
+ linear-gradient(28deg,transparent 49.65%,rgba(40,135,203,.24) 49.9%,rgba(40,135,203,.24) 50.15%,transparent 50.4%),
+ linear-gradient(152deg,transparent 49.65%,rgba(26,125,208,.21) 49.9%,rgba(26,125,208,.21) 50.15%,transparent 50.4%);
+ background-size:240px 220px,310px 270px,180px 180px,180px 180px;
+ animation:mbsaB5Geospatial 12s linear infinite!important;
+ will-change:transform;
+}
+#rt11-modal.rt-mbsa .rtgrid>.mbsa-motion-scene::after{
+ content:"";position:absolute;inset:-15%;pointer-events:none;
+ background:radial-gradient(ellipse at 18% 20%,rgba(57,164,243,.28),transparent 33%),
+ radial-gradient(ellipse at 80% 70%,rgba(56,111,224,.24),transparent 36%),
+ radial-gradient(ellipse at 48% 48%,rgba(147,220,255,.23),transparent 32%);
+ animation:mbsaB5Glow 9s ease-in-out infinite alternate!important;
+ will-change:transform,opacity;
+}
+@keyframes mbsaB5Geospatial{
+ from{transform:translate3d(-5%,0,0)}
+ to{transform:translate3d(5%,-5%,0)}
+}
+@keyframes mbsaB5Glow{
+ from{opacity:.45;transform:translate3d(-5%,2%,0) scale(.95)}
+ to{opacity:1;transform:translate3d(5%,-3%,0) scale(1.12)}
+}
+#rt11-modal.rt-mbsa .rtgrid>.rtside,
+#rt11-modal.rt-mbsa .rtgrid>#rt11-body{position:relative!important;z-index:1!important}
+#rt11-modal.rt-mbsa .rthero{position:relative!important}
+#rt11-modal.rt-mbsa .rthero .mbsa-hero-explore{
+ position:absolute!important;bottom:clamp(18px,4vh,40px)!important;left:50%!important;
+ transform:translateX(-50%)!important;z-index:5!important;
+ display:inline-flex!important;justify-content:center!important;align-items:center!important;gap:10px!important;
+ padding:13px 23px!important;border:1px solid rgba(255,255,255,.5)!important;
+ border-radius:99px!important;background:rgba(12,44,73,.55)!important;
+ color:#fff!important;font:800 12px/1.4 Arial,sans-serif!important;letter-spacing:.12em!important;
+ backdrop-filter:blur(9px);box-shadow:0 9px 30px rgba(0,25,54,.24)!important;
+ cursor:pointer!important;transition:background .25s,box-shadow .25s!important;
+ animation:mbsaB5ButtonPulse 3s ease-in-out infinite!important;
+}
+#rt11-modal.rt-mbsa .rthero .mbsa-hero-explore:hover,
+#rt11-modal.rt-mbsa .rthero .mbsa-hero-explore:focus-visible{
+ background:rgba(19,89,140,.83)!important;box-shadow:0 12px 36px rgba(15,92,171,.4)!important;
+}
+@keyframes mbsaB5ButtonPulse{
+ 0%,100%{box-shadow:0 0 0 0 rgba(137,213,255,.12),0 9px 30px rgba(0,25,54,.24)}
+ 50%{box-shadow:0 0 0 10px rgba(137,213,255,0),0 9px 30px rgba(0,25,54,.24)}
+}
+/* Modern, evenly spaced process timeline: target the existing Multi-Nuclei section */
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline :is(ul,ol){
+ display:grid!important;grid-template-columns:1fr!important;gap:15px!important;
+ margin:20px 0 28px!important;padding:0!important;border:0!important;
+ counter-reset:rtitem!important;list-style:none!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li{
+ position:relative!important;counter-increment:rtitem!important;
+ display:flex!important;align-items:center!important;gap:22px!important;
+ min-height:100px!important;padding:18px 24px!important;margin:0!important;
+ border:1px solid #c1dbf0!important;border-left:5px solid #3f93c8!important;
+ border-radius:18px!important;background:linear-gradient(110deg,#fff,#eaf6ff)!important;
+ box-shadow:0 8px 20px rgba(18,79,134,.07)!important;
+ transform:none!important;transition:transform .25s ease,box-shadow .25s ease!important;
+ font-size:clamp(17px,1.27vw,20px)!important;
+ line-height:1.65!important;text-align:left!important;word-spacing:normal!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li::before{
+ content:counter(rtitem,decimal-leading-zero)!important;position:static!important;
+ flex:0 0 54px!important;display:grid!important;place-items:center!important;
+ width:54px!important;height:54px!important;
+ background:linear-gradient(135deg,#194f8b,#50a8d5)!important;
+ color:white!important;border:3px solid #fff!important;
+ border-radius:16px!important;box-shadow:0 5px 15px rgba(31,90,150,.16)!important;
+ font:800 17px/1 Arial,sans-serif!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li::after{display:none!important;content:none!important}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li .rt-process-text{
+ display:block!important;flex:1!important;padding:0!important;
+ margin:0!important;min-width:0!important;
+ border:0!important;background:transparent!important;box-shadow:none!important;
+ font-size:inherit!important;line-height:inherit!important;
+ text-align:left!important;text-align-last:left!important;word-spacing:normal!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li:hover{
+ transform:translateY(-3px)!important;box-shadow:0 16px 28px rgba(18,79,134,.15)!important;
+}
+@media(max-width:680px){
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li{gap:14px!important;padding:15px!important}
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-concept .rtpiece.rt-mbsa-timeline li::before{flex-basis:42px!important;width:42px!important;height:42px!important}
+ #rt11-modal.rt-mbsa .rthero .mbsa-hero-explore{bottom:16px!important;font-size:10px!important;padding:10px 16px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbsa .rtgrid>.mbsa-motion-scene::before,
+ #rt11-modal.rt-mbsa .rtgrid>.mbsa-motion-scene::after,
+ #rt11-modal.rt-mbsa .rthero .mbsa-hero-explore{animation:none!important}
+}
+</style>
+<script id="mbsa-b5-motion-timeline-cta-js">
+(function(){
+ const modal=document.getElementById('rt11-modal');
+ const hero=document.getElementById('rt11-hero');
+ const grid=modal&&modal.querySelector('.rtgrid');
+ if(!modal||!hero||!grid)return;
+ const scene=document.createElement('div');
+ scene.className='mbsa-motion-scene';
+ scene.setAttribute('aria-hidden','true');
+ grid.prepend(scene);
+ const cta=document.createElement('button');
+ cta.type='button';
+ cta.className='mbsa-hero-explore';
+ cta.textContent='SKROL UNTUK TEROKAI ↓';
+ cta.setAttribute('aria-label','Skrol ke kandungan Rancangan Tempatan MBSA');
+ cta.addEventListener('click',()=>grid.scrollIntoView({behavior:'smooth',block:'start'}));
+ function sync(){
+  const mbsa=modal.classList.contains('rt-mbsa')&&!modal.hidden;
+  scene.hidden=!mbsa;
+  if(mbsa&&!hero.contains(cta))hero.appendChild(cta);
+  if(!mbsa&&cta.isConnected)cta.remove();
+ }
+ const observer=new MutationObserver(sync);
+ observer.observe(modal,{attributes:true,attributeFilter:['class','hidden']});
+ observer.observe(hero,{childList:true});
+ sync();
+})();
 </script>
 </body>
 </html>
