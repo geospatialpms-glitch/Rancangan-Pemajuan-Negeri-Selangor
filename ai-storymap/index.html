@@ -16464,6 +16464,46 @@ if(entry.code==='MBDK'){
   });
  });
 }
+/* MPAJ Chapter 02: source-aligned editorial rendering based on verified RTMPAJ briefing. */
+if(entry.code==='MPAJ'){
+ const ch=[...body.querySelectorAll('.rtchapter')].find(section=>
+  /^\s*(?:2\s*[.·:\-]\s*)?latar belakang\b/i.test(section.querySelector(':scope > h2')?.textContent?.trim()||''));
+ if(ch&&!ch.querySelector('.mpaj-background-audited')){
+  const previous=[...ch.children].filter(el=>el.classList.contains('rtpiece'));
+  /* Preserve source media and documents; replace only the editorial text content. */
+  previous.forEach(el=>{if(!el.querySelector('img,figure,picture,video,iframe,table,a[href]'))el.remove()});
+  const panel=document.createElement('div');panel.className='mpaj-background-audited';
+  const introduction=document.createElement('article');introduction.className='mpaj-background-intro';
+  const kicker=document.createElement('span');kicker.className='mpaj-background-kicker';kicker.textContent='RANCANGAN TEMPATAN MPAJ 2035 · PENGGANTIAN';
+  const p=document.createElement('p');
+  p.textContent='Penyediaan Rancangan Tempatan ini dibuat selaras dengan garis panduan perundangan di bawah Seksyen 16, Akta Perancangan Bandar dan Desa 1976 (Akta 172). Ia berfungsi sebagai instrumen perancangan bertulis dan berpandu untuk menterjemahkan dasar-dasar perancangan fizikal di peringkat nasional dan negeri ke peringkat tempatan.';
+  introduction.append(kicker,p);
+  const heading=document.createElement('div');heading.className='mpaj-background-heading';
+  const small=document.createElement('span');small.textContent='7 FAKTOR UTAMA';
+  const h3=document.createElement('h3');h3.textContent='Keperluan dan Faktor Penyediaan RT';
+  const lead=document.createElement('p');lead.textContent='Penyediaan RTMPAJ 2035 (Penggantian) didorong oleh beberapa faktor utama:';
+  heading.append(small,h3,lead);
+  const factors=[
+   ['Penyelarasan Semula RTMPA 2011–2020','Mengemas kini rancangan tempatan terdahulu yang telah tamat tempoh perancangannya.'],
+   ['Penyelarasan Dasar Nasional & Negeri','Memastikan perancangan sejajar dengan dasar pembangunan semasa di peringkat Persekutuan dan Negeri Selangor.'],
+   ['Pendekatan Baharu Pembangunan Negeri','Mengadaptasi pendekatan perancangan fizikal dan ekonomi terkini Negeri Selangor.'],
+   ['Pelaksanaan RSN Selangor 2035','Menterjemahkan strategi dan hala tuju Rancangan Struktur Negeri Selangor 2035.'],
+   ['Keperluan Perundangan','Memenuhi syarat dan peruntukan di bawah Akta 172.'],
+   ['Panduan Perancangan Guna Tanah','Menyediakan garis panduan kawalan pembangunan guna tanah yang komprehensif bagi MPAJ sehingga tahun 2035.'],
+   ['Penterjemahan Agenda Global','Menerapkan konsep, strategi dan matlamat pembangunan mampan di peringkat antarabangsa.']
+  ];
+  const group=document.createElement('div');group.className='mpaj-background-factor-grid';
+  factors.forEach(([title,description],i)=>{
+   const card=document.createElement('article');card.className='mpaj-background-factor';
+   const no=document.createElement('span');no.className='mpaj-background-num';no.textContent=String(i+1).padStart(2,'0');
+   const copy=document.createElement('div');const h4=document.createElement('h4');h4.textContent=title;
+   const detail=document.createElement('p');detail.textContent=description;copy.append(h4,detail);
+   card.append(no,copy);group.appendChild(card);
+  });
+  panel.append(introduction,heading,group);
+  ch.insertBefore(panel,[...ch.children].find(el=>el!==ch.querySelector(':scope > h2'))||null);
+ }
+}
 if(!body.children.length)throw Error('Tiada kandungan bab');}
 catch(err){if(ticket!==requestNo)return;body.innerHTML='';const box=document.createElement('section');box.className='rtchapter';const h=document.createElement('h2');h.textContent='Kandungan ESRI tidak dapat dimuatkan';const p=document.createElement('p');p.textContent='Akses JSON asal tidak tersedia pada pelayar ini. Buka StoryMap asal untuk membaca kandungan lengkap.';const a=document.createElement('a');a.href='https://storymaps.arcgis.com/stories/'+entry.id;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka StoryMap ESRI asal ↗';box.append(h,p,a);body.appendChild(box)}}
 /* Standalone RT pages: open existing Story Map contents when loaded inside a dedicated RT iframe. */
@@ -20991,6 +21031,72 @@ schedule();
 @media(prefers-reduced-motion:reduce){
  #rt11-modal.rt-mpaj,#rt11-modal.rt-mpaj .rtgrid::before,
  #rt11-modal.rt-mpaj .rthero::after{animation:none!important}
+}
+</style>
+
+<style id="mpaj-background-factors-audit-20261110">
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-audited{width:100%;max-width:none;margin:18px auto 24px;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#25434a}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-intro{
+ position:relative;padding:clamp(24px,2.6vw,35px);border-radius:22px;
+ background:linear-gradient(125deg,#effbf6,#fffefb);border:1px solid #b9e2d6;
+ box-shadow:0 10px 24px rgba(21,107,101,.07);
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-kicker{
+ display:inline-flex;margin:0 0 12px;color:#16756b;font-size:11px;font-weight:850;
+ letter-spacing:.1em;
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-intro p{
+ margin:0;font-size:clamp(16px,1.15vw,19px)!important;line-height:1.8!important;
+ text-align:left!important;letter-spacing:normal!important;word-spacing:normal!important;
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-heading{margin:34px 0 22px}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-heading>span{
+ color:#b15b3e;font-size:11px;font-weight:850;letter-spacing:.11em
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-heading h3{
+ margin:7px 0 12px!important;color:#176f68!important;
+ font-size:clamp(23px,2.15vw,34px)!important;line-height:1.23!important;
+ font-weight:800!important;letter-spacing:-.02em!important;
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-heading p{
+ margin:0;font-size:clamp(16px,1.15vw,19px)!important;line-height:1.7!important;
+ text-align:left!important;word-spacing:normal!important;
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor-grid{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor{
+ display:flex;align-items:flex-start;gap:15px;min-width:0;min-height:135px;
+ margin:0;padding:23px 21px;border:1px solid #d0e6db;border-radius:19px;
+ background:linear-gradient(125deg,#fffefa,#eef9f4);
+ box-shadow:0 8px 23px rgba(33,102,90,.065);
+ transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor:last-child:nth-child(odd){grid-column:1/-1}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor:hover{
+ transform:translateY(-5px);border-color:#78b5a7;
+ box-shadow:0 15px 30px rgba(23,102,92,.12);
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-num{
+ flex:none;width:39px;height:39px;border-radius:11px;
+ display:grid;place-items:center;background:linear-gradient(135deg,#146e68,#2a9a86);
+ color:white;font:850 12px Arial,sans-serif;
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor h4{
+ margin:0 0 8px!important;color:#195e5a!important;font-size:clamp(16px,1.18vw,19px)!important;
+ line-height:1.4!important;font-weight:800!important;
+}
+#rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor p{
+ margin:0!important;color:#334e56!important;
+ font-size:clamp(15px,1.05vw,17px)!important;line-height:1.67!important;
+ text-align:left!important;word-spacing:normal!important;
+}
+@media(max-width:800px){
+ #rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor-grid{grid-template-columns:1fr}
+ #rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor:last-child:nth-child(odd){grid-column:auto}
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mpaj #rt11-body .mpaj-background-factor{transition:none}
 }
 </style>
 </body>
