@@ -16000,7 +16000,7 @@ let cursor=0;setInterval(()=>{
 @media(max-width:800px){#rt11-modal .rtgrid{grid-template-columns:1fr}#rt11-modal .rtside{position:relative;top:auto;max-height:none}#rt11-modal .rtbar{padding:12px 15px}}
 @media(prefers-reduced-motion:no-preference){#rt11-modal .rtchapter{animation:rtEnter .5s ease both}@keyframes rtEnter{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}}
 </style>
-<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><button type="button" id="rt11-home" title="Kembali ke halaman utama Rancangan Tempatan" aria-label="Halaman Utama Rancangan Tempatan" hidden>⌂ Halaman Utama</button><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
+<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><nav class="rt-mbsa-top-links" aria-label="Navigasi Rancangan Tempatan MBSA"><a href="./rt/MDSB.html" target="_top" title="RT sebelumnya">‹ Sebelum</a><a href="./index.html#panel-3" target="_top">Portal Utama</a><a href="./rt/MBPJ.html" target="_top" title="RT seterusnya">Seterusnya ›</a></nav><button type="button" id="rt11-home" title="Kembali ke halaman utama Rancangan Tempatan" aria-label="Halaman Utama Rancangan Tempatan" hidden>⌂ Halaman Utama</button><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
 <style id="mbsa-loaded-actual-chapter-css-20261106">
 /* Specific to the RT MBSA Story Map loaded from ArcGIS (not the directory preview). */
 #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-loaded-layout{display:grid!important;gap:16px!important;margin:20px 0 34px!important;width:100%!important;padding:0!important;box-sizing:border-box!important}
@@ -19773,6 +19773,34 @@ schedule();
  #rt11-modal.rt-mbsj .rthero .mbsa-hero-explore,
  #rt11-modal.rt-mbsj .rtgrid>.mbsa-motion-scene:before,
  #rt11-modal.rt-mbsj .rtgrid>.mbsa-motion-scene:after{animation:none!important}
+}
+</style>
+
+<style id="mbsa-header-nav-native-20261110">
+/* Navigation lives natively inside the blue RT header; no iframe scripting required. */
+#rt11-modal .rtbar>.rt-mbsa-top-links{display:none!important}
+#rt11-modal.rt-mbsa .rtbar>.rt-mbsa-top-links{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ flex-wrap:wrap!important;gap:clamp(8px,1.1vw,19px)!important;margin-left:auto!important;
+ min-width:0!important;position:relative!important;z-index:8!important;
+}
+#rt11-modal.rt-mbsa .rtbar>.rt-mbsa-top-links a{
+ display:inline-flex!important;align-items:center!important;min-height:36px!important;
+ color:#f5fbff!important;font:800 clamp(11px,.9vw,14px)/1.3 Arial,sans-serif!important;
+ text-decoration:none!important;white-space:nowrap!important;padding:6px 3px!important;
+}
+#rt11-modal.rt-mbsa .rtbar>.rt-mbsa-top-links a:hover{text-decoration:underline!important;color:#d1f4ff!important}
+#rt11-modal.rt-mbsa .rtbar>.rt-mbsa-top-links a:focus-visible{outline:2px solid #d1f4ff!important;outline-offset:3px!important;border-radius:5px!important}
+#rt11-modal.rt-mbsa .rtbar #rt11-home{margin-left:0!important}
+#rt11-modal.rt-mbsa .rtbar{gap:clamp(8px,1vw,16px)!important;flex-wrap:wrap!important}
+#rt11-modal.rt-mbsa .rtbar #rt11-label{flex:1 1 235px!important}
+@media(max-width:900px){
+ #rt11-modal.rt-mbsa .rtbar>.rt-mbsa-top-links{order:3!important;flex-basis:100%!important;margin-left:0!important}
+ #rt11-modal.rt-mbsa .rtbar{height:auto!important;min-height:110px!important}
+}
+@media(max-width:480px){
+ #rt11-modal.rt-mbsa .rtbar>.rt-mbsa-top-links{gap:10px!important}
+ #rt11-modal.rt-mbsa .rtbar>.rt-mbsa-top-links a{font-size:11px!important}
 }
 </style>
 </body>
