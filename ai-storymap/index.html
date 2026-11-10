@@ -16000,7 +16000,7 @@ let cursor=0;setInterval(()=>{
 @media(max-width:800px){#rt11-modal .rtgrid{grid-template-columns:1fr}#rt11-modal .rtside{position:relative;top:auto;max-height:none}#rt11-modal .rtbar{padding:12px 15px}}
 @media(prefers-reduced-motion:no-preference){#rt11-modal .rtchapter{animation:rtEnter .5s ease both}@keyframes rtEnter{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}}
 </style>
-<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B5</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
+<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B6</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
 <style id="mbsa-loaded-actual-chapter-css-20261106">
 /* Specific to the RT MBSA Story Map loaded from ArcGIS (not the directory preview). */
 #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-loaded-layout{display:grid!important;gap:16px!important;margin:20px 0 34px!important;width:100%!important;padding:0!important;box-sizing:border-box!important}
@@ -16211,6 +16211,13 @@ if(entry.code==='MBSA'){
      'Peningkatan Kualiti Hidup Masyarakat',
      'Urus Tadbir yang Cekap dan Berdaya Laksana'
    ];
+   /* Ringkasan editorial berdasarkan empat tema, berbeza daripada tajuk kad hadapan. */
+   const themeDetails=[
+     'Memperkukuh peluang ekonomi tempatan, meningkatkan kemahiran dan daya saing modal insan serta menyokong pertumbuhan yang mampan dan berdaya tahan.',
+     'Menyelaras perancangan guna tanah dengan keperluan pembangunan fizikal, kemudahan dan perlindungan alam sekitar agar pembangunan bandar lebih seimbang.',
+     'Mempertingkat akses kepada kemudahan, perkhidmatan dan persekitaran kehidupan yang selesa, selamat serta inklusif untuk masyarakat Shah Alam.',
+     'Memperkemas penyelarasan pentadbiran, kecekapan penyampaian perkhidmatan dan pelaksanaan pembangunan melalui tadbir urus yang berkesan.'
+   ];
    const grid=document.createElement('div');grid.className='rt-mbsa-teras-grid';
    names.forEach((title,i)=>{
      const card=document.createElement('article');card.className='rt-mbsa-teras-item';
@@ -16223,9 +16230,10 @@ if(entry.code==='MBSA'){
      front.append(star,number,h,hint);
      const back=document.createElement('div');back.className='rt-mbsa-flip-face rt-mbsa-flip-back';
      const bnum=document.createElement('small');bnum.textContent='TEMA '+String(i+1).padStart(2,'0');
-     const desc=document.createElement('p');desc.textContent=title;
+     const backKicker=document.createElement('span');backKicker.className='mbsa-theme-back-kicker';backKicker.textContent='HURAIAN STRATEGI';
+     const desc=document.createElement('p');desc.className='mbsa-theme-back-description';desc.textContent=themeDetails[i];
      const returnHint=document.createElement('span');returnHint.className='rt-mbsa-flip-hint';returnHint.textContent='↶ KLIK UNTUK KEMBALI';
-     back.append(bnum,desc,returnHint);
+     back.append(bnum,backKicker,desc,returnHint);
      inner.append(front,back);card.appendChild(inner);
      card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label','Tema '+(i+1)+': '+title);
      const flip=()=>{card.classList.toggle('is-flipped');card.setAttribute('aria-pressed',String(card.classList.contains('is-flipped')))};
@@ -19192,5 +19200,71 @@ schedule();
  sync();
 })();
 </script>
+
+<style id="mbsa-b6-flip-distinct-content">
+
+/* RT MBSA B6 — harmonikan kad flip dengan RKK KKB; belakang ialah huraian, bukan tajuk semula */
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-pillars>.rt-mbsa-teras-grid{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-pillars .rt-mbsa-teras-item{
+ height:370px!important;min-height:370px!important;max-height:370px!important;
+ border:1px solid #b3d4ee!important;border-radius:27px!important;
+ box-shadow:0 13px 32px rgba(15,78,136,.12)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-face{
+ box-sizing:border-box!important;display:flex!important;flex-direction:column!important;
+ align-items:center!important;justify-content:center!important;gap:17px!important;
+ padding:32px 38px!important;overflow:hidden!important;
+ border-radius:26px!important;backface-visibility:hidden!important;
+ -webkit-backface-visibility:hidden!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-front{
+ background:
+ radial-gradient(circle,rgba(40,118,181,.15) 2px,transparent 4px) 0 0/145px 115px,
+ repeating-linear-gradient(145deg,transparent 0 130px,rgba(34,122,198,.07) 131px 132px,transparent 133px 220px),
+ linear-gradient(125deg,#dff4ff,#b6daf5 57%,#c8daf3)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-front h3{
+ font:700 clamp(25px,2.1vw,34px)/1.3 Georgia,serif!important;
+ color:#214b73!important;word-spacing:normal!important;letter-spacing:normal!important;
+ text-align:center!important;text-align-last:center!important;text-wrap:balance!important;
+ max-width:100%!important;margin:0!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-face small{
+ font:800 13px/1.4 Arial,sans-serif!important;color:#365f83!important;
+ letter-spacing:.12em!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-back{
+ background:
+ radial-gradient(circle,rgba(59,132,201,.11) 2px,transparent 4px) 0 0/150px 130px,
+ repeating-linear-gradient(145deg,transparent 0 128px,rgba(45,136,213,.06) 129px 130px,transparent 131px 220px),
+ linear-gradient(125deg,#edf8ff,#cde7f9)!important;
+ gap:15px!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-back .mbsa-theme-back-kicker{
+ display:block!important;font:800 12px/1.4 Arial,sans-serif!important;
+ letter-spacing:.15em!important;color:#2c79b1!important;
+ text-align:center!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-back .mbsa-theme-back-description{
+ display:block!important;max-width:95%!important;margin:0 auto!important;padding:0!important;
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ font:400 clamp(17px,1.27vw,20px)/1.65 Arial,sans-serif!important;
+ color:#2a4965!important;text-align:center!important;text-align-last:center!important;
+ word-spacing:normal!important;letter-spacing:normal!important;hyphens:none!important;
+ text-wrap:pretty!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-back .rt-mbsa-flip-hint{
+ margin:3px auto 0!important;font-size:11px!important;padding:11px 20px!important;
+}
+@media(max-width:760px){
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-pillars>.rt-mbsa-teras-grid{grid-template-columns:1fr!important;gap:18px!important}
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-pillars .rt-mbsa-teras-item{height:390px!important;min-height:390px!important;max-height:390px!important}
+ #rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-face{padding:25px!important}
+ #rt11-modal.rt-mbsa #rt11-body .rt-mbsa-teras-item .rt-mbsa-flip-back .mbsa-theme-back-description{font-size:17px!important}
+}
+
+</style>
 </body>
 </html>
