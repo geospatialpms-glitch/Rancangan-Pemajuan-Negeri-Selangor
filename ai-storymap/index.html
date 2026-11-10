@@ -16504,6 +16504,7 @@ if(entry.code==='MPAJ'){
   ch.insertBefore(panel,[...ch.children].find(el=>el!==ch.querySelector(':scope > h2'))||null);
  }
 }
+if(entry.code==='MPS'&&typeof window.mpsKkbCardUpgrade==='function')window.mpsKkbCardUpgrade(body);
 if(!body.children.length)throw Error('Tiada kandungan bab');}
 catch(err){if(ticket!==requestNo)return;body.innerHTML='';const box=document.createElement('section');box.className='rtchapter';const h=document.createElement('h2');h.textContent='Kandungan ESRI tidak dapat dimuatkan';const p=document.createElement('p');p.textContent='Akses JSON asal tidak tersedia pada pelayar ini. Buka StoryMap asal untuk membaca kandungan lengkap.';const a=document.createElement('a');a.href='https://storymaps.arcgis.com/stories/'+entry.id;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka StoryMap ESRI asal ↗';const retry=document.createElement('button');retry.type='button';retry.className='rt-retry-source';retry.textContent='Cuba Muatkan Semula';retry.addEventListener('click',()=>open(entry));box.append(h,p,retry,a);body.appendChild(box)}}
 /* Standalone RT pages: open existing Story Map contents when loaded inside a dedicated RT iframe. */
@@ -21425,6 +21426,122 @@ const card=e.target.closest('.rt-kkb-pillar-card');
 if(!card||!modal.classList.contains('rt-mpaj')||card.contains(e.relatedTarget))return;
 card.classList.remove('is-flipped');card.setAttribute('aria-pressed','false');
 });
+})();
+</script>
+
+<!-- rt-mps-kkb-concept-teras-20261110: 4 interactive concept cards + 6 compact development pillars, RT MPS only -->
+<style id="rt-mps-kkb-concept-teras-20261110">
+#rt11-modal .mps-kkb-concept-grid,
+#rt11-modal .mps-kkb-teras-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important;margin:26px 0 32px!important;width:100%!important;list-style:none!important;padding:0!important}
+#rt11-modal .mps-kkb-concept-card{position:relative;isolation:isolate;display:block;min-width:0;height:315px;border-radius:26px;border:1px solid #eac8b8;background:#ffdfd4;
+box-shadow:0 14px 34px rgba(110,52,60,.15);perspective:1100px;cursor:pointer;animation:mpsKkbCardBob 6.4s ease-in-out infinite;transition:box-shadow .35s,translate .35s}
+#rt11-modal .mps-kkb-concept-card:nth-child(even){animation-delay:-3.1s}
+#rt11-modal .mps-kkb-concept-card:hover,#rt11-modal .mps-kkb-concept-card:focus-visible{animation-play-state:paused;box-shadow:0 20px 44px rgba(128,64,75,.25),0 0 22px rgba(249,186,120,.22);outline:2px solid #d3a569;outline-offset:2px}
+#rt11-modal .mps-kkb-concept-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.2,.75,.2,1)}
+#rt11-modal .mps-kkb-concept-card.is-flipped .mps-kkb-concept-inner{transform:rotateY(180deg)}
+#rt11-modal .mps-kkb-concept-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:17px;
+padding:clamp(22px,2.6vw,39px);text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:25px;overflow:auto}
+#rt11-modal .mps-kkb-concept-front{background-image:radial-gradient(circle at 15% 18%,rgba(164,87,88,.13) 0 2px,transparent 3px),
+linear-gradient(148deg,#ffb8c4,#ffbea8);background-size:105px 105px,100% 100%}
+#rt11-modal .mps-kkb-concept-back{transform:rotateY(180deg);background-image:radial-gradient(circle at 15% 18%,rgba(164,87,88,.11) 0 2px,transparent 3px),
+linear-gradient(140deg,#f9e5dd,#ffdac6);background-size:105px 105px,100% 100%}
+#rt11-modal .mps-kkb-concept-orb{display:block;color:#fff3ae;font-size:29px;line-height:1;filter:drop-shadow(0 0 9px rgba(255,221,134,.45))}
+#rt11-modal .mps-kkb-concept-kicker{color:#874455;font:850 11px/1.5 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+#rt11-modal .mps-kkb-concept-title{font:800 clamp(20px,2.05vw,29px)/1.3 Georgia,serif;color:#713e4d!important;max-width:98%;text-wrap:balance}
+#rt11-modal .mps-kkb-concept-description{font:500 clamp(15px,1.4vw,19px)/1.62 'Plus Jakarta Sans',Arial,sans-serif!important;color:#704e59!important;max-width:100%}
+#rt11-modal .mps-kkb-concept-hint{display:inline-flex;align-items:center;justify-content:center;max-width:100%;padding:10px 15px;background:linear-gradient(100deg,#fff8d5,#f7d99b);
+border:2px solid rgba(255,255,255,.8);border-radius:40px;color:#75465a;font:800 10px/1.35 Arial,sans-serif;letter-spacing:.02em;text-align:center}
+@keyframes mpsKkbCardBob{0%,100%{translate:0 0}50%{translate:0 -7px}}
+#rt11-modal .mps-kkb-teras-card{position:relative;min-width:0;min-height:185px;padding:27px 27px 24px!important;margin:0!important;border-radius:24px;
+border:1px solid rgba(27,104,71,.22);background:linear-gradient(130deg,#fffef8,#e7f5df 72%,#fef1e7);
+box-shadow:0 11px 27px rgba(32,82,58,.12);overflow:hidden;transition:translate .35s,box-shadow .35s,border-color .35s}
+#rt11-modal .mps-kkb-teras-card:hover{translate:0 -6px;box-shadow:0 20px 35px rgba(29,99,59,.2);border-color:#bba269}
+#rt11-modal .mps-kkb-teras-card::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(#246940,#c5a46a,#246940)}
+#rt11-modal .mps-kkb-teras-top{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:19px}
+#rt11-modal .mps-kkb-teras-number{display:grid;place-items:center;min-width:46px;height:44px;padding:0 10px;border-radius:13px;background:linear-gradient(135deg,#176441,#5c8e66);
+color:white!important;font:900 16px/1 Arial,sans-serif;box-shadow:0 7px 16px rgba(19,94,57,.2)}
+#rt11-modal .mps-kkb-teras-orb{font-size:27px;color:#e2a875;line-height:1;animation:mpsTerasStar 4s ease-in-out infinite}
+@keyframes mpsTerasStar{50%{transform:rotate(25deg) scale(1.16);opacity:.65}}
+#rt11-modal .mps-kkb-teras-kicker{font:800 10px/1.4 Arial,sans-serif;color:#397b58;letter-spacing:.13em;margin:0 0 9px;text-transform:uppercase}
+#rt11-modal .mps-kkb-teras-heading{font:800 clamp(20px,1.7vw,25px)/1.3 Georgia,serif!important;color:#236342!important;margin:0!important;overflow-wrap:break-word}
+#rt11-modal .mps-kkb-teras-description{font:500 14px/1.6 'Plus Jakarta Sans',Arial,sans-serif;color:#53645a;margin:10px 0 0}
+#rt11-modal .mps-kkb-teras-card:last-child:nth-child(odd){grid-column:1/-1;max-width:calc(50% - 11px);width:100%;justify-self:center}
+@media(max-width:790px){#rt11-modal .mps-kkb-concept-grid,#rt11-modal .mps-kkb-teras-grid{grid-template-columns:1fr!important;gap:15px!important}
+#rt11-modal .mps-kkb-concept-card{height:300px}#rt11-modal .mps-kkb-teras-card{min-height:160px}
+#rt11-modal .mps-kkb-teras-card:last-child:nth-child(odd){grid-column:auto;max-width:none}}
+@media(prefers-reduced-motion:reduce){#rt11-modal .mps-kkb-concept-card,#rt11-modal .mps-kkb-teras-orb{animation:none!important}
+#rt11-modal .mps-kkb-concept-inner{transition:none!important}}
+</style>
+<script id="rt-mps-kkb-concept-teras-20261110-controller">
+(function(){
+'use strict';
+const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
+function splitContent(text,concept){
+const raw=clean(text);
+const colon=raw.indexOf(':');
+const dash=raw.indexOf(' – '),alt=raw.indexOf(' — ');
+const split=concept?(dash>0?dash:alt):(colon>0?colon:(dash>0?dash:alt));
+if(split>0)return [raw.slice(0,split).trim(),raw.slice(split+(concept?3:1)).replace(/^[\s–—:-]+/,'').trim()];
+return [raw,''];
+}
+function make(tag,className,text){
+const node=document.createElement(tag);node.className=className;if(text!==undefined)node.textContent=text;return node;
+}
+function concepts(section){
+if(!section||section.querySelector('.mps-kkb-concept-grid'))return;
+const lists=[...section.querySelectorAll('.rtpiece ul,.rtpiece ol')];
+const list=lists.find(el=>{const t=clean(el.textContent);return t.includes('Konsep Jaringan Sistem Pengangkutan')&&t.includes('Konsep Hierarki Perbandaran')});
+if(!list)return;
+const original=[...list.children].filter(el=>el.tagName==='LI');
+if(original.length!==4)return;
+const grid=make('div','mps-kkb-concept-grid');grid.setAttribute('aria-label','Empat Konsep Pembangunan');
+original.forEach((item,i)=>{
+const pair=splitContent(item.textContent,true);
+const no=String(i+1).padStart(2,'0');
+const card=make('article','mps-kkb-concept-card');card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-pressed','false');card.setAttribute('aria-label','Konsep '+no+' '+pair[0]+'. Klik atau tekan Enter untuk melihat huraian');
+const inner=make('div','mps-kkb-concept-inner');
+function face(side){
+const block=make('div','mps-kkb-concept-face mps-kkb-concept-'+side);
+block.append(make('span','mps-kkb-concept-orb','✧'),make('span','mps-kkb-concept-kicker',side==='front'?'KONSEP '+no:'KONSEP '+no+' · HURAIAN'));
+block.append(make('div',side==='front'?'mps-kkb-concept-title':'mps-kkb-concept-description',side==='front'?pair[0]:(pair[1]||pair[0])));
+block.append(make('span','mps-kkb-concept-hint',side==='front'?'HALAKAN TETIKUS ATAU KLIK UNTUK TEROKA ↻':'KLIK UNTUK KEMBALI ↻'));
+return block;
+}
+inner.append(face('front'),face('back'));card.append(inner);
+const flip=state=>{card.classList.toggle('is-flipped',state);card.setAttribute('aria-pressed',String(state))};
+card.addEventListener('mouseenter',()=>flip(true));
+card.addEventListener('mouseleave',()=>flip(false));
+card.addEventListener('click',()=>flip(!card.classList.contains('is-flipped')));
+card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip(!card.classList.contains('is-flipped'))}if(e.key==='Escape')flip(false)});
+grid.append(card);
+});
+list.replaceWith(grid);
+}
+function pillars(section){
+if(!section||section.querySelector('.mps-kkb-teras-grid'))return;
+const lists=[...section.querySelectorAll('.rtpiece ul,.rtpiece ol')];
+const list=lists.find(el=>{const t=clean(el.textContent);return t.includes('Teras Satu')&&t.includes('Teras Dua')&&t.includes('Teras Tiga')});
+if(!list)return;
+const items=[...list.children].filter(el=>el.tagName==='LI');if(items.length!==6)return;
+const grid=make('div','mps-kkb-teras-grid');grid.setAttribute('aria-label','Enam Teras Pembangunan MPS');
+items.forEach((li,i)=>{
+const pair=splitContent(li.textContent,false);
+const number=String(i+1).padStart(2,'0');
+const card=make('article','mps-kkb-teras-card');
+const top=make('div','mps-kkb-teras-top');top.append(make('span','mps-kkb-teras-number',number),make('span','mps-kkb-teras-orb','✧'));
+card.append(top,make('div','mps-kkb-teras-kicker','TERAS '+number),make('h3','mps-kkb-teras-heading',pair[1]||pair[0]));
+if(pair[1]&&pair[0])card.setAttribute('aria-label',pair[0]+': '+pair[1]);
+grid.append(card);
+});
+list.replaceWith(grid);
+}
+window.mpsKkbCardUpgrade=function(body){
+if(!body)return;
+const chapters=[...body.querySelectorAll('.rtchapter')];
+const concept=chapters.find(ch=>ch.classList.contains('rt-concept')||/konsep pembangunan/i.test(ch.querySelector(':scope > h2')?.textContent||''));
+const teras=chapters.find(ch=>ch.classList.contains('rt-pillars')||/teras pembangunan/i.test(ch.querySelector(':scope > h2')?.textContent||''));
+concepts(concept);pillars(teras);
+};
 })();
 </script>
 </body>
