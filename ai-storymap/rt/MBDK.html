@@ -23,7 +23,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f4f5f8}
  */
 (function(){
 const frame=document.getElementById('rt-story-frame');if(!frame)return;
-const style=String.raw\`
+const style=String.raw`
 <style id="mbdk-direct-timeline-v7">
 #rt11-modal.rt-mbdk #rt11-body ul.mbdk-direct-flow,
 #rt11-modal.rt-mbdk #rt11-body ol.mbdk-direct-flow{
@@ -124,7 +124,7 @@ const style=String.raw\`
 @media(prefers-reduced-motion:reduce){
  #rt11-modal.rt-mbdk #rt11-body :is(ul,ol).mbdk-direct-flow>li{transition:none!important}
 }
-</style>\`;
+</style>`;
 let observer=null,scrollTarget=null;
 function attach(){
  let d;try{d=frame.contentDocument}catch(e){return}
