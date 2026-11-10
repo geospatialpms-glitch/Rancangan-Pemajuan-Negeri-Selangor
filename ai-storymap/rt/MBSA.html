@@ -603,6 +603,44 @@ frame.addEventListener('load',()=>{
  setTimeout(apply,650);setTimeout(apply,1800);
 })();
 
+
+/* Consistent Tema 01-04 back faces and animated blue geometry. */
+(function(){
+ const d=frame.contentDocument,w=frame.contentWindow;if(!d||!w)return;
+ const sty=d.createElement('style');sty.id='mbsa-theme-back-consistency';
+ sty.textContent="\n#rt11-body .mbsa-flip-back-uniform{box-sizing:border-box!important;position:relative!important;overflow:hidden!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:22px!important;padding:clamp(24px,4vw,46px)!important;border:1px solid #b1d3ee!important;border-radius:22px!important;background:linear-gradient(140deg,#e4f4ff,#d4e8fa)!important;box-shadow:0 12px 25px rgba(22,74,133,.08)!important;text-align:center!important}\n#rt11-body .mbsa-flip-back-uniform .mbsa-flip-back-label{margin:0!important;padding:0!important;font:800 14px/1.4 Arial,sans-serif!important;color:#426b90!important;letter-spacing:.14em!important;text-align:center!important}\n#rt11-body .mbsa-flip-back-uniform .mbsa-flip-back-heading{display:block!important;max-width:96%!important;margin:0 auto!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;font:700 clamp(22px,2.25vw,35px)/1.3 Georgia,serif!important;color:#284c70!important;word-spacing:normal!important;letter-spacing:normal!important;text-align:center!important;text-align-last:center!important;text-wrap:balance!important}\n#rt11-body .mbsa-flip-back-uniform .mbsa-flip-back-heading::before,#rt11-body .mbsa-flip-back-uniform .mbsa-flip-back-heading::after{content:none!important}\n#rt11-body .mbsa-flip-back-uniform .mbsa-flip-back-heading *{font:inherit!important;color:inherit!important;text-align:center!important;text-align-last:center!important;word-spacing:normal!important;letter-spacing:normal!important}\n#rt11-body .mbsa-flip-back-uniform .mbsa-flip-back-button{margin:4px auto 0!important;padding:12px 20px!important;max-width:100%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;text-align-last:center!important;white-space:normal!important;border-radius:30px!important}\n#rt11-body .mbsa-flip-back-uniform .mbsa-padlet-note,#rt11-body .mbsa-flip-back-uniform .mbsa-padlet-v3,#rt11-body .mbsa-flip-back-uniform .mbsa-padlet-text-group,#rt11-body .mbsa-flip-back-uniform .mbsa-flip-center{background:none!important;box-shadow:none!important;border:0!important;margin:0!important;padding:0!important;min-height:0!important;transform:none!important}\n#rt11-body .mbsa-flip-back-uniform .mbsa-padlet-note::before,#rt11-body .mbsa-flip-back-uniform .mbsa-padlet-note::after{content:none!important}\n#rt11-modal.mbsa-motion-enabled{isolation:isolate}\n#rt11-modal.mbsa-motion-enabled .mbsa-ambient{z-index:0!important;opacity:.88!important}\n#rt11-modal.mbsa-motion-enabled .mbsa-ambient::before{background:radial-gradient(circle at 20% 35%,rgba(34,150,232,.35),transparent 28%),radial-gradient(circle at 85% 75%,rgba(56,124,224,.22),transparent 34%)!important;animation:mbsaAmbient 18s ease-in-out infinite alternate!important}\n#rt11-modal.mbsa-motion-enabled .mbsa-ambient::after{background-image:linear-gradient(30deg,rgba(31,104,176,.20) 1px,transparent 1px),linear-gradient(150deg,rgba(47,136,213,.16) 1px,transparent 1px)!important;background-size:165px 165px!important;animation:mbsaLines 24s linear infinite!important}\n@media(max-width:680px){#rt11-body .mbsa-flip-back-uniform{gap:15px!important;padding:22px 17px!important}#rt11-body .mbsa-flip-back-uniform .mbsa-flip-back-heading{font-size:clamp(20px,5vw,28px)!important}}\n@media(prefers-reduced-motion:reduce){#rt11-modal.mbsa-motion-enabled .mbsa-ambient::before,#rt11-modal.mbsa-motion-enabled .mbsa-ambient::after{animation:none!important}}\n";
+ d.head.appendChild(sty);
+ const root=d.getElementById('rt11-body');if(!root)return;
+ const clean=s=>(s||'').replace(/\s+/g,' ').trim();
+ function apply(){
+  const modal=d.getElementById('rt11-modal');if(modal)modal.classList.add('mbsa-motion-enabled');
+  const buttons=[...root.querySelectorAll('button,a,[role="button"]')].filter(e=>/KLIK UNTUK KEMBALI/i.test(clean(e.textContent)));
+  for(const btn of buttons){
+   const face=btn.closest('[class*="back"],[class*="face"],article,[class*="card"]');
+   if(!face||face===root||face.classList.contains('mbsa-flip-back-uniform'))continue;
+   const labels=[...face.querySelectorAll('span,small,b,strong,p,div')].filter(e=>/^TEMA\s*0?[1-4]$/i.test(clean(e.textContent)));
+   labels.sort((a,b)=>a.querySelectorAll('*').length-b.querySelectorAll('*').length);
+   const title=[...face.querySelectorAll('h2,h3,h4,h5,p,strong,div')]
+    .filter(e=>clean(e.textContent).length>30&&!e.contains(btn))
+    .sort((a,b)=>a.querySelectorAll('*').length-b.querySelectorAll('*').length)[0];
+   if(!title)continue;
+   face.classList.add('mbsa-flip-back-uniform');
+   if(labels[0])labels[0].classList.add('mbsa-flip-back-label');
+   title.classList.add('mbsa-flip-back-heading');
+   btn.classList.add('mbsa-flip-back-button');
+   const note=title.closest('.mbsa-padlet-note');
+   const board=title.closest('.mbsa-padlet-v3,.mbsa-padlet-text-group');
+   if(note&&face.contains(note)&&note!==title)note.replaceWith(...note.childNodes);
+   if(board&&board.isConnected&&face.contains(board))board.replaceWith(...board.childNodes);
+  }
+ }
+ apply();
+ let pending=false;
+ const observer=new MutationObserver(()=>{if(pending)return;pending=true;w.requestAnimationFrame(()=>{pending=false;apply()})});
+ observer.observe(root,{childList:true,subtree:true});
+ setTimeout(apply,700);setTimeout(apply,1700);
+})();
+
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
