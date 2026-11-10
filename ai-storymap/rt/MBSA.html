@@ -702,9 +702,6 @@ frame.addEventListener('load',()=>{
   }
   @keyframes mbsaCloudDrift{0%{transform:translate3d(-5%,-3%,0) scale(1)}100%{transform:translate3d(8%,6%,0) scale(1.12)}}
   @keyframes mbsaGridDrift{0%{background-position:0 0,0 0}100%{background-position:180px 120px,-180px 150px}}
-  #rt11-modal .mbsa-dynamic-backdrop ~ *:not(.mbsa-ambient){
-    position:relative;z-index:1;
-  }
   @media(max-width:700px){
     #rt11-body .mbsa-chapter-large-heading{font-size:clamp(32px,6.2vw,44px)!important}
     #rt11-body .mbsa-chapter-large-copy{font-size:17px!important;line-height:1.7!important}
@@ -733,8 +730,8 @@ frame.addEventListener('load',()=>{
    const container=h.closest('section,article,.rtchapter')||h.parentElement;
    if(!container)continue;
    const isPlan=/pelan mukim|pelan blok|peta|rajah/i.test(normalize(h.textContent));
-   if(isPlan)continue;
    for(const p of container.querySelectorAll('p')){
+    if(isPlan&&(p.closest('figure,[class*="map"],[class*="pelan"]')||p.querySelector('img,svg,figure,iframe')))continue;
     if(normalize(p.textContent).length<80||p.closest('.mbsa-feature-section,.mbsa-flip-back-uniform,.mbsa-theme-face-polish'))continue;
     p.classList.add('mbsa-chapter-large-copy');
     p.style.setProperty('font-size','clamp(19px,1.45vw,23px)','important');
