@@ -16000,7 +16000,7 @@ let cursor=0;setInterval(()=>{
 @media(max-width:800px){#rt11-modal .rtgrid{grid-template-columns:1fr}#rt11-modal .rtside{position:relative;top:auto;max-height:none}#rt11-modal .rtbar{padding:12px 15px}}
 @media(prefers-reduced-motion:no-preference){#rt11-modal .rtchapter{animation:rtEnter .5s ease both}@keyframes rtEnter{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}}
 </style>
-<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B8</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
+<div id="rt11-modal" role="dialog" aria-modal="true" aria-label="Rancangan Tempatan Interaktif" hidden><div class="rtbar"><strong id="rt11-label">RANCANGAN TEMPATAN SELANGOR</strong><span id="rt-live-build-badge" title="Versi fail Story Map yang sedang dipaparkan">VERSI 10.11.2026 · B9</span><button type="button" id="rt11-close">✕ Kembali ke Portal</button></div><div class="rthero" id="rt11-hero"></div><div class="rtgrid"><nav class="rtside" id="rt11-nav" aria-label="Navigasi bab"></nav><main id="rt11-body"></main></div></div>
 <style id="mbsa-loaded-actual-chapter-css-20261106">
 /* Specific to the RT MBSA Story Map loaded from ArcGIS (not the directory preview). */
 #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-loaded-layout{display:grid!important;gap:16px!important;margin:20px 0 34px!important;width:100%!important;padding:0!important;box-sizing:border-box!important}
@@ -19421,5 +19421,138 @@ schedule();
 }
 
 </style>
+
+<style id="mbsa-b9-vision-vertical">
+/* B9: Visi, Misi dan Wawasan — three vertically stacked interactive cards, MBSA only. */
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9{
+ display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:18px!important;
+ width:100%!important;max-width:none!important;margin:22px 0 33px!important;padding:0!important;
+ border:0!important;background:transparent!important;list-style:none!important;
+ counter-reset:none!important;overflow:visible!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card{
+ --v9-accent:#2365a5;--v9-soft:#edf6ff;--v9-glow:rgba(43,137,218,.2);
+ grid-column:1/-1!important;box-sizing:border-box!important;position:relative!important;
+ display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:flex-start!important;
+ width:100%!important;max-width:none!important;min-width:0!important;min-height:138px!important;
+ margin:0!important;padding:25px 34px 25px 102px!important;
+ border:1px solid #c8dff2!important;border-left:5px solid var(--v9-accent)!important;
+ border-top:1px solid #c8dff2!important;border-radius:20px!important;
+ color:#244460!important;
+ background:linear-gradient(112deg,#fff 0%,var(--v9-soft) 100%)!important;
+ box-shadow:0 8px 22px rgba(27,77,132,.085)!important;
+ font:400 clamp(17px,1.2vw,20px)/1.7 Arial,sans-serif!important;
+ text-align:left!important;text-align-last:left!important;letter-spacing:normal!important;
+ word-spacing:normal!important;
+ list-style:none!important;transform:translateY(0)!important;
+ opacity:1!important;
+ transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease,background .32s ease!important;
+ isolation:isolate;overflow:hidden!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card:nth-child(2){
+ --v9-accent:#168baf;--v9-soft:#e6f8ff;--v9-glow:rgba(27,161,201,.2);
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card:nth-child(3){
+ --v9-accent:#6876bf;--v9-soft:#eef0ff;--v9-glow:rgba(100,107,199,.22);
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card::before{
+ content:none!important;display:none!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card::after{
+ content:"";display:block!important;position:absolute!important;inset:-50% -20%!important;
+ width:auto!important;height:auto!important;border:0!important;border-radius:0!important;
+ background:linear-gradient(115deg,transparent 35%,var(--v9-glow) 50%,transparent 65%)!important;
+ transform:translateX(-120%)!important;transition:transform .7s ease!important;
+ pointer-events:none!important;z-index:0!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card:hover,
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card:focus-within{
+ transform:translateY(-5px)!important;
+ border-color:var(--v9-accent)!important;border-left-width:6px!important;
+ box-shadow:0 18px 34px var(--v9-glow)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card:hover::after,
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card:focus-within::after{
+ transform:translateX(120%)!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card .mbsa-vision-v9-number{
+ position:absolute!important;left:25px!important;top:50%!important;transform:translateY(-50%)!important;
+ display:grid!important;place-items:center!important;
+ width:48px!important;height:48px!important;
+ background:linear-gradient(135deg,var(--v9-accent),#81bee6)!important;
+ border:1px solid rgba(255,255,255,.5)!important;border-radius:15px!important;
+ color:#fff!important;font:800 15px/1 Arial,sans-serif!important;
+ box-shadow:0 6px 15px var(--v9-glow)!important;z-index:2!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card :is(b,strong){
+ color:var(--v9-accent)!important;font:800 clamp(18px,1.32vw,22px)/1.5 Arial,sans-serif!important;
+ letter-spacing:0!important;display:inline!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card :is(p,div,span:not(.mbsa-vision-v9-number)){
+ font-family:Arial,sans-serif!important;font-size:inherit!important;font-weight:inherit;
+ line-height:inherit!important;text-align:left!important;text-align-last:left!important;
+ word-spacing:normal!important;letter-spacing:normal!important;
+ color:inherit!important;
+}
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card:first-child *,
+#rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card:first-child{
+ text-align:left!important;text-align-last:left!important;
+}
+@media(max-width:680px){
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card{
+ min-height:130px!important;padding:22px 19px 22px 76px!important;font-size:16px!important;
+ }
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card .mbsa-vision-v9-number{
+ left:15px!important;width:42px!important;height:42px!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card,
+ #rt11-modal.rt-mbsa #rt11-body .rtchapter.rt-goal .mbsa-vision-v9>.mbsa-vision-v9-card::after{
+ transition:none!important;
+ }
+}
+</style>
+<script id="mbsa-b9-vision-vertical-js">
+(function(){
+ const modal=document.getElementById('rt11-modal'),root=document.getElementById('rt11-body');
+ if(!modal||!root)return;
+ const labels=['VISI','MISI','WAWASAN'];
+ const clean=s=>(s||'').replace(/\s+/g,' ').trim().replace(/^\d{1,2}[.):\s-]*/,'').toUpperCase();
+ function apply(){
+  if(modal.hidden||!modal.classList.contains('rt-mbsa'))return;
+  const chapter=root.querySelector('.rtchapter.rt-goal');
+  if(!chapter)return;
+  const candidates=[...chapter.querySelectorAll('ul,ol,.mbsa-loaded-vision,.suo-mbsa-vision-stack,.mbsa-vision-live')]
+   .filter(el=>!el.closest('.mbsa-vision-v9'));
+  for(const parent of candidates){
+   const children=[...parent.children].filter(c=>c.matches('li,article,.mbsa-loaded-card,.suo-mbsa-editorial-item'));
+   if(children.length!==3)continue;
+   if(!children.every((el,i)=>{
+      const t=clean(el.textContent);return t===labels[i]||t.startsWith(labels[i]+':')||t.startsWith(labels[i]+' ');
+   }))continue;
+   parent.classList.add('mbsa-vision-v9');
+   parent.setAttribute('aria-label','Visi, Misi dan Wawasan MBSA');
+   for(const [i,card] of children.entries()){
+    card.classList.add('mbsa-vision-v9-card');
+    card.setAttribute('data-number',String(i+1).padStart(2,'0'));
+    let number=card.querySelector(':scope > .mbsa-vision-v9-number');
+    if(!number){
+     number=document.createElement('span');
+     number.className='mbsa-vision-v9-number';
+     number.setAttribute('aria-hidden','true');
+     number.textContent=String(i+1).padStart(2,'0');
+     card.prepend(number);
+    }
+   }
+  }
+ }
+ let queued=false;
+ function schedule(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;apply()})}
+ new MutationObserver(schedule).observe(root,{childList:true,subtree:true});
+ new MutationObserver(schedule).observe(modal,{attributes:true,attributeFilter:['hidden','class']});
+ schedule();
+})();
+</script>
 </body>
 </html>
