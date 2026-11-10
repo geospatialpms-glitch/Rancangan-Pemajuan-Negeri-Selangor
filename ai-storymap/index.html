@@ -16097,6 +16097,7 @@ if(node.type==='text'&&node.data&&node.data.type==='h2'&&strip(node.data.text)){
 if(!section){section=document.createElement('section');section.className='rtchapter';section.id=prefix+'intro';body.appendChild(section)}
 const el=piece(node,resources,entry.id);if(el)section.appendChild(el)}
 if(entry.code==='MBDK') requestAnimationFrame(()=>window.mbdkEnhanceDynamicRT?.());
+if(entry.code==='MBDK') requestAnimationFrame(()=>window.mbdkFinalTimelineRender?.());
 if(entry.code==='MBSA'){
  /* KKB-inspired accordion for Pengertian and Fungsi Multi-Nuclei only */
  const conceptRoot=body.querySelector('.rtchapter.rt-concept');
@@ -20413,6 +20414,199 @@ new MutationObserver(records=>{
 }).observe(root,{childList:true,subtree:true});
 modal.addEventListener('scroll',progress,{passive:true});
 window.addEventListener('resize',progress,{passive:true});
+schedule();
+})();
+</script>
+
+
+<style id="mbdk-hero-goal-real-timeline-20261110">
+/* Hero: prevent tiled cover photograph on very wide monitors and mobile. */
+#rt11-modal.rt-mbdk .rthero{
+ background-repeat:no-repeat!important;background-size:cover!important;
+ background-position:center center!important;background-attachment:scroll!important;
+ overflow:hidden!important;
+}
+#rt11-modal.rt-mbdk .rthero .rt-hero-content{
+ width:min(1100px,94%)!important;max-width:1100px!important;margin:auto!important;
+ text-align:center!important;
+}
+#rt11-modal.rt-mbdk .rthero .rt-hero-content h1{
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+ font-size:clamp(36px,4.4vw,74px)!important;line-height:1.13!important;
+ letter-spacing:-.035em!important;font-weight:800!important;
+ text-wrap:balance!important;margin:18px auto!important;
+}
+#rt11-modal.rt-mbdk .rthero .rt-hero-content p{
+ max-width:900px!important;margin:0 auto!important;
+ font-size:clamp(17px,1.7vw,27px)!important;line-height:1.5!important;text-wrap:balance!important;
+}
+/* Goal card: authoritative source wording remains but typography is controlled. */
+#rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal .rtpiece:has(blockquote){
+ max-width:100%!important;width:100%!important;margin:25px 0 34px!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal .rtpiece blockquote{
+ display:block!important;min-height:0!important;width:100%!important;
+ padding:clamp(30px,4.3vw,62px)!important;
+ background:linear-gradient(130deg,#923d30,#ab533c 60%,#944130)!important;
+ border:1px solid #dbad7b!important;border-radius:24px!important;
+ font-family:'Plus Jakarta Sans',Arial,sans-serif!important;
+ font-size:clamp(23px,2.2vw,35px)!important;font-weight:750!important;
+ line-height:1.65!important;letter-spacing:-.015em!important;word-spacing:normal!important;
+ text-align:center!important;text-align-last:center!important;text-wrap:pretty!important;
+ overflow-wrap:normal!important;hyphens:none!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal .rtpiece blockquote *{
+ font-family:inherit!important;font-size:inherit!important;line-height:inherit!important;
+ letter-spacing:inherit!important;word-spacing:normal!important;
+ text-align:center!important;text-align-last:center!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal .rtpiece blockquote .mbdk-vision-accent{
+ color:#ffe5a5!important;font-weight:900!important;background:none!important;
+ text-decoration:none!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal>h2{
+ font-size:clamp(32px,3vw,54px)!important;line-height:1.18!important;
+ letter-spacing:-.035em!important;margin-bottom:24px!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal>.rtpiece>p{
+ font-size:clamp(17px,1.32vw,22px)!important;text-align:left!important;
+ line-height:1.7!important;word-spacing:normal!important;
+}
+/* True vertical timeline, including ArcGIS-created numbered lists. */
+#rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual{
+ --mbdk-timeline-fill:0%;
+ position:relative!important;display:grid!important;gap:15px!important;
+ padding:10px 0 10px 65px!important;margin:24px 0!important;
+ list-style:none!important;counter-reset:mbdk-entry!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual:before{
+ content:""!important;position:absolute!important;left:23px!important;top:24px!important;bottom:24px!important;
+ width:4px!important;border-radius:6px!important;
+ background:linear-gradient(#e1c5b1,#f1d5b4)!important;z-index:0!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual:after{
+ content:""!important;position:absolute!important;left:23px!important;top:24px!important;bottom:auto!important;
+ height:var(--mbdk-timeline-fill)!important;max-height:calc(100% - 48px)!important;
+ width:4px!important;border-radius:6px!important;background:linear-gradient(#a84132,#d49b52)!important;
+ z-index:1!important;transition:height .1s linear!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual>li{
+ counter-increment:mbdk-entry!important;position:relative!important;
+ list-style:none!important;display:block!important;width:100%!important;max-width:none!important;
+ min-height:125px!important;margin:0!important;padding:24px 27px!important;
+ border:1px solid #e5cabb!important;border-radius:19px!important;
+ background:linear-gradient(115deg,#ffffff,#fff2e5)!important;
+ color:#293749!important;box-shadow:0 11px 25px rgba(116,57,35,.09)!important;
+ font:500 clamp(17px,1.2vw,21px)/1.72 'Plus Jakarta Sans',Arial,sans-serif!important;
+ text-align:left!important;text-align-last:left!important;word-spacing:normal!important;
+ transform:translateY(0)!important;opacity:1!important;transition:box-shadow .3s ease,border-color .3s ease,translate .3s ease!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual>li:before{
+ content:counter(mbdk-entry,decimal-leading-zero)!important;
+ position:absolute!important;left:-61px!important;top:22px!important;
+ width:36px!important;height:36px!important;padding:0!important;
+ display:grid!important;place-items:center!important;z-index:3!important;
+ border-radius:50%!important;border:3px solid #fff1dd!important;
+ background:#a23e31!important;color:white!important;font:800 11px Arial,sans-serif!important;
+ box-shadow:0 0 0 5px rgba(168,69,48,.18)!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual>li:after{
+ content:none!important;display:none!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual>li:hover{
+ translate:0 -4px!important;box-shadow:0 19px 35px rgba(116,57,35,.15)!important;border-color:#bd7857!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual>li :is(p,div,span){
+ font:inherit!important;line-height:1.7!important;word-spacing:normal!important;text-align:left!important;
+}
+#rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual>li :is(b,strong){
+ font-weight:850!important;color:#8e3428!important;
+}
+@media(max-width:720px){
+ #rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual{padding-left:54px!important}
+ #rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual:before,
+ #rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual:after{left:18px!important}
+ #rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual>li{padding:19px!important;font-size:16px!important}
+ #rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual>li:before{left:-53px!important}
+ #rt11-modal.rt-mbdk #rt11-body .rtchapter.rt-goal .rtpiece blockquote{font-size:clamp(21px,4.6vw,30px)!important;padding:30px 19px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual>li{transition:none!important}
+ #rt11-modal.rt-mbdk #rt11-body .mbdk-timeline-actual:after{transition:none!important}
+}
+</style>
+<script id="mbdk-hero-goal-real-timeline-script-20261110">
+(function(){
+'use strict';
+const modal=document.getElementById('rt11-modal'),root=document.getElementById('rt11-body');
+if(!modal||!root)return;
+const norm=t=>(t||'').replace(/\s+/g,' ').trim().toLowerCase();
+let processing=false;
+function render(){
+ if(processing||modal.hidden||!modal.classList.contains('rt-mbdk'))return;
+ processing=true;
+ try{
+  root.querySelectorAll('.rtchapter ul,.rtchapter ol').forEach(list=>{
+   const items=[...list.children].filter(n=>n.tagName==='LI');
+   if(items.length<3)return;
+   const t=items.map(n=>norm(n.textContent)).join(' | ');
+   const historical=/(pra kesultanan|kesultanan melayu|zaman british|era kontena|kemerdekaan)/.test(t);
+   const hasSeveral=items.filter(n=>/(zaman|kesultanan|british|kemerdekaan|pemodenan|kontena)/.test(norm(n.textContent))).length>=2;
+   if(historical&&hasSeveral){
+    list.classList.add('mbdk-timeline-actual');
+    list.querySelectorAll(':scope > li').forEach(el=>{
+     el.classList.remove('mbdk-history-entry');
+     el.style.removeProperty('text-align');
+    });
+   }
+  });
+  /* A vision keyword is a visual emphasis, never an alteration of official wording. */
+  root.querySelectorAll('.rtchapter.rt-goal blockquote').forEach(quote=>{
+   if(quote.dataset.mbdkVisionStyled)return;
+   quote.dataset.mbdkVisionStyled='1';
+   const matcher=/(BANDARAYA WARISAN DIRAJA|PELABUHAN|BERDAYA SAING|PEMBANGUNAN MAMPAN|HOLISTIK|BANDAR WARISAN|DIGITAL)/gi;
+   const walker=document.createTreeWalker(quote,NodeFilter.SHOW_TEXT);
+   const nodes=[];let node;
+   while(node=walker.nextNode()){
+    if(node.parentElement.closest('.mbdk-vision-accent,script,style'))continue;
+    if(matcher.test(node.textContent))nodes.push(node);
+    matcher.lastIndex=0;
+   }
+   nodes.forEach(n=>{
+    const fragment=document.createDocumentFragment();
+    const text=n.textContent;let last=0;matcher.lastIndex=0;let m;
+    while(m=matcher.exec(text)){
+     fragment.appendChild(document.createTextNode(text.slice(last,m.index)));
+     const span=document.createElement('strong');span.className='mbdk-vision-accent';
+     span.textContent=m[0];fragment.appendChild(span);last=m.index+m[0].length;
+    }
+    fragment.appendChild(document.createTextNode(text.slice(last)));
+    n.replaceWith(fragment);
+   });
+  });
+ }finally{processing=false}
+ progress();
+}
+function progress(){
+ if(modal.hidden||!modal.classList.contains('rt-mbdk'))return;
+ const viewport=modal.getBoundingClientRect();
+ root.querySelectorAll('.mbdk-timeline-actual').forEach(list=>{
+  const b=list.getBoundingClientRect();
+  list.style.setProperty('--mbdk-timeline-fill',Math.min(100,Math.max(0,(viewport.bottom-b.top)/Math.max(b.height,1)*100))+'%');
+ });
+}
+let pending=false;
+function schedule(){
+ if(pending)return;pending=true;
+ requestAnimationFrame(()=>{pending=false;render()});
+}
+new MutationObserver(records=>{
+ if(processing)return;
+ if(records.some(r=>[...r.addedNodes].some(n=>n.nodeType===1 && n.matches?.('.rtchapter,.rtpiece,ol,ul'))))schedule();
+}).observe(root,{subtree:true,childList:true});
+modal.addEventListener('scroll',progress,{passive:true});
+window.addEventListener('resize',progress,{passive:true});
+window.mbdkFinalTimelineRender=schedule;
 schedule();
 })();
 </script>
