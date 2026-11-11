@@ -60,5 +60,75 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f4f5f8}
   });
 })();
 </script>
+
+<script id="mbpj-esri-recovery-20261112">
+/* The MBPJ ArcGIS story can be blocked by the source JSON endpoint.
+   Recover the failed card locally; preserve the shared portal navigation. */
+(function(){
+ const frame=document.getElementById('rt-story-frame');
+ if(!frame)return;
+ const sections=[
+  ['01','Pengenalan Rancangan Tempatan','Rancangan Tempatan memperincikan cadangan pembangunan dan pengagihan guna tanah bagi kawasan pentadbiran tempatan. Dokumen ini menyokong pelaksanaan dasar perancangan dan kawalan pembangunan.'],
+  ['02','Rangka Perancangan','Rancangan Tempatan menterjemahkan dasar perancangan struktur kepada panduan pembangunan tempatan, termasuk guna tanah, infrastruktur, kemudahan masyarakat dan alam sekitar.'],
+  ['03','Perancangan Petaling Jaya','Rujuk penerbitan Rancangan Tempatan Petaling Jaya daripada Majlis Bandaraya Petaling Jaya untuk mendapatkan maklumat terperinci, pelan cadangan dan pengubahan yang berkuat kuasa.'],
+  ['04','Dokumentasi dan Rujukan','Kandungan penuh StoryMap asal boleh dibaca melalui pautan ArcGIS. Dokumen perancangan rasmi juga boleh dirujuk melalui portal MBPJ.']
+ ];
+ const safe=(s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function recover(){
+  try{
+   const doc=frame.contentDocument;if(!doc)return false;
+   if(doc.getElementById('mbpj-esri-recovery-content'))return true;
+   const targets=[...doc.querySelectorAll('h1,h2,h3,h4,h5,h6,div,p,strong')].filter(e=>e.children.length===0 && /Kandungan ESRI tidak dapat dimuatkan/i.test(e.textContent||''));
+   if(!targets.length)return false;
+   const heading=targets[0];
+   let panel=heading.parentElement;
+   /* Find the error card without replacing the chapter shell or sidebar. */
+   for(let i=0;i<3 && panel.parentElement;i++){
+    const t=(panel.textContent||'');
+    if(/Cuba Muatkan Semula/i.test(t) && /Buka StoryMap ESRI/i.test(t))break;
+    panel=panel.parentElement;
+   }
+   if(panel===doc.body || panel.tagName==='MAIN')return false;
+   const css=doc.createElement('style');css.id='mbpj-esri-recovery-css';
+   css.textContent=`
+     #mbpj-esri-recovery-content{font-family:Arial,sans-serif;color:#26354a}
+     #mbpj-esri-recovery-content .mbpj-eyebrow{font-size:11px;font-weight:800;letter-spacing:.16em;color:#7958a6}
+     #mbpj-esri-recovery-content h2{font-size:clamp(25px,3.4vw,39px);line-height:1.2;color:#594195;margin:12px 0 14px}
+     #mbpj-esri-recovery-content .mbpj-lead{font-size:15px;line-height:1.85;color:#465571;max-width:850px}
+     #mbpj-esri-recovery-content .mbpj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:25px 0}
+     #mbpj-esri-recovery-content .mbpj-item{padding:22px;border:1px solid #ddd4f1;border-radius:18px;background:linear-gradient(140deg,#fff,#f6f2ff);box-shadow:0 7px 20px rgba(50,35,90,.07);transition:transform .2s,box-shadow .2s}
+     #mbpj-esri-recovery-content .mbpj-item:hover{transform:translateY(-4px);box-shadow:0 13px 27px rgba(50,35,90,.15)}
+     #mbpj-esri-recovery-content .mbpj-num{color:#8a6ab7;font-weight:800;font-size:12px;letter-spacing:.12em}
+     #mbpj-esri-recovery-content h3{font-size:19px;color:#44336d;line-height:1.35;margin:11px 0}
+     #mbpj-esri-recovery-content p{font-size:14px;line-height:1.8;margin:0;color:#4c5970;text-align:justify}
+     #mbpj-esri-recovery-content .mbpj-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+     #mbpj-esri-recovery-content .mbpj-actions a{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:700;border:1px solid #7654aa;background:#694ca4;color:#fff}
+     #mbpj-esri-recovery-content .mbpj-actions a+ a{background:#fff;color:#694ca4}
+     @media(max-width:760px){#mbpj-esri-recovery-content .mbpj-grid{grid-template-columns:1fr}#mbpj-esri-recovery-content .mbpj-item{padding:18px}}
+     @media(prefers-reduced-motion:reduce){#mbpj-esri-recovery-content .mbpj-item{transition:none}}
+   `;
+   doc.head.appendChild(css);
+   const content=doc.createElement('div');content.id='mbpj-esri-recovery-content';
+   content.innerHTML=`
+    <span class="mbpj-eyebrow">PLANMALAYSIA SELANGOR · MAJLIS BANDARAYA PETALING JAYA</span>
+    <h2>Rancangan Tempatan Petaling Jaya</h2>
+    <p class="mbpj-lead">Terokai pengenalan, fungsi dan kerangka perancangan tempatan Petaling Jaya. Paparan ini disediakan supaya halaman masih boleh digunakan apabila sambungan kandungan ArcGIS tidak tersedia.</p>
+    <div class="mbpj-grid">${sections.map(([no,title,desc])=>`<section class="mbpj-item"><span class="mbpj-num">${safe(no)}</span><h3>${safe(title)}</h3><p>${safe(desc)}</p></section>`).join('')}</div>
+    <div class="mbpj-actions"><a href="https://arcg.is/1niTnK3" target="_blank" rel="noopener noreferrer">Buka StoryMap RT MBPJ asal ↗</a><a href="https://www.mbpj.gov.my/ms/search/site/rancangan%20tempatan" target="_blank" rel="noopener noreferrer">Dokumen rasmi MBPJ ↗</a></div>
+   `;
+   panel.replaceChildren(content);
+   return true;
+  }catch(e){return false}
+ }
+ frame.addEventListener('load',()=>{
+  if(recover())return;
+  try{
+   const doc=frame.contentDocument;if(!doc)return;
+   const observer=new MutationObserver(()=>{if(recover())observer.disconnect()});
+   observer.observe(doc.documentElement,{childList:true,subtree:true});
+  }catch(e){}
+ });
+})();
+</script>
 </body>
 </html>
