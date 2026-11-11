@@ -6,13 +6,59 @@
 <meta name="theme-color" content="#701c35">
 <title>Story Map RT MBPJ | Rancangan Pemajuan Negeri Selangor</title>
 <style>
-/* Shared navigation and scroll CTA are rendered within index.html's RT header. */
+/* The main portal renders the same RT navigation and chapters as other councils. */
 *{box-sizing:border-box}
 html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f4f5f8}
 #rt-story-frame{display:block;width:100%;height:100dvh;border:0;background:#f4f5f8}
 </style>
 </head>
 <body data-rt-page="MBPJ">
-<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Petaling Jaya" src="../index.html?rt_page=MBPJ&amp;v=20261110-audit-9859e90" loading="eager"></iframe>
+<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Majlis Bandaraya Petaling Jaya" src="../index.html?rt_page=MBPJ&amp;v=20261112-mbpj-storymap" loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<script>
+/* MBPJ uses the same native RT portal as MBSA/MBSJ. The ArcGIS publication
+   is retained as an optional primary-source reference, not a replacement page. */
+(function(){
+  const frame=document.getElementById('rt-story-frame');
+  if(!frame)return;
+  frame.addEventListener('load',function(){
+    try{
+      const doc=frame.contentDocument;
+      if(!doc || doc.getElementById('mbpj-source-link-20261112'))return;
+      const css=doc.createElement('style');
+      css.id='mbpj-source-style-20261112';
+      css.textContent=`
+        #mbpj-source-link-20261112{
+          position:fixed;right:18px;bottom:20px;z-index:9999;
+          display:inline-flex;align-items:center;gap:8px;
+          padding:11px 16px;border:1px solid rgba(255,226,156,.68);
+          border-radius:999px;background:linear-gradient(120deg,#701c35,#992f4e);
+          color:#fff;font:700 12px/1.35 Arial,sans-serif;
+          text-decoration:none;letter-spacing:.01em;
+          box-shadow:0 8px 24px rgba(65,12,31,.22);
+          transition:transform .25s ease,box-shadow .25s ease;
+        }
+        #mbpj-source-link-20261112:hover,#mbpj-source-link-20261112:focus-visible{
+          transform:translateY(-3px);
+          box-shadow:0 12px 28px rgba(65,12,31,.32);
+          outline:2px solid #f2c64c;outline-offset:2px;
+        }
+        @media(max-width:600px){
+          #mbpj-source-link-20261112{right:12px;bottom:12px;padding:9px 12px;font-size:11px;max-width:calc(100vw - 24px)}
+        }
+        @media(prefers-reduced-motion:reduce){#mbpj-source-link-20261112{transition:none}}
+      `;
+      doc.head.appendChild(css);
+      const source=doc.createElement('a');
+      source.id='mbpj-source-link-20261112';
+      source.href='https://arcg.is/1niTnK3';
+      source.target='_blank';
+      source.rel='noopener noreferrer';
+      source.setAttribute('aria-label','Buka sumber rasmi ArcGIS StoryMap RT MBPJ dalam tab baharu');
+      source.textContent='↗ Rujukan StoryMap RT MBPJ';
+      doc.body.appendChild(source);
+    }catch(e){/* Keep the existing RT page available even if enhancement fails. */}
+  });
+})();
+</script>
 </body>
 </html>
