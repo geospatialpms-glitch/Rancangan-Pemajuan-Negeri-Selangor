@@ -22680,14 +22680,19 @@ configs.forEach(c=>{
    return nested?.querySelector('#rt11-modal .rthero')||doc.querySelector('#rt11-modal .rthero');
   }catch(e){return null}
  }
- function fromHero(frame){
-  const hero=getSourceHero(frame);
-  if(!hero)return '';
-  const style=hero.ownerDocument.defaultView.getComputedStyle(hero);
-  const background=hero.style.backgroundImage||style.backgroundImage||'';
-  // Extract the actual background photo, not the dark gradient in the same CSS declaration.
-  const raw=background.includes('url(')?background.split('url(').pop().split(')')[0].trim().replace(/^['"]|['"]$/g,''):'';
-  return raw?new URL(raw,hero.ownerDocument.baseURI).href:'';
+ function fromHero(frame,expectedCode){
+  try{
+   const doc=frame?.contentDocument;
+   if(!doc)return '';
+   const code=new URL(doc.location.href).searchParams.get('rt_page');
+   if(!code||code.toUpperCase()!==expectedCode.toUpperCase())return '';
+   const hero=getSourceHero(frame);
+   if(!hero)return '';
+   const style=hero.ownerDocument.defaultView.getComputedStyle(hero);
+   const background=hero.style.backgroundImage||style.backgroundImage||'';
+   const raw=background.includes('url(')?background.split('url(').pop().split(')')[0].trim().replace(/^['"]|['"]$/g,''):'';
+   return raw?new URL(raw,hero.ownerDocument.baseURI).href:'';
+  }catch(e){return ''}
  }
  function show(root,img,code,url){
   if(!url)return;
@@ -22726,9 +22731,9 @@ configs.forEach(c=>{
    if(cfg.type==='rt'){
     if(photoCache.has(code))photo=photoCache.get(code);
     else{
-     // Always resolve against the selected PBT's own StoryMaps item ID.
-     // The iframe may still be displaying the previous PBT during transition.
+     // Match a photo to the exact selected RT code, never to another iframe page.
      try{photo=await rtPhoto(code)}catch(e){photo=''}
+     if(!photo)photo=fromHero(frame,code);
      if(photo)photoCache.set(code,photo);
     }
    }
@@ -22737,9 +22742,96 @@ configs.forEach(c=>{
   }
   const watch=new MutationObserver(()=>update());
   watch.observe(codeEl,{childList:true,subtree:true,characterData:true});
-  frame?.addEventListener('load',()=>update());
+  frame?.addEventListener('load',()=>{
+    update();
+    // ESRI cover photo appears after asynchronous StoryMap data has loaded.
+    [350,1100,2600].forEach(ms=>setTimeout(()=>{
+      const code=currentCode(codeEl).toUpperCase();
+      if(root.dataset.photoCode!==code||root.classList.contains('has-photo'))return;
+      const url=cfg.type==='rt'?fromHero(frame,code):'';
+      if(url){photoCache.set(code,url);show(root,img,code,url)}
+    },ms));
+  });
   update();
  });
+})();
+</script>
+
+<style id="rr04-preview-fit-mbsa-v2">
+/* MBSA-sized stable layout for every RT/RKK cover card. Use container width, not viewport width. */
+#panel-3 .rr04-native-preview{container-type:inline-size!important;align-items:center!important;justify-content:flex-start!important}
+#panel-3 .rr04-native-content{
+ box-sizing:border-box!important;
+ width:94%!important;max-width:94%!important;
+ min-height:0!important;max-height:none!important;
+ margin:0!important;padding:clamp(13px,4cqw,28px)!important;
+ overflow:visible!important;gap:0!important;
+ text-align:left!important;
+}
+#panel-3 .rr04-native-kicker{
+ font:800 clamp(8px,1.75cqw,11px)/1.25 Arial,sans-serif!important;
+ letter-spacing:.035em!important;
+ padding:clamp(5px,1.1cqw,7px) clamp(9px,1.8cqw,12px)!important;
+ max-width:100%!important;
+}
+#panel-3 .rr04-native-title{
+ font:800 clamp(20px,5.15cqw,32px)/1.08 Georgia,serif!important;
+ letter-spacing:-.027em!important;
+ margin:clamp(10px,2.8cqw,16px) 0 0!important;
+}
+#panel-3 .rr04-native-rule{
+ width:clamp(30px,7cqw,42px)!important;height:3px!important;
+ margin:clamp(8px,2.1cqw,12px) 0!important;
+}
+#panel-3 .rr04-native-subtitle{
+ font:700 clamp(11px,2.15cqw,14px)/1.38 Arial,sans-serif!important;
+}
+#panel-3 .rr04-native-description{
+ margin:clamp(7px,1.65cqw,10px) 0 0!important;
+ font:400 clamp(10px,1.97cqw,13px)/1.43 Arial,sans-serif!important;
+ max-width:100%!important;
+}
+#panel-3 .rr04-native-cta{
+ margin-top:clamp(9px,2.2cqw,14px)!important;
+ padding:clamp(7px,1.4cqw,9px) clamp(10px,2cqw,14px)!important;
+ font:700 clamp(10px,1.8cqw,12px)/1.3 Arial,sans-serif!important;
+}
+@media(max-width:680px){
+ #panel-3 .rr04-native-content{width:96%!important;max-width:96%!important;padding:clamp(11px,3cqw,19px)!important}
+ #panel-3 .rr04-native-title{font-size:clamp(18px,5cqw,29px)!important}
+ #panel-3 .rr04-native-kicker{font-size:clamp(8px,1.7cqw,10px)!important}
+ #panel-3 .rr04-native-subtitle{font-size:clamp(10px,2.1cqw,13px)!important}
+ #panel-3 .rr04-native-description{font-size:clamp(10px,1.95cqw,12px)!important}
+}
+</style>
+<script id="rr04-preview-fit-mbsa-v2-js">
+(function(){
+ 'use strict';
+ function fit(card){
+  const body=card.querySelector('.rr04-native-content');
+  if(!body)return;
+  body.style.transform='';
+  body.style.transformOrigin='center left';
+  const available=card.clientHeight-14;
+  if(available<20)return;
+  const actual=body.getBoundingClientRect().height;
+  const ratio=Math.min(1,available/Math.max(actual,1));
+  if(ratio<.995)body.style.transform='scale('+ratio.toFixed(3)+')';
+ }
+ function setup(){
+  document.querySelectorAll('#panel-3 .rr04-native-preview').forEach(card=>{
+   if(card.dataset.fitAttached)return;
+   card.dataset.fitAttached='1';
+   let scheduled=false;
+   const schedule=()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;fit(card)})};
+   new ResizeObserver(schedule).observe(card);
+   new MutationObserver(schedule).observe(card,{childList:true,subtree:true,characterData:true});
+   schedule();
+  });
+ }
+ setup();
+ const panel=document.getElementById('panel-3');
+ if(panel)new MutationObserver(setup).observe(panel,{childList:true,subtree:true});
 })();
 </script>
 </body>
