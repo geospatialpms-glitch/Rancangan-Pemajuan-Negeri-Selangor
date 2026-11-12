@@ -22611,5 +22611,141 @@ configs.forEach(c=>{
 });
 })();
 </script>
+
+<style id="rr04-use-real-storymap-photos-20261112">
+/* Display the real front-cover image for each RT / RKK, behind existing preview text. */
+#panel-3 .rr04-native-preview{isolation:isolate!important;background:#08283c!important}
+#panel-3 .rr04-native-preview>.rr04-preview-photo{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ object-fit:cover!important;object-position:center center!important;
+ z-index:0!important;pointer-events:none!important;display:none;
+}
+#panel-3 .rr04-native-preview.has-photo>.rr04-preview-photo{display:block!important}
+#panel-3 .rr04-native-preview:before{
+ z-index:1!important;
+ background:linear-gradient(90deg,rgba(5,27,43,.80) 0%,rgba(5,37,56,.52) 44%,rgba(3,31,47,.17) 100%)!important;
+}
+#panel-3 .rr04-native-preview>.rr04-native-content{position:relative!important;z-index:2!important}
+</style>
+<script id="rr04-use-real-storymap-photos-js-20261112">
+(function(){
+ 'use strict';
+ const rtIds={"MBSA":"963aefc4aef1412194b09c2b5b244190","MBPJ":"013241b0812846b59d1cc8f0b4b53c0","MBSJ":"23792197bfb3429bb7e8dc6296c55945","MBDK":"29b2c1dff6484f23984ac4542aff277e","MPAJ":"d3c3fde91bde47798fd9feb7a3e5e2ea","MPKj":"cf8af08ffcd24e3caf9f27a0c172798d","MPS":"f6c8ab85efb7496ebf65f6500a2caf6e","MPSp":"d984e03b560848a8be7502dcb7d94b27","MPKL":"9d6bd51d479f41ca922fa421d0fe3866","MPKS":"7cb301ce29d04362b8a370b7bcde2865","MPHS":"47771ec2bfde490bb53a600051505e61","MDSB":"3068380b311f4af29df314a4beb5b925"};
+ const rkkPhotos={"MBPJ":"https://www.arcgis.com/sharing/rest/content/items/28be061f77264e46890080986f1db20d/resources/60l-d3G5Aq97cu4P72ReM.png","MPHS":"https://www.arcgis.com/sharing/rest/content/items/5ba0707ea7d448ca854f06872349e223/resources/8ziyYTxP7j-81QnGd3b0e.jpg","MPKS":"https://www.arcgis.com/sharing/rest/content/items/9d0afbcc7ed54383a9410dcd9d429876/resources/fX8AICe480igJSnBSRqVB.jpg"};
+ const photoCache=new Map();
+ const cfgs=[
+  {type:'rt',portal:'rr04-rt-portal-20261022',frame:'rr04-rt-portal-iframe',code:'rr04-rt-portal-code'},
+  {type:'rkk',portal:'rr04-rkk-portal-20261022',frame:'rr04-rkk-portal-iframe',code:'rr04-rkk-portal-code'}
+ ];
+ const currentCode=el=>(el?.textContent||'').trim();
+ const rtPhoto=async code=>{
+  if(code==='MBSJ')return new URL('./Gemini_Generated_Image_n9oyk1n9oyk1n9oy.jfif',location.href).href;
+  const id=rtIds[code];if(!id)return '';
+  const response=await fetch('https://www.arcgis.com/sharing/rest/content/items/'+id+'/data?f=json',{credentials:'omit'});
+  if(!response.ok)throw new Error('StoryMaps returned '+response.status);
+  const data=await response.json();
+  if(data.error||!data.nodes)throw new Error('StoryMaps image metadata unavailable');
+  const nodes=data.nodes,resources=data.resources||{};
+  const root=nodes[data.root];
+  const cover=(root?.children||[]).map(key=>nodes[key]).find(node=>node?.type==='storycover');
+  let imageNode=(cover?.children||[]).map(key=>nodes[key]).find(node=>node?.type==='image');
+  if(!imageNode&&cover){
+   const queue=[...(cover.children||[])],seen=new Set();
+   while(queue.length&&!imageNode){
+    const key=queue.shift();if(seen.has(key))continue;seen.add(key);
+    const node=nodes[key];if(!node)continue;
+    if(node.type==='image'){imageNode=node;break}
+    queue.push(...(node.children||[]));
+   }
+  }
+  const imageKey=imageNode?.data?.image;
+  const resource=resources[imageKey];
+  const resourceId=resource?.data?.resourceId||resource?.resourceId;
+  return resourceId?'https://www.arcgis.com/sharing/rest/content/items/'+id+'/resources/'+encodeURIComponent(resourceId):'';
+ };
+ function addPhoto(root){
+  let image=root.querySelector(':scope > .rr04-preview-photo');
+  if(image)return image;
+  image=document.createElement('img');
+  image.className='rr04-preview-photo';
+  image.alt='';
+  image.setAttribute('aria-hidden','true');
+  image.decoding='async';
+  root.insertBefore(image,root.firstChild);
+  return image;
+ }
+ function getSourceHero(frame){
+  try{
+   const doc=frame?.contentDocument;
+   if(!doc)return null;
+   const nested=doc.getElementById('rt-story-frame')?.contentDocument;
+   return nested?.querySelector('#rt11-modal .rthero')||doc.querySelector('#rt11-modal .rthero');
+  }catch(e){return null}
+ }
+ function fromHero(frame){
+  const hero=getSourceHero(frame);
+  if(!hero)return '';
+  const style=hero.ownerDocument.defaultView.getComputedStyle(hero);
+  const background=hero.style.backgroundImage||style.backgroundImage||'';
+  // Extract the actual background photo, not the dark gradient in the same CSS declaration.
+  const matches=[...background.matchAll(/url\\(\\s*["']?([^"')]+)["']?\\s*\\)/g)];
+  const raw=matches.length?matches[matches.length-1][1]:'';
+  return raw?new URL(raw,hero.ownerDocument.baseURI).href:'';
+ }
+ function show(root,img,code,url){
+  if(!url)return;
+  if(root.dataset.photoCode!==code)return;
+  const check=new Image();
+  check.decoding='async';
+  check.onload=()=>{
+   if(root.dataset.photoCode!==code)return;
+   img.src=url;
+   img.style.display='block';
+   root.classList.add('has-photo');
+  };
+  check.onerror=()=>{};
+  check.src=url;
+ }
+ cfgs.forEach(cfg=>{
+  const portal=document.getElementById(cfg.portal);
+  const frame=document.getElementById(cfg.frame);
+  const codeEl=document.getElementById(cfg.code);
+  const root=portal?.querySelector('.rr04-native-preview');
+  if(!portal||!codeEl||!root)return;
+  const img=addPhoto(root);
+  let selected='',generation=0;
+  async function update(){
+   const code=currentCode(codeEl).toUpperCase();
+   if(!code)return;
+   if(code===selected&&root.classList.contains('has-photo'))return;
+   if(code!==selected){
+    selected=code;generation++;
+    root.dataset.photoCode=code;
+    root.classList.remove('has-photo');
+    img.removeAttribute('src');img.style.display='none';
+   }
+   const ticket=generation;
+   let photo=cfg.type==='rkk'?rkkPhotos[code]||'':'';
+   if(cfg.type==='rt'){
+    if(photoCache.has(code))photo=photoCache.get(code);
+    else{
+     // The dedicated RT hero loads asynchronously; consult the actual image first.
+     photo=fromHero(frame);
+     if(!photo){
+      try{photo=await rtPhoto(code)}catch(e){photo=''}
+     }
+     if(photo)photoCache.set(code,photo);
+    }
+   }
+   if(ticket!==generation||root.dataset.photoCode!==code)return;
+   if(photo)show(root,img,code,photo);
+  }
+  const watch=new MutationObserver(()=>update());
+  watch.observe(codeEl,{childList:true,subtree:true,characterData:true});
+  frame?.addEventListener('load',()=>update());
+  update();
+ });
+})();
+</script>
 </body>
 </html>
