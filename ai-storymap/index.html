@@ -22975,5 +22975,40 @@ configs.forEach(c=>{
  if(panel)new MutationObserver(setup).observe(panel,{childList:true,subtree:true});
 })();
 </script>
+
+<style id="rr04-mbpj-exact-storymap-preview-css">
+/* Separate cover image layer avoids scripts that reset preview backgrounds. */
+#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview.is-mbpj-story-cover {position:relative!important;isolation:isolate!important;overflow:hidden!important}
+#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview.is-mbpj-story-cover > .mbpj-story-cover-image {position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;visibility:visible!important;opacity:1!important;object-fit:cover!important;object-position:center!important;z-index:0!important;pointer-events:none!important;transform:none!important}
+#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview.is-mbpj-story-cover > .rr04-preview-photo {display:none!important}
+#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview.is-mbpj-story-cover::before {content:""!important;z-index:1!important;background:linear-gradient(90deg,rgba(5,27,43,.74),rgba(5,37,56,.42) 55%,rgba(3,31,47,.13))!important;pointer-events:none!important}
+#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview.is-mbpj-story-cover > .rr04-native-content {position:relative!important;z-index:2!important}
+</style>
+<script id="rr04-mbpj-exact-storymap-preview-js">
+(function(){
+ 'use strict';
+ const code=document.getElementById('rr04-rt-portal-code');
+ const portal=document.getElementById('rr04-rt-portal-20261022');
+ if(!code||!portal)return;
+ const url="https://www.arcgis.com/sharing/rest/content/items/28be061f77264e46890080986f1db20d/resources/60l-d3G5Aq97cu4P72ReM.png";
+ function update(){
+  const root=portal.querySelector('.rr04-native-preview');
+  if(!root)return;
+  const active=code.textContent.trim().toUpperCase()==='MBPJ';
+  root.classList.toggle('is-mbpj-story-cover',active);
+  let image=root.querySelector(':scope > .mbpj-story-cover-image');
+  if(active&&!image){
+   image=document.createElement('img');
+   image.className='mbpj-story-cover-image';
+   image.alt='';image.setAttribute('aria-hidden','true');
+   image.decoding='async';image.src=url;
+   root.insertBefore(image,root.firstChild);
+  }
+  if(image)image.hidden=!active;
+ }
+ new MutationObserver(update).observe(code,{childList:true,subtree:true,characterData:true});
+ update();
+})();
+</script>
 </body>
 </html>
