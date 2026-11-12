@@ -15,17 +15,13 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f4f5f8}
 <body data-rt-page="MDSB">
 <iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Sabak Bernam" src="../index.html?rt_page=MDSB&amp;v=20261110-audit-9859e90" loading="eager"></iframe>
 <script id="rt-plan-label-performance-20261112">
-/* Single, batched observer for headings and sidebar labels; avoids rescanning on every text change. */
 (function(){
 'use strict';
 const frame=document.getElementById('rt-story-frame');
 if(!frame)return;
 const TARGET='PELAN MUKIM & BLOK PERANCANGAN';
-const codes='MBSA|MBDK|MBSJ|MDSB|MPAJ|MPHS|MPKL|MPKS|MPKJ|MPS|MPSP|MBPJ';
-const phrase=new RegExp('PELAN\\s+MUKIM\\s*(?:&|DAN|\\/)\\s*BLOK\\s+(?:PERANCANGAN|'+codes+')\\b','i');
-const full=new RegExp('^\\s*(?:\\d+(?:\\.\\d+)*[.)-]?\\s*)?PELAN\\s+MUKIM\\s*(?:&|DAN|\\/)\\s*BLOK\\s+(?:PERANCANGAN|'+codes+')\\s*
-</html>
-,'i');
+const phrase=/PELAN\s+MUKIM\s*(?:&|DAN|\/)\s*BLOK\s+(?:PERANCANGAN|MBSA|MBDK|MBSJ|MDSB|MPAJ|MPHS|MPKL|MPKS|MPKJ|MPS|MPSP|MBPJ)\b/i;
+const full=/^\s*(?:\d+(?:\.\d+)*[.)-]?\s*)?PELAN\s+MUKIM\s*(?:&|DAN|\/)\s*BLOK\s+(?:PERANCANGAN|MBSA|MBDK|MBSJ|MDSB|MPAJ|MPHS|MPKL|MPKS|MPKJ|MPS|MPSP|MBPJ)\s*$/i;
 const headingSelector='h1,h2,h3,h4,h5,h6,[role="heading"],.section-title,.chapter-title,.rt-section-title';
 const navSelector='aside,nav,[class*="sidebar"],[class*="side-nav"],[class*="chapter-nav"],[class*="bab-nav"],[class*="chapter-list"],[class*="nav-list"]';
 function install(doc){
@@ -36,7 +32,7 @@ function install(doc){
   scheduled=false;
   doc.querySelectorAll(headingSelector).forEach(el=>{
    if(el.closest('nav,aside,script,style'))return;
-   const s=el.textContent.replace(/\\s+/g,' ').trim();
+   const s=el.textContent.replace(/\s+/g,' ').trim();
    if(s!==TARGET&&full.test(s))el.textContent=TARGET;
   });
   doc.querySelectorAll(navSelector).forEach(root=>{
