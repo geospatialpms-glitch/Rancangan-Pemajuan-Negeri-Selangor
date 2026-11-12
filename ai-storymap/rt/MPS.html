@@ -130,40 +130,58 @@ if(frame.contentDocument?.readyState==='complete')init();
 })();
 
 </script>
-<script id="uniform-plan-heading-20261112">(function(){'use strict';const TITLE='PELAN MUKIM & BLOK PERANCANGAN';const rx=/^\s*(?:\d+(?:\.\d+)*[.)-]?\s*)?PELAN\s+MUKIM\s*(?:(?:DAN|&|\/|SERTA|DAN\/ATAU)\s*)?(?:PELAN\s+)?BLOK\s+(?:PERANCANGAN|[A-Z]{2,6})\s*$/i;function install(doc){if(!doc?.body||doc.body.dataset.uniformPlanHeadingInstalled)return;doc.body.dataset.uniformPlanHeadingInstalled='1';let active=false;const apply=()=>{if(active)return;active=true;try{doc.querySelectorAll('h1,h2,h3,h4,h5,h6,[role="heading"],.section-title,.chapter-title,.rt-section-title').forEach(el=>{if(!el.closest('nav,script,style')&&rx.test(el.textContent.replace(/\s+/g,' ').trim())&&el.textContent.trim()!==TITLE)el.textContent=TITLE})}finally{active=false}};apply();new MutationObserver(apply).observe(doc.body,{subtree:true,childList:true,characterData:true})}const frame=document.getElementById('rt-story-frame');if(frame){const run=()=>{try{install(frame.contentDocument)}catch(e){console.warn(e)}};frame.addEventListener('load',run);run()}else if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>install(document));else install(document)})();</script>
-
-<script id="uniform-plan-sidebar-20261112">
+<script id="rt-plan-label-performance-20261112">
 (function(){
- 'use strict';
- const oldLabel=/PELAN\s+MUKIM\s*(?:&|DAN|\/)\s*BLOK\s+(?:PERANCANGAN|MBSA|MBDK|MBSJ|MDSB|MPAJ|MPHS|MPKL|MPKS|MPKJ|MPS|MPSP|MBPJ)\b/gi;
- const target='PELAN MUKIM & BLOK PERANCANGAN';
- const install=(doc)=>{
-  if(!doc||!doc.body||doc.body.dataset.uniformPlanSidebarInstalled)return;
-  doc.body.dataset.uniformPlanSidebarInstalled='1';
-  let busy=false;
-  const apply=()=>{
-   if(busy)return;busy=true;
-   try{
-    const nodes=doc.querySelectorAll('nav,aside,[class*="sidebar"],[class*="side-nav"],[class*="chapter-nav"],[class*="bab-nav"],[class*="chapter-list"],[class*="nav-list"]');
-    nodes.forEach(root=>{
-     const walker=doc.createTreeWalker(root,NodeFilter.SHOW_TEXT);
-     let node;
-     while((node=walker.nextNode())){
-      if(node.parentElement?.closest('script,style'))continue;
-      oldLabel.lastIndex=0;
-      if(oldLabel.test(node.nodeValue)){
-       oldLabel.lastIndex=0;
-       node.nodeValue=node.nodeValue.replace(oldLabel,target);
-      }
-     }
-    });
-   }finally{busy=false;}
-  };
-  apply();new MutationObserver(apply).observe(doc.body,{subtree:true,childList:true,characterData:true});
- };
- const frame=document.getElementById('rt-story-frame');
- if(frame){const run=()=>{try{install(frame.contentDocument)}catch(err){console.warn('Sidebar title synchronization unavailable',err)}};frame.addEventListener('load',run);run();}
- else if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>install(document));else install(document);
+'use strict';
+const frame=document.getElementById('rt-story-frame');
+if(!frame)return;
+const TARGET='PELAN MUKIM & BLOK PERANCANGAN';
+const phrase=/PELAN\s+MUKIM\s*(?:&|DAN|\/)\s*BLOK\s+(?:PERANCANGAN|MBSA|MBDK|MBSJ|MDSB|MPAJ|MPHS|MPKL|MPKS|MPKJ|MPS|MPSP|MBPJ)\b/i;
+const full=/^\s*(?:\d+(?:\.\d+)*[.)-]?\s*)?PELAN\s+MUKIM\s*(?:&|DAN|\/)\s*BLOK\s+(?:PERANCANGAN|MBSA|MBDK|MBSJ|MDSB|MPAJ|MPHS|MPKL|MPKS|MPKJ|MPS|MPSP|MBPJ)\s*$/i;
+const headingSelector='h1,h2,h3,h4,h5,h6,[role="heading"],.section-title,.chapter-title,.rt-section-title';
+const navSelector='aside,nav,[class*="sidebar"],[class*="side-nav"],[class*="chapter-nav"],[class*="bab-nav"],[class*="chapter-list"],[class*="nav-list"]';
+function install(doc){
+ if(!doc||!doc.body||doc.body.dataset.rtPlanLabelsOptimized)return;
+ doc.body.dataset.rtPlanLabelsOptimized='1';
+ let scheduled=false;
+ function fix(){
+  scheduled=false;
+  doc.querySelectorAll(headingSelector).forEach(el=>{
+   if(el.closest('nav,aside,script,style'))return;
+   const s=el.textContent.replace(/\s+/g,' ').trim();
+   if(s!==TARGET&&full.test(s))el.textContent=TARGET;
+  });
+  doc.querySelectorAll(navSelector).forEach(root=>{
+   const walker=doc.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+   while(walker.nextNode()){
+    const node=walker.currentNode;
+    if(node.parentElement?.closest('script,style'))continue;
+    if(phrase.test(node.nodeValue))node.nodeValue=node.nodeValue.replace(phrase,TARGET);
+   }
+  });
+ }
+ function schedule(){
+  if(scheduled)return;
+  scheduled=true;
+  setTimeout(fix,350);
+ }
+ fix();
+ const observer=new MutationObserver(records=>{
+  for(const record of records){
+   if(record.type!=='childList'||!record.addedNodes.length)continue;
+   const parent=record.target.nodeType===1?record.target:record.target.parentElement;
+   if(parent?.closest?.(headingSelector+','+navSelector)){schedule();return;}
+   for(const node of record.addedNodes){
+    if(node.nodeType!==1)continue;
+    if(node.matches?.(headingSelector+','+navSelector)||node.querySelector?.(headingSelector+','+navSelector)){schedule();return;}
+   }
+  }
+ });
+ observer.observe(doc.body,{subtree:true,childList:true});
+}
+function ready(){try{install(frame.contentDocument)}catch(e){console.warn('RT plan label update unavailable',e)}}
+frame.addEventListener('load',ready);
+ready();
 })();
 </script>
 </body>
