@@ -10290,7 +10290,11 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 #panel-3 #rr04-rkk-excel-table .rr04-rkk-specific-storymap{display:none!important}
 @media(max-width:650px){#panel-3 #rr04-rkk-portal-20261022 .rr04-rkk-gold-actions{gap:10px!important}}
 </style>
-</head>
+<style id="rr04-preview-full-hero-20261112">
+#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-cover{aspect-ratio:16/9!important;height:auto!important;min-height:0!important;overflow:hidden!important}
+#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-iframe{width:200%!important;height:200%!important;transform:scale(.5)!important;transform-origin:top left!important;left:0!important;top:0!important}
+@media(max-width:620px){#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-cover{aspect-ratio:16/9!important}}
+</style></head>
 <body class="suo-intro-active">
 <!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
 <section id="suo-map-intro" aria-labelledby="suo-map-intro-title">
@@ -14363,8 +14367,9 @@ window.renderSuoPbtDocumentTable=function(type,code){
    if(!p.docs.length){const note=document.createElement('p');note.textContent='Senarai dokumen RT belum tersedia dalam direktori.';docList.appendChild(note);}
    {
  const local='./rt/'+encodeURIComponent(p.code)+'.html';
+ const previewUrl='./index.html?rt_page='+encodeURIComponent(p.code)+'&rt_preview=1';
  open.href=local;open.removeAttribute('target');open.removeAttribute('aria-disabled');open.style.display='inline-flex';
- if(frame.getAttribute('src')!==local){cover?.classList.remove('is-frame-loaded');frame.setAttribute('src',local);}
+ if(frame.getAttribute('src')!==previewUrl){cover?.classList.remove('is-frame-loaded');frame.setAttribute('src',previewUrl);}
  frame.title='Pratonton Story Map HTML GitHub '+p.name;
 }
    mapButton.dataset.pbtMap=p.code;
@@ -14693,9 +14698,12 @@ window.renderSuoPbtDocumentTable=function(type,code){
   const label=hero?.querySelector('small')?.textContent.trim()||'PLANMALAYSIA SELANGOR';
   const title=hero?.querySelector('h1')?.textContent.trim()||p.name;
   const subtitle=hero?.querySelector('p')?.textContent.trim()||'Rancangan Kawasan Khas';
+  const bg=hero?getComputedStyle(hero).backgroundImage:'';
+  const bgColor=hero?getComputedStyle(hero).backgroundColor:'#153b50';
+  const background=(bg&&bg!=='none')?bg:'linear-gradient(135deg,#153547,#215465,#10334a)';
   const esc=s=>String(s).replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
   frame.removeAttribute('src');
-  frame.srcdoc='<!doctype html><html lang="ms"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;text-align:center;color:#fff;background:radial-gradient(circle at 75% 12%,#9e936066,transparent 48%),linear-gradient(135deg,#153547,#215465,#10334a);font-family:Arial,sans-serif}main{padding:40px 30px}small{color:#ffdd91;font-weight:700;letter-spacing:.13em}h1{font:700 clamp(25px,5vw,45px)/1.2 Georgia,serif;color:#fff7dd;margin:22px auto}p{color:#dfe9ef;font-size:17px;line-height:1.6}</style><main><small>'+esc(label)+'</small><h1>'+esc(title)+'</h1><p>'+esc(subtitle)+'</p></main></html>';
+  frame.srcdoc='<!doctype html><html lang="ms"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden}body{display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:'+background+';background-color:'+bgColor+';background-size:cover;background-position:center;font-family:Arial,sans-serif}body:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#091b2e5c,#091b2e3b)}main{position:relative;max-width:960px;padding:22px 45px}small{display:inline-block;color:#ffdd91;font-weight:700;letter-spacing:.12em;font-size:12px;padding:7px 14px;border:1px solid #ffffff66;border-radius:30px}h1{font:700 clamp(38px,5.5vw,70px)/1.1 Georgia,serif;color:#fff;margin:22px auto}p{color:#fff;font-size:clamp(17px,2vw,23px);line-height:1.5;margin:22px auto}span{display:inline-block;background:#153d59c9;border:1px solid #ffffff9c;border-radius:28px;padding:14px 24px;color:#fff;font-weight:700;font-size:13px;margin-top:14px}</style><main><small>'+esc(label)+'</small><h1>'+esc(title)+'</h1><p>'+esc(subtitle)+'</p><span>SKROL UNTUK TEROKAI ↓</span></main></html>';
  }
  frame.title='Pratonton HTML GitHub RKK '+p.name;
 }
@@ -22131,6 +22139,34 @@ apply();
    frame.addEventListener('load',()=>prepare(frame));
    if(frame.contentDocument?.readyState==='complete')prepare(frame);
  });
+})();
+</script>
+<style id="rr04-rt-preview-direct-style-20261112">
+/* Only the dedicated RT iframe preview route, not the real Story Map pages. */
+html:has(body.rt-only-preview),body.rt-only-preview{overflow:hidden!important;height:100vh!important;margin:0!important}
+body.rt-only-preview > :not(#rt11-modal){display:none!important}
+body.rt-only-preview #rt11-modal{position:fixed!important;inset:0!important;top:0!important;left:0!important;width:100vw!important;height:100vh!important;min-height:0!important;max-height:none!important;overflow:hidden!important;border:0!important;border-radius:0!important;display:block!important;transform:none!important;z-index:99999!important}
+body.rt-only-preview #rt11-modal .rtbar,
+body.rt-only-preview #rt11-modal .rtgrid,
+body.rt-only-preview #rt11-modal .mbsa-motion-scene{display:none!important}
+body.rt-only-preview #rt11-modal .rthero{position:absolute!important;inset:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;height:100vh!important;min-height:0!important;max-height:100vh!important;width:100vw!important;overflow:hidden!important;padding:22px 50px!important;transform:none!important;background-size:cover!important;background-position:center center!important}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:0!important;width:100%!important;max-width:960px!important;height:auto!important;max-height:96vh!important;overflow:visible!important;padding:10px 15px!important;margin:auto!important;transform:none!important;text-align:center!important}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content>small{display:inline-block!important;width:auto!important;font-size:12px!important;margin:0 auto 15px!important;line-height:1.4!important}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content h1{display:block!important;width:100%!important;max-width:950px!important;font-family:Georgia,serif!important;font-size:clamp(38px,5.2vw,66px)!important;line-height:1.04!important;margin:4px auto 15px!important;padding:0!important;text-align:center!important}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content>p{width:min(100%,860px)!important;max-width:860px!important;text-align:center!important;font-size:clamp(16px,1.8vw,24px)!important;line-height:1.45!important;margin:10px auto!important}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content p.rt-mbpj-matched-desc{font:400 16px/1.55 Arial,sans-serif!important;margin:12px auto!important;max-width:790px!important}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content .mbsa-hero-explore{display:inline-flex!important;position:relative!important;inset:auto!important;align-items:center!important;justify-content:center!important;max-width:330px!important;width:auto!important;min-height:46px!important;margin:14px auto 0!important;padding:10px 26px!important;transform:none!important;animation:none!important;white-space:nowrap!important;font-size:13px!important}
+body.rt-only-preview #rt11-modal .rthero:after{pointer-events:none}
+</style>
+<script id="rr04-rt-preview-direct-js-20261112">
+(function(){
+ if(new URLSearchParams(location.search).get('rt_preview')!=='1')return;
+ document.body.classList.add('rt-only-preview');
+ const modal=document.getElementById('rt11-modal');if(!modal)return;
+ const ensure=()=>{modal.hidden=false;modal.removeAttribute('hidden');document.body.style.overflow='hidden'};
+ ensure();
+ const observer=new MutationObserver(ensure);
+ observer.observe(modal,{attributes:true,attributeFilter:['hidden']});
 })();
 </script>
 </body>
