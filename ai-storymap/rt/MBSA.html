@@ -745,5 +745,34 @@ frame.addEventListener('load',()=>{
  }catch(err){console.warn('RT page styling is unavailable',err)}
 });
 </script>
+<script id="uniform-plan-heading-20261112">
+(function(){
+'use strict';
+const TITLE='PELAN MUKIM & BLOK PERANCANGAN';
+const match=s=>/^\s*(?:(?:\d+(?:\.\d+)*[.)-]?)\s*)?PELAN\s+MUKIM\s*(?:(?:DAN|&|\/|SERTA|DAN\/ATAU)\s*)?(?:PELAN\s+)?BLOK\s+PERANCANGAN\s*$/i.test(String(s||'').replace(/\s+/g,' ').trim());
+const selectors='h1,h2,h3,h4,h5,h6,[role="heading"],.section-title,.chapter-title,.rt-section-title';
+const install=doc=>{
+ if(!doc||!doc.body||doc.body.dataset.uniformPlanHeadingInstalled)return;
+ doc.body.dataset.uniformPlanHeadingInstalled='1';
+ let busy=false;
+ const apply=()=>{if(busy)return;busy=true;try{
+  doc.querySelectorAll(selectors).forEach(el=>{
+    if(el.closest('script,style,nav'))return;
+    if(match(el.textContent)&&el.textContent.trim()!==TITLE)el.textContent=TITLE;
+  });
+ }finally{busy=false}};
+ apply();
+ const observer=new MutationObserver(()=>{if(busy)return;apply()});
+ observer.observe(doc.body,{subtree:true,childList:true,characterData:true});
+};
+const frame=document.getElementById('rt-story-frame');
+if(frame){
+ const attempt=()=>{try{install(frame.contentDocument)}catch(err){console.warn('Plan heading normalization unavailable',err)}};
+ frame.addEventListener('load',attempt);attempt();
+}else{
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>install(document));else install(document);
+}
+})();
+</script>
 </body>
 </html>
