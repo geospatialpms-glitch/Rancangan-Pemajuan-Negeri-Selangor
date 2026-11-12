@@ -1,134 +1,44 @@
 <!doctype html>
-<html lang="ms">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#701c35">
-<title>Story Map RT MBPJ | Rancangan Pemajuan Negeri Selangor</title>
+<html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#4d357b"><meta name="description" content="Story Map interaktif RKK Seksyen 13 Petaling Jaya berdasarkan ArcGIS StoryMaps PLANMalaysia Selangor.">
+<title>RKK Seksyen 13 Petaling Jaya | Story Map Rancangan Pemajuan Selangor</title>
 <style>
-/* The main portal renders the same RT navigation and chapters as other councils. */
-*{box-sizing:border-box}
-html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f4f5f8}
-#rt-story-frame{display:block;width:100%;height:100dvh;border:0;background:#f4f5f8}
-</style>
-</head>
+:root{--violet:#6b50aa;--deep:#292b49;--muted:#526075;--mist:#f5f2fd;--gold:#e9cf91}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;background:#f4f1fc;color:var(--deep);font:15px/1.75 Arial,sans-serif}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer} 
+.topbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px clamp(18px,3vw,48px);background:linear-gradient(105deg,#60469a,#293f55);color:#fff;box-shadow:0 5px 20px #29315330;min-height:76px}
+.brand{font-weight:800;font-size:clamp(13px,1.2vw,19px);line-height:1.25}.brand small{display:block;font-size:10px;color:#eadffb;letter-spacing:.12em}.toplinks{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.toplinks a{border-radius:999px;padding:9px 16px;background:#ffffff1a;border:1px solid #ffffff52;font-weight:700;font-size:12px}.toplinks a:hover,.toplinks a:focus-visible{background:#fff;color:#56428a}
+.hero{min-height:min(720px,calc(100svh - 76px));display:grid;align-items:center;position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(120deg,#6d55a3,#314a65);color:#fff}
+.hero:before{content:"";position:absolute;inset:-25%;z-index:-1;background:radial-gradient(circle at 20% 25%,#b29cde6b,transparent 32%),radial-gradient(circle at 80% 65%,#9cb8e65c,transparent 35%),linear-gradient(120deg,#7658a0 0%,#2a4863 100%);animation:ambient 17s ease-in-out infinite alternate}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.13;background:repeating-linear-gradient(125deg,transparent 0 90px,#fff 91px 92px,transparent 93px 170px);animation:drift 22s linear infinite}
+@keyframes ambient{to{transform:translate3d(4%,-3%,0) scale(1.08);filter:hue-rotate(15deg)}}@keyframes drift{to{transform:translate3d(100px,-90px,0)}}
+.hero-inner{max-width:1140px;padding:70px 25px 85px;width:100%;margin:auto}.eyebrow{display:inline-block;color:#fff1bf;border:1px solid #ffffff72;background:#ffffff16;padding:6px 13px;border-radius:30px;font-weight:700;letter-spacing:.13em;font-size:11px}.hero h1{font-size:clamp(40px,6vw,78px);line-height:1.1;letter-spacing:-.04em;max-width:870px;margin:25px 0}.hero p{font-size:clamp(16px,1.8vw,20px);color:#f4eefe;max-width:800px}.hero strong{color:#f5e6b5}.scroll{margin-top:32px;display:inline-flex;gap:12px;align-items:center;background:#1d3557a3;border:1px solid #dfd2ff;border-radius:40px;padding:11px 20px;color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;animation:pulse 2.7s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 10px #ffffff16}}.page{max-width:1390px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:32px;margin:auto;padding:45px 30px 100px}
+aside{position:sticky;top:106px;align-self:start;background:#fffdfef0;border:1px solid #dfd8ef;border-radius:22px;padding:22px;box-shadow:0 12px 34px #30245113;max-height:calc(100svh - 125px);overflow:auto}
+.aside-label{letter-spacing:.16em;color:#937aab;font-size:10px;font-weight:800}aside h2{margin:6px 0;color:#644ba2;font-size:26px}aside p{font-size:12px;color:#6f7184;line-height:1.55}aside nav{display:grid;gap:7px;border-top:1px solid #e4dcf1;padding-top:15px;margin-top:14px}aside nav a{font-size:12px;padding:10px 12px;font-weight:700;border-radius:11px;color:#645487;transition:background .2s,transform .2s}aside nav a:hover,aside nav a.active{background:#eee8fa;color:#4e3290;transform:translateX(3px)}
+.content{min-width:0;display:grid;gap:24px}.chapter{position:relative;background:linear-gradient(135deg,#fff,#faf8ff);border-radius:24px;border:1px solid #e1d8f2;border-top:4px solid #7959b2;box-shadow:0 14px 32px #30245112;padding:clamp(23px,3.3vw,45px);overflow:hidden}
+.chapter:before{content:"";position:absolute;right:-80px;top:-90px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,#c9baf53a,transparent 70%);pointer-events:none;animation:ambient 12s ease-in-out infinite alternate}
+.chapter>*{position:relative}.chapter .tag{color:#8e76b3;font-size:11px;font-weight:800;letter-spacing:.17em}.chapter h2{font-size:clamp(28px,3vw,43px);line-height:1.18;color:#60479a;margin:12px 0 20px}.chapter p,.chapter li{font-size:15px;line-height:1.85;color:#3f4b62;text-align:justify}.chapter ul{padding-left:22px}.chapter li{margin-bottom:12px}.chapter strong{color:#42306c}
+.statline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:26px 0}.stat{border-radius:16px;padding:20px;background:#f1ebfb;border:1px solid #e0d3f5}.stat b{display:block;color:#5b4091;font-size:24px}.stat span{font-size:12px;color:#657084}
+.quote{border-left:5px solid #d3b278;background:linear-gradient(120deg,#f9f4e8,#f4edfe);padding:30px;border-radius:0 22px 22px 0;font-size:clamp(19px,2.4vw,29px);line-height:1.45;font-weight:800;color:#4c3c76}.quote small{display:block;margin-top:16px;color:#786789;font-size:12px;font-weight:600}
+.flip-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-top:28px;perspective:1100px}.flip{min-height:210px;perspective:1000px;cursor:pointer}.flip-core{position:relative;height:100%;min-height:210px;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1)}.flip:hover .flip-core,.flip:focus-within .flip-core,.flip.is-flipped .flip-core{transform:rotateY(180deg)}.side{position:absolute;inset:0;backface-visibility:hidden;border:1px solid #d8c8ed;border-radius:18px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 9px 21px #33234e12}.front{background:linear-gradient(145deg,#7356b2,#413e7a);color:white}.front .symbol{font-size:32px}.front b{font-size:19px;line-height:1.2}.front small{font-size:11px;color:#e3d4ff}.back{background:linear-gradient(135deg,#fff,#ede6fb);color:#3b3366;transform:rotateY(180deg);justify-content:center;font-size:14px;line-height:1.6}.flip-toggle{display:block;width:100%;border:0;background:transparent;text-align:left;padding:0;appearance:none;color:inherit}
+.zone-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0}.zone{background:linear-gradient(140deg,#f4effd,#fff);border:1px solid #dfd2ef;padding:24px;border-radius:18px;transition:transform .25s,box-shadow .25s}.zone:hover{transform:translateY(-5px);box-shadow:0 15px 30px #35245b22}.zone b{color:#5e469a;display:block;font-size:18px;margin-bottom:9px}.zone span{font-size:13px;color:#5b6475}.map-preview{background:#f2eff8;border:1px solid #ddd1ec;padding:15px;border-radius:18px;margin-top:20px}.map-preview img{display:block;width:100%;height:auto;border-radius:10px;max-height:660px;object-fit:contain}.map-preview figcaption{font-size:12px;color:#5c6375;margin-top:10px;text-align:center}.map-preview a{color:#6344a6;text-decoration:underline}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}.btn{padding:11px 18px;border-radius:999px;font-weight:800;font-size:12px;background:#694ba4;color:white;border:1px solid #694ba4;display:inline-flex;align-items:center}.btn.alt{background:white;color:#694ba4}.btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+footer{padding:30px 22px;text-align:center;background:#2e3151;color:#dadcf4;font-size:12px}
+@media(max-width:1050px){.flip-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.page{grid-template-columns:230px minmax(0,1fr);gap:18px;padding:25px 16px}}@media(max-width:720px){.topbar{align-items:flex-start;flex-direction:column;gap:10px}.toplinks a{padding:7px 11px}.hero{min-height:570px}.page{display:block;padding:16px 12px 65px}aside{position:relative;top:auto;max-height:none;margin-bottom:20px}aside nav{grid-template-columns:repeat(2,minmax(0,1fr))}.statline,.zone-grid{grid-template-columns:1fr}.chapter{margin-bottom:18px}.flip-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:430px){.flip-grid,aside nav{grid-template-columns:1fr}.hero h1{font-size:39px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+</style></head>
 <body data-rt-page="MBPJ">
-<iframe id="rt-story-frame" title="Story Map Rancangan Tempatan Majlis Bandaraya Petaling Jaya" src="../index.html?rt_page=MBPJ&amp;v=20261112-mbpj-storymap" loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<header class="topbar"><div class="brand"><small>PLANMALAYSIA SELANGOR</small>RKK SEKSYEN 13 · MBPJ</div><div class="toplinks"><a href="../index.html">⌂ Halaman Utama</a><a href="../index.html#rt">Kembali ke Portal</a><a href="https://storymaps.arcgis.com/stories/28be061f77264e46890080986f1db20d" target="_blank" rel="noopener noreferrer">StoryMap Asal ↗</a></div></header>
+<section class="hero" id="utama"><div class="hero-inner"><span class="eyebrow">PLANMALAYSIA SELANGOR · MAJLIS BANDARAYA PETALING JAYA</span><h1>Rancangan Kawasan Khas<br><strong>Seksyen 13 Petaling Jaya</strong></h1><p>Terokai hala tuju transformasi Seksyen 13 sebagai hab perdagangan utama melalui perancangan fizikal, konsep pembangunan dan zon guna tanah.</p><a href="#pengenalan" class="scroll">SKROL UNTUK TEROKAI ↓</a></div></section>
+<div class="page"><aside><span class="aside-label">JELAJAH RANCANGAN PEMAJUAN</span><h2>MBPJ</h2><p>Rancangan Kawasan Khas Seksyen 13 Petaling Jaya (Penggubahan 1)</p><nav aria-label="Senarai bab"><a href="#pengenalan">01 · Pengenalan</a><a href="#latar">02 · Latar Belakang</a><a href="#matlamat">03 · Matlamat Pembangunan</a><a href="#konsep">04 · Konsep Pembangunan</a><a href="#guna-tanah">05 · Cadangan Guna Tanah</a><a href="#peta">05.1 · Peta Cadangan</a></nav></aside>
+<main class="content">
+<section class="chapter" id="pengenalan"><span class="tag">BAB 01 · PENGENALAN</span><h2>Pengenalan RKK</h2><p>Rancangan Kawasan Khas (RKK) merupakan instrumen perancangan yang membolehkan cadangan tindakan khusus disediakan bagi kawasan tertentu.</p><ul><li><strong>Subseksyen 16B(1) Akta Perancangan Bandar dan Desa 1976 (Akta 172):</strong> Pengarah JPBD Negeri atau Pihak Berkuasa Perancangan Tempatan (PBPT) boleh menyediakan cadangan RKK bagi sesuatu kawasan khas.</li><li><strong>Kandungan RKK:</strong> Mengandungi cadangan tindakan khusus terperinci bagi tujuan memajukan, memajukan semula, memperelokkan, memelihara atau menguruskan kawasan tersebut.</li><li><strong>Prosedur &amp; Kuat Kuasa:</strong> Disediakan mengikut prosedur Rancangan Tempatan (RT) dan mempunyai kekuatan undang-undang serta penguatkuasaan yang sama.</li></ul></section>
+<section class="chapter" id="latar"><span class="tag">BAB 02 · LATAR BELAKANG</span><h2>Seksyen 13 Petaling Jaya</h2><p>Kawasan kajian RKK Seksyen 13 merangkumi keseluruhan kawasan perindustrian Seksyen 13, Petaling Jaya seluas <strong>259.20 ekar</strong> di bawah pentadbiran Majlis Bandaraya Petaling Jaya (MBPJ). Terletak di dalam Daerah Petaling, kawasan ini bersempadan dengan Jalan Professor Diraja Ungku Aziz di sebelah utara, Jalan Kemajuan di sebelah timur dan Jalan Professor Khoo Kay Kim di sebelah selatan.</p><p>Kedudukannya yang strategik berdekatan dengan kawasan kejiranan dan pusat perdagangan utama seperti Jaya One, Jaya 33 dan Plaza 33 menjadikannya hab perkhidmatan dan perniagaan yang berkembang pesat. Kesemua lot di dalam kawasan ini berada di bawah kategori perindustrian dengan keutamaan aktiviti merangkumi pejabat, ruang pameran, gudang, pusat perkhidmatan pelanggan, institusi pendidikan swasta serta premis keagamaan.</p><div class="statline"><div class="stat"><b>259.20</b><span>Ekar kawasan kajian</span></div><div class="stat"><b>MBPJ</b><span>Pihak berkuasa tempatan</span></div><div class="stat"><b>Petaling</b><span>Daerah pentadbiran</span></div></div></section>
+<section class="chapter" id="matlamat"><span class="tag">BAB 03 · MATLAMAT PEMBANGUNAN</span><h2>Matlamat Pembangunan</h2><p>Bagi mengarahkan hala tuju perancangan dan transformasi Seksyen 13 sebagai hab perdagangan utama, matlamat pembangunan RKK ini ditetapkan seperti berikut:</p><blockquote class="quote">MEMPERBAIKI PERSEKITARAN FIZIKAL SERTA MENJADIKAN SEKSYEN 13 SEBAGAI HUB PERDAGANGAN YANG AKAN BERPERANAN MEMBERI PERKHIDMATAN PADA TAHAP YANG LEBIH TINGGI.<small>Matlamat RKK Seksyen 13 Petaling Jaya (Penggubahan 1)</small></blockquote></section>
+<section class="chapter" id="konsep"><span class="tag">BAB 04 · KONSEP PEMBANGUNAN</span><h2>Konsep Pembangunan</h2><p>Konsep pembangunan Seksyen 13 dicadangkan sebagai sebuah hub perdagangan berkonsepkan Taman Perdagangan (<em>Cyber Center</em>) yang mengintegrasikan prinsip <strong>“Live, Work, Learn, Play”</strong> secara holistik. Melalui pendekatan ini, persekitaran fizikal kawasan kajian ditransformasikan menerusi pembangunan kediaman sokongan, penyediaan bangunan pejabat dan aktiviti perindustrian bersih berteknologi tinggi tanpa pembuatan, di samping memperkasa kemudahan institusi serta fasiliti rekreasi, landskap dan hiburan demi menyokong persekitaran kerja dan kehidupan yang kondusif.</p><div class="flip-grid" aria-label="Prinsip Live Work Learn Play"><div class="flip"><button class="flip-toggle" aria-label="Terbalikkan kad Live" aria-pressed="false"><span class="flip-core"><span class="side front"><span class="symbol">⌂</span><b>LIVE</b><small>HALAKAN / KLIK UNTUK TEROKAI</small></span><span class="side back">Pembangunan kediaman sokongan bagi mewujudkan persekitaran kehidupan yang kondusif.</span></span></button></div><div class="flip"><button class="flip-toggle" aria-label="Terbalikkan kad Work" aria-pressed="false"><span class="flip-core"><span class="side front"><span class="symbol">▣</span><b>WORK</b><small>HALAKAN / KLIK UNTUK TEROKAI</small></span><span class="side back">Bangunan pejabat dan aktiviti perindustrian bersih berteknologi tinggi tanpa pembuatan.</span></span></button></div><div class="flip"><button class="flip-toggle" aria-label="Terbalikkan kad Learn" aria-pressed="false"><span class="flip-core"><span class="side front"><span class="symbol">✧</span><b>LEARN</b><small>HALAKAN / KLIK UNTUK TEROKAI</small></span><span class="side back">Kemudahan institusi dan sokongan kepada aktiviti pendidikan.</span></span></button></div><div class="flip"><button class="flip-toggle" aria-label="Terbalikkan kad Play" aria-pressed="false"><span class="flip-core"><span class="side front"><span class="symbol">◈</span><b>PLAY</b><small>HALAKAN / KLIK UNTUK TEROKAI</small></span><span class="side back">Kemudahan rekreasi, landskap dan hiburan bagi menyokong kualiti hidup.</span></span></button></div></div></section>
+<section class="chapter" id="guna-tanah"><span class="tag">BAB 05 · CADANGAN GUNA TANAH</span><h2>Cadangan Guna Tanah</h2><p>Peta Cadangan Guna Tanah disediakan sebagai panduan utama bagi memudahkan pengurusan dan pentadbiran tanah di Seksyen 13. Melalui penetapan tiga zon utama iaitu Zon Pembangunan Bercampur, Zon Perdagangan Terhad dan Zon Kegunaan Kerajaan, kawasan ini dirancang untuk membenarkan kepelbagaian guna tanah secara fleksibel. Pendekatan ini bertujuan untuk mengintegrasikan aktiviti perniagaan, perkhidmatan serta kemudahan awam secara efisien di samping terus memelihara dan menggalakkan suasana kehijauan di dalam kawasan kajian.</p><div class="zone-grid"><div class="zone"><b>01 · Zon Pembangunan Bercampur</b><span>Antara tiga zon guna tanah utama dalam cadangan RKK.</span></div><div class="zone"><b>02 · Zon Perdagangan Terhad</b><span>Antara tiga zon guna tanah utama dalam cadangan RKK.</span></div><div class="zone"><b>03 · Zon Kegunaan Kerajaan</b><span>Antara tiga zon guna tanah utama dalam cadangan RKK.</span></div></div></section>
+<section class="chapter" id="peta"><span class="tag">BAB 05.1 · PETA CADANGAN ZON GUNA TANAH KESELURUHAN</span><h2>Peta Cadangan Keseluruhan</h2><p>Peta Cadangan Keseluruhan menterjemahkan penetapan zon guna tanah secara komprehensif bagi memandu dan mengawal selia pembangunan di Seksyen 13 ke arah zon perniagaan, perdagangan bercampur serta kemudahan sokongan yang lebih terancang.</p><figure class="map-preview"><img loading="lazy" alt="Rajah 1.1: Pelan Cadangan Zonkasi Guna Tanah Keseluruhan dan Rangkaian Ketersambungan Spatial Seksyen 13, Petaling Jaya" src="https://www.arcgis.com/sharing/rest/content/items/28be061f77264e46890080986f1db20d/resources/uS0bGcqcYzj_eanC2fdkg.jpg" onerror="this.style.display='none';document.getElementById('map-fallback').hidden=false"><div id="map-fallback" hidden>Imej peta tidak dapat dimuatkan. <a href="https://storymaps.arcgis.com/stories/28be061f77264e46890080986f1db20d" target="_blank" rel="noopener noreferrer">Lihat peta pada StoryMap asal ↗</a></div><figcaption><strong>Rajah 1.1:</strong> Pelan Cadangan Zonkasi Guna Tanah Keseluruhan dan Rangkaian Ketersambungan Spatial Seksyen 13, Petaling Jaya.</figcaption></figure><div class="actions"><a class="btn" href="https://storymaps.arcgis.com/stories/28be061f77264e46890080986f1db20d" target="_blank" rel="noopener noreferrer">Buka StoryMap Asal ↗</a><a class="btn alt" href="../index.html">Kembali ke Portal Utama</a></div></section>
+</main></div><footer>Sumber kandungan: ArcGIS StoryMaps, “Majlis Bandaraya Petaling Jaya (MBPJ) — Rancangan Kawasan Khas Seksyen 13 Petaling Jaya”, PLANMalaysia Selangor. Paparan ini merupakan olahan interaktif kandungan sumber.</footer>
 <script>
-/* MBPJ uses the same native RT portal as MBSA/MBSJ. The ArcGIS publication
-   is retained as an optional primary-source reference, not a replacement page. */
-(function(){
-  const frame=document.getElementById('rt-story-frame');
-  if(!frame)return;
-  frame.addEventListener('load',function(){
-    try{
-      const doc=frame.contentDocument;
-      if(!doc || doc.getElementById('mbpj-source-link-20261112'))return;
-      const css=doc.createElement('style');
-      css.id='mbpj-source-style-20261112';
-      css.textContent=`
-        #mbpj-source-link-20261112{
-          position:fixed;right:18px;bottom:20px;z-index:9999;
-          display:inline-flex;align-items:center;gap:8px;
-          padding:11px 16px;border:1px solid rgba(255,226,156,.68);
-          border-radius:999px;background:linear-gradient(120deg,#701c35,#992f4e);
-          color:#fff;font:700 12px/1.35 Arial,sans-serif;
-          text-decoration:none;letter-spacing:.01em;
-          box-shadow:0 8px 24px rgba(65,12,31,.22);
-          transition:transform .25s ease,box-shadow .25s ease;
-        }
-        #mbpj-source-link-20261112:hover,#mbpj-source-link-20261112:focus-visible{
-          transform:translateY(-3px);
-          box-shadow:0 12px 28px rgba(65,12,31,.32);
-          outline:2px solid #f2c64c;outline-offset:2px;
-        }
-        @media(max-width:600px){
-          #mbpj-source-link-20261112{right:12px;bottom:12px;padding:9px 12px;font-size:11px;max-width:calc(100vw - 24px)}
-        }
-        @media(prefers-reduced-motion:reduce){#mbpj-source-link-20261112{transition:none}}
-      `;
-      doc.head.appendChild(css);
-      const source=doc.createElement('a');
-      source.id='mbpj-source-link-20261112';
-      source.href='https://arcg.is/1niTnK3';
-      source.target='_blank';
-      source.rel='noopener noreferrer';
-      source.setAttribute('aria-label','Buka sumber rasmi ArcGIS StoryMap RT MBPJ dalam tab baharu');
-      source.textContent='↗ Rujukan StoryMap RT MBPJ';
-      doc.body.appendChild(source);
-    }catch(e){/* Keep the existing RT page available even if enhancement fails. */}
-  });
-})();
-</script>
-
-<script id="mbpj-esri-recovery-20261112">
-/* The MBPJ ArcGIS story can be blocked by the source JSON endpoint.
-   Recover the failed card locally; preserve the shared portal navigation. */
-(function(){
- const frame=document.getElementById('rt-story-frame');
- if(!frame)return;
- const sections=[
-  ['01','Pengenalan Rancangan Tempatan','Rancangan Tempatan memperincikan cadangan pembangunan dan pengagihan guna tanah bagi kawasan pentadbiran tempatan. Dokumen ini menyokong pelaksanaan dasar perancangan dan kawalan pembangunan.'],
-  ['02','Rangka Perancangan','Rancangan Tempatan menterjemahkan dasar perancangan struktur kepada panduan pembangunan tempatan, termasuk guna tanah, infrastruktur, kemudahan masyarakat dan alam sekitar.'],
-  ['03','Perancangan Petaling Jaya','Rujuk penerbitan Rancangan Tempatan Petaling Jaya daripada Majlis Bandaraya Petaling Jaya untuk mendapatkan maklumat terperinci, pelan cadangan dan pengubahan yang berkuat kuasa.'],
-  ['04','Dokumentasi dan Rujukan','Kandungan penuh StoryMap asal boleh dibaca melalui pautan ArcGIS. Dokumen perancangan rasmi juga boleh dirujuk melalui portal MBPJ.']
- ];
- const safe=(s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- function recover(){
-  try{
-   const doc=frame.contentDocument;if(!doc)return false;
-   if(doc.getElementById('mbpj-esri-recovery-content'))return true;
-   const targets=[...doc.querySelectorAll('h1,h2,h3,h4,h5,h6,div,p,strong')].filter(e=>e.children.length===0 && /Kandungan ESRI tidak dapat dimuatkan/i.test(e.textContent||''));
-   if(!targets.length)return false;
-   const heading=targets[0];
-   let panel=heading.parentElement;
-   /* Find the error card without replacing the chapter shell or sidebar. */
-   for(let i=0;i<3 && panel.parentElement;i++){
-    const t=(panel.textContent||'');
-    if(/Cuba Muatkan Semula/i.test(t) && /Buka StoryMap ESRI/i.test(t))break;
-    panel=panel.parentElement;
-   }
-   if(panel===doc.body || panel.tagName==='MAIN')return false;
-   const css=doc.createElement('style');css.id='mbpj-esri-recovery-css';
-   css.textContent=`
-     #mbpj-esri-recovery-content{font-family:Arial,sans-serif;color:#26354a}
-     #mbpj-esri-recovery-content .mbpj-eyebrow{font-size:11px;font-weight:800;letter-spacing:.16em;color:#7958a6}
-     #mbpj-esri-recovery-content h2{font-size:clamp(25px,3.4vw,39px);line-height:1.2;color:#594195;margin:12px 0 14px}
-     #mbpj-esri-recovery-content .mbpj-lead{font-size:15px;line-height:1.85;color:#465571;max-width:850px}
-     #mbpj-esri-recovery-content .mbpj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:25px 0}
-     #mbpj-esri-recovery-content .mbpj-item{padding:22px;border:1px solid #ddd4f1;border-radius:18px;background:linear-gradient(140deg,#fff,#f6f2ff);box-shadow:0 7px 20px rgba(50,35,90,.07);transition:transform .2s,box-shadow .2s}
-     #mbpj-esri-recovery-content .mbpj-item:hover{transform:translateY(-4px);box-shadow:0 13px 27px rgba(50,35,90,.15)}
-     #mbpj-esri-recovery-content .mbpj-num{color:#8a6ab7;font-weight:800;font-size:12px;letter-spacing:.12em}
-     #mbpj-esri-recovery-content h3{font-size:19px;color:#44336d;line-height:1.35;margin:11px 0}
-     #mbpj-esri-recovery-content p{font-size:14px;line-height:1.8;margin:0;color:#4c5970;text-align:justify}
-     #mbpj-esri-recovery-content .mbpj-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-     #mbpj-esri-recovery-content .mbpj-actions a{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:700;border:1px solid #7654aa;background:#694ca4;color:#fff}
-     #mbpj-esri-recovery-content .mbpj-actions a+ a{background:#fff;color:#694ca4}
-     @media(max-width:760px){#mbpj-esri-recovery-content .mbpj-grid{grid-template-columns:1fr}#mbpj-esri-recovery-content .mbpj-item{padding:18px}}
-     @media(prefers-reduced-motion:reduce){#mbpj-esri-recovery-content .mbpj-item{transition:none}}
-   `;
-   doc.head.appendChild(css);
-   const content=doc.createElement('div');content.id='mbpj-esri-recovery-content';
-   content.innerHTML=`
-    <span class="mbpj-eyebrow">PLANMALAYSIA SELANGOR · MAJLIS BANDARAYA PETALING JAYA</span>
-    <h2>Rancangan Tempatan Petaling Jaya</h2>
-    <p class="mbpj-lead">Terokai pengenalan, fungsi dan kerangka perancangan tempatan Petaling Jaya. Paparan ini disediakan supaya halaman masih boleh digunakan apabila sambungan kandungan ArcGIS tidak tersedia.</p>
-    <div class="mbpj-grid">${sections.map(([no,title,desc])=>`<section class="mbpj-item"><span class="mbpj-num">${safe(no)}</span><h3>${safe(title)}</h3><p>${safe(desc)}</p></section>`).join('')}</div>
-    <div class="mbpj-actions"><a href="https://arcg.is/1niTnK3" target="_blank" rel="noopener noreferrer">Buka StoryMap RT MBPJ asal ↗</a><a href="https://www.mbpj.gov.my/ms/search/site/rancangan%20tempatan" target="_blank" rel="noopener noreferrer">Dokumen rasmi MBPJ ↗</a></div>
-   `;
-   panel.replaceChildren(content);
-   return true;
-  }catch(e){return false}
- }
- frame.addEventListener('load',()=>{
-  if(recover())return;
-  try{
-   const doc=frame.contentDocument;if(!doc)return;
-   const observer=new MutationObserver(()=>{if(recover())observer.disconnect()});
-   observer.observe(doc.documentElement,{childList:true,subtree:true});
-  }catch(e){}
- });
-})();
-</script>
-</body>
-</html>
+document.querySelectorAll('.flip-toggle').forEach(btn=>btn.addEventListener('click',()=>{const parent=btn.closest('.flip');const yes=parent.classList.toggle('is-flipped');btn.setAttribute('aria-pressed',String(yes))}));
+const links=[...document.querySelectorAll('aside nav a')];const chapters=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const ob=new IntersectionObserver(entries=>{const item=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!item)return;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+item.target.id))},{rootMargin:'-16% 0px -60% 0px',threshold:[0,.1,.3]});chapters.forEach(s=>ob.observe(s))}
+</script></body></html>
