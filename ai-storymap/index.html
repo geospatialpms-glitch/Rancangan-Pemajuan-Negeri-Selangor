@@ -22062,5 +22062,57 @@ apply();
  }
 }
 </style>
+<style id="rr04-github-hero-preview-20261112">
+/* Preview uses the real GitHub HTML, scaled to desktop viewport, with navigation cropped out. */
+#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-cover{isolation:isolate!important;overflow:hidden!important;background:#0f354d!important;aspect-ratio:1.39/1!important;height:auto!important;min-height:0!important}
+#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-cover .rr04-rt-portal-iframe{position:absolute!important;top:0!important;left:0!important;inset:auto!important;width:200%!important;height:200%!important;max-width:none!important;max-height:none!important;transform:scale(.5)!important;transform-origin:top left!important;clip-path:none!important;display:block!important;border:0!important;background:#153b50!important}
+#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-cover-fallback{z-index:0!important}
+#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-browser{min-height:36px!important;padding:8px 13px!important;gap:8px!important}
+#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-preview-caption{margin-top:8px!important;font-size:11px!important}
+@media(max-width:620px){#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-cover{aspect-ratio:1.25/1!important}}
+</style>
+<script id="rr04-github-hero-preview-20261112">
+(function(){
+ 'use strict';
+ const outerStyle=`
+ html,body{overflow:hidden!important;scroll-behavior:auto!important}
+ /* Dedicated standalone RKK page: hide all controls; show only its existing hero */
+ .topbar,.header,.toplinks,.rtbar,nav.toplinks{display:none!important}
+ body:has(section.hero#utama) section.hero#utama{height:100vh!important;min-height:100vh!important;max-height:100vh!important;display:flex!important;align-items:center!important;overflow:hidden!important}
+ body:has(section.hero#utama) section.hero#utama .hero-inner{max-width:1060px!important;margin:auto!important;padding:24px 54px!important;text-align:center!important}
+ body:has(section.hero#utama) section.hero#utama h1{font-size:clamp(42px,5.3vw,70px)!important;line-height:1.06!important;margin:24px auto 16px!important}
+ body:has(section.hero#utama) section.hero#utama p{margin:12px auto!important}
+ body:has(section.hero#utama) section.hero#utama .rkk-explore-btn{display:none!important}
+ body:has(section.hero#utama) .page{display:none!important}
+ /* Nested RT HTML in GitHub index: remove its top bar and center the actual RT cover */
+ #rt11-modal{position:fixed!important;inset:0!important;top:0!important;left:0!important;width:100vw!important;height:100vh!important;max-height:100vh!important;overflow:hidden!important;border:0!important;border-radius:0!important;z-index:2147483640!important}
+ #rt11-modal .rtbar{display:none!important}
+ #rt11-modal .rthero{height:100vh!important;min-height:100vh!important;max-height:100vh!important;padding:25px 45px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}
+ #rt11-modal .rt-hero-content{max-width:1000px!important;text-align:center!important;margin:auto!important;padding:0 25px!important}
+ #rt11-modal .rthero h1{font-size:clamp(38px,5.5vw,70px)!important;line-height:1.08!important;margin:18px auto!important}
+ #rt11-modal .rtgrid,#rt11-modal .rt-hero-scroll,#rt11-modal .rt-scroll-hint{display:none!important}
+ `;
+ function inject(doc){
+   if(!doc||doc.getElementById('rr04-preview-crop-style'))return;
+   const node=doc.createElement('style');node.id='rr04-preview-crop-style';node.textContent=outerStyle;(doc.head||doc.documentElement).appendChild(node);
+ }
+ function prepare(frame){
+   try{
+     const doc=frame.contentDocument;if(!doc)return;
+     inject(doc);
+     const nested=doc.getElementById('rt-story-frame');
+     if(nested){
+       const enhance=()=>{try{inject(nested.contentDocument)}catch(e){}};
+       nested.addEventListener('load',enhance);enhance();
+     }
+   }catch(e){/* Preview remains a normal local HTML iframe if document is inaccessible */ }
+ }
+ ['rr04-rt-portal-iframe','rr04-rkk-portal-iframe'].forEach(id=>{
+   const frame=document.getElementById(id);if(!frame)return;
+   frame.addEventListener('load',()=>prepare(frame));
+   if(frame.contentDocument?.readyState==='complete')prepare(frame);
+ });
+})();
+</script>
 </body>
 </html>
