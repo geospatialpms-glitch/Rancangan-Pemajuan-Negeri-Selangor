@@ -10281,6 +10281,15 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 @media(max-width:760px){#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-grid{grid-template-columns:1fr!important}#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-html-entry{font-size:13px!important}}
 @media(prefers-reduced-motion:reduce){#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-html-entry{transition:none!important}}
 </style>
+<style id="rr04-rkk-top-buttons-20261112">
+/* RKK gold CTA area aligned with RT MBSA; located above the document list. */
+#panel-3 #rr04-rkk-portal-20261022 .rr04-rkk-gold-actions{display:flex!important;flex-direction:column!important;gap:12px!important;width:100%!important;margin:12px 0 18px!important}
+#panel-3 #rr04-rkk-portal-20261022 .rr04-rkk-gold-actions .rr04-rt-html-entry{width:100%!important;margin:0!important;min-height:49px!important;flex:0 0 auto!important}
+#panel-3 #rr04-rkk-portal-20261022 .rr04-rkk-gold-actions .rr04-rt-html-entry[hidden]{display:none!important}
+#panel-3 #rr04-rkk-portal-20261022 .rr04-rt-portal-actions{margin-top:12px!important}
+#panel-3 #rr04-rkk-excel-table .rr04-rkk-specific-storymap{display:none!important}
+@media(max-width:650px){#panel-3 #rr04-rkk-portal-20261022 .rr04-rkk-gold-actions{gap:10px!important}}
+</style>
 </head>
 <body class="suo-intro-active">
 <!-- INTRODUKSI PETA — inspirasi hierarki portal GeoHub, identiti korporat SUO sendiri. -->
@@ -11650,9 +11659,13 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
     <div class="rr04-rt-portal-identity"><span class="rr04-rt-portal-logo" id="rr04-rkk-portal-logo" aria-hidden="true"></span><span class="rr04-rt-portal-code" id="rr04-rkk-portal-code">MBPJ</span></div>
     <h5 id="rr04-rkk-portal-name">Majlis Bandaraya Petaling Jaya</h5>
     <span class="rr04-rt-portal-subtitle">PENGENALAN DOKUMENTASI RKK</span>
-    <p id="rr04-rkk-portal-overview">Pilih PBT untuk meneroka pengenalan dokumen RKK dan pratonton StoryMap Esri.</p>
+    <p id="rr04-rkk-portal-overview">Pilih PBT untuk meneroka pengenalan dokumen RKK dan pratonton Story Map HTML.</p>
+    <div class="rr04-rkk-gold-actions" id="rr04-rkk-gold-actions" aria-label="Terokai Story Map RKK">
+      <a class="rr04-rt-html-entry" id="rr04-rkk-html-entry" href="./rt/MBPJ.html">✦ Terokai Story Map RKK MBPJ →</a>
+      <a class="rr04-rt-html-entry" id="rr04-rkk-second-html-entry" href="#gh-rkk-story" hidden>✦ Terokai Story Map RKK Genting Highlands →</a>
+    </div>
     <div class="rr04-rt-portal-docs"><div class="rr04-rt-portal-docs-head"><strong>Nama Dokumen &amp; Gambaran Keseluruhan</strong><span id="rr04-rkk-portal-doc-count"></span></div><div id="rr04-rkk-portal-doc-list" class="rr04-rt-portal-doc-list"></div><div class="rr04-excel-table-wrap" id="rr04-rkk-excel-table" aria-live="polite"></div></div>
-    <div class="rr04-rt-portal-actions"><a class="rr04-rt-html-entry" id="rr04-rkk-html-entry" href="./rt/MBPJ.html">✦ Terokai Story Map RKK MBPJ →</a><a class="rr04-rt-portal-cta" id="rr04-rkk-portal-cta" target="_blank" rel="noopener noreferrer">Terokai Portal <span aria-hidden="true">↗</span></a><button type="button" id="rr04-rkk-portal-map-button" class="rr04-rt-portal-map-button">⌖ &nbsp; Lihat Lokasi PBT di Peta</button></div>
+    <div class="rr04-rt-portal-actions"><a class="rr04-rt-portal-cta" id="rr04-rkk-portal-cta" target="_blank" rel="noopener noreferrer">Terokai Portal <span aria-hidden="true">↗</span></a><button type="button" id="rr04-rkk-portal-map-button" class="rr04-rt-portal-map-button">⌖ &nbsp; Lihat Lokasi PBT di Peta</button></div>
    </div>
    <aside class="rr04-rt-portal-rail" aria-label="Senarai PBT RKK yang mempunyai StoryMap"><div class="rr04-rt-portal-rail-head"><div><small>ATLAS RKK SELANGOR</small><strong>Pilih PBT</strong></div><span>03 PBT</span></div><p>Pilih salah satu daripada tiga PBT yang mempunyai StoryMap RKK.</p><div class="rr04-rt-portal-options" id="rr04-rkk-portal-options" role="group" aria-label="Pilih Pihak Berkuasa Tempatan"></div>
  <div class="rr04-rt-rail-controls" aria-label="Kawalan navigasi StoryMap PBT">
@@ -14264,7 +14277,7 @@ window.renderSuoPbtDocumentTable=function(type,code){
  const table=document.createElement('table'),caption=document.createElement('caption');caption.textContent='Senarai '+type.toUpperCase()+' Mengikut PBT · '+rows.length+' dokumen';table.append(caption);
  const thead=document.createElement('thead'),tr=document.createElement('tr');
  ['Bil.','Nama Dokumen','No. Warta / Status'].forEach(t=>{const th=document.createElement('th');th.scope='col';th.textContent=t;tr.append(th)});thead.append(tr);table.append(thead);
- const tbody=document.createElement('tbody');rows.forEach((record,i)=>{const tr=document.createElement('tr');[String(i+1),record[1],record[2]].forEach((t,col)=>{const td=document.createElement('td');td.textContent=t;if(type.toUpperCase()==='RKK'&&selected==='MPKS'&&col===1&&/Alam Melawati/i.test(record[1])){const a=document.createElement('a');a.className='rr04-rkk-specific-storymap';a.href='#mpks-malawati-story';a.textContent='Terokai Story Map HTML Alam Melawati ↗';a.addEventListener('click',function(e){e.preventDefault();window.openMpksMalawatiStory?.()});td.append(document.createElement('br'),a)}if(type.toUpperCase()==='RKK'&&selected==='MBPJ'&&col===1&&/Seksyen 13/i.test(record[1])){const a=document.createElement('a');a.className='rr04-rkk-specific-storymap';a.href='#mbpj13-story';a.textContent='Terokai Story Map HTML Seksyen 13 ↗';a.addEventListener('click',function(e){e.preventDefault();window.openMbpj13Story?.()});td.append(document.createElement('br'),a)}if(type.toUpperCase()==='RKK'&&selected==='MPHS'&&col===1){const isGenting=/Genting Highlands/i.test(record[1]);const isKkb=/Kuala Kubu Bharu/i.test(record[1]);if(isGenting||isKkb){const a=document.createElement('a');a.className='rr04-rkk-specific-storymap';a.href=isGenting?'#gh-rkk-story':'#kkb-rkk-story';a.removeAttribute('target');a.addEventListener('click',function(e){e.preventDefault();const trigger=document.querySelector(isGenting?'a.rr04-genting-storymap':'a.rr04-kkb-storymap');if(trigger)trigger.click()});a.target='_blank';a.rel='noopener noreferrer';a.textContent=isGenting?'Terokai StoryMap Genting Highlands ↗':'Terokai StoryMap Kuala Kubu Bharu ↗';td.append(document.createElement('br'),a)}}tr.append(td)});tbody.append(tr)});table.append(tbody);host.append(table);
+ const tbody=document.createElement('tbody');rows.forEach((record,i)=>{const tr=document.createElement('tr');[String(i+1),record[1],record[2]].forEach((t,col)=>{const td=document.createElement('td');td.textContent=t;tr.append(td)});tbody.append(tr)});table.append(tbody);host.append(table);
 };
 })();
 </script>
@@ -14661,9 +14674,18 @@ window.renderSuoPbtDocumentTable=function(type,code){
  const htmlEntry=document.getElementById('rr04-rkk-html-entry');
  const local='./rt/MBPJ.html';
  if(htmlEntry){
-  htmlEntry.hidden=false;htmlEntry.textContent='✦ Terokai Story Map RKK '+p.code+' →';
+  htmlEntry.hidden=false;
+  const isMPHS=p.code==='MPHS';
+  htmlEntry.textContent=isMPHS?'✦ Terokai Story Map RKK Kuala Kubu Bharu →':'✦ Terokai Story Map RKK '+p.code+' →';
   htmlEntry.href=p.code==='MBPJ'?local:p.code==='MPKS'?'#mpks-malawati-story':'#kkb-rkk-story';
   htmlEntry.onclick=function(e){if(p.code==='MBPJ')return;e.preventDefault();if(p.code==='MPKS')window.openMpksMalawatiStory?.();else document.querySelector('a.rr04-kkb-storymap')?.click();};
+  const second=document.getElementById('rr04-rkk-second-html-entry');
+  if(second){
+    second.hidden=!isMPHS;
+    second.href='#gh-rkk-story';
+    second.textContent='✦ Terokai Story Map RKK Genting Highlands →';
+    second.onclick=function(e){e.preventDefault();document.querySelector('a.rr04-genting-storymap')?.click();};
+  }
  }
  open.style.display='none';open.removeAttribute('href');
  if(p.code==='MBPJ'){
