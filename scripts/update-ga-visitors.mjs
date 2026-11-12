@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Fetch real GA4 page views for the Story Map and publish a safe public JSON snapshot.
+// Fetch real GA4 unique visitors for the Story Map and publish a safe public JSON snapshot.
 // Required GitHub Actions secret: GA4_SERVICE_ACCOUNT_JSON; property ID supplied by workflow
 // Never publish the service account key to the repository.
 import {createSign} from 'node:crypto';
@@ -32,7 +32,7 @@ const pagePath='/Rancangan-Pemajuan-Negeri-Selangor/ai-storymap/';
 async function report(startDate,endDate){
   const body={
     dateRanges:[{startDate,endDate}],
-    metrics:[{name:'screenPageViews'}],
+    metrics:[{name:'totalUsers'}],
     dimensionFilter:{filter:{fieldName:'pagePath',stringFilter:{matchType:'EXACT',value:pagePath}}},
     limit:'1'
   };
@@ -42,12 +42,12 @@ async function report(startDate,endDate){
   if(!result.ok)throw Error('GA4 Data API '+result.status+': '+(await result.text()).slice(0,600));
   const payload=await result.json();
   const val=Number(payload.rows?.[0]?.metricValues?.[0]?.value ?? 0);
-  if(!Number.isSafeInteger(val)||val<0)throw Error('Unexpected GA4 page view count');
+  if(!Number.isSafeInteger(val)||val<0)throw Error('Unexpected GA4 unique visitor count');
   return val;
 }
 // GA4 historical start: property history is only counted from installation.
 const [today,total]=await Promise.all([report(date,date),report('2020-01-01',date)]);
-const output={source:'GA4',metric:'screenPageViews',path:pagePath,date,today,total,updatedAt:new Date().toISOString()};
+const output={source:'GA4',metric:'totalUsers',path:pagePath,date,today,total,updatedAt:new Date().toISOString()};
 await mkdir('ai-storymap',{recursive:true});
 await writeFile('ai-storymap/visitor-stats.json',JSON.stringify(output,null,2)+'\n','utf8');
-console.log('GA4 visitor snapshot generated for',date,'page views today:',today,'period page views:',total);
+console.log('GA4 visitor snapshot generated for',date,'unique visitors today:',today,'period unique visitors:',total);
