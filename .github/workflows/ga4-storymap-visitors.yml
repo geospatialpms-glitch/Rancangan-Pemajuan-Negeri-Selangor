@@ -3,7 +3,7 @@ name: Refresh Story Map GA4 visitor counts
 on:
   workflow_dispatch:
   schedule:
-    - cron: '7,22,37,52 * * * *'
+    - cron: '5,20,35,50 * * * *'
 
 permissions:
   contents: write
@@ -41,5 +41,19 @@ jobs:
           git add ai-storymap/visitor-stats.json
           if ! git diff --cached --quiet; then
             git commit -m "Update GA4 Story Map visitor summary"
-            git push
+            # Portal edits can land while this scheduled run is in progress.
+            # Rebase the statistics-only commit so a concurrent push does not
+            # silently stop daily visitor updates.
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase -X theirs origin/main
+              if git push origin HEAD:main; then
+                echo "GA4 visitor statistics published successfully"
+                exit 0
+              fi
+              echo "Concurrent commit detected; retrying publication ($attempt/3)"
+              sleep 5
+            done
+            echo "::error::Unable to publish GA4 statistics after 3 attempts"
+            exit 1
           fi
