@@ -11,9 +11,10 @@
  try{
   if(!kind){var saved=sessionStorage.getItem('suo-bab04-return');if(saved){var data=JSON.parse(saved);kind=data.kind;code=data.code;}}
  }catch(e){}
- if(kind==='rt'&&/^[A-Za-z]{2,5}$/.test(code)){
+ if((kind==='rt'||kind==='rkk')&&/^[A-Za-z]{2,5}$/.test(code)){
   document.documentElement.classList.add('suo-return-to-rt');
   window.suoReturnToRt=code.toUpperCase();
+  window.suoReturnKind=kind;
  }
 })();
 </script>
@@ -16140,7 +16141,7 @@ function setUnifiedNav(code){
  nav.setAttribute('aria-label','Navigasi Rancangan Tempatan '+code);
  const dest=[
   ['‹ Sebelum','./rt/'+codes[(current+codes.length-1)%codes.length]+'.html'],
-  ['Portal Utama','./index.html#panel-3'],
+  ['Portal Utama','./index.html?return_to=rt&return_pbt='+encodeURIComponent(code)+'&nav=20261112#rr04-rt-portal-20261022'],
   ['Seterusnya ›','./rt/'+codes[(current+1)%codes.length]+'.html']
  ];
  dest.forEach(([name,href])=>{const a=document.createElement('a');a.href=href;a.target='_top';a.textContent=name;nav.appendChild(a)});
@@ -23039,12 +23040,14 @@ configs.forEach(c=>{
 #panel-3 #rr04-rkk-portal-20261022 #rr04-rkk-portal-cta{display:none!important;visibility:hidden!important}
 </style>
 <script id="suo-return-to-bab04-rt-20261112">
-/* Restore exact Bab 04 RT pane, selected PBT, and scroll from standalone RT. */
+/* Shared return for all 12 RT and RKK explorer pages. */
 (function(){
  'use strict';
+ const kind=window.suoReturnKind||'rt';
  const code=window.suoReturnToRt;
  if(!code)return;
- const portal=document.getElementById('rr04-rt-portal-20261022');
+ const type=kind==='rkk'?'rkk':'rt';
+ const portal=document.getElementById(type==='rt'?'rr04-rt-portal-20261022':'rr04-rkk-portal-20261022');
  if(!portal)return;
  const hideGate=()=>{
   document.body.classList.remove('suo-intro-active');
@@ -23066,9 +23069,9 @@ configs.forEach(c=>{
   hideGate();
   if(typeof window.switchTab==='function')window.switchTab(3);
   if(typeof window.showSuoBento==='function')window.showSuoBento(3,0);
-  const tab=document.getElementById('rr04-tab-rt');
+  const tab=document.getElementById(type==='rt'?'rr04-tab-rt':'rr04-tab-rkk');
   if(tab?.getAttribute('aria-selected')!=='true')tab.click();
-  const options=[...document.querySelectorAll('#rr04-rt-portal-options .rr04-rt-portal-option')];
+  const options=[...document.querySelectorAll('#rr04-'+type+'-portal-options .rr04-rt-portal-option')];
   const chosen=options.find(el=>(el.querySelector('small')?.textContent||'').trim().toUpperCase()===code);
   if(!chosen&&attempts++<50){setTimeout(restore,100);return}
   if(chosen&&!restored){
@@ -23085,6 +23088,53 @@ configs.forEach(c=>{
  else restore();
  window.addEventListener('load',()=>setTimeout(scroll,120),{once:true});
  window.addEventListener('pageshow',()=>setTimeout(scroll,120));
+})();
+</script>
+<script id="suo-rkk-return-to-explorer-20261112">
+/* Existing RKK pages are in-page modals: close then show Bab 04 > RKK
+   with the same PBT selected, rather than leaving users to search. */
+(function(){
+ 'use strict';
+ const stories=[
+  {id:'mbpj13-story',code:'MBPJ',close:'.mbpj-close'},
+  {id:'kkb-rkk-story',code:'MPHS',close:'.kkb-exit'},
+  {id:'gh-rkk-story',code:'MPHS',close:'#gh-rkk-exit'},
+  {id:'mpks-malawati-story',code:'MPKS',close:'.mks-close'}
+ ];
+ let switching=false;
+ document.addEventListener('click',function(e){
+  if(e.target.closest('.suo-rkk-prev,.suo-rkk-next')) {
+   switching=true;setTimeout(()=>{switching=false},250);
+  }
+ },true);
+ function go(code){
+  if(typeof window.switchTab==='function')window.switchTab(3);
+  if(typeof window.showSuoBento==='function')window.showSuoBento(3,0);
+  const tab=document.getElementById('rr04-tab-rkk');
+  if(tab?.getAttribute('aria-selected')!=='true')tab.click();
+  const options=Array.from(document.querySelectorAll('#rr04-rkk-portal-options .rr04-rt-portal-option'));
+  const selected=options.find(x=>(x.querySelector('small')?.textContent||'').trim().toUpperCase()===code);
+  selected?.click();
+  const target=document.getElementById('rr04-rkk-portal-20261022');
+  if(target){
+   const header=document.querySelector('header.header');
+   const offset=(header?.getBoundingClientRect().height||0)+18;
+   const top=Math.max(0,window.scrollY+target.getBoundingClientRect().top-offset);
+   window.scrollTo({top,behavior:'instant'});
+  }
+ }
+ stories.forEach(story=>{
+  const root=document.getElementById(story.id);
+  const close=root?.querySelector(story.close);
+  if(!close)return;
+  close.addEventListener('click',()=>{
+   setTimeout(()=>{
+    if(switching)return;
+    if(stories.some(item=>!document.getElementById(item.id)?.hidden))return;
+    go(story.code);
+   },100);
+  });
+ });
 })();
 </script>
 </body>
