@@ -16272,13 +16272,23 @@ if(cover){hero.innerHTML='';const heroContent=document.createElement('div');hero
     not a later class observer (which missed some RT pages). */
  const rtKey=String(entry.code||'').toUpperCase();
  const rtDescriptions={"MBSA":"Terokai hala tuju pembangunan Shah Alam sebagai pusat pentadbiran negeri melalui perancangan guna tanah, kemudahan masyarakat dan persekitaran bandar yang mampan.","MBPJ":"Terokai pendekatan perancangan Petaling Jaya melalui penyelarasan guna tanah, kemudahan bandar serta pembangunan kawasan yang lebih berdaya huni.","MBSJ":"Terokai hala tuju pembangunan Subang Jaya melalui perancangan kawasan kediaman, pusat perdagangan, mobiliti dan kemudahan komuniti.","MBDK":"Terokai hala tuju pembangunan Klang melalui pengukuhan fungsi bandar, rangkaian pengangkutan, guna tanah dan kemudahan masyarakat.","MPAJ":"Terokai perancangan Ampang Jaya yang mengimbangi pembangunan bandar, kawasan kediaman, kemudahan komuniti dan pemeliharaan alam sekitar.","MPKJ":"Terokai hala tuju pembangunan Kajang melalui perancangan guna tanah, ketersambungan pengangkutan dan peningkatan kemudahan bandar.","MPS":"Terokai hala tuju pembangunan Selayang melalui perancangan kawasan petempatan, aktiviti ekonomi, kemudahan masyarakat dan persekitaran mampan.","MPHS":"Terokai perancangan Hulu Selangor yang menghubungkan pembangunan petempatan, pusat pertumbuhan, kemudahan komuniti dan kawasan semula jadi.","MPKS":"Terokai hala tuju pembangunan Kuala Selangor melalui perancangan petempatan, aktiviti ekonomi tempatan, kemudahan awam dan kelestarian alam sekitar.","MPKL":"Terokai perancangan Kuala Langat yang menyelaraskan pembangunan petempatan, guna tanah, jaringan perhubungan dan kesejahteraan komuniti.","MPSP":"Terokai hala tuju pembangunan Sepang melalui perancangan pusat pertumbuhan, rangkaian pengangkutan, guna tanah dan kemudahan masyarakat.","MDSB":"Terokai perancangan Sabak Bernam yang menyeimbangkan pembangunan petempatan, aktiviti pertanian, kemudahan masyarakat dan kelestarian kawasan."};
- const rtNames={"MBSA":"Terokai hala tuju pembangunan Shah Alam sebagai pusat pentadbiran negeri melalui perancangan guna tanah, kemudahan masyarakat dan persekitaran bandar yang mampan.","MBPJ":"Terokai pendekatan perancangan Petaling Jaya melalui penyelarasan guna tanah, kemudahan bandar serta pembangunan kawasan yang lebih berdaya huni.","MBSJ":"Terokai hala tuju pembangunan Subang Jaya melalui perancangan kawasan kediaman, pusat perdagangan, mobiliti dan kemudahan komuniti.","MBDK":"Majlis Bandaraya Diraja Klang","MPAJ":"Majlis Perbandaran Ampang Jaya","MPKJ":"Majlis Perbandaran Kajang","MPS":"Majlis Perbandaran Selayang","MPHS":"Majlis Perbandaran Hulu Selangor","MPKS":"Majlis Perbandaran Kuala Selangor","MPKL":"Majlis Perbandaran Kuala Langat","MPSP":"Majlis Perbandaran Sepang","MDSB":"Majlis Daerah Sabak Bernam"};
+ const rtNames={"MBSA":"Majlis Bandaraya Shah Alam","MBPJ":"Majlis Bandaraya Petaling Jaya","MBSJ":"Majlis Bandaraya Subang Jaya","MBDK":"Majlis Bandaraya Diraja Klang","MPAJ":"Majlis Perbandaran Ampang Jaya","MPKJ":"Majlis Perbandaran Kajang","MPS":"Majlis Perbandaran Selayang","MPHS":"Majlis Perbandaran Hulu Selangor","MPKS":"Majlis Perbandaran Kuala Selangor","MPKL":"Majlis Perbandaran Kuala Langat","MPSP":"Majlis Perbandaran Sepang","MDSB":"Majlis Daerah Sabak Bernam"};
  if(rtNames[rtKey])sm.textContent='PLANMALAYSIA SELANGOR · '+rtNames[rtKey];
  if(rtDescriptions[rtKey]){
    const intro=document.createElement('p');
    intro.className='rt-mbpj-matched-desc';
    intro.textContent=rtDescriptions[rtKey];
    heroContent.appendChild(intro);
+ }
+ /* Unified preview copy is only used by the Bab 04 mini-browser.
+    Keep the actual RT cover unchanged on full Story Map pages. */
+ if(new URLSearchParams(location.search).get('rt_preview')==='1'){
+   const pbtName=rtNames[rtKey]||'Rancangan Tempatan '+entry.code;
+   sm.textContent='PLANMALAYSIA SELANGOR · '+pbtName;
+   title.textContent=pbtName+' ('+entry.code.toUpperCase()+')';
+   sub.textContent='Rancangan Tempatan '+pbtName;
+   const description=heroContent.querySelector('.rt-mbpj-matched-desc');
+   if(description)description.textContent=rtDescriptions[rtKey]||'Terokai rancangan pembangunan tempatan Negeri Selangor.';
  }
 }
 body.innerHTML='';let section=null,i=0;const prefix='rt11-'+entry.code+'-';
@@ -22286,6 +22296,51 @@ body.rt-only-preview #rt11-modal .rthero .rt-hero-content>p{width:min(100%,860px
 body.rt-only-preview #rt11-modal .rthero .rt-hero-content p.rt-mbpj-matched-desc{font:400 16px/1.55 Arial,sans-serif!important;margin:12px auto!important;max-width:790px!important}
 body.rt-only-preview #rt11-modal .rthero .rt-hero-content .mbsa-hero-explore{display:inline-flex!important;position:relative!important;inset:auto!important;align-items:center!important;justify-content:center!important;max-width:330px!important;width:auto!important;min-height:46px!important;margin:14px auto 0!important;padding:10px 26px!important;transform:none!important;animation:none!important;white-space:nowrap!important;font-size:13px!important}
 body.rt-only-preview #rt11-modal .rthero:after{pointer-events:none}
+
+/* Consistent Bab 04 RT preview, matching the established MDSB cover.
+   Overrides preview cropping only; never changes the actual RT hero. */
+body.rt-only-preview #rt11-modal .rthero{
+ align-items:flex-start!important;justify-content:center!important;
+ padding:clamp(32px,5vw,76px)!important;
+ background-size:cover!important;background-position:center!important;
+}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content{
+ align-items:flex-start!important;justify-content:center!important;
+ text-align:left!important;margin:0!important;padding:0!important;
+ width:min(100%,940px)!important;max-width:940px!important;
+ height:auto!important;max-height:92vh!important;gap:0!important;
+}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content>small{
+ width:fit-content!important;max-width:min(100%,730px)!important;
+ padding:9px 18px!important;margin:0 0 20px!important;
+ font:800 clamp(12px,1.3vw,17px)/1.4 Arial,sans-serif!important;
+ letter-spacing:.025em!important;text-transform:none!important;
+ text-align:left!important;white-space:normal!important;
+ border-radius:100px!important;
+}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content h1{
+ width:min(100%,900px)!important;max-width:900px!important;
+ margin:0 0 19px!important;padding:0!important;
+ font:800 clamp(44px,6.3vw,80px)/1.07 Georgia,'Times New Roman',serif!important;
+ text-align:left!important;text-wrap:balance!important;
+}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content>p{
+ width:min(100%,860px)!important;max-width:860px!important;
+ margin:0 0 16px!important;text-align:left!important;
+ font:700 clamp(19px,2.2vw,29px)/1.4 Arial,sans-serif!important;
+}
+body.rt-only-preview #rt11-modal .rthero .rt-hero-content p.rt-mbpj-matched-desc{
+ width:min(100%,820px)!important;max-width:820px!important;
+ margin:0!important;text-align:left!important;
+ font:400 clamp(15px,1.45vw,19px)/1.55 Arial,sans-serif!important;
+}
+@media(max-width:700px){
+ body.rt-only-preview #rt11-modal .rthero{padding:24px!important}
+ body.rt-only-preview #rt11-modal .rthero .rt-hero-content h1{font-size:clamp(30px,7.2vw,48px)!important}
+ body.rt-only-preview #rt11-modal .rthero .rt-hero-content>small{font-size:11px!important}
+ body.rt-only-preview #rt11-modal .rthero .rt-hero-content>p{font-size:17px!important}
+ body.rt-only-preview #rt11-modal .rthero .rt-hero-content p.rt-mbpj-matched-desc{font-size:13px!important}
+}
 </style>
 <script id="rr04-rt-preview-direct-js-20261112">
 (function(){
