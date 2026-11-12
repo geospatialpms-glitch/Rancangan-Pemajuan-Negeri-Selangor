@@ -749,7 +749,7 @@ frame.addEventListener('load',()=>{
 (function(){
 'use strict';
 const TITLE='PELAN MUKIM & BLOK PERANCANGAN';
-const match=s=>/^\s*(?:(?:\d+(?:\.\d+)*[.)-]?)\s*)?PELAN\s+MUKIM\s*(?:(?:DAN|&|\/|SERTA|DAN\/ATAU)\s*)?(?:PELAN\s+)?BLOK\s+PERANCANGAN\s*$/i.test(String(s||'').replace(/\s+/g,' ').trim());
+const match=s=>/^\s*(?:(?:\d+(?:\.\d+)*[.)-]?)\s*)?PELAN\s+MUKIM\s*(?:(?:DAN|&|\/|SERTA|DAN\/ATAU)\s*)?(?:PELAN\s+)?BLOK\s+(?:PERANCANGAN|[A-Z]{2,6})\s*$/i.test(String(s||'').replace(/\s+/g,' ').trim());
 const selectors='h1,h2,h3,h4,h5,h6,[role="heading"],.section-title,.chapter-title,.rt-section-title';
 const install=doc=>{
  if(!doc||!doc.body||doc.body.dataset.uniformPlanHeadingInstalled)return;
