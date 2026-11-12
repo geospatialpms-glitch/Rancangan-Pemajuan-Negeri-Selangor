@@ -104,6 +104,20 @@ body{background:#f7f3fc!important}
 @media(max-width:440px){.page aside nav{grid-template-columns:1fr!important}}
 @media(prefers-reduced-motion:reduce){.page::before,.page::after{animation:none!important}}
 
+
+/* HOTFIX 2026-11-12: keep animated chapter background behind, never over hero */
+body{position:relative;isolation:auto}
+.topbar{position:sticky;z-index:100!important}
+.hero{position:relative!important;isolation:isolate!important;z-index:2!important;display:flex!important;visibility:visible!important;opacity:1!important;overflow:hidden!important}
+.hero .hero-inner{position:relative!important;z-index:3!important;visibility:visible!important;opacity:1!important}
+.hero .hero-inner h1,.hero .hero-inner p,.hero .hero-inner .eyebrow,.hero .hero-inner .scroll{visibility:visible!important;opacity:1!important}
+.page{position:relative!important;isolation:isolate!important;z-index:0!important;background:transparent!important}
+.page::before,.page::after{position:absolute!important;inset:0!important;z-index:-1!important;pointer-events:none!important}
+.page::before{background:radial-gradient(ellipse at 18% 30%,#a382e244,transparent 42%),radial-gradient(ellipse at 85% 66%,#5a9ccf33,transparent 42%),linear-gradient(145deg,#f9f7fe,#ede8f7 56%,#f5effd)!important}
+.page::after{opacity:.16!important}
+.page aside,.page .content{position:relative;z-index:1}
+@media(max-width:720px){.hero{min-height:570px!important}}
+
 </style></head>
 <body data-rt-page="MBPJ">
 <header class="topbar"><div class="brand"><small>PLANMALAYSIA SELANGOR</small>RKK SEKSYEN 13 · MBPJ</div><div class="toplinks"><a href="../index.html">⌂ Halaman Utama</a><a href="../index.html#rt">Kembali ke Portal</a><a href="https://storymaps.arcgis.com/stories/28be061f77264e46890080986f1db20d" target="_blank" rel="noopener noreferrer">StoryMap Asal ↗</a></div></header>
