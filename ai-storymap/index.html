@@ -19270,7 +19270,7 @@ schedule();
   const mbsa=!modal.hidden&&modal.classList.contains('rt-unified-header');
   scene.hidden=!mbsa;
   cta.setAttribute('aria-label',modal.classList.contains('rt-mbdk')?'Skrol ke kandungan Rancangan Tempatan MBDK':modal.classList.contains('rt-mbsj')?'Skrol ke kandungan Rancangan Tempatan MBSJ':'Skrol ke kandungan Rancangan Tempatan MBSA');
-  if(mbsa&&!hero.contains(cta))hero.appendChild(cta);
+  if(mbsa){const target=hero.querySelector('.rt-hero-content')||hero;if(cta.parentElement!==target)target.appendChild(cta);}
   if(!mbsa&&cta.isConnected)cta.remove();
  }
  const observer=new MutationObserver(sync);
@@ -21817,7 +21817,7 @@ apply();
   background-position:center!important;
   overflow:hidden!important;
 }
-#rt11-modal .rthero .rt-hero-content{
+#rt11-modal[class] .rthero .rt-hero-content{
   position:relative!important;
   z-index:5!important;
   width:min(100%,1120px)!important;
@@ -21832,7 +21832,7 @@ apply();
   gap:0!important;
   overflow:visible!important;
 }
-#rt11-modal .rthero .rt-hero-content small{
+#rt11-modal[class] .rthero .rt-hero-content small{
   display:inline-flex!important;
   width:auto!important;
   max-width:min(100%,920px)!important;
@@ -21850,7 +21850,7 @@ apply();
   text-wrap:balance!important;
   text-shadow:0 2px 8px rgba(0,0,0,.58)!important;
 }
-#rt11-modal .rthero .rt-hero-content h1{
+#rt11-modal[class] .rthero .rt-hero-content h1{
   width:min(100%,1070px)!important;
   max-width:1070px!important;
   font-family:Georgia,'Times New Roman',serif!important;
@@ -21865,7 +21865,7 @@ apply();
   text-wrap:balance!important;
   text-shadow:0 4px 18px rgba(0,0,0,.75)!important;
 }
-#rt11-modal .rthero .rt-hero-content p{
+#rt11-modal[class] .rthero .rt-hero-content p{
   width:min(100%,900px)!important;
   max-width:900px!important;
   margin:0 auto!important;
@@ -21877,18 +21877,20 @@ apply();
   text-wrap:balance!important;
   text-shadow:0 3px 11px rgba(0,0,0,.73)!important;
 }
-#rt11-modal .rthero .mbsa-hero-explore{
+#rt11-modal[class] .rthero .rt-hero-content > .mbsa-hero-explore{
   position:relative!important;
+  align-self:center!important;
   left:auto!important;
   right:auto!important;
   bottom:auto!important;
   top:auto!important;
   transform:none!important;
-  margin:29px auto 0!important;
+  margin:25px auto 0!important;
   display:inline-flex!important;
   align-items:center!important;
   justify-content:center!important;
   flex:0 0 auto!important;
+  width:max-content!important;
   min-height:43px!important;
   padding:12px 23px!important;
   background:rgba(16,40,68,.70)!important;
@@ -21900,25 +21902,76 @@ apply();
   backdrop-filter:blur(8px)!important;
   z-index:6!important;
 }
-#rt11-modal .rthero .mbsa-hero-explore:hover,
-#rt11-modal .rthero .mbsa-hero-explore:focus-visible{
+#rt11-modal[class] .rthero .rt-hero-content > .mbsa-hero-explore:hover,
+#rt11-modal[class] .rthero .rt-hero-content > .mbsa-hero-explore:focus-visible{
   background:rgba(31,68,106,.91)!important;
   transform:translateY(-2px)!important;
 }
 @media(max-width:720px){
   #rt11-modal .rthero{min-height:calc(100dvh - var(--rt-header-height,70px))!important;height:auto!important;padding:45px 17px!important}
-  #rt11-modal .rthero .rt-hero-content small{font-size:10px!important;padding:7px 11px!important;margin-bottom:16px!important}
-  #rt11-modal .rthero .rt-hero-content h1{font-size:clamp(34px,7.6vw,50px)!important;line-height:1.14!important;margin-bottom:16px!important}
-  #rt11-modal .rthero .rt-hero-content p{font-size:clamp(15px,3.7vw,19px)!important;line-height:1.55!important}
-  #rt11-modal .rthero .mbsa-hero-explore{margin-top:22px!important}
+  #rt11-modal[class] .rthero .rt-hero-content small{font-size:10px!important;padding:7px 11px!important;margin-bottom:16px!important}
+  #rt11-modal[class] .rthero .rt-hero-content h1{font-size:clamp(34px,7.6vw,50px)!important;line-height:1.14!important;margin-bottom:16px!important}
+  #rt11-modal[class] .rthero .rt-hero-content p{font-size:clamp(15px,3.7vw,19px)!important;line-height:1.55!important}
+  #rt11-modal[class] .rthero .rt-hero-content > .mbsa-hero-explore{margin-top:22px!important}
 }
 @media(max-height:570px) and (min-width:721px){
   #rt11-modal .rthero{height:auto!important;min-height:calc(100dvh - var(--rt-header-height,84px))!important}
-  #rt11-modal .rthero .rt-hero-content h1{font-size:clamp(32px,5vh,54px)!important}
+  #rt11-modal[class] .rthero .rt-hero-content h1{font-size:clamp(32px,5vh,54px)!important}
 }
 @media(prefers-reduced-motion:reduce){
-  #rt11-modal .rthero .mbsa-hero-explore{animation:none!important;transition:none!important}
+  #rt11-modal[class] .rthero .rt-hero-content > .mbsa-hero-explore{animation:none!important;transition:none!important}
+}
+
+#rt11-modal[class] .rthero .rt-hero-content > .mbsa-hero-explore{
+  flex-shrink:0!important;
+  float:none!important;
+  min-width:0!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  box-sizing:border-box!important;
+}
+#rt11-modal[class] .rthero .rt-hero-content{
+  padding-block:0!important;
+  transform:none!important;
 }
 </style>
+<script id="rt-mbpj-parity-cta-20261112">
+/* Restore the same centered cover arrangement after each RT navigation. */
+(function(){
+ const modal=document.getElementById('rt11-modal'),hero=document.getElementById('rt11-hero');
+ if(!modal||!hero)return;
+ const names={
+  MBSA:'Majlis Bandaraya Shah Alam',
+  MBPJ:'Majlis Bandaraya Petaling Jaya',
+  MBSJ:'Majlis Perbandaran Subang Jaya',
+  MBDK:'Majlis Bandaraya Diraja Klang',
+  MPAJ:'Majlis Perbandaran Ampang Jaya',
+  MPKj:'Majlis Perbandaran Kajang',
+  MPS:'Majlis Perbandaran Selayang',
+  MPHS:'Majlis Perbandaran Hulu Selangor',
+  MPKS:'Majlis Perbandaran Kuala Selangor',
+  MPKL:'Majlis Perbandaran Kuala Langat',
+  MPSp:'Majlis Perbandaran Sepang',
+  MDSB:'Majlis Daerah Sabak Bernam'
+ };
+ function apply(){
+  if(modal.hidden)return;
+  const cover=hero.querySelector('.rt-hero-content');
+  if(!cover)return;
+  const label=cover.querySelector('small');
+  const cls=[...modal.classList].find(x=>/^rt-(?:mbsa|mbpj|mbsj|mbdk|mpaj|mpkj|mps|mphs|mpks|mpkl|mpsp|mdsb)$/i.test(x));
+  const code=cls?cls.slice(3):'';
+  const key=Object.keys(names).find(k=>k.toLowerCase()===code.toLowerCase());
+  if(label&&key){const value='PLANMALAYSIA SELANGOR · '+names[key];if(label.textContent!==value)label.textContent=value;}
+  const cta=hero.querySelector('.mbsa-hero-explore');
+  if(cta&&cta.parentElement!==cover)cover.appendChild(cta);
+ }
+ let pending=false;
+ const observe=new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;apply();});});
+ observe.observe(hero,{childList:true,subtree:false});
+ observe.observe(modal,{attributes:true,attributeFilter:['class','hidden']});
+ apply();
+})();
+</script>
 </body>
 </html>
