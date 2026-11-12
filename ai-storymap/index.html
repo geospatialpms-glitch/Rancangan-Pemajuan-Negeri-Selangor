@@ -11661,7 +11661,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
     <span class="rr04-rt-portal-subtitle">PENGENALAN DOKUMENTASI RKK</span>
     <p id="rr04-rkk-portal-overview">Pilih PBT untuk meneroka pengenalan dokumen RKK dan pratonton Story Map HTML.</p>
     <div class="rr04-rkk-gold-actions" id="rr04-rkk-gold-actions" aria-label="Terokai Story Map RKK">
-      <a class="rr04-rt-html-entry" id="rr04-rkk-html-entry" href="./rt/MBPJ.html">✦ Terokai Story Map RKK MBPJ →</a>
+      <a class="rr04-rt-html-entry" id="rr04-rkk-html-entry" href="#mbpj13-story">✦ Terokai Story Map RKK MBPJ →</a>
       <a class="rr04-rt-html-entry" id="rr04-rkk-second-html-entry" href="#gh-rkk-story" hidden>✦ Terokai Story Map RKK Genting Highlands →</a>
     </div>
     <div class="rr04-rt-portal-docs"><div class="rr04-rt-portal-docs-head"><strong>Nama Dokumen &amp; Gambaran Keseluruhan</strong><span id="rr04-rkk-portal-doc-count"></span></div><div id="rr04-rkk-portal-doc-list" class="rr04-rt-portal-doc-list"></div><div class="rr04-excel-table-wrap" id="rr04-rkk-excel-table" aria-live="polite"></div></div>
@@ -14672,13 +14672,13 @@ window.renderSuoPbtDocumentTable=function(type,code){
    if(!p.docs.length){const note=document.createElement('p');note.textContent='Senarai dokumen RKK belum tersedia dalam direktori.';docList.appendChild(note);}
    {
  const htmlEntry=document.getElementById('rr04-rkk-html-entry');
- const local='./rt/MBPJ.html';
+ const local='#mbpj13-story';
  if(htmlEntry){
   htmlEntry.hidden=false;
   const isMPHS=p.code==='MPHS';
   htmlEntry.textContent=isMPHS?'✦ Terokai Story Map RKK Kuala Kubu Bharu →':'✦ Terokai Story Map RKK '+p.code+' →';
   htmlEntry.href=p.code==='MBPJ'?local:p.code==='MPKS'?'#mpks-malawati-story':'#kkb-rkk-story';
-  htmlEntry.onclick=function(e){if(p.code==='MBPJ')return;e.preventDefault();if(p.code==='MPKS')window.openMpksMalawatiStory?.();else document.querySelector('a.rr04-kkb-storymap')?.click();};
+  htmlEntry.onclick=function(e){e.preventDefault();if(p.code==='MBPJ')window.openMbpj13Story?.();else if(p.code==='MPKS')window.openMpksMalawatiStory?.();else document.querySelector('a.rr04-kkb-storymap')?.click();};
   const second=document.getElementById('rr04-rkk-second-html-entry');
   if(second){
     second.hidden=!isMPHS;
@@ -14688,11 +14688,8 @@ window.renderSuoPbtDocumentTable=function(type,code){
   }
  }
  open.style.display='none';open.removeAttribute('href');
- if(p.code==='MBPJ'){
-  frame.removeAttribute('srcdoc');
-  if(frame.getAttribute('src')!==local){cover?.classList.remove('is-frame-loaded');frame.setAttribute('src',local);}
- }else{
-  const hero=document.querySelector(p.code==='MPKS'?'#mpks-malawati-story .mks-hero':'#kkb-rkk-story .kkb-hero');
+ {
+  const hero=document.querySelector(p.code==='MBPJ'?'#mbpj13-story .mbpj-hero':p.code==='MPKS'?'#mpks-malawati-story .mks-hero':'#kkb-rkk-story .kkb-hero');
   const label=hero?.querySelector('small')?.textContent.trim()||'PLANMALAYSIA SELANGOR';
   const title=hero?.querySelector('h1')?.textContent.trim()||p.name;
   const subtitle=hero?.querySelector('p')?.textContent.trim()||'Rancangan Kawasan Khas';
