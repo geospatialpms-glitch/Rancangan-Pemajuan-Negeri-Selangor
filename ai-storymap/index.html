@@ -21774,5 +21774,31 @@ apply();
   }
 }
 </style>
+
+<style id="rt-rkk-universal-hero-black-shade-20261112">
+/* Unified translucent image shade for all RT + RKK landing covers.
+   Keep existing cover images, colour accents, imagery and decorative effects. */
+#rt11-modal .rthero{
+  box-shadow:inset 0 0 0 100vmax rgba(6,12,22,.27)!important;
+}
+#rt11-modal .rthero .rt-hero-content{
+  position:relative!important;
+  z-index:5!important;
+}
+#rt11-modal .rthero .rt-hero-content :is(h1,p,small){
+  text-shadow:0 2px 13px rgba(0,0,0,.74)!important;
+}
+.gh-rkk-hero{
+  box-shadow:inset 0 0 0 100vmax rgba(6,12,22,.16)!important;
+}
+.gh-rkk-hero > *{
+  position:relative;
+  z-index:2;
+}
+@media(prefers-contrast:more){
+  #rt11-modal .rthero{box-shadow:inset 0 0 0 100vmax rgba(3,8,15,.42)!important}
+}
+</style>
+
 </body>
 </html>
