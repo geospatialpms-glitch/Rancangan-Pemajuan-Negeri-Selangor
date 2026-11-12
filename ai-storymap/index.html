@@ -23,16 +23,30 @@
 <script id="suo-bab04-return-bootstrap-20261112">
 /* Run in head before the welcome gateway is rendered. */
 (function(){
+ /* Only an explicit "Kembali ke Portal" navigation can bypass the welcome
+    screen. A normal portal refresh must always begin at Selamat Datang. */
  var q=new URLSearchParams(location.search);
  var code=q.get('return_pbt')||'';
  var kind=q.get('return_to');
- try{
-  if(!kind){var saved=sessionStorage.getItem('suo-bab04-return');if(saved){var data=JSON.parse(saved);kind=data.kind;code=data.code;}}
- }catch(e){}
- if((kind==='rt'||kind==='rkk')&&/^[A-Za-z]{2,5}$/.test(code)){
+ var nav=performance.getEntriesByType('navigation')[0];
+ var isReload=nav&&nav.type==='reload';
+ var returning=!isReload&&(kind==='rt'||kind==='rkk')&&/^[A-Za-z]{2,5}$/.test(code);
+ try{sessionStorage.removeItem('suo-bab04-return')}catch(e){}
+ if(returning){
   document.documentElement.classList.add('suo-return-to-rt');
   window.suoReturnToRt=code.toUpperCase();
   window.suoReturnKind=kind;
+ }
+ /* Consume return parameters immediately. If the user presses refresh after
+    arriving at Bab 04, the clean portal URL restores the welcome screen. */
+ if(kind==='rt'||kind==='rkk'){
+  try{
+   q.delete('return_to');q.delete('return_pbt');q.delete('nav');
+   history.replaceState(history.state,'',location.pathname+(q.toString()?'?'+q.toString():''));
+  }catch(e){}
+ }
+ if(!returning){
+  try{history.scrollRestoration='manual'}catch(e){}
  }
 })();
 </script>
