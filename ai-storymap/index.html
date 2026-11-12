@@ -11451,7 +11451,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
       <div class="chapter-content-rule" aria-hidden="true"></div>
       <div class="panel-body suo-bento-body"><section class="suo-bento-topic active" role="tabpanel" id="bento-3-0" aria-labelledby="bento-tab-3-0">
  <div class="rr04" id="rr04">
-  <div class="rr04-hero"><div><span class="rr04-eyebrow">BAB 04 · ATLAS PERANCANGAN TEMPATAN</span><h4>Rancangan Tempatan &amp; Rancangan Kawasan Khas</h4><p>Dua instrumen perancangan yang saling melengkapi: RT memperincikan pembangunan tempatan, manakala RKK memberikan tindakan khusus bagi kawasan terpilih.</p></div><div class="rr04-graphic" aria-hidden="true"><i class="rr04-shape rr04-shape-a"></i><i class="rr04-shape rr04-shape-b"></i><b>RT <em>+</em> RKK</b><small>DATA · DASAR · RUANG</small></div></div>
+  <div class="rr04-hero"><div><span class="rr04-eyebrow">BAB 04 · ATLAS PERANCANGAN TEMPATAN</span><h4>Rancangan Tempatan &amp; Rancangan Kawasan Khas</h4><p>Dua instrumen perancangan yang saling melengkapi: RT memperincikan pembangunan tempatan, manakala RKK memberikan tindakan khusus bagi kawasan terpilih.</p></div><div class="rr04-graphic" aria-hidden="true"><i class="rr04-shape rr04-shape-a"></i><i class="rr04-shape rr04-shape-b"></i><b>RT <em>&amp;</em> RKK</b><small>DATA · DASAR · RUANG</small></div></div>
   <div class="rr04-tabs" role="tablist" aria-label="Pilih Rancangan Tempatan atau Rancangan Kawasan Khas">
    <button class="rr04-choice active" type="button" role="tab" id="rr04-tab-rt" aria-selected="true" aria-controls="rr04-pane-rt" tabindex="0" data-rr04="0"><span>01</span><b>Rancangan Tempatan (RT)</b><small>Pelan guna tanah &amp; kawalan pemajuan</small></button>
    <button class="rr04-choice" type="button" role="tab" id="rr04-tab-rkk" aria-selected="false" aria-controls="rr04-pane-rkk" tabindex="-1" data-rr04="1"><span>02</span><b>Rancangan Kawasan Khas (RKK)</b><small>Pelan tindakan khusus mengikut kawasan</small></button>
@@ -22595,7 +22595,7 @@ configs.forEach(c=>{
    els.title.textContent=title;
    els.subtitle.textContent=subtitle||'Rancangan '+(c.type==='rt'?'Tempatan':'Kawasan Khas');
    els.description.textContent=desc;
-   els.cta.textContent='⌖  Terokai Story Map  →';
+   els.cta.textContent=''; // Button already exists above the preview
    // The selected PBT photo is rendered independently by the verified
    // cover-image controller; do not show any stale iframe background.
    overlay.style.backgroundImage='none';
@@ -22785,6 +22785,38 @@ configs.forEach(c=>{
  });
 })();
 </script>
+<script id="rr04-mbpj-image-fallback-20261112">
+/* Independent local fallback: an available MBPJ-specific asset if ArcGIS
+   cover image cannot be reached by the visitor's browser. */
+(function(){
+ 'use strict';
+ const portal=document.getElementById('rr04-rt-portal-20261022');
+ const code=document.getElementById('rr04-rt-portal-code');
+ const root=portal?.querySelector('.rr04-native-preview');
+ if(!root||!code)return;
+ const local=new URL('./MBPJ%20(1).png',document.baseURI).href;
+ let pending=null;
+ function sync(){
+  if((code.textContent||'').trim().toUpperCase()!=='MBPJ'){root.removeAttribute('data-photo-fallback');return;}
+  if(root.classList.contains('has-photo'))return;
+  const img=root.querySelector(':scope > .rr04-preview-photo');
+  if(!img)return;
+  if(pending)clearTimeout(pending);
+  pending=setTimeout(()=>{
+   if((code.textContent||'').trim().toUpperCase()!=='MBPJ'||root.classList.contains('has-photo'))return;
+   const test=new Image();
+   test.onload=()=>{
+    if((code.textContent||'').trim().toUpperCase()!=='MBPJ'||root.classList.contains('has-photo'))return;
+    img.src=local;img.style.display='block';root.dataset.photoFallback='mbpj';root.classList.add('has-photo');
+   };
+   test.src=local;
+  },2800);
+ }
+ new MutationObserver(sync).observe(code,{subtree:true,childList:true,characterData:true});
+ new MutationObserver(()=>{if(root.classList.contains('has-photo')&&root.dataset.photoFallback==='mbpj'&&root.querySelector('.rr04-preview-photo')?.src!==local)root.removeAttribute('data-photo-fallback')}).observe(root,{attributes:true,attributeFilter:['class']});
+ sync();
+})();
+</script>
 
 <style id="rr04-preview-fit-mbsa-v2">
 /* MBSA-sized stable layout for every RT/RKK cover card. Use container width, not viewport width. */
@@ -22832,6 +22864,9 @@ configs.forEach(c=>{
  #panel-3 .rr04-native-subtitle{font-size:clamp(10px,2.1cqw,13px)!important}
  #panel-3 .rr04-native-description{font-size:clamp(10px,1.95cqw,12px)!important}
 }
+/* Hide the duplicated CTA inside preview only; retain top portal buttons. */
+#panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-native-cta{display:none!important}
+#panel-3 .rr04-native-preview[data-photo-fallback="mbpj"]>.rr04-preview-photo{object-fit:contain!important;padding:30px!important;background:linear-gradient(125deg,#14354b,#476777)!important}
 </style>
 <script id="rr04-preview-fit-mbsa-v2-js">
 (function(){
