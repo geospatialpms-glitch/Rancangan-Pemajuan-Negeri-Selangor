@@ -22785,39 +22785,117 @@ configs.forEach(c=>{
  });
 })();
 </script>
-<script id="rr04-mbpj-image-fallback-20261112">
-/* Independent local fallback: an available MBPJ-specific asset if ArcGIS
-   cover image cannot be reached by the visitor's browser. */
+
+
+<style id="rr04-mbpj-real-cover-fix-20261112">
+/* RT MBPJ: never present the council logo as the story cover. */
+#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview>.rr04-preview-photo{
+ object-fit:cover!important;object-position:center!important;padding:0!important;
+}
+#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview:not(.has-photo){
+ background:linear-gradient(125deg,#142d46,#355a72)!important;
+}
+</style>
+<script id="rr04-mbpj-real-cover-fix-js-20261112">
 (function(){
  'use strict';
+ const id='013241b0812846b59d1cc8f0b4b53c0';
+ const base='https://www.arcgis.com/sharing/rest/content/items/'+id+'/';
  const portal=document.getElementById('rr04-rt-portal-20261022');
- const code=document.getElementById('rr04-rt-portal-code');
+ const codeEl=document.getElementById('rr04-rt-portal-code');
+ const frame=document.getElementById('rr04-rt-portal-iframe');
  const root=portal?.querySelector('.rr04-native-preview');
- if(!root||!code)return;
- const local=new URL('./MBPJ%20(1).png',document.baseURI).href;
- let pending=null;
- function sync(){
-  if((code.textContent||'').trim().toUpperCase()!=='MBPJ'){root.removeAttribute('data-photo-fallback');return;}
-  if(root.classList.contains('has-photo'))return;
-  const img=root.querySelector(':scope > .rr04-preview-photo');
-  if(!img)return;
-  if(pending)clearTimeout(pending);
-  pending=setTimeout(()=>{
-   if((code.textContent||'').trim().toUpperCase()!=='MBPJ'||root.classList.contains('has-photo'))return;
-   const test=new Image();
-   test.onload=()=>{
-    if((code.textContent||'').trim().toUpperCase()!=='MBPJ'||root.classList.contains('has-photo'))return;
-    img.src=local;img.style.display='block';root.dataset.photoFallback='mbpj';root.classList.add('has-photo');
-   };
-   test.src=local;
-  },2800);
+ if(!root||!codeEl)return;
+ let token=0;
+ const code=()=>String(codeEl.textContent||'').trim().toUpperCase();
+ const image=()=>root.querySelector(':scope > .rr04-preview-photo');
+ function heroPhoto(){
+  try{
+   const d=frame?.contentDocument;
+   const nested=d?.getElementById('rt-story-frame')?.contentDocument;
+   const hero=nested?.querySelector('#rt11-modal .rthero')||d?.querySelector('#rt11-modal .rthero');
+   if(!hero)return '';
+   const bg=hero.ownerDocument.defaultView.getComputedStyle(hero).backgroundImage||'';
+   const matches=[...bg.matchAll(/url\(["']?([^"')]+)["']?\)/g)];
+   const url=matches.length?matches[matches.length-1][1]:'';
+   return url?new URL(url,hero.ownerDocument.baseURI).href:'';
+  }catch(e){return ''}
  }
- new MutationObserver(sync).observe(code,{subtree:true,childList:true,characterData:true});
- new MutationObserver(()=>{if(root.classList.contains('has-photo')&&root.dataset.photoFallback==='mbpj'&&root.querySelector('.rr04-preview-photo')?.src!==local)root.removeAttribute('data-photo-fallback')}).observe(root,{attributes:true,attributeFilter:['class']});
- sync();
+ function valid(url){return !!url&&!/MBPJ(?:%20|\s|\()|\/MBPJ\s*\(1\)\.png/i.test(url)}
+ function showPhoto(url,ticket){
+  if(!valid(url))return Promise.resolve(false);
+  return new Promise(resolve=>{
+   const check=new Image();
+   check.onload=()=>{
+    if(ticket!==token||code()!=='MBPJ')return resolve(false);
+    const img=image();
+    if(!img)return resolve(false);
+    img.src=url;img.style.display='block';
+    root.classList.add('has-photo');root.removeAttribute('data-photo-fallback');
+    resolve(true);
+   };
+   check.onerror=()=>resolve(false);
+   check.src=url;
+  });
+ }
+ async function remoteCandidates(){
+  const list=[];
+  try{
+   const r=await fetch(base+'data?f=json',{credentials:'omit'});
+   if(r.ok){
+    const data=await r.json(),nodes=data.nodes||{},res=data.resources||{};
+    const rootNode=nodes[data.root];
+    const queue=[...(rootNode?.children||[])],seen=new Set();
+    while(queue.length){
+     const key=queue.shift();
+     if(seen.has(key))continue;seen.add(key);
+     const node=nodes[key];if(!node)continue;
+     if(node.type==='storycover'){
+      const inner=[...(node.children||[])],visited=new Set();
+      while(inner.length){
+       const k=inner.shift();if(visited.has(k))continue;visited.add(k);
+       const n=nodes[k];if(!n)continue;
+       if(n.type==='image'){
+        const resource=res[n.data?.image];
+        const rid=resource?.data?.resourceId||resource?.resourceId;
+        if(rid)list.push(base+'resources/'+encodeURIComponent(rid));
+       }
+       inner.push(...(n.children||[]));
+      }
+      break;
+     }
+     queue.push(...(node.children||[]));
+    }
+   }
+  }catch(e){}
+  try{
+   const r=await fetch(base+'?f=json',{credentials:'omit'});
+   if(r.ok){const item=await r.json();if(item.thumbnail)list.push(base+'info/'+item.thumbnail.split('/').map(encodeURIComponent).join('/'))}
+  }catch(e){}
+  return list;
+ }
+ async function update(){
+  const ticket=++token;
+  if(code()!=='MBPJ')return;
+  const img=image();if(!img)return;
+  // Replace the former logo fallback with a true cover photo when available.
+  if(img.src&&/MBPJ(?:%20|\s|\()|\/MBPJ\s*\(1\)\.png/i.test(img.src)){
+   root.classList.remove('has-photo');img.removeAttribute('src');img.style.display='none';
+  }
+  if(root.classList.contains('has-photo'))return;
+  const candidates=[heroPhoto(),...(await remoteCandidates()),base+'info/thumbnail/thumbnail.png',base+'info/thumbnail/thumbnail.jpg'];
+  for(const url of [...new Set(candidates)]){
+   if(ticket!==token||code()!=='MBPJ'||root.classList.contains('has-photo'))return;
+   if(await showPhoto(url,ticket))return;
+  }
+ }
+ let job;
+ const schedule=()=>{clearTimeout(job);job=setTimeout(update,120)};
+ new MutationObserver(schedule).observe(codeEl,{childList:true,subtree:true,characterData:true});
+ frame?.addEventListener('load',()=>{schedule();[900,2300,5500].forEach(t=>setTimeout(()=>{if(code()==='MBPJ'&&!root.classList.contains('has-photo'))schedule()},t))});
+ schedule();
 })();
 </script>
-
 <style id="rr04-preview-fit-mbsa-v2">
 /* MBSA-sized stable layout for every RT/RKK cover card. Use container width, not viewport width. */
 #panel-3 .rr04-native-preview{container-type:inline-size!important;align-items:center!important;justify-content:flex-start!important}
@@ -22866,7 +22944,6 @@ configs.forEach(c=>{
 }
 /* Hide the duplicated CTA inside preview only; retain top portal buttons. */
 #panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-native-cta{display:none!important}
-#panel-3 .rr04-native-preview[data-photo-fallback="mbpj"]>.rr04-preview-photo{object-fit:contain!important;padding:30px!important;background:linear-gradient(125deg,#14354b,#476777)!important}
 </style>
 <script id="rr04-preview-fit-mbsa-v2-js">
 (function(){
