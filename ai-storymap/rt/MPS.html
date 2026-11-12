@@ -131,5 +131,40 @@ if(frame.contentDocument?.readyState==='complete')init();
 
 </script>
 <script id="uniform-plan-heading-20261112">(function(){'use strict';const TITLE='PELAN MUKIM & BLOK PERANCANGAN';const rx=/^\s*(?:\d+(?:\.\d+)*[.)-]?\s*)?PELAN\s+MUKIM\s*(?:(?:DAN|&|\/|SERTA|DAN\/ATAU)\s*)?(?:PELAN\s+)?BLOK\s+(?:PERANCANGAN|[A-Z]{2,6})\s*$/i;function install(doc){if(!doc?.body||doc.body.dataset.uniformPlanHeadingInstalled)return;doc.body.dataset.uniformPlanHeadingInstalled='1';let active=false;const apply=()=>{if(active)return;active=true;try{doc.querySelectorAll('h1,h2,h3,h4,h5,h6,[role="heading"],.section-title,.chapter-title,.rt-section-title').forEach(el=>{if(!el.closest('nav,script,style')&&rx.test(el.textContent.replace(/\s+/g,' ').trim())&&el.textContent.trim()!==TITLE)el.textContent=TITLE})}finally{active=false}};apply();new MutationObserver(apply).observe(doc.body,{subtree:true,childList:true,characterData:true})}const frame=document.getElementById('rt-story-frame');if(frame){const run=()=>{try{install(frame.contentDocument)}catch(e){console.warn(e)}};frame.addEventListener('load',run);run()}else if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>install(document));else install(document)})();</script>
+
+<script id="uniform-plan-sidebar-20261112">
+(function(){
+ 'use strict';
+ const oldLabel=/PELAN\s+MUKIM\s*(?:&|DAN|\/)\s*BLOK\s+(?:PERANCANGAN|MBSA|MBDK|MBSJ|MDSB|MPAJ|MPHS|MPKL|MPKS|MPKJ|MPS|MPSP|MBPJ)\b/gi;
+ const target='PELAN MUKIM & BLOK PERANCANGAN';
+ const install=(doc)=>{
+  if(!doc||!doc.body||doc.body.dataset.uniformPlanSidebarInstalled)return;
+  doc.body.dataset.uniformPlanSidebarInstalled='1';
+  let busy=false;
+  const apply=()=>{
+   if(busy)return;busy=true;
+   try{
+    const nodes=doc.querySelectorAll('nav,aside,[class*="sidebar"],[class*="side-nav"],[class*="chapter-nav"],[class*="bab-nav"],[class*="chapter-list"],[class*="nav-list"]');
+    nodes.forEach(root=>{
+     const walker=doc.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+     let node;
+     while((node=walker.nextNode())){
+      if(node.parentElement?.closest('script,style'))continue;
+      oldLabel.lastIndex=0;
+      if(oldLabel.test(node.nodeValue)){
+       oldLabel.lastIndex=0;
+       node.nodeValue=node.nodeValue.replace(oldLabel,target);
+      }
+     }
+    });
+   }finally{busy=false;}
+  };
+  apply();new MutationObserver(apply).observe(doc.body,{subtree:true,childList:true,characterData:true});
+ };
+ const frame=document.getElementById('rt-story-frame');
+ if(frame){const run=()=>{try{install(frame.contentDocument)}catch(err){console.warn('Sidebar title synchronization unavailable',err)}};frame.addEventListener('load',run);run();}
+ else if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>install(document));else install(document);
+})();
+</script>
 </body>
 </html>
