@@ -2,6 +2,24 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
+<!-- RT-only fast bootstrap: begin fetching ArcGIS data as soon as head is parsed. -->
+<link rel="preconnect" href="https://www.arcgis.com" crossorigin>
+<script id="suo-rt-early-data-20261112">
+(function(){
+ var params=new URLSearchParams(location.search);
+ var code=(params.get('rt_page')||'').toUpperCase();
+ var ids={"MBDK":"29b2c1dff6484f23984ac4542aff277e","MPAJ":"d3c3fde91bde47798fd9feb7a3e5e2ea","MPKj":"cf8af08ffcd24e3caf9f27a0c172798d","MPS":"f6c8ab85efb7496ebf65f6500a2caf6e","MPSp":"d984e03b560848a8be7502dcb7d94b27","MPKL":"9d6bd51d479f41ca922fa421d0fe3866","MPKS":"7cb301ce29d04362b8a370b7bcde2865","MPHS":"47771ec2bfde490bb53a600051505e61","MDSB":"3068380b311f4af29df314a4beb5b925"};
+ var id=ids[code];if(!id)return;
+ document.documentElement.classList.add('suo-rt-standalone');
+ var controller=new AbortController();
+ var timer=setTimeout(function(){controller.abort()},6500);
+ var promise=fetch('https://www.arcgis.com/sharing/rest/content/items/'+id+'/data?f=json',{
+  mode:'cors',credentials:'omit',signal:controller.signal,cache:'default'
+ }).then(function(res){return res.ok?res.json():null}).then(function(data){return data&&data.nodes?data:null}).catch(function(){return null}).finally(function(){clearTimeout(timer)});
+ window.__suoRtEarlyFetch={id:id,promise:promise};
+})();
+</script>
+
 <script id="suo-bab04-return-bootstrap-20261112">
 /* Run in head before the welcome gateway is rendered. */
 (function(){
@@ -1663,7 +1681,7 @@ body{background:#fcfaf7!important;color:#302c2d!important}
  #panel-0 .selangor-district-leaflet{height:450px!important}
 }
 </style>
-<style id="suo-pbt-composition-interactive-2026">
+<style id="suo-pbt-composition-interactive-2026-css">
 /* Profile composition only: soft, accessible selection with original wording fully retained. */
 #panel-0 .ch01-profile-breakdown{position:relative;overflow:hidden;padding:clamp(20px,2.4vw,34px)!important;border:1px solid #ead8c8!important;border-radius:25px!important;background:linear-gradient(140deg,#fffefa 0%,#fff8f2 100%)!important;box-shadow:0 14px 35px rgba(89,0,22,.07)!important}
 #panel-0 .ch01-profile-breakdown::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#590016,#b2677c,#dab56c)}
@@ -3902,7 +3920,7 @@ outline:3px solid #c9a253!important;outline-offset:2px!important}
 </style>
 
 
-<style id="suo-landuse-storymap-bab6-2026">
+<style id="suo-landuse-storymap-bab6-2026-css">
 /* KHUSUS #bento-2-4; jangan mempengaruhi navigasi, bab atau topik lain. */
 #bento-2-4 .lu-story{--lu-maroon:#612139;--lu-deep:#491a2d;--lu-gold:#c9a253;--lu-ink:#40343a;--lu-muted:#655960;--lu-line:#eadbd0;color:var(--lu-ink);display:grid;gap:40px;min-width:0;padding:14px 0 4px}
 #bento-2-4 .lu-story *{box-sizing:border-box}
@@ -10589,13 +10607,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
         </section>
         <section id="ch01-content-1" class="chapter01-topic" role="tabpanel" aria-labelledby="ch01-tab-1" hidden>
  <div class="chapter01-titleline"><span class="chapter01-kicker">02 / PROFIL NEGERI</span><h4>Profil &amp; Parameter Pentadbiran Utama</h4></div>
- <figure class="ch01-reference-infographic" id="ch01-reference-infographic">
- <a href="./selangor-profil-infografik.png" target="_blank" rel="noopener noreferrer" title="Lihat infografik Negeri Selangor dalam saiz penuh" aria-label="Buka infografik profil Negeri Selangor dalam saiz penuh">
-  <img src="./selangor-profil-infografik.png" loading="lazy" decoding="async" alt="Infografik profil Negeri Selangor: peta sembilan daerah, keluasan 8,104 kilometer persegi dan dua belas Pihak Berkuasa Tempatan" onerror="this.closest('.ch01-reference-infographic').hidden=true">
-  <span class="ch01-reference-zoom" aria-hidden="true">⤢ &nbsp; Besarkan imej</span>
- </a>
- <figcaption>Infografik profil Negeri Selangor — rujukan visual pentadbiran. Klik untuk melihat paparan penuh.</figcaption>
-</figure>
+ <!-- The original infographic asset is absent from the repository; avoid broken image and 404 request. -->
  <div class="selangor-district-map-card selangor-atlas-map-card" id="selangor-interactive-district-map">
  <div class="selangor-atlas-map-header"><div><span class="selangor-district-map-kicker">ATLAS PENTADBIRAN DIGITAL · SELANGOR</span><h5>Atlas Pentadbiran Negeri Selangor</h5><p>9 Daerah · 12 Pihak Berkuasa Tempatan · Klik daerah untuk teroka maklumat</p></div><button type="button" class="selangor-district-reset" id="selangor-district-reset">↺ Set Semula</button></div>
  <div class="selangor-atlas-three-col">
@@ -11804,15 +11816,15 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
 <a class="pbt-card" href="https://www.mbsa.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Bandaraya Shah Alam"><span class="pbt-icon pbt-official-icon"><img src="./MBSA%201.png" data-favicon="https://www.google.com/s2/favicons?domain=mbsa.gov.my&sz=128" alt="Logo MBSA" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MBSA</span></span><span class="pbt-label"><strong>MBSA</strong><small>Majlis Bandaraya Shah Alam</small></span><span class="pbt-arrow">↗</span></a>
 <a class="pbt-card" href="https://www.mbpj.gov.my/ms" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Bandaraya Petaling Jaya"><span class="pbt-icon pbt-official-icon"><img src="./MBPJ%20(1).png" data-favicon="https://www.google.com/s2/favicons?domain=mbpj.gov.my&sz=128" alt="Logo MBPJ" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MBPJ</span></span><span class="pbt-label"><strong>MBPJ</strong><small>Majlis Bandaraya Petaling Jaya</small></span><span class="pbt-arrow">↗</span></a>
 <a class="pbt-card" href="https://www.mbsj.gov.my/ms/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Bandaraya Subang Jaya"><span class="pbt-icon pbt-official-icon"><img src="./MBSJ.png" data-favicon="https://www.google.com/s2/favicons?domain=mbsj.gov.my&sz=128" alt="Logo MBSJ" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MBSJ</span></span><span class="pbt-label"><strong>MBSJ</strong><small>Majlis Bandaraya Subang Jaya</small></span><span class="pbt-arrow">↗</span></a>
-<a class="pbt-card" href="https://www.mbdk.gov.my/ms" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Bandaraya Diraja Klang"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mbdk.png" data-favicon="https://www.google.com/s2/favicons?domain=mbdk.gov.my&sz=128" alt="Logo MBDK" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MBDK</span></span><span class="pbt-label"><strong>MBDK</strong><small>Majlis Bandaraya Diraja Klang</small></span><span class="pbt-arrow">↗</span></a>
+<a class="pbt-card" href="https://www.mbdk.gov.my/ms" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Bandaraya Diraja Klang"><span class="pbt-icon pbt-official-icon"><img src="https://www.google.com/s2/favicons?domain=mbdk.gov.my&sz=128" data-favicon="https://www.google.com/s2/favicons?domain=mbdk.gov.my&sz=128" alt="Logo MBDK" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MBDK</span></span><span class="pbt-label"><strong>MBDK</strong><small>Majlis Bandaraya Diraja Klang</small></span><span class="pbt-arrow">↗</span></a>
 <a class="pbt-card" href="https://www.mpaj.gov.my/ms" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Ampang Jaya"><span class="pbt-icon pbt-official-icon"><img src="./MPAJ.png" data-favicon="https://www.google.com/s2/favicons?domain=mpaj.gov.my&sz=128" alt="Logo MPAJ" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPAJ</span></span><span class="pbt-label"><strong>MPAJ</strong><small>Majlis Perbandaran Ampang Jaya</small></span><span class="pbt-arrow">↗</span></a>
-<a class="pbt-card" href="https://www.mps.gov.my/ms" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Selayang"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mps.png" data-favicon="https://www.google.com/s2/favicons?domain=mps.gov.my&sz=128" alt="Logo MPS" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPS</span></span><span class="pbt-label"><strong>MPS</strong><small>Majlis Perbandaran Selayang</small></span><span class="pbt-arrow">↗</span></a>
+<a class="pbt-card" href="https://www.mps.gov.my/ms" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Selayang"><span class="pbt-icon pbt-official-icon"><img src="https://www.google.com/s2/favicons?domain=mps.gov.my&sz=128" data-favicon="https://www.google.com/s2/favicons?domain=mps.gov.my&sz=128" alt="Logo MPS" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPS</span></span><span class="pbt-label"><strong>MPS</strong><small>Majlis Perbandaran Selayang</small></span><span class="pbt-arrow">↗</span></a>
 <a class="pbt-card" href="https://www.mpkj.gov.my/ms" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Kajang"><span class="pbt-icon pbt-official-icon"><img src="./MPKj.png" data-favicon="https://www.google.com/s2/favicons?domain=mpkj.gov.my&sz=128" alt="Logo MPKj" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPKj</span></span><span class="pbt-label"><strong>MPKj</strong><small>Majlis Perbandaran Kajang</small></span><span class="pbt-arrow">↗</span></a>
-<a class="pbt-card" href="https://www.mpsepang.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Sepang"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mpsp.png" data-favicon="https://www.google.com/s2/favicons?domain=mpsepang.gov.my&sz=128" alt="Logo MPSp" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPSp</span></span><span class="pbt-label"><strong>MPSp</strong><small>Majlis Perbandaran Sepang</small></span><span class="pbt-arrow">↗</span></a>
-<a class="pbt-card" href="https://mpkl.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Kuala Langat"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mpkl.png" data-favicon="https://www.google.com/s2/favicons?domain=mpkl.gov.my&sz=128" alt="Logo MPKL" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPKL</span></span><span class="pbt-label"><strong>MPKL</strong><small>Majlis Perbandaran Kuala Langat</small></span><span class="pbt-arrow">↗</span></a>
-<a class="pbt-card" href="https://www.mpks.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Kuala Selangor"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mpks.png" data-favicon="https://www.google.com/s2/favicons?domain=mpks.gov.my&sz=128" alt="Logo MPKS" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPKS</span></span><span class="pbt-label"><strong>MPKS</strong><small>Majlis Perbandaran Kuala Selangor</small></span><span class="pbt-arrow">↗</span></a>
-<a class="pbt-card" href="https://www.mphs.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Hulu Selangor"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mphs.png" data-favicon="https://www.google.com/s2/favicons?domain=mphs.gov.my&sz=128" alt="Logo MPHS" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPHS</span></span><span class="pbt-label"><strong>MPHS</strong><small>Majlis Perbandaran Hulu Selangor</small></span><span class="pbt-arrow">↗</span></a>
-<a class="pbt-card" href="https://www.mdsb.gov.my/index.php/ms/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Daerah Sabak Bernam"><span class="pbt-icon pbt-official-icon"><img src="./pbt-logos/mdsb.png" data-favicon="https://www.google.com/s2/favicons?domain=mdsb.gov.my&sz=128" alt="Logo MDSB" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MDSB</span></span><span class="pbt-label"><strong>MDSB</strong><small>Majlis Daerah Sabak Bernam</small></span><span class="pbt-arrow">↗</span></a>
+<a class="pbt-card" href="https://www.mpsepang.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Sepang"><span class="pbt-icon pbt-official-icon"><img src="https://www.google.com/s2/favicons?domain=mpsp.gov.my&sz=128" data-favicon="https://www.google.com/s2/favicons?domain=mpsepang.gov.my&sz=128" alt="Logo MPSp" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPSp</span></span><span class="pbt-label"><strong>MPSp</strong><small>Majlis Perbandaran Sepang</small></span><span class="pbt-arrow">↗</span></a>
+<a class="pbt-card" href="https://mpkl.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Kuala Langat"><span class="pbt-icon pbt-official-icon"><img src="https://www.google.com/s2/favicons?domain=mpkl.gov.my&sz=128" data-favicon="https://www.google.com/s2/favicons?domain=mpkl.gov.my&sz=128" alt="Logo MPKL" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPKL</span></span><span class="pbt-label"><strong>MPKL</strong><small>Majlis Perbandaran Kuala Langat</small></span><span class="pbt-arrow">↗</span></a>
+<a class="pbt-card" href="https://www.mpks.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Kuala Selangor"><span class="pbt-icon pbt-official-icon"><img src="https://www.google.com/s2/favicons?domain=mpks.gov.my&sz=128" data-favicon="https://www.google.com/s2/favicons?domain=mpks.gov.my&sz=128" alt="Logo MPKS" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPKS</span></span><span class="pbt-label"><strong>MPKS</strong><small>Majlis Perbandaran Kuala Selangor</small></span><span class="pbt-arrow">↗</span></a>
+<a class="pbt-card" href="https://www.mphs.gov.my/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Perbandaran Hulu Selangor"><span class="pbt-icon pbt-official-icon"><img src="https://www.google.com/s2/favicons?domain=mphs.gov.my&sz=128" data-favicon="https://www.google.com/s2/favicons?domain=mphs.gov.my&sz=128" alt="Logo MPHS" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MPHS</span></span><span class="pbt-label"><strong>MPHS</strong><small>Majlis Perbandaran Hulu Selangor</small></span><span class="pbt-arrow">↗</span></a>
+<a class="pbt-card" href="https://www.mdsb.gov.my/index.php/ms/" target="_blank" rel="noopener noreferrer" aria-label="Buka portal rasmi Majlis Daerah Sabak Bernam"><span class="pbt-icon pbt-official-icon"><img src="https://www.google.com/s2/favicons?domain=mdsb.gov.my&sz=128" data-favicon="https://www.google.com/s2/favicons?domain=mdsb.gov.my&sz=128" alt="Logo MDSB" loading="lazy" onerror="pbtLogoFallback(this)"><span class="pbt-logo-fallback">MDSB</span></span><span class="pbt-label"><strong>MDSB</strong><small>Majlis Daerah Sabak Bernam</small></span><span class="pbt-arrow">↗</span></a>
 </div></div></section>
 
 
@@ -16201,6 +16213,11 @@ async function rtLoadSource(id){
   }
   return cached.data;
  }
+ const early=window.__suoRtEarlyFetch;
+ if(early?.id===id){
+  const data=await early.promise;
+  if(data?.nodes){void rtWriteCached(id,data);return data}
+ }
  const url='https://www.arcgis.com/sharing/rest/content/items/'+id+'/data?f=json';
  const controller=new AbortController();
  const timer=setTimeout(()=>controller.abort(),4500);
@@ -16875,7 +16892,7 @@ animation:rt11-ambient-backdrop-drift 34s ease-in-out infinite alternate!importa
 @media(prefers-reduced-motion:reduce){#rt11-modal.rt-mbsa .rt-zone-final{transition:none!important}}
 </style>
 
-<style id="rt-rkk-scroll-reveal-20261102">
+<style id="rt-rkk-scroll-reveal-20261102-css">
 /* Shared scroll-triggered reveals: no external AOS dependency; preserve 3D card transforms. */
 @media (prefers-reduced-motion:no-preference){
   #rt11-modal .suo-scroll-reveal,
@@ -17131,7 +17148,7 @@ animation:rt11-ambient-backdrop-drift 34s ease-in-out infinite alternate!importa
  schedule();
 })();
 </script>
-<style id="rt-all-timeline-teras-motion-20261102">
+<style id="rt-all-timeline-teras-motion-20261102-css">
 /* All RT: animated chronology flow and KKB-inspired development pillars; content unchanged. */
 #rt11-modal .rt-flow-timeline{list-style:none!important;counter-reset:rtflow;position:relative;margin:20px 0 25px!important;padding:2px 0 2px 40px!important}
 #rt11-modal .rt-flow-timeline::before{content:"";position:absolute;top:15px;bottom:17px;left:15px;width:3px;border-radius:8px;background:linear-gradient(180deg,var(--rt-main),var(--rt-accent2),var(--rt-main));background-size:100% 240%;animation:rt-flow-line-shift 9s ease-in-out infinite;box-shadow:0 0 15px color-mix(in srgb,var(--rt-main) 25%,transparent)}
@@ -17320,7 +17337,7 @@ enhance();
 @media(max-width:900px){#rt11-modal .rtchapter :is(ul,ol).rt-background-infographic{grid-template-columns:44px minmax(0,1fr)!important}#rt11-modal .rtchapter .rt-background-infographic::before{left:13px!important}#rt11-modal .rtchapter .rt-background-infographic>li,#rt11-modal .rtchapter .rt-background-infographic>li:nth-child(even){grid-column:2!important}#rt11-modal .rtchapter .rt-background-infographic>li::before,#rt11-modal .rtchapter .rt-background-infographic>li:nth-child(even)::before{left:-42px!important;right:auto!important}#rt11-modal .rtchapter .rt-background-infographic>li::after,#rt11-modal .rtchapter .rt-background-infographic>li:nth-child(even)::after{left:-24px!important;right:auto!important}}
 @media(prefers-reduced-motion:reduce){#rt11-modal .rtchapter .rt-background-infographic::before,#rt11-modal .rtchapter .rt-background-infographic>li::before{animation:none!important}}
 </style>
-<style id="rt-timeline-actual-dom-rebuild-20261102">
+<style id="rt-timeline-actual-dom-rebuild-20261102-css">
 /* Actual DOM reconstruction — no legacy LI / shared-card rules can override these articles. */
 #rt11-modal .rt-history-real-flow{position:relative!important;display:grid!important;grid-template-columns:minmax(0,1fr) 96px minmax(0,1fr)!important;gap:18px 0!important;margin:26px 0!important;padding:18px 0!important;list-style:none!important;isolation:isolate}
 #rt11-modal .rt-history-real-flow::before{content:"";position:absolute;left:calc(50% - 5px);top:0;bottom:0;width:10px;border-radius:20px;background:linear-gradient(180deg,var(--rt-main),var(--rt-accent2),var(--rt-main),var(--rt-accent2));background-size:100% 300%;box-shadow:0 0 0 6px color-mix(in srgb,var(--rt-main) 12%,transparent),0 0 23px color-mix(in srgb,var(--rt-main) 28%,transparent);animation:rt-actual-flow 9s linear infinite}
@@ -17368,7 +17385,7 @@ let queued=false;function schedule(){if(queued)return;queued=true;requestAnimati
 new MutationObserver(schedule).observe(body,{childList:true,subtree:true});rebuild();
 })();
 </script>
-<style id="rt-kkb-history-accordion-all-20261102">
+<style id="rt-kkb-history-accordion-all-20261102-css">
 /* One consistent KKB-inspired, accessible history accordion for all RT Latar Belakang sections. */
 #rt11-modal .rtchapter .rt-kkb-history{position:relative;display:flex!important;flex-direction:column!important;gap:13px!important;max-width:1100px;margin:24px auto!important;padding:10px 0 10px 53px!important;background:transparent!important;list-style:none!important}
 #rt11-modal .rtchapter .rt-kkb-history::before{content:"";position:absolute;left:19px;top:16px;bottom:16px;width:4px;border-radius:99px;background:linear-gradient(180deg,var(--rt-main),var(--rt-accent2),var(--rt-main));background-size:100% 250%;animation:rt-kkb-history-flow 12s linear infinite;box-shadow:0 0 14px color-mix(in srgb,var(--rt-main) 25%,transparent)}
@@ -17442,7 +17459,7 @@ new MutationObserver(schedule).observe(root,{childList:true,subtree:true});
 run();
 })();
 </script>
-<style id="rt-mdsb-mukim-grid-20261102">
+<style id="rt-mdsb-mukim-grid-20261102-css">
 /* Dedicated compact, balanced 2-column layout for MDSB Pelan Mukim & Blok. */
 #rt11-modal .rtchapter.rt-mdsb-mukim-section{background:linear-gradient(145deg,#fff,#fff1f5 63%,#ffe7ef)!important}
 #rt11-modal .rt-mdsb-mukim-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:17px!important;margin:22px 0!important}
@@ -17504,7 +17521,7 @@ run();
  run();
 })();
 </script>
-<style id="rt-mdsb-structure-pyramid-v2">
+<style id="rt-mdsb-structure-pyramid-v2-css">
 #rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;align-items:stretch}
 #rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-card{height:auto!important;min-height:155px!important;max-height:none!important;display:flex;flex-direction:column;justify-content:flex-start}
 #rt11-modal .rt-mdsb-mukim-section .rt-mdsb-mukim-detail :is(ul,ol){list-style:none!important;padding:0!important;margin:0!important;display:block!important}
@@ -17593,7 +17610,7 @@ let queued=false;function schedule(){if(queued)return;queued=true;requestAnimati
 new MutationObserver(schedule).observe(body,{childList:true,subtree:true});schedule();
 })();
 </script>
-<style id="mdsb-final-corrections-20261102">
+<style id="mdsb-final-corrections-20261102-css">
 /* MDSB only; unified pink palette and compact BP cards. */
 #rt11-modal.rt-mdsb-view{--mdsb-pink:#b52a59;--mdsb-pale:#fff1f5}
 #rt11-modal.rt-mdsb-view .rt-mdsb-mukim-section .rt-mdsb-mukim-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important}
@@ -17692,7 +17709,7 @@ let tick=false;function schedule(){if(tick)return;tick=true;requestAnimationFram
 new MutationObserver(schedule).observe(body,{childList:true,subtree:true});schedule();
 })();
 </script>
-<style id="mdsb-mukim-plan-radial-20261102">
+<style id="mdsb-mukim-plan-radial-20261102-css">
 #rt11-modal.rt-mdsb-view .rt-mdsb-mukim-grid>.rt-mdsb-mukim-card:last-child:nth-child(odd){grid-column:1/-1!important;justify-self:center!important;width:calc(50% - 9px)!important;max-width:560px!important}
 #rt11-modal.rt-mdsb-view .rt-mdsb-plan-below{grid-column:1/-1!important;width:100%;max-width:980px;margin:16px auto 5px;text-align:center;padding:18px;border-radius:22px;border:1px solid #ecc4d2;background:linear-gradient(145deg,#fff,#fff4f8);box-shadow:0 15px 32px #a32a551e}
 #rt11-modal.rt-mdsb-view .rt-mdsb-plan-below img{display:block!important;width:100%!important;height:auto!important;max-height:680px;object-fit:contain;border-radius:13px}
@@ -17858,7 +17875,7 @@ let busy=false;new MutationObserver(()=>{if(busy)return;busy=true;requestAnimati
 })();
 </script>
 
-<style id="rt-live-layout-repair-20261102">
+<style id="rt-live-layout-repair-20261102-css">
 /* Applied to the actual generated RT chapter elements, not just the original lists. */
 #rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important;gap:15px!important;width:100%!important;max-width:none!important;list-style:none!important;margin:20px 0!important;padding:0!important}
 #rt11-modal .rtchapter.rt-live-three-zone .rt-live-zone-grid>.rt-live-zone-card{display:flex!important;flex-direction:column!important;justify-content:flex-start!important;min-width:0!important;width:100%!important;max-width:none!important;min-height:172px!important;height:auto!important;grid-column:auto!important;margin:0!important;padding:22px 18px!important;position:relative!important;border:1px solid color-mix(in srgb,var(--rt-main) 32%,#e9e1d6)!important;border-top:4px solid var(--rt-main)!important;border-radius:18px!important;background:linear-gradient(140deg,#fff,#fbfaef)!important;box-shadow:0 9px 25px #423c2818!important;transition:transform .3s ease,box-shadow .3s ease!important;overflow-wrap:anywhere!important;white-space:normal!important}
@@ -18313,7 +18330,7 @@ let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;reque
 </style>
 
 
-<style id="suo-rt-corrected-render-v3">
+<style id="suo-rt-corrected-render-v3-css">
 /* Stable after-render replacements, scoped by active RT and chapter. */
 #rt11-modal .suo-real-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;margin:22px 0 30px!important;padding:0!important;list-style:none!important}
 #rt11-modal .suo-real-grid>.suo-real-card{min-width:0!important;width:100%!important;height:auto!important;max-height:none!important;min-height:218px!important;grid-column:auto!important;position:relative!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;margin:0!important;padding:23px!important;box-sizing:border-box!important;border:1px solid #e1d0a0!important;border-radius:21px!important;background:linear-gradient(142deg,#fff,#fff5dd)!important;box-shadow:0 11px 27px #1723381a!important;transition:transform .3s,box-shadow .3s!important;cursor:pointer;overflow:hidden!important}
@@ -22185,7 +22202,7 @@ apply();
  }
 }
 </style>
-<style id="rr04-github-hero-preview-20261112">
+<style id="rr04-github-hero-preview-20261112-css">
 /* Preview uses the real GitHub HTML, scaled to desktop viewport, with navigation cropped out. */
 #panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-cover{isolation:isolate!important;overflow:hidden!important;background:#0f354d!important;aspect-ratio:1.39/1!important;height:auto!important;min-height:0!important}
 #panel-3 :is(#rr04-rt-portal-20261022,#rr04-rkk-portal-20261022) .rr04-rt-portal-cover .rr04-rt-portal-iframe{position:absolute!important;top:0!important;left:0!important;inset:auto!important;width:200%!important;height:200%!important;max-width:none!important;max-height:none!important;transform:scale(.5)!important;transform-origin:top left!important;clip-path:none!important;display:block!important;border:0!important;background:#153b50!important}
