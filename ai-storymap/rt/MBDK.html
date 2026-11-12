@@ -42,5 +42,40 @@ if(frame){
 }
 })();
 </script>
+
+<script id="uniform-plan-sidebar-20261112">
+(function(){
+ 'use strict';
+ const oldLabel=/PELAN\s+MUKIM\s*(?:&|DAN|\/)\s*BLOK\s+(?:PERANCANGAN|MBSA|MBDK|MBSJ|MDSB|MPAJ|MPHS|MPKL|MPKS|MPKJ|MPS|MPSP|MBPJ)\b/gi;
+ const target='PELAN MUKIM & BLOK PERANCANGAN';
+ const install=(doc)=>{
+  if(!doc||!doc.body||doc.body.dataset.uniformPlanSidebarInstalled)return;
+  doc.body.dataset.uniformPlanSidebarInstalled='1';
+  let busy=false;
+  const apply=()=>{
+   if(busy)return;busy=true;
+   try{
+    const nodes=doc.querySelectorAll('nav,aside,[class*="sidebar"],[class*="side-nav"],[class*="chapter-nav"],[class*="bab-nav"],[class*="chapter-list"],[class*="nav-list"]');
+    nodes.forEach(root=>{
+     const walker=doc.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+     let node;
+     while((node=walker.nextNode())){
+      if(node.parentElement?.closest('script,style'))continue;
+      oldLabel.lastIndex=0;
+      if(oldLabel.test(node.nodeValue)){
+       oldLabel.lastIndex=0;
+       node.nodeValue=node.nodeValue.replace(oldLabel,target);
+      }
+     }
+    });
+   }finally{busy=false;}
+  };
+  apply();new MutationObserver(apply).observe(doc.body,{subtree:true,childList:true,characterData:true});
+ };
+ const frame=document.getElementById('rt-story-frame');
+ if(frame){const run=()=>{try{install(frame.contentDocument)}catch(err){console.warn('Sidebar title synchronization unavailable',err)}};frame.addEventListener('load',run);run();}
+ else if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>install(document));else install(document);
+})();
+</script>
 </body>
 </html>
