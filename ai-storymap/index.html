@@ -23016,5 +23016,52 @@ configs.forEach(c=>{
 #panel-3 #rr04-rt-portal-20261022 #rr04-rt-portal-cta,
 #panel-3 #rr04-rkk-portal-20261022 #rr04-rkk-portal-cta{display:none!important;visibility:hidden!important}
 </style>
+<script id="suo-return-to-bab04-rt-20261112">
+/* Returning from a standalone RT Story Map skips the welcome gate and
+   restores the exact PBT in Bab 04's RT explorer. Other visits are unchanged. */
+(function(){
+ 'use strict';
+ const params=new URLSearchParams(location.search);
+ if(params.get('return_to')!=='rt')return;
+ const pbt=(params.get('return_pbt')||'').trim().toUpperCase();
+ if(!/^[A-Z]{2,5}$/.test(pbt))return;
+ const destination=document.getElementById('rr04-rt-portal-20261022');
+ if(!destination)return;
+ const splash=document.getElementById('suo-map-intro');
+ document.body.classList.remove('suo-intro-active');
+ if(splash){splash.hidden=true;splash.setAttribute('aria-hidden','true')}
+ document.documentElement.style.removeProperty('overflow');
+ document.body.style.removeProperty('overflow');
+ function restore(){
+  if(typeof window.switchTab==='function')window.switchTab(3);
+  if(typeof window.showSuoBento==='function')window.showSuoBento(3,0);
+  document.getElementById('rr04-tab-rt')?.click();
+  const buttons=[...document.querySelectorAll('#rr04-rt-portal-options .rr04-rt-portal-option')];
+  const desired=buttons.find(btn=>(btn.querySelector('small')?.textContent||'').trim().toUpperCase()===pbt);
+  if(!desired)return false;
+  // This invokes the existing PBT selection logic: name, preview and documents update together.
+  desired.click();
+  return true;
+ }
+ function scroll(){
+  const header=document.querySelector('header.header');
+  const offset=(header?.getBoundingClientRect().height||0)+16;
+  const top=window.scrollY+destination.getBoundingClientRect().top-offset;
+  window.scrollTo({top:Math.max(0,top),behavior:'instant'});
+ }
+ let attempts=0;
+ function apply(){
+  const ready=restore();
+  if(!ready&&attempts++<25){setTimeout(apply,120);return}
+  requestAnimationFrame(()=>requestAnimationFrame(scroll));
+  // Info cards animate their updates; keep the restored destination in view.
+  setTimeout(scroll,520);
+  setTimeout(scroll,1150);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});
+ else apply();
+ window.addEventListener('pageshow',()=>{if(document.readyState==='complete')setTimeout(scroll,80)},{once:true});
+})();
+</script>
 </body>
 </html>
