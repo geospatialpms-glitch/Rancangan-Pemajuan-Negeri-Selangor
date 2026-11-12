@@ -23359,6 +23359,37 @@ configs.forEach(c=>{
 #suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card .suo-atlas-feature-heading span{color:#fff0d6!important;text-shadow:none!important}
 #suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card .suo-atlas-feature-visual{filter:drop-shadow(0 4px 5px rgba(80,25,43,.19))!important}
 #suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card:hover{transform:translateY(-5px)!important}
+
+/* Warm gold highlights, intentionally subtle against the three restored pastel tones. */
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card{
+ border:1px solid rgba(218,169,85,.82)!important;
+ box-shadow:0 10px 25px rgba(30,8,20,.24),inset 0 1px 0 rgba(255,249,219,.76),0 0 0 1px rgba(245,207,133,.12)!important;
+ transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease,filter .35s ease!important;
+}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card::before{
+ background:radial-gradient(ellipse at 50% -12%,rgba(255,224,146,.42),transparent 76%)!important;
+}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card::after{
+ content:"";position:absolute;inset:0 0 auto;height:2px;pointer-events:none;
+ background:linear-gradient(90deg,transparent,rgba(255,218,123,.85),rgba(255,245,210,.98),rgba(255,218,123,.85),transparent);
+ opacity:.65;z-index:2;transition:opacity .35s ease;
+}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card:hover{
+ border-color:#f5c76d!important;
+ box-shadow:0 16px 34px rgba(38,10,25,.3),0 0 17px rgba(245,187,83,.28),inset 0 1px 0 rgba(255,249,221,.90)!important;
+}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card:hover::after{opacity:1}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card .suo-atlas-feature-heading strong{
+ color:#713247!important;text-shadow:0 1px 0 rgba(255,232,173,.9)!important;
+}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card .suo-atlas-feature-heading span{
+ border-color:rgba(245,205,127,.85)!important;
+ box-shadow:0 2px 8px rgba(66,17,36,.16),inset 0 1px 0 rgba(255,228,172,.18)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card,
+ #suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card::after{transition:none!important}
+}
 </style>
 
 <style id="rr04-genting-accurate-cover-20261112">
