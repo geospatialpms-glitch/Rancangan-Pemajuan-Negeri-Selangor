@@ -22688,8 +22688,7 @@ configs.forEach(c=>{
   const style=hero.ownerDocument.defaultView.getComputedStyle(hero);
   const background=hero.style.backgroundImage||style.backgroundImage||'';
   // Extract the actual background photo, not the dark gradient in the same CSS declaration.
-  const matches=[...background.matchAll(/url\\(\\s*["']?([^"')]+)["']?\\s*\\)/g)];
-  const raw=matches.length?matches[matches.length-1][1]:'';
+  const raw=background.includes('url(')?background.split('url(').pop().split(')')[0].trim().replace(/^['"]|['"]$/g,''):'';
   return raw?new URL(raw,hero.ownerDocument.baseURI).href:'';
  }
  function show(root,img,code,url){
