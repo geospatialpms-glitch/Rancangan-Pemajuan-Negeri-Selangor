@@ -22533,7 +22533,7 @@ const configs=[
  {type:'rt',iframe:'rr04-rt-portal-iframe',portal:'rr04-rt-portal-20261022',name:'rr04-rt-portal-name',code:'rr04-rt-portal-code'},
  {type:'rkk',iframe:'rr04-rkk-portal-iframe',portal:'rr04-rkk-portal-20261022',name:'rr04-rkk-portal-name',code:'rr04-rkk-portal-code'}
 ];
-function getText(element){return (element?.textContent||'').replace(/\\s+/g,' ').trim()}
+function getText(element){return (element?.textContent||'').replace(/\s+/g,' ').trim()}
 function make(tag,cls,text){const el=document.createElement(tag);el.className=cls;if(text!=null)el.textContent=text;return el}
 configs.forEach(c=>{
  const frame=document.getElementById(c.iframe),portal=document.getElementById(c.portal);
@@ -22597,9 +22597,9 @@ configs.forEach(c=>{
    els.description.textContent=desc;
    els.cta.textContent='⌖  Terokai Story Map  →';
    // Avoid replacing a resolved photograph with a temporary loading gradient.
-   if(bg&&bg!=='none'&&(/url\\(/i.test(bg)||!overlay.dataset.hasPhoto)){
+   if(bg&&bg!=='none'&&(bg.includes('url(')||!overlay.dataset.hasPhoto)){
      overlay.style.backgroundImage=bg;
-     if(/url\\(/i.test(bg))overlay.dataset.hasPhoto='1';
+     if(bg.includes('url('))overlay.dataset.hasPhoto='1';
    }
    overlay.classList.toggle('is-loading',!overlay.dataset.hasPhoto);
  }
