@@ -21748,5 +21748,31 @@ let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestA
 apply();
 })();
 </script>
+<style id="rt-hero-description-unified-20261112">
+/* Uniform hero supporting descriptions across all RT PBT pages; preserve individual texts. */
+#rt11-modal .rthero .rt-hero-content p{
+  font-family:Arial,'Plus Jakarta Sans',sans-serif!important;
+  font-size:clamp(15px,1.12vw,19px)!important;
+  font-weight:400!important;
+  line-height:1.7!important;
+  letter-spacing:0!important;
+  text-align:center!important;
+  text-wrap:balance!important;
+  max-width:850px!important;
+  width:min(100%,850px)!important;
+  margin:18px auto 0!important;
+  padding-inline:8px!important;
+  color:#fff!important;
+  text-shadow:0 2px 9px rgba(5,16,37,.75)!important;
+}
+@media(max-width:680px){
+  #rt11-modal .rthero .rt-hero-content p{
+    font-size:clamp(14px,3.5vw,16px)!important;
+    line-height:1.62!important;
+    max-width:94vw!important;
+    margin-top:14px!important;
+  }
+}
+</style>
 </body>
 </html>
