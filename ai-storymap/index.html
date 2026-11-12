@@ -11476,7 +11476,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
     <p id="rr04-rt-portal-overview">Pilih nama PBT untuk meneroka ringkasan dokumen Rancangan Tempatan.</p>
     <a id="rr04-rt-html-entry" class="rr04-rt-html-entry" href="https://storymaps.arcgis.com/stories/963aefc4aef1412194b09c2b5b244190" aria-label="Terokai Story Map RT versi HTML">✦ &nbsp;Terokai Story Map RT Interaktif <span aria-hidden="true">→</span></a>
     <div class="rr04-rt-portal-docs"><div class="rr04-rt-portal-docs-head"><strong>Nama Dokumen &amp; Gambaran Keseluruhan</strong><span id="rr04-rt-portal-doc-count"></span></div><div id="rr04-rt-portal-doc-list" class="rr04-rt-portal-doc-list"></div><div class="rr04-excel-table-wrap" id="rr04-rt-excel-table" aria-live="polite"></div></div>
-    <div class="rr04-rt-portal-actions"><a class="rr04-rt-portal-cta" id="rr04-rt-portal-cta" target="_blank" rel="noopener noreferrer">Terokai Portal <span aria-hidden="true">↗</span></a><button type="button" id="rr04-rt-portal-map-button" class="rr04-rt-portal-map-button">⌖ &nbsp; Lihat Lokasi PBT di Peta</button></div>
+    <div class="rr04-rt-portal-actions"><a id="rr04-rt-portal-cta" hidden aria-hidden="true" tabindex="-1" style="display:none!important"></a><button type="button" id="rr04-rt-portal-map-button" class="rr04-rt-portal-map-button">⌖ &nbsp; Lihat Lokasi PBT di Peta</button></div>
    </div>
    <aside class="rr04-rt-portal-rail" aria-label="Senarai pilihan PBT"><div class="rr04-rt-portal-rail-head"><div><small>ATLAS PBT SELANGOR</small><strong>Pilih PBT</strong></div><span>12 PBT</span></div><p>Pilih nama untuk tukar pratonton StoryMap dan maklumat dokumen.</p><div class="rr04-rt-portal-options" id="rr04-rt-portal-options" role="group" aria-label="Pilih Pihak Berkuasa Tempatan"></div>
  <div class="rr04-rt-rail-controls" aria-label="Kawalan navigasi StoryMap PBT">
@@ -11669,7 +11669,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
       <a class="rr04-rt-html-entry" id="rr04-rkk-second-html-entry" href="#gh-rkk-story" hidden>✦ Terokai Story Map RKK Genting Highlands →</a>
     </div>
     <div class="rr04-rt-portal-docs"><div class="rr04-rt-portal-docs-head"><strong>Nama Dokumen &amp; Gambaran Keseluruhan</strong><span id="rr04-rkk-portal-doc-count"></span></div><div id="rr04-rkk-portal-doc-list" class="rr04-rt-portal-doc-list"></div><div class="rr04-excel-table-wrap" id="rr04-rkk-excel-table" aria-live="polite"></div></div>
-    <div class="rr04-rt-portal-actions"><a class="rr04-rt-portal-cta" id="rr04-rkk-portal-cta" target="_blank" rel="noopener noreferrer">Terokai Portal <span aria-hidden="true">↗</span></a><button type="button" id="rr04-rkk-portal-map-button" class="rr04-rt-portal-map-button">⌖ &nbsp; Lihat Lokasi PBT di Peta</button></div>
+    <div class="rr04-rt-portal-actions"><a id="rr04-rkk-portal-cta" hidden aria-hidden="true" tabindex="-1" style="display:none!important"></a><button type="button" id="rr04-rkk-portal-map-button" class="rr04-rt-portal-map-button">⌖ &nbsp; Lihat Lokasi PBT di Peta</button></div>
    </div>
    <aside class="rr04-rt-portal-rail" aria-label="Senarai PBT RKK yang mempunyai StoryMap"><div class="rr04-rt-portal-rail-head"><div><small>ATLAS RKK SELANGOR</small><strong>Pilih PBT</strong></div><span>03 PBT</span></div><p>Pilih salah satu daripada tiga PBT yang mempunyai StoryMap RKK.</p><div class="rr04-rt-portal-options" id="rr04-rkk-portal-options" role="group" aria-label="Pilih Pihak Berkuasa Tempatan"></div>
  <div class="rr04-rt-rail-controls" aria-label="Kawalan navigasi StoryMap PBT">
@@ -14368,7 +14368,7 @@ window.renderSuoPbtDocumentTable=function(type,code){
    {
  const local='./rt/'+encodeURIComponent(p.code)+'.html';
  const previewUrl='./index.html?rt_page='+encodeURIComponent(p.code)+'&rt_preview=1';
- open.href=local;open.removeAttribute('target');open.removeAttribute('aria-disabled');open.style.display='inline-flex';
+ open.removeAttribute('href');open.setAttribute('hidden','');open.setAttribute('aria-hidden','true');open.style.setProperty('display','none','important');
  if(frame.getAttribute('src')!==previewUrl){cover?.classList.remove('is-frame-loaded');frame.setAttribute('src',previewUrl);}
  frame.title='Pratonton Story Map HTML GitHub '+p.name;
 }
@@ -23010,5 +23010,11 @@ configs.forEach(c=>{
  update();
 })();
 </script>
+
+<style id="rr04-hide-duplicate-portal-ctas-20261112">
+/* The upper gold Story Map entry is the sole launch button. */
+#panel-3 #rr04-rt-portal-20261022 #rr04-rt-portal-cta,
+#panel-3 #rr04-rkk-portal-20261022 #rr04-rkk-portal-cta{display:none!important;visibility:hidden!important}
+</style>
 </body>
 </html>
