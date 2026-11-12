@@ -16188,10 +16188,23 @@ async function rtWriteCached(id,data){
 }
 async function rtLoadSource(id){
  const cached=await rtReadCached(id);
- if(cached?.data?.nodes && Date.now()-cached.savedAt<24*60*60*1000)return cached.data;
+ /* Refresh should display known RT chapters immediately, even if cached data is older
+    than 24h. Revalidate stale content without blocking page rendering. */
+ if(cached?.data?.nodes){
+  if(Date.now()-(cached.savedAt||0)>=24*60*60*1000){
+   setTimeout(async()=>{
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6000);
+    try{
+     const res=await fetch('https://www.arcgis.com/sharing/rest/content/items/'+id+'/data?f=json',{mode:'cors',credentials:'omit',signal:controller.signal});
+     if(res.ok){const fresh=await res.json();if(fresh?.nodes)await rtWriteCached(id,fresh)}
+    }catch(e){}finally{clearTimeout(timer)}
+   },0);
+  }
+  return cached.data;
+ }
  const url='https://www.arcgis.com/sharing/rest/content/items/'+id+'/data?f=json';
  const controller=new AbortController();
- const timer=setTimeout(()=>controller.abort(),9000);
+ const timer=setTimeout(()=>controller.abort(),4500);
  try{
   const res=await fetch(url,{mode:'cors',credentials:'omit',signal:controller.signal,cache:'default'});
   if(!res.ok)throw Error('HTTP '+res.status);
@@ -16237,7 +16250,15 @@ if(cover){hero.innerHTML='';const heroContent=document.createElement('div');hero
  }
 }
 body.innerHTML='';let section=null,i=0;const prefix='rt11-'+entry.code+'-';
-for(const key of children){const node=nodes[key];if(!node||node.type==='storycover'||node.type==='navigation'||node.type==='credits'||node.type==='attribution')continue;
+let renderedRtNodes=0;
+for(const key of children){
+ /* Yield to the browser periodically so the RT cover, navigation and scroll
+    remain responsive while large ArcGIS stories are assembled. */
+ if(++renderedRtNodes%24===0){
+  await new Promise(resolve=>requestAnimationFrame(resolve));
+  if(ticket!==requestNo)return;
+ }
+ const node=nodes[key];if(!node||node.type==='storycover'||node.type==='navigation'||node.type==='credits'||node.type==='attribution')continue;
 if(node.type==='text'&&node.data&&node.data.type==='h2'&&strip(node.data.text)){i++;section=document.createElement('section');section.className='rtchapter';section.id=prefix+i;const category=strip(node.data.text).toLowerCase();if(/matlamat pembangunan/.test(category))section.classList.add('rt-goal');else if(/teras pembangunan/.test(category))section.classList.add('rt-pillars');else if(/konsep pembangunan/.test(category))section.classList.add('rt-concept');let h=document.createElement('h2');h.textContent=strip(node.data.text);section.appendChild(h);body.appendChild(section);let a=document.createElement('a');a.href='#'+section.id;a.dataset.rtNumber=String(i).padStart(2,'0');a.dataset.rtIcon=['⌂','▣','▤','◇','✦','◈','▦'][(i-1)%7];const labels=document.createElement('span');const k=document.createElement('small');k.className='rt-side-label';k.textContent='BAB '+String(i).padStart(2,'0');const n=document.createElement('strong');n.className='rt-side-name';n.textContent=h.textContent.replace(/^\\s*\\d+\\s*[.·:-]\\s*/,'');labels.append(k,n);a.appendChild(labels);a.addEventListener('click',e=>{e.preventDefault();section=document.getElementById(a.hash.slice(1));if(section)section.scrollIntoView({behavior:'smooth',block:'start'})});nav.appendChild(a);continue}
 if(!section){section=document.createElement('section');section.className='rtchapter';section.id=prefix+'intro';body.appendChild(section)}
 const el=piece(node,resources,entry.id);if(el)section.appendChild(el)}
