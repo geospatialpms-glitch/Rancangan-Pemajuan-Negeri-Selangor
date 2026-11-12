@@ -22818,6 +22818,7 @@ configs.forEach(c=>{
    if(!desc){
      desc=c.type==='rt'?'Terokai hala tuju pembangunan, guna tanah dan perancangan mampan bagi '+fallbackName+'.':'Terokai potensi kawasan, pembangunan setempat dan cadangan strategik bagi '+fallbackName+'.';
    }
+   if(c.type==='rt'&&code.toUpperCase()==='MBPJ'){label='PLANMALAYSIA SELANGOR · Majlis Bandaraya Petaling Jaya';title='Majlis Bandaraya Petaling Jaya (MBPJ)';subtitle='Rancangan Tempatan Majlis Bandaraya Petaling Jaya';desc='Terokai pembangunan Petaling Jaya melalui perancangan guna tanah, kemudahan masyarakat dan persekitaran bandar yang mampan.';}
    els.kicker.textContent=label;
    els.title.textContent=title;
    els.subtitle.textContent=subtitle||'Rancangan '+(c.type==='rt'?'Tempatan':'Kawasan Khas');
@@ -22974,16 +22975,16 @@ configs.forEach(c=>{
   async function update(){
    const code=currentCode(codeEl).toUpperCase();
    if(!code)return;
-   if(code===selected&&root.classList.contains('has-photo'))return;
-   if(code!==selected){
-    selected=code;generation++;
-    root.dataset.photoCode=code;
+   const genting=cfg.type==='rkk'&&code==='MPHS'&&document.querySelector('.rr04-mphs-preview-choice.active')?.dataset.preview==='genting';
+   const photoKey=genting?'MPHS-GENTING':code;
+   if(photoKey===selected&&root.classList.contains('has-photo'))return;
+   if(photoKey!==selected){selected=photoKey;generation++;root.dataset.photoCode=photoKey;
     root.classList.remove('has-photo');
     delete root.dataset.mbpjFallbackAttempted;
     img.removeAttribute('src');img.style.display='none';
    }
    const ticket=generation;
-   let photo=cfg.type==='rkk'?rkkPhotos[code]||'':'';
+   let photo=genting?'https://www.arcgis.com/sharing/rest/content/items/f1d5b48f583c4b3ebb3c447eaf408e50/resources/zvCBZF0Z9ZUSiPQwgVI4w.jpg':(cfg.type==='rkk'?rkkPhotos[code]||'':'');
    if(cfg.type==='rt'){
     if(photoCache.has(code))photo=photoCache.get(code);
     else{
@@ -22993,11 +22994,12 @@ configs.forEach(c=>{
      if(photo)photoCache.set(code,photo);
     }
    }
-   if(ticket!==generation||root.dataset.photoCode!==code)return;
-   if(photo)show(root,img,code,photo);
+   if(ticket!==generation||root.dataset.photoCode!==photoKey)return;
+   if(photo)show(root,img,photoKey,photo);
   }
   const watch=new MutationObserver(()=>update());
   watch.observe(codeEl,{childList:true,subtree:true,characterData:true});
+  if(cfg.type==='rkk')document.addEventListener('click',event=>{if(event.target.closest('.rr04-mphs-preview-choice'))setTimeout(update,0)});
   frame?.addEventListener('load',()=>{
     update();
     // ESRI cover photo appears after asynchronous StoryMap data has loaded.
@@ -23341,5 +23343,19 @@ configs.forEach(c=>{
  });
 })();
 </script>
+<style id="suo-contrast-and-preview-parity-20261112">
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card{border:1.5px solid #fff0c9!important;box-shadow:0 12px 32px #19051552,inset 0 1px #ffffffb3!important}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card:nth-child(1){background:linear-gradient(145deg,#fff9e9,#ffe8b7 62%,#efd099)!important}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card:nth-child(2){background:linear-gradient(145deg,#f0fbff,#ccebf6 62%,#a2d3e6)!important}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card:nth-child(3){background:linear-gradient(145deg,#f4fff6,#d4f0dd 62%,#a9deb9)!important}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card::before{background:radial-gradient(ellipse at 50% -10%,#ffffffaa,transparent 75%)!important}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card :is(.suo-atlas-feature-heading,.suo-atlas-feature-heading strong,.suo-atlas-feature-heading span){color:#682434!important;text-shadow:none!important}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card .suo-atlas-feature-heading span{background:#ffffff8c;border:1px solid #8b415b65;border-radius:99px;padding:5px 11px}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card p{color:#263b40!important;text-shadow:none!important;font-weight:600!important}
+#suo-map-intro .suo-atlas-feature-grid>.suo-atlas-feature-card:hover{border-color:#ffcc67!important;box-shadow:0 18px 36px #220a1e56,0 0 0 2px #ffe09c88!important}
+#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview .rr04-native-content{width:89%!important;max-width:89%!important;align-items:flex-start!important;text-align:left!important}
+#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview .rr04-native-title{max-width:100%!important;text-wrap:balance!important;letter-spacing:-.02em!important}
+@media(max-width:680px){#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview .rr04-native-content{width:96%!important;max-width:96%!important}}
+</style>
 </body>
 </html>
