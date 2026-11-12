@@ -21954,6 +21954,21 @@ apply();
   MPSp:'Majlis Perbandaran Sepang',
   MDSB:'Majlis Daerah Sabak Bernam'
  };
+ 
+ const descriptions={
+  MBSA:'Terokai hala tuju pembangunan Shah Alam sebagai pusat pentadbiran negeri melalui perancangan guna tanah, kemudahan masyarakat dan persekitaran bandar yang mampan.',
+  MBPJ:'Terokai pendekatan perancangan Petaling Jaya melalui penyelarasan guna tanah, kemudahan bandar serta pembangunan kawasan yang lebih berdaya huni.',
+  MBSJ:'Terokai hala tuju pembangunan Subang Jaya melalui perancangan kawasan kediaman, pusat perdagangan, mobiliti dan kemudahan komuniti.',
+  MBDK:'Terokai hala tuju pembangunan Klang melalui pengukuhan fungsi bandar, rangkaian pengangkutan, guna tanah dan kemudahan masyarakat.',
+  MPAJ:'Terokai perancangan Ampang Jaya yang mengimbangi pembangunan bandar, kawasan kediaman, kemudahan komuniti dan pemeliharaan alam sekitar.',
+  MPKj:'Terokai hala tuju pembangunan Kajang melalui perancangan guna tanah, ketersambungan pengangkutan dan peningkatan kemudahan bandar.',
+  MPS:'Terokai hala tuju pembangunan Selayang melalui perancangan kawasan petempatan, aktiviti ekonomi, kemudahan masyarakat dan persekitaran mampan.',
+  MPHS:'Terokai perancangan Hulu Selangor yang menghubungkan pembangunan petempatan, pusat pertumbuhan, kemudahan komuniti dan kawasan semula jadi.',
+  MPKS:'Terokai hala tuju pembangunan Kuala Selangor melalui perancangan petempatan, aktiviti ekonomi tempatan, kemudahan awam dan kelestarian alam sekitar.',
+  MPKL:'Terokai perancangan Kuala Langat yang menyelaraskan pembangunan petempatan, guna tanah, jaringan perhubungan dan kesejahteraan komuniti.',
+  MPSp:'Terokai hala tuju pembangunan Sepang melalui perancangan pusat pertumbuhan, rangkaian pengangkutan, guna tanah dan kemudahan masyarakat.',
+  MDSB:'Terokai perancangan Sabak Bernam yang menyeimbangkan pembangunan petempatan, aktiviti pertanian, kemudahan masyarakat dan kelestarian kawasan.'
+ };
  function apply(){
   if(modal.hidden)return;
   const cover=hero.querySelector('.rt-hero-content');
@@ -21963,6 +21978,11 @@ apply();
   const code=cls?cls.slice(3):'';
   const key=Object.keys(names).find(k=>k.toLowerCase()===code.toLowerCase());
   if(label&&key){const value='PLANMALAYSIA SELANGOR · '+names[key];if(label.textContent!==value)label.textContent=value;}
+  if(key&&descriptions[key]){
+   let desc=cover.querySelector('.rt-mbpj-matched-desc');
+   if(!desc){desc=document.createElement('p');desc.className='rt-mbpj-matched-desc';const existing=cover.querySelector('p');if(existing)existing.insertAdjacentElement('afterend',desc);else cover.appendChild(desc);}
+   if(desc.textContent!==descriptions[key])desc.textContent=descriptions[key];
+  }
   const cta=hero.querySelector('.mbsa-hero-explore');
   if(cta&&cta.parentElement!==cover)cover.appendChild(cta);
  }
@@ -21973,5 +21993,31 @@ apply();
  apply();
 })();
 </script>
+<style id="rt-pbt-cover-descriptions-20261112">
+/* Supporting description under each RT subtitle, matching MBPJ's cover hierarchy. */
+#rt11-modal[class] .rthero .rt-hero-content p.rt-mbpj-matched-desc{
+ display:block!important;
+ max-width:850px!important;
+ width:min(100%,850px)!important;
+ margin:23px auto 0!important;
+ padding:0 10px!important;
+ color:#fff!important;
+ font-family:Arial,sans-serif!important;
+ font-size:clamp(15px,1.12vw,19px)!important;
+ font-weight:400!important;
+ line-height:1.7!important;
+ letter-spacing:0!important;
+ text-align:center!important;
+ text-wrap:balance!important;
+ text-shadow:0 2px 10px rgba(0,0,0,.8)!important;
+}
+@media(max-width:720px){
+ #rt11-modal[class] .rthero .rt-hero-content p.rt-mbpj-matched-desc{
+  margin-top:15px!important;
+  font-size:clamp(14px,3.5vw,16px)!important;
+  line-height:1.6!important;
+ }
+}
+</style>
 </body>
 </html>
