@@ -23357,5 +23357,78 @@ configs.forEach(c=>{
 #panel-3 #rr04-rt-portal-20261022 .rr04-native-preview .rr04-native-title{max-width:100%!important;text-wrap:balance!important;letter-spacing:-.02em!important}
 @media(max-width:680px){#panel-3 #rr04-rt-portal-20261022 .rr04-native-preview .rr04-native-content{width:96%!important;max-width:96%!important}}
 </style>
+
+<style id="rr04-genting-accurate-cover-20261112">
+/* Dedicated cover for the selected Genting RKK tab; never display the KKB image here. */
+#panel-3 #rr04-rkk-portal-20261022 .rr04-native-preview.is-genting-cover>.rr04-genting-photo{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ display:block!important;visibility:visible!important;opacity:1!important;
+ object-fit:cover!important;object-position:center!important;z-index:0!important;
+ pointer-events:none!important;
+}
+#panel-3 #rr04-rkk-portal-20261022 .rr04-native-preview.is-genting-cover>.rr04-preview-photo{
+ display:none!important;
+}
+#panel-3 #rr04-rkk-portal-20261022 .rr04-native-preview.is-genting-cover::before{
+ content:""!important;z-index:1!important;
+ background:linear-gradient(90deg,rgba(3,26,40,.83),rgba(4,32,47,.48) 59%,rgba(4,28,44,.17))!important;
+}
+#panel-3 #rr04-rkk-portal-20261022 .rr04-native-preview.is-genting-cover>.rr04-native-content{
+ position:relative!important;z-index:2!important;
+}
+#panel-3 #rr04-rkk-portal-20261022 .rr04-native-preview.is-genting-cover .rr04-native-title{
+ overflow-wrap:normal!important;word-break:normal!important;white-space:normal!important;
+}
+</style>
+<script id="rr04-genting-accurate-cover-js-20261112">
+(function(){
+ 'use strict';
+ const portal=document.getElementById('rr04-rkk-portal-20261022');
+ const code=document.getElementById('rr04-rkk-portal-code');
+ if(!portal||!code)return;
+ const photoUrl='https://www.arcgis.com/sharing/rest/content/items/f1d5b48f583c4b3ebb3c447eaf408e50/resources/zvCBZF0Z9ZUSiPQwgVI4w.jpg';
+ let scheduled=false;
+ function sync(){
+  scheduled=false;
+  const preview=portal.querySelector('.rr04-native-preview');
+  if(!preview)return;
+  const genting=code.textContent.trim().toUpperCase()==='MPHS'
+   &&portal.querySelector('.rr04-mphs-preview-choice[aria-pressed="true"]')?.dataset.preview==='genting';
+  preview.classList.toggle('is-genting-cover',genting);
+  let photo=preview.querySelector(':scope > .rr04-genting-photo');
+  if(genting){
+   if(!photo){
+    photo=document.createElement('img');
+    photo.className='rr04-genting-photo';
+    photo.alt='';photo.setAttribute('aria-hidden','true');
+    photo.decoding='async';photo.src=photoUrl;
+    preview.insertBefore(photo,preview.firstChild);
+   }
+   const title=preview.querySelector('.rr04-native-title');
+   if(title&&title.textContent!=='Rancangan Kawasan Khas Genting Highlands'){
+    title.textContent='Rancangan Kawasan Khas Genting Highlands';
+   }
+  }else if(photo){
+   photo.remove();
+  }
+ }
+ function schedule(){
+  if(scheduled)return;
+  scheduled=true;requestAnimationFrame(sync);
+ }
+ new MutationObserver(schedule).observe(code,{childList:true,characterData:true,subtree:true});
+ const observeChoices=()=>{
+  const switcher=portal.querySelector('.rr04-mphs-preview-switch');
+  if(!switcher||switcher.dataset.gentingCoverObserved)return;
+  switcher.dataset.gentingCoverObserved='1';
+  new MutationObserver(schedule).observe(switcher,{subtree:true,attributes:true,attributeFilter:['class','aria-pressed']});
+  switcher.addEventListener('click',()=>{schedule();setTimeout(schedule,60);});
+ };
+ observeChoices();
+ const cover=portal.querySelector('.rr04-rt-portal-cover');
+ if(cover)new MutationObserver(()=>{observeChoices();schedule()}).observe(cover,{childList:true});
+ schedule();
+})();
+</script>
 </body>
 </html>
