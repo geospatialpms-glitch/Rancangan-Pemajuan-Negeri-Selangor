@@ -22313,5 +22313,72 @@ body.rt-only-preview #rt11-modal .rthero:after{pointer-events:none}
 }
 </style>
 
+<style id="rr04-preview-vertical-center-fix-20261112">
+/* Centre the complete RT cover INSIDE its iframe only. Keep the live RT untouched. */
+body.rt-only-preview #rt11-modal .rthero{
+ position:absolute!important;
+ inset:0!important;
+ display:block!important;
+ height:100vh!important;
+ min-height:100vh!important;
+ max-height:100vh!important;
+ padding:0!important;
+ overflow:hidden!important;
+}
+body.rt-only-preview #rt11-modal .rthero>.rt-hero-content{
+ position:absolute!important;
+ top:50%!important;
+ left:50%!important;
+ right:auto!important;
+ bottom:auto!important;
+ transform:translate(-50%,-50%)!important;
+ width:min(94%,1020px)!important;
+ max-width:1020px!important;
+ height:auto!important;
+ max-height:94vh!important;
+ min-height:0!important;
+ margin:0!important;
+ padding:20px 28px!important;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:0!important;
+ overflow:visible!important;
+ text-align:center!important;
+}
+body.rt-only-preview #rt11-modal .rthero>.rt-hero-content>small{
+ position:static!important;
+ margin:0 auto 20px!important;
+ flex:0 0 auto!important;
+}
+body.rt-only-preview #rt11-modal .rthero>.rt-hero-content>h1{
+ position:static!important;
+ font-size:clamp(38px,5vw,65px)!important;
+ line-height:1.08!important;
+ margin:0 auto 20px!important;
+ flex:0 0 auto!important;
+}
+body.rt-only-preview #rt11-modal .rthero>.rt-hero-content>p{
+ position:static!important;
+ margin:0 auto 17px!important;
+ padding:0!important;
+ line-height:1.45!important;
+ flex:0 0 auto!important;
+}
+body.rt-only-preview #rt11-modal .rthero>.rt-hero-content>p.rt-mbpj-matched-desc{
+ position:static!important;
+ font-size:17px!important;
+ line-height:1.45!important;
+ margin:0 auto 20px!important;
+}
+body.rt-only-preview #rt11-modal .rthero>.rt-hero-content>.mbsa-hero-explore{
+ position:static!important;
+ display:inline-flex!important;
+ transform:none!important;
+ margin:5px auto 0!important;
+ flex:0 0 auto!important;
+}
+</style>
 </body>
 </html>
