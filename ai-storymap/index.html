@@ -22507,5 +22507,109 @@ body.rt-only-preview #rt11-modal .rthero .rt-hero-content>.mbsa-hero-explore{
  body.rt-only-preview #rt11-modal .rthero .rt-hero-content>small{margin-bottom:17px!important}
 }
 </style>
+
+<style id="rr04-native-preview-final-20261112">
+/* Self-contained RT and RKK editorial previews, no inherited modal geometry */
+#panel-3 #rr04-pane-rt .rr04-rt-portal-cover,
+#panel-3 #rr04-pane-rkk .rr04-rt-portal-cover{position:relative!important;isolation:isolate!important;overflow:hidden!important;aspect-ratio:1.45 / 1!important;min-height:0!important;background:#07283c!important}
+#panel-3 .rr04-native-preview{position:absolute!important;inset:0!important;z-index:80!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;overflow:hidden!important;background:#082b42!important;background-position:center!important;background-repeat:no-repeat!important;background-size:cover!important;color:#fff!important;text-align:left!important;font-family:Arial,sans-serif!important}
+#panel-3 .rr04-native-preview::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(3,29,45,.97) 0%,rgba(4,39,59,.85) 42%,rgba(4,32,51,.18) 100%)}
+#panel-3 .rr04-native-content{position:relative;z-index:2;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;width:77%;max-width:77%;max-height:100%;min-width:0;padding:clamp(15px,3.5vw,45px) clamp(13px,3.6vw,47px);overflow:hidden;text-align:left!important}
+#panel-3 .rr04-native-kicker{display:block;max-width:100%;padding:6px 11px;border:1px solid rgba(247,208,140,.9);border-radius:999px;background:rgba(7,37,55,.75);color:#fff0d0;font:800 clamp(8px,.92vw,11px)/1.4 Arial,sans-serif;letter-spacing:.07em;overflow-wrap:anywhere;text-align:left}
+#panel-3 .rr04-native-title{display:block;width:100%;max-width:100%;margin:clamp(10px,1.6vw,18px) 0 0;color:#fff9ef!important;font:800 clamp(20px,2.65vw,35px)/1.08 Georgia,'Times New Roman',serif!important;letter-spacing:-.025em;text-wrap:balance;text-align:left!important;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+#panel-3 .rr04-native-rule{display:block;width:46px;height:3px;border-radius:4px;background:#f4c974;margin:clamp(10px,1.45vw,18px) 0}
+#panel-3 .rr04-native-subtitle{display:block;color:#f7cf8a!important;font:700 clamp(11px,1.12vw,15px)/1.45 Arial,sans-serif!important;text-align:left!important;max-width:100%;text-wrap:balance}
+#panel-3 .rr04-native-description{display:block;color:#f1f5f6!important;font:400 clamp(10px,1.05vw,14px)/1.48 Arial,sans-serif!important;max-width:95%;margin:clamp(8px,1vw,13px) 0 0;text-align:left!important}
+#panel-3 .rr04-native-cta{display:inline-flex;align-items:center;gap:9px;width:fit-content;max-width:100%;margin-top:clamp(10px,1.3vw,17px);padding:8px 13px;border:1px solid rgba(245,210,144,.9);border-radius:12px;background:linear-gradient(135deg,rgba(75,107,119,.82),rgba(16,49,69,.85));box-shadow:0 7px 18px rgba(0,0,0,.25);color:#fff8e9!important;font:700 clamp(10px,1vw,13px)/1.3 Arial,sans-serif!important;white-space:normal;backdrop-filter:blur(10px);text-align:left!important}
+#panel-3 .rr04-native-preview.is-loading .rr04-native-description{opacity:.9}
+#panel-3 .rr04-rt-portal-cover:has(>.rr04-native-preview) > .rr04-rt-portal-iframe{opacity:0!important;pointer-events:none!important}
+@media(max-width:680px){#panel-3 .rr04-native-content{width:87%;max-width:87%;padding:15px 19px}#panel-3 .rr04-native-title{font-size:clamp(17px,4vw,28px)!important}#panel-3 .rr04-native-kicker{font-size:8px}#panel-3 .rr04-native-description{font-size:10px!important;line-height:1.4!important}#panel-3 .rr04-native-subtitle{font-size:11px!important}#panel-3 .rr04-native-cta{padding:7px 10px!important}}
+@media(prefers-reduced-motion:reduce){#panel-3 .rr04-native-preview *{transition:none!important}}
+</style>
+<script id="rr04-native-preview-final-js-20261112">
+(function(){
+'use strict';
+const configs=[
+ {type:'rt',iframe:'rr04-rt-portal-iframe',portal:'rr04-rt-portal-20261022',name:'rr04-rt-portal-name',code:'rr04-rt-portal-code'},
+ {type:'rkk',iframe:'rr04-rkk-portal-iframe',portal:'rr04-rkk-portal-20261022',name:'rr04-rkk-portal-name',code:'rr04-rkk-portal-code'}
+];
+function getText(element){return (element?.textContent||'').replace(/\\s+/g,' ').trim()}
+function make(tag,cls,text){const el=document.createElement(tag);el.className=cls;if(text!=null)el.textContent=text;return el}
+configs.forEach(c=>{
+ const frame=document.getElementById(c.iframe),portal=document.getElementById(c.portal);
+ if(!frame||!portal)return;
+ const cover=portal.querySelector('.rr04-rt-portal-cover');
+ if(!cover)return;
+ let overlay=cover.querySelector('.rr04-native-preview');
+ if(!overlay){
+   overlay=make('div','rr04-native-preview is-loading');
+   overlay.setAttribute('aria-label','Pratonton muka depan Story Map '+c.type.toUpperCase());
+   const content=make('div','rr04-native-content');
+   ['kicker','title','rule','subtitle','description','cta'].forEach(type=>{
+     content.appendChild(make(type==='title'?'h3':'div','rr04-native-'+type));
+   });
+   overlay.appendChild(content);cover.appendChild(overlay);
+ }
+ const els={};
+ for(const key of ['kicker','title','subtitle','description','cta'])els[key]=overlay.querySelector('.rr04-native-'+key);
+ let sourceObserver=null,lastDoc=null,queued=false;
+ function refresh(){
+   queued=false;
+   const fallbackName=getText(document.getElementById(c.name))||'Rancangan '+(c.type==='rt'?'Tempatan':'Kawasan Khas');
+   const code=getText(document.getElementById(c.code))||'';
+   let title=fallbackName,subtitle='',desc='',label='PLANMALAYSIA SELANGOR · '+fallbackName,bg='';
+   try{
+     const d=frame.contentDocument;
+     if(d){
+       if(c.type==='rt'){
+         const hero=d.querySelector('#rt11-modal .rthero');
+         const nested=d.getElementById('rt-story-frame');
+         const nestedDoc=nested?.contentDocument;
+         const actual=nestedDoc?.querySelector('#rt11-modal .rthero')||hero;
+         const content=actual?.querySelector('.rt-hero-content');
+         if(content){
+           title=getText(content.querySelector('h1'))||title;
+           subtitle=getText(content.querySelector(':scope > p:not(.rt-mbpj-matched-desc)'));
+           desc=getText(content.querySelector(':scope > p.rt-mbpj-matched-desc'));
+           label=getText(content.querySelector('small'))||label;
+         }
+         if(actual)bg=getComputedStyle(actual).backgroundImage||actual.style.backgroundImage;
+       }else{
+         const main=d.querySelector('main');
+         title=getText(main?.querySelector('h1'))||title;
+         subtitle=getText(main?.querySelector('p'))||subtitle;
+         label=getText(main?.querySelector('small'))||label;
+         bg=getComputedStyle(d.body).backgroundImage||d.body.style.backgroundImage;
+       }
+       if(d!==lastDoc){
+         sourceObserver?.disconnect();lastDoc=d;
+         sourceObserver=new MutationObserver(schedule);
+         sourceObserver.observe(d.documentElement,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['style','class']});
+       }
+     }
+   }catch(e){/* Keep the native preview on a safe local fallback */ }
+   if(!desc){
+     desc=c.type==='rt'?'Terokai hala tuju pembangunan, guna tanah dan perancangan mampan bagi '+fallbackName+'.':'Terokai potensi kawasan, pembangunan setempat dan cadangan strategik bagi '+fallbackName+'.';
+   }
+   els.kicker.textContent=label;
+   els.title.textContent=title;
+   els.subtitle.textContent=subtitle||'Rancangan '+(c.type==='rt'?'Tempatan':'Kawasan Khas');
+   els.description.textContent=desc;
+   els.cta.textContent='⌖  Terokai Story Map  →';
+   // Avoid replacing a resolved photograph with a temporary loading gradient.
+   if(bg&&bg!=='none'&&(/url\\(/i.test(bg)||!overlay.dataset.hasPhoto)){
+     overlay.style.backgroundImage=bg;
+     if(/url\\(/i.test(bg))overlay.dataset.hasPhoto='1';
+   }
+   overlay.classList.toggle('is-loading',!overlay.dataset.hasPhoto);
+ }
+ function schedule(){if(queued)return;queued=true;requestAnimationFrame(refresh)}
+ frame.addEventListener('load',schedule);
+ const name=document.getElementById(c.name);
+ if(name)new MutationObserver(schedule).observe(name,{childList:true,subtree:true,characterData:true});
+ schedule();
+});
+})();
+</script>
 </body>
 </html>
