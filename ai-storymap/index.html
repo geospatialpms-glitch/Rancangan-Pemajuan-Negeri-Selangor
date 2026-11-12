@@ -22659,7 +22659,17 @@ configs.forEach(c=>{
   const imageKey=imageNode?.data?.image;
   const resource=resources[imageKey];
   const resourceId=resource?.data?.resourceId||resource?.resourceId;
-  return resourceId?'https://www.arcgis.com/sharing/rest/content/items/'+id+'/resources/'+encodeURIComponent(resourceId):'';
+  if(resourceId)return 'https://www.arcgis.com/sharing/rest/content/items/'+id+'/resources/'+encodeURIComponent(resourceId);
+  // Some StoryMaps covers store media separately from storycover.children.
+  // Use the image thumbnail of the same ArcGIS item as a fallback.
+  if(code==='MBPJ'){
+    const itemRes=await fetch('https://www.arcgis.com/sharing/rest/content/items/'+id+'?f=json',{credentials:'omit'});
+    if(itemRes.ok){
+      const meta=await itemRes.json();
+      if(meta.thumbnail)return 'https://www.arcgis.com/sharing/rest/content/items/'+id+'/info/'+encodeURIComponent(meta.thumbnail).replace(/%2F/gi,'/');
+    }
+  }
+  return '';
  };
  function addPhoto(root){
   let image=root.querySelector(':scope > .rr04-preview-photo');
@@ -22705,7 +22715,25 @@ configs.forEach(c=>{
    img.style.display='block';
    root.classList.add('has-photo');
   };
-  check.onerror=()=>{};
+  check.onerror=()=>{
+   // MBPJ fallback comes from the same RT MBPJ ArcGIS StoryMaps item,
+   // rather than borrowing a photo from a different local authority.
+   if(code!=='MBPJ'||root.dataset.photoCode!==code||root.dataset.mbpjFallbackAttempted==='1')return;
+   root.dataset.mbpjFallbackAttempted='1';
+   fetch('https://www.arcgis.com/sharing/rest/content/items/013241b0812846b59d1cc8f0b4b53c0?f=json',{credentials:'omit'})
+    .then(r=>r.ok?r.json():Promise.reject(new Error('ArcGIS item unavailable')))
+    .then(item=>{
+      if(!item.thumbnail||root.dataset.photoCode!==code)return;
+      const path='https://www.arcgis.com/sharing/rest/content/items/013241b0812846b59d1cc8f0b4b53c0/info/'+encodeURIComponent(item.thumbnail).replace(/%2F/gi,'/');
+      const fallback=new Image();
+      fallback.onload=()=>{
+        if(root.dataset.photoCode!==code)return;
+        img.src=path;img.style.display='block';root.classList.add('has-photo');
+        photoCache.set(code,path);
+      };
+      fallback.src=path;
+    }).catch(()=>{});
+  };
   check.src=url;
  }
  cfgs.forEach(cfg=>{
@@ -22724,6 +22752,7 @@ configs.forEach(c=>{
     selected=code;generation++;
     root.dataset.photoCode=code;
     root.classList.remove('has-photo');
+    delete root.dataset.mbpjFallbackAttempted;
     img.removeAttribute('src');img.style.display='none';
    }
    const ticket=generation;
