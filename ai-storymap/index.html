@@ -12,7 +12,7 @@
  var id=ids[code];if(!id)return;
  document.documentElement.classList.add('suo-rt-standalone');
  var controller=new AbortController();
- var timer=setTimeout(function(){controller.abort()},6500);
+ var timer=setTimeout(function(){controller.abort()},4500);
  var promise=fetch('https://www.arcgis.com/sharing/rest/content/items/'+id+'/data?f=json',{
   mode:'cors',credentials:'omit',signal:controller.signal,cache:'default'
  }).then(function(res){return res.ok?res.json():null}).then(function(data){return data&&data.nodes?data:null}).catch(function(){return null}).finally(function(){clearTimeout(timer)});
@@ -16217,6 +16217,8 @@ async function rtLoadSource(id){
  if(early?.id===id){
   const data=await early.promise;
   if(data?.nodes){void rtWriteCached(id,data);return data}
+  /* Do not launch the same slow network request twice on a cold refresh. */
+  throw Error('Permintaan data ArcGIS awal gagal atau mengambil masa terlalu lama');
  }
  const url='https://www.arcgis.com/sharing/rest/content/items/'+id+'/data?f=json';
  const controller=new AbortController();
