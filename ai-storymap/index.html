@@ -14641,6 +14641,25 @@ window.renderSuoPbtDocumentTable=function(type,code){
  translate();
 })();
 </script>
+<style id="rr04-mphs-preview-toggle-20261112">
+#rr04-rkk-portal-20261022 .rr04-mphs-preview-switch{
+ display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px;
+ padding:12px 14px;margin:0;background:rgba(5,35,55,.88);
+ border:1px solid rgba(94,177,196,.35);border-top:0;border-radius:0 0 14px 14px}
+#rr04-rkk-portal-20261022 .rr04-mphs-preview-switch[hidden]{display:none!important}
+#rr04-rkk-portal-20261022 .rr04-mphs-preview-choice{
+ min-height:36px;padding:8px 14px;border:1px solid rgba(177,220,231,.5);
+ border-radius:999px;background:rgba(255,255,255,.06);color:#e6f8ff;
+ font:700 12px/1.3 Arial,sans-serif;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+#rr04-rkk-portal-20261022 .rr04-mphs-preview-choice:hover,
+#rr04-rkk-portal-20261022 .rr04-mphs-preview-choice:focus-visible{background:rgba(255,218,143,.18);border-color:#ffdb92}
+#rr04-rkk-portal-20261022 .rr04-mphs-preview-choice.active{
+ color:#163c53;background:#ffdc91;border-color:#ffdc91;box-shadow:0 3px 12px rgba(0,0,0,.12)}
+@media(max-width:600px){
+ #rr04-rkk-portal-20261022 .rr04-mphs-preview-switch{padding:10px 6px;gap:6px}
+ #rr04-rkk-portal-20261022 .rr04-mphs-preview-choice{font-size:11px;padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){#rr04-rkk-portal-20261022 .rr04-mphs-preview-choice{transition:none}}
+</style>
 <script id="rr04-rkk-storymap-explorer-js-20261022">
 /* Scope: RKK portal, filtered to actual ArcGIS StoryMap links. */
 
@@ -14676,6 +14695,24 @@ window.renderSuoPbtDocumentTable=function(type,code){
  const mapButton=document.getElementById('rr04-rkk-portal-map-button');
  const coverName=document.getElementById('rr04-rkk-fallback-name');
  const cover=host.querySelector('.rr04-rt-portal-cover');
+ /* Two independent MPHS RKK previews within the same Bab 04 frame. */
+ let mphsPreview='kkb';
+ const previewSwitch=document.createElement('div');
+ previewSwitch.className='rr04-mphs-preview-switch';
+ previewSwitch.setAttribute('role','group');
+ previewSwitch.setAttribute('aria-label','Pilih pratonton RKK Hulu Selangor');
+ [{value:'kkb',label:'Kuala Kubu Bharu'},{value:'genting',label:'Genting Highlands'}].forEach(choice=>{
+  const button=document.createElement('button');
+  button.type='button';button.className='rr04-mphs-preview-choice';
+  button.textContent=choice.label;button.dataset.preview=choice.value;
+  button.addEventListener('click',()=>{
+   if(mphsPreview===choice.value)return;
+   mphsPreview=choice.value;
+   renderSelection(visibleIndex>=0?visibleIndex:requestedIndex);
+  });
+  previewSwitch.appendChild(button);
+ });
+ if(cover)cover.insertAdjacentElement('afterend',previewSwitch);
  frame.addEventListener('load',()=>cover?.classList.add('is-frame-loaded'));
  const buttons=[];
  const railPosition=document.getElementById('rr04-rkk-rail-position');
@@ -14707,6 +14744,12 @@ window.renderSuoPbtDocumentTable=function(type,code){
    code.textContent=p.code;
    overview.textContent='Dokumentasi perancangan tempatan bagi '+p.name+'. Paparan ini merangkumkan '+p.docs.length+' tajuk dokumen RKK yang disenaraikan sebagai rujukan, termasuk penggantian atau pengubahan jika berkaitan.';
    coverName.textContent=p.name;
+   previewSwitch.hidden=p.code!=='MPHS';
+   previewSwitch.querySelectorAll('button').forEach(button=>{
+    const on=button.dataset.preview===mphsPreview;
+    button.setAttribute('aria-pressed',String(on));
+    button.classList.toggle('active',on);
+   });
    logo.replaceChildren();
    if(p.logo){
      const img=document.createElement('img');img.src=p.logo;img.alt='';img.loading='lazy';
@@ -14742,7 +14785,8 @@ window.renderSuoPbtDocumentTable=function(type,code){
  }
  open.style.display='none';open.removeAttribute('href');
  {
-  const hero=document.querySelector(p.code==='MBPJ'?'#mbpj13-story .mbpj-hero':p.code==='MPKS'?'#mpks-malawati-story .mks-hero':'#kkb-rkk-story .kkb-hero');
+  const heroSelector=p.code==='MBPJ'?'#mbpj13-story .mbpj-hero':p.code==='MPKS'?'#mpks-malawati-story .mks-hero':(mphsPreview==='genting'?'#gh-rkk-story .gh-rkk-hero':'#kkb-rkk-story .kkb-hero');
+  const hero=document.querySelector(heroSelector);
   const label=hero?.querySelector('small')?.textContent.trim()||'PLANMALAYSIA SELANGOR';
   const title=hero?.querySelector('h1')?.textContent.trim()||p.name;
   const subtitle=hero?.querySelector('p')?.textContent.trim()||'Rancangan Kawasan Khas';
@@ -14753,7 +14797,7 @@ window.renderSuoPbtDocumentTable=function(type,code){
   frame.removeAttribute('src');
   frame.srcdoc='<!doctype html><html lang="ms"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden}body{display:flex;align-items:center;justify-content:flex-start;text-align:left;color:#fff;background:'+background+';background-color:'+bgColor+';background-size:cover;background-position:center;font-family:Arial,sans-serif;isolation:isolate;padding:clamp(48px,6vw,90px)}body:before{content:"";position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,rgba(2,27,45,.96),rgba(4,43,64,.79) 48%,rgba(4,31,48,.14))}main{position:relative;z-index:1;width:min(100%,880px);max-height:96%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}small{display:inline-block;max-width:100%;color:#fff0ce;font-weight:800;letter-spacing:.12em;font-size:clamp(11px,1.2vw,15px);line-height:1.5;padding:9px 18px;border:1px solid #f5d18b;border-radius:30px;background:rgba(5,38,58,.67);margin:0 0 28px}h1{font:800 clamp(42px,5.2vw,74px)/1.07 Georgia,serif;color:#fff9ee;margin:0 0 22px;text-shadow:0 4px 22px #0008;text-wrap:balance}p{color:#f7d190;font-size:clamp(19px,2.1vw,27px);line-height:1.52;margin:0 0 23px;max-width:770px;text-wrap:balance}span{display:inline-flex;align-items:center;background:linear-gradient(130deg,rgba(89,116,126,.76),rgba(10,50,73,.82));border:1px solid #f5d18b;border-radius:22px;padding:15px 27px;color:#fff9eb;font-weight:700;font-size:17px;margin-top:12px;box-shadow:0 10px 25px #0005;backdrop-filter:blur(9px)}@media(max-width:700px){body{padding:30px}small{margin-bottom:16px;font-size:11px}h1{font-size:36px;margin-bottom:16px}p{font-size:18px}}</style><main><small>'+esc(label)+'</small><h1>'+esc(title)+'</h1><p>'+esc(subtitle)+'</p><span>Terokai Story Map →</span></main></html>';
  }
- frame.title='Pratonton HTML GitHub RKK '+p.name;
+ frame.title='Pratonton RKK '+(p.code==='MPHS'?(mphsPreview==='genting'?'Genting Highlands':'Kuala Kubu Bharu'):p.name);
 }
    mapButton.dataset.pbtMap=p.code;
    mapButton.setAttribute('aria-label','Lihat lokasi pejabat '+p.name+' di peta interaktif');
