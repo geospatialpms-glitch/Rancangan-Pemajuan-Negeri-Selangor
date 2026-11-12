@@ -21776,27 +21776,23 @@ apply();
 </style>
 
 <style id="rt-rkk-universal-hero-black-shade-20261112">
-/* Unified translucent image shade for all RT + RKK landing covers.
-   Keep existing cover images, colour accents, imagery and decorative effects. */
-#rt11-modal .rthero{
-  box-shadow:inset 0 0 0 100vmax rgba(6,12,22,.27)!important;
-}
-#rt11-modal .rthero .rt-hero-content{
-  position:relative!important;
-  z-index:5!important;
-}
-#rt11-modal .rthero .rt-hero-content :is(h1,p,small){
-  text-shadow:0 2px 13px rgba(0,0,0,.74)!important;
-}
-.gh-rkk-hero{
-  box-shadow:inset 0 0 0 100vmax rgba(6,12,22,.16)!important;
-}
-.gh-rkk-hero > *{
-  position:relative;
-  z-index:2;
+/* RT/RKK global cover-shade, focus visibility and mobile contrast. The original images remain unchanged. */
+#rt11-modal .rthero{box-shadow:inset 0 0 0 100vmax rgba(6,12,22,.27)!important;isolation:isolate!important}
+#rt11-modal .rthero .rt-hero-content{position:relative!important;z-index:5!important;width:min(100%,1050px)!important;margin-inline:auto!important;text-align:center!important}
+#rt11-modal .rthero .rt-hero-content :is(h1,p,small){text-shadow:0 2px 13px rgba(0,0,0,.74)!important}
+#rt11-modal .rthero .rt-hero-content h1{text-wrap:balance!important}
+#rt11-modal .rthero :is(a,button):focus-visible{outline:3px solid #f6d89a!important;outline-offset:4px!important}
+#rt11-modal .rtside :is(a,button):focus-visible{outline:3px solid var(--rt-main,#5b4085)!important;outline-offset:3px!important}
+.gh-rkk-hero{box-shadow:inset 0 0 0 100vmax rgba(6,12,22,.16)!important;isolation:isolate!important}
+.gh-rkk-hero > *{position:relative;z-index:2}
+.gh-rkk-hero :is(a,button):focus-visible{outline:3px solid #f5dca6!important;outline-offset:4px!important}
+@media(max-width:720px){
+ #rt11-modal .rthero .rt-hero-content{width:min(96%,940px)!important}
+ #rt11-modal .rthero .rt-hero-content h1{overflow-wrap:break-word!important}
 }
 @media(prefers-contrast:more){
-  #rt11-modal .rthero{box-shadow:inset 0 0 0 100vmax rgba(3,8,15,.42)!important}
+ #rt11-modal .rthero{box-shadow:inset 0 0 0 100vmax rgba(3,8,15,.42)!important}
+ .gh-rkk-hero{box-shadow:inset 0 0 0 100vmax rgba(3,8,15,.32)!important}
 }
 </style>
 
