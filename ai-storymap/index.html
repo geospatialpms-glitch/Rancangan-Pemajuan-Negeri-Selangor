@@ -22596,12 +22596,10 @@ configs.forEach(c=>{
    els.subtitle.textContent=subtitle||'Rancangan '+(c.type==='rt'?'Tempatan':'Kawasan Khas');
    els.description.textContent=desc;
    els.cta.textContent='⌖  Terokai Story Map  →';
-   // Avoid replacing a resolved photograph with a temporary loading gradient.
-   if(bg&&bg!=='none'&&(bg.includes('url(')||!overlay.dataset.hasPhoto)){
-     overlay.style.backgroundImage=bg;
-     if(bg.includes('url('))overlay.dataset.hasPhoto='1';
-   }
-   overlay.classList.toggle('is-loading',!overlay.dataset.hasPhoto);
+   // The selected PBT photo is rendered independently by the verified
+   // cover-image controller; do not show any stale iframe background.
+   overlay.style.backgroundImage='none';
+   overlay.classList.toggle('is-loading',!overlay.classList.contains('has-photo'));
  }
  function schedule(){if(queued)return;queued=true;requestAnimationFrame(refresh)}
  frame.addEventListener('load',schedule);
@@ -22728,11 +22726,9 @@ configs.forEach(c=>{
    if(cfg.type==='rt'){
     if(photoCache.has(code))photo=photoCache.get(code);
     else{
-     // The dedicated RT hero loads asynchronously; consult the actual image first.
-     photo=fromHero(frame);
-     if(!photo){
-      try{photo=await rtPhoto(code)}catch(e){photo=''}
-     }
+     // Always resolve against the selected PBT's own StoryMaps item ID.
+     // The iframe may still be displaying the previous PBT during transition.
+     try{photo=await rtPhoto(code)}catch(e){photo=''}
      if(photo)photoCache.set(code,photo);
     }
    }
