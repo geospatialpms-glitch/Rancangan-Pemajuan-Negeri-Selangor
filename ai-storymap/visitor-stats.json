@@ -1,9 +1,9 @@
 {
   "source": "GA4",
-  "metric": "screenPageViews",
+  "metric": "totalUsers",
   "path": "/Rancangan-Pemajuan-Negeri-Selangor/ai-storymap/",
   "date": "2026-11-13",
   "today": 0,
-  "total": 3912,
-  "updatedAt": "2026-11-12T19:10:34.146Z"
+  "total": 13,
+  "updatedAt": "2026-11-13T00:01:08.234Z"
 }
