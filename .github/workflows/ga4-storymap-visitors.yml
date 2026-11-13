@@ -2,6 +2,12 @@ name: Refresh Story Map GA4 visitor counts
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/update-ga-visitors.mjs'
+      - '.github/workflows/ga4-storymap-visitors.yml'
   schedule:
     - cron: '5,20,35,50 * * * *'
 
