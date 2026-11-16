@@ -11880,10 +11880,11 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
       <button type="button" class="suo-footer-home" onclick="scrollToSuoTarget('utama')" aria-label="Kembali ke Halaman Utama">HALAMAN UTAMA</button>
     </div>
   </div>
-  <section class="suo-footer-visitor-daily" id="suo-footer-visitor-daily" aria-label="Bilangan pelawat unik Story Map">
+  <section class="suo-footer-visitor-daily" id="suo-footer-visitor-daily" aria-label="Statistik pelawat unik dan paparan Story Map">
     <div class="suo-visitor-pill"><span>Tarikh hari ini</span><strong id="suo-visitor-date">—</strong></div>
     <div class="suo-visitor-pill"><span>Pelawat unik hari ini</span><strong id="suo-visitor-today-number" title="Memerlukan sambungan analitik">—</strong></div>
-    <div class="suo-visitor-pill"><span>Jumlah pelawat unik</span><strong id="suo-visitor-total-number" title="Memerlukan sambungan analitik">—</strong></div>
+    <div class="suo-visitor-pill"><span>Jumlah pelawat unik</span><strong id="suo-visitor-total-number" title="Data Google Analytics 4">—</strong></div>
+    <div class="suo-visitor-pill"><span id="suo-visitor-views-label">Jumlah paparan Story Map</span><strong id="suo-visitor-views-number" title="Data Google Analytics 4">—</strong></div>
   </section>
   <div class="suo-footer-legal">© 2026 PLANMalaysia Selangor <span>·</span> Hak Cipta Terpelihara <span>·</span> Dasar Privasi</div>
 </footer>
@@ -18488,6 +18489,8 @@ apply();
  const dateEl=document.getElementById('suo-visitor-date');
  const todayEl=document.getElementById('suo-visitor-today-number');
  const totalEl=document.getElementById('suo-visitor-total-number');
+ const viewsEl=document.getElementById('suo-visitor-views-number');
+ const viewsLabel=document.getElementById('suo-visitor-views-label');
  const tz='Asia/Kuala_Lumpur';
  const localeDate=new Intl.DateTimeFormat('ms-MY',{day:'2-digit',month:'short',year:'numeric',timeZone:tz});
  function dayMY(){const parts=new Intl.DateTimeFormat('en-GB',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:tz}).formatToParts(new Date());const p=Object.fromEntries(parts.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));return p.year+'-'+p.month+'-'+p.day;}
@@ -18505,11 +18508,16 @@ apply();
      const today=dayMY();
      todayEl.textContent=data.date===today?data.today.toLocaleString('ms-MY'):'—';
      totalEl.textContent=data.total.toLocaleString('ms-MY');
+     if(Number.isSafeInteger(data.pageViewsTotal)&&data.pageViewsTotal>=0){
+       viewsEl.textContent=data.pageViewsTotal.toLocaleString('ms-MY');
+       viewsLabel.textContent=data.pageViewsAsOf?'Jumlah paparan (rekod 10 Nov)':'Jumlah paparan Story Map';
+       viewsEl.title=data.pageViewsAsOf?'Rekod GA4 sehingga '+data.pageViewsAsOf+' · bukan angka semasa':'Jumlah paparan halaman daripada GA4';
+     }else{viewsEl.textContent='—';viewsLabel.textContent='Jumlah paparan Story Map';viewsEl.title='Menunggu data paparan halaman GA4';}
      const updated=data.updatedAt?new Date(data.updatedAt).toLocaleString('ms-MY',{timeZone:tz}):'';
      todayEl.title=data.date===today?'Data GA4 · dikemas kini '+updated:'Menunggu statistik hari ini';
      totalEl.title='Jumlah pelawat unik sepanjang tempoh GA4 · data GA4 '+updated;
    }catch(e){
-     todayEl.textContent='—';totalEl.textContent='—';
+     todayEl.textContent='—';totalEl.textContent='—';viewsEl.textContent='—';
      todayEl.title=totalEl.title='Menunggu data pelawat unik GA4 terkini';
    }finally{busy=false;}
  }
