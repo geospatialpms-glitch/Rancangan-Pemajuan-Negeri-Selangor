@@ -32,7 +32,7 @@ const pagePath='/Rancangan-Pemajuan-Negeri-Selangor/ai-storymap/';
 async function report(startDate,endDate){
   const body={
     dateRanges:[{startDate,endDate}],
-    metrics:[{name:'totalUsers'}],
+    metrics:[{name:'totalUsers'},{name:'screenPageViews'}],
     dimensionFilter:{filter:{fieldName:'pagePath',stringFilter:{matchType:'EXACT',value:pagePath}}},
     limit:'1'
   };
@@ -41,13 +41,13 @@ async function report(startDate,endDate){
   });
   if(!result.ok)throw Error('GA4 Data API '+result.status+': '+(await result.text()).slice(0,600));
   const payload=await result.json();
-  const val=Number(payload.rows?.[0]?.metricValues?.[0]?.value ?? 0);
-  if(!Number.isSafeInteger(val)||val<0)throw Error('Unexpected GA4 unique visitor count');
-  return val;
+  const [users,views]=[0,1].map(i=>Number(payload.rows?.[0]?.metricValues?.[i]?.value ?? 0));
+  if(![users,views].every(n=>Number.isSafeInteger(n)&&n>=0))throw Error('Unexpected GA4 visitor metrics');
+  return {users,views};
 }
 // GA4 historical start: property history is only counted from installation.
-const [today,total]=await Promise.all([report(date,date),report('2020-01-01',date)]);
-const output={source:'GA4',metric:'totalUsers',path:pagePath,date,today,total,updatedAt:new Date().toISOString()};
+const [todayStats,periodStats]=await Promise.all([report(date,date),report('2020-01-01',date)]);
+const output={source:'GA4',metric:'totalUsers',path:pagePath,date,today:todayStats.users,total:periodStats.users,pageViewsToday:todayStats.views,pageViewsTotal:periodStats.views,updatedAt:new Date().toISOString()};
 await mkdir('ai-storymap',{recursive:true});
 await writeFile('ai-storymap/visitor-stats.json',JSON.stringify(output,null,2)+'\n','utf8');
-console.log('GA4 visitor snapshot generated for',date,'unique visitors today:',today,'period unique visitors:',total);
+console.log('GA4 visitor snapshot generated for',date,'unique users:',output.total,'page views:',output.pageViewsTotal);
