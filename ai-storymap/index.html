@@ -11884,7 +11884,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
     <div class="suo-visitor-pill"><span>Tarikh hari ini</span><strong id="suo-visitor-date">—</strong></div>
     <div class="suo-visitor-pill"><span>Lawatan hari ini</span><strong id="suo-visitor-today-number" title="Memerlukan sambungan analitik">—</strong></div>
     <div class="suo-visitor-pill"><span>Jumlah Lawatan</span><strong id="suo-visitor-total-number" title="Data Google Analytics 4">—</strong></div>
-    <div class="suo-visitor-pill"><span id="suo-visitor-views-label">Jumlah paparan Story Map</span><strong id="suo-visitor-views-number" title="Data Google Analytics 4">—</strong></div>
+    
   </section>
   <div class="suo-footer-legal">© 2026 PLANMalaysia Selangor <span>·</span> Hak Cipta Terpelihara <span>·</span> Dasar Privasi</div>
 </footer>
@@ -18482,89 +18482,88 @@ apply();
 }
 </style>
 <script id="suo-visitor-daily-20261105">
-/* Real-time repeat-load visits require a deployed Cloudflare Worker + D1.
-   Configure data-counter-api on #suo-footer-visitor-daily with its HTTPS base URL.
-   Without it, display honest delayed GA4 page views; never invent counts. */
+/* Daily visit count:
+   - with a configured shared Worker: one POST /visit per page load, including refresh;
+   - without a backend: a truthful device-only daily count stored in localStorage.
+   GA4 cumulative page views remain a separately labelled delayed statistic. */
 (function(){
  'use strict';
  const root=document.getElementById('suo-footer-visitor-daily');if(!root)return;
  const dateEl=document.getElementById('suo-visitor-date');
  const todayEl=document.getElementById('suo-visitor-today-number');
+ const todayLabel=todayEl?todayEl.previousElementSibling:null;
  const totalEl=document.getElementById('suo-visitor-total-number');
- const viewsEl=document.getElementById('suo-visitor-views-number');
- const viewsLabel=document.getElementById('suo-visitor-views-label');
+ if(!dateEl||!todayEl||!totalEl)return;
  const tz='Asia/Kuala_Lumpur';
  const pagePath='/Rancangan-Pemajuan-Negeri-Selangor/ai-storymap/';
+ const format=n=>n.toLocaleString('ms-MY');
  const localeDate=new Intl.DateTimeFormat('ms-MY',{day:'2-digit',month:'short',year:'numeric',timeZone:tz});
- const apiValue=(root.getAttribute('data-counter-api')||'').trim();
- const api=apiValue.endsWith('/')?apiValue.slice(0,-1):apiValue;
- let configured=false;
- try{const u=new URL(api);configured=u.protocol==='https:'&&!!u.hostname;}catch(e){configured=false;}
- const fmt=n=>n.toLocaleString('ms-MY');
- function dayMY(){const parts=new Intl.DateTimeFormat('en-GB',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:tz}).formatToParts(new Date());const p=Object.fromEntries(parts.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));return p.year+'-'+p.month+'-'+p.day;}
- function showDate(){dateEl.textContent=localeDate.format(new Date());}
- let realtime=false,posting=false,busy=false;
- function applyLive(data){
-   if(!data||data.date!==dayMY()||!Number.isSafeInteger(data.today)||data.today<0)throw Error('Invalid counter response');
-   todayEl.textContent=fmt(data.today);
-   todayEl.title='Kaunter langsung: setiap muatan halaman, termasuk refresh pengguna yang sama, dikira sebagai lawatan baharu';
-   realtime=true;
+ function dayMY(){
+   const parts=new Intl.DateTimeFormat('en-GB',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:tz}).formatToParts(new Date());
+   const p=Object.fromEntries(parts.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));
+   return p.year+'-'+p.month+'-'+p.day;
  }
- async function liveRequest(path,method,body){
+ const base=(root.getAttribute('data-counter-api')||'').trim().replace(/\/$/,'');
+ let enabled=false;
+ try{const u=new URL(base);enabled=u.protocol==='https:'&&!!u.hostname;}catch(e){}
+ let live=false,busy=false;
+ let localCount=null;
+ const todayKey='suo-storymap-device-visits-'+dayMY();
+ try{
+   const existing=Number(localStorage.getItem(todayKey)||0);
+   localCount=(Number.isSafeInteger(existing)&&existing>=0?existing:0)+1;
+   localStorage.setItem(todayKey,String(localCount));
+ }catch(e){localCount=1;}
+ function drawDate(){dateEl.textContent=localeDate.format(new Date());}
+ function drawLocal(){
+   if(live)return;
+   if(todayLabel)todayLabel.textContent='Lawatan hari ini (peranti ini)';
+   todayEl.textContent=format(localCount);
+   todayEl.title='Bilangan muatan halaman pada pelayar/peranti ini hari ini, termasuk refresh; bukan jumlah semua pengunjung';
+ }
+ function drawShared(obj){
+   if(!obj||obj.date!==dayMY()||!Number.isSafeInteger(obj.today)||obj.today<0)throw Error('Invalid shared visit data');
+   live=true;
+   if(todayLabel)todayLabel.textContent='Lawatan hari ini';
+   todayEl.textContent=format(obj.today);
+   todayEl.title='Lawatan semua pengunjung yang direkodkan pada pelayan, termasuk refresh';
+ }
+ async function counterRequest(endpoint,method,body){
    const controller=new AbortController();
-   const timeout=setTimeout(()=>controller.abort(),8000);
+   const timeout=setTimeout(()=>controller.abort(),7000);
    try{
-     const res=await fetch(api+path,{method,cache:'no-store',mode:'cors',headers:method==='POST'?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined,signal:controller.signal});
-     if(!res.ok)throw Error('Counter HTTP '+res.status);
-     return await res.json();
+     const response=await fetch(base+endpoint,{method,mode:'cors',cache:'no-store',headers:method==='POST'?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined,signal:controller.signal});
+     if(!response.ok)throw Error('Counter HTTP '+response.status);
+     return await response.json();
    }finally{clearTimeout(timeout);}
  }
- async function recordOpen(){
-   if(!configured||posting)return;
-   posting=true;
-   try{applyLive(await liveRequest('/visit','POST',{path:pagePath}));}
-   catch(err){console.warn('Live counter unavailable; using GA4 snapshot.',err);}
+ async function countPageLoad(){
+   if(!enabled)return;
+   try{drawShared(await counterRequest('/visit','POST',{path:pagePath}));}
+   catch(e){console.warn('Shared visit counter unavailable; using device visits.',e);}
  }
- async function updateLive(){
-   if(!configured)return;
-   try{applyLive(await liveRequest('/stats','GET'));}
-   catch(err){console.warn('Live counter refresh unavailable.',err);}
+ async function readShared(){
+   if(!enabled||!live)return;
+   try{drawShared(await counterRequest('/stats','GET'));}
+   catch(e){console.warn('Unable to update shared counter.',e);}
  }
- async function refresh(){
-   showDate();
-   if(busy||document.hidden)return;
-   busy=true;
+ async function readGa4(){
+   if(busy)return;busy=true;
    try{
-     const res=await fetch('visitor-stats.json?ts='+Date.now(),{cache:'no-store'});
-     if(!res.ok)throw Error('No GA4 snapshot');
-     const data=await res.json();
-     if(data.source!=='GA4'||data.metric!=='totalUsers'||data.path!==pagePath||!Number.isSafeInteger(data.today)||!Number.isSafeInteger(data.total))throw Error('Invalid GA4 snapshot');
-     if(!realtime){
-       todayEl.textContent=data.date===dayMY()&&Number.isSafeInteger(data.pageViewsToday)?fmt(data.pageViewsToday):'—';
-       const updated=data.updatedAt?new Date(data.updatedAt).toLocaleString('ms-MY',{timeZone:tz}):'';
-       todayEl.title='Paparan halaman hari ini (GA4 berkala), termasuk refresh. Dikemas kini '+updated;
-     }
-     totalEl.textContent=Number.isSafeInteger(data.pageViewsTotal)?fmt(data.pageViewsTotal):'—';
-     totalEl.title='Jumlah paparan halaman terkumpul dalam GA4 (data berkala), termasuk lawatan berulang';
-     if(Number.isSafeInteger(data.pageViewsTotal)&&data.pageViewsTotal>=0){
-       viewsEl.textContent=fmt(data.pageViewsTotal);
-       viewsLabel.textContent='Jumlah paparan Story Map';
-       viewsEl.title='Jumlah paparan halaman daripada GA4';
-     }else{
-       viewsEl.textContent='—';viewsEl.title='Menunggu data GA4';
-     }
-   }catch(e){
-     if(!realtime){todayEl.textContent='—';todayEl.title='Menunggu data lawatan';}
-     totalEl.textContent='—';viewsEl.textContent='—';
-   }finally{busy=false;}
+     const response=await fetch('visitor-stats.json?ts='+Date.now(),{cache:'no-store'});
+     if(!response.ok)throw Error('No GA4 report');
+     const data=await response.json();
+     if(data.source!=='GA4'||data.path!==pagePath||!Number.isSafeInteger(data.pageViewsTotal)||data.pageViewsTotal<0)throw Error('Invalid GA4 report');
+     totalEl.textContent=format(data.pageViewsTotal);
+     totalEl.title='Jumlah paparan halaman yang direkodkan GA4, termasuk lawatan berulang; data berkala';
+   }catch(e){totalEl.textContent='—';totalEl.title='Menunggu laporan jumlah lawatan GA4';}
+   finally{busy=false;}
  }
- showDate();
- // One visit POST per actual document load. Reload triggers another POST,
- // while tab focus or interval refreshes only read the existing counter.
- recordOpen();
- refresh();
- setInterval(()=>{refresh();if(realtime)updateLive();},60000);
- document.addEventListener('visibilitychange',()=>{if(!document.hidden){refresh();if(realtime)updateLive();}});
+ drawDate();drawLocal();
+ countPageLoad();
+ readGa4();
+ setInterval(()=>{drawDate();readGa4();readShared();},60000);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden){drawDate();readGa4();readShared();}});
 })();
 </script>
 <style id="suo-mbsa-goal-editorial-refresh-20261106">
