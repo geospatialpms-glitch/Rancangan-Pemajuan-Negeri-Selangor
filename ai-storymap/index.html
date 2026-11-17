@@ -11883,7 +11883,7 @@ footer.suo-portal-footer .suo-visitor-pill strong{font-size:13px;color:#fff;font
   <section class="suo-footer-visitor-daily" id="suo-footer-visitor-daily" aria-label="Statistik pelawat unik dan paparan Story Map">
     <div class="suo-visitor-pill"><span>Tarikh hari ini</span><strong id="suo-visitor-date">—</strong></div>
     <div class="suo-visitor-pill"><span>Lawatan hari ini</span><strong id="suo-visitor-today-number" title="Memerlukan sambungan analitik">—</strong></div>
-    <div class="suo-visitor-pill"><span>Jumlah pelawat unik</span><strong id="suo-visitor-total-number" title="Data Google Analytics 4">—</strong></div>
+    <div class="suo-visitor-pill"><span>Jumlah Lawatan</span><strong id="suo-visitor-total-number" title="Data Google Analytics 4">—</strong></div>
     <div class="suo-visitor-pill"><span id="suo-visitor-views-label">Jumlah paparan Story Map</span><strong id="suo-visitor-views-number" title="Data Google Analytics 4">—</strong></div>
   </section>
   <div class="suo-footer-legal">© 2026 PLANMalaysia Selangor <span>·</span> Hak Cipta Terpelihara <span>·</span> Dasar Privasi</div>
@@ -18507,7 +18507,7 @@ apply();
      if(data.source!=='GA4'||data.metric!=='totalUsers'||data.path!=='/Rancangan-Pemajuan-Negeri-Selangor/ai-storymap/'||!Number.isSafeInteger(data.today)||!Number.isSafeInteger(data.total))throw Error('Invalid GA4 snapshot');
      const today=dayMY();
      todayEl.textContent=data.date===today&&Number.isSafeInteger(data.pageViewsToday)?data.pageViewsToday.toLocaleString('ms-MY'):'—';
-     totalEl.textContent=data.total.toLocaleString('ms-MY');
+     totalEl.textContent=Number.isSafeInteger(data.pageViewsTotal)?data.pageViewsTotal.toLocaleString('ms-MY'):'—';
      if(Number.isSafeInteger(data.pageViewsTotal)&&data.pageViewsTotal>=0){
        viewsEl.textContent=data.pageViewsTotal.toLocaleString('ms-MY');
        viewsLabel.textContent=data.pageViewsAsOf?'Jumlah paparan (rekod 10 Nov)':'Jumlah paparan Story Map';
@@ -18515,10 +18515,10 @@ apply();
      }else{viewsEl.textContent='—';viewsLabel.textContent='Jumlah paparan Story Map';viewsEl.title='Menunggu data paparan halaman GA4';}
      const updated=data.updatedAt?new Date(data.updatedAt).toLocaleString('ms-MY',{timeZone:tz}):'';
      todayEl.title=data.date===today?'Jumlah paparan halaman hari ini, termasuk lawatan berulang · data GA4 dikemas kini '+updated:'Menunggu statistik lawatan hari ini';
-     totalEl.title='Jumlah pelawat unik sepanjang tempoh GA4 · data GA4 '+updated;
+     totalEl.title='Jumlah paparan halaman sepanjang tempoh GA4, termasuk lawatan berulang · data GA4 '+updated;
    }catch(e){
      todayEl.textContent='—';totalEl.textContent='—';viewsEl.textContent='—';
-     todayEl.title='Menunggu data lawatan GA4 terkini';totalEl.title='Menunggu data pelawat unik GA4 terkini';
+     todayEl.title='Menunggu data lawatan GA4 terkini';totalEl.title='Menunggu data jumlah lawatan GA4 terkini';
    }finally{busy=false;}
  }
  showDate();refresh();
