@@ -18496,8 +18496,10 @@ apply();
  const tz='Asia/Kuala_Lumpur';
  const pagePath='/Rancangan-Pemajuan-Negeri-Selangor/ai-storymap/';
  const localeDate=new Intl.DateTimeFormat('ms-MY',{day:'2-digit',month:'short',year:'numeric',timeZone:tz});
- const api=(root.getAttribute('data-counter-api')||'').trim().replace(/\\/$/,'');
- const configured=/^https:\/\/[^\s/]+(?:\/[^\s]*)?$/.test(api);
+ const apiValue=(root.getAttribute('data-counter-api')||'').trim();
+ const api=apiValue.endsWith('/')?apiValue.slice(0,-1):apiValue;
+ let configured=false;
+ try{const u=new URL(api);configured=u.protocol==='https:'&&!!u.hostname;}catch(e){configured=false;}
  const fmt=n=>n.toLocaleString('ms-MY');
  function dayMY(){const parts=new Intl.DateTimeFormat('en-GB',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:tz}).formatToParts(new Date());const p=Object.fromEntries(parts.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));return p.year+'-'+p.month+'-'+p.day;}
  function showDate(){dateEl.textContent=localeDate.format(new Date());}
